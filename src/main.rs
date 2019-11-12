@@ -51,7 +51,7 @@ fn main() {
 
     r.reason();
 
-    //for i in r.dump() {
+    //for i in r.get_triples() {
     //    let (s, p, o) = i;
     //    println!("> {} {} {}", s, p, o);
     //}

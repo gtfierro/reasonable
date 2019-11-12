@@ -228,6 +228,7 @@ impl Reasoner {
         let rdftype_node = self.index.put_str("rdf:type");
         let rdfsdomain_node = self.index.put_str("rdfs:domain");
         let rdfsrange_node = self.index.put_str("rdfs:range");
+        let owlsameas_node = self.index.put_str("owl:sameAs");
         let owlinverseof_node = self.index.put_str("owl:inverseOf");
         let owlsymmetricprop_node = self.index.put_str("owl:SymmetricProperty");
         let owlequivprop_node = self.index.put_str("owl:equivalentProperty");
@@ -265,13 +266,15 @@ impl Reasoner {
             self.prp_fp_1.from_map(&self.spo, |&triple| { has_pred_obj(triple, (rdftype_node, owlfuncprop_node)) });
             self.prp_fp_join1.from_join(&self.prp_fp_1, &self.spo, |&p, &(), &(x, y1)| (p, (x, y1)) );
             self.prp_fp_join2.from_join(&self.prp_fp_join1, &self.spo, |&p, &(x1, y2), &(x2, y1)| (y1, y2) );
-            //all_triples_input.from_map(&self.prp_fp_join2, |&(y1, y2)| (y1, (self.index.put_str("owl:sameAs"), y2)));
+            //TODO: fix this
+            //self.all_triples_input.from_map(&self.prp_fp_join2, |&(y1, y2)| (y1, (owlsameas_node, y2)));
 
             // prp-ifp
             self.prp_ifp_1.from_map(&self.spo, |&triple| { has_pred_obj(triple, (rdftype_node, owlinvfuncprop_node)) });
             self.prp_ifp_join1.from_join(&self.prp_ifp_1, &self.spo, |&p, &(), &(x1, y)| (p, (x1, y)) );
             self.prp_ifp_join2.from_join(&self.prp_ifp_join1, &self.spo, |&p, &(x1, y2), &(x2, y1)| (x1, x2) );
-            //all_triples_input.from_map(&prp_ifp_join2, |&(x1, x2)| (x1, (self.index.put_str("owl:sameAs"), x2)));
+            //TODO: fix this
+            //self.all_triples_input.from_map(&self.prp_ifp_join2, |&(x1, x2)| (x1, (owlsameas_node, x2)));
 
             // prp-spo1
             self.prp_spo1_1.from_map(&self.spo, |&triple| has_pred(triple, rdfssubprop_node));
@@ -314,7 +317,7 @@ impl Reasoner {
         }
     }
 
-    pub fn dump(&mut self) -> Vec<(String, String, String)> {
+    pub fn get_triples(&mut self) -> Vec<(String, String, String)> {
         let instances = self.spo.clone().complete();
 
         instances.iter().map(|inst| {
@@ -358,8 +361,63 @@ mod tests {
         ];
         r.load_triples(trips);
         r.reason();
-        let res = r.dump();
+        let res = r.get_triples();
         assert!(res.contains(&("a".to_string(),"rdf:type".to_string(),"Class1".to_string())));
+        Ok(())
+    }
+
+    #[test]
+    fn test_prp_fp() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("p", "rdf:type", "owl:FunctionalProperty"),
+            ("x", "p", "y1"),
+            ("x", "p", "y2"),
+        ];
+        r.load_triples(trips);
+        r.reason();
+        let res = r.get_triples();
+        for i in res.iter() {
+            let (s, p, o) = i;
+            println!("{} {} {}", s, p, o);
+        }
+        assert!(res.contains(&("y1".to_string(),"owl:sameAs".to_string(),"y2".to_string())));
+        Ok(())
+    }
+
+    #[test]
+    fn test_spo1() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("p1", "rdfs:subPropertyOf", "p2"),
+            ("x", "p1", "y"),
+        ];
+        r.load_triples(trips);
+        r.reason();
+        let res = r.get_triples();
+        for i in res.iter() {
+            let (s, p, o) = i;
+            println!("{} {} {}", s, p, o);
+        }
+        assert!(res.contains(&("x".to_string(),"p2".to_string(),"y".to_string())));
+        Ok(())
+    }
+
+    #[test]
+    fn test_prp_inv1() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("p1", "owl:inverseOf", "p2"),
+            ("x", "p1", "y"),
+        ];
+        r.load_triples(trips);
+        r.reason();
+        let res = r.get_triples();
+        for i in res.iter() {
+            let (s, p, o) = i;
+            println!("{} {} {}", s, p, o);
+        }
+        assert!(res.contains(&("y".to_string(),"p2".to_string(),"x".to_string())));
         Ok(())
     }
 }
