@@ -165,6 +165,13 @@ impl Reasoner {
         }
     }
 
+    pub fn load_triples(&mut self, triples: Vec<(&'static str, &'static str, &'static str)>) {
+        let trips: Vec<(URI, (URI, URI))> = triples.iter().map(|trip| {
+            (self.index.put_str(trip.0), (self.index.put_str(trip.1), self.index.put_str(trip.2)))
+        }).collect();
+        self.all_triples_input.insert(trips.into());
+    }
+
     pub fn load_file(&mut self, filename: &str) -> Result<(), String> {
         let data = fs::read_to_string(filename).expect("Unable to read file");
 

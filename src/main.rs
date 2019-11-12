@@ -29,29 +29,27 @@ fn main() {
     r.load_file("Brick.n3");
     r.load_file("example.n3");
 
+    let v1 : Vec::<(&str, &str, &str)> = vec![
+        ("a", "rdf:type", "Class1"),
+        ("b", "rdf:type", "Class1"),
+        ("Class1", "rdfs:subClassOf", "Class2"),
+        ("Class3", "rdfs:subClassOf", "Class2"),
+        ("brick:feeds", "rdfs:domain", "Class2"),
+        ("brick:feeds", "rdfs:range", "Class3"),
+        ("brick:isFedBy", "owl:inverseOf", "brick:feeds"),
+        ("c", "brick:feeds", "d"),
+
+        // cls-thing
+        ("owl:Thing", "rdf:type", "owl:Class"),
+        // cls-nothing1
+        ("owl:Nothing", "rdf:type", "owl:Class"),
+
+        // owl definitions
+        ("owl:inverseOf", "rdf:type", "owl:SymmetricProperty"),
+    ];
+    r.load_triples(v1);
+
     r.reason();
 
     r.dump();
-
-//    let v1 : Vec::<(URI, (URI, URI))> = vec![
-//        (index.put_str("a"), (index.put_str("rdf:type"), index.put_str("Class1"))),
-//        (index.put_str("b"), (index.put_str("rdf:type"), index.put_str("Class1"))),
-//        (index.put_str("Class1"), (index.put_str("rdfs:subClassOf"), index.put_str("Class2"))),
-//        (index.put_str("Class3"), (index.put_str("rdfs:subClassOf"), index.put_str("Class2"))),
-//        (index.put_str("brick:feeds"), (index.put_str("rdfs:domain"), index.put_str("Class2"))),
-//        (index.put_str("brick:feeds"), (index.put_str("rdfs:range"), index.put_str("Class3"))),
-//        (index.put_str("brick:isFedBy"), (index.put_str("owl:inverseOf"), index.put_str("brick:feeds"))),
-//        (index.put_str("c"), (index.put_str("brick:feeds"), index.put_str("d"))),
-//
-//        // cls-thing
-//        (index.put_str("owl:Thing"), (index.put_str("rdf:type"), index.put_str("owl:Class"))),
-//        // cls-nothing1
-//        (index.put_str("owl:Nothing"), (index.put_str("rdf:type"), index.put_str("owl:Class"))),
-//
-//        // owl definitions
-//        (index.put_str("owl:inverseOf"), (index.put_str("rdf:type"), index.put_str("owl:SymmetricProperty"))),
-//    ];
-    //all_triples_input.insert(v1.into());
-
-
 }
