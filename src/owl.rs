@@ -420,4 +420,40 @@ mod tests {
         assert!(res.contains(&("y".to_string(),"p2".to_string(),"x".to_string())));
         Ok(())
     }
+
+    #[test]
+    fn test_prp_symp() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("p", "rdf:type", "owl:SymmetricProperty"),
+            ("x", "p", "y"),
+        ];
+        r.load_triples(trips);
+        r.reason();
+        let res = r.get_triples();
+        for i in res.iter() {
+            let (s, p, o) = i;
+            println!("{} {} {}", s, p, o);
+        }
+        assert!(res.contains(&("y".to_string(),"p".to_string(),"x".to_string())));
+        Ok(())
+    }
+
+    #[test]
+    fn test_prp_eqp1() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("p1", "owl:equivalentProperty", "p2"),
+            ("x", "p1", "y"),
+        ];
+        r.load_triples(trips);
+        r.reason();
+        let res = r.get_triples();
+        for i in res.iter() {
+            let (s, p, o) = i;
+            println!("{} {} {}", s, p, o);
+        }
+        assert!(res.contains(&("x".to_string(),"p2".to_string(),"y".to_string())));
+        Ok(())
+    }
 }
