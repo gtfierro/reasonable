@@ -210,7 +210,7 @@ impl Reasoner {
                 Node::LiteralNode{literal: literal, data_type: _, language: _} => &literal,
                 Node::BlankNode{id: id} => &id,
             };
-            println!("{} {} {}", subject, predicate, object);
+            //println!("{} {} {}", subject, predicate, object);
 
             let (s, (p, o)) = (self.index.put(subject.to_string()), (self.index.put(predicate.to_string()), self.index.put(object.to_string())));
 
@@ -314,16 +314,16 @@ impl Reasoner {
         }
     }
 
-    pub fn dump(mut self) {
-        let instances = self.spo.complete();
+    pub fn dump(&mut self) -> Vec<(String, String, String)> {
+        let instances = self.spo.clone().complete();
 
-        for inst in instances.iter() {
+        instances.iter().map(|inst| {
             let (_s, (_p, _o)) = inst;
             let s = self.index.get(*_s).unwrap();
             let p = self.index.get(*_p).unwrap();
             let o = self.index.get(*_o).unwrap();
-            println!("{} {} {}", s, p, o)
-        }
+            (s.clone(), p.clone(), o.clone())
+        }).collect()
     }
 }
 
@@ -347,5 +347,19 @@ mod tests {
     fn test_load_file_n3() -> Result<(), String> {
         let mut r = Reasoner::new();
         r.load_file("Brick.n3")
+    }
+
+    #[test]
+    fn test_cax_sco() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("Class2", "rdfs:subClassOf", "Class1"),
+            ("a", "rdf:type", "Class2")
+        ];
+        r.load_triples(trips);
+        r.reason();
+        let res = r.dump();
+        assert!(res.contains(&("a".to_string(),"rdf:type".to_string(),"Class1".to_string())));
+        Ok(())
     }
 }

@@ -51,5 +51,8 @@ fn main() {
 
     r.reason();
 
-    r.dump();
+    //for i in r.dump() {
+    //    let (s, p, o) = i;
+    //    println!("> {} {} {}", s, p, o);
+    //}
 }
