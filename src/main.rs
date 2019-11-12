@@ -2,115 +2,20 @@ extern crate datafrog;
 extern crate rdf;
 use datafrog::Iteration;
 
-use std::fs;
-use std::collections::HashMap;
+mod index;
+mod types;
+mod owl;
+use crate::index::URIIndex;
+use crate::types::{URI, has_pred, has_obj, has_pred_obj};
+use crate::owl::Reasoner;
 
-use std::hash::{Hash, Hasher};
-use fasthash::{city, CityHasher};
+use std::fs;
 
 use rdf::reader::turtle_parser::TurtleParser;
 use rdf::reader::n_triples_parser::NTriplesParser;
 use rdf::reader::rdf_parser::RdfParser;
 use rdf::node::Node;
 use rdf::graph::Graph;
-
-//type URI = &'static str;
-type URI = u64;
-
-
-// RDFS rules
-// prp-dom:
-//      T(?p, rdfs:domain, ?c) AND T(?x, ?p, ?y) =>
-//          T(?x, rdf:type, ?c)
-// prp-rng:
-//      T(?p, rdfs:range, ?c) AND T(?x ?p ?y) =>
-//          T(?y, rdf:type, ?c)
-// prp-fp:
-//      T(?p, rdf:type, owl:FunctionalProperty) .
-//      T(?x, ?p, ?y1) .
-//      T(?x, ?p, ?y2) =>
-//          T(?y1, owl:sameAs, ?y2) .
-//   ----- rewritten -----
-//      T(?p, rdf:type, owl:FunctionalProperty) .
-//      T(?p, ?x, ?y1) . (pso)
-//      T(?p, ?x, ?y2) . (pso) =>
-//          T(?y1, owl:sameAs, ?y2) .
-// prp-ifp
-//      T(?p, rdf:type, owl:InverseFunctionalProperty) .
-//      T(?p, ?x1, ?y) . (pso)
-//      T(?p, ?x2, ?y) . (pso) =>
-//          T(?x1, owl:sameAs, ?x2) .
-const _NONE : (URI, ())= (0, ());
-const _NONE_TUP : (URI, URI) = (0,0);
-const _NONE_TRIP : (URI, (URI, URI)) = (0,(0,0));
-
-struct URIIndex {
-    map : HashMap<URI, String>
-}
-
-impl URIIndex {
-    fn new() -> Self {
-        let mut idx = URIIndex {
-            map: HashMap::new(),
-        };
-        idx.map.insert(0, "_".to_string());
-        idx
-    }
-
-    fn put(&mut self, key: String) -> URI {
-        let h = hash(&key);
-        self.map.insert(h, key);
-        h
-    }
-
-    fn put_str(&mut self, _key: &'static str) -> URI {
-        let key = _key.to_string();
-        let h = hash(&key);
-        self.map.insert(h, key);
-        h
-    }
-
-    fn get(&self, key: URI) -> Option<&String> {
-        self.map.get(&key)
-    }
-}
-
-fn hash(key: &String) -> URI {
-    city::hash64(key)
-}
-
-fn hash_str(key: &'static str) -> URI {
-    let s = key.to_string();
-    city::hash64(&s)
-}
-
-fn has_pred(triple: (URI, (URI, URI)), pred: URI) -> (URI, URI) {
-    let (s, (p, o)) = triple;
-    if p == pred {
-        (s, o)
-    } else {
-        _NONE_TUP
-    }
-}
-
-fn has_obj(triple: (URI, (URI, URI)), obj: URI) -> (URI, URI) {
-    let (s, (p, o)) = triple;
-    if o == obj {
-        (s, p)
-    } else {
-        _NONE_TUP
-    }
-}
-
-fn has_pred_obj(triple: (URI, (URI, URI)), predobj: (URI, URI)) -> (URI, ()) {
-    let (s, (p, o)) = triple;
-    let (pred, obj) = predobj;
-    if p == pred && o == obj{
-        (s, ())
-    } else {
-        _NONE
-    }
-}
 
 fn load_file(filename: &str, index: &mut URIIndex) -> Vec<(URI, (URI, URI))> {
     let data = fs::read_to_string(filename).expect("Unable to read file");
@@ -144,7 +49,7 @@ fn load_file(filename: &str, index: &mut URIIndex) -> Vec<(URI, (URI, URI))> {
             Node::LiteralNode{literal: literal, data_type: _, language: _} => &literal,
             Node::BlankNode{id: id} => &id,
         };
-        
+
         let object = match triple.object() {
             Node::UriNode{uri: uri} => uri.to_string(),
             Node::LiteralNode{literal: literal, data_type: _, language: _} => &literal,
@@ -156,7 +61,7 @@ fn load_file(filename: &str, index: &mut URIIndex) -> Vec<(URI, (URI, URI))> {
 
 
         (s, (p,o))
-        
+
     }).collect()
 }
 
@@ -165,8 +70,9 @@ fn load_file(filename: &str, index: &mut URIIndex) -> Vec<(URI, (URI, URI))> {
 fn main() {
     // iteration context
     let mut iter1 = Iteration::new();
-
     let mut index = URIIndex::new();
+
+    let r = Reasoner::new();
 
     // variables within the iteration
     let spo = iter1.variable::<(URI, (URI, URI))>("spo");
@@ -174,29 +80,81 @@ fn main() {
     let osp = iter1.variable::<(URI, (URI, URI))>("osp");
     let all_triples_input = iter1.variable::<(URI, (URI, URI))>("all_triples_input");
 
+    /* Equality semantics */
+    // eq-ref:
+    //      T(?s, ?p, ?o) =>
+    //          T(?s owl:sameAs ?s), T(?p owl:sameAs ?p), T(?o owl:sameAs ?o)
+    //
+    // eq-sym:
+    //      T(?x owl:sameAs ?y) =>
+    //          T(?y owl:sameAs ?x)
+    //
+    // eq-trans:
+    //      T(?x owl:sameAs ?y) AND T(?y owl:sameAs ?z) =>
+    //          T(?x owl:sameAs ?z)
+    //
+    // eq-rep-s:
+    //      T(?s owl:sameAs ?s') AND T(?s ?p ?o) =>
+    //          T(?s' ?p ?o)
+    //
+    // eq-rep-p:
+    //      T(?p owl:sameAs ?p') AND T(?s ?p ?o) =>
+    //          T(?s ?p' ?o)
+    //
+    // eq-rep-o:
+    //      T(?o owl:sameAs ?o') AND T(?s ?p ?o) =>
+    //          T(?s ?p ?o')
+    //
+    // eq-diff1:
+    //      T(?x owl:sameAs ?y) AND T(?x owl:differentFrom ?y) => FALSE
+    // TODO: eq-diff2
+    // TODO: eq-diff3
+
+
     /* RDFS inference */
 
     // T(?s rdfs:domain ?o)
+    // prp-dom:
+    //      T(?p, rdfs:domain, ?c) AND T(?x, ?p, ?y) =>
+    //          T(?x, rdf:type, ?c)
     let s_domain_o = iter1.variable::<(URI, URI)>("s_domain_o");
+
     // T(?s rdfs:range ?o)
+    // prp-rng:
+    //      T(?p, rdfs:range, ?c) AND T(?x ?p ?y) =>
+    //          T(?y, rdf:type, ?c)
     let s_range_o = iter1.variable::<(URI, URI)>("s_range_o");
     // T(?s rdf:type ?o)
     let y_type_c = iter1.variable::<(URI, URI)>("y_type_c");
 
     //prp-fp variables
     // T(?p, rdf:type, owl:FunctionalProperty
+    // prp-fp:
+    //      T(?p, rdf:type, owl:FunctionalProperty) .
+    //      T(?x, ?p, ?y1) .
+    //      T(?x, ?p, ?y2) =>
+    //          T(?y1, owl:sameAs, ?y2) .
+    //   ----- rewritten -----
+    //      T(?p, rdf:type, owl:FunctionalProperty) .
+    //      T(?p, ?x, ?y1) . (pso)
+    //      T(?p, ?x, ?y2) . (pso) =>
+    //          T(?y1, owl:sameAs, ?y2) .
     let prp_fp_1 = iter1.variable::<(URI, ())>("prp_fp_1");
     let prp_fp_join1 = iter1.variable::<(URI, (URI, URI))>("prp_fp_2");
     let prp_fp_join2 = iter1.variable::<(URI, URI)>("prp_fp_3");
     // T(?p, ?x, ?y1), T(?p, ?x, ?y2) fulfilled from PSO index
-    
-    //prp-ifp variables
+
     // T(?p, rdf:type, owl:InverseFunctionalProperty
+    // prp-ifp
+    //      T(?p, rdf:type, owl:InverseFunctionalProperty) .
+    //      T(?p, ?x1, ?y) . (pso)
+    //      T(?p, ?x2, ?y) . (pso) =>
+    //          T(?x1, owl:sameAs, ?x2) .
     let prp_ifp_1 = iter1.variable::<(URI, ())>("prp_ifp_1");
     let prp_ifp_join1 = iter1.variable::<(URI, (URI, URI))>("prp_ifp_2");
     let prp_ifp_join2 = iter1.variable::<(URI, URI)>("prp_ifp_3");
     // T(?p, ?x1, ?y), T(?p, ?x2, ?y) fulfilled from PSO index
-    
+
     // prp-spo1
     // T(?p1, rdfs:subPropertyOf, ?p2) .
     // T(?p1, ?x, ?y) (pso) =>
@@ -222,7 +180,7 @@ fn main() {
     // T(?x, ?p2, ?y) => T(?y, ?p1, ?x)
     let owl_inverseOf = iter1.variable::<(URI, URI)>("owl_inverseOf");
     let owl_inverseOf2 = iter1.variable::<(URI, URI)>("owl_inverseOf2");
-    
+
     // prp-symp
     //      T(?p, rdf:type, owl:SymmetricProperty)
     //      T(?x, ?p, ?y)
@@ -247,6 +205,7 @@ fn main() {
     all_triples_input.insert(load_file("rdfs.ttl", &mut index).into());
     // Brick.ttl has some parse error so we use n3
     all_triples_input.insert(load_file("Brick.n3", &mut index).into());
+    all_triples_input.insert(load_file("example.n3", &mut index).into());
 
     let v1 : Vec::<(URI, (URI, URI))> = vec![
         (index.put_str("a"), (index.put_str("rdf:type"), index.put_str("Class1"))),
@@ -280,7 +239,7 @@ fn main() {
 
         owl_inverseOf.from_map(&spo, |&triple| has_pred(triple, index.put_str("owl:inverseOf")) );
         owl_inverseOf2.from_map(&owl_inverseOf, |&(p1, p2)| (p2, p1) );
-        
+
         symmetric_properties.from_map(&spo, |&triple| has_pred_obj(triple, (index.put_str("rdf:type"), index.put_str("owl:SymmetricProperty"))) );
 
         equivalent_properties.from_map(&spo, |&triple| has_pred(triple, index.put_str("owl:equivalentProperty")) );
@@ -298,7 +257,7 @@ fn main() {
         prp_fp_join1.from_join(&prp_fp_1, &spo, |&p, &(), &(x, y1)| (p, (x, y1)) );
         prp_fp_join2.from_join(&prp_fp_join1, &spo, |&p, &(x1, y2), &(x2, y1)| (y1, y2) );
         //all_triples_input.from_map(&prp_fp_join2, |&(y1, y2)| (y1, (index.put_str("owl:sameAs"), y2)));
-        
+
         // prp-ifp
         prp_ifp_1.from_map(&spo, |&triple| { has_pred_obj(triple, (index.put_str("rdf:type"), index.put_str("owl:InverseFunctionalProperty"))) });
         prp_ifp_join1.from_join(&prp_ifp_1, &spo, |&p, &(), &(x1, y)| (p, (x1, y)) );
