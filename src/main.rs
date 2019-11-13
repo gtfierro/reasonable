@@ -1,12 +1,8 @@
-extern crate datafrog;
 extern crate rdf;
-use datafrog::Iteration;
 
 mod index;
 mod types;
 mod owl;
-use crate::index::URIIndex;
-use crate::types::{URI, has_pred, has_obj, has_pred_obj};
 use crate::owl::Reasoner;
 
 use std::fs;
@@ -24,10 +20,10 @@ fn main() {
     let mut r = Reasoner::new();
 
     // TODO: load in datasets
-    r.load_file("rdfs.ttl");
+    r.load_file("rdfs.ttl").unwrap();
     // Brick.ttl has some parse error so we use n3
-    r.load_file("Brick.n3");
-    r.load_file("example.n3");
+    r.load_file("Brick.n3").unwrap();
+    r.load_file("example.n3").unwrap();
 
     let v1 : Vec::<(&str, &str, &str)> = vec![
         ("a", "rdf:type", "Class1"),

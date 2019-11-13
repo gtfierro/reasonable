@@ -44,6 +44,11 @@ pub struct Reasoner {
 
     equivalent_properties: Variable<(URI, URI)>,
     equivalent_properties_2: Variable<(URI, URI)>,
+
+    firsts: Variable<(URI, URI)>,
+    rests: Variable<(URI, URI)>,
+
+    cls_int_1: Variable<(URI, URI)>,
 }
 
 #[allow(unused)]
@@ -142,6 +147,9 @@ impl Reasoner {
             osp: osp,
             all_triples_input: all_triples_input,
 
+            firsts: firsts,
+            rests: rests,
+
             prp_dom: prp_dom,
             prp_rng: prp_rng,
             rdf_type: rdf_type,
@@ -162,6 +170,8 @@ impl Reasoner {
             symmetric_properties: symmetric_properties,
             equivalent_properties: equivalent_properties,
             equivalent_properties_2: equivalent_properties_2,
+
+            cls_int_1: cls_int_1,
         }
     }
 
@@ -194,21 +204,21 @@ impl Reasoner {
         let triples : Vec<(URI, (URI, URI))> = graph.triples_iter().map(|_triple| {
             let triple = _triple;
             let subject = match triple.subject() {
-                Node::UriNode{uri: uri} => uri.to_string(),
-                Node::LiteralNode{literal: literal, data_type: _, language: _} => &literal,
-                Node::BlankNode{id: id} => &id,
+                Node::UriNode{uri} => uri.to_string(),
+                Node::LiteralNode{literal, data_type: _, language: _} => &literal,
+                Node::BlankNode{id} => &id,
             };
 
             let predicate = match triple.predicate() {
-                Node::UriNode{uri: uri} => uri.to_string(),
-                Node::LiteralNode{literal: literal, data_type: _, language: _} => &literal,
-                Node::BlankNode{id: id} => &id,
+                Node::UriNode{uri} => uri.to_string(),
+                Node::LiteralNode{literal, data_type: _, language: _} => &literal,
+                Node::BlankNode{id} => &id,
             };
 
             let object = match triple.object() {
-                Node::UriNode{uri: uri} => uri.to_string(),
-                Node::LiteralNode{literal: literal, data_type: _, language: _} => &literal,
-                Node::BlankNode{id: id} => &id,
+                Node::UriNode{uri} => uri.to_string(),
+                Node::LiteralNode{literal, data_type: _, language: _} => &literal,
+                Node::BlankNode{id} => &id,
             };
             //println!("{} {} {}", subject, predicate, object);
 
@@ -225,23 +235,32 @@ impl Reasoner {
     }
 
     pub fn reason(&mut self) {
-        let rdftype_node = self.index.put_str("rdf:type");
-        let rdfsdomain_node = self.index.put_str("rdfs:domain");
-        let rdfsrange_node = self.index.put_str("rdfs:range");
-        let owlsameas_node = self.index.put_str("owl:sameAs");
-        let owlinverseof_node = self.index.put_str("owl:inverseOf");
-        let owlsymmetricprop_node = self.index.put_str("owl:SymmetricProperty");
-        let owlequivprop_node = self.index.put_str("owl:equivalentProperty");
-        let owlfuncprop_node = self.index.put_str("owl:FunctionalProperty");
-        let owlinvfuncprop_node = self.index.put_str("owl:InverseFunctionalProperty");
-        let rdfssubprop_node = self.index.put_str("rdfs:subPropertyOf");
-        let rdfssubclass_node = self.index.put_str("rdfs:subClassOf");
+        let rdftype_node = self.index.put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
+        let rdfsdomain_node = self.index.put_str("http://www.w3.org/2000/01/rdf-schema#domain");
+        let rdfsrange_node = self.index.put_str("http://www.w3.org/2000/01/rdf-schema#range");
+        let owlsameas_node = self.index.put_str("http://www.w3.org/2002/07/owl#sameAs");
+        let owlinverseof_node = self.index.put_str("http://www.w3.org/2002/07/owl#inverseOf");
+        let owlsymmetricprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#SymmetricProperty");
+        let owlequivprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#equivalentProperty");
+        let owlfuncprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#FunctionalProperty");
+        let owlinvfuncprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#InverseFunctionalProperty");
+        let rdfssubprop_node = self.index.put_str("http://www.w3.org/2000/01/rdf-schema#subPropertyOf");
+        let rdfssubclass_node = self.index.put_str("http://www.w3.org/2000/01/rdf-schema#subClassOf");
+        let owlintersection_node = self.index.put_str("http://www.w3.org/2002/07/owl#intersectionOf");
+
+        let rdffirst_node = self.index.put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#first");
+        let rdfrest_node = self.index.put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#rest");
+        let rdfnil_node = self.index.put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#nil");
 
         while self.iter1.changed() {
             self.spo.from_map(&self.all_triples_input, |&(sub, (pred, obj))| (sub, (pred, obj)));
             self.pso.from_map(&self.all_triples_input, |&(sub, (pred, obj))| (pred, (sub, obj)));
             self.osp.from_map(&self.all_triples_input, |&(sub, (pred, obj))| (obj, (sub, pred)));
 
+            // add lists
+            // TODO
+            self.firsts.from_map(&self.spo, |&triple| { has_pred(triple, rdffirst_node) });
+            self.rests.from_map(&self.spo, |&triple| { has_pred(triple, rdfrest_node) });
 
             self.rdf_type.from_map(&self.spo, |&triple| { has_pred(triple, rdftype_node) });
             self.prp_dom.from_map(&self.spo, |&triple| { has_pred(triple, rdfsdomain_node) });
