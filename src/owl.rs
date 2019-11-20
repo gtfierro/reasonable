@@ -66,7 +66,7 @@ impl Reasoner {
         let prp_dom = iter1.variable::<(URI, URI)>("prp_dom");
         let prp_rng = iter1.variable::<(URI, URI)>("prp_rng");
         let rdf_type = iter1.variable::<(URI, URI)>("rdf_type");
- 
+
         //prp-fp variables
         // T(?p, rdf:type, owl:FunctionalProperty
         // prp-fp:
@@ -138,6 +138,21 @@ impl Reasoner {
         // => T(?x, ?p1, ?y)
         let equivalent_properties = iter1.variable::<(URI, URI)>("equivalent_properties");
         let equivalent_properties_2 = iter1.variable::<(URI, URI)>("equivalent_properties_2");
+
+        // list relations
+        let firsts = iter1.variable::<(URI, URI)>("firsts");
+        let rests = iter1.variable::<(URI, URI)>("rests");
+
+        // cls-int1
+        // T(?c owl:intersectionOf ?x), LIST[?x, ?c1...?cn],
+        // T(?y rdf:type ?c_i) for i in range(1,n) =>
+        //  T(?y rdf:type ?c)
+        //
+        // ?c owl:intersectionOf ?x
+        let cls_int_1 = iter1.variable::<(URI, URI)>("cls_int_1");
+        //
+        // firsts:
+        // ?y rdf:type
 
         Reasoner {
             iter1: iter1,
@@ -332,6 +347,16 @@ impl Reasoner {
             // T(?x, ?p2, ?y)
             // => T(?x, ?p1, ?y)
             self.all_triples_input.from_join(&self.equivalent_properties_2, &self.pso, |&p1, &p2, &(x, y)| (x, (p2, y)) );
+
+            // cls-int1
+            self.cls_int_1.from_map(&self.spo, |&triple| {
+                let (class, listname) = has_pred(triple, owlintersection_node);
+                if (class, listname) != (0, 0) {
+                    println!("{} {}", class, listname);
+                }
+                (class, listname)
+
+            });
 
         }
     }
