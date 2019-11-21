@@ -11,6 +11,23 @@ use rdf::reader::rdf_parser::RdfParser;
 use rdf::node::Node;
 use rdf::graph::Graph;
 
+const RDFS_SUBCLASSOF: &str = "http://www.w3.org/2000/01/rdf-schema#subClassOf";
+const RDFS_DOMAIN: &str = "http://www.w3.org/2000/01/rdf-schema#domain";
+const RDFS_RANGE: &str = "http://www.w3.org/2000/01/rdf-schema#range";
+const RDFS_SUBPROP: &str = "http://www.w3.org/2000/01/rdf-schema#subPropertyOf";
+
+const RDF_TYPE: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
+
+const OWL_SAMEAS: &str = "http://www.w3.org/2002/07/owl#sameAs";
+const OWL_INVERSEOF: &str = "http://www.w3.org/2002/07/owl#inverseOf";
+const OWL_SYMMETRICPROP: &str = "http://www.w3.org/2002/07/owl#SymmetricProperty";
+const OWL_EQUIVPROP: &str = "http://www.w3.org/2002/07/owl#equivalentProperty";
+const OWL_FUNCPROP: &str = "http://www.w3.org/2002/07/owl#FunctionalProperty";
+const OWL_INVFUNCPROP: &str = "http://www.w3.org/2002/07/owl#InverseFunctionalProperty";
+const OWL_INTERSECTION: &str = "http://www.w3.org/2002/07/owl#intersectionOf";
+
+type Triple = ((URI, URI), URI);
+
 pub struct Reasoner {
     iter1: Iteration,
     index: URIIndex,
@@ -267,6 +284,10 @@ impl Reasoner {
         let rdfrest_node = self.index.put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#rest");
         let rdfnil_node = self.index.put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#nil");
 
+        let prp_fp_isfuncprop = self.iter1.variable::<Triple>("a");
+        let prp_fp_hasprop1 = self.iter1.variable::<Triple>("b");
+
+
         while self.iter1.changed() {
             self.spo.from_map(&self.all_triples_input, |&(sub, (pred, obj))| (sub, (pred, obj)));
             self.pso.from_map(&self.all_triples_input, |&(sub, (pred, obj))| (pred, (sub, obj)));
@@ -301,7 +322,15 @@ impl Reasoner {
             self.prp_fp_join1.from_join(&self.prp_fp_1, &self.spo, |&p, &(), &(x, y1)| (p, (x, y1)) );
             self.prp_fp_join2.from_join(&self.prp_fp_join1, &self.spo, |&p, &(x1, y2), &(x2, y1)| (y1, y2) );
             //TODO: fix this
+            
             //self.all_triples_input.from_map(&self.prp_fp_join2, |&(y1, y2)| (y1, (owlsameas_node, y2)));
+            self.all_triples_input.from_leapjoin(&self.spo, &mut [
+                // T(?p, rdf:type, owl:FunctionalProperty) .
+                // spo triple
+                &mut prp_fp_isfuncprop.extend_with(|&triple| has_pred_obj(triple, (rdftype_node, owlfuncprop_node))), // -> (s, ())
+                // T(?x, ?p, ?y1) .
+                // &mut self.prp_fp_hasprop1.extend_with(|&triple| has_pred(triple, 
+            ], |&(s,p), &o| (s, o));
 
             // prp-ifp
             self.prp_ifp_1.from_map(&self.spo, |&triple| { has_pred_obj(triple, (rdftype_node, owlinvfuncprop_node)) });
@@ -400,13 +429,13 @@ mod tests {
     fn test_cax_sco() -> Result<(), String> {
         let mut r = Reasoner::new();
         let trips = vec![
-            ("Class2", "rdfs:subClassOf", "Class1"),
-            ("a", "rdf:type", "Class2")
+            ("Class2", RDFS_SUBCLASSOF, "Class1"),
+            ("a", RDF_TYPE, "Class2")
         ];
         r.load_triples(trips);
         r.reason();
         let res = r.get_triples();
-        assert!(res.contains(&("a".to_string(),"rdf:type".to_string(),"Class1".to_string())));
+        assert!(res.contains(&("a".to_string(), RDF_TYPE.to_string(), "Class1".to_string())));
         Ok(())
     }
 
@@ -414,7 +443,7 @@ mod tests {
     fn test_prp_fp() -> Result<(), String> {
         let mut r = Reasoner::new();
         let trips = vec![
-            ("p", "rdf:type", "owl:FunctionalProperty"),
+            ("p", RDF_TYPE, OWL_FUNCPROP),
             ("x", "p", "y1"),
             ("x", "p", "y2"),
         ];
@@ -425,7 +454,7 @@ mod tests {
             let (s, p, o) = i;
             println!("{} {} {}", s, p, o);
         }
-        assert!(res.contains(&("y1".to_string(),"owl:sameAs".to_string(),"y2".to_string())));
+        assert!(res.contains(&("y1".to_string(), OWL_SAMEAS.to_string(), "y2".to_string())));
         Ok(())
     }
 
@@ -433,7 +462,7 @@ mod tests {
     fn test_spo1() -> Result<(), String> {
         let mut r = Reasoner::new();
         let trips = vec![
-            ("p1", "rdfs:subPropertyOf", "p2"),
+            ("p1", RDFS_SUBPROP, "p2"),
             ("x", "p1", "y"),
         ];
         r.load_triples(trips);
@@ -443,7 +472,7 @@ mod tests {
             let (s, p, o) = i;
             println!("{} {} {}", s, p, o);
         }
-        assert!(res.contains(&("x".to_string(),"p2".to_string(),"y".to_string())));
+        assert!(res.contains(&("x".to_string(), "p2".to_string(), "y".to_string())));
         Ok(())
     }
 
@@ -451,7 +480,7 @@ mod tests {
     fn test_prp_inv1() -> Result<(), String> {
         let mut r = Reasoner::new();
         let trips = vec![
-            ("p1", "owl:inverseOf", "p2"),
+            ("p1", OWL_INVERSEOF, "p2"),
             ("x", "p1", "y"),
         ];
         r.load_triples(trips);
@@ -461,7 +490,7 @@ mod tests {
             let (s, p, o) = i;
             println!("{} {} {}", s, p, o);
         }
-        assert!(res.contains(&("y".to_string(),"p2".to_string(),"x".to_string())));
+        assert!(res.contains(&("y".to_string(), "p2".to_string(), "x".to_string())));
         Ok(())
     }
 
@@ -469,7 +498,7 @@ mod tests {
     fn test_prp_symp() -> Result<(), String> {
         let mut r = Reasoner::new();
         let trips = vec![
-            ("p", "rdf:type", "owl:SymmetricProperty"),
+            ("p", "rdf:type", OWL_SYMMETRICPROP),
             ("x", "p", "y"),
         ];
         r.load_triples(trips);
@@ -479,7 +508,7 @@ mod tests {
             let (s, p, o) = i;
             println!("{} {} {}", s, p, o);
         }
-        assert!(res.contains(&("y".to_string(),"p".to_string(),"x".to_string())));
+        assert!(res.contains(&("y".to_string(), "p".to_string(), "x".to_string())));
         Ok(())
     }
 
@@ -487,7 +516,7 @@ mod tests {
     fn test_prp_eqp1() -> Result<(), String> {
         let mut r = Reasoner::new();
         let trips = vec![
-            ("p1", "owl:equivalentProperty", "p2"),
+            ("p1", OWL_EQUIVPROP, "p2"),
             ("x", "p1", "y"),
         ];
         r.load_triples(trips);
@@ -497,7 +526,7 @@ mod tests {
             let (s, p, o) = i;
             println!("{} {} {}", s, p, o);
         }
-        assert!(res.contains(&("x".to_string(),"p2".to_string(),"y".to_string())));
+        assert!(res.contains(&("x".to_string(), "p2".to_string(), "y".to_string())));
         Ok(())
     }
 }
