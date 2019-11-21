@@ -26,7 +26,7 @@ const OWL_FUNCPROP: &str = "http://www.w3.org/2002/07/owl#FunctionalProperty";
 const OWL_INVFUNCPROP: &str = "http://www.w3.org/2002/07/owl#InverseFunctionalProperty";
 const OWL_INTERSECTION: &str = "http://www.w3.org/2002/07/owl#intersectionOf";
 
-type Triple = ((URI, URI), URI);
+type Triple = (URI, (URI, URI));
 
 pub struct Reasoner {
     iter1: Iteration,
@@ -42,8 +42,7 @@ pub struct Reasoner {
     rdf_type: Variable<(URI, URI)>,
 
     prp_fp_1: Variable<(URI, ())>,
-    prp_fp_join1: Variable<(URI, (URI, URI))>,
-    prp_fp_join2: Variable<(URI, URI)>,
+    prp_fp_2: Variable<Triple>,
 
     prp_ifp_1: Variable<(URI, ())>,
     prp_ifp_join1: Variable<(URI, (URI, URI))>,
@@ -54,8 +53,8 @@ pub struct Reasoner {
     cax_sco_1: Variable<(URI, URI)>,
     cax_sco_2: Variable<(URI, URI)>,
 
-    owl_inverseOf: Variable<(URI, URI)>,
-    owl_inverseOf2: Variable<(URI, URI)>,
+    owl_inverse_of: Variable<(URI, URI)>,
+    owl_inverse_of2: Variable<(URI, URI)>,
 
     symmetric_properties: Variable<(URI, ())>,
 
@@ -97,8 +96,7 @@ impl Reasoner {
         //      T(?p, ?x, ?y2) . (pso) =>
         //          T(?y1, owl:sameAs, ?y2) .
         let prp_fp_1 = iter1.variable::<(URI, ())>("prp_fp_1");
-        let prp_fp_join1 = iter1.variable::<(URI, (URI, URI))>("prp_fp_2");
-        let prp_fp_join2 = iter1.variable::<(URI, URI)>("prp_fp_3");
+        let prp_fp_2 = iter1.variable::<Triple>("prp_fp_2");
         // T(?p, ?x, ?y1), T(?p, ?x, ?y2) fulfilled from PSO index
 
         // T(?p, rdf:type, owl:InverseFunctionalProperty
@@ -135,8 +133,8 @@ impl Reasoner {
         // prp-inv2
         // T(?p1, owl:inverseOf, ?p2)
         // T(?x, ?p2, ?y) => T(?y, ?p1, ?x)
-        let owl_inverseOf = iter1.variable::<(URI, URI)>("owl_inverseOf");
-        let owl_inverseOf2 = iter1.variable::<(URI, URI)>("owl_inverseOf2");
+        let owl_inverse_of = iter1.variable::<(URI, URI)>("owl_inverseOf");
+        let owl_inverse_of2 = iter1.variable::<(URI, URI)>("owl_inverse_of2");
 
         // prp-symp
         //      T(?p, rdf:type, owl:SymmetricProperty)
@@ -187,8 +185,7 @@ impl Reasoner {
             rdf_type: rdf_type,
 
             prp_fp_1: prp_fp_1,
-            prp_fp_join1: prp_fp_join1,
-            prp_fp_join2: prp_fp_join2,
+            prp_fp_2: prp_fp_2,
 
             prp_ifp_1: prp_ifp_1,
             prp_ifp_join1: prp_ifp_join1,
@@ -197,8 +194,8 @@ impl Reasoner {
             prp_spo1_1: prp_spo1_1,
             cax_sco_1: cax_sco_1,
             cax_sco_2: cax_sco_2,
-            owl_inverseOf: owl_inverseOf,
-            owl_inverseOf2: owl_inverseOf2,
+            owl_inverse_of: owl_inverse_of,
+            owl_inverse_of2: owl_inverse_of2,
             symmetric_properties: symmetric_properties,
             equivalent_properties: equivalent_properties,
             equivalent_properties_2: equivalent_properties_2,
@@ -287,6 +284,15 @@ impl Reasoner {
         let prp_fp_isfuncprop = self.iter1.variable::<Triple>("a");
         let prp_fp_hasprop1 = self.iter1.variable::<Triple>("b");
 
+        // prp-inv1
+        // T(?p1, owl:inverseOf, ?p2)
+        // T(?x, ?p1, ?y) => T(?y, ?p2, ?x)
+        // prp-inv2
+        // T(?p1, owl:inverseOf, ?p2)
+        // T(?x, ?p2, ?y) => T(?y, ?p1, ?x)
+        //
+        // (p1, p2)
+        let prp_inv1 = self.iter1.variable::<(URI, URI)>("prp_inv1");
 
         while self.iter1.changed() {
             self.spo.from_map(&self.all_triples_input, |&(sub, (pred, obj))| (sub, (pred, obj)));
@@ -302,8 +308,8 @@ impl Reasoner {
             self.prp_dom.from_map(&self.spo, |&triple| { has_pred(triple, rdfsdomain_node) });
             self.prp_rng.from_map(&self.spo, |&triple| { has_pred(triple, rdfsrange_node) });
 
-            self.owl_inverseOf.from_map(&self.spo, |&triple| has_pred(triple, owlinverseof_node) );
-            self.owl_inverseOf2.from_map(&self.owl_inverseOf, |&(p1, p2)| (p2, p1) );
+            self.owl_inverse_of.from_map(&self.spo, |&triple| has_pred(triple, owlinverseof_node) );
+            self.owl_inverse_of2.from_map(&self.owl_inverse_of, |&(p1, p2)| (p2, p1) );
 
             self.symmetric_properties.from_map(&self.spo, |&triple| has_pred_obj(triple, (rdftype_node, owlsymmetricprop_node)) );
 
@@ -319,18 +325,15 @@ impl Reasoner {
 
             // prp-fp
             self.prp_fp_1.from_map(&self.spo, |&triple| { has_pred_obj(triple, (rdftype_node, owlfuncprop_node)) });
-            self.prp_fp_join1.from_join(&self.prp_fp_1, &self.spo, |&p, &(), &(x, y1)| (p, (x, y1)) );
-            self.prp_fp_join2.from_join(&self.prp_fp_join1, &self.spo, |&p, &(x1, y2), &(x2, y1)| (y1, y2) );
-            //TODO: fix this
-            
-            //self.all_triples_input.from_map(&self.prp_fp_join2, |&(y1, y2)| (y1, (owlsameas_node, y2)));
-            self.all_triples_input.from_leapjoin(&self.spo, &mut [
-                // T(?p, rdf:type, owl:FunctionalProperty) .
-                // spo triple
-                &mut prp_fp_isfuncprop.extend_with(|&triple| has_pred_obj(triple, (rdftype_node, owlfuncprop_node))), // -> (s, ())
-                // T(?x, ?p, ?y1) .
-                // &mut self.prp_fp_hasprop1.extend_with(|&triple| has_pred(triple, 
-            ], |&(s,p), &o| (s, o));
+            // keyed by predicates that are functional
+            self.prp_fp_2.from_join(&self.prp_fp_1, &self.pso, |&p, &(), &(x, y1)| (p, (x, y1)) );
+            self.all_triples_input.from_join(&self.prp_fp_2, &self.pso, |&p, &(x1, y1), &(x2, y2)| {
+                // if x1 and x2 are the same, then emit y1 and y2 are the same
+                match x1 {
+                    x2 => (y1, (owlsameas_node, y2)),
+                    _ => (0, (0,0)),
+                }
+            });
 
             // prp-ifp
             self.prp_ifp_1.from_map(&self.spo, |&triple| { has_pred_obj(triple, (rdftype_node, owlinvfuncprop_node)) });
@@ -353,12 +356,12 @@ impl Reasoner {
             // prp-inv1
             // T(?p1, owl:inverseOf, ?p2)
             // T(?x, ?p1, ?y) => T(?y, ?p2, ?x)
-            self.all_triples_input.from_join(&self.owl_inverseOf, &self.pso, |&p1, &p2, &(x, y)| (y, (p2, x)) );
+            self.all_triples_input.from_join(&self.owl_inverse_of, &self.pso, |&p1, &p2, &(x, y)| (y, (p2, x)) );
 
             // prp-inv2
             // T(?p1, owl:inverseOf, ?p2)
             // T(?x, ?p2, ?y) => T(?y, ?p1, ?x)
-            self.all_triples_input.from_join(&self.owl_inverseOf2, &self.pso, |&p1, &p2, &(x, y)| (x, (p2, y)) );
+            self.all_triples_input.from_join(&self.owl_inverse_of2, &self.pso, |&p1, &p2, &(x, y)| (x, (p2, y)) );
 
             // prp-symp
             // T(?p, rdf:type, owl:SymmetricProperty)
@@ -409,7 +412,7 @@ mod tests {
 
     #[test]
     fn test_make_reasoner() -> Result<(), String> {
-        let r = Reasoner::new();
+        let _r = Reasoner::new();
         Ok(())
     }
 
@@ -443,9 +446,9 @@ mod tests {
     fn test_prp_fp() -> Result<(), String> {
         let mut r = Reasoner::new();
         let trips = vec![
-            ("p", RDF_TYPE, OWL_FUNCPROP),
-            ("x", "p", "y1"),
-            ("x", "p", "y2"),
+            ("PRED", RDF_TYPE, OWL_FUNCPROP),
+            ("SUB", "PRED", "OBJECT_1"),
+            ("SUB", "PRED", "OBJECT_2"),
         ];
         r.load_triples(trips);
         r.reason();
@@ -454,7 +457,7 @@ mod tests {
             let (s, p, o) = i;
             println!("{} {} {}", s, p, o);
         }
-        assert!(res.contains(&("y1".to_string(), OWL_SAMEAS.to_string(), "y2".to_string())));
+        assert!(res.contains(&("OBJECT_1".to_string(), OWL_SAMEAS.to_string(), "OBJECT_2".to_string())));
         Ok(())
     }
 

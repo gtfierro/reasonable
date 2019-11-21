@@ -5,15 +5,13 @@ mod types;
 mod owl;
 use crate::owl::Reasoner;
 
-use std::fs;
-
-use rdf::reader::turtle_parser::TurtleParser;
-use rdf::reader::n_triples_parser::NTriplesParser;
-use rdf::reader::rdf_parser::RdfParser;
-use rdf::node::Node;
-use rdf::graph::Graph;
-
 // TODO: implement lists; how do we translate this?
+
+const RDFS_SUBCLASSOF: &str = "http://www.w3.org/2000/01/rdf-schema#subClassOf";
+const RDFS_DOMAIN: &str = "http://www.w3.org/2000/01/rdf-schema#domain";
+const RDFS_RANGE: &str = "http://www.w3.org/2000/01/rdf-schema#range";
+const RDF_TYPE: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
+const OWL_INVERSEOF: &str = "http://www.w3.org/2002/07/owl#inverseOf";
 
 fn main() {
 
@@ -26,14 +24,14 @@ fn main() {
     r.load_file("example.n3").unwrap();
 
     let v1 : Vec::<(&str, &str, &str)> = vec![
-        ("a", "rdf:type", "Class1"),
-        ("b", "rdf:type", "Class1"),
-        ("Class1", "rdfs:subClassOf", "Class2"),
-        ("Class3", "rdfs:subClassOf", "Class2"),
-        ("brick:feeds", "rdfs:domain", "Class2"),
-        ("brick:feeds", "rdfs:range", "Class3"),
-        ("brick:isFedBy", "owl:inverseOf", "brick:feeds"),
-        ("c", "brick:feeds", "d"),
+        ("a", RDF_TYPE, "Class1"),
+        ("b", RDF_TYPE, "Class1"),
+        ("Class1", RDFS_SUBCLASSOF, "Class2"),
+        ("Class3", RDFS_SUBCLASSOF, "Class2"),
+        ("https://brickschema.org/schema/1.1.0/Brick#feeds", RDFS_DOMAIN, "Class2"),
+        ("https://brickschema.org/schema/1.1.0/Brick#feeds", RDFS_DOMAIN, "Class3"),
+        ("https://brickschema.org/schema/1.1.0/Brick#isFedBy",OWL_INVERSEOF, "https://brickschema.org/schema/1.1.0/Brick#feeds"),
+        ("c", "https://brickschema.org/schema/1.1.0/Brick#feeds", "d"),
 
         // cls-thing
         ("owl:Thing", "rdf:type", "owl:Class"),

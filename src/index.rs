@@ -1,9 +1,6 @@
-use crate::types::URI;
-
 use std::collections::HashMap;
-
-use std::hash::{Hash, Hasher};
-use fasthash::{city, CityHasher};
+use fasthash::city;
+use crate::types::URI;
 
 pub struct URIIndex {
     map : HashMap<URI, String>
@@ -40,6 +37,7 @@ pub fn hash(key: &String) -> URI {
     city::hash64(key)
 }
 
+#[allow(dead_code)] 
 pub fn hash_str(key: &'static str) -> URI {
     let s = key.to_string();
     city::hash64(&s)
