@@ -1,16 +1,21 @@
 extern crate rdf;
+#[macro_use] extern crate itertools;
 
 mod index;
 mod types;
 mod owl;
+mod floyd_warshall;
 use crate::owl::Reasoner;
 
-// TODO: implement lists; how do we translate this?
-
+#[allow(dead_code)]
 const RDFS_SUBCLASSOF: &str = "http://www.w3.org/2000/01/rdf-schema#subClassOf";
+#[allow(dead_code)]
 const RDFS_DOMAIN: &str = "http://www.w3.org/2000/01/rdf-schema#domain";
+#[allow(dead_code)]
 const RDFS_RANGE: &str = "http://www.w3.org/2000/01/rdf-schema#range";
+#[allow(dead_code)]
 const RDF_TYPE: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
+#[allow(dead_code)]
 const OWL_INVERSEOF: &str = "http://www.w3.org/2002/07/owl#inverseOf";
 
 fn main() {

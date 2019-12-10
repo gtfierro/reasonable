@@ -2,35 +2,47 @@ extern crate datafrog;
 use datafrog::{Iteration, Variable};
 
 use crate::index::URIIndex;
-use crate::types::{URI, has_pred, has_obj, has_pred_obj};
+use crate::floyd_warshall::FloydWarshall;
+use crate::types::{URI, Triple, has_pred, has_obj, has_pred_obj};
 
 use std::fs;
+use std::collections::HashMap;
 use rdf::reader::turtle_parser::TurtleParser;
 use rdf::reader::n_triples_parser::NTriplesParser;
 use rdf::reader::rdf_parser::RdfParser;
 use rdf::node::Node;
 use rdf::graph::Graph;
+use roaring::RoaringBitmap;
 
+#[allow(dead_code)]
 const RDFS_SUBCLASSOF: &str = "http://www.w3.org/2000/01/rdf-schema#subClassOf";
+#[allow(dead_code)]
 const RDFS_DOMAIN: &str = "http://www.w3.org/2000/01/rdf-schema#domain";
+#[allow(dead_code)]
 const RDFS_RANGE: &str = "http://www.w3.org/2000/01/rdf-schema#range";
+#[allow(dead_code)]
 const RDFS_SUBPROP: &str = "http://www.w3.org/2000/01/rdf-schema#subPropertyOf";
-
+#[allow(dead_code)]
 const RDF_TYPE: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
-
+#[allow(dead_code)]
 const OWL_SAMEAS: &str = "http://www.w3.org/2002/07/owl#sameAs";
+#[allow(dead_code)]
 const OWL_INVERSEOF: &str = "http://www.w3.org/2002/07/owl#inverseOf";
+#[allow(dead_code)]
 const OWL_SYMMETRICPROP: &str = "http://www.w3.org/2002/07/owl#SymmetricProperty";
+#[allow(dead_code)]
 const OWL_EQUIVPROP: &str = "http://www.w3.org/2002/07/owl#equivalentProperty";
+#[allow(dead_code)]
 const OWL_FUNCPROP: &str = "http://www.w3.org/2002/07/owl#FunctionalProperty";
+#[allow(dead_code)]
 const OWL_INVFUNCPROP: &str = "http://www.w3.org/2002/07/owl#InverseFunctionalProperty";
+#[allow(dead_code)]
 const OWL_INTERSECTION: &str = "http://www.w3.org/2002/07/owl#intersectionOf";
-
-type Triple = (URI, (URI, URI));
 
 pub struct Reasoner {
     iter1: Iteration,
     index: URIIndex,
+    input: Vec<Triple>,
 
     spo: Variable<Triple>,
     pso: Variable<Triple>,
@@ -170,6 +182,7 @@ impl Reasoner {
         Reasoner {
             iter1: iter1,
             index: index,
+            input: Vec::new(),
             spo: spo,
             pso: pso,
             osp: osp,
@@ -205,7 +218,8 @@ impl Reasoner {
         let trips: Vec<(URI, (URI, URI))> = triples.iter().map(|trip| {
             (self.index.put_str(trip.0), (self.index.put_str(trip.1), self.index.put_str(trip.2)))
         }).collect();
-        self.all_triples_input.insert(trips.into());
+        self.input.extend(trips);
+        // self.all_triples_input.insert(trips.into());
     }
 
     pub fn load_file(&mut self, filename: &str) -> Result<(), String> {
@@ -255,7 +269,8 @@ impl Reasoner {
 
         }).collect();
 
-        self.all_triples_input.insert(triples.into());
+        //self.all_triples_input.insert(triples.into());
+        self.input.extend(triples);
 
         Ok(())
     }
@@ -291,15 +306,15 @@ impl Reasoner {
         // (p1, p2)
         let prp_inv1 = self.iter1.variable::<(URI, URI)>("prp_inv1");
 
+        let list_test1 = self.iter1.variable::<(URI, URI)>("list_test1");
+
+        let fw = FloydWarshall::new(&self.input);
+        
+        self.all_triples_input.extend(self.input.iter().cloned());
         while self.iter1.changed() {
             self.spo.from_map(&self.all_triples_input, |&(sub, (pred, obj))| (sub, (pred, obj)));
             self.pso.from_map(&self.all_triples_input, |&(sub, (pred, obj))| (pred, (sub, obj)));
             self.osp.from_map(&self.all_triples_input, |&(sub, (pred, obj))| (obj, (sub, pred)));
-
-            // add lists
-            // TODO
-            self.firsts.from_map(&self.spo, |&triple| { has_pred(triple, rdffirst_node) });
-            self.rests.from_map(&self.spo, |&triple| { has_pred(triple, rdfrest_node) });
 
             self.rdf_type.from_map(&self.spo, |&triple| { has_pred(triple, rdftype_node) });
             self.prp_dom.from_map(&self.spo, |&triple| { has_pred(triple, rdfsdomain_node) });
@@ -370,7 +385,6 @@ impl Reasoner {
             // T(?x, ?p, ?y)
             //  => T(?y, ?p, ?x)
             self.all_triples_input.from_join(&self.symmetric_properties, &self.pso, |&prop, &(), &(x, y)| {
-                println!("symmetric => {}", self.index.get(prop).unwrap());
                 (y, (prop, x))
             });
 
@@ -388,15 +402,17 @@ impl Reasoner {
             // cls-int1
             self.cls_int_1.from_map(&self.spo, |&triple| {
                 let (class, listname) = has_pred(triple, owlintersection_node);
-                if (class, listname) != (0, 0) {
-                    println!("{} {}", class, listname);
-                }
+                println!("{} {:?}", listname, fw.get_list_values(listname));
+                // if (class, listname) != (0, 0) {
+                //     println!("{} {}", class, listname);
+                // }
                 (class, listname)
 
             });
 
         }
     }
+
 
     pub fn get_triples(&mut self) -> Vec<(String, String, String)> {
         let instances = self.spo.clone().complete();
