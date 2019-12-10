@@ -5,7 +5,7 @@ use itertools::Itertools;
 use std::time::Instant;
 use crate::index::{URIIndex, hash_str};
 use crate::types::{URI, Triple};
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use roaring::RoaringBitmap;
 
 const RDF_FIRST: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#first";
@@ -19,7 +19,7 @@ pub struct FloydWarshall {
 impl FloydWarshall {
     pub fn new(input: &Vec<Triple>) -> Self {
         let mut reachable: HashMap<URI, RoaringBitmap> = HashMap::new();
-        let mut dist: HashMap<(URI, URI), bool> = HashMap::new();
+        let mut dist: HashSet<(URI, URI)> = HashSet::new();
         let mut values: HashMap<URI, URI> = HashMap::new();
 
         let mut index = URIIndex::new();
@@ -44,7 +44,7 @@ impl FloydWarshall {
         while list_iter.changed() {
             rdf_firsts.from_join(&list_triples, &rdffirst, |&_, &(key, value), &_| { 
                 values.insert(key, value);        
-                dist.insert((key, key), true);
+                dist.insert((key, key));
                 ()
             });
             rdf_rests.from_join(&list_triples, &rdfrest, |&_, &(p1, p2), &_| { 
@@ -52,8 +52,8 @@ impl FloydWarshall {
                     return ()
                 }
                 tails.insert(p2);
-                dist.insert((p1, p2), true);
-                dist.insert((p2, p1), true);
+                dist.insert((p1, p2));
+                dist.insert((p2, p1));
                 let mut rb_p1 = reachable.entry(p1).or_insert(RoaringBitmap::new());
                 rb_p1.insert(p1);
                 rb_p1.insert(p2);
@@ -70,10 +70,10 @@ impl FloydWarshall {
             let mut t0 = Instant::now();
             for (i, j) in combinations.iter() {
                     if k == i && i == j { continue }
-                    let i_to_k = dist.get(&(*i,*k)).unwrap_or(&false);
-                    let k_to_j = dist.get(&(*k,*j)).unwrap_or(&false);
-                    if *i_to_k && *k_to_j {
-                        dist.insert((*i, *j), true);
+                    let i_to_k = dist.contains(&(*i,*k));
+                    let k_to_j = dist.contains(&(*k,*j));
+                    if i_to_k && k_to_j {
+                        dist.insert((*i, *j));
                         let mut rb = reachable.entry(*i).or_insert(RoaringBitmap::new());
                         rb.insert(*i);
                         rb.insert(*j);
