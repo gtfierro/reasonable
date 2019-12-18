@@ -402,10 +402,9 @@ impl Reasoner {
             // cls-int1
             self.cls_int_1.from_map(&self.spo, |&triple| {
                 let (class, listname) = has_pred(triple, owlintersection_node);
-                println!("{} {:?}", listname, fw.get_list_values(listname));
-                // if (class, listname) != (0, 0) {
-                //     println!("{} {}", class, listname);
-                // }
+                if let Some(values) = fw.get_list_values(listname) {
+                    println!("{} {:?}", listname, values);
+                }
                 (class, listname)
 
             });

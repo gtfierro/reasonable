@@ -69,18 +69,18 @@ impl FloydWarshall {
         for (idx, k) in values.keys().enumerate() {
             let mut t0 = Instant::now();
             for (i, j) in combinations.iter() {
-                    if k == i && i == j { continue }
-                    let i_to_k = dist.contains(&(*i,*k));
-                    let k_to_j = dist.contains(&(*k,*j));
-                    if i_to_k && k_to_j {
-                        dist.insert((*i, *j));
-                        let mut rb = reachable.entry(*i).or_insert(RoaringBitmap::new());
-                        rb.insert(*i);
-                        rb.insert(*j);
-                        let mut rb = reachable.entry(*j).or_insert(RoaringBitmap::new());
-                        rb.insert(*i);
-                        rb.insert(*j);
-                    }
+                if k == i && i == j { continue }
+                let i_to_k = dist.contains(&(*i,*k));
+                let k_to_j = dist.contains(&(*k,*j));
+                if i_to_k && k_to_j {
+                    dist.insert((*i, *j));
+                    let mut rb = reachable.entry(*i).or_insert(RoaringBitmap::new());
+                    rb.insert(*i);
+                    rb.insert(*j);
+                    let mut rb = reachable.entry(*j).or_insert(RoaringBitmap::new());
+                    rb.insert(*i);
+                    rb.insert(*j);
+                }
             }
             println!("Finished iteration {} in {:?}", idx, t0.elapsed());
         }

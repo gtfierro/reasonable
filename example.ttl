@@ -1,0 +1,28 @@
+@prefix bf: <https://brickschema.org/schema/1.0.3/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/building_example#> .
+@prefix brick: <https://brickschema.org/schema/1.0.3/Brick#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:ahu_1 a brick:AHU ;
+    bf:feeds bldg:vav_1 .
+
+bldg:room_1 a brick:Room ;
+    rdfs:label "Room 1" ;
+    bf:isPartOf bldg:floor_1,
+        bldg:hvaczone_1 .
+
+bldg:ztemp_1 a brick:Zone_Temperature_Sensor ;
+    bf:isPointOf bldg:vav_1 ;
+    bf:isPartOf bldg:vav_1 .
+
+bldg:floor_1 a brick:Floor .
+
+bldg:hvaczone_1 a brick:HVAC_Zone .
+
+bldg:vav_1 a brick:VAV ;
+    bf:feeds bldg:hvaczone_1 .
+
+bldg:floor_1 bf:isPartOf bldg:building_1 .
