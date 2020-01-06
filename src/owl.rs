@@ -30,6 +30,10 @@ const OWL_SAMEAS: &str = "http://www.w3.org/2002/07/owl#sameAs";
 #[allow(dead_code)]
 const OWL_EQUIVALENTCLASS: &str = "http://www.w3.org/2002/07/owl#equivalentClass";
 #[allow(dead_code)]
+const OWL_HASVALUE: &str = "http://www.w3.org/2002/07/owl#hasValue";
+#[allow(dead_code)]
+const OWL_ONPROPERTY: &str = "http://www.w3.org/2002/07/owl#onProperty";
+#[allow(dead_code)]
 const OWL_INVERSEOF: &str = "http://www.w3.org/2002/07/owl#inverseOf";
 #[allow(dead_code)]
 const OWL_SYMMETRICPROP: &str = "http://www.w3.org/2002/07/owl#SymmetricProperty";
@@ -292,10 +296,13 @@ impl Reasoner {
         let rdfssubprop_node = self.index.put_str("http://www.w3.org/2000/01/rdf-schema#subPropertyOf");
         let rdfssubclass_node = self.index.put_str("http://www.w3.org/2000/01/rdf-schema#subClassOf");
         let owlintersection_node = self.index.put_str("http://www.w3.org/2002/07/owl#intersectionOf");
+        let owlhasvalue_node = self.index.put_str("http://www.w3.org/2002/07/owl#hasValue");
+        let owlonproperty_node = self.index.put_str("http://www.w3.org/2002/07/owl#onProperty");
 
         let rdffirst_node = self.index.put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#first");
         let rdfrest_node = self.index.put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#rest");
         let rdfnil_node = self.index.put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#nil");
+        let rdf_type_inv = self.iter1.variable::<(URI, URI)>("rdf_type_inv");
 
         let prp_fp_isfuncprop = self.iter1.variable::<Triple>("a");
         let prp_fp_hasprop1 = self.iter1.variable::<Triple>("b");
@@ -320,13 +327,28 @@ impl Reasoner {
         //     T(?y rdf:type ?c)
         let cls_int_1_1 = self.iter1.variable::<(URI, URI)>("cls_int_1_1");
         let cls_int_1_2 = self.iter1.variable::<(URI, URI)>("cls_int_1_2");
- 
+
         // cls-int2
         //    T(?c owl:intersectionOf ?x), LIST[?x, ?c1...?cn],
         //     T(?y rdf:type ?c) =>
         //    T(?y rdf:type ?c_i) for i in range(1,n)
         let cls_int_2_1 = self.iter1.variable::<(URI, URI)>("cls_int_1_1");
         let cls_int_2_2 = self.iter1.variable::<(URI, URI)>("cls_int_1_2");
+
+        // cls-hv1:
+        // T(?x, owl:hasValue, ?y)
+        // T(?x, owl:onProperty, ?p)
+        // T(?u, rdf:type, ?x) =>  T(?u, ?p, ?y)
+        let owl_has_value = self.iter1.variable::<(URI, URI)>("owl_has_value");
+        let owl_on_property = self.iter1.variable::<(URI, URI)>("owl_on_property");
+        let cls_hv1_1 = self.iter1.variable::<(URI, (URI, URI))>("cls_hv1_1");
+
+        // cls-hv2:
+        // T(?x, owl:hasValue, ?y)
+        // T(?x, owl:onProperty, ?p)
+        // T(?u, ?p, ?y) =>  T(?u, rdf:type, ?x)
+        let cls_hv2_1 = self.iter1.variable::<(URI, (URI, URI))>("cls_hv2_1");
+
 
         // cax-eqc1
         // T(?c1, owl:equivalentClass, ?c2), T(?x, rdf:type, ?c1)  =>
@@ -338,6 +360,7 @@ impl Reasoner {
         let cax_eqc_1_1 = self.iter1.variable::<(URI)>("cax_eqc_1_1");
         let cax_eqc_2_1 = self.iter1.variable::<(URI)>("cax_eqc_2_1");
 
+
         // let fw = FloydWarshall::new(&self.input);
         let ds = DisjointSets::new(&self.input);
 
@@ -348,6 +371,7 @@ impl Reasoner {
             self.osp.from_map(&self.all_triples_input, |&(sub, (pred, obj))| (obj, (sub, pred)));
 
             self.rdf_type.from_map(&self.spo, |&triple| { has_pred(triple, rdftype_node) });
+            rdf_type_inv.from_map(&self.rdf_type, |&(inst, class)| { (class, inst) });
             self.prp_dom.from_map(&self.spo, |&triple| { has_pred(triple, rdfsdomain_node) });
             self.prp_rng.from_map(&self.spo, |&triple| { has_pred(triple, rdfsrange_node) });
 
@@ -355,6 +379,8 @@ impl Reasoner {
             self.owl_inverse_of2.from_map(&self.owl_inverse_of, |&(p1, p2)| (p2, p1) );
 
             owl_intersection_of.from_map(&self.spo, |&triple| has_pred(triple, owlintersection_node));
+            owl_has_value.from_map(&self.spo, |&triple| has_pred(triple, owlhasvalue_node));
+            owl_on_property.from_map(&self.spo, |&triple| has_pred(triple, owlonproperty_node));
 
             let mut reflexive_equivalent_class = Vec::new();
             owl_equivalent_class.from_map(&self.spo, |&triple| {
@@ -486,8 +512,40 @@ impl Reasoner {
                 (intersection_class, listname)
             });
 
+            // TODO
             // cls_int_2_1.from_map(&owl_intersection_of, |&(intersection_class, listname)| {
             // });
+
+            // cls-hv1:
+            // T(?x, owl:hasValue, ?y)
+            // T(?x, owl:onProperty, ?p)
+            // T(?u, rdf:type, ?x) =>  T(?u, ?p, ?y)
+            cls_hv1_1.from_join(&owl_has_value, &owl_on_property, |&x, &y, &p| {
+                println!("hv1 {}", x);
+                (x, (p, y))
+            });
+            self.all_triples_input.from_join(&cls_hv1_1, &rdf_type_inv, |&x, &(prop, value), &inst| {
+                (inst, (prop, value))
+            });
+
+            // cls-hv2:
+            // T(?x, owl:hasValue, ?y)
+            // T(?x, owl:onProperty, ?p)
+            // T(?u, ?p, ?y) =>  T(?u, rdf:type, ?x)
+            cls_hv2_1.from_join(&owl_has_value, &owl_on_property, |&x, &y, &p| {
+                println!("hv1 {}", x);
+                // format for pso index; needs property key
+                (p, (y, x))
+            });
+            self.all_triples_input.from_join(&cls_hv2_1, &self.pso, |&prop, &(value, anonclass), &(sub, obj)| {
+                // if value is correct, then emit the rdf_type 
+                if value == obj {
+                    (sub, (rdftype_node, anonclass))
+                } else {
+                    (0, (0, 0))
+                }
+            });
+
         }
     }
 
@@ -676,6 +734,44 @@ mod tests {
             println!("{} {} {}", s, p, o);
         }
         assert!(res.contains(&("x".to_string(), "p2".to_string(), "y".to_string())));
+        Ok(())
+    }
+
+    #[test]
+    fn test_cls_hv1() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("x", OWL_HASVALUE, "y"),
+            ("x", OWL_ONPROPERTY, "p"),
+            ("u", RDF_TYPE, "x"),
+        ];
+        r.load_triples(trips);
+        r.reason();
+        let res = r.get_triples();
+        for i in res.iter() {
+            let (s, p, o) = i;
+            println!("{} {} {}", s, p, o);
+        }
+        assert!(res.contains(&("u".to_string(), "p".to_string(), "y".to_string())));
+        Ok(())
+    }
+
+    #[test]
+    fn test_cls_hv2() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("x", OWL_HASVALUE, "y"),
+            ("x", OWL_ONPROPERTY, "p"),
+            ("u", "p", "y"),
+        ];
+        r.load_triples(trips);
+        r.reason();
+        let res = r.get_triples();
+        for i in res.iter() {
+            let (s, p, o) = i;
+            println!("{} {} {}", s, p, o);
+        }
+        assert!(res.contains(&("u".to_string(), RDF_TYPE.to_string(), "x".to_string())));
         Ok(())
     }
 }
