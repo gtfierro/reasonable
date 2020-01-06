@@ -69,9 +69,9 @@ Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasonin
 
 |Completed| Rule name | Notes |
 |---------|----------|-------|
-| no     | `cax-sco` |       |
-| no     | `cax-eqc1` |       |
-| no     | `cax-eqc2` |       |
+| **yes**| `cax-sco` |       |
+| **yes**| `cax-eqc1` |       |
+| **yes**| `cax-eqc2` |       |
 | no     | `cax-dw` |       |
 | no     | `cax-adc` |       |
 
