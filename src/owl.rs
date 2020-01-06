@@ -28,6 +28,8 @@ const RDF_TYPE: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
 #[allow(dead_code)]
 const OWL_SAMEAS: &str = "http://www.w3.org/2002/07/owl#sameAs";
 #[allow(dead_code)]
+const OWL_EQUIVALENTCLASS: &str = "http://www.w3.org/2002/07/owl#equivalentClass";
+#[allow(dead_code)]
 const OWL_INVERSEOF: &str = "http://www.w3.org/2002/07/owl#inverseOf";
 #[allow(dead_code)]
 const OWL_SYMMETRICPROP: &str = "http://www.w3.org/2002/07/owl#SymmetricProperty";
@@ -76,7 +78,7 @@ pub struct Reasoner {
     firsts: Variable<(URI, URI)>,
     rests: Variable<(URI, URI)>,
 
-    cls_int_1: Variable<(URI, URI)>,
+    cls_int_2: Variable<(URI, URI)>,
 }
 
 #[allow(unused)]
@@ -175,7 +177,7 @@ impl Reasoner {
         //  T(?y rdf:type ?c)
         //
         // ?c owl:intersectionOf ?x
-        let cls_int_1 = iter1.variable::<(URI, URI)>("cls_int_1");
+        let cls_int_2 = iter1.variable::<(URI, URI)>("cls_int_2");
         //
         // firsts:
         // ?y rdf:type
@@ -211,7 +213,7 @@ impl Reasoner {
             equivalent_properties: equivalent_properties,
             equivalent_properties_2: equivalent_properties_2,
 
-            cls_int_1: cls_int_1,
+            cls_int_2: cls_int_2,
         }
     }
 
@@ -284,6 +286,7 @@ impl Reasoner {
         let owlinverseof_node = self.index.put_str("http://www.w3.org/2002/07/owl#inverseOf");
         let owlsymmetricprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#SymmetricProperty");
         let owlequivprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#equivalentProperty");
+        let owlequivclassprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#equivalentClass");
         let owlfuncprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#FunctionalProperty");
         let owlinvfuncprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#InverseFunctionalProperty");
         let rdfssubprop_node = self.index.put_str("http://www.w3.org/2000/01/rdf-schema#subPropertyOf");
@@ -297,6 +300,8 @@ impl Reasoner {
         let prp_fp_isfuncprop = self.iter1.variable::<Triple>("a");
         let prp_fp_hasprop1 = self.iter1.variable::<Triple>("b");
 
+        let owl_intersection_of = self.iter1.variable::<(URI, URI)>("owl_intersection_of");
+
         // prp-inv1
         // T(?p1, owl:inverseOf, ?p2)
         // T(?x, ?p1, ?y) => T(?y, ?p2, ?x)
@@ -309,9 +314,33 @@ impl Reasoner {
 
         let list_test1 = self.iter1.variable::<(URI, URI)>("list_test1");
 
+        // cls-int1
+        //    T(?c owl:intersectionOf ?x), LIST[?x, ?c1...?cn],
+        //    T(?y rdf:type ?c_i) for i in range(1,n) =>
+        //     T(?y rdf:type ?c)
+        let cls_int_1_1 = self.iter1.variable::<(URI, URI)>("cls_int_1_1");
+        let cls_int_1_2 = self.iter1.variable::<(URI, URI)>("cls_int_1_2");
+ 
+        // cls-int2
+        //    T(?c owl:intersectionOf ?x), LIST[?x, ?c1...?cn],
+        //     T(?y rdf:type ?c) =>
+        //    T(?y rdf:type ?c_i) for i in range(1,n)
+        let cls_int_2_1 = self.iter1.variable::<(URI, URI)>("cls_int_1_1");
+        let cls_int_2_2 = self.iter1.variable::<(URI, URI)>("cls_int_1_2");
+
+        // cax-eqc1
+        // T(?c1, owl:equivalentClass, ?c2), T(?x, rdf:type, ?c1)  =>
+        //  T(?x, rdf:type, ?c2)
+        // cax-eqc2
+        // T(?c1, owl:equivalentClass, ?c2), T(?x, rdf:type, ?c2)  =>
+        //  T(?x, rdf:type, ?c1)
+        let owl_equivalent_class = self.iter1.variable::<(URI, URI)>("owl_equivalent_class");
+        let cax_eqc_1_1 = self.iter1.variable::<(URI)>("cax_eqc_1_1");
+        let cax_eqc_2_1 = self.iter1.variable::<(URI)>("cax_eqc_2_1");
+
         // let fw = FloydWarshall::new(&self.input);
         let ds = DisjointSets::new(&self.input);
-        
+
         self.all_triples_input.extend(self.input.iter().cloned());
         while self.iter1.changed() {
             self.spo.from_map(&self.all_triples_input, |&(sub, (pred, obj))| (sub, (pred, obj)));
@@ -324,6 +353,18 @@ impl Reasoner {
 
             self.owl_inverse_of.from_map(&self.spo, |&triple| has_pred(triple, owlinverseof_node) );
             self.owl_inverse_of2.from_map(&self.owl_inverse_of, |&(p1, p2)| (p2, p1) );
+
+            owl_intersection_of.from_map(&self.spo, |&triple| has_pred(triple, owlintersection_node));
+
+            let mut reflexive_equivalent_class = Vec::new();
+            owl_equivalent_class.from_map(&self.spo, |&triple| {
+                let (c1, c2) = has_pred(triple, owlequivclassprop_node);
+                if c1 > 0 && c2 > 0 {
+                    reflexive_equivalent_class.push((c2, c1));
+                }
+                (c1, c2)
+            });
+            owl_equivalent_class.extend(reflexive_equivalent_class.iter());
 
             self.symmetric_properties.from_map(&self.spo, |&triple| {
                 has_pred_obj(triple, (rdftype_node, owlsymmetricprop_node))
@@ -371,6 +412,16 @@ impl Reasoner {
             self.cax_sco_2.from_map(&self.rdf_type, |&(inst, class)| (class, inst));
             self.all_triples_input.from_join(&self.cax_sco_1, &self.cax_sco_2, |&class, &parent, &inst| (inst, (rdftype_node, parent)));
 
+            // cax-eqc1, cax-eqc2
+            // find instances of classes that are equivalent
+            self.all_triples_input.from_join(&owl_equivalent_class, &self.osp, |&c1, &c2, &(inst, pred)| {
+                if pred == rdftype_node {
+                    // yield inst rdf_type c2
+                    (inst, (rdftype_node, c2))
+                } else {
+                    (0, (0, 0))
+                }
+            });
 
             // prp-inv1
             // T(?p1, owl:inverseOf, ?p2)
@@ -402,18 +453,41 @@ impl Reasoner {
             self.all_triples_input.from_join(&self.equivalent_properties_2, &self.pso, |&p1, &p2, &(x, y)| (x, (p2, y)) );
 
             // cls-int1
-            self.cls_int_1.from_map(&self.spo, |&triple| {
-                let (class, listname) = has_pred(triple, owlintersection_node);
-                if listname == 0 { return (0, 0); }
+            // There's a fair amount of complexity here that we have to manage. The rule we are
+            // implementing is cls-int-1:
+            //
+            //      T(?c owl:intersectionOf ?x), LIST[?x, ?c1...?cn],
+            //      T(?y rdf:type ?c_i) for i in range(1,n) =>
+            //       T(?y rdf:type ?c)
+            //
+            // Useful structures:
+            // - `owl_intersection_of` is keyed by class and values are the list heads
+            // - `ds` gives the list values for the given head (ds.get_list_values(listname))
+            //
+            // Goal: we need to find instances (?y rdf:type ?class) of all classes given by the
+            // list identified by the head for each owl:intersectionOf node.
+            //
+            // We can get the list of classes easily by iterating over each key of the
+            // owl_intersection_of variable. However, we need an efficient way of seeing if there
+            // are instances of *each* of those classes (union). This could be a N-way join (where
+            // N is the number of classes in the list)
+            // TODO: finish this up!
+            cls_int_1_1.from_map(&owl_intersection_of, |&(intersection_class, listname)| {
                 if let Some(values) = ds.get_list_values(listname) {
                     let value_uris: Vec<&String> = values.iter().map(|v| self.index.get(*v).unwrap()).collect();
                     println!("{} (len {}) {} {:?}", listname, values.len(), self.index.get(listname).unwrap(), value_uris);
-                } else {
-                    println!("no list for {} {:?}", listname, ds.get_list_values(listname));
+                    cls_int_1_2.from_map(&self.rdf_type, |&(inst, list_class)| {
+                        if values.contains(&list_class) {
+                            println!("{} is a {}", inst, list_class);
+                        }
+                        (inst, list_class)
+                    });
                 }
-                (class, listname)
+                (intersection_class, listname)
             });
 
+            // cls_int_2_1.from_map(&owl_intersection_of, |&(intersection_class, listname)| {
+            // });
         }
     }
 
@@ -458,6 +532,34 @@ mod tests {
         let mut r = Reasoner::new();
         let trips = vec![
             ("Class2", RDFS_SUBCLASSOF, "Class1"),
+            ("a", RDF_TYPE, "Class2")
+        ];
+        r.load_triples(trips);
+        r.reason();
+        let res = r.get_triples();
+        assert!(res.contains(&("a".to_string(), RDF_TYPE.to_string(), "Class1".to_string())));
+        Ok(())
+    }
+
+    #[test]
+    fn test_cax_eqc1() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("Class1", OWL_EQUIVALENTCLASS, "Class2"),
+            ("a", RDF_TYPE, "Class1")
+        ];
+        r.load_triples(trips);
+        r.reason();
+        let res = r.get_triples();
+        assert!(res.contains(&("a".to_string(), RDF_TYPE.to_string(), "Class2".to_string())));
+        Ok(())
+    }
+
+    #[test]
+    fn test_cax_eqc2() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("Class1", OWL_EQUIVALENTCLASS, "Class2"),
             ("a", RDF_TYPE, "Class2")
         ];
         r.load_triples(trips);
