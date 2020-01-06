@@ -3,6 +3,7 @@ use datafrog::{Iteration, Variable};
 
 use crate::index::URIIndex;
 use crate::floyd_warshall::FloydWarshall;
+use crate::disjoint_sets::DisjointSets;
 use crate::types::{URI, Triple, has_pred, has_obj, has_pred_obj};
 
 use std::fs;
@@ -308,7 +309,8 @@ impl Reasoner {
 
         let list_test1 = self.iter1.variable::<(URI, URI)>("list_test1");
 
-        let fw = FloydWarshall::new(&self.input);
+        // let fw = FloydWarshall::new(&self.input);
+        let ds = DisjointSets::new(&self.input);
         
         self.all_triples_input.extend(self.input.iter().cloned());
         while self.iter1.changed() {
@@ -402,11 +404,14 @@ impl Reasoner {
             // cls-int1
             self.cls_int_1.from_map(&self.spo, |&triple| {
                 let (class, listname) = has_pred(triple, owlintersection_node);
-                if let Some(values) = fw.get_list_values(listname) {
-                    println!("{} {:?}", listname, values);
+                if listname == 0 { return (0, 0); }
+                if let Some(values) = ds.get_list_values(listname) {
+                    let value_uris: Vec<&String> = values.iter().map(|v| self.index.get(*v).unwrap()).collect();
+                    println!("{} (len {}) {} {:?}", listname, values.len(), self.index.get(listname).unwrap(), value_uris);
+                } else {
+                    println!("no list for {} {:?}", listname, ds.get_list_values(listname));
                 }
                 (class, listname)
-
             });
 
         }

@@ -82,7 +82,7 @@ impl FloydWarshall {
                     rb.insert(*j);
                 }
             }
-            println!("Finished iteration {} in {:?}", idx, t0.elapsed());
+            println!("Finished iteration {}/{} in {:?}", idx, values.keys().len(), t0.elapsed());
         }
 
         for k in values.keys() {
