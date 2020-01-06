@@ -25,6 +25,12 @@ const RDFS_SUBPROP: &str = "http://www.w3.org/2000/01/rdf-schema#subPropertyOf";
 #[allow(dead_code)]
 const RDF_TYPE: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
 #[allow(dead_code)]
+const RDF_FIRST: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#first";
+#[allow(dead_code)]
+const RDF_REST: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#rest";
+#[allow(dead_code)]
+const RDF_NIL: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil";
+#[allow(dead_code)]
 const OWL_SAMEAS: &str = "http://www.w3.org/2002/07/owl#sameAs";
 #[allow(dead_code)]
 const OWL_EQUIVALENTCLASS: &str = "http://www.w3.org/2002/07/owl#equivalentClass";
@@ -348,7 +354,6 @@ impl Reasoner {
         // T(?u, ?p, ?y) =>  T(?u, rdf:type, ?x)
         let cls_hv2_1 = self.iter1.variable::<(URI, (URI, URI))>("cls_hv2_1");
 
-
         // cax-eqc1
         // T(?c1, owl:equivalentClass, ?c2), T(?x, rdf:type, ?c1)  =>
         //  T(?x, rdf:type, ?c2)
@@ -496,23 +501,41 @@ impl Reasoner {
             // are instances of *each* of those classes (union). This could be a N-way join (where
             // N is the number of classes in the list)
             // TODO: finish this up!
+            let mut new_cls_int1_instances = Vec::new();
             cls_int_1_1.from_map(&owl_intersection_of, |&(intersection_class, listname)| {
                 if let Some(values) = ds.get_list_values(listname) {
-                    let value_uris: Vec<&String> = values.iter().map(|v| self.index.get(*v).unwrap()).collect();
-                    println!("{} (len {}) {} {:?}", listname, values.len(), self.index.get(listname).unwrap(), value_uris);
+                    // let value_uris: Vec<&String> = values.iter().map(|v| self.index.get(*v).unwrap()).collect();
+                    // println!("{} (len {}) {} {:?}", listname, values.len(), self.index.get(listname).unwrap(), value_uris);
+                    let mut class_counter: HashMap<URI, usize> = HashMap::new();
                     cls_int_1_2.from_map(&self.rdf_type, |&(inst, list_class)| {
                         if values.contains(&list_class) {
-                            println!("{} is a {}", inst, list_class);
+                            // println!("{} is a {}", inst, list_class);
+                            let count = class_counter.entry(inst).or_insert(0);
+                            *count += 1;
                         }
                         (inst, list_class)
                     });
+                    for (inst, num_implemented) in class_counter.iter() {
+                        if *num_implemented == values.len() {
+                            // println!("inferred that {} is a {}", inst, intersection_class);
+                            new_cls_int1_instances.push((*inst, (rdftype_node, intersection_class)));
+                        }
+                    }
                 }
                 (intersection_class, listname)
             });
+            self.all_triples_input.extend(new_cls_int1_instances);
 
-            // TODO
-            // cls_int_2_1.from_map(&owl_intersection_of, |&(intersection_class, listname)| {
-            // });
+            let mut new_cls_int2_instances = Vec::new();
+            cls_int_2_1.from_join(&owl_intersection_of, &rdf_type_inv, |&intersection_class, &listname, &inst| {
+                if let Some(values) = ds.get_list_values(listname) {
+                    for list_class in values {
+                        new_cls_int2_instances.push((inst, (rdftype_node, list_class)));
+                    }
+                }
+                (intersection_class, listname)
+            });
+            self.all_triples_input.extend(new_cls_int2_instances);
 
             // cls-hv1:
             // T(?x, owl:hasValue, ?y)
@@ -770,6 +793,58 @@ mod tests {
             println!("{} {} {}", s, p, o);
         }
         assert!(res.contains(&("u".to_string(), RDF_TYPE.to_string(), "x".to_string())));
+        Ok(())
+    }
+
+    #[test]
+    fn test_cls_int1() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("c", OWL_INTERSECTION, "x"),
+            ("x", RDF_FIRST, "c1"),
+            ("x", RDF_REST, "z2"),
+            ("z2", RDF_FIRST, "c2"),
+            ("z2", RDF_REST, "z3"),
+            ("z3", RDF_FIRST, "c3"),
+            ("z3", RDF_REST, RDF_NIL),
+            ("y", RDF_TYPE, "c1"),
+            ("y", RDF_TYPE, "c2"),
+            ("y", RDF_TYPE, "c3"),
+        ];
+        r.load_triples(trips);
+        r.reason();
+        let res = r.get_triples();
+        for i in res.iter() {
+            let (s, p, o) = i;
+            println!("{} {} {}", s, p, o);
+        }
+        assert!(res.contains(&("y".to_string(), RDF_TYPE.to_string(), "c".to_string())));
+        Ok(())
+    }
+
+    #[test]
+    fn test_cls_int2() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("c", OWL_INTERSECTION, "x"),
+            ("x", RDF_FIRST, "c1"),
+            ("x", RDF_REST, "z2"),
+            ("z2", RDF_FIRST, "c2"),
+            ("z2", RDF_REST, "z3"),
+            ("z3", RDF_FIRST, "c3"),
+            ("z3", RDF_REST, RDF_NIL),
+            ("y", RDF_TYPE, "c"),
+        ];
+        r.load_triples(trips);
+        r.reason();
+        let res = r.get_triples();
+        for i in res.iter() {
+            let (s, p, o) = i;
+            println!("{} {} {}", s, p, o);
+        }
+        assert!(res.contains(&("y".to_string(), RDF_TYPE.to_string(), "c1".to_string())));
+        assert!(res.contains(&("y".to_string(), RDF_TYPE.to_string(), "c2".to_string())));
+        assert!(res.contains(&("y".to_string(), RDF_TYPE.to_string(), "c3".to_string())));
         Ok(())
     }
 }
