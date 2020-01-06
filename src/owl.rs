@@ -15,7 +15,7 @@ use rdf::node::Node;
 use rdf::graph::Graph;
 use rdf::triple;
 use rdf::uri::Uri;
-// use rdf::writer::turtle_writer::TurtleWriter;
+use rdf::writer::turtle_writer::TurtleWriter;
 use crate::rdf::writer::rdf_writer::RdfWriter;
 use rdf::writer::n_triples_writer::NTriplesWriter;
 use roaring::RoaringBitmap;
@@ -243,6 +243,13 @@ impl Reasoner {
     }
 
     pub fn dump_file(&mut self, filename: &str) -> Result<(), Error> {
+        // let mut abbrevs: HashMap<String, Uri> = HashMap::new();
+        // abbrevs.insert("owl".to_string(), Uri::new("http://www.w3.org/2002/07/owl".to_string()));
+        // abbrevs.insert("rdf".to_string(), Uri::new("http://www.w3.org/1999/02/22-rdf-syntax-ns".to_string()));
+        // abbrevs.insert("rdfs".to_string(), Uri::new("http://www.w3.org/2000/01/rdf-schema".to_string()));
+        // abbrevs.insert("brick".to_string(), Uri::new("https://brickschema.org/schema/1.1.0/Brick".to_string()));
+        // abbrevs.insert("tag".to_string(), Uri::new("https://brickschema.org/schema/1.1.0/BrickTag".to_string()));
+        // let writer = TurtleWriter::new(&abbrevs);
         let writer = NTriplesWriter::new();
         let mut graph = Graph::new(None);
         for i in self.get_triples() {
