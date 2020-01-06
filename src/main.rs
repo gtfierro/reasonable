@@ -20,18 +20,22 @@ const RDF_TYPE: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
 const OWL_INVERSEOF: &str = "http://www.w3.org/2002/07/owl#inverseOf";
 
 fn main() {
-    let args: Vec<String> = env::args().collect();
     let mut r = Reasoner::new();
+    env::args().skip(1).map(|filename|
+        r.load_file(&filename).unwrap()
+    ).count();
+    r.reason();
+    r.dump_file("output.n3").unwrap();
 
-    // TODO: load in datasets
-    r.load_file("rdfs.ttl").unwrap();
-    // Brick.ttl has some parse error so we use n3
-    r.load_file("Brick.n3").unwrap();
-    if args.len() > 1 {
-        r.load_file(args.get(1).unwrap()).unwrap();
-    } else {
-        r.load_file("example.n3").unwrap();
-    }
+    // // TODO: load in datasets
+    // r.load_file("rdfs.ttl").unwrap();
+    // // Brick.ttl has some parse error so we use n3
+    // r.load_file("Brick.n3").unwrap();
+    // if args.len() > 1 {
+    //     r.load_file(args.get(1).unwrap()).unwrap();
+    // } else {
+    //     r.load_file("example.n3").unwrap();
+    // }
 
     // let v1 : Vec::<(&str, &str, &str)> = vec![
     //     ("a", RDF_TYPE, "Class1"),
@@ -53,6 +57,4 @@ fn main() {
     // ];
     // r.load_triples(v1);
 
-    r.reason();
-    r.dump_file("output.n3").unwrap();
 }
