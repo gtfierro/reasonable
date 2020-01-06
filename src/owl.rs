@@ -37,6 +37,8 @@ const OWL_EQUIVALENTCLASS: &str = "http://www.w3.org/2002/07/owl#equivalentClass
 #[allow(dead_code)]
 const OWL_HASVALUE: &str = "http://www.w3.org/2002/07/owl#hasValue";
 #[allow(dead_code)]
+const OWL_ALLVALUESFROM: &str = "http://www.w3.org/2002/07/owl#allValuesFrom";
+#[allow(dead_code)]
 const OWL_ONPROPERTY: &str = "http://www.w3.org/2002/07/owl#onProperty";
 #[allow(dead_code)]
 const OWL_INVERSEOF: &str = "http://www.w3.org/2002/07/owl#inverseOf";
@@ -302,6 +304,7 @@ impl Reasoner {
         let rdfssubclass_node = self.index.put_str("http://www.w3.org/2000/01/rdf-schema#subClassOf");
         let owlintersection_node = self.index.put_str("http://www.w3.org/2002/07/owl#intersectionOf");
         let owlhasvalue_node = self.index.put_str("http://www.w3.org/2002/07/owl#hasValue");
+        let owlallvaluesfrom_node = self.index.put_str("http://www.w3.org/2002/07/owl#allValuesFrom");
         let owlonproperty_node = self.index.put_str("http://www.w3.org/2002/07/owl#onProperty");
 
         let rdffirst_node = self.index.put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#first");
@@ -354,6 +357,15 @@ impl Reasoner {
         // T(?u, ?p, ?y) =>  T(?u, rdf:type, ?x)
         let cls_hv2_1 = self.iter1.variable::<(URI, (URI, URI))>("cls_hv2_1");
 
+        // cls-avf:
+        // T(?x, owl:allValuesFrom, ?y)
+        // T(?x, owl:onProperty, ?p)
+        // T(?u, rdf:type, ?x)
+        // T(?u, ?p, ?v) =>  T(?v, rdf:type, ?y)
+        let owl_all_values_from = self.iter1.variable::<(URI, URI)>("owl_all_values_from");
+        let cls_avf_1 = self.iter1.variable::<(URI, (URI, URI))>("cls_avf_1");
+        let cls_avf_2 = self.iter1.variable::<(URI, (URI, URI))>("cls_avf_2");
+
         // cax-eqc1
         // T(?c1, owl:equivalentClass, ?c2), T(?x, rdf:type, ?c1)  =>
         //  T(?x, rdf:type, ?c2)
@@ -384,6 +396,7 @@ impl Reasoner {
             owl_intersection_of.from_map(&self.spo, |&triple| has_pred(triple, owlintersection_node));
             owl_has_value.from_map(&self.spo, |&triple| has_pred(triple, owlhasvalue_node));
             owl_on_property.from_map(&self.spo, |&triple| has_pred(triple, owlonproperty_node));
+            owl_all_values_from.from_map(&self.spo, |&triple| has_pred(triple, owlallvaluesfrom_node));
 
             let mut reflexive_equivalent_class = Vec::new();
             owl_equivalent_class.from_map(&self.spo, |&triple| {
@@ -560,13 +573,30 @@ impl Reasoner {
                 (p, (y, x))
             });
             self.all_triples_input.from_join(&cls_hv2_1, &self.pso, |&prop, &(value, anonclass), &(sub, obj)| {
-                // if value is correct, then emit the rdf_type 
+                // if value is correct, then emit the rdf_type
                 if value == obj {
                     (sub, (rdftype_node, anonclass))
                 } else {
                     (0, (0, 0))
                 }
             });
+
+            // cls-avf:
+            // T(?x, owl:allValuesFrom, ?y)
+            // T(?x, owl:onProperty, ?p)
+            // T(?u, rdf:type, ?x)
+            // T(?u, ?p, ?v) =>  T(?v, rdf:type, ?y)
+            cls_avf_1.from_join(&owl_all_values_from, &owl_on_property, |&x, &y, &p| {
+                (x, (y, p))
+            });
+            cls_avf_2.from_join(&cls_avf_1, &rdf_type_inv, |&x, &(y, p), &u| {
+                (u, (p, y))
+            });
+            self.all_triples_input.from_join(&cls_avf_2, &self.spo, |&u, &(p1, y), &(p2, v)| {
+                (v, (rdftype_node, y))
+            });
+
+
 
         }
     }
@@ -794,6 +824,26 @@ mod tests {
             println!("{} {} {}", s, p, o);
         }
         assert!(res.contains(&("u".to_string(), RDF_TYPE.to_string(), "x".to_string())));
+        Ok(())
+    }
+
+    #[test]
+    fn test_cls_avf() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("x", OWL_ALLVALUESFROM, "y"),
+            ("x", OWL_ONPROPERTY, "p"),
+            ("u", RDF_TYPE, "x"),
+            ("u", "p", "v"),
+        ];
+        r.load_triples(trips);
+        r.reason();
+        let res = r.get_triples();
+        for i in res.iter() {
+            let (s, p, o) = i;
+            println!("{} {} {}", s, p, o);
+        }
+        assert!(res.contains(&("v".to_string(), RDF_TYPE.to_string(), "y".to_string())));
         Ok(())
     }
 

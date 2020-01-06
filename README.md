@@ -54,7 +54,7 @@ Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasonin
 | no     | `cls-com` |       |
 | no     | `cls-svf1` |       |
 | no     | `cls-svf2` |       |
-| no     | `cls-avf` |       |
+| **yes**| `cls-avf` |       |
 | **yes**| `cls-hv1` |       |
 | **yes**| `cls-hv2` |       |
 | no     | `cls-maxc1` |       |
