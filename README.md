@@ -6,74 +6,74 @@ Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasonin
 
 |Completed| Rule name | Notes |
 |---------|----------|-------|
-| [ ]     | `eq-ref` |       |
-| [ ]     | `eq-sym` |       |
-| [ ]     | `eq-trans` |       |
-| [ ]     | `eq-rep-s` |       |
-| [ ]     | `eq-rep-p` |       |
-| [ ]     | `eq-rep-o` |       |
-| [ ]     | `eq-diff1` |       |
-| [ ]     | `eq-diff2` |       |
-| [ ]     | `eq-diff3` |       |
+| no     | `eq-ref` |       |
+| no     | `eq-sym` |       |
+| no     | `eq-trans` |       |
+| no     | `eq-rep-s` |       |
+| no     | `eq-rep-p` |       |
+| no     | `eq-rep-o` |       |
+| no     | `eq-diff1` |       |
+| no     | `eq-diff2` |       |
+| no     | `eq-diff3` |       |
 
 ### Property Axiom Semantics
 
 |Completed| Rule name | Notes |
 |---------|----------|-------|
-| [ ]     | `prp-ap` |       |
-| [ ]     | `prp-dom` |       |
-| [ ]     | `prp-rng` |       |
-| [X]     | `prp-fp` |       |
-| [X]     | `prp-ifp` |       |
-| [ ]     | `prp-irp` |       |
-| [X]     | `prp-symp` |       |
-| [ ]     | `prp-asyp` |       |
-| [ ]     | `prp-trp` |       |
-| [X]     | `prp-spo1` |       |
-| [-]     | `prp-spo2` |       |
-| [X]     | `prp-eqp1` |       |
-| [X]     | `prp-eqp2` |       |
-| [ ]     | `prp-pdw` |       |
-| [ ]     | `prp-adp` |       |
-| [X]     | `prp-inv1` |       |
-| [X]     | `prp-inv2` |       |
-| [ ]     | `prp-key` |       |
-| [ ]     | `prp-npa1` |       |
-| [ ]     | `prp-npa2` |       |
+| no        | `prp-ap` |       |
+| no        | `prp-dom` |       |
+| no        | `prp-rng` |       |
+| **yes**   | `prp-fp` |       |
+| **yes**   | `prp-ifp` |       |
+| no        | `prp-irp` |       |
+| **yes**   | `prp-symp` |       |
+| no        | `prp-asyp` |       |
+| no        | `prp-trp` |       |
+| **yes**   | `prp-spo1` |       |
+| *almost*  | `prp-spo2` |       |
+| **yes**   | `prp-eqp1` |       |
+| **yes**   | `prp-eqp2` |       |
+| no        | `prp-pdw` |       |
+| no        | `prp-adp` |       |
+| **yes**   | `prp-inv1` |       |
+| **yes**   | `prp-inv2` |       |
+| no        | `prp-key` |       |
+| no        | `prp-npa1` |       |
+| no        | `prp-npa2` |       |
 
 ### Class Semantics
 
 |Completed| Rule name | Notes |
 |---------|----------|-------|
-| [ ]     | `cls-thing` |       |
-| [ ]     | `cls-nothing1` |       |
-| [ ]     | `cls-nothing2` |       |
-| [ ]     | `cls-int1` |       |
-| [ ]     | `cls-int2` |       |
-| [ ]     | `cls-uni` |       |
-| [ ]     | `cls-com` |       |
-| [ ]     | `cls-svf1` |       |
-| [ ]     | `cls-svf2` |       |
-| [ ]     | `cls-avf` |       |
-| [ ]     | `cls-hv1` |       |
-| [ ]     | `cls-hv2` |       |
-| [ ]     | `cls-maxc1` |       |
-| [ ]     | `cls-maxc2` |       |
-| [ ]     | `cls-maxqc1` |       |
-| [ ]     | `cls-maxqc2` |       |
-| [ ]     | `cls-maxqc3` |       |
-| [ ]     | `cls-maxqc4` |       |
-| [ ]     | `cls-oo` |       |
+| no     | `cls-thing` |       |
+| no     | `cls-nothing1` |       |
+| no     | `cls-nothing2` |       |
+| **yes**| `cls-int1` |       |
+| **yes**| `cls-int2` |       |
+| no     | `cls-uni` |       |
+| no     | `cls-com` |       |
+| no     | `cls-svf1` |       |
+| no     | `cls-svf2` |       |
+| no     | `cls-avf` |       |
+| **yes**| `cls-hv1` |       |
+| **yes**| `cls-hv2` |       |
+| no     | `cls-maxc1` |       |
+| no     | `cls-maxc2` |       |
+| no     | `cls-maxqc1` |       |
+| no     | `cls-maxqc2` |       |
+| no     | `cls-maxqc3` |       |
+| no     | `cls-maxqc4` |       |
+| no     | `cls-oo` |       |
 
 ### Class Axiom Semantics
 
 |Completed| Rule name | Notes |
 |---------|----------|-------|
-| [ ]     | `cax-sco` |       |
-| [ ]     | `cax-eqc1` |       |
-| [ ]     | `cax-eqc2` |       |
-| [ ]     | `cax-dw` |       |
-| [ ]     | `cax-adc` |       |
+| no     | `cax-sco` |       |
+| no     | `cax-eqc1` |       |
+| no     | `cax-eqc2` |       |
+| no     | `cax-dw` |       |
+| no     | `cax-adc` |       |
 
 ### Other
 

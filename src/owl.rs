@@ -526,6 +526,7 @@ impl Reasoner {
             });
             self.all_triples_input.extend(new_cls_int1_instances);
 
+            // cls-int2
             let mut new_cls_int2_instances = Vec::new();
             cls_int_2_1.from_join(&owl_intersection_of, &rdf_type_inv, |&intersection_class, &listname, &inst| {
                 if let Some(values) = ds.get_list_values(listname) {
