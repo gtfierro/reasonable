@@ -6,12 +6,18 @@ use crate::disjoint_sets::DisjointSets;
 use crate::types::{URI, Triple, has_pred, has_obj, has_pred_obj};
 
 use std::fs;
+use std::io::{Write, Error};
 use std::collections::HashMap;
 use rdf::reader::turtle_parser::TurtleParser;
 use rdf::reader::n_triples_parser::NTriplesParser;
 use rdf::reader::rdf_parser::RdfParser;
 use rdf::node::Node;
 use rdf::graph::Graph;
+use rdf::triple;
+use rdf::uri::Uri;
+// use rdf::writer::turtle_writer::TurtleWriter;
+use crate::rdf::writer::rdf_writer::RdfWriter;
+use rdf::writer::n_triples_writer::NTriplesWriter;
 use roaring::RoaringBitmap;
 
 #[allow(dead_code)]
@@ -234,6 +240,25 @@ impl Reasoner {
         }).collect();
         self.input.extend(trips);
         // self.all_triples_input.insert(trips.into());
+    }
+
+    pub fn dump_file(&mut self, filename: &str) -> Result<(), Error> {
+        let writer = NTriplesWriter::new();
+        let mut graph = Graph::new(None);
+        for i in self.get_triples() {
+            let (s, p, o) = i;
+            let subject = graph.create_uri_node(&Uri::new(s));
+            let predicate = graph.create_uri_node(&Uri::new(p));
+            let object = graph.create_uri_node(&Uri::new(o));
+            let t = triple::Triple::new(&subject, &predicate, &object);
+            graph.add_triple(&t);
+        }
+
+        let mut output = fs::File::create(filename)?;
+        let serialized = writer.write_to_string(&graph).unwrap();
+        output.write_all(serialized.as_bytes())?;
+        println!("Wrote {} triples to {}", graph.count(), filename);
+        Ok(())
     }
 
     pub fn load_file(&mut self, filename: &str) -> Result<(), String> {
@@ -556,7 +581,6 @@ impl Reasoner {
             // T(?x, owl:onProperty, ?p)
             // T(?u, rdf:type, ?x) =>  T(?u, ?p, ?y)
             cls_hv1_1.from_join(&owl_has_value, &owl_on_property, |&x, &y, &p| {
-                println!("hv1 {}", x);
                 (x, (p, y))
             });
             self.all_triples_input.from_join(&cls_hv1_1, &rdf_type_inv, |&x, &(prop, value), &inst| {
@@ -568,7 +592,6 @@ impl Reasoner {
             // T(?x, owl:onProperty, ?p)
             // T(?u, ?p, ?y) =>  T(?u, rdf:type, ?x)
             cls_hv2_1.from_join(&owl_has_value, &owl_on_property, |&x, &y, &p| {
-                println!("hv1 {}", x);
                 // format for pso index; needs property key
                 (p, (y, x))
             });

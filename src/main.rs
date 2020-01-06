@@ -49,9 +49,5 @@ fn main() {
     r.load_triples(v1);
 
     r.reason();
-
-    //for i in r.get_triples() {
-    //    let (s, p, o) = i;
-    //    println!("> {} {} {}", s, p, o);
-    //}
+    r.dump_file("output.n3").unwrap();
 }
