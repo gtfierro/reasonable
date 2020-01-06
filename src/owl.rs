@@ -2,7 +2,6 @@ extern crate datafrog;
 use datafrog::{Iteration, Variable};
 
 use crate::index::URIIndex;
-use crate::floyd_warshall::FloydWarshall;
 use crate::disjoint_sets::DisjointSets;
 use crate::types::{URI, Triple, has_pred, has_obj, has_pred_obj};
 
@@ -361,7 +360,6 @@ impl Reasoner {
         let cax_eqc_2_1 = self.iter1.variable::<(URI)>("cax_eqc_2_1");
 
 
-        // let fw = FloydWarshall::new(&self.input);
         let ds = DisjointSets::new(&self.input);
 
         self.all_triples_input.extend(self.input.iter().cloned());

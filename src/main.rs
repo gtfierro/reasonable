@@ -4,7 +4,6 @@ extern crate rdf;
 mod index;
 mod types;
 mod owl;
-mod floyd_warshall;
 mod disjoint_sets;
 use crate::owl::Reasoner;
 
