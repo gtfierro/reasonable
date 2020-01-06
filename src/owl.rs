@@ -12,6 +12,7 @@ use rdf::reader::turtle_parser::TurtleParser;
 use rdf::reader::n_triples_parser::NTriplesParser;
 use rdf::reader::rdf_parser::RdfParser;
 use rdf::node::Node;
+use rdf::namespace::Namespace;
 use rdf::graph::Graph;
 use rdf::triple;
 use rdf::uri::Uri;
@@ -244,14 +245,13 @@ impl Reasoner {
 
     pub fn dump_file(&mut self, filename: &str) -> Result<(), Error> {
         // let mut abbrevs: HashMap<String, Uri> = HashMap::new();
-        // abbrevs.insert("owl".to_string(), Uri::new("http://www.w3.org/2002/07/owl".to_string()));
-        // abbrevs.insert("rdf".to_string(), Uri::new("http://www.w3.org/1999/02/22-rdf-syntax-ns".to_string()));
-        // abbrevs.insert("rdfs".to_string(), Uri::new("http://www.w3.org/2000/01/rdf-schema".to_string()));
-        // abbrevs.insert("brick".to_string(), Uri::new("https://brickschema.org/schema/1.1.0/Brick".to_string()));
-        // abbrevs.insert("tag".to_string(), Uri::new("https://brickschema.org/schema/1.1.0/BrickTag".to_string()));
-        // let writer = TurtleWriter::new(&abbrevs);
-        let writer = NTriplesWriter::new();
         let mut graph = Graph::new(None);
+        graph.add_namespace(&Namespace::new("owl".to_string(), Uri::new("http://www.w3.org/2002/07/owl".to_string())));
+        graph.add_namespace(&Namespace::new("rdf".to_string(), Uri::new("http://www.w3.org/1999/02/22-rdf-syntax-ns".to_string())));
+        graph.add_namespace(&Namespace::new("rdfs".to_string(), Uri::new("http://www.w3.org/2000/01/rdf-schema".to_string())));
+        graph.add_namespace(&Namespace::new("brick".to_string(), Uri::new("https://brickschema.org/schema/1.1.0/Brick".to_string())));
+        graph.add_namespace(&Namespace::new("tag".to_string(), Uri::new("https://brickschema.org/schema/1.1.0/BrickTag".to_string())));
+        // let writer = NTriplesWriter::new();
         for i in self.get_triples() {
             let (s, p, o) = i;
             let subject = graph.create_uri_node(&Uri::new(s));
@@ -262,6 +262,7 @@ impl Reasoner {
         }
 
         let mut output = fs::File::create(filename)?;
+        let writer = TurtleWriter::new(graph.namespaces());
         let serialized = writer.write_to_string(&graph).unwrap();
         output.write_all(serialized.as_bytes())?;
         println!("Wrote {} triples to {}", graph.count(), filename);
