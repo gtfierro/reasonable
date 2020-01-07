@@ -636,7 +636,10 @@ impl Reasoner {
     pub fn get_triples(&mut self) -> Vec<(String, String, String)> {
         let instances = self.spo.clone().complete();
 
-        instances.iter().map(|inst| {
+        instances.iter().filter(|inst| {
+            let (_s, (_p, _o)) = inst;
+             *_s > 0 && *_p > 0 && *_o > 0
+        }).map(|inst| {
             let (_s, (_p, _o)) = inst;
             let s = self.index.get(*_s).unwrap();
             let p = self.index.get(*_p).unwrap();
