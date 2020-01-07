@@ -184,14 +184,6 @@ impl Reasoner {
         let equivalent_properties = iter1.variable::<(URI, URI)>("equivalent_properties");
         let equivalent_properties_2 = iter1.variable::<(URI, URI)>("equivalent_properties_2");
 
-        // cls-int1
-        // T(?c owl:intersectionOf ?x), LIST[?x, ?c1...?cn],
-        // T(?y rdf:type ?c_i) for i in range(1,n) =>
-        //  T(?y rdf:type ?c)
-        //
-        // ?c owl:intersectionOf ?x
-        let cls_int_2 = iter1.variable::<(URI, URI)>("cls_int_2");
-
         Reasoner {
             iter1: iter1,
             index: index,
@@ -399,6 +391,7 @@ impl Reasoner {
         let prp_fp_hasprop1 = self.iter1.variable::<Triple>("b");
 
         let owl_intersection_of = self.iter1.variable::<(URI, URI)>("owl_intersection_of");
+        let mut intersections: HashMap<URI, URI> = HashMap::new();
 
         // prp-inv1
         // T(?p1, owl:inverseOf, ?p2)
@@ -416,15 +409,15 @@ impl Reasoner {
         //    T(?c owl:intersectionOf ?x), LIST[?x, ?c1...?cn],
         //    T(?y rdf:type ?c_i) for i in range(1,n) =>
         //     T(?y rdf:type ?c)
-        let cls_int_1_1 = self.iter1.variable::<(URI, URI)>("cls_int_1_1");
-        let cls_int_1_2 = self.iter1.variable::<(URI, URI)>("cls_int_1_2");
+        let cls_int_1_1 = self.iter1.variable::<(URI, (URI, usize))>("cls_int_1_1");
+        let cls_int_1_2 = self.iter1.variable::<(URI, (URI, usize))>("cls_int_1_2");
 
         // cls-int2
         //    T(?c owl:intersectionOf ?x), LIST[?x, ?c1...?cn],
         //     T(?y rdf:type ?c) =>
         //    T(?y rdf:type ?c_i) for i in range(1,n)
-        let cls_int_2_1 = self.iter1.variable::<(URI, URI)>("cls_int_1_1");
-        let cls_int_2_2 = self.iter1.variable::<(URI, URI)>("cls_int_1_2");
+        let cls_int_2_1 = self.iter1.variable::<(URI, URI)>("cls_int_2_1");
+        let cls_int_2_2 = self.iter1.variable::<(URI, URI)>("cls_int_2_2");
 
         // cls-hv1:
         // T(?x, owl:hasValue, ?y)
@@ -476,7 +469,13 @@ impl Reasoner {
             self.owl_inverse_of.from_map(&self.spo, |&triple| has_pred(triple, owlinverseof_node) );
             self.owl_inverse_of2.from_map(&self.owl_inverse_of, |&(p1, p2)| (p2, p1) );
 
-            owl_intersection_of.from_map(&self.spo, |&triple| has_pred(triple, owlintersection_node));
+            owl_intersection_of.from_map(&self.spo, |&triple| {
+                let (a, b) = has_pred(triple, owlintersection_node);
+                if a > 0 && b > 0 {
+                    intersections.insert(a, b);
+                }
+                (a, b)
+            });
             owl_has_value.from_map(&self.spo, |&triple| has_pred(triple, owlhasvalue_node));
             owl_on_property.from_map(&self.spo, |&triple| has_pred(triple, owlonproperty_node));
             owl_all_values_from.from_map(&self.spo, |&triple| has_pred(triple, owlallvaluesfrom_node));
@@ -598,28 +597,35 @@ impl Reasoner {
             // N is the number of classes in the list)
             // TODO: finish this up!
             let mut new_cls_int1_instances = Vec::new();
-            cls_int_1_1.from_map(&owl_intersection_of, |&(intersection_class, listname)| {
+            for (_intersection_class, _listname) in intersections.iter() {
+                let listname = *_listname;
+                let intersection_class = *_intersection_class;
                 if let Some(values) = ds.get_list_values(listname) {
-                    // let value_uris: Vec<&String> = values.iter().map(|v| self.index.get(*v).unwrap()).collect();
-                    // println!("{} (len {}) {} {:?}", listname, values.len(), self.index.get(listname).unwrap(), value_uris);
+                    let value_uris: Vec<&String> = values.iter().map(|v| self.index.get(*v).unwrap()).collect();
+                    // println!("{} {} (len {}) {} {:?}", listname, self.index.get(intersection_class).unwrap(), values.len(), self.index.get(listname).unwrap(), value_uris);
                     let mut class_counter: HashMap<URI, usize> = HashMap::new();
                     cls_int_1_2.from_map(&self.rdf_type, |&(inst, list_class)| {
+                        // println!("inst {} values len {}, list class {}", self.index.get(inst).unwrap(), values.len(), list_class);
                         if values.contains(&list_class) {
                             println!("{} is a {}", inst, list_class);
                             let count = class_counter.entry(inst).or_insert(0);
                             *count += 1;
+                            return (inst, (list_class, *count))
+                        } else {
+                            return (inst, (list_class, 0))
                         }
-                        (inst, list_class)
                     });
+                    // println!("class counter {}", class_counter.len());
                     for (inst, num_implemented) in class_counter.iter() {
                         if *num_implemented == values.len() {
                             println!("inferred that {} is a {}", inst, intersection_class);
                             new_cls_int1_instances.push((*inst, (rdftype_node, intersection_class)));
                         }
                     }
+                    // println!("LEN {}", class_counter.len());
                 }
-                (intersection_class, listname)
-            });
+            }
+            //});
             self.all_triples_input.extend(new_cls_int1_instances);
 
             // cls-int2
