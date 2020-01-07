@@ -607,7 +607,7 @@ impl Reasoner {
                     cls_int_1_2.from_map(&self.rdf_type, |&(inst, list_class)| {
                         // println!("inst {} values len {}, list class {}", self.index.get(inst).unwrap(), values.len(), list_class);
                         if values.contains(&list_class) {
-                            println!("{} is a {}", inst, list_class);
+                            //println!("{} is a {}", inst, list_class);
                             let count = class_counter.entry(inst).or_insert(0);
                             *count += 1;
                             return (inst, (list_class, *count))
@@ -618,7 +618,7 @@ impl Reasoner {
                     // println!("class counter {}", class_counter.len());
                     for (inst, num_implemented) in class_counter.iter() {
                         if *num_implemented == values.len() {
-                            println!("inferred that {} is a {}", inst, intersection_class);
+                            //println!("inferred that {} is a {}", inst, intersection_class);
                             new_cls_int1_instances.push((*inst, (rdftype_node, intersection_class)));
                         }
                     }
