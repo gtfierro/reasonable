@@ -251,7 +251,6 @@ impl Reasoner {
         graph.add_namespace(&Namespace::new("rdfs".to_string(), Uri::new("http://www.w3.org/2000/01/rdf-schema".to_string())));
         graph.add_namespace(&Namespace::new("brick".to_string(), Uri::new("https://brickschema.org/schema/1.1.0/Brick".to_string())));
         graph.add_namespace(&Namespace::new("tag".to_string(), Uri::new("https://brickschema.org/schema/1.1.0/BrickTag".to_string())));
-        // let writer = NTriplesWriter::new();
         for i in self.get_triples() {
             let (s, p, o) = i;
             let subject = graph.create_uri_node(&Uri::new(s));
@@ -262,7 +261,8 @@ impl Reasoner {
         }
 
         let mut output = fs::File::create(filename)?;
-        let writer = TurtleWriter::new(graph.namespaces());
+        // let writer = TurtleWriter::new(graph.namespaces());
+        let writer = NTriplesWriter::new();
         let serialized = writer.write_to_string(&graph).unwrap();
         output.write_all(serialized.as_bytes())?;
         println!("Wrote {} triples to {}", graph.count(), filename);
