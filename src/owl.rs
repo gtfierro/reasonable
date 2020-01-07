@@ -3,8 +3,9 @@ use datafrog::{Iteration, Variable};
 
 use crate::index::URIIndex;
 use crate::disjoint_sets::DisjointSets;
-use crate::types::{URI, Triple, has_pred, has_obj, has_pred_obj};
+use crate::types::{URI, Triple, has_pred, has_pred_obj};
 
+use log::info;
 use std::fs;
 use std::io::{Write, Error};
 use std::collections::HashMap;
@@ -18,8 +19,7 @@ use rdf::triple;
 use rdf::uri::Uri;
 use rdf::writer::turtle_writer::TurtleWriter;
 use crate::rdf::writer::rdf_writer::RdfWriter;
-use rdf::writer::n_triples_writer::NTriplesWriter;
-use roaring::RoaringBitmap;
+// use rdf::writer::n_triples_writer::NTriplesWriter;
 
 #[allow(dead_code)]
 const RDFS_SUBCLASSOF: &str = "http://www.w3.org/2000/01/rdf-schema#subClassOf";
@@ -96,11 +96,6 @@ pub struct Reasoner {
 
     equivalent_properties: Variable<(URI, URI)>,
     equivalent_properties_2: Variable<(URI, URI)>,
-
-    firsts: Variable<(URI, URI)>,
-    rests: Variable<(URI, URI)>,
-
-    cls_int_2: Variable<(URI, URI)>,
 }
 
 #[allow(unused)]
@@ -189,10 +184,6 @@ impl Reasoner {
         let equivalent_properties = iter1.variable::<(URI, URI)>("equivalent_properties");
         let equivalent_properties_2 = iter1.variable::<(URI, URI)>("equivalent_properties_2");
 
-        // list relations
-        let firsts = iter1.variable::<(URI, URI)>("firsts");
-        let rests = iter1.variable::<(URI, URI)>("rests");
-
         // cls-int1
         // T(?c owl:intersectionOf ?x), LIST[?x, ?c1...?cn],
         // T(?y rdf:type ?c_i) for i in range(1,n) =>
@@ -200,9 +191,6 @@ impl Reasoner {
         //
         // ?c owl:intersectionOf ?x
         let cls_int_2 = iter1.variable::<(URI, URI)>("cls_int_2");
-        //
-        // firsts:
-        // ?y rdf:type
 
         Reasoner {
             iter1: iter1,
@@ -212,9 +200,6 @@ impl Reasoner {
             pso: pso,
             osp: osp,
             all_triples_input: all_triples_input,
-
-            firsts: firsts,
-            rests: rests,
 
             prp_dom: prp_dom,
             prp_rng: prp_rng,
@@ -234,8 +219,6 @@ impl Reasoner {
             symmetric_properties: symmetric_properties,
             equivalent_properties: equivalent_properties,
             equivalent_properties_2: equivalent_properties_2,
-
-            cls_int_2: cls_int_2,
         }
     }
 
@@ -332,7 +315,7 @@ impl Reasoner {
         // let writer = NTriplesWriter::new();
         let serialized = writer.write_to_string(&graph).unwrap();
         output.write_all(serialized.as_bytes())?;
-        println!("Wrote {} triples to {}", graph.count(), filename);
+        info!("Wrote {} triples to {}", graph.count(), filename);
         Ok(())
     }
 
@@ -354,7 +337,7 @@ impl Reasoner {
         //}
         //let graph = Box::new(reader.decode().expect("bad reader"));
         //if let Ok(graph) = reader.decode() {
-        println!("count: {} {}", filename, graph.count());
+        info!("Loaded {} triples from file {}", graph.count(), filename);
         let triples : Vec<(URI, (URI, URI))> = graph.triples_iter().map(|_triple| {
             let triple = _triple;
             let subject = match triple.subject() {
@@ -622,7 +605,7 @@ impl Reasoner {
                     let mut class_counter: HashMap<URI, usize> = HashMap::new();
                     cls_int_1_2.from_map(&self.rdf_type, |&(inst, list_class)| {
                         if values.contains(&list_class) {
-                            // println!("{} is a {}", inst, list_class);
+                            println!("{} is a {}", inst, list_class);
                             let count = class_counter.entry(inst).or_insert(0);
                             *count += 1;
                         }
@@ -630,7 +613,7 @@ impl Reasoner {
                     });
                     for (inst, num_implemented) in class_counter.iter() {
                         if *num_implemented == values.len() {
-                            // println!("inferred that {} is a {}", inst, intersection_class);
+                            println!("inferred that {} is a {}", inst, intersection_class);
                             new_cls_int1_instances.push((*inst, (rdftype_node, intersection_class)));
                         }
                     }
@@ -999,4 +982,77 @@ mod tests {
         assert!(res.contains(&("y".to_string(), RDF_TYPE.to_string(), "c3".to_string())));
         Ok(())
     }
+
+    #[test]
+    fn test_cls_int2_withequivalent() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("c", OWL_INTERSECTION, "x"),
+            ("x", RDF_FIRST, "c1"),
+            ("x", RDF_REST, "z2"),
+            ("z2", RDF_FIRST, "c2"),
+            ("z2", RDF_REST, "z3"),
+            ("z3", RDF_FIRST, "c3"),
+            ("z3", RDF_REST, RDF_NIL),
+            ("y", RDF_TYPE, "c"),
+
+            ("c", OWL_EQUIVALENTCLASS, "C"),
+
+            ("C", OWL_INTERSECTION, "X"),
+            ("X", RDF_FIRST, "C1"),
+            ("X", RDF_REST, "Z2"),
+            ("Z2", RDF_FIRST, "C2"),
+            ("Z2", RDF_REST, "Z3"),
+            ("Z3", RDF_FIRST, "C3"),
+            ("Z3", RDF_REST, RDF_NIL),
+
+        ];
+        r.load_triples(trips);
+        r.reason();
+        let res = r.get_triples();
+        for i in res.iter() {
+            let (s, p, o) = i;
+            println!("{} {} {}", s, p, o);
+        }
+        assert!(res.contains(&("y".to_string(), RDF_TYPE.to_string(), "c1".to_string())));
+        assert!(res.contains(&("y".to_string(), RDF_TYPE.to_string(), "c2".to_string())));
+        assert!(res.contains(&("y".to_string(), RDF_TYPE.to_string(), "c3".to_string())));
+        assert!(res.contains(&("y".to_string(), RDF_TYPE.to_string(), "C1".to_string())));
+        assert!(res.contains(&("y".to_string(), RDF_TYPE.to_string(), "C2".to_string())));
+        assert!(res.contains(&("y".to_string(), RDF_TYPE.to_string(), "C3".to_string())));
+        Ok(())
+    }
+
+    #[test]
+    fn test_cls_int1_withhasvalue() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("intersection_class", OWL_INTERSECTION, "x"),
+            ("x", RDF_FIRST, "c1"),
+            ("x", RDF_REST, "z2"),
+            ("z2", RDF_FIRST, "c2"),
+            ("z2", RDF_REST, RDF_NIL),
+
+            ("c1", OWL_HASVALUE, "c1p_value"),
+            ("c1", OWL_ONPROPERTY, "c1p"),
+            ("c2", OWL_HASVALUE, "c2p_value"),
+            ("c2", OWL_ONPROPERTY, "c2p"),
+
+            ("inst", "c1p", "c1p_value"),
+            ("inst", "c2p", "c2p_value"),
+
+        ];
+        r.load_triples(trips);
+        r.reason();
+        let res = r.get_triples();
+        for i in res.iter() {
+            let (s, p, o) = i;
+            println!("{} {} {}", s, p, o);
+        }
+        assert!(res.contains(&("inst".to_string(), RDF_TYPE.to_string(), "c1".to_string())));
+        assert!(res.contains(&("inst".to_string(), RDF_TYPE.to_string(), "c2".to_string())));
+        assert!(res.contains(&("inst".to_string(), RDF_TYPE.to_string(), "intersection_class".to_string())));
+        Ok(())
+    }
+
 }

@@ -2,17 +2,10 @@ extern crate datafrog;
 extern crate disjoint_sets;
 
 use disjoint_sets::UnionFind;
-use datafrog::{Iteration, Variable};
-use itertools::Itertools;
-use std::time::Instant;
-use crate::index::{URIIndex, hash_str};
+use datafrog::Iteration;
+use crate::index::URIIndex;
 use crate::types::{URI, Triple};
-use std::collections::{HashMap, HashSet};
-use roaring::RoaringBitmap;
-
-const RDF_FIRST: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#first";
-const RDF_REST: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#rest";
-const RDF_NIL: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil";
+use std::collections::HashMap;
 
 pub struct DisjointSets {
     lists: HashMap<URI, Vec<URI>>,
@@ -55,7 +48,7 @@ impl DisjointSets {
         rdffirst.extend(vec![(rdffirst_node, ())]);
         let rdfrest = list_iter.variable::<(URI, ())>("rdfrest");
         rdfrest.extend(vec![(rdfrest_node, ())]);
-        let mut list_triples = list_iter.variable::<Triple>("list_triples");
+        let list_triples = list_iter.variable::<Triple>("list_triples");
         list_triples.extend(input.iter().map(|&(s, (p, o))| (p, (s, o))));
         let rdf_firsts = list_iter.variable::<()>("rdf_firsts");
         let rdf_rests = list_iter.variable::<()>("rdf_rests");
@@ -83,7 +76,7 @@ impl DisjointSets {
             // get the uri for the list
             let listname = idx2uri[set];
             // println!("key {} belongs to {} ({})", key, set, listname);
-            let mut list = lists.entry(listname).or_insert(Vec::new());
+            let list = lists.entry(listname).or_insert(Vec::new());
             list.push(value);
         }).count();
         // lists.iter().map(|(k, v)| {

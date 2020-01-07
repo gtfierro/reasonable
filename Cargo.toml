@@ -11,6 +11,8 @@ datafrog = "2.0.1"
 roaring = "0.5.2"
 itertools = "0.8"
 disjoint-sets = "0.4.2"
+log = "0.4"
+env_logger = "0.7.1"
 
 [profile.release]
 debug = true
