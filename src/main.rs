@@ -25,8 +25,8 @@ fn main() {
         r.load_file(&filename).unwrap()
     ).count();
     r.reason();
-    // r.dump_file("output.ttl").unwrap();
-    r.dump_file("output.n3").unwrap();
+    r.dump_file("output.ttl").unwrap();
+    // r.dump_file("output.n3").unwrap();
 
     // // TODO: load in datasets
     // r.load_file("rdfs.ttl").unwrap();

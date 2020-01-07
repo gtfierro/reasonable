@@ -28,6 +28,10 @@ const RDFS_DOMAIN: &str = "http://www.w3.org/2000/01/rdf-schema#domain";
 #[allow(dead_code)]
 const RDFS_RANGE: &str = "http://www.w3.org/2000/01/rdf-schema#range";
 #[allow(dead_code)]
+const RDFS_LITERAL: &str = "http://www.w3.org/2000/01/rdf-schema#Literal";
+#[allow(dead_code)]
+const RDFS_RESOURCE: &str = "http://www.w3.org/2000/01/rdf-schema#Resource";
+#[allow(dead_code)]
 const RDFS_SUBPROP: &str = "http://www.w3.org/2000/01/rdf-schema#subPropertyOf";
 #[allow(dead_code)]
 const RDF_TYPE: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
@@ -243,26 +247,89 @@ impl Reasoner {
         // self.all_triples_input.insert(trips.into());
     }
 
+    // TODO: inspect the range of the predicate to tell if it should be a literal
+    fn suggests_literal(&self, pred: &String) -> bool {
+        *pred == "http://www.w3.org/2000/01/rdf-schema#label".to_string() ||
+        *pred == "http://www.w3.org/2000/01/rdf-schema#comment".to_string() ||
+        *pred == "http://schema.org#email".to_string() ||
+        *pred == "http://schema.org#name".to_string() ||
+        *pred == "http://www.w3.org/2004/02/skos/core#definition".to_string() ||
+        *pred == "http://purl.org/dc/elements/1.1/title"
+    }
+
+    fn escape_literal(&self, literal: &str) -> String {
+        //if literal.contains('\\') {
+        //    println!("original {}", literal);
+        //}
+        let escaped_literal = literal.to_string().replace("\n", "\\n");
+        //let characters: Vec<char> = vec!['\'', '"', '\\'];
+        //for c in characters {
+        //    let mut escaped_char = "\\".to_string();
+        //    escaped_char.push(c);
+        //    println!("escaped: {:?}", escaped_char);
+        //    escaped_literal.replace(c, &escaped_char);
+        //}
+        //if literal.contains("\n") {
+        //    println!("=> {}", escaped_literal);
+        //}
+        escaped_literal
+    }
+
     pub fn dump_file(&mut self, filename: &str) -> Result<(), Error> {
         // let mut abbrevs: HashMap<String, Uri> = HashMap::new();
         let mut graph = Graph::new(None);
-        graph.add_namespace(&Namespace::new("owl".to_string(), Uri::new("http://www.w3.org/2002/07/owl".to_string())));
-        graph.add_namespace(&Namespace::new("rdf".to_string(), Uri::new("http://www.w3.org/1999/02/22-rdf-syntax-ns".to_string())));
-        graph.add_namespace(&Namespace::new("rdfs".to_string(), Uri::new("http://www.w3.org/2000/01/rdf-schema".to_string())));
-        graph.add_namespace(&Namespace::new("brick".to_string(), Uri::new("https://brickschema.org/schema/1.1.0/Brick".to_string())));
-        graph.add_namespace(&Namespace::new("tag".to_string(), Uri::new("https://brickschema.org/schema/1.1.0/BrickTag".to_string())));
+        graph.add_namespace(&Namespace::new("owl".to_string(), Uri::new("http://www.w3.org/2002/07/owl#".to_string())));
+        graph.add_namespace(&Namespace::new("rdf".to_string(), Uri::new("http://www.w3.org/1999/02/22-rdf-syntax-ns#".to_string())));
+        graph.add_namespace(&Namespace::new("rdfs".to_string(), Uri::new("http://www.w3.org/2000/01/rdf-schema#".to_string())));
+        graph.add_namespace(&Namespace::new("brick".to_string(), Uri::new("https://brickschema.org/schema/1.1.0/Brick#".to_string())));
+        graph.add_namespace(&Namespace::new("tag".to_string(), Uri::new("https://brickschema.org/schema/1.1.0/BrickTag#".to_string())));
         for i in self.get_triples() {
             let (s, p, o) = i;
+
+            // skip these because they put Literals as the subject of a triple and some parsers
+            // complain about this
+            if p == RDF_TYPE && o == RDFS_LITERAL {
+                continue
+            }
+            if p == RDF_TYPE && o == RDFS_RESOURCE {
+                continue
+            }
+            if p ==  "http://www.w3.org/2000/01/rdf-schema#seeAlso" {
+                continue
+            }
+            if p ==  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" {
+                continue
+            }
             let subject = graph.create_uri_node(&Uri::new(s));
+            //let subject = if p == RDF_TYPE && o == RDFS_LITERAL {
+            //    graph.create_literal_node(s)
+            //} else {
+            //    graph.create_uri_node(&Uri::new(s))
+            //};
+
+            // determine if the object should be encoded as a literal. Checking for a ' ' is a poor
+            // heuristic; TODO: correct answer is to use the datatype of the predicate's rdfs:range
+            // property
+            //let object = if self.suggests_literal(&p) {
+            // TODO: remove newlines from the literal? maybe this is put in here by the serializer
+            let object = if o.contains(" ") || self.suggests_literal(&p) {
+                // if o.contains("\n") {
+                //     println!("has newline {}", o);
+                // }
+                // graph.create_literal_node(o.escape_default().to_string())
+                graph.create_literal_node(self.escape_literal(&o))
+            } else {
+                graph.create_uri_node(&Uri::new(o))
+            };
+
             let predicate = graph.create_uri_node(&Uri::new(p));
-            let object = graph.create_uri_node(&Uri::new(o));
             let t = triple::Triple::new(&subject, &predicate, &object);
             graph.add_triple(&t);
         }
 
         let mut output = fs::File::create(filename)?;
-        // let writer = TurtleWriter::new(graph.namespaces());
-        let writer = NTriplesWriter::new();
+        let writer = TurtleWriter::new(graph.namespaces());
+        // let writer = NTriplesWriter::new();
         let serialized = writer.write_to_string(&graph).unwrap();
         output.write_all(serialized.as_bytes())?;
         println!("Wrote {} triples to {}", graph.count(), filename);
