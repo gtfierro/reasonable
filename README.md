@@ -13,8 +13,8 @@ Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasonin
 | **yes**| `eq-rep-p` |       |
 | **yes**| `eq-rep-o` |       |
 | no     | `eq-diff1` | `eq-diff{1,2,3}` all involve throwing exceptions. Not clear how we want to handle these yet      |
-| no     | `eq-diff2` |       |
-| no     | `eq-diff3` |       |
+| no     | `eq-diff2` | throws exception |
+| no     | `eq-diff3` | throws exception |
 
 ### Property Axiom Semantics
 
@@ -45,9 +45,9 @@ Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasonin
 
 |Completed| Rule name | Notes |
 |---------|----------|-------|
-| no     | `cls-thing` |       |
-| no     | `cls-nothing1` |       |
-| no     | `cls-nothing2` |       |
+| **yes**| `cls-thing` |       |
+| **yes**| `cls-nothing1` |       |
+| no     | `cls-nothing2` | throws exception       |
 | **yes**| `cls-int1` |       |
 | **yes**| `cls-int2` |       |
 | no     | `cls-uni` |       |

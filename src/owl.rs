@@ -67,6 +67,12 @@ const OWL_INVFUNCPROP: &str = "http://www.w3.org/2002/07/owl#InverseFunctionalPr
 const OWL_TRANSPROP: &str = "http://www.w3.org/2002/07/owl#TransitiveProperty";
 #[allow(dead_code)]
 const OWL_INTERSECTION: &str = "http://www.w3.org/2002/07/owl#intersectionOf";
+#[allow(dead_code)]
+const OWL_CLASS: &str = "http://www.w3.org/2002/07/owl#Class";
+#[allow(dead_code)]
+const OWL_THING: &str = "http://www.w3.org/2002/07/owl#Thing";
+#[allow(dead_code)]
+const OWL_NOTHING: &str = "http://www.w3.org/2002/07/owl#Nothing";
 
 pub struct Reasoner {
     iter1: Iteration,
@@ -188,10 +194,19 @@ impl Reasoner {
         let equivalent_properties = iter1.variable::<(URI, URI)>("equivalent_properties");
         let equivalent_properties_2 = iter1.variable::<(URI, URI)>("equivalent_properties_2");
 
+        // cls-thing, cls-nothing1
+        let u_owl_thing = index.put_str(OWL_THING);
+        let u_owl_nothing = index.put_str(OWL_NOTHING);
+        let u_rdf_type = index.put_str(RDF_TYPE);
+        let u_owl_class = index.put_str(OWL_CLASS);
+        let mut input = Vec::new();
+        input.push((u_owl_thing, (u_rdf_type, u_owl_class)));
+        input.push((u_owl_nothing, (u_rdf_type, u_owl_class)));
+
         Reasoner {
             iter1: iter1,
             index: index,
-            input: Vec::new(),
+            input: input,
             spo: spo,
             pso: pso,
             osp: osp,
@@ -1166,6 +1181,20 @@ mod tests {
             println!("{} {} {}", s, p, o);
         }
         assert!(res.contains(&("x".to_string(), "p2".to_string(), "y".to_string())));
+        Ok(())
+    }
+
+    #[test]
+    fn test_cls_thing_nothing() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        r.reason();
+        let res = r.get_triples();
+        for i in res.iter() {
+            let (s, p, o) = i;
+            println!("{} {} {}", s, p, o);
+        }
+        assert!(res.contains(&(OWL_THING.to_string(), RDF_TYPE.to_string(), OWL_CLASS.to_string())));
+        assert!(res.contains(&(OWL_NOTHING.to_string(), RDF_TYPE.to_string(), OWL_CLASS.to_string())));
         Ok(())
     }
 
