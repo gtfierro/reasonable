@@ -51,9 +51,9 @@ Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasonin
 | **yes**| `cls-int1` |       |
 | **yes**| `cls-int2` |       |
 | **yes**| `cls-uni` |       |
-| no     | `cls-com` |       |
+| no     | `cls-com` | throws exception    |
 | **yes**| `cls-svf1` |       |
-| no     | `cls-svf2` |       |
+| **yes**| `cls-svf2` |       |
 | **yes**| `cls-avf` |       |
 | **yes**| `cls-hv1` |       |
 | **yes**| `cls-hv2` |       |

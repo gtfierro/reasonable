@@ -386,6 +386,7 @@ impl Reasoner {
         let rdftype_node = self.index.put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
         let rdfsdomain_node = self.index.put_str("http://www.w3.org/2000/01/rdf-schema#domain");
         let rdfsrange_node = self.index.put_str("http://www.w3.org/2000/01/rdf-schema#range");
+        let owlthing_node = self.index.put_str("http://www.w3.org/2002/07/owl#Thing");
         let owlsameas_node = self.index.put_str("http://www.w3.org/2002/07/owl#sameAs");
         let owlinverseof_node = self.index.put_str("http://www.w3.org/2002/07/owl#inverseOf");
         let owlsymmetricprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#SymmetricProperty");
@@ -503,9 +504,8 @@ impl Reasoner {
         // T(?u, ?p, ?v)
         // T(?v, rdf:type, ?y) =>  T(?u, rdf:type, ?x)
         let owl_some_values_from = self.iter1.variable::<(URI, URI)>("owl_some_values_from");
-        let cls_svf_1 = self.iter1.variable::<(URI, (URI, URI))>("cls_svf_1");
-        let cls_svf_2 = self.iter1.variable::<(URI, (URI, URI, URI))>("cls_svf_2");
-        let cls_svf_3 = self.iter1.variable::<(URI, (URI, URI))>("cls_svf_3");
+        let cls_svf1_1 = self.iter1.variable::<(URI, (URI, URI))>("cls_svf1_1");
+        let cls_svf1_2 = self.iter1.variable::<(URI, (URI, URI, URI))>("cls_svf1_2");
 
         // cax-eqc1
         // T(?c1, owl:equivalentClass, ?c2), T(?x, rdf:type, ?c1)  =>
@@ -872,14 +872,26 @@ impl Reasoner {
             // T(?x, owl:onProperty, ?p)
             // T(?u, ?p, ?v)
             // T(?v, rdf:type, ?y) =>  T(?u, rdf:type, ?x)
-            cls_svf_1.from_join(&owl_some_values_from, &owl_on_property, |&x, &y, &p| {
+            cls_svf1_1.from_join(&owl_some_values_from, &owl_on_property, |&x, &y, &p| {
                 (p, (x, y))
             });
-            cls_svf_2.from_join(&cls_svf_1, &self.pso, |&p, &(x, y), &(u, v)| {
+            cls_svf1_2.from_join(&cls_svf1_1, &self.pso, |&p, &(x, y), &(u, v)| {
                 (v, (x, y, u))
             });
-            self.all_triples_input.from_join(&cls_svf_2, &self.rdf_type, |&v, &(x, y, u), &class| {
+            self.all_triples_input.from_join(&cls_svf1_2, &self.rdf_type, |&v, &(x, y, u), &class| {
                 if class == y {
+                    (u, (rdftype_node, x))
+                } else {
+                    (0, (0, 0))
+                }
+            });
+
+            // cls-svf2:
+            //  T(?x, owl:someValuesFrom, owl:Thing)
+            //  T(?x, owl:onProperty, ?p)
+            //  T(?u, ?p, ?v) =>  T(?u, rdf:type, ?x)
+            self.all_triples_input.from_join(&cls_svf1_1, &self.pso, |&p, &(x, y), &(u, v)| {
+                if y == owlthing_node {
                     (u, (rdftype_node, x))
                 } else {
                     (0, (0, 0))
@@ -1312,6 +1324,25 @@ mod tests {
             ("x", OWL_ONPROPERTY, "p"),
             ("u", "p", "v"),
             ("v", RDF_TYPE, "y"),
+        ];
+        r.load_triples(trips);
+        r.reason();
+        let res = r.get_triples();
+        for i in res.iter() {
+            let (s, p, o) = i;
+            println!("{} {} {}", s, p, o);
+        }
+        assert!(res.contains(&("u".to_string(), RDF_TYPE.to_string(), "x".to_string())));
+        Ok(())
+    }
+
+    #[test]
+    fn test_cls_svf2() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("x", OWL_SOMEVALUESFROM, OWL_THING),
+            ("x", OWL_ONPROPERTY, "p"),
+            ("u", "p", "v"),
         ];
         r.load_triples(trips);
         r.reason();
