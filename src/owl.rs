@@ -1506,5 +1506,4 @@ mod tests {
         assert!(res.contains(&("y3".to_string(), RDF_TYPE.to_string(), "c".to_string())));
         Ok(())
     }
-
 }
