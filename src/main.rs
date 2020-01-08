@@ -1,3 +1,4 @@
+#![feature(duration_float)]
 extern crate rdf;
 extern crate itertools;
 extern crate log;

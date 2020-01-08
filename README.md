@@ -25,21 +25,21 @@ Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasonin
 | **yes**   | `prp-rng` |       |
 | **yes**   | `prp-fp` |       |
 | **yes**   | `prp-ifp` |       |
-| no        | `prp-irp` |       |
+| no        | `prp-irp` | throws exception |
 | **yes**   | `prp-symp` |       |
-| no        | `prp-asyp` |       |
-| no        | `prp-trp` |       |
+| no        | `prp-asyp` | throws exception |
+| **yes**   | `prp-trp` |       |
 | **yes**   | `prp-spo1` |       |
-| *almost*  | `prp-spo2` |       |
+| no        | `prp-spo2` |       |
 | **yes**   | `prp-eqp1` |       |
 | **yes**   | `prp-eqp2` |       |
-| no        | `prp-pdw` |       |
-| no        | `prp-adp` |       |
+| no        | `prp-pdw` | throws exception |
+| no        | `prp-adp` | throws exception |
 | **yes**   | `prp-inv1` |       |
 | **yes**   | `prp-inv2` |       |
 | no        | `prp-key` |       |
-| no        | `prp-npa1` |       |
-| no        | `prp-npa2` |       |
+| no        | `prp-npa1` | throws exception |
+| no        | `prp-npa2` | throws exception |
 
 ### Class Semantics
 

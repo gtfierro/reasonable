@@ -64,6 +64,8 @@ const OWL_FUNCPROP: &str = "http://www.w3.org/2002/07/owl#FunctionalProperty";
 #[allow(dead_code)]
 const OWL_INVFUNCPROP: &str = "http://www.w3.org/2002/07/owl#InverseFunctionalProperty";
 #[allow(dead_code)]
+const OWL_TRANSPROP: &str = "http://www.w3.org/2002/07/owl#TransitiveProperty";
+#[allow(dead_code)]
 const OWL_INTERSECTION: &str = "http://www.w3.org/2002/07/owl#intersectionOf";
 
 pub struct Reasoner {
@@ -370,6 +372,7 @@ impl Reasoner {
         let owlsameas_node = self.index.put_str("http://www.w3.org/2002/07/owl#sameAs");
         let owlinverseof_node = self.index.put_str("http://www.w3.org/2002/07/owl#inverseOf");
         let owlsymmetricprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#SymmetricProperty");
+        let owltransitiveprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#TransitiveProperty");
         let owlequivprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#equivalentProperty");
         let owlequivclassprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#equivalentClass");
         let owlfuncprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#FunctionalProperty");
@@ -412,6 +415,7 @@ impl Reasoner {
 
         // eq-rep-s, eq-rep-o, eq-rep-p
         // T(?s, owl:sameAs, ?s')
+        // TODO: make more efficient
         // T(?s, ?p, ?o) => T(?s', ?p, ?o) (and then for p' and o')
 
         // prp-inv1
@@ -423,6 +427,14 @@ impl Reasoner {
         //
         // (p1, p2)
         let prp_inv1 = self.iter1.variable::<(URI, URI)>("prp_inv1");
+
+        // prp-trp
+        // T(?p, rdf:type, owl:TransitiveProperty)
+        // T(?x, ?p, ?y)
+        // T(?y, ?p, ?z) =>  T(?x, ?p, ?z)
+        let transitive_properties = self.iter1.variable::<(URI, ())>("transitive_properties");
+        let prp_trp_1 = self.iter1.variable::<((URI, URI), URI)>("prp_trp_1");
+        let prp_trp_2 = self.iter1.variable::<((URI, URI), URI)>("prp_trp_2");
 
         let list_test1 = self.iter1.variable::<(URI, URI)>("list_test1");
 
@@ -533,6 +545,8 @@ impl Reasoner {
             self.symmetric_properties.from_map(&self.spo, |&triple| {
                 has_pred_obj(triple, (rdftype_node, owlsymmetricprop_node))
             });
+
+            transitive_properties.from_map(&self.spo, |&triple| has_pred_obj(triple, (rdftype_node, owltransitiveprop_node)));
 
             self.equivalent_properties.from_map(&self.spo, |&triple| has_pred(triple, owlequivprop_node) );
             self.equivalent_properties_2.from_map(&self.equivalent_properties, |&(p1, p2)| (p2, p1));
@@ -656,6 +670,20 @@ impl Reasoner {
             //  => T(?y, ?p, ?x)
             self.all_triples_input.from_join(&self.symmetric_properties, &self.pso, |&prop, &(), &(x, y)| {
                 (y, (prop, x))
+            });
+
+            // prp-trp
+            // T(?p, rdf:type, owl:TransitiveProperty)
+            // T(?x, ?p, ?y)
+            // T(?y, ?p, ?z) =>  T(?x, ?p, ?z)
+            prp_trp_1.from_join(&self.pso, &transitive_properties, |&p, &(x, y), &()| {
+                ((y, p), x)
+            });
+            prp_trp_2.from_join(&self.pso, &transitive_properties, |&p, &(y, z), &()| {
+                ((y, p), z)
+            });
+            self.all_triples_input.from_join(&prp_trp_1, &prp_trp_2, |&(y, p), &x, &z| {
+                (x, (p, z))
             });
 
             // prp-eqp1
@@ -841,6 +869,7 @@ mod tests {
     }
 
     #[test]
+    #[ignore]
     fn test_eq_ref() -> Result<(), String> {
         let mut r = Reasoner::new();
         let trips = vec![
@@ -1100,6 +1129,25 @@ mod tests {
             println!("{} {} {}", s, p, o);
         }
         assert!(res.contains(&("y".to_string(), "p".to_string(), "x".to_string())));
+        Ok(())
+    }
+
+    #[test]
+    fn test_prp_trp() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("p", RDF_TYPE, OWL_TRANSPROP),
+            ("x", "p", "y"),
+            ("y", "p", "z"),
+        ];
+        r.load_triples(trips);
+        r.reason();
+        let res = r.get_triples();
+        for i in res.iter() {
+            let (s, p, o) = i;
+            println!("{} {} {}", s, p, o);
+        }
+        assert!(res.contains(&("x".to_string(), "p".to_string(), "z".to_string())));
         Ok(())
     }
 
