@@ -57,10 +57,10 @@ Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasonin
 | **yes**| `cls-avf` |       |
 | **yes**| `cls-hv1` |       |
 | **yes**| `cls-hv2` |       |
-| no     | `cls-maxc1` |       |
+| no     | `cls-maxc1` | throws exception       |
 | no     | `cls-maxc2` |       |
-| no     | `cls-maxqc1` |       |
-| no     | `cls-maxqc2` |       |
+| no     | `cls-maxqc1` | throws exception       |
+| no     | `cls-maxqc2` | throws exception      |
 | no     | `cls-maxqc3` |       |
 | no     | `cls-maxqc4` |       |
 | no     | `cls-oo` |       |
@@ -72,8 +72,8 @@ Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasonin
 | **yes**| `cax-sco` |       |
 | **yes**| `cax-eqc1` |       |
 | **yes**| `cax-eqc2` |       |
-| **yes**| `cax-dw` |       |
-| no     | `cax-adc` |       |
+| **yes**| `cax-dw` | throws exception      |
+| no     | `cax-adc` |  throws exception     |
 
 ### Other
 
