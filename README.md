@@ -6,12 +6,12 @@ Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasonin
 
 |Completed| Rule name | Notes |
 |---------|----------|-------|
-| no     | `eq-ref` |       |
-| no     | `eq-sym` |       |
-| no     | `eq-trans` |       |
-| no     | `eq-rep-s` |       |
-| no     | `eq-rep-p` |       |
-| no     | `eq-rep-o` |       |
+| **yes**| `eq-ref` |       |
+| **yes**| `eq-sym` |       |
+| **yes**| `eq-trans` |       |
+| **yes**| `eq-rep-s` |       |
+| **yes**| `eq-rep-p` |       |
+| **yes**| `eq-rep-o` |       |
 | no     | `eq-diff1` |       |
 | no     | `eq-diff2` |       |
 | no     | `eq-diff3` |       |
@@ -52,7 +52,7 @@ Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasonin
 | **yes**| `cls-int2` |       |
 | no     | `cls-uni` |       |
 | no     | `cls-com` |       |
-| no     | `cls-svf1` |       |
+| **yes**| `cls-svf1` |       |
 | no     | `cls-svf2` |       |
 | **yes**| `cls-avf` |       |
 | **yes**| `cls-hv1` |       |
@@ -72,7 +72,7 @@ Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasonin
 | **yes**| `cax-sco` |       |
 | **yes**| `cax-eqc1` |       |
 | **yes**| `cax-eqc2` |       |
-| no     | `cax-dw` |       |
+| **yes**| `cax-dw` |       |
 | no     | `cax-adc` |       |
 
 ### Other

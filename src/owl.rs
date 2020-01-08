@@ -50,6 +50,8 @@ const OWL_HASVALUE: &str = "http://www.w3.org/2002/07/owl#hasValue";
 #[allow(dead_code)]
 const OWL_ALLVALUESFROM: &str = "http://www.w3.org/2002/07/owl#allValuesFrom";
 #[allow(dead_code)]
+const OWL_SOMEVALUESFROM: &str = "http://www.w3.org/2002/07/owl#someValuesFrom";
+#[allow(dead_code)]
 const OWL_ONPROPERTY: &str = "http://www.w3.org/2002/07/owl#onProperty";
 #[allow(dead_code)]
 const OWL_INVERSEOF: &str = "http://www.w3.org/2002/07/owl#inverseOf";
@@ -377,6 +379,8 @@ impl Reasoner {
         let owlintersection_node = self.index.put_str("http://www.w3.org/2002/07/owl#intersectionOf");
         let owlhasvalue_node = self.index.put_str("http://www.w3.org/2002/07/owl#hasValue");
         let owlallvaluesfrom_node = self.index.put_str("http://www.w3.org/2002/07/owl#allValuesFrom");
+        let owlsomevaluesfrom_node = self.index.put_str("http://www.w3.org/2002/07/owl#someValuesFrom");
+        let owldisjointwith_node = self.index.put_str("http://www.w3.org/2002/07/owl#disjointWith");
         let owlonproperty_node = self.index.put_str("http://www.w3.org/2002/07/owl#onProperty");
 
         let rdffirst_node = self.index.put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#first");
@@ -390,6 +394,26 @@ impl Reasoner {
         let owl_intersection_of = self.iter1.variable::<(URI, URI)>("owl_intersection_of");
         let mut intersections: HashMap<URI, URI> = HashMap::new();
         let mut instances: HashSet<(URI, URI)> = HashSet::new();
+
+        // eq-ref
+        //  T(?s, ?p, ?o) =>
+        //  T(?s, owl:sameAs, ?s)
+        //  T(?p, owl:sameAs, ?p)
+        //  T(?o, owl:sameAs, ?o)
+        let eq_ref_1 = self.iter1.variable::<(URI, ())>("eq_ref_1");
+
+        // eq-sym
+        //  T(?x, owl:sameAs, ?y)  =>  T(?y, owl:sameAs, ?x)
+        let owl_same_as = self.iter1.variable::<(URI, URI)>("owl_same_as");
+
+        // eq-trans
+        // T(?x, owl:sameAs, ?y)
+        // T(?y, owl:sameAs, ?z)  =>  T(?x, owl:sameAs, ?z)
+        let eq_trans_1 = self.iter1.variable::<(URI, URI)>("eq_trans_1");
+
+        // eq-rep-s, eq-rep-o, eq-rep-p
+        // T(?s, owl:sameAs, ?s')
+        // T(?s, ?p, ?o) => T(?s', ?p, ?o) (and then for p' and o')
 
         // prp-inv1
         // T(?p1, owl:inverseOf, ?p2)
@@ -437,6 +461,16 @@ impl Reasoner {
         let cls_avf_1 = self.iter1.variable::<(URI, (URI, URI))>("cls_avf_1");
         let cls_avf_2 = self.iter1.variable::<(URI, (URI, URI))>("cls_avf_2");
 
+        // cls-svf1
+        // T(?x, owl:someValuesFrom, ?y)
+        // T(?x, owl:onProperty, ?p)
+        // T(?u, ?p, ?v)
+        // T(?v, rdf:type, ?y) =>  T(?u, rdf:type, ?x)
+        let owl_some_values_from = self.iter1.variable::<(URI, URI)>("owl_some_values_from");
+        let cls_svf_1 = self.iter1.variable::<(URI, (URI, URI))>("cls_svf_1");
+        let cls_svf_2 = self.iter1.variable::<(URI, (URI, URI, URI))>("cls_svf_2");
+        let cls_svf_3 = self.iter1.variable::<(URI, (URI, URI))>("cls_svf_3");
+
         // cax-eqc1
         // T(?c1, owl:equivalentClass, ?c2), T(?x, rdf:type, ?c1)  =>
         //  T(?x, rdf:type, ?c2)
@@ -444,8 +478,14 @@ impl Reasoner {
         // T(?c1, owl:equivalentClass, ?c2), T(?x, rdf:type, ?c2)  =>
         //  T(?x, rdf:type, ?c1)
         let owl_equivalent_class = self.iter1.variable::<(URI, URI)>("owl_equivalent_class");
-        let cax_eqc_1_1 = self.iter1.variable::<(URI)>("cax_eqc_1_1");
-        let cax_eqc_2_1 = self.iter1.variable::<(URI)>("cax_eqc_2_1");
+
+        // cax-dw
+        // T(?c1, owl:disjointWith, ?c2)
+        // T(?x, rdf:type, ?c1)
+        // T(?x, rdf:type, ?c2) => false
+        let owl_disjoint_with = self.iter1.variable::<(URI, URI)>("owl_disjoint_with");
+        let cax_dw_1 = self.iter1.variable::<(URI, (URI, URI))>("cax_dw_1");
+        let cax_dw_2 = self.iter1.variable::<(URI, URI)>("cax_dw_2");
 
 
         let ds = DisjointSets::new(&self.input);
@@ -478,6 +518,8 @@ impl Reasoner {
             owl_has_value.from_map(&self.spo, |&triple| has_pred(triple, owlhasvalue_node));
             owl_on_property.from_map(&self.spo, |&triple| has_pred(triple, owlonproperty_node));
             owl_all_values_from.from_map(&self.spo, |&triple| has_pred(triple, owlallvaluesfrom_node));
+            owl_some_values_from.from_map(&self.spo, |&triple| has_pred(triple, owlsomevaluesfrom_node));
+            owl_disjoint_with.from_map(&self.spo, |&triple| has_pred(triple, owldisjointwith_node));
 
             let mut reflexive_equivalent_class = Vec::new();
             owl_equivalent_class.from_map(&self.spo, |&triple| {
@@ -502,6 +544,63 @@ impl Reasoner {
             self.all_triples_input.from_join(&self.prp_rng, &self.pso, |&tpred, &class, &(sub, obj)| {
                 (obj, (rdftype_node, class))
             });
+
+
+            // eq-ref
+            //  T(?s, ?p, ?o) =>
+            //  T(?s, owl:sameAs, ?s)
+            //  T(?p, owl:sameAs, ?p)
+            //  T(?o, owl:sameAs, ?o)
+            let mut add_same_as: Vec<Triple> = Vec::new();
+            eq_ref_1.from_map(&self.spo, |&(s, (p, o))| {
+                add_same_as.push((s, (owlsameas_node, s)));
+                (s, ())
+            });
+            eq_ref_1.from_map(&self.spo, |&(s, (p, o))| {
+                add_same_as.push((p, (owlsameas_node, p)));
+                (p, ())
+            });
+            eq_ref_1.from_map(&self.spo, |&(s, (p, o))| {
+                add_same_as.push((o, (owlsameas_node, o)));
+                (o, ())
+            });
+            self.all_triples_input.extend(add_same_as);
+
+            // eq-sym
+            //  T(?x, owl:sameAs, ?y)  =>  T(?y, owl:sameAs, ?x)
+            owl_same_as.from_map(&self.pso, |&(p, (s, o))| {
+                match p {
+                    owlsameas_node => (s, o),
+                    _ => (0, 0),
+                }
+            });
+            self.all_triples_input.from_join(&self.spo, &owl_same_as, |&x, &(p, o), &y| {
+                (y, (owlsameas_node, x))
+            });
+
+            // eq-rep-s
+            self.all_triples_input.from_join(&self.spo, &owl_same_as, |&s1, &(p, o), &s2| {
+                (s2, (p, o))
+            });
+            // eq-rep-p
+            self.all_triples_input.from_join(&self.pso, &owl_same_as, |&p1, &(s, o), &p2| {
+                (s, (p2, o))
+            });
+            // eq-rep-o
+            self.all_triples_input.from_join(&self.osp, &owl_same_as, |&o1, &(s, p), &o2| {
+                (s, (p, o2))
+            });
+
+            // eq-trans
+            // T(?x, owl:sameAs, ?y)
+            // T(?y, owl:sameAs, ?z)  =>  T(?x, owl:sameAs, ?z)
+            eq_trans_1.from_join(&owl_same_as, &self.spo, |&x, &y, &(p, o)| {
+                (o, x)
+            });
+            self.all_triples_input.from_join(&owl_same_as, &eq_trans_1, |&y, &z, &x| {
+                (x, (owlsameas_node, z))
+            });
+
 
             // prp-fp
             self.prp_fp_1.from_map(&self.spo, |&triple| { has_pred_obj(triple, (rdftype_node, owlfuncprop_node)) });
@@ -539,6 +638,18 @@ impl Reasoner {
             // find instances of classes that are equivalent
             self.all_triples_input.from_join(&owl_equivalent_class, &rdf_type_inv, |&c1, &c2, &inst| {
                 (inst, (rdftype_node, c2))
+            });
+
+            // cax-dw
+            cax_dw_1.from_join(&owl_disjoint_with, &rdf_type_inv, |&c1, &c2, &inst| {
+                (c2, (c1, inst))
+            });
+            cax_dw_2.from_join(&cax_dw_1, &rdf_type_inv, |&c2, &(c1, inst1), &inst2| {
+                // TODO: how to raise 'false'?
+                if inst1 == inst2 {
+                    warn!("DISJOINT VIOLATION {} is both {} and {}", self.to_u(inst1), self.to_u(c1), self.to_u(c2));
+                }
+                (c2, inst1)
             });
 
             // prp-inv1
@@ -670,12 +781,39 @@ impl Reasoner {
                 (u, (p, y))
             });
             self.all_triples_input.from_join(&cls_avf_2, &self.spo, |&u, &(p1, y), &(p2, v)| {
-                (v, (rdftype_node, y))
+                if p1 == p2 {
+                    (v, (rdftype_node, y))
+                } else {
+                    (0, (0, 0))
+                }
+            });
+
+            // cls-svf1:
+            // T(?x, owl:someValuesFrom, ?y)
+            // T(?x, owl:onProperty, ?p)
+            // T(?u, ?p, ?v)
+            // T(?v, rdf:type, ?y) =>  T(?u, rdf:type, ?x)
+            cls_svf_1.from_join(&owl_some_values_from, &owl_on_property, |&x, &y, &p| {
+                (p, (x, y))
+            });
+            cls_svf_2.from_join(&cls_svf_1, &self.pso, |&p, &(x, y), &(u, v)| {
+                (v, (x, y, u))
+            });
+            self.all_triples_input.from_join(&cls_svf_2, &self.rdf_type, |&v, &(x, y, u), &class| {
+                if class == y {
+                    (u, (rdftype_node, x))
+                } else {
+                    (0, (0, 0))
+                }
             });
 
 
 
         }
+    }
+
+    fn to_u(&self, u: URI) -> &str {
+        self.index.get(u).unwrap()
     }
 
 
@@ -715,6 +853,90 @@ mod tests {
     fn test_load_file_n3() -> Result<(), String> {
         let mut r = Reasoner::new();
         r.load_file("Brick.n3")
+    }
+
+    #[test]
+    fn test_eq_ref() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("a", "b", "c")
+        ];
+        r.load_triples(trips);
+        r.reason();
+        let res = r.get_triples();
+        assert!(res.contains(&("a".to_string(), OWL_SAMEAS.to_string(), "a".to_string())));
+        assert!(res.contains(&("b".to_string(), OWL_SAMEAS.to_string(), "b".to_string())));
+        assert!(res.contains(&("c".to_string(), OWL_SAMEAS.to_string(), "c".to_string())));
+        Ok(())
+    }
+
+    #[test]
+    fn test_eq_sym() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("x", OWL_SAMEAS, "y")
+        ];
+        r.load_triples(trips);
+        r.reason();
+        let res = r.get_triples();
+        assert!(res.contains(&("y".to_string(), OWL_SAMEAS.to_string(), "x".to_string())));
+        Ok(())
+    }
+
+    #[test]
+    fn test_eq_trans() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("x", OWL_SAMEAS, "y"),
+            ("y", OWL_SAMEAS, "z"),
+        ];
+        r.load_triples(trips);
+        r.reason();
+        let res = r.get_triples();
+        assert!(res.contains(&("x".to_string(), OWL_SAMEAS.to_string(), "z".to_string())));
+        Ok(())
+    }
+
+    #[test]
+    fn test_eq_rep_s() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("s1", OWL_SAMEAS, "s2"),
+            ("s1", "p", "o"),
+        ];
+        r.load_triples(trips);
+        r.reason();
+        let res = r.get_triples();
+        assert!(res.contains(&("s2".to_string(), "p".to_string(), "o".to_string())));
+        Ok(())
+    }
+
+    #[test]
+    fn test_eq_rep_p() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("p1", OWL_SAMEAS, "p2"),
+            ("s", "p1", "o"),
+        ];
+        r.load_triples(trips);
+        r.reason();
+        let res = r.get_triples();
+        assert!(res.contains(&("s".to_string(), "p2".to_string(), "o".to_string())));
+        Ok(())
+    }
+
+    #[test]
+    fn test_eq_rep_o() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("o1", OWL_SAMEAS, "o2"),
+            ("s", "p", "o1"),
+        ];
+        r.load_triples(trips);
+        r.reason();
+        let res = r.get_triples();
+        assert!(res.contains(&("s".to_string(), "p".to_string(), "o2".to_string())));
+        Ok(())
     }
 
     #[test]
@@ -969,6 +1191,26 @@ mod tests {
             println!("{} {} {}", s, p, o);
         }
         assert!(res.contains(&("v".to_string(), RDF_TYPE.to_string(), "y".to_string())));
+        Ok(())
+    }
+
+    #[test]
+    fn test_cls_svf1() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("x", OWL_SOMEVALUESFROM, "y"),
+            ("x", OWL_ONPROPERTY, "p"),
+            ("u", "p", "v"),
+            ("v", RDF_TYPE, "y"),
+        ];
+        r.load_triples(trips);
+        r.reason();
+        let res = r.get_triples();
+        for i in res.iter() {
+            let (s, p, o) = i;
+            println!("{} {} {}", s, p, o);
+        }
+        assert!(res.contains(&("u".to_string(), RDF_TYPE.to_string(), "x".to_string())));
         Ok(())
     }
 
