@@ -549,7 +549,7 @@ impl Reasoner {
             // prp-inv2
             // T(?p1, owl:inverseOf, ?p2)
             // T(?x, ?p2, ?y) => T(?y, ?p1, ?x)
-            self.all_triples_input.from_join(&self.owl_inverse_of2, &self.pso, |&p1, &p2, &(x, y)| (x, (p2, y)) );
+            self.all_triples_input.from_join(&self.owl_inverse_of2, &self.pso, |&p2, &p1, &(x, y)| (x, (p2, y)) );
 
             // prp-symp
             // T(?p, rdf:type, owl:SymmetricProperty)
