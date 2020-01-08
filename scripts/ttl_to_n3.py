@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from rdflib import Graph
 import sys
 
