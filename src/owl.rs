@@ -760,6 +760,51 @@ mod tests {
     }
 
     #[test]
+    fn test_cax_eqc_chain_1() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("Class1", OWL_EQUIVALENTCLASS, "Class2"),
+            ("Class2", OWL_EQUIVALENTCLASS, "Class3"),
+            ("Class3", OWL_EQUIVALENTCLASS, "Class4"),
+            ("Class4", OWL_EQUIVALENTCLASS, "Class5"),
+            ("Class5", OWL_EQUIVALENTCLASS, "Class6"),
+            ("a", RDF_TYPE, "Class1")
+        ];
+        r.load_triples(trips);
+        r.reason();
+        let res = r.get_triples();
+        assert!(res.contains(&("a".to_string(), RDF_TYPE.to_string(), "Class2".to_string())));
+        assert!(res.contains(&("a".to_string(), RDF_TYPE.to_string(), "Class3".to_string())));
+        assert!(res.contains(&("a".to_string(), RDF_TYPE.to_string(), "Class4".to_string())));
+        assert!(res.contains(&("a".to_string(), RDF_TYPE.to_string(), "Class5".to_string())));
+        assert!(res.contains(&("a".to_string(), RDF_TYPE.to_string(), "Class6".to_string())));
+        Ok(())
+    }
+
+    #[test]
+    fn test_cax_eqc_chain_2() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("Class1", OWL_EQUIVALENTCLASS, "Class2"),
+            ("Class2", OWL_EQUIVALENTCLASS, "Class3"),
+            ("Class3", OWL_EQUIVALENTCLASS, "Class4"),
+            ("Class4", OWL_EQUIVALENTCLASS, "Class5"),
+            ("Class5", OWL_EQUIVALENTCLASS, "Class6"),
+            ("a", RDF_TYPE, "Class6")
+        ];
+        r.load_triples(trips);
+        r.reason();
+        let res = r.get_triples();
+        assert!(res.contains(&("a".to_string(), RDF_TYPE.to_string(), "Class1".to_string())));
+        assert!(res.contains(&("a".to_string(), RDF_TYPE.to_string(), "Class2".to_string())));
+        assert!(res.contains(&("a".to_string(), RDF_TYPE.to_string(), "Class3".to_string())));
+        assert!(res.contains(&("a".to_string(), RDF_TYPE.to_string(), "Class4".to_string())));
+        assert!(res.contains(&("a".to_string(), RDF_TYPE.to_string(), "Class5".to_string())));
+        Ok(())
+    }
+
+
+    #[test]
     fn test_prp_fp() -> Result<(), String> {
         let mut r = Reasoner::new();
         let trips = vec![
