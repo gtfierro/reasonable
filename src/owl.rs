@@ -400,7 +400,6 @@ impl Reasoner {
         //  T(?s, owl:sameAs, ?s)
         //  T(?p, owl:sameAs, ?p)
         //  T(?o, owl:sameAs, ?o)
-        let eq_ref_1 = self.iter1.variable::<(URI, ())>("eq_ref_1");
 
         // eq-sym
         //  T(?x, owl:sameAs, ?y)  =>  T(?y, owl:sameAs, ?x)
@@ -520,16 +519,16 @@ impl Reasoner {
             owl_all_values_from.from_map(&self.spo, |&triple| has_pred(triple, owlallvaluesfrom_node));
             owl_some_values_from.from_map(&self.spo, |&triple| has_pred(triple, owlsomevaluesfrom_node));
             owl_disjoint_with.from_map(&self.spo, |&triple| has_pred(triple, owldisjointwith_node));
+            owl_same_as.from_map(&self.spo, |&triple| has_pred(triple, owlsameas_node));
 
-            let mut reflexive_equivalent_class = Vec::new();
             owl_equivalent_class.from_map(&self.spo, |&triple| {
                 let (c1, c2) = has_pred(triple, owlequivclassprop_node);
-                if c1 > 0 && c2 > 0 {
-                    reflexive_equivalent_class.push((c2, c1));
-                }
                 (c1, c2)
             });
-            owl_equivalent_class.extend(reflexive_equivalent_class);
+            owl_equivalent_class.from_map(&self.spo, |&triple| {
+                let (c1, c2) = has_pred(triple, owlequivclassprop_node);
+                (c2, c1)
+            });
 
             self.symmetric_properties.from_map(&self.spo, |&triple| {
                 has_pred_obj(triple, (rdftype_node, owlsymmetricprop_node))
@@ -551,29 +550,18 @@ impl Reasoner {
             //  T(?s, owl:sameAs, ?s)
             //  T(?p, owl:sameAs, ?p)
             //  T(?o, owl:sameAs, ?o)
-            let mut add_same_as: Vec<Triple> = Vec::new();
-            eq_ref_1.from_map(&self.spo, |&(s, (p, o))| {
-                add_same_as.push((s, (owlsameas_node, s)));
-                (s, ())
-            });
-            eq_ref_1.from_map(&self.spo, |&(s, (p, o))| {
-                add_same_as.push((p, (owlsameas_node, p)));
-                (p, ())
-            });
-            eq_ref_1.from_map(&self.spo, |&(s, (p, o))| {
-                add_same_as.push((o, (owlsameas_node, o)));
-                (o, ())
-            });
-            self.all_triples_input.extend(add_same_as);
+            //self.all_triples_input.from_map(&self.spo, |&(s, (p, o))| {
+            //    (s, (owlsameas_node, s))
+            //});
+            //self.all_triples_input.from_map(&self.spo, |&(s, (p, o))| {
+            //    (p, (owlsameas_node, p))
+            //});
+            //self.all_triples_input.from_map(&self.spo, |&(s, (p, o))| {
+            //    (o, (owlsameas_node, o))
+            //});
 
             // eq-sym
             //  T(?x, owl:sameAs, ?y)  =>  T(?y, owl:sameAs, ?x)
-            owl_same_as.from_map(&self.pso, |&(p, (s, o))| {
-                match p {
-                    owlsameas_node => (s, o),
-                    _ => (0, 0),
-                }
-            });
             self.all_triples_input.from_join(&self.spo, &owl_same_as, |&x, &(p, o), &y| {
                 (y, (owlsameas_node, x))
             });
@@ -806,9 +794,6 @@ impl Reasoner {
                     (0, (0, 0))
                 }
             });
-
-
-
         }
     }
 

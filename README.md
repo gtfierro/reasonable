@@ -6,13 +6,13 @@ Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasonin
 
 |Completed| Rule name | Notes |
 |---------|----------|-------|
-| **yes**| `eq-ref` |       |
+| no     | `eq-ref` | implementation is very inefficient; causes lots of flux       |
 | **yes**| `eq-sym` |       |
 | **yes**| `eq-trans` |       |
 | **yes**| `eq-rep-s` |       |
 | **yes**| `eq-rep-p` |       |
 | **yes**| `eq-rep-o` |       |
-| no     | `eq-diff1` |       |
+| no     | `eq-diff1` | `eq-diff{1,2,3}` all involve throwing exceptions. Not clear how we want to handle these yet      |
 | no     | `eq-diff2` |       |
 | no     | `eq-diff3` |       |
 
@@ -21,8 +21,8 @@ Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasonin
 |Completed| Rule name | Notes |
 |---------|----------|-------|
 | no        | `prp-ap` |       |
-| no        | `prp-dom` |       |
-| no        | `prp-rng` |       |
+| **yes**   | `prp-dom` |       |
+| **yes**   | `prp-rng` |       |
 | **yes**   | `prp-fp` |       |
 | **yes**   | `prp-ifp` |       |
 | no        | `prp-irp` |       |
