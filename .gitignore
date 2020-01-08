@@ -16,3 +16,6 @@ Cargo.lock
 
 /target
 #**/*.rs.bk
+
+# output files
+output.ttl
