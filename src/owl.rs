@@ -5,10 +5,10 @@ use crate::index::URIIndex;
 use crate::disjoint_sets::DisjointSets;
 use crate::types::{URI, Triple, has_pred, has_pred_obj};
 
-use log::info;
+use log::{info, debug, warn};
 use std::fs;
 use std::io::{Write, Error};
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use rdf::reader::turtle_parser::TurtleParser;
 use rdf::reader::n_triples_parser::NTriplesParser;
 use rdf::reader::rdf_parser::RdfParser;
@@ -288,9 +288,6 @@ impl Reasoner {
             //let object = if self.suggests_literal(&p) {
             // TODO: remove newlines from the literal? maybe this is put in here by the serializer
             let object = if o.contains(" ") || self.suggests_literal(&p) {
-                // if o.contains("\n") {
-                //     println!("has newline {}", o);
-                // }
                 // graph.create_literal_node(o.escape_default().to_string())
                 graph.create_literal_node(self.escape_literal(&o))
             } else {
@@ -349,7 +346,7 @@ impl Reasoner {
                 Node::LiteralNode{literal, data_type: _, language: _} => &literal,
                 Node::BlankNode{id} => &id,
             };
-            //println!("{} {} {}", subject, predicate, object);
+            debug!("{} {} {}", subject, predicate, object);
 
             let (s, (p, o)) = (self.index.put(subject.to_string()), (self.index.put(predicate.to_string()), self.index.put(object.to_string())));
 
@@ -392,6 +389,7 @@ impl Reasoner {
 
         let owl_intersection_of = self.iter1.variable::<(URI, URI)>("owl_intersection_of");
         let mut intersections: HashMap<URI, URI> = HashMap::new();
+        let mut instances: HashSet<(URI, URI)> = HashSet::new();
 
         // prp-inv1
         // T(?p1, owl:inverseOf, ?p2)
@@ -409,15 +407,12 @@ impl Reasoner {
         //    T(?c owl:intersectionOf ?x), LIST[?x, ?c1...?cn],
         //    T(?y rdf:type ?c_i) for i in range(1,n) =>
         //     T(?y rdf:type ?c)
-        let cls_int_1_1 = self.iter1.variable::<(URI, (URI, usize))>("cls_int_1_1");
-        let cls_int_1_2 = self.iter1.variable::<(URI, (URI, usize))>("cls_int_1_2");
 
         // cls-int2
         //    T(?c owl:intersectionOf ?x), LIST[?x, ?c1...?cn],
         //     T(?y rdf:type ?c) =>
         //    T(?y rdf:type ?c_i) for i in range(1,n)
         let cls_int_2_1 = self.iter1.variable::<(URI, URI)>("cls_int_2_1");
-        let cls_int_2_2 = self.iter1.variable::<(URI, URI)>("cls_int_2_2");
 
         // cls-hv1:
         // T(?x, owl:hasValue, ?y)
@@ -461,7 +456,11 @@ impl Reasoner {
             self.pso.from_map(&self.all_triples_input, |&(sub, (pred, obj))| (pred, (sub, obj)));
             self.osp.from_map(&self.all_triples_input, |&(sub, (pred, obj))| (obj, (sub, pred)));
 
-            self.rdf_type.from_map(&self.spo, |&triple| { has_pred(triple, rdftype_node) });
+            self.rdf_type.from_map(&self.spo, |&triple| {
+                let tup = has_pred(triple, rdftype_node);
+                instances.insert(tup);
+                tup
+            });
             rdf_type_inv.from_map(&self.rdf_type, |&(inst, class)| { (class, inst) });
             self.prp_dom.from_map(&self.spo, |&triple| { has_pred(triple, rdfsdomain_node) });
             self.prp_rng.from_map(&self.spo, |&triple| { has_pred(triple, rdfsrange_node) });
@@ -488,7 +487,7 @@ impl Reasoner {
                 }
                 (c1, c2)
             });
-            owl_equivalent_class.extend(reflexive_equivalent_class.iter());
+            owl_equivalent_class.extend(reflexive_equivalent_class);
 
             self.symmetric_properties.from_map(&self.spo, |&triple| {
                 has_pred_obj(triple, (rdftype_node, owlsymmetricprop_node))
@@ -538,13 +537,8 @@ impl Reasoner {
 
             // cax-eqc1, cax-eqc2
             // find instances of classes that are equivalent
-            self.all_triples_input.from_join(&owl_equivalent_class, &self.osp, |&c1, &c2, &(inst, pred)| {
-                if pred == rdftype_node {
-                    // yield inst rdf_type c2
-                    (inst, (rdftype_node, c2))
-                } else {
-                    (0, (0, 0))
-                }
+            self.all_triples_input.from_join(&owl_equivalent_class, &rdf_type_inv, |&c1, &c2, &inst| {
+                (inst, (rdftype_node, c2))
             });
 
             // prp-inv1
@@ -602,30 +596,26 @@ impl Reasoner {
                 let intersection_class = *_intersection_class;
                 if let Some(values) = ds.get_list_values(listname) {
                     let value_uris: Vec<&String> = values.iter().map(|v| self.index.get(*v).unwrap()).collect();
-                    // println!("{} {} (len {}) {} {:?}", listname, self.index.get(intersection_class).unwrap(), values.len(), self.index.get(listname).unwrap(), value_uris);
+                    debug!("{} {} (len {}) {} {:?}", listname, self.index.get(intersection_class).unwrap(), values.len(), self.index.get(listname).unwrap(), value_uris);
                     let mut class_counter: HashMap<URI, usize> = HashMap::new();
-                    cls_int_1_2.from_map(&self.rdf_type, |&(inst, list_class)| {
-                        // println!("inst {} values len {}, list class {}", self.index.get(inst).unwrap(), values.len(), list_class);
+                    for (_inst, _list_class) in instances.iter() {
+                        let inst = *_inst;
+                        let list_class = *_list_class;
+                        debug!("inst {} values len {}, list class {}", self.index.get(inst).unwrap(), values.len(), list_class);
                         if values.contains(&list_class) {
-                            //println!("{} is a {}", inst, list_class);
+                            debug!("{} is a {}", inst, list_class);
                             let count = class_counter.entry(inst).or_insert(0);
                             *count += 1;
-                            return (inst, (list_class, *count))
-                        } else {
-                            return (inst, (list_class, 0))
                         }
-                    });
-                    // println!("class counter {}", class_counter.len());
+                    }
                     for (inst, num_implemented) in class_counter.iter() {
                         if *num_implemented == values.len() {
-                            //println!("inferred that {} is a {}", inst, intersection_class);
+                            debug!("inferred that {} is a {}", inst, intersection_class);
                             new_cls_int1_instances.push((*inst, (rdftype_node, intersection_class)));
                         }
                     }
-                    // println!("LEN {}", class_counter.len());
                 }
             }
-            //});
             self.all_triples_input.extend(new_cls_int1_instances);
 
             // cls-int2
@@ -636,7 +626,7 @@ impl Reasoner {
                         new_cls_int2_instances.push((inst, (rdftype_node, list_class)));
                     }
                 }
-                (intersection_class, listname)
+                (inst, new_cls_int2_instances.len() as URI)
             });
             self.all_triples_input.extend(new_cls_int2_instances);
 
