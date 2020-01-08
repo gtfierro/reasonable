@@ -50,7 +50,7 @@ Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasonin
 | no     | `cls-nothing2` | throws exception       |
 | **yes**| `cls-int1` |       |
 | **yes**| `cls-int2` |       |
-| no     | `cls-uni` |       |
+| **yes**| `cls-uni` |       |
 | no     | `cls-com` |       |
 | **yes**| `cls-svf1` |       |
 | no     | `cls-svf2` |       |

@@ -68,6 +68,8 @@ const OWL_TRANSPROP: &str = "http://www.w3.org/2002/07/owl#TransitiveProperty";
 #[allow(dead_code)]
 const OWL_INTERSECTION: &str = "http://www.w3.org/2002/07/owl#intersectionOf";
 #[allow(dead_code)]
+const OWL_UNION: &str = "http://www.w3.org/2002/07/owl#unionOf";
+#[allow(dead_code)]
 const OWL_CLASS: &str = "http://www.w3.org/2002/07/owl#Class";
 #[allow(dead_code)]
 const OWL_THING: &str = "http://www.w3.org/2002/07/owl#Thing";
@@ -395,6 +397,7 @@ impl Reasoner {
         let rdfssubprop_node = self.index.put_str("http://www.w3.org/2000/01/rdf-schema#subPropertyOf");
         let rdfssubclass_node = self.index.put_str("http://www.w3.org/2000/01/rdf-schema#subClassOf");
         let owlintersection_node = self.index.put_str("http://www.w3.org/2002/07/owl#intersectionOf");
+        let owlunion_node = self.index.put_str("http://www.w3.org/2002/07/owl#unionOf");
         let owlhasvalue_node = self.index.put_str("http://www.w3.org/2002/07/owl#hasValue");
         let owlallvaluesfrom_node = self.index.put_str("http://www.w3.org/2002/07/owl#allValuesFrom");
         let owlsomevaluesfrom_node = self.index.put_str("http://www.w3.org/2002/07/owl#someValuesFrom");
@@ -410,7 +413,9 @@ impl Reasoner {
         let prp_fp_hasprop1 = self.iter1.variable::<Triple>("b");
 
         let owl_intersection_of = self.iter1.variable::<(URI, URI)>("owl_intersection_of");
+        let owl_union_of = self.iter1.variable::<(URI, URI)>("owl_union_of");
         let mut intersections: HashMap<URI, URI> = HashMap::new();
+        let mut unions: HashMap<URI, URI> = HashMap::new();
         let mut instances: HashSet<(URI, URI)> = HashSet::new();
 
         // eq-ref
@@ -463,6 +468,11 @@ impl Reasoner {
         //     T(?y rdf:type ?c) =>
         //    T(?y rdf:type ?c_i) for i in range(1,n)
         let cls_int_2_1 = self.iter1.variable::<(URI, URI)>("cls_int_2_1");
+
+        // cls-uni
+        // cls-uni  T(?c, owl:unionOf, ?x)
+        // LIST[?x, ?c1, ..., ?cn]
+        // T(?y, rdf:type, ?ci) (for any i in 1-n) =>  T(?y, rdf:type, ?c)
 
         // cls-hv1:
         // T(?x, owl:hasValue, ?y)
@@ -538,6 +548,13 @@ impl Reasoner {
                 let (a, b) = has_pred(triple, owlintersection_node);
                 if a > 0 && b > 0 {
                     intersections.insert(a, b);
+                }
+                (a, b)
+            });
+            owl_union_of.from_map(&self.spo, |&triple| {
+                let (a, b) = has_pred(triple, owlunion_node);
+                if a > 0 && b > 0 {
+                    unions.insert(a, b);
                 }
                 (a, b)
             });
@@ -771,6 +788,37 @@ impl Reasoner {
                 (inst, new_cls_int2_instances.len() as URI)
             });
             self.all_triples_input.extend(new_cls_int2_instances);
+
+            // cls-uni  T(?c, owl:unionOf, ?x)
+            // LIST[?x, ?c1, ..., ?cn]
+            // T(?y, rdf:type, ?ci) (for any i in 1-n) =>  T(?y, rdf:type, ?c)
+            let mut new_cls_uni_instances = Vec::new();
+            for (_union_class, _listname) in unions.iter() {
+                let listname = *_listname;
+                let union_class = *_union_class;
+                if let Some(values) = ds.get_list_values(listname) {
+                    let value_uris: Vec<&String> = values.iter().map(|v| self.index.get(*v).unwrap()).collect();
+                    debug!("{} {} (len {}) {} {:?}", listname, self.index.get(union_class).unwrap(), values.len(), self.index.get(listname).unwrap(), value_uris);
+                    let mut class_counter: HashMap<URI, usize> = HashMap::new();
+                    for (_inst, _list_class) in instances.iter() {
+                        let inst = *_inst;
+                        let list_class = *_list_class;
+                        debug!("inst {} values len {}, list class {}", self.index.get(inst).unwrap(), values.len(), list_class);
+                        if values.contains(&list_class) {
+                            debug!("{} is a {}", inst, list_class);
+                            let count = class_counter.entry(inst).or_insert(0);
+                            *count += 1;
+                        }
+                    }
+                    for (inst, num_implemented) in class_counter.iter() {
+                        if *num_implemented > 0 { // union instead of union
+                            debug!("inferred that {} is a {}", inst, union_class);
+                            new_cls_uni_instances.push((*inst, (rdftype_node, union_class)));
+                        }
+                    }
+                }
+            }
+            self.all_triples_input.extend(new_cls_uni_instances);
 
             // cls-hv1:
             // T(?x, owl:hasValue, ?y)
@@ -1397,6 +1445,34 @@ mod tests {
         assert!(res.contains(&("inst".to_string(), RDF_TYPE.to_string(), "c1".to_string())));
         assert!(res.contains(&("inst".to_string(), RDF_TYPE.to_string(), "c2".to_string())));
         assert!(res.contains(&("inst".to_string(), RDF_TYPE.to_string(), "intersection_class".to_string())));
+        Ok(())
+    }
+
+    #[test]
+    fn test_cls_uni() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("c", OWL_UNION, "x"),
+            ("x", RDF_FIRST, "c1"),
+            ("x", RDF_REST, "z2"),
+            ("z2", RDF_FIRST, "c2"),
+            ("z2", RDF_REST, "z3"),
+            ("z3", RDF_FIRST, "c3"),
+            ("z3", RDF_REST, RDF_NIL),
+            ("y1", RDF_TYPE, "c1"),
+            ("y2", RDF_TYPE, "c2"),
+            ("y3", RDF_TYPE, "c3"),
+        ];
+        r.load_triples(trips);
+        r.reason();
+        let res = r.get_triples();
+        for i in res.iter() {
+            let (s, p, o) = i;
+            println!("{} {} {}", s, p, o);
+        }
+        assert!(res.contains(&("y1".to_string(), RDF_TYPE.to_string(), "c".to_string())));
+        assert!(res.contains(&("y2".to_string(), RDF_TYPE.to_string(), "c".to_string())));
+        assert!(res.contains(&("y3".to_string(), RDF_TYPE.to_string(), "c".to_string())));
         Ok(())
     }
 
