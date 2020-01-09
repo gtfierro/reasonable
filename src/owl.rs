@@ -75,6 +75,8 @@ const OWL_CLASS: &str = "http://www.w3.org/2002/07/owl#Class";
 const OWL_THING: &str = "http://www.w3.org/2002/07/owl#Thing";
 #[allow(dead_code)]
 const OWL_NOTHING: &str = "http://www.w3.org/2002/07/owl#Nothing";
+#[allow(dead_code)]
+const OWL_COMPLEMENT: &str = "http://www.w3.org/2002/07/owl#complementOf";
 
 pub struct Reasoner {
     iter1: Iteration,
@@ -404,6 +406,7 @@ impl Reasoner {
         let owlsomevaluesfrom_node = self.index.put_str("http://www.w3.org/2002/07/owl#someValuesFrom");
         let owldisjointwith_node = self.index.put_str("http://www.w3.org/2002/07/owl#disjointWith");
         let owlonproperty_node = self.index.put_str("http://www.w3.org/2002/07/owl#onProperty");
+        let owlcomplementof_node = self.index.put_str("http://www.w3.org/2002/07/owl#complementOf");
 
         let rdffirst_node = self.index.put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#first");
         let rdfrest_node = self.index.put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#rest");
@@ -418,6 +421,7 @@ impl Reasoner {
         let mut intersections: HashMap<URI, URI> = HashMap::new();
         let mut unions: HashMap<URI, URI> = HashMap::new();
         let mut instances: HashSet<(URI, URI)> = HashSet::new();
+        let mut complements: HashMap<URI, URI> = HashMap::new();
 
         // eq-ref
         //  T(?s, ?p, ?o) =>
@@ -507,6 +511,10 @@ impl Reasoner {
         let cls_svf1_1 = self.iter1.variable::<(URI, (URI, URI))>("cls_svf1_1");
         let cls_svf1_2 = self.iter1.variable::<(URI, (URI, URI, URI))>("cls_svf1_2");
 
+        // cls-com
+        let owl_complement_of = self.iter1.variable::<(URI, URI)>("owl_complement_of");
+        let cls_com_1 = self.iter1.variable::<(URI, URI)>("cls_com_1");
+
         // cax-eqc1
         // T(?c1, owl:equivalentClass, ?c2), T(?x, rdf:type, ?c1)  =>
         //  T(?x, rdf:type, ?c2)
@@ -528,6 +536,12 @@ impl Reasoner {
 
         self.all_triples_input.extend(self.input.iter().cloned());
         while self.iter1.changed() {
+            // TODO: pre-filter to eliminate triples that could cause issues
+            // - check complements hashmap
+            // - check disjoint relations
+            // How: create a relation (monotonic) of all of the unallowed triples, antijoin this
+            // against the triples input
+
             self.spo.from_map(&self.all_triples_input, |&(sub, (pred, obj))| (sub, (pred, obj)));
             self.pso.from_map(&self.all_triples_input, |&(sub, (pred, obj))| (pred, (sub, obj)));
             self.osp.from_map(&self.all_triples_input, |&(sub, (pred, obj))| (obj, (sub, pred)));
@@ -564,6 +578,14 @@ impl Reasoner {
             owl_some_values_from.from_map(&self.spo, |&triple| has_pred(triple, owlsomevaluesfrom_node));
             owl_disjoint_with.from_map(&self.spo, |&triple| has_pred(triple, owldisjointwith_node));
             owl_same_as.from_map(&self.spo, |&triple| has_pred(triple, owlsameas_node));
+            owl_complement_of.from_map(&self.spo, |&triple| {
+                let (a, b) = has_pred(triple, owlcomplementof_node)
+                if a >0 && b > 0 {
+                    complements.insert(a, b);
+                    complements.insert(b, a);
+                }
+                (a, b)
+            });
 
             owl_equivalent_class.from_map(&self.spo, |&triple| {
                 let (c1, c2) = has_pred(triple, owlequivclassprop_node);
@@ -748,7 +770,6 @@ impl Reasoner {
             // owl_intersection_of variable. However, we need an efficient way of seeing if there
             // are instances of *each* of those classes (union). This could be a N-way join (where
             // N is the number of classes in the list)
-            // TODO: finish this up!
             let mut new_cls_int1_instances = Vec::new();
             for (_intersection_class, _listname) in intersections.iter() {
                 let listname = *_listname;
@@ -819,6 +840,14 @@ impl Reasoner {
                 }
             }
             self.all_triples_input.extend(new_cls_uni_instances);
+
+            // cls-com
+            // T(?c1, owl:complementOf, ?c2)
+            // T(?x, rdf:type, ?c1)
+            // T(?x, rdf:type, ?c2)  => false
+            // TODO: how do we infer instances of classes from owl:complementOf?
+            // cls_com_1.from_antijoin(&rdf_type_inv, &owl_complement_of, |&c1, &inst, &c2| {
+            // });
 
             // cls-hv1:
             // T(?x, owl:hasValue, ?y)
@@ -1480,19 +1509,15 @@ mod tests {
     }
 
     #[test]
-    fn test_cls_uni() -> Result<(), String> {
+    fn test_complementof() -> Result<(), String> {
         let mut r = Reasoner::new();
         let trips = vec![
-            ("c", OWL_UNION, "x"),
-            ("x", RDF_FIRST, "c1"),
-            ("x", RDF_REST, "z2"),
-            ("z2", RDF_FIRST, "c2"),
-            ("z2", RDF_REST, "z3"),
-            ("z3", RDF_FIRST, "c3"),
-            ("z3", RDF_REST, RDF_NIL),
-            ("y1", RDF_TYPE, "c1"),
-            ("y2", RDF_TYPE, "c2"),
-            ("y3", RDF_TYPE, "c3"),
+            ("c", OWL_EQUIVALENTCLASS, "c2"),
+            ("c2", OWL_COMPLEMENT, "x"),
+            ("x", OWL_HASVALUE, "v"),
+            ("x", OWL_ONPROPERTY, "p"),
+            ("inst1", "p", "v"),
+            ("inst2", "p", "v2"),
         ];
         r.load_triples(trips);
         r.reason();
@@ -1501,9 +1526,10 @@ mod tests {
             let (s, p, o) = i;
             println!("{} {} {}", s, p, o);
         }
-        assert!(res.contains(&("y1".to_string(), RDF_TYPE.to_string(), "c".to_string())));
-        assert!(res.contains(&("y2".to_string(), RDF_TYPE.to_string(), "c".to_string())));
-        assert!(res.contains(&("y3".to_string(), RDF_TYPE.to_string(), "c".to_string())));
+        assert!(res.contains(&("inst1".to_string(), RDF_TYPE.to_string(), "x".to_string())));
+        assert!(!res.contains(&("inst1".to_string(), RDF_TYPE.to_string(), "c".to_string())));
+        assert!(!res.contains(&("inst1".to_string(), RDF_TYPE.to_string(), "c2".to_string())));
+        assert!(res.contains(&("inst2".to_string(), RDF_TYPE.to_string(), "c2".to_string())));
         Ok(())
     }
 }
