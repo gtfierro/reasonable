@@ -513,6 +513,7 @@ impl Reasoner {
 
         // cls-com
         let owl_complement_of = self.iter1.variable::<(URI, URI)>("owl_complement_of");
+        let things = self.iter1.variable::<(URI, ())>("things");
         let cls_com_1 = self.iter1.variable::<(URI, URI)>("cls_com_1");
 
         // cax-eqc1
@@ -550,6 +551,11 @@ impl Reasoner {
                 let tup = has_pred(triple, rdftype_node);
                 instances.insert(tup);
                 tup
+            });
+            things.from_map(&self.spo, |&triple| {
+                let (inst, ()) = has_pred_obj(triple, (rdftype_node, owlthing_node));
+                instances.insert((inst, owlthing_node));
+                (inst, ())
             });
             rdf_type_inv.from_map(&self.rdf_type, |&(inst, class)| { (class, inst) });
             self.prp_dom.from_map(&self.spo, |&triple| { has_pred(triple, rdfsdomain_node) });
@@ -846,8 +852,43 @@ impl Reasoner {
             // T(?x, rdf:type, ?c1)
             // T(?x, rdf:type, ?c2)  => false
             // TODO: how do we infer instances of classes from owl:complementOf?
-            // cls_com_1.from_antijoin(&rdf_type_inv, &owl_complement_of, |&c1, &inst, &c2| {
-            // });
+            // find instances of owl:Thing (in 'things') that are not instances of c1
+            //
+            // antijoin of ((x, c1), c2) and rdf_type((x, c1))
+            //
+            // for each complementary class c1, find all instnaces that AREN't instances of it and
+            // make them instances of the complement c2
+
+            // cls_com_1.from_join(&self.rdf_type, &owl_complement_of
+            let mut new_complementary_instances: Vec<Triple> = Vec::new();
+            for (c1, c2) in complements.iter() {
+                let c1u = self.to_u(*c1);
+                let c2u = self.to_u(*c2);
+                let mut not_c1: HashSet<URI> = HashSet::new();
+                let mut not_c2: HashSet<URI> = HashSet::new();
+                for (inst, class) in instances.iter() {
+                    if !instances.contains(&(*inst, *c1)) {
+                        not_c1.insert(*inst);
+                        not_c2.remove(inst);
+                    }
+
+                    if !instances.contains(&(*inst, *c2)) {
+                        not_c2.insert(*inst);
+                        not_c1.remove(inst);
+                    }
+                }
+                for inst in not_c1.iter() {
+                    let instu = self.to_u(*inst);
+                    println!("inst {} complement of {} is now {}", instu, c1u, c2u);
+                    new_complementary_instances.push((*inst, (rdftype_node, *c2)));
+                }
+                for inst in not_c2.iter() {
+                    let instu = self.to_u(*inst);
+                    println!("inst {} complement of {} is now {}", instu, c2u, c1u);
+                    new_complementary_instances.push((*inst, (rdftype_node, *c1)));
+                }
+            }
+            self.all_triples_input.extend(new_complementary_instances);
 
             // cls-hv1:
             // T(?x, owl:hasValue, ?y)
