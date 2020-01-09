@@ -37,6 +37,9 @@ brick:Setpoint a owl:Class ;
 The issue now is how to efficiently and correctly implement `owl:complementOf`. The entailment semantics given in the W3C document
 only flag logical conflicts.
 
+Things to check:
+- given two complementary classes `c1` and `c2`, it is difficult to know if their union is the set of all entities. Is this true if one of them is an `owl:Restriction`?
+
 ## OWL 2 Rules
 
 Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasoning_in_OWL_2_RL_and_RDF_Graphs_using_Rules).
