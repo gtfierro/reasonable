@@ -7,6 +7,8 @@ An OWL 2 RL reasoner with reasonable performance
 
 Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasoning_in_OWL_2_RL_and_RDF_Graphs_using_Rules).
 
+**TODO**: implement RDF/RDFS entailment semantics as described [here](https://www.w3.org/TR/rdf11-mt/)
+
 **Note**: haven't implemented rules that produce exceptions; waiting to determine the best way of handling these errors.
 
 ### Equality Semantics
