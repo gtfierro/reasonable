@@ -579,7 +579,7 @@ impl Reasoner {
             owl_disjoint_with.from_map(&self.spo, |&triple| has_pred(triple, owldisjointwith_node));
             owl_same_as.from_map(&self.spo, |&triple| has_pred(triple, owlsameas_node));
             owl_complement_of.from_map(&self.spo, |&triple| {
-                let (a, b) = has_pred(triple, owlcomplementof_node)
+                let (a, b) = has_pred(triple, owlcomplementof_node);
                 if a >0 && b > 0 {
                     complements.insert(a, b);
                     complements.insert(b, a);
