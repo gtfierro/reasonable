@@ -5,7 +5,9 @@ An OWL 2 RL reasoner with reasonable performance
 
 ## OWL 2 Rules
 
-Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasoning_in_OWL_2_RL_and_RDF_Graphs_using_Rules)
+Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasoning_in_OWL_2_RL_and_RDF_Graphs_using_Rules).
+
+**Note**: haven't implemented rules that produce exceptions; waiting to determine the best way of handling these errors.
 
 ### Equality Semantics
 
