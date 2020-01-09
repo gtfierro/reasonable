@@ -16,7 +16,6 @@ for file in $(ls example_models/*.n3); do
 
     SPEEDUP=$(echo "$OWLRL_DIFF / $REASONABLE_DIFF" | bc)
 
-    # cat >>bench.txt << EOF
     cat <<EOF >>bench.txt
 $file  $REASONABLE_DIFF  $OWLRL_DIFF  $SPEEDUP
 EOF
