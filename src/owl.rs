@@ -857,34 +857,34 @@ impl Reasoner {
             // for each complementary class c1, find all instnaces that AREN't instances of it and
             // make them instances of the complement c2
 
-            let mut new_complementary_instances: Vec<Triple> = Vec::new();
-            for (c1, c2) in complements.iter() {
-                let c1u = self.to_u(*c1);
-                let c2u = self.to_u(*c2);
-                let mut not_c1: HashSet<URI> = HashSet::new();
-                let mut not_c2: HashSet<URI> = HashSet::new();
-                for (inst, class) in instances.iter() {
-                    if !instances.contains(&(*inst, *c1)) {
-                        not_c1.insert(*inst);
-                        not_c2.remove(inst);
-                    }
+            // let mut new_complementary_instances: Vec<Triple> = Vec::new();
+            // for (c1, c2) in complements.iter() {
+            //     let c1u = self.to_u(*c1);
+            //     let c2u = self.to_u(*c2);
+            //     let mut not_c1: HashSet<URI> = HashSet::new();
+            //     let mut not_c2: HashSet<URI> = HashSet::new();
+            //     for (inst, class) in instances.iter() {
+            //         if !instances.contains(&(*inst, *c1)) {
+            //             not_c1.insert(*inst);
+            //             not_c2.remove(inst);
+            //         }
 
-                    if !instances.contains(&(*inst, *c2)) {
-                        not_c2.insert(*inst);
-                        not_c1.remove(inst);
-                    }
-                }
-                for inst in not_c1.iter() {
-                    let instu = self.to_u(*inst);
-                    new_complementary_instances.push((*inst, (rdftype_node, *c2)));
-                }
-                for inst in not_c2.iter() {
-                    let instu = self.to_u(*inst);
-                    new_complementary_instances.push((*inst, (rdftype_node, *c1)));
-                }
-            }
-            println!("new complementary instances # {}", new_complementary_instances.len());
-            //self.all_triples_input.extend(new_complementary_instances);
+            //         if !instances.contains(&(*inst, *c2)) {
+            //             not_c2.insert(*inst);
+            //             not_c1.remove(inst);
+            //         }
+            //     }
+            //     for inst in not_c1.iter() {
+            //         let instu = self.to_u(*inst);
+            //         new_complementary_instances.push((*inst, (rdftype_node, *c2)));
+            //     }
+            //     for inst in not_c2.iter() {
+            //         let instu = self.to_u(*inst);
+            //         new_complementary_instances.push((*inst, (rdftype_node, *c1)));
+            //     }
+            // }
+            // println!("new complementary instances # {}", new_complementary_instances.len());
+            // //self.all_triples_input.extend(new_complementary_instances);
 
             // cls-hv1:
             // T(?x, owl:hasValue, ?y)
