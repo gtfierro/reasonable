@@ -854,12 +854,9 @@ impl Reasoner {
             // TODO: how do we infer instances of classes from owl:complementOf?
             // find instances of owl:Thing (in 'things') that are not instances of c1
             //
-            // antijoin of ((x, c1), c2) and rdf_type((x, c1))
-            //
             // for each complementary class c1, find all instnaces that AREN't instances of it and
             // make them instances of the complement c2
 
-            // cls_com_1.from_join(&self.rdf_type, &owl_complement_of
             let mut new_complementary_instances: Vec<Triple> = Vec::new();
             for (c1, c2) in complements.iter() {
                 let c1u = self.to_u(*c1);
@@ -879,16 +876,15 @@ impl Reasoner {
                 }
                 for inst in not_c1.iter() {
                     let instu = self.to_u(*inst);
-                    println!("inst {} complement of {} is now {}", instu, c1u, c2u);
                     new_complementary_instances.push((*inst, (rdftype_node, *c2)));
                 }
                 for inst in not_c2.iter() {
                     let instu = self.to_u(*inst);
-                    println!("inst {} complement of {} is now {}", instu, c2u, c1u);
                     new_complementary_instances.push((*inst, (rdftype_node, *c1)));
                 }
             }
-            self.all_triples_input.extend(new_complementary_instances);
+            println!("new complementary instances # {}", new_complementary_instances.len());
+            //self.all_triples_input.extend(new_complementary_instances);
 
             // cls-hv1:
             // T(?x, owl:hasValue, ?y)
