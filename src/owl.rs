@@ -1518,6 +1518,10 @@ mod tests {
             ("x", OWL_ONPROPERTY, "p"),
             ("inst1", "p", "v"),
             ("inst2", "p", "v2"),
+            ("x", RDF_TYPE, OWL_CLASS),
+            ("c", RDF_TYPE, OWL_CLASS),
+            ("c2", RDF_TYPE, OWL_CLASS),
+            ("inst2", RDF_TYPE, OWL_THING),
         ];
         r.load_triples(trips);
         r.reason();
