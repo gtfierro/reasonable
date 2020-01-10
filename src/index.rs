@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 use fasthash::city;
-use crate::types::{URI, Triple};
+use crate::common::{URI, Triple};
 
 pub struct URIIndex {
     map : HashMap<URI, String>

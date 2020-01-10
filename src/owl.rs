@@ -3,7 +3,7 @@ use datafrog::{Iteration, Variable};
 
 use crate::index::URIIndex;
 use crate::disjoint_sets::DisjointSets;
-use crate::types::{URI, Triple, has_pred, has_pred_obj};
+use crate::common::*;
 
 use log::{info, debug, warn};
 use std::fs;
@@ -18,65 +18,9 @@ use rdf::graph::Graph;
 use rdf::triple;
 use rdf::uri::Uri;
 use rdf::writer::turtle_writer::TurtleWriter;
-use crate::rdf::writer::rdf_writer::RdfWriter;
+use rdf::writer::rdf_writer::RdfWriter;
 // use rdf::writer::n_triples_writer::NTriplesWriter;
-
-#[allow(dead_code)]
-const RDFS_SUBCLASSOF: &str = "http://www.w3.org/2000/01/rdf-schema#subClassOf";
-#[allow(dead_code)]
-const RDFS_DOMAIN: &str = "http://www.w3.org/2000/01/rdf-schema#domain";
-#[allow(dead_code)]
-const RDFS_RANGE: &str = "http://www.w3.org/2000/01/rdf-schema#range";
-#[allow(dead_code)]
-const RDFS_LITERAL: &str = "http://www.w3.org/2000/01/rdf-schema#Literal";
-#[allow(dead_code)]
-const RDFS_RESOURCE: &str = "http://www.w3.org/2000/01/rdf-schema#Resource";
-#[allow(dead_code)]
-const RDFS_SUBPROP: &str = "http://www.w3.org/2000/01/rdf-schema#subPropertyOf";
-#[allow(dead_code)]
-const RDF_TYPE: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
-#[allow(dead_code)]
-const RDF_FIRST: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#first";
-#[allow(dead_code)]
-const RDF_REST: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#rest";
-#[allow(dead_code)]
-const RDF_NIL: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil";
-#[allow(dead_code)]
-const OWL_SAMEAS: &str = "http://www.w3.org/2002/07/owl#sameAs";
-#[allow(dead_code)]
-const OWL_EQUIVALENTCLASS: &str = "http://www.w3.org/2002/07/owl#equivalentClass";
-#[allow(dead_code)]
-const OWL_HASVALUE: &str = "http://www.w3.org/2002/07/owl#hasValue";
-#[allow(dead_code)]
-const OWL_ALLVALUESFROM: &str = "http://www.w3.org/2002/07/owl#allValuesFrom";
-#[allow(dead_code)]
-const OWL_SOMEVALUESFROM: &str = "http://www.w3.org/2002/07/owl#someValuesFrom";
-#[allow(dead_code)]
-const OWL_ONPROPERTY: &str = "http://www.w3.org/2002/07/owl#onProperty";
-#[allow(dead_code)]
-const OWL_INVERSEOF: &str = "http://www.w3.org/2002/07/owl#inverseOf";
-#[allow(dead_code)]
-const OWL_SYMMETRICPROP: &str = "http://www.w3.org/2002/07/owl#SymmetricProperty";
-#[allow(dead_code)]
-const OWL_EQUIVPROP: &str = "http://www.w3.org/2002/07/owl#equivalentProperty";
-#[allow(dead_code)]
-const OWL_FUNCPROP: &str = "http://www.w3.org/2002/07/owl#FunctionalProperty";
-#[allow(dead_code)]
-const OWL_INVFUNCPROP: &str = "http://www.w3.org/2002/07/owl#InverseFunctionalProperty";
-#[allow(dead_code)]
-const OWL_TRANSPROP: &str = "http://www.w3.org/2002/07/owl#TransitiveProperty";
-#[allow(dead_code)]
-const OWL_INTERSECTION: &str = "http://www.w3.org/2002/07/owl#intersectionOf";
-#[allow(dead_code)]
-const OWL_UNION: &str = "http://www.w3.org/2002/07/owl#unionOf";
-#[allow(dead_code)]
-const OWL_CLASS: &str = "http://www.w3.org/2002/07/owl#Class";
-#[allow(dead_code)]
-const OWL_THING: &str = "http://www.w3.org/2002/07/owl#Thing";
-#[allow(dead_code)]
-const OWL_NOTHING: &str = "http://www.w3.org/2002/07/owl#Nothing";
-#[allow(dead_code)]
-const OWL_COMPLEMENT: &str = "http://www.w3.org/2002/07/owl#complementOf";
+use crate::common::*;
 
 pub struct Reasoner {
     iter1: Iteration,

@@ -4,7 +4,7 @@ extern crate disjoint_sets;
 use disjoint_sets::UnionFind;
 use datafrog::Iteration;
 use crate::index::URIIndex;
-use crate::types::{URI, Triple};
+use crate::common::{URI, Triple};
 use std::collections::HashMap;
 
 pub struct DisjointSets {

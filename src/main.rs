@@ -3,9 +3,9 @@ extern crate itertools;
 extern crate log;
 
 mod index;
-mod types;
 mod owl;
 mod disjoint_sets;
+mod common;
 use crate::owl::Reasoner;
 use std::time::Instant;
 use std::env;
