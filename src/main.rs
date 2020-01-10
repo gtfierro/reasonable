@@ -5,6 +5,7 @@ extern crate log;
 mod index;
 mod owl;
 mod disjoint_sets;
+#[allow(dead_code)]
 mod common;
 use crate::owl::Reasoner;
 use std::time::Instant;
