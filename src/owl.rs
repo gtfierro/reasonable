@@ -509,434 +509,501 @@ impl Reasoner {
         let ds = DisjointSets::new(&self.input);
 
         self.all_triples_input.extend(self.input.iter().cloned());
-        while self.iter1.changed() {
-            // TODO: pre-filter to eliminate triples that could cause issues
-            // - check complements hashmap
-            // - check disjoint relations
-            // How: create a relation (monotonic) of all of the unallowed triples, antijoin this
-            // against the triples input
+        let mut changed = true;
+        let mut new_complementary_instances: HashSet<Triple> = HashSet::new();
+        while changed {
+            self.all_triples_input.extend(new_complementary_instances.iter());
+            while self.iter1.changed() {
+                // TODO: pre-filter to eliminate triples that could cause issues
+                // - check complements hashmap
+                // - check disjoint relations
+                // How: create a relation (monotonic) of all of the unallowed triples, antijoin this
+                // against the triples input
 
-            self.spo.from_map(&self.all_triples_input, |&(sub, (pred, obj))| (sub, (pred, obj)));
-            self.pso.from_map(&self.all_triples_input, |&(sub, (pred, obj))| (pred, (sub, obj)));
-            self.osp.from_map(&self.all_triples_input, |&(sub, (pred, obj))| (obj, (sub, pred)));
+                // all individuals are owl:Things
+                self.all_triples_input.from_map(&self.spo, |&(s, (_p, _o))| {
+                    (s, (rdftype_node, owlthing_node))
+                });
 
-            self.rdf_type.from_map(&self.spo, |&triple| {
-                let tup = has_pred(triple, rdftype_node);
-                instances.insert(tup);
-                tup
-            });
-            things.from_map(&self.spo, |&triple| {
-                let (inst, ()) = has_pred_obj(triple, (rdftype_node, owlthing_node));
-                instances.insert((inst, owlthing_node));
-                (inst, ())
-            });
-            rdf_type_inv.from_map(&self.rdf_type, |&(inst, class)| { (class, inst) });
-            self.prp_dom.from_map(&self.spo, |&triple| { has_pred(triple, rdfsdomain_node) });
-            self.prp_rng.from_map(&self.spo, |&triple| { has_pred(triple, rdfsrange_node) });
+                self.spo.from_map(&self.all_triples_input, |&(sub, (pred, obj))| (sub, (pred, obj)));
+                self.pso.from_map(&self.all_triples_input, |&(sub, (pred, obj))| (pred, (sub, obj)));
+                self.osp.from_map(&self.all_triples_input, |&(sub, (pred, obj))| (obj, (sub, pred)));
 
-            self.owl_inverse_of.from_map(&self.spo, |&triple| has_pred(triple, owlinverseof_node) );
-            self.owl_inverse_of2.from_map(&self.owl_inverse_of, |&(p1, p2)| (p2, p1) );
+                self.rdf_type.from_map(&self.spo, |&triple| {
+                    let tup = has_pred(triple, rdftype_node);
+                    instances.insert(tup);
+                    tup
+                });
+                rdf_type_inv.from_map(&self.rdf_type, |&(inst, class)| { (class, inst) });
+                self.prp_dom.from_map(&self.spo, |&triple| { has_pred(triple, rdfsdomain_node) });
+                self.prp_rng.from_map(&self.spo, |&triple| { has_pred(triple, rdfsrange_node) });
 
-            owl_intersection_of.from_map(&self.spo, |&triple| {
-                let (a, b) = has_pred(triple, owlintersection_node);
-                if a > 0 && b > 0 {
-                    intersections.insert(a, b);
-                }
-                (a, b)
-            });
-            owl_union_of.from_map(&self.spo, |&triple| {
-                let (a, b) = has_pred(triple, owlunion_node);
-                if a > 0 && b > 0 {
-                    unions.insert(a, b);
-                }
-                (a, b)
-            });
-            owl_has_value.from_map(&self.spo, |&triple| has_pred(triple, owlhasvalue_node));
-            owl_on_property.from_map(&self.spo, |&triple| has_pred(triple, owlonproperty_node));
-            owl_all_values_from.from_map(&self.spo, |&triple| has_pred(triple, owlallvaluesfrom_node));
-            owl_some_values_from.from_map(&self.spo, |&triple| has_pred(triple, owlsomevaluesfrom_node));
-            owl_disjoint_with.from_map(&self.spo, |&triple| has_pred(triple, owldisjointwith_node));
-            owl_same_as.from_map(&self.spo, |&triple| has_pred(triple, owlsameas_node));
-            owl_complement_of.from_map(&self.spo, |&triple| {
-                let (a, b) = has_pred(triple, owlcomplementof_node);
-                if a >0 && b > 0 {
-                    complements.insert(a, b);
-                    complements.insert(b, a);
-                }
-                (a, b)
-            });
+                self.owl_inverse_of.from_map(&self.spo, |&triple| has_pred(triple, owlinverseof_node) );
+                self.owl_inverse_of2.from_map(&self.owl_inverse_of, |&(p1, p2)| (p2, p1) );
 
-            owl_equivalent_class.from_map(&self.spo, |&triple| {
-                let (c1, c2) = has_pred(triple, owlequivclassprop_node);
-                (c1, c2)
-            });
-            owl_equivalent_class.from_map(&self.spo, |&triple| {
-                let (c1, c2) = has_pred(triple, owlequivclassprop_node);
-                (c2, c1)
-            });
+                owl_intersection_of.from_map(&self.spo, |&triple| {
+                    let (a, b) = has_pred(triple, owlintersection_node);
+                    if a > 0 && b > 0 {
+                        intersections.insert(a, b);
+                    }
+                    (a, b)
+                });
+                owl_union_of.from_map(&self.spo, |&triple| {
+                    let (a, b) = has_pred(triple, owlunion_node);
+                    if a > 0 && b > 0 {
+                        unions.insert(a, b);
+                    }
+                    (a, b)
+                });
+                owl_has_value.from_map(&self.spo, |&triple| has_pred(triple, owlhasvalue_node));
+                owl_on_property.from_map(&self.spo, |&triple| has_pred(triple, owlonproperty_node));
+                owl_all_values_from.from_map(&self.spo, |&triple| has_pred(triple, owlallvaluesfrom_node));
+                owl_some_values_from.from_map(&self.spo, |&triple| has_pred(triple, owlsomevaluesfrom_node));
+                owl_disjoint_with.from_map(&self.spo, |&triple| has_pred(triple, owldisjointwith_node));
+                owl_same_as.from_map(&self.spo, |&triple| has_pred(triple, owlsameas_node));
+                owl_complement_of.from_map(&self.spo, |&triple| {
+                    let (a, b) = has_pred(triple, owlcomplementof_node);
+                    if a >0 && b > 0 {
+                        complements.insert(a, b);
+                        complements.insert(b, a);
+                    }
+                    (a, b)
+                });
+                owl_complement_of.from_map(&self.spo, |&triple| {
+                    let (a, b) = has_pred(triple, owlcomplementof_node);
+                    (b, a)
+                });
 
-            self.symmetric_properties.from_map(&self.spo, |&triple| {
-                has_pred_obj(triple, (rdftype_node, owlsymmetricprop_node))
-            });
+                owl_equivalent_class.from_map(&self.spo, |&triple| {
+                    let (c1, c2) = has_pred(triple, owlequivclassprop_node);
+                    (c1, c2)
+                });
+                owl_equivalent_class.from_map(&self.spo, |&triple| {
+                    let (c1, c2) = has_pred(triple, owlequivclassprop_node);
+                    (c2, c1)
+                });
 
-            transitive_properties.from_map(&self.spo, |&triple| has_pred_obj(triple, (rdftype_node, owltransitiveprop_node)));
+                self.symmetric_properties.from_map(&self.spo, |&triple| {
+                    has_pred_obj(triple, (rdftype_node, owlsymmetricprop_node))
+                });
 
-            self.equivalent_properties.from_map(&self.spo, |&triple| has_pred(triple, owlequivprop_node) );
-            self.equivalent_properties_2.from_map(&self.equivalent_properties, |&(p1, p2)| (p2, p1));
+                transitive_properties.from_map(&self.spo, |&triple| has_pred_obj(triple, (rdftype_node, owltransitiveprop_node)));
 
-            self.all_triples_input.from_join(&self.prp_dom, &self.pso, |&tpred, &class, &(sub, obj)| {
-                (sub, (rdftype_node, class))
-            });
-            self.all_triples_input.from_join(&self.prp_rng, &self.pso, |&tpred, &class, &(sub, obj)| {
-                (obj, (rdftype_node, class))
-            });
+                self.equivalent_properties.from_map(&self.spo, |&triple| has_pred(triple, owlequivprop_node) );
+                self.equivalent_properties_2.from_map(&self.equivalent_properties, |&(p1, p2)| (p2, p1));
 
-
-            // eq-ref
-            //  T(?s, ?p, ?o) =>
-            //  T(?s, owl:sameAs, ?s)
-            //  T(?p, owl:sameAs, ?p)
-            //  T(?o, owl:sameAs, ?o)
-            //self.all_triples_input.from_map(&self.spo, |&(s, (p, o))| {
-            //    (s, (owlsameas_node, s))
-            //});
-            //self.all_triples_input.from_map(&self.spo, |&(s, (p, o))| {
-            //    (p, (owlsameas_node, p))
-            //});
-            //self.all_triples_input.from_map(&self.spo, |&(s, (p, o))| {
-            //    (o, (owlsameas_node, o))
-            //});
-
-            // eq-sym
-            //  T(?x, owl:sameAs, ?y)  =>  T(?y, owl:sameAs, ?x)
-            self.all_triples_input.from_join(&self.spo, &owl_same_as, |&x, &(p, o), &y| {
-                (y, (owlsameas_node, x))
-            });
-
-            // eq-rep-s
-            self.all_triples_input.from_join(&self.spo, &owl_same_as, |&s1, &(p, o), &s2| {
-                (s2, (p, o))
-            });
-            // eq-rep-p
-            self.all_triples_input.from_join(&self.pso, &owl_same_as, |&p1, &(s, o), &p2| {
-                (s, (p2, o))
-            });
-            // eq-rep-o
-            self.all_triples_input.from_join(&self.osp, &owl_same_as, |&o1, &(s, p), &o2| {
-                (s, (p, o2))
-            });
-
-            // eq-trans
-            // T(?x, owl:sameAs, ?y)
-            // T(?y, owl:sameAs, ?z)  =>  T(?x, owl:sameAs, ?z)
-            eq_trans_1.from_join(&owl_same_as, &self.spo, |&x, &y, &(p, o)| {
-                (o, x)
-            });
-            self.all_triples_input.from_join(&owl_same_as, &eq_trans_1, |&y, &z, &x| {
-                (x, (owlsameas_node, z))
-            });
+                self.all_triples_input.from_join(&self.prp_dom, &self.pso, |&tpred, &class, &(sub, obj)| {
+                    (sub, (rdftype_node, class))
+                });
+                self.all_triples_input.from_join(&self.prp_rng, &self.pso, |&tpred, &class, &(sub, obj)| {
+                    (obj, (rdftype_node, class))
+                });
 
 
-            // prp-fp
-            self.prp_fp_1.from_map(&self.spo, |&triple| { has_pred_obj(triple, (rdftype_node, owlfuncprop_node)) });
-            self.prp_fp_2.from_join(&self.prp_fp_1, &self.pso, |&p, &(), &(x, y1)| (p, (x, y1)) );
-            self.all_triples_input.from_join(&self.prp_fp_2, &self.pso, |&p, &(x1, y1), &(x2, y2)| {
-                // if x1 and x2 are the same, then emit y1 and y2 are the same
-                match x1 {
-                    x2 => (y1, (owlsameas_node, y2)),
-                    _ => (0, (0,0)),
-                }
-            });
+                // eq-ref
+                //  T(?s, ?p, ?o) =>
+                //  T(?s, owl:sameAs, ?s)
+                //  T(?p, owl:sameAs, ?p)
+                //  T(?o, owl:sameAs, ?o)
+                //self.all_triples_input.from_map(&self.spo, |&(s, (p, o))| {
+                //    (s, (owlsameas_node, s))
+                //});
+                //self.all_triples_input.from_map(&self.spo, |&(s, (p, o))| {
+                //    (p, (owlsameas_node, p))
+                //});
+                //self.all_triples_input.from_map(&self.spo, |&(s, (p, o))| {
+                //    (o, (owlsameas_node, o))
+                //});
 
-            // prp-ifp
-            self.prp_ifp_1.from_map(&self.spo, |&triple| { has_pred_obj(triple, (rdftype_node, owlinvfuncprop_node)) });
-            self.prp_ifp_2.from_join(&self.prp_ifp_1, &self.pso, |&p, &(), &(x, y1)| (p, (x, y1)) );
-            self.all_triples_input.from_join(&self.prp_ifp_2, &self.pso, |&p, &(x1, y1), &(x2, y2)| {
-                // if y1 and y2 are the same, then emit x1 and x2 are the same
-                match y1 {
-                    y2 => (x1, (owlsameas_node, x2)),
-                    _ => (0, (0,0)),
-                }
-            });
+                // eq-sym
+                //  T(?x, owl:sameAs, ?y)  =>  T(?y, owl:sameAs, ?x)
+                self.all_triples_input.from_join(&self.spo, &owl_same_as, |&x, &(p, o), &y| {
+                    (y, (owlsameas_node, x))
+                });
 
-            // prp-spo1
-            self.prp_spo1_1.from_map(&self.spo, |&triple| has_pred(triple, rdfssubprop_node));
-            self.all_triples_input.from_join(&self.prp_spo1_1, &self.pso, |&p1, &p2, &(x, y)| (x, (p2, y)));
+                // eq-rep-s
+                self.all_triples_input.from_join(&self.spo, &owl_same_as, |&s1, &(p, o), &s2| {
+                    (s2, (p, o))
+                });
+                // eq-rep-p
+                self.all_triples_input.from_join(&self.pso, &owl_same_as, |&p1, &(s, o), &p2| {
+                    (s, (p2, o))
+                });
+                // eq-rep-o
+                self.all_triples_input.from_join(&self.osp, &owl_same_as, |&o1, &(s, p), &o2| {
+                    (s, (p, o2))
+                });
 
-            // cax-sco
-            self.cax_sco_1.from_map(&self.spo, |&triple| has_pred(triple, rdfssubclass_node));
-            // ?c1, ?x, rdf:type
-            self.cax_sco_2.from_map(&self.rdf_type, |&(inst, class)| (class, inst));
-            self.all_triples_input.from_join(&self.cax_sco_1, &self.cax_sco_2, |&class, &parent, &inst| (inst, (rdftype_node, parent)));
+                // eq-trans
+                // T(?x, owl:sameAs, ?y)
+                // T(?y, owl:sameAs, ?z)  =>  T(?x, owl:sameAs, ?z)
+                eq_trans_1.from_join(&owl_same_as, &self.spo, |&x, &y, &(p, o)| {
+                    (o, x)
+                });
+                self.all_triples_input.from_join(&owl_same_as, &eq_trans_1, |&y, &z, &x| {
+                    (x, (owlsameas_node, z))
+                });
 
-            // cax-eqc1, cax-eqc2
-            // find instances of classes that are equivalent
-            self.all_triples_input.from_join(&owl_equivalent_class, &rdf_type_inv, |&c1, &c2, &inst| {
-                (inst, (rdftype_node, c2))
-            });
 
-            // cax-dw
-            cax_dw_1.from_join(&owl_disjoint_with, &rdf_type_inv, |&c1, &c2, &inst| {
-                (c2, (c1, inst))
-            });
-            cax_dw_2.from_join(&cax_dw_1, &rdf_type_inv, |&c2, &(c1, inst1), &inst2| {
-                // TODO: how to raise 'false'?
-                if inst1 == inst2 {
-                    let msg = format!("inst {} is both {} and {} (disjoint classes)", self.to_u(inst1), self.to_u(c1), self.to_u(c2));
-                    self.add_error("cax-dw".to_string(), msg.to_string());
-                }
-                (c2, inst1)
-            });
+                // prp-fp
+                self.prp_fp_1.from_map(&self.spo, |&triple| { has_pred_obj(triple, (rdftype_node, owlfuncprop_node)) });
+                self.prp_fp_2.from_join(&self.prp_fp_1, &self.pso, |&p, &(), &(x, y1)| (p, (x, y1)) );
+                self.all_triples_input.from_join(&self.prp_fp_2, &self.pso, |&p, &(x1, y1), &(x2, y2)| {
+                    // if x1 and x2 are the same, then emit y1 and y2 are the same
+                    match x1 {
+                        x2 => (y1, (owlsameas_node, y2)),
+                        _ => (0, (0,0)),
+                    }
+                });
 
-            // prp-inv1
-            // T(?p1, owl:inverseOf, ?p2)
-            // T(?x, ?p1, ?y) => T(?y, ?p2, ?x)
-            self.all_triples_input.from_join(&self.owl_inverse_of, &self.pso, |&p1, &p2, &(x, y)| (y, (p2, x)) );
+                // prp-ifp
+                self.prp_ifp_1.from_map(&self.spo, |&triple| { has_pred_obj(triple, (rdftype_node, owlinvfuncprop_node)) });
+                self.prp_ifp_2.from_join(&self.prp_ifp_1, &self.pso, |&p, &(), &(x, y1)| (p, (x, y1)) );
+                self.all_triples_input.from_join(&self.prp_ifp_2, &self.pso, |&p, &(x1, y1), &(x2, y2)| {
+                    // if y1 and y2 are the same, then emit x1 and x2 are the same
+                    match y1 {
+                        y2 => (x1, (owlsameas_node, x2)),
+                        _ => (0, (0,0)),
+                    }
+                });
 
-            // prp-inv2
-            // T(?p1, owl:inverseOf, ?p2)
-            // T(?x, ?p2, ?y) => T(?y, ?p1, ?x)
-            self.all_triples_input.from_join(&self.owl_inverse_of2, &self.pso, |&p2, &p1, &(x, y)| (x, (p2, y)) );
+                // prp-spo1
+                self.prp_spo1_1.from_map(&self.spo, |&triple| has_pred(triple, rdfssubprop_node));
+                self.all_triples_input.from_join(&self.prp_spo1_1, &self.pso, |&p1, &p2, &(x, y)| (x, (p2, y)));
 
-            // prp-symp
-            // T(?p, rdf:type, owl:SymmetricProperty)
-            // T(?x, ?p, ?y)
-            //  => T(?y, ?p, ?x)
-            self.all_triples_input.from_join(&self.symmetric_properties, &self.pso, |&prop, &(), &(x, y)| {
-                (y, (prop, x))
-            });
+                // cax-sco
+                self.cax_sco_1.from_map(&self.spo, |&triple| has_pred(triple, rdfssubclass_node));
+                // ?c1, ?x, rdf:type
+                self.cax_sco_2.from_map(&self.rdf_type, |&(inst, class)| (class, inst));
+                self.all_triples_input.from_join(&self.cax_sco_1, &self.cax_sco_2, |&class, &parent, &inst| (inst, (rdftype_node, parent)));
 
-            // prp-trp
-            // T(?p, rdf:type, owl:TransitiveProperty)
-            // T(?x, ?p, ?y)
-            // T(?y, ?p, ?z) =>  T(?x, ?p, ?z)
-            prp_trp_1.from_join(&self.pso, &transitive_properties, |&p, &(x, y), &()| {
-                ((y, p), x)
-            });
-            prp_trp_2.from_join(&self.pso, &transitive_properties, |&p, &(y, z), &()| {
-                ((y, p), z)
-            });
-            self.all_triples_input.from_join(&prp_trp_1, &prp_trp_2, |&(y, p), &x, &z| {
-                (x, (p, z))
-            });
+                // cax-eqc1, cax-eqc2
+                // find instances of classes that are equivalent
+                self.all_triples_input.from_join(&owl_equivalent_class, &rdf_type_inv, |&c1, &c2, &inst| {
+                    (inst, (rdftype_node, c2))
+                });
 
-            // prp-eqp1
-            // T(?p1, owl:equivalentProperty, ?p2)
-            // T(?x, ?p1, ?y)
-            // => T(?x, ?p2, ?y)
-            self.all_triples_input.from_join(&self.equivalent_properties, &self.pso, |&p1, &p2, &(x, y)| (x, (p2, y)) );
-            // prp-eqp2
-            // T(?p1, owl:equivalentProperty, ?p2)
-            // T(?x, ?p2, ?y)
-            // => T(?x, ?p1, ?y)
-            self.all_triples_input.from_join(&self.equivalent_properties_2, &self.pso, |&p1, &p2, &(x, y)| (x, (p2, y)) );
+                // cax-dw
+                cax_dw_1.from_join(&owl_disjoint_with, &rdf_type_inv, |&c1, &c2, &inst| {
+                    (c2, (c1, inst))
+                });
+                cax_dw_2.from_join(&cax_dw_1, &rdf_type_inv, |&c2, &(c1, inst1), &inst2| {
+                    // TODO: how to raise 'false'?
+                    if inst1 == inst2 {
+                        let msg = format!("inst {} is both {} and {} (disjoint classes)", self.to_u(inst1), self.to_u(c1), self.to_u(c2));
+                        self.add_error("cax-dw".to_string(), msg.to_string());
+                    }
+                    (c2, inst1)
+                });
 
-            // cls-int1
-            // There's a fair amount of complexity here that we have to manage. The rule we are
-            // implementing is cls-int-1:
-            //
-            //      T(?c owl:intersectionOf ?x), LIST[?x, ?c1...?cn],
-            //      T(?y rdf:type ?c_i) for i in range(1,n) =>
-            //       T(?y rdf:type ?c)
-            //
-            // Useful structures:
-            // - `owl_intersection_of` is keyed by class and values are the list heads
-            // - `ds` gives the list values for the given head (ds.get_list_values(listname))
-            //
-            // Goal: we need to find instances (?y rdf:type ?class) of all classes given by the
-            // list identified by the head for each owl:intersectionOf node.
-            //
-            // We can get the list of classes easily by iterating over each key of the
-            // owl_intersection_of variable. However, we need an efficient way of seeing if there
-            // are instances of *each* of those classes (union). This could be a N-way join (where
-            // N is the number of classes in the list)
-            let mut new_cls_int1_instances = Vec::new();
-            for (_intersection_class, _listname) in intersections.iter() {
-                let listname = *_listname;
-                let intersection_class = *_intersection_class;
-                if let Some(values) = ds.get_list_values(listname) {
-                    let value_uris: Vec<&String> = values.iter().map(|v| self.index.get(*v).unwrap()).collect();
-                    debug!("{} {} (len {}) {} {:?}", listname, self.index.get(intersection_class).unwrap(), values.len(), self.index.get(listname).unwrap(), value_uris);
-                    let mut class_counter: HashMap<URI, usize> = HashMap::new();
-                    for (_inst, _list_class) in instances.iter() {
-                        let inst = *_inst;
-                        let list_class = *_list_class;
-                        debug!("inst {} values len {}, list class {}", self.index.get(inst).unwrap(), values.len(), list_class);
-                        if values.contains(&list_class) {
-                            debug!("{} is a {}", inst, list_class);
-                            let count = class_counter.entry(inst).or_insert(0);
-                            *count += 1;
+                // prp-inv1
+                // T(?p1, owl:inverseOf, ?p2)
+                // T(?x, ?p1, ?y) => T(?y, ?p2, ?x)
+                self.all_triples_input.from_join(&self.owl_inverse_of, &self.pso, |&p1, &p2, &(x, y)| (y, (p2, x)) );
+
+                // prp-inv2
+                // T(?p1, owl:inverseOf, ?p2)
+                // T(?x, ?p2, ?y) => T(?y, ?p1, ?x)
+                self.all_triples_input.from_join(&self.owl_inverse_of2, &self.pso, |&p2, &p1, &(x, y)| (x, (p2, y)) );
+
+                // prp-symp
+                // T(?p, rdf:type, owl:SymmetricProperty)
+                // T(?x, ?p, ?y)
+                //  => T(?y, ?p, ?x)
+                self.all_triples_input.from_join(&self.symmetric_properties, &self.pso, |&prop, &(), &(x, y)| {
+                    (y, (prop, x))
+                });
+
+                // prp-trp
+                // T(?p, rdf:type, owl:TransitiveProperty)
+                // T(?x, ?p, ?y)
+                // T(?y, ?p, ?z) =>  T(?x, ?p, ?z)
+                prp_trp_1.from_join(&self.pso, &transitive_properties, |&p, &(x, y), &()| {
+                    ((y, p), x)
+                });
+                prp_trp_2.from_join(&self.pso, &transitive_properties, |&p, &(y, z), &()| {
+                    ((y, p), z)
+                });
+                self.all_triples_input.from_join(&prp_trp_1, &prp_trp_2, |&(y, p), &x, &z| {
+                    (x, (p, z))
+                });
+
+                // prp-eqp1
+                // T(?p1, owl:equivalentProperty, ?p2)
+                // T(?x, ?p1, ?y)
+                // => T(?x, ?p2, ?y)
+                self.all_triples_input.from_join(&self.equivalent_properties, &self.pso, |&p1, &p2, &(x, y)| (x, (p2, y)) );
+                // prp-eqp2
+                // T(?p1, owl:equivalentProperty, ?p2)
+                // T(?x, ?p2, ?y)
+                // => T(?x, ?p1, ?y)
+                self.all_triples_input.from_join(&self.equivalent_properties_2, &self.pso, |&p1, &p2, &(x, y)| (x, (p2, y)) );
+
+                // cls-int1
+                // There's a fair amount of complexity here that we have to manage. The rule we are
+                // implementing is cls-int-1:
+                //
+                //      T(?c owl:intersectionOf ?x), LIST[?x, ?c1...?cn],
+                //      T(?y rdf:type ?c_i) for i in range(1,n) =>
+                //       T(?y rdf:type ?c)
+                //
+                // Useful structures:
+                // - `owl_intersection_of` is keyed by class and values are the list heads
+                // - `ds` gives the list values for the given head (ds.get_list_values(listname))
+                //
+                // Goal: we need to find instances (?y rdf:type ?class) of all classes given by the
+                // list identified by the head for each owl:intersectionOf node.
+                //
+                // We can get the list of classes easily by iterating over each key of the
+                // owl_intersection_of variable. However, we need an efficient way of seeing if there
+                // are instances of *each* of those classes (union). This could be a N-way join (where
+                // N is the number of classes in the list)
+                let mut new_cls_int1_instances = Vec::new();
+                for (_intersection_class, _listname) in intersections.iter() {
+                    let listname = *_listname;
+                    let intersection_class = *_intersection_class;
+                    if let Some(values) = ds.get_list_values(listname) {
+                        let value_uris: Vec<&String> = values.iter().map(|v| self.index.get(*v).unwrap()).collect();
+                        debug!("{} {} (len {}) {} {:?}", listname, self.index.get(intersection_class).unwrap(), values.len(), self.index.get(listname).unwrap(), value_uris);
+                        let mut class_counter: HashMap<URI, usize> = HashMap::new();
+                        for (_inst, _list_class) in instances.iter() {
+                            let inst = *_inst;
+                            let list_class = *_list_class;
+                            debug!("inst {} values len {}, list class {}", self.index.get(inst).unwrap(), values.len(), list_class);
+                            if values.contains(&list_class) {
+                                debug!("{} is a {}", inst, list_class);
+                                let count = class_counter.entry(inst).or_insert(0);
+                                *count += 1;
+                            }
+                        }
+                        for (inst, num_implemented) in class_counter.iter() {
+                            if *num_implemented == values.len() {
+                                debug!("inferred that {} is a {}", inst, intersection_class);
+                                new_cls_int1_instances.push((*inst, (rdftype_node, intersection_class)));
+                            }
                         }
                     }
-                    for (inst, num_implemented) in class_counter.iter() {
-                        if *num_implemented == values.len() {
-                            debug!("inferred that {} is a {}", inst, intersection_class);
-                            new_cls_int1_instances.push((*inst, (rdftype_node, intersection_class)));
+                }
+                self.all_triples_input.extend(new_cls_int1_instances);
+
+                // cls-int2
+                let mut new_cls_int2_instances = Vec::new();
+                cls_int_2_1.from_join(&owl_intersection_of, &rdf_type_inv, |&intersection_class, &listname, &inst| {
+                    if let Some(values) = ds.get_list_values(listname) {
+                        for list_class in values {
+                            new_cls_int2_instances.push((inst, (rdftype_node, list_class)));
                         }
+                    }
+                    (inst, new_cls_int2_instances.len() as URI)
+                });
+                self.all_triples_input.extend(new_cls_int2_instances);
+
+                // cls-uni  T(?c, owl:unionOf, ?x)
+                // LIST[?x, ?c1, ..., ?cn]
+                // T(?y, rdf:type, ?ci) (for any i in 1-n) =>  T(?y, rdf:type, ?c)
+                let mut new_cls_uni_instances = Vec::new();
+                for (_union_class, _listname) in unions.iter() {
+                    let listname = *_listname;
+                    let union_class = *_union_class;
+                    if let Some(values) = ds.get_list_values(listname) {
+                        let value_uris: Vec<&String> = values.iter().map(|v| self.index.get(*v).unwrap()).collect();
+                        debug!("{} {} (len {}) {} {:?}", listname, self.index.get(union_class).unwrap(), values.len(), self.index.get(listname).unwrap(), value_uris);
+                        let mut class_counter: HashMap<URI, usize> = HashMap::new();
+                        for (_inst, _list_class) in instances.iter() {
+                            let inst = *_inst;
+                            let list_class = *_list_class;
+                            debug!("inst {} values len {}, list class {}", self.index.get(inst).unwrap(), values.len(), list_class);
+                            if values.contains(&list_class) {
+                                debug!("{} is a {}", inst, list_class);
+                                let count = class_counter.entry(inst).or_insert(0);
+                                *count += 1;
+                            }
+                        }
+                        for (inst, num_implemented) in class_counter.iter() {
+                            if *num_implemented > 0 { // union instead of union
+                                debug!("inferred that {} is a {}", inst, union_class);
+                                new_cls_uni_instances.push((*inst, (rdftype_node, union_class)));
+                            }
+                        }
+                    }
+                }
+                self.all_triples_input.extend(new_cls_uni_instances);
+
+                // cls-com
+                // T(?c1, owl:complementOf, ?c2)
+                // T(?x, rdf:type, ?c1)
+                // T(?x, rdf:type, ?c2)  => false
+                // TODO: how do we infer instances of classes from owl:complementOf?
+                //
+                // Algorithm:
+                // - for all pairs of complementary classes (c1, c2) where c1 owl:complementOf c2, find
+                //   pairs where either c1 or c2 is an owl:Restriction
+                // - if c1 is a Restriction and its complement c2 is not, then all individuals that are
+                //   NOT of c1 should be instantiated as c2
+                // - vice-versa if c2 is a Restriction and c1 is not
+                // - if c1 and c2 are both Restrictions, this should probably be a warning
+                // - if neither c1 or c2 are Restrictions, then anything not a c1 is a c2
+                //
+                // Key aspect: given an instance, how can I tell which class it *isn't*?
+                //
+                // A bad heuristic would be to assume that of a pair (c1, c2) where one is an
+                // owl:Restriction and there isn't, the instance is of the non-Restriction class.
+                // This is under the assumption that the definition of the restriction would have told
+                // us if the instance met the requirements. However, in the middle of the reasoning
+                // process, we can't really be sure if the instance meets the requirements. Thus, we
+                // will need to handle the computation of this AFTER the reasoner has produced all
+                // triples it can given the information available.
+                //
+                // This means we have 2 loops going. The "inner" loop is the reasoning implementation
+                // *without* any owl:complementOf stuff. When that is done, we compute complements, add
+                // these to the set of triples, and then re-run the inner loop. This "outer" loop runs
+                // until no new triples are produced.
+
+                // things.from_map(&self.rdf_type, |&(inst, class)| {
+                //     if class == owlthing_node {
+                //         (inst, ())
+                //     } else {
+                //         (0, ())
+                //     }
+                // });
+
+                // let mut new_complementary_instances: Vec<Triple> = Vec::new();
+                // for (c1, c2) in complements.iter() {
+                //     let c1u = self.to_u(*c1);
+                //     let c2u = self.to_u(*c2);
+                //     let mut not_c1: HashSet<URI> = HashSet::new();
+                //     let mut not_c2: HashSet<URI> = HashSet::new();
+                //     for (inst, class) in instances.iter() {
+                //         if !instances.contains(&(*inst, *c1)) {
+                //             not_c1.insert(*inst);
+                //             not_c2.remove(inst);
+                //         }
+
+                //         if !instances.contains(&(*inst, *c2)) {
+                //             not_c2.insert(*inst);
+                //             not_c1.remove(inst);
+                //         }
+                //     }
+                //     for inst in not_c1.iter() {
+                //         let instu = self.to_u(*inst);
+                //         new_complementary_instances.push((*inst, (rdftype_node, *c2)));
+                //     }
+                //     for inst in not_c2.iter() {
+                //         let instu = self.to_u(*inst);
+                //         new_complementary_instances.push((*inst, (rdftype_node, *c1)));
+                //     }
+                // }
+                // println!("new complementary instances # {}", new_complementary_instances.len());
+                // //self.all_triples_input.extend(new_complementary_instances);
+
+                // cls-hv1:
+                // T(?x, owl:hasValue, ?y)
+                // T(?x, owl:onProperty, ?p)
+                // T(?u, rdf:type, ?x) =>  T(?u, ?p, ?y)
+                cls_hv1_1.from_join(&owl_has_value, &owl_on_property, |&x, &y, &p| {
+                    (x, (p, y))
+                });
+                self.all_triples_input.from_join(&cls_hv1_1, &rdf_type_inv, |&x, &(prop, value), &inst| {
+                    (inst, (prop, value))
+                });
+
+                // cls-hv2:
+                // T(?x, owl:hasValue, ?y)
+                // T(?x, owl:onProperty, ?p)
+                // T(?u, ?p, ?y) =>  T(?u, rdf:type, ?x)
+                cls_hv2_1.from_join(&owl_has_value, &owl_on_property, |&x, &y, &p| {
+                    // format for pso index; needs property key
+                    (p, (y, x))
+                });
+                self.all_triples_input.from_join(&cls_hv2_1, &self.pso, |&prop, &(value, anonclass), &(sub, obj)| {
+                    // if value is correct, then emit the rdf_type
+                    if value == obj {
+                        (sub, (rdftype_node, anonclass))
+                    } else {
+                        (0, (0, 0))
+                    }
+                });
+
+                // cls-avf:
+                // T(?x, owl:allValuesFrom, ?y)
+                // T(?x, owl:onProperty, ?p)
+                // T(?u, rdf:type, ?x)
+                // T(?u, ?p, ?v) =>  T(?v, rdf:type, ?y)
+                cls_avf_1.from_join(&owl_all_values_from, &owl_on_property, |&x, &y, &p| {
+                    (x, (y, p))
+                });
+                cls_avf_2.from_join(&cls_avf_1, &rdf_type_inv, |&x, &(y, p), &u| {
+                    (u, (p, y))
+                });
+                self.all_triples_input.from_join(&cls_avf_2, &self.spo, |&u, &(p1, y), &(p2, v)| {
+                    if p1 == p2 {
+                        (v, (rdftype_node, y))
+                    } else {
+                        (0, (0, 0))
+                    }
+                });
+
+                // cls-svf1:
+                // T(?x, owl:someValuesFrom, ?y)
+                // T(?x, owl:onProperty, ?p)
+                // T(?u, ?p, ?v)
+                // T(?v, rdf:type, ?y) =>  T(?u, rdf:type, ?x)
+                cls_svf1_1.from_join(&owl_some_values_from, &owl_on_property, |&x, &y, &p| {
+                    (p, (x, y))
+                });
+                cls_svf1_2.from_join(&cls_svf1_1, &self.pso, |&p, &(x, y), &(u, v)| {
+                    (v, (x, y, u))
+                });
+                self.all_triples_input.from_join(&cls_svf1_2, &self.rdf_type, |&v, &(x, y, u), &class| {
+                    if class == y {
+                        (u, (rdftype_node, x))
+                    } else {
+                        (0, (0, 0))
+                    }
+                });
+
+                // cls-svf2:
+                //  T(?x, owl:someValuesFrom, owl:Thing)
+                //  T(?x, owl:onProperty, ?p)
+                //  T(?u, ?p, ?v) =>  T(?u, rdf:type, ?x)
+                self.all_triples_input.from_join(&cls_svf1_1, &self.pso, |&p, &(x, y), &(u, v)| {
+                    if y == owlthing_node {
+                        (u, (rdftype_node, x))
+                    } else {
+                        (0, (0, 0))
+                    }
+                });
+            }
+
+            // TODO: finish computing complements
+            // Now that the inference stage has finished, we will compute the sets of instances for
+            // complementary classes
+            changed = false;
+            for (c1, c2) in complements.iter() {
+                // get all instances of NOT c1
+                let c1_instances: HashSet<URI> = instances.iter().filter_map(|(inst, class)| {
+                    if class == c1 {
+                        Some(*inst)
+                    } else {
+                        None
+                    }
+                }).collect();
+                let not_c1_instances: Vec<Triple> = instances.iter().filter_map(|(inst, class)| {
+                    if c1_instances.contains(&inst) {
+                        None
+                    } else {
+                        println!("{} is a {}", self.to_u(*inst), self.to_u(*c2));
+                        Some((*inst, (rdftype_node, *c2)))
+                    }
+                }).collect();
+                println!("{} new instances of {}", not_c1_instances.len(), self.to_u(*c2));
+                for triple in not_c1_instances.iter() {
+                    if new_complementary_instances.insert(*triple) {
+                        println!("{:?} is new", *triple);
+                        changed = true;
                     }
                 }
             }
-            self.all_triples_input.extend(new_cls_int1_instances);
-
-            // cls-int2
-            let mut new_cls_int2_instances = Vec::new();
-            cls_int_2_1.from_join(&owl_intersection_of, &rdf_type_inv, |&intersection_class, &listname, &inst| {
-                if let Some(values) = ds.get_list_values(listname) {
-                    for list_class in values {
-                        new_cls_int2_instances.push((inst, (rdftype_node, list_class)));
-                    }
-                }
-                (inst, new_cls_int2_instances.len() as URI)
-            });
-            self.all_triples_input.extend(new_cls_int2_instances);
-
-            // cls-uni  T(?c, owl:unionOf, ?x)
-            // LIST[?x, ?c1, ..., ?cn]
-            // T(?y, rdf:type, ?ci) (for any i in 1-n) =>  T(?y, rdf:type, ?c)
-            let mut new_cls_uni_instances = Vec::new();
-            for (_union_class, _listname) in unions.iter() {
-                let listname = *_listname;
-                let union_class = *_union_class;
-                if let Some(values) = ds.get_list_values(listname) {
-                    let value_uris: Vec<&String> = values.iter().map(|v| self.index.get(*v).unwrap()).collect();
-                    debug!("{} {} (len {}) {} {:?}", listname, self.index.get(union_class).unwrap(), values.len(), self.index.get(listname).unwrap(), value_uris);
-                    let mut class_counter: HashMap<URI, usize> = HashMap::new();
-                    for (_inst, _list_class) in instances.iter() {
-                        let inst = *_inst;
-                        let list_class = *_list_class;
-                        debug!("inst {} values len {}, list class {}", self.index.get(inst).unwrap(), values.len(), list_class);
-                        if values.contains(&list_class) {
-                            debug!("{} is a {}", inst, list_class);
-                            let count = class_counter.entry(inst).or_insert(0);
-                            *count += 1;
-                        }
-                    }
-                    for (inst, num_implemented) in class_counter.iter() {
-                        if *num_implemented > 0 { // union instead of union
-                            debug!("inferred that {} is a {}", inst, union_class);
-                            new_cls_uni_instances.push((*inst, (rdftype_node, union_class)));
-                        }
-                    }
-                }
-            }
-            self.all_triples_input.extend(new_cls_uni_instances);
-
-            // cls-com
-            // T(?c1, owl:complementOf, ?c2)
-            // T(?x, rdf:type, ?c1)
-            // T(?x, rdf:type, ?c2)  => false
-            // TODO: how do we infer instances of classes from owl:complementOf?
-            // find instances of owl:Thing (in 'things') that are not instances of c1
-            //
-            // for each complementary class c1, find all instnaces that AREN't instances of it and
-            // make them instances of the complement c2
-
-            // let mut new_complementary_instances: Vec<Triple> = Vec::new();
-            // for (c1, c2) in complements.iter() {
-            //     let c1u = self.to_u(*c1);
-            //     let c2u = self.to_u(*c2);
-            //     let mut not_c1: HashSet<URI> = HashSet::new();
-            //     let mut not_c2: HashSet<URI> = HashSet::new();
-            //     for (inst, class) in instances.iter() {
-            //         if !instances.contains(&(*inst, *c1)) {
-            //             not_c1.insert(*inst);
-            //             not_c2.remove(inst);
-            //         }
-
-            //         if !instances.contains(&(*inst, *c2)) {
-            //             not_c2.insert(*inst);
-            //             not_c1.remove(inst);
-            //         }
-            //     }
-            //     for inst in not_c1.iter() {
-            //         let instu = self.to_u(*inst);
-            //         new_complementary_instances.push((*inst, (rdftype_node, *c2)));
-            //     }
-            //     for inst in not_c2.iter() {
-            //         let instu = self.to_u(*inst);
-            //         new_complementary_instances.push((*inst, (rdftype_node, *c1)));
-            //     }
-            // }
-            // println!("new complementary instances # {}", new_complementary_instances.len());
-            // //self.all_triples_input.extend(new_complementary_instances);
-
-            // cls-hv1:
-            // T(?x, owl:hasValue, ?y)
-            // T(?x, owl:onProperty, ?p)
-            // T(?u, rdf:type, ?x) =>  T(?u, ?p, ?y)
-            cls_hv1_1.from_join(&owl_has_value, &owl_on_property, |&x, &y, &p| {
-                (x, (p, y))
-            });
-            self.all_triples_input.from_join(&cls_hv1_1, &rdf_type_inv, |&x, &(prop, value), &inst| {
-                (inst, (prop, value))
-            });
-
-            // cls-hv2:
-            // T(?x, owl:hasValue, ?y)
-            // T(?x, owl:onProperty, ?p)
-            // T(?u, ?p, ?y) =>  T(?u, rdf:type, ?x)
-            cls_hv2_1.from_join(&owl_has_value, &owl_on_property, |&x, &y, &p| {
-                // format for pso index; needs property key
-                (p, (y, x))
-            });
-            self.all_triples_input.from_join(&cls_hv2_1, &self.pso, |&prop, &(value, anonclass), &(sub, obj)| {
-                // if value is correct, then emit the rdf_type
-                if value == obj {
-                    (sub, (rdftype_node, anonclass))
-                } else {
-                    (0, (0, 0))
-                }
-            });
-
-            // cls-avf:
-            // T(?x, owl:allValuesFrom, ?y)
-            // T(?x, owl:onProperty, ?p)
-            // T(?u, rdf:type, ?x)
-            // T(?u, ?p, ?v) =>  T(?v, rdf:type, ?y)
-            cls_avf_1.from_join(&owl_all_values_from, &owl_on_property, |&x, &y, &p| {
-                (x, (y, p))
-            });
-            cls_avf_2.from_join(&cls_avf_1, &rdf_type_inv, |&x, &(y, p), &u| {
-                (u, (p, y))
-            });
-            self.all_triples_input.from_join(&cls_avf_2, &self.spo, |&u, &(p1, y), &(p2, v)| {
-                if p1 == p2 {
-                    (v, (rdftype_node, y))
-                } else {
-                    (0, (0, 0))
-                }
-            });
-
-            // cls-svf1:
-            // T(?x, owl:someValuesFrom, ?y)
-            // T(?x, owl:onProperty, ?p)
-            // T(?u, ?p, ?v)
-            // T(?v, rdf:type, ?y) =>  T(?u, rdf:type, ?x)
-            cls_svf1_1.from_join(&owl_some_values_from, &owl_on_property, |&x, &y, &p| {
-                (p, (x, y))
-            });
-            cls_svf1_2.from_join(&cls_svf1_1, &self.pso, |&p, &(x, y), &(u, v)| {
-                (v, (x, y, u))
-            });
-            self.all_triples_input.from_join(&cls_svf1_2, &self.rdf_type, |&v, &(x, y, u), &class| {
-                if class == y {
-                    (u, (rdftype_node, x))
-                } else {
-                    (0, (0, 0))
-                }
-            });
-
-            // cls-svf2:
-            //  T(?x, owl:someValuesFrom, owl:Thing)
-            //  T(?x, owl:onProperty, ?p)
-            //  T(?u, ?p, ?v) =>  T(?u, rdf:type, ?x)
-            self.all_triples_input.from_join(&cls_svf1_1, &self.pso, |&p, &(x, y), &(u, v)| {
-                if y == owlthing_node {
-                    (u, (rdftype_node, x))
-                } else {
-                    (0, (0, 0))
-                }
-            });
         }
     }
 
@@ -1541,6 +1608,7 @@ mod tests {
             let (s, p, o) = i;
             println!("{} {} {}", s, p, o);
         }
+        assert!(res.contains(&("inst1".to_string(), RDF_TYPE.to_string(), OWL_THING.to_string())));
         assert!(res.contains(&("inst1".to_string(), RDF_TYPE.to_string(), "x".to_string())));
         assert!(!res.contains(&("inst1".to_string(), RDF_TYPE.to_string(), "c".to_string())));
         assert!(!res.contains(&("inst1".to_string(), RDF_TYPE.to_string(), "c2".to_string())));
