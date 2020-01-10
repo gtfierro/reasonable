@@ -992,14 +992,11 @@ impl Reasoner {
                     if c1_instances.contains(&inst) {
                         None
                     } else {
-                        println!("{} is a {}", self.to_u(*inst), self.to_u(*c2));
                         Some((*inst, (rdftype_node, *c2)))
                     }
                 }).collect();
-                println!("{} new instances of {}", not_c1_instances.len(), self.to_u(*c2));
                 for triple in not_c1_instances.iter() {
                     if new_complementary_instances.insert(*triple) {
-                        println!("{:?} is new", *triple);
                         changed = true;
                     }
                 }
