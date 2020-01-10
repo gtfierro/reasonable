@@ -5,7 +5,8 @@ use crate::index::URIIndex;
 use crate::disjoint_sets::DisjointSets;
 use crate::common::*;
 
-use log::{info, debug, warn};
+use log::{info, debug, warn, error};
+use std::fmt;
 use std::fs;
 use std::io::{Write, Error};
 use std::collections::{HashMap, HashSet};
@@ -20,12 +21,31 @@ use rdf::uri::Uri;
 use rdf::writer::turtle_writer::TurtleWriter;
 use rdf::writer::rdf_writer::RdfWriter;
 // use rdf::writer::n_triples_writer::NTriplesWriter;
+#[allow(dead_code)]
 use crate::common::*;
+
+pub struct ReasoningError {
+    rule: String,
+    message: String,
+}
+
+impl ReasoningError {
+    pub fn new(rule: String, message: String) -> Self {
+        ReasoningError{rule, message}
+    }
+}
+
+impl fmt::Display for ReasoningError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "ReasoningError<rule: {}>: {}", self.rule, self.message)
+    }
+}
 
 pub struct Reasoner {
     iter1: Iteration,
     index: URIIndex,
     input: Vec<Triple>,
+    errors: Vec<ReasoningError>,
 
     spo: Variable<Triple>,
     pso: Variable<Triple>,
@@ -155,6 +175,7 @@ impl Reasoner {
             iter1: iter1,
             index: index,
             input: input,
+            errors: Vec::new(),
             spo: spo,
             pso: pso,
             osp: osp,
@@ -197,6 +218,12 @@ impl Reasoner {
         *pred == "http://schema.org#name".to_string() ||
         *pred == "http://www.w3.org/2004/02/skos/core#definition".to_string() ||
         *pred == "http://purl.org/dc/elements/1.1/title"
+    }
+
+    fn add_error(&mut self, rule: String, message: String) {
+        let error = ReasoningError::new(rule, message);
+        error!("Got error {}", error);
+        self.errors.push(error);
     }
 
     fn escape_literal(&self, literal: &str) -> String {
@@ -329,6 +356,8 @@ impl Reasoner {
     }
 
     pub fn reason(&mut self) {
+        // TODO: put these URIs inside the index initialization and give easy ways of referring to
+        // them
         let rdftype_node = self.index.put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
         let rdfsdomain_node = self.index.put_str("http://www.w3.org/2000/01/rdf-schema#domain");
         let rdfsrange_node = self.index.put_str("http://www.w3.org/2000/01/rdf-schema#range");
@@ -653,7 +682,8 @@ impl Reasoner {
             cax_dw_2.from_join(&cax_dw_1, &rdf_type_inv, |&c2, &(c1, inst1), &inst2| {
                 // TODO: how to raise 'false'?
                 if inst1 == inst2 {
-                    warn!("DISJOINT VIOLATION {} is both {} and {}", self.to_u(inst1), self.to_u(c1), self.to_u(c2));
+                    let msg = format!("inst {} is both {} and {} (disjoint classes)", self.to_u(inst1), self.to_u(c1), self.to_u(c2));
+                    self.add_error("cax-dw".to_string(), msg.to_string());
                 }
                 (c2, inst1)
             });
