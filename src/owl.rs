@@ -510,9 +510,11 @@ impl Reasoner {
 
         self.all_triples_input.extend(self.input.iter().cloned());
         let mut changed = true;
+        let mut established_complementary_instances: HashSet<Triple> = HashSet::new();
         let mut new_complementary_instances: HashSet<Triple> = HashSet::new();
         while changed {
-            self.all_triples_input.extend(new_complementary_instances.iter());
+            self.all_triples_input.extend(new_complementary_instances.drain());
+
             while self.iter1.changed() {
                 // TODO: pre-filter to eliminate triples that could cause issues
                 // - check complements hashmap
@@ -989,16 +991,19 @@ impl Reasoner {
                     }
                 }).collect();
                 let not_c1_instances: Vec<Triple> = instances.iter().filter_map(|(inst, class)| {
+                    let triple = (*inst, (rdftype_node, *c2));
                     if c1_instances.contains(&inst) {
                         None
+                    } else if established_complementary_instances.insert(triple) {
+                        Some(triple)
                     } else {
-                        Some((*inst, (rdftype_node, *c2)))
+                        None
                     }
+
                 }).collect();
-                for triple in not_c1_instances.iter() {
-                    if new_complementary_instances.insert(*triple) {
-                        changed = true;
-                    }
+                if not_c1_instances.len() > 0 {
+                    new_complementary_instances.extend(not_c1_instances);
+                    changed = true;
                 }
             }
         }
