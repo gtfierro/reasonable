@@ -35,6 +35,17 @@ macro_rules! rdfs {
     ($t:expr) => (format!("http://www.w3.org/2000/01/rdf-schema#{}", $t));
 }
 
+macro_rules! node_relation {
+    ($self:expr, $uri:expr) => {
+        {
+            let x = $self.iter1.variable::<(URI, ())>("tmp");
+            let v = vec![($self.index.put($uri), ())];
+            x.extend(v.iter());
+            x
+        }
+    };
+}
+
 pub struct ReasoningError {
     rule: String,
     message: String,
@@ -381,6 +392,7 @@ impl Reasoner {
 
         // OWL nodes
         let owlthing_node = self.index.put(owl!("Thing"));
+        let owlnothing_node = self.index.put(owl!("Nothing"));
         let owlsameas_node = self.index.put(owl!("sameAs"));
         let owlinverseof_node = self.index.put(owl!("inverseOf"));
         let owlsymmetricprop_node = self.index.put(owl!("SymmetricProperty"));
@@ -484,6 +496,11 @@ impl Reasoner {
         let prp_trp_2 = self.iter1.variable::<((URI, URI), URI)>("prp_trp_2");
 
         let list_test1 = self.iter1.variable::<(URI, URI)>("list_test1");
+
+        // cls-nothing2
+        //  T(?x, rdf:type, owl:Nothing)  => false
+        let cls_nothing2 = self.iter1.variable::<(URI, ())>("cls_nothing2");
+        let owl_nothing = node_relation!(self, owl!("Nothing"));
 
         // cls-int1
         //    T(?c owl:intersectionOf ?x), LIST[?x, ?c1...?cn],
@@ -831,6 +848,17 @@ impl Reasoner {
                 // T(?x, ?p2, ?y)
                 // => T(?x, ?p1, ?y)
                 self.all_triples_input.from_join(&self.equivalent_properties_2, &pso, |&p1, &p2, &(x, y)| (x, (p2, y)) );
+
+                // cls-nothing2
+                //  T(?x, rdf:type, owl:Nothing) => false
+                cls_nothing2.from_join(&rdf_type_inv, &owl_nothing, |&_nothing, &x, &()| {
+                    if x > 0 {
+                        let msg = format!("Instance {} is owl:Nothing (suggests unsatisfiability)", self.to_u(x));
+                        self.add_error("cls-nothing2".to_string(), msg.to_string());
+                    }
+                    (x, ())
+                });
+
 
                 // cls-int1
                 // There's a fair amount of complexity here that we have to manage. The rule we are
