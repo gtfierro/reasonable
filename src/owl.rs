@@ -467,7 +467,13 @@ impl Reasoner {
         // T(?p1, owl:propertyDisjointWith, ?p2)
         // T(?x, ?p1, ?y)
         // T(?x, ?p2, ?y) => false
-        let owl_propertydisjointwith = self.iter1.variable::<(URI, ())>("owl_propertydisjointwith");
+        // pairs of disjoint properties
+        let owl_propertydisjointwith = self.iter1.variable::<(URI, URI)>("owl_propertydisjointwith");
+        // store the inverse; p2 pdw p1
+        let owl_propertydisjointwith2 = self.iter1.variable::<(URI, URI)>("owl_propertydisjointwith2");
+        let prp_pdw_1 = self.iter1.variable::<((URI, URI, URI), URI)>("prp_pdw_1");
+        let prp_pdw_2 = self.iter1.variable::<((URI, URI, URI), URI)>("prp_pdw_2");
+        let prp_pdw_3 = self.iter1.variable::<((URI, URI, URI), URI)>("prp_pdw_3");
 
         // prp-trp
         // T(?p, rdf:type, owl:TransitiveProperty)
@@ -596,6 +602,8 @@ impl Reasoner {
                 });
                 owl_irreflexive.from_map(&self.spo, |&triple| has_pred_obj(triple, (rdftype_node, owlirreflexiveprop_node)));
                 owl_asymmetric.from_map(&self.spo, |&triple| has_pred_obj(triple, (rdftype_node, owlasymmetricprop_node)));
+                owl_propertydisjointwith.from_map(&self.spo, |&triple| has_pred(triple, owl_pdw));
+                owl_propertydisjointwith2.from_map(&owl_propertydisjointwith, |&(p1, p2)| (p2, p1));
 
                 owl_has_value.from_map(&self.spo, |&triple| has_pred(triple, owlhasvalue_node));
                 owl_on_property.from_map(&self.spo, |&triple| has_pred(triple, owlonproperty_node));
@@ -690,7 +698,7 @@ impl Reasoner {
                 // T(?p, rdf:type, owl:IrreflexiveProperty)
                 // T(?x, ?p, ?x) => false
                 prp_irp_1.from_join(&owl_irreflexive, &pso, |&p, &(), &(s, o)| {
-                    if s == o {
+                    if s == o && s > 0 && o > 0 {
                         let msg = format!("property {} of {} is irreflexive", self.to_u(p), self.to_u(s));
                         self.add_error("prp-irp".to_string(), msg.to_string());
                     }
@@ -704,9 +712,11 @@ impl Reasoner {
                 prp_asyp_1.from_join(&owl_asymmetric, &pso, |&p, &(), &(x, y)| ((x, y, p), ()) );
                 prp_asyp_2.from_join(&owl_asymmetric, &pso, |&p, &(), &(x, y)| ((y, x, p), ()) );
                 prp_asyp_3.from_join(&prp_asyp_1, &prp_asyp_2, |&(x, y, p), &(), &()| {
+                    if x > 0 && y > 0 && p > 0 {
                         let msg = format!("property {} of {} and {} is asymmetric", self.to_u(p), self.to_u(x), self.to_u(y));
                         self.add_error("prp-asyp".to_string(), msg.to_string());
-                        ((x, y, p), ())
+                    }
+                    ((x, y, p), ())
                 });
 
 
@@ -755,7 +765,7 @@ impl Reasoner {
                     (c2, (c1, inst))
                 });
                 cax_dw_2.from_join(&cax_dw_1, &rdf_type_inv, |&c2, &(c1, inst1), &inst2| {
-                    if inst1 == inst2 {
+                    if inst1 == inst2 && inst1 > 0 && inst2 > 0 {
                         let msg = format!("inst {} is both {} and {} (disjoint classes)", self.to_u(inst1), self.to_u(c1), self.to_u(c2));
                         self.add_error("cax-dw".to_string(), msg.to_string());
                     }
@@ -771,6 +781,23 @@ impl Reasoner {
                 // T(?p1, owl:inverseOf, ?p2)
                 // T(?x, ?p2, ?y) => T(?y, ?p1, ?x)
                 self.all_triples_input.from_join(&self.owl_inverse_of2, &pso, |&p2, &p1, &(x, y)| (x, (p2, y)) );
+
+                // prp-pdw
+                // T(?p1, owl:propertyDisjointWith, ?p2)
+                // T(?x, ?p1, ?y)
+                // T(?x, ?p2, ?y) => false
+                // returns pairs of (x,y) that should NOT exist for p2 because they exist for p1
+                prp_pdw_1.from_join(&owl_propertydisjointwith, &pso, |&p1, &p2, &(x, y)| ((x, y, p2), p1));
+                // returns pairs of (x,y) that do have p2
+                prp_pdw_2.from_join(&owl_propertydisjointwith2, &pso, |&p2, &p1, &(x, y)| ((x, y, p2), p1));
+                // join on (x,y) to find pairs in violation
+                prp_pdw_3.from_join(&prp_pdw_1, &prp_pdw_2, |&(x, y, p2), &p1, &_p1| {
+                    if x > 0 && y > 0 && p2 > 0 && p1 > 0 {
+                        let msg = format!("property {} is disjoint with {} for pair ({} {} {})", self.to_u(p1), self.to_u(p2), self.to_u(x), self.to_u(p1), self.to_u(y));
+                        self.add_error("prp-pdw".to_string(), msg.to_string());
+                    }
+                    ((x, y, p2), p1)
+                });
 
                 // prp-symp
                 // T(?p, rdf:type, owl:SymmetricProperty)
