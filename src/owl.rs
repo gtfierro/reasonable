@@ -362,6 +362,7 @@ impl Reasoner {
         let owlinverseof_node = self.index.put_str("http://www.w3.org/2002/07/owl#inverseOf");
         let owlsymmetricprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#SymmetricProperty");
         let owlirreflexiveprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#IrreflexiveProperty");
+        let owlasymmetricprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#AsymmetricProperty");
         let owltransitiveprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#TransitiveProperty");
         let owlequivprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#equivalentProperty");
         let owlequivclassprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#equivalentClass");
@@ -421,6 +422,15 @@ impl Reasoner {
         // T(?x, ?p, ?x) => false
         let owl_irreflexive = self.iter1.variable::<(URI, ())>("owl_irreflexive");
         let prp_irp_1 = self.iter1.variable::<(URI, URI)>("prp_irp_1");
+
+        // prp-asyp
+        //  T(?p, rdf:type, owl:AsymmetricProperty)
+        //  T(?x, ?p, ?y)
+        //  T(?y, ?p, ?x)  => false
+        let owl_asymmetric = self.iter1.variable::<(URI, ())>("owl_asymmetric");
+        let prp_asyp_1 = self.iter1.variable::<((URI, URI, URI), ())>("prp_asyp_1");
+        let prp_asyp_2 = self.iter1.variable::<((URI, URI, URI), ())>("prp_asyp_2");
+        let prp_asyp_3 = self.iter1.variable::<((URI, URI, URI), ())>("prp_asyp_3");
 
         // prp-inv1
         // T(?p1, owl:inverseOf, ?p2)
@@ -558,6 +568,7 @@ impl Reasoner {
                     (a, b)
                 });
                 owl_irreflexive.from_map(&self.spo, |&triple| has_pred_obj(triple, (rdftype_node, owlirreflexiveprop_node)));
+                owl_asymmetric.from_map(&self.spo, |&triple| has_pred_obj(triple, (rdftype_node, owlasymmetricprop_node)));
 
                 owl_has_value.from_map(&self.spo, |&triple| has_pred(triple, owlhasvalue_node));
                 owl_on_property.from_map(&self.spo, |&triple| has_pred(triple, owlonproperty_node));
@@ -658,6 +669,19 @@ impl Reasoner {
                     }
                     (p, s)
                 });
+
+                // prp-asyp
+                //  T(?p, rdf:type, owl:AsymmetricProperty)
+                //  T(?x, ?p, ?y)
+                //  T(?y, ?p, ?x) => false
+                prp_asyp_1.from_join(&owl_asymmetric, &pso, |&p, &(), &(x, y)| ((x, y, p), ()) );
+                prp_asyp_2.from_join(&owl_asymmetric, &pso, |&p, &(), &(x, y)| ((y, x, p), ()) );
+                prp_asyp_3.from_join(&prp_asyp_1, &prp_asyp_2, |&(x, y, p), &(), &()| {
+                        let msg = format!("property {} of {} and {} is asymmetric", self.to_u(p), self.to_u(x), self.to_u(y));
+                        self.add_error("prp-asyp".to_string(), msg.to_string());
+                        ((x, y, p), ())
+                });
+
 
 
 
@@ -1627,6 +1651,25 @@ mod tests {
         assert!(!res.contains(&("inst1".to_string(), RDF_TYPE.to_string(), "c".to_string())));
         assert!(!res.contains(&("inst1".to_string(), RDF_TYPE.to_string(), "c2".to_string())));
         assert!(res.contains(&("inst2".to_string(), RDF_TYPE.to_string(), "c2".to_string())));
+        Ok(())
+    }
+
+    #[test]
+    fn test_error_asymmetric() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("p", RDF_TYPE, OWL_ASYMMETRICPROP),
+            ("x", "p", "y"),
+            ("y", "p", "x"),
+        ];
+        r.load_triples(trips);
+        r.reason();
+        let res = r.get_triples();
+        for i in res.iter() {
+            let (s, p, o) = i;
+            println!("{} {} {}", s, p, o);
+        }
+        // assert!(res.errors.len() > 0);
         Ok(())
     }
 }

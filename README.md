@@ -58,7 +58,7 @@ Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasonin
 | **yes**| `eq-rep-s` |       |
 | **yes**| `eq-rep-p` |       |
 | **yes**| `eq-rep-o` |       |
-| no     | `eq-diff1` | `eq-diff{1,2,3}` all involve throwing exceptions. Not clear how we want to handle these yet      |
+| no     | `eq-diff1` | throws exception |
 | no     | `eq-diff2` | throws exception |
 | no     | `eq-diff3` | throws exception |
 
@@ -71,9 +71,9 @@ Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasonin
 | **yes**   | `prp-rng` |       |
 | **yes**   | `prp-fp` |       |
 | **yes**   | `prp-ifp` |       |
-| no        | `prp-irp` | throws exception |
+| **yes**   | `prp-irp` | throws exception |
 | **yes**   | `prp-symp` |       |
-| no        | `prp-asyp` | throws exception |
+| **yes**   | `prp-asyp` | throws exception |
 | **yes**   | `prp-trp` |       |
 | **yes**   | `prp-spo1` |       |
 | no        | `prp-spo2` |       |

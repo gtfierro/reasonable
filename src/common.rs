@@ -27,6 +27,7 @@ pub const OWL_THING: &str = "http://www.w3.org/2002/07/owl#Thing";
 pub const OWL_NOTHING: &str = "http://www.w3.org/2002/07/owl#Nothing";
 pub const OWL_COMPLEMENT: &str = "http://www.w3.org/2002/07/owl#complementOf";
 pub const OWL_RESTRICTION: &str = "http://www.w3.org/2002/07/owl#Restriction";
+pub const OWL_ASYMMETRICPROP: &str = "http://www.w3.org/2002/07/owl#AsymmetricProperty";
 
 pub type URI = u32;
 pub type Triple = (URI, (URI, URI));
