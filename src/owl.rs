@@ -502,6 +502,7 @@ impl Reasoner {
         let cls_nothing2 = self.iter1.variable::<(URI, ())>("cls_nothing2");
         let owl_nothing = node_relation!(self, owl!("Nothing"));
 
+
         // cls-int1
         //    T(?c owl:intersectionOf ?x), LIST[?x, ?c1...?cn],
         //    T(?y rdf:type ?c_i) for i in range(1,n) =>
@@ -553,7 +554,8 @@ impl Reasoner {
         // cls-com
         let owl_complement_of = self.iter1.variable::<(URI, URI)>("owl_complement_of");
         let things = self.iter1.variable::<(URI, ())>("things");
-        let cls_com_1 = self.iter1.variable::<(URI, URI)>("cls_com_1");
+        let cls_com_1 = self.iter1.variable::<(URI, (URI, URI))>("cls_com_1");
+        let cls_com_2 = self.iter1.variable::<(URI, URI)>("cls_com_2");
 
         // cax-eqc1
         // T(?c1, owl:equivalentClass, ?c2), T(?x, rdf:type, ?c1)  =>
@@ -955,7 +957,17 @@ impl Reasoner {
                 // T(?x, rdf:type, ?c1)
                 // T(?x, rdf:type, ?c2)  => false
                 // TODO: how do we infer instances of classes from owl:complementOf?
-                //
+                cls_com_1.from_join(&owl_complement_of, &rdf_type_inv, |&c1, &c2, &x| (c2, (x, c1)));
+                cls_com_2.from_join(&rdf_type_inv, &cls_com_1, |&c2, &x_exists, &(x_bad, c1)| {
+                    if x_exists == x_bad && x_exists > 0 && x_bad > 0 {
+                        let msg = format!("Individual {} has type {} and {} which are complements", self.to_u(x_exists), self.to_u(c2), self.to_u(c1));
+                        self.add_error("cls-com".to_string(), msg.to_string());
+                    }
+                    (x_bad, c1)
+                });
+
+
+
                 // Algorithm:
                 // - for all pairs of complementary classes (c1, c2) where c1 owl:complementOf c2, find
                 //   pairs where either c1 or c2 is an owl:Restriction
