@@ -23,6 +23,18 @@ use rdf::writer::rdf_writer::RdfWriter;
 #[allow(dead_code)]
 use crate::common::*;
 
+macro_rules! owl {
+    ($t:expr) => (format!("http://www.w3.org/2002/07/owl#{}", $t));
+}
+
+macro_rules! rdf {
+    ($t:expr) => (format!("http://www.w3.org/1999/02/22-rdf-syntax-ns#{}", $t));
+}
+
+macro_rules! rdfs {
+    ($t:expr) => (format!("http://www.w3.org/2000/01/rdf-schema#{}", $t));
+}
+
 pub struct ReasoningError {
     rule: String,
     message: String,
@@ -354,34 +366,43 @@ impl Reasoner {
     pub fn reason(&mut self) {
         // TODO: put these URIs inside the index initialization and give easy ways of referring to
         // them
-        let rdftype_node = self.index.put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
-        let rdfsdomain_node = self.index.put_str("http://www.w3.org/2000/01/rdf-schema#domain");
-        let rdfsrange_node = self.index.put_str("http://www.w3.org/2000/01/rdf-schema#range");
-        let owlthing_node = self.index.put_str("http://www.w3.org/2002/07/owl#Thing");
-        let owlsameas_node = self.index.put_str("http://www.w3.org/2002/07/owl#sameAs");
-        let owlinverseof_node = self.index.put_str("http://www.w3.org/2002/07/owl#inverseOf");
-        let owlsymmetricprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#SymmetricProperty");
-        let owlirreflexiveprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#IrreflexiveProperty");
-        let owlasymmetricprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#AsymmetricProperty");
-        let owltransitiveprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#TransitiveProperty");
-        let owlequivprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#equivalentProperty");
-        let owlequivclassprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#equivalentClass");
-        let owlfuncprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#FunctionalProperty");
-        let owlinvfuncprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#InverseFunctionalProperty");
-        let rdfssubprop_node = self.index.put_str("http://www.w3.org/2000/01/rdf-schema#subPropertyOf");
-        let rdfssubclass_node = self.index.put_str("http://www.w3.org/2000/01/rdf-schema#subClassOf");
-        let owlintersection_node = self.index.put_str("http://www.w3.org/2002/07/owl#intersectionOf");
-        let owlunion_node = self.index.put_str("http://www.w3.org/2002/07/owl#unionOf");
-        let owlhasvalue_node = self.index.put_str("http://www.w3.org/2002/07/owl#hasValue");
-        let owlallvaluesfrom_node = self.index.put_str("http://www.w3.org/2002/07/owl#allValuesFrom");
-        let owlsomevaluesfrom_node = self.index.put_str("http://www.w3.org/2002/07/owl#someValuesFrom");
-        let owldisjointwith_node = self.index.put_str("http://www.w3.org/2002/07/owl#disjointWith");
-        let owlonproperty_node = self.index.put_str("http://www.w3.org/2002/07/owl#onProperty");
-        let owlcomplementof_node = self.index.put_str("http://www.w3.org/2002/07/owl#complementOf");
 
-        let rdffirst_node = self.index.put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#first");
-        let rdfrest_node = self.index.put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#rest");
-        let rdfnil_node = self.index.put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#nil");
+        // RDF nodes
+        let rdftype_node = self.index.put(rdf!("type"));
+        let rdffirst_node = self.index.put(rdf!("first"));
+        let rdfrest_node = self.index.put(rdf!("rest"));
+        let rdfnil_node = self.index.put(rdf!("nil"));
+
+        // RDFS nodes
+        let rdfsdomain_node = self.index.put(rdfs!("domain"));
+        let rdfsrange_node = self.index.put(rdfs!("range"));
+        let rdfssubprop_node = self.index.put(rdfs!("subPropertyOf"));
+        let rdfssubclass_node = self.index.put(rdfs!("subClassOf"));
+
+        // OWL nodes
+        let owlthing_node = self.index.put(owl!("Thing"));
+        let owlsameas_node = self.index.put(owl!("sameAs"));
+        let owlinverseof_node = self.index.put(owl!("inverseOf"));
+        let owlsymmetricprop_node = self.index.put(owl!("SymmetricProperty"));
+        let owlirreflexiveprop_node = self.index.put(owl!("IrreflexiveProperty"));
+        let owlasymmetricprop_node = self.index.put(owl!("AsymmetricProperty"));
+        let owltransitiveprop_node = self.index.put(owl!("TransitiveProperty"));
+        let owlequivprop_node = self.index.put(owl!("equivalentProperty"));
+        let owlequivclassprop_node = self.index.put(owl!("equivalentClass"));
+        let owlfuncprop_node = self.index.put(owl!("FunctionalProperty"));
+        let owlinvfuncprop_node = self.index.put(owl!("InverseFunctionalProperty"));
+        let owlintersection_node = self.index.put(owl!("intersectionOf"));
+        let owlunion_node = self.index.put(owl!("unionOf"));
+        let owlhasvalue_node = self.index.put(owl!("hasValue"));
+        let owlallvaluesfrom_node = self.index.put(owl!("allValuesFrom"));
+        let owlsomevaluesfrom_node = self.index.put(owl!("someValuesFrom"));
+        let owldisjointwith_node = self.index.put(owl!("disjointWith"));
+        let owlonproperty_node = self.index.put(owl!("onProperty"));
+        let owlcomplementof_node = self.index.put(owl!("complementOf"));
+        let owl_pdw = self.index.put(owl!("propertyDisjointWith"));
+
+
+
         let rdf_type_inv = self.iter1.variable::<(URI, URI)>("rdf_type_inv");
 
         let prp_fp_isfuncprop = self.iter1.variable::<Triple>("a");
@@ -441,6 +462,12 @@ impl Reasoner {
         //
         // (p1, p2)
         let prp_inv1 = self.iter1.variable::<(URI, URI)>("prp_inv1");
+
+        // prp-pdw
+        // T(?p1, owl:propertyDisjointWith, ?p2)
+        // T(?x, ?p1, ?y)
+        // T(?x, ?p2, ?y) => false
+        let owl_propertydisjointwith = self.iter1.variable::<(URI, ())>("owl_propertydisjointwith");
 
         // prp-trp
         // T(?p, rdf:type, owl:TransitiveProperty)
