@@ -2,44 +2,6 @@
 
 An OWL 2 RL reasoner with reasonable performance
 
-## Implementation Notes
-
-
-### `owl:complementOf` complications
-
-A modeling complication introduced by the formalization of the mapping between tags (`owl:hasValue <tag>; owl:onProperty brick:hasTag`)
-is logical conflict between the disjointness of the Brick `Point` classes (`Alarm`, `Setpoint`, `Sensor` and so on) and what is implied by
-the tags.
-
-Consider the two classes `Air_Flow_Setpoint` (a subclass of `Setpoint`) and `Max_Air_Flow_Setpoint_Limit` (a subclass of `Parameter`).
-tags for `Air_Flow_Setpoint` are a subset of the tags for `Max_Air_Flow_Setpoint_Limit`, so `Max_Air_Flow_Setpoint_Limit` is inferred
-as a `Setpoint` in addition to a `Parameter`.
-
-To get around this, we introduce an additional constraint that certain classes can *not* have certain tags. This is accomplished
-by mandating that the class definitions intersect with the set of entities that are complementary to the set that has the forbidden tag.
-For example:
-
-```ttl
-brick:Setpoint a owl:Class ;
-    rdfs:label "Setpoint" ;
-    rdfs:subClassOf brick:Point ;
-    owl:equivalentClass [ owl:intersectionOf (
-                            [ a owl:Class ; owl:complementOf [
-                                a owl:Restriction ;
-                                owl:hasValue tag:Parameter ;
-                                owl:onProperty brick:hasTag ] ]
-                            [ a owl:Restriction ;
-                                owl:hasValue tag:Setpoint ;
-                                owl:onProperty brick:hasTag ]
-                        ) ] .
-```
-
-The issue now is how to efficiently and correctly implement `owl:complementOf`. The entailment semantics given in the W3C document
-only flag logical conflicts.
-
-Things to check:
-- given two complementary classes `c1` and `c2`, it is difficult to know if their union is the set of all entities. Is this true if one of them is an `owl:Restriction`?
-
 ## OWL 2 Rules
 
 Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasoning_in_OWL_2_RL_and_RDF_Graphs_using_Rules).
