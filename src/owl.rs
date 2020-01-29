@@ -3,7 +3,6 @@ use datafrog::{Iteration, Variable};
 
 use crate::index::URIIndex;
 use crate::disjoint_sets::DisjointSets;
-use crate::common::*;
 
 use log::{info, debug, warn, error};
 use std::fmt;
@@ -48,7 +47,6 @@ pub struct Reasoner {
     errors: Vec<ReasoningError>,
 
     spo: Variable<Triple>,
-    pso: Variable<Triple>,
     osp: Variable<Triple>,
     all_triples_input: Variable<Triple>,
 
@@ -84,7 +82,6 @@ impl Reasoner {
 
         // variables within the iteration
         let spo = iter1.variable::<(URI, (URI, URI))>("spo");
-        let pso = iter1.variable::<(URI, (URI, URI))>("pso");
         let osp = iter1.variable::<(URI, (URI, URI))>("osp");
         let all_triples_input = iter1.variable::<(URI, (URI, URI))>("all_triples_input");
 
@@ -177,7 +174,6 @@ impl Reasoner {
             input: input,
             errors: Vec::new(),
             spo: spo,
-            pso: pso,
             osp: osp,
             all_triples_input: all_triples_input,
 
@@ -365,6 +361,7 @@ impl Reasoner {
         let owlsameas_node = self.index.put_str("http://www.w3.org/2002/07/owl#sameAs");
         let owlinverseof_node = self.index.put_str("http://www.w3.org/2002/07/owl#inverseOf");
         let owlsymmetricprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#SymmetricProperty");
+        let owlirreflexiveprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#IrreflexiveProperty");
         let owltransitiveprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#TransitiveProperty");
         let owlequivprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#equivalentProperty");
         let owlequivclassprop_node = self.index.put_str("http://www.w3.org/2002/07/owl#equivalentClass");
@@ -396,6 +393,9 @@ impl Reasoner {
         let mut instances: HashSet<(URI, URI)> = HashSet::new();
         let mut complements: HashMap<URI, URI> = HashMap::new();
 
+        // in-memory indexes
+        let pso = self.iter1.variable::<(URI, (URI, URI))>("pso");
+
         // eq-ref
         //  T(?s, ?p, ?o) =>
         //  T(?s, owl:sameAs, ?s)
@@ -415,6 +415,12 @@ impl Reasoner {
         // T(?s, owl:sameAs, ?s')
         // TODO: make more efficient
         // T(?s, ?p, ?o) => T(?s', ?p, ?o) (and then for p' and o')
+
+        // prp-irp
+        // T(?p, rdf:type, owl:IrreflexiveProperty)
+        // T(?x, ?p, ?x) => false
+        let owl_irreflexive = self.iter1.variable::<(URI, ())>("owl_irreflexive");
+        let prp_irp_1 = self.iter1.variable::<(URI, URI)>("prp_irp_1");
 
         // prp-inv1
         // T(?p1, owl:inverseOf, ?p2)
@@ -516,19 +522,13 @@ impl Reasoner {
             self.all_triples_input.extend(new_complementary_instances.drain());
 
             while self.iter1.changed() {
-                // TODO: pre-filter to eliminate triples that could cause issues
-                // - check complements hashmap
-                // - check disjoint relations
-                // How: create a relation (monotonic) of all of the unallowed triples, antijoin this
-                // against the triples input
-
                 // all individuals are owl:Things
                 self.all_triples_input.from_map(&self.spo, |&(s, (_p, _o))| {
                     (s, (rdftype_node, owlthing_node))
                 });
 
                 self.spo.from_map(&self.all_triples_input, |&(sub, (pred, obj))| (sub, (pred, obj)));
-                self.pso.from_map(&self.all_triples_input, |&(sub, (pred, obj))| (pred, (sub, obj)));
+                pso.from_map(&self.all_triples_input, |&(sub, (pred, obj))| (pred, (sub, obj)));
                 self.osp.from_map(&self.all_triples_input, |&(sub, (pred, obj))| (obj, (sub, pred)));
 
                 self.rdf_type.from_map(&self.spo, |&triple| {
@@ -557,6 +557,8 @@ impl Reasoner {
                     }
                     (a, b)
                 });
+                owl_irreflexive.from_map(&self.spo, |&triple| has_pred_obj(triple, (rdftype_node, owlirreflexiveprop_node)));
+
                 owl_has_value.from_map(&self.spo, |&triple| has_pred(triple, owlhasvalue_node));
                 owl_on_property.from_map(&self.spo, |&triple| has_pred(triple, owlonproperty_node));
                 owl_all_values_from.from_map(&self.spo, |&triple| has_pred(triple, owlallvaluesfrom_node));
@@ -594,10 +596,10 @@ impl Reasoner {
                 self.equivalent_properties.from_map(&self.spo, |&triple| has_pred(triple, owlequivprop_node) );
                 self.equivalent_properties_2.from_map(&self.equivalent_properties, |&(p1, p2)| (p2, p1));
 
-                self.all_triples_input.from_join(&self.prp_dom, &self.pso, |&tpred, &class, &(sub, obj)| {
+                self.all_triples_input.from_join(&self.prp_dom, &pso, |&tpred, &class, &(sub, obj)| {
                     (sub, (rdftype_node, class))
                 });
-                self.all_triples_input.from_join(&self.prp_rng, &self.pso, |&tpred, &class, &(sub, obj)| {
+                self.all_triples_input.from_join(&self.prp_rng, &pso, |&tpred, &class, &(sub, obj)| {
                     (obj, (rdftype_node, class))
                 });
 
@@ -628,7 +630,7 @@ impl Reasoner {
                     (s2, (p, o))
                 });
                 // eq-rep-p
-                self.all_triples_input.from_join(&self.pso, &owl_same_as, |&p1, &(s, o), &p2| {
+                self.all_triples_input.from_join(&pso, &owl_same_as, |&p1, &(s, o), &p2| {
                     (s, (p2, o))
                 });
                 // eq-rep-o
@@ -646,11 +648,23 @@ impl Reasoner {
                     (x, (owlsameas_node, z))
                 });
 
+                // prp-irp
+                // T(?p, rdf:type, owl:IrreflexiveProperty)
+                // T(?x, ?p, ?x) => false
+                prp_irp_1.from_join(&owl_irreflexive, &pso, |&p, &(), &(s, o)| {
+                    if s == o {
+                        let msg = format!("property {} of {} is irreflexive", self.to_u(p), self.to_u(s));
+                        self.add_error("prp-irp".to_string(), msg.to_string());
+                    }
+                    (p, s)
+                });
+
+
 
                 // prp-fp
                 self.prp_fp_1.from_map(&self.spo, |&triple| { has_pred_obj(triple, (rdftype_node, owlfuncprop_node)) });
-                self.prp_fp_2.from_join(&self.prp_fp_1, &self.pso, |&p, &(), &(x, y1)| (p, (x, y1)) );
-                self.all_triples_input.from_join(&self.prp_fp_2, &self.pso, |&p, &(x1, y1), &(x2, y2)| {
+                self.prp_fp_2.from_join(&self.prp_fp_1, &pso, |&p, &(), &(x, y1)| (p, (x, y1)) );
+                self.all_triples_input.from_join(&self.prp_fp_2, &pso, |&p, &(x1, y1), &(x2, y2)| {
                     // if x1 and x2 are the same, then emit y1 and y2 are the same
                     match x1 {
                         x2 => (y1, (owlsameas_node, y2)),
@@ -660,8 +674,8 @@ impl Reasoner {
 
                 // prp-ifp
                 self.prp_ifp_1.from_map(&self.spo, |&triple| { has_pred_obj(triple, (rdftype_node, owlinvfuncprop_node)) });
-                self.prp_ifp_2.from_join(&self.prp_ifp_1, &self.pso, |&p, &(), &(x, y1)| (p, (x, y1)) );
-                self.all_triples_input.from_join(&self.prp_ifp_2, &self.pso, |&p, &(x1, y1), &(x2, y2)| {
+                self.prp_ifp_2.from_join(&self.prp_ifp_1, &pso, |&p, &(), &(x, y1)| (p, (x, y1)) );
+                self.all_triples_input.from_join(&self.prp_ifp_2, &pso, |&p, &(x1, y1), &(x2, y2)| {
                     // if y1 and y2 are the same, then emit x1 and x2 are the same
                     match y1 {
                         y2 => (x1, (owlsameas_node, x2)),
@@ -671,7 +685,7 @@ impl Reasoner {
 
                 // prp-spo1
                 self.prp_spo1_1.from_map(&self.spo, |&triple| has_pred(triple, rdfssubprop_node));
-                self.all_triples_input.from_join(&self.prp_spo1_1, &self.pso, |&p1, &p2, &(x, y)| (x, (p2, y)));
+                self.all_triples_input.from_join(&self.prp_spo1_1, &pso, |&p1, &p2, &(x, y)| (x, (p2, y)));
 
                 // cax-sco
                 self.cax_sco_1.from_map(&self.spo, |&triple| has_pred(triple, rdfssubclass_node));
@@ -690,7 +704,6 @@ impl Reasoner {
                     (c2, (c1, inst))
                 });
                 cax_dw_2.from_join(&cax_dw_1, &rdf_type_inv, |&c2, &(c1, inst1), &inst2| {
-                    // TODO: how to raise 'false'?
                     if inst1 == inst2 {
                         let msg = format!("inst {} is both {} and {} (disjoint classes)", self.to_u(inst1), self.to_u(c1), self.to_u(c2));
                         self.add_error("cax-dw".to_string(), msg.to_string());
@@ -701,18 +714,18 @@ impl Reasoner {
                 // prp-inv1
                 // T(?p1, owl:inverseOf, ?p2)
                 // T(?x, ?p1, ?y) => T(?y, ?p2, ?x)
-                self.all_triples_input.from_join(&self.owl_inverse_of, &self.pso, |&p1, &p2, &(x, y)| (y, (p2, x)) );
+                self.all_triples_input.from_join(&self.owl_inverse_of, &pso, |&p1, &p2, &(x, y)| (y, (p2, x)) );
 
                 // prp-inv2
                 // T(?p1, owl:inverseOf, ?p2)
                 // T(?x, ?p2, ?y) => T(?y, ?p1, ?x)
-                self.all_triples_input.from_join(&self.owl_inverse_of2, &self.pso, |&p2, &p1, &(x, y)| (x, (p2, y)) );
+                self.all_triples_input.from_join(&self.owl_inverse_of2, &pso, |&p2, &p1, &(x, y)| (x, (p2, y)) );
 
                 // prp-symp
                 // T(?p, rdf:type, owl:SymmetricProperty)
                 // T(?x, ?p, ?y)
                 //  => T(?y, ?p, ?x)
-                self.all_triples_input.from_join(&self.symmetric_properties, &self.pso, |&prop, &(), &(x, y)| {
+                self.all_triples_input.from_join(&self.symmetric_properties, &pso, |&prop, &(), &(x, y)| {
                     (y, (prop, x))
                 });
 
@@ -720,10 +733,10 @@ impl Reasoner {
                 // T(?p, rdf:type, owl:TransitiveProperty)
                 // T(?x, ?p, ?y)
                 // T(?y, ?p, ?z) =>  T(?x, ?p, ?z)
-                prp_trp_1.from_join(&self.pso, &transitive_properties, |&p, &(x, y), &()| {
+                prp_trp_1.from_join(&pso, &transitive_properties, |&p, &(x, y), &()| {
                     ((y, p), x)
                 });
-                prp_trp_2.from_join(&self.pso, &transitive_properties, |&p, &(y, z), &()| {
+                prp_trp_2.from_join(&pso, &transitive_properties, |&p, &(y, z), &()| {
                     ((y, p), z)
                 });
                 self.all_triples_input.from_join(&prp_trp_1, &prp_trp_2, |&(y, p), &x, &z| {
@@ -734,12 +747,12 @@ impl Reasoner {
                 // T(?p1, owl:equivalentProperty, ?p2)
                 // T(?x, ?p1, ?y)
                 // => T(?x, ?p2, ?y)
-                self.all_triples_input.from_join(&self.equivalent_properties, &self.pso, |&p1, &p2, &(x, y)| (x, (p2, y)) );
+                self.all_triples_input.from_join(&self.equivalent_properties, &pso, |&p1, &p2, &(x, y)| (x, (p2, y)) );
                 // prp-eqp2
                 // T(?p1, owl:equivalentProperty, ?p2)
                 // T(?x, ?p2, ?y)
                 // => T(?x, ?p1, ?y)
-                self.all_triples_input.from_join(&self.equivalent_properties_2, &self.pso, |&p1, &p2, &(x, y)| (x, (p2, y)) );
+                self.all_triples_input.from_join(&self.equivalent_properties_2, &pso, |&p1, &p2, &(x, y)| (x, (p2, y)) );
 
                 // cls-int1
                 // There's a fair amount of complexity here that we have to manage. The rule we are
@@ -917,7 +930,7 @@ impl Reasoner {
                     // format for pso index; needs property key
                     (p, (y, x))
                 });
-                self.all_triples_input.from_join(&cls_hv2_1, &self.pso, |&prop, &(value, anonclass), &(sub, obj)| {
+                self.all_triples_input.from_join(&cls_hv2_1, &pso, |&prop, &(value, anonclass), &(sub, obj)| {
                     // if value is correct, then emit the rdf_type
                     if value == obj {
                         (sub, (rdftype_node, anonclass))
@@ -953,7 +966,7 @@ impl Reasoner {
                 cls_svf1_1.from_join(&owl_some_values_from, &owl_on_property, |&x, &y, &p| {
                     (p, (x, y))
                 });
-                cls_svf1_2.from_join(&cls_svf1_1, &self.pso, |&p, &(x, y), &(u, v)| {
+                cls_svf1_2.from_join(&cls_svf1_1, &pso, |&p, &(x, y), &(u, v)| {
                     (v, (x, y, u))
                 });
                 self.all_triples_input.from_join(&cls_svf1_2, &self.rdf_type, |&v, &(x, y, u), &class| {
@@ -968,7 +981,7 @@ impl Reasoner {
                 //  T(?x, owl:someValuesFrom, owl:Thing)
                 //  T(?x, owl:onProperty, ?p)
                 //  T(?u, ?p, ?v) =>  T(?u, rdf:type, ?x)
-                self.all_triples_input.from_join(&cls_svf1_1, &self.pso, |&p, &(x, y), &(u, v)| {
+                self.all_triples_input.from_join(&cls_svf1_1, &pso, |&p, &(x, y), &(u, v)| {
                     if y == owlthing_node {
                         (u, (rdftype_node, x))
                     } else {
@@ -977,7 +990,6 @@ impl Reasoner {
                 });
             }
 
-            // TODO: finish computing complements
             // Now that the inference stage has finished, we will compute the sets of instances for
             // complementary classes
             changed = false;
