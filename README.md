@@ -79,7 +79,7 @@ Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasonin
 | no        | `prp-spo2` |       |
 | **yes**   | `prp-eqp1` |       |
 | **yes**   | `prp-eqp2` |       |
-| no        | `prp-pdw` | throws exception |
+| **yes**   | `prp-pdw` | throws exception |
 | no        | `prp-adp` | throws exception |
 | **yes**   | `prp-inv1` |       |
 | **yes**   | `prp-inv2` |       |
@@ -93,11 +93,11 @@ Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasonin
 |---------|----------|-------|
 | **yes**| `cls-thing` |       |
 | **yes**| `cls-nothing1` |       |
-| no     | `cls-nothing2` | throws exception       |
+| **yes**| `cls-nothing2` | throws exception       |
 | **yes**| `cls-int1` |       |
 | **yes**| `cls-int2` |       |
 | **yes**| `cls-uni` |       |
-| no     | `cls-com` | throws exception    |
+| **yes**| `cls-com` | throws exception    |
 | **yes**| `cls-svf1` |       |
 | **yes**| `cls-svf2` |       |
 | **yes**| `cls-avf` |       |
