@@ -4,6 +4,14 @@ version = "0.1.0"
 authors = ["Gabe Fierro <gtfierro@cs.berkeley.edu>"]
 edition = "2018"
 
+[[bin]]
+name = "reasonable"
+path = "src/bin/reasonable.rs"
+
+[lib]
+name = "pyreasoner"
+crate-type = ["cdylib"]
+
 [dependencies]
 rdf = "0.1.4"
 fasthash = "0.4.0"
@@ -13,6 +21,10 @@ itertools = "0.8"
 disjoint-sets = "0.4.2"
 log = "0.4"
 env_logger = "0.7.1"
+
+[dependencies.pyo3]
+version = "0.9.0-alpha.1"
+features = ["extension-module"]
 
 [dev-dependencies]
 criterion = "0.3"

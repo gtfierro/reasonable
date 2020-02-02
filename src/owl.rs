@@ -102,9 +102,18 @@ impl Reasoner {
         }
     }
 
-    pub fn load_triples(&mut self, triples: Vec<(&'static str, &'static str, &'static str)>) {
+    pub fn load_triples_str(&mut self, triples: Vec<(&'static str, &'static str, &'static str)>) {
         let trips: Vec<(URI, (URI, URI))> = triples.iter().map(|trip| {
             (self.index.put_str(trip.0), (self.index.put_str(trip.1), self.index.put_str(trip.2)))
+        }).collect();
+        self.input.extend(trips);
+        // self.all_triples_input.insert(trips.into());
+    }
+
+    pub fn load_triples(&mut self, triples: Vec<(String, String, String)>) {
+        let trips: Vec<(URI, (URI, URI))> = triples.iter().map(|trip| {
+            let trip = trip.clone();
+            (self.index.put(trip.0), (self.index.put(trip.1), self.index.put(trip.2)))
         }).collect();
         self.input.extend(trips);
         // self.all_triples_input.insert(trips.into());
@@ -1150,7 +1159,7 @@ mod tests {
         let trips = vec![
             ("a", "b", "c")
         ];
-        r.load_triples(trips);
+        r.load_triples_str(trips);
         r.reason();
         let res = r.get_triples();
         assert!(res.contains(&("a".to_string(), OWL_SAMEAS.to_string(), "a".to_string())));
@@ -1165,7 +1174,7 @@ mod tests {
         let trips = vec![
             ("x", OWL_SAMEAS, "y")
         ];
-        r.load_triples(trips);
+        r.load_triples_str(trips);
         r.reason();
         let res = r.get_triples();
         assert!(res.contains(&("y".to_string(), OWL_SAMEAS.to_string(), "x".to_string())));
@@ -1179,7 +1188,7 @@ mod tests {
             ("x", OWL_SAMEAS, "y"),
             ("y", OWL_SAMEAS, "z"),
         ];
-        r.load_triples(trips);
+        r.load_triples_str(trips);
         r.reason();
         let res = r.get_triples();
         assert!(res.contains(&("x".to_string(), OWL_SAMEAS.to_string(), "z".to_string())));
@@ -1193,7 +1202,7 @@ mod tests {
             ("s1", OWL_SAMEAS, "s2"),
             ("s1", "p", "o"),
         ];
-        r.load_triples(trips);
+        r.load_triples_str(trips);
         r.reason();
         let res = r.get_triples();
         assert!(res.contains(&("s2".to_string(), "p".to_string(), "o".to_string())));
@@ -1207,7 +1216,7 @@ mod tests {
             ("p1", OWL_SAMEAS, "p2"),
             ("s", "p1", "o"),
         ];
-        r.load_triples(trips);
+        r.load_triples_str(trips);
         r.reason();
         let res = r.get_triples();
         assert!(res.contains(&("s".to_string(), "p2".to_string(), "o".to_string())));
@@ -1221,7 +1230,7 @@ mod tests {
             ("o1", OWL_SAMEAS, "o2"),
             ("s", "p", "o1"),
         ];
-        r.load_triples(trips);
+        r.load_triples_str(trips);
         r.reason();
         let res = r.get_triples();
         assert!(res.contains(&("s".to_string(), "p".to_string(), "o2".to_string())));
@@ -1235,7 +1244,7 @@ mod tests {
             ("Class2", RDFS_SUBCLASSOF, "Class1"),
             ("a", RDF_TYPE, "Class2")
         ];
-        r.load_triples(trips);
+        r.load_triples_str(trips);
         r.reason();
         let res = r.get_triples();
         assert!(res.contains(&("a".to_string(), RDF_TYPE.to_string(), "Class1".to_string())));
@@ -1249,7 +1258,7 @@ mod tests {
             ("Class1", OWL_EQUIVALENTCLASS, "Class2"),
             ("a", RDF_TYPE, "Class1")
         ];
-        r.load_triples(trips);
+        r.load_triples_str(trips);
         r.reason();
         let res = r.get_triples();
         assert!(res.contains(&("a".to_string(), RDF_TYPE.to_string(), "Class2".to_string())));
@@ -1263,7 +1272,7 @@ mod tests {
             ("Class1", OWL_EQUIVALENTCLASS, "Class2"),
             ("a", RDF_TYPE, "Class2")
         ];
-        r.load_triples(trips);
+        r.load_triples_str(trips);
         r.reason();
         let res = r.get_triples();
         assert!(res.contains(&("a".to_string(), RDF_TYPE.to_string(), "Class1".to_string())));
@@ -1281,7 +1290,7 @@ mod tests {
             ("Class5", OWL_EQUIVALENTCLASS, "Class6"),
             ("a", RDF_TYPE, "Class1")
         ];
-        r.load_triples(trips);
+        r.load_triples_str(trips);
         r.reason();
         let res = r.get_triples();
         assert!(res.contains(&("a".to_string(), RDF_TYPE.to_string(), "Class2".to_string())));
@@ -1303,7 +1312,7 @@ mod tests {
             ("Class5", OWL_EQUIVALENTCLASS, "Class6"),
             ("a", RDF_TYPE, "Class6")
         ];
-        r.load_triples(trips);
+        r.load_triples_str(trips);
         r.reason();
         let res = r.get_triples();
         assert!(res.contains(&("a".to_string(), RDF_TYPE.to_string(), "Class1".to_string())));
@@ -1323,7 +1332,7 @@ mod tests {
             ("SUB", "PRED", "OBJECT_1"),
             ("SUB", "PRED", "OBJECT_2"),
         ];
-        r.load_triples(trips);
+        r.load_triples_str(trips);
         r.reason();
         let res = r.get_triples();
         for i in res.iter() {
@@ -1342,7 +1351,7 @@ mod tests {
             ("SUB_1", "PRED", "OBJECT"),
             ("SUB_2", "PRED", "OBJECT"),
         ];
-        r.load_triples(trips);
+        r.load_triples_str(trips);
         r.reason();
         let res = r.get_triples();
         for i in res.iter() {
@@ -1360,7 +1369,7 @@ mod tests {
             ("p1", RDFS_SUBPROP, "p2"),
             ("x", "p1", "y"),
         ];
-        r.load_triples(trips);
+        r.load_triples_str(trips);
         r.reason();
         let res = r.get_triples();
         for i in res.iter() {
@@ -1378,7 +1387,7 @@ mod tests {
             ("p1", OWL_INVERSEOF, "p2"),
             ("x", "p1", "y"),
         ];
-        r.load_triples(trips);
+        r.load_triples_str(trips);
         r.reason();
         let res = r.get_triples();
         for i in res.iter() {
@@ -1396,7 +1405,7 @@ mod tests {
             ("p", RDF_TYPE, OWL_SYMMETRICPROP),
             ("x", "p", "y"),
         ];
-        r.load_triples(trips);
+        r.load_triples_str(trips);
         r.reason();
         let res = r.get_triples();
         for i in res.iter() {
@@ -1415,7 +1424,7 @@ mod tests {
             ("x", "p", "y"),
             ("y", "p", "z"),
         ];
-        r.load_triples(trips);
+        r.load_triples_str(trips);
         r.reason();
         let res = r.get_triples();
         for i in res.iter() {
@@ -1433,7 +1442,7 @@ mod tests {
             ("p1", OWL_EQUIVPROP, "p2"),
             ("x", "p1", "y"),
         ];
-        r.load_triples(trips);
+        r.load_triples_str(trips);
         r.reason();
         let res = r.get_triples();
         for i in res.iter() {
@@ -1466,7 +1475,7 @@ mod tests {
             ("x", OWL_ONPROPERTY, "p"),
             ("u", RDF_TYPE, "x"),
         ];
-        r.load_triples(trips);
+        r.load_triples_str(trips);
         r.reason();
         let res = r.get_triples();
         for i in res.iter() {
@@ -1485,7 +1494,7 @@ mod tests {
             ("x", OWL_ONPROPERTY, "p"),
             ("u", "p", "y"),
         ];
-        r.load_triples(trips);
+        r.load_triples_str(trips);
         r.reason();
         let res = r.get_triples();
         for i in res.iter() {
@@ -1505,7 +1514,7 @@ mod tests {
             ("u", RDF_TYPE, "x"),
             ("u", "p", "v"),
         ];
-        r.load_triples(trips);
+        r.load_triples_str(trips);
         r.reason();
         let res = r.get_triples();
         for i in res.iter() {
@@ -1525,7 +1534,7 @@ mod tests {
             ("u", "p", "v"),
             ("v", RDF_TYPE, "y"),
         ];
-        r.load_triples(trips);
+        r.load_triples_str(trips);
         r.reason();
         let res = r.get_triples();
         for i in res.iter() {
@@ -1544,7 +1553,7 @@ mod tests {
             ("x", OWL_ONPROPERTY, "p"),
             ("u", "p", "v"),
         ];
-        r.load_triples(trips);
+        r.load_triples_str(trips);
         r.reason();
         let res = r.get_triples();
         for i in res.iter() {
@@ -1570,7 +1579,7 @@ mod tests {
             ("y", RDF_TYPE, "c2"),
             ("y", RDF_TYPE, "c3"),
         ];
-        r.load_triples(trips);
+        r.load_triples_str(trips);
         r.reason();
         let res = r.get_triples();
         for i in res.iter() {
@@ -1594,7 +1603,7 @@ mod tests {
             ("z3", RDF_REST, RDF_NIL),
             ("y", RDF_TYPE, "c"),
         ];
-        r.load_triples(trips);
+        r.load_triples_str(trips);
         r.reason();
         let res = r.get_triples();
         for i in res.iter() {
@@ -1631,7 +1640,7 @@ mod tests {
             ("Z3", RDF_REST, RDF_NIL),
 
         ];
-        r.load_triples(trips);
+        r.load_triples_str(trips);
         r.reason();
         let res = r.get_triples();
         for i in res.iter() {
@@ -1666,7 +1675,7 @@ mod tests {
             ("inst", "c2p", "c2p_value"),
 
         ];
-        r.load_triples(trips);
+        r.load_triples_str(trips);
         r.reason();
         let res = r.get_triples();
         for i in res.iter() {
@@ -1694,7 +1703,7 @@ mod tests {
             ("c2", RDF_TYPE, OWL_CLASS),
             ("inst2", RDF_TYPE, OWL_THING),
         ];
-        r.load_triples(trips);
+        r.load_triples_str(trips);
         r.reason();
         let res = r.get_triples();
         for i in res.iter() {
@@ -1717,7 +1726,7 @@ mod tests {
             ("x", "p", "y"),
             ("y", "p", "x"),
         ];
-        r.load_triples(trips);
+        r.load_triples_str(trips);
         r.reason();
         let res = r.get_triples();
         for i in res.iter() {
