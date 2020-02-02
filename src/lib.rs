@@ -1,7 +1,3 @@
-extern crate rdf;
-extern crate itertools;
-extern crate log;
-
 mod index;
 pub mod owl;
 mod disjoint_sets;
@@ -67,7 +63,7 @@ def get_triples(graph):
 }
 
 #[pymodule]
-fn pyreasoner(_py: Python, m: &PyModule) -> PyResult<()> {
+fn reasonable(_py: Python, m: &PyModule) -> PyResult<()> {
     m.add_class::<PyReasoner>()?;
     Ok(())
 }

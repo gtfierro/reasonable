@@ -1,5 +1,5 @@
+use ::reasonable::owl::Reasoner;
 use std::env;
-use reasonable::owl::Reasoner;
 use std::time::Instant;
 use log::info;
 

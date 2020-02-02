@@ -4,13 +4,9 @@ version = "0.1.0"
 authors = ["Gabe Fierro <gtfierro@cs.berkeley.edu>"]
 edition = "2018"
 
-[[bin]]
-name = "reasonable"
-path = "src/bin/reasonable.rs"
-
 [lib]
-name = "pyreasoner"
-crate-type = ["cdylib"]
+name = "reasonable"
+crate-type = ["cdylib", "lib"]
 
 [dependencies]
 rdf = "0.1.4"
