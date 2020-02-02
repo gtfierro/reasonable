@@ -1,7 +1,7 @@
 //! The `owl` module implements the rules necessary for OWL 2 RL reasoning
-//!
+
 extern crate datafrog;
-use datafrog::{Iteration, Variable};
+use datafrog::{Iteration, Variable, Relation};
 
 use crate::index::URIIndex;
 use crate::disjoint_sets::DisjointSets;
@@ -140,6 +140,15 @@ impl Reasoner {
             spo: spo,
             all_triples_input: all_triples_input,
         }
+    }
+
+    fn rebuild_with(&mut self, input: Relation<Triple>) {
+        // TODO: pull in the existing triples
+        self.iter1 = Iteration::new();
+        self.input = input.clone().iter().map(|&(x, (y, z))| (x, (y, z))).collect();
+        println!("input? {}", self.input.len());
+        self.all_triples_input = self.iter1.variable::<(URI, (URI, URI))>("all_triples_input");
+        self.spo = self.iter1.variable::<(URI, (URI, URI))>("spo");
     }
 
     /// Load in a vector of triples
@@ -1166,6 +1175,8 @@ impl Reasoner {
     /// Returns the vec of triples currently contained in the Reasoner
     pub fn get_triples(&mut self) -> Vec<(String, String, String)> {
         let instances = self.spo.clone().complete();
+
+        self.rebuild_with(instances.clone());
 
         instances.iter().filter(|inst| {
             let (_s, (_p, _o)) = inst;
