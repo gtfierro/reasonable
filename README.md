@@ -1,5 +1,7 @@
 # Reasonable
 
+[![Build Status](https://travis-ci.org/gtfierro/reasonable.svg?branch=master)](https://travis-ci.org/gtfierro/reasonable)
+
 An OWL 2 RL reasoner with reasonable performance
 
 ## OWL 2 Rules
