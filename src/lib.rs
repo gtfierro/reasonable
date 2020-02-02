@@ -4,9 +4,13 @@ mod disjoint_sets;
 #[allow(dead_code)]
 mod common;
 
+
+#[cfg(feature="python-library")]
 use pyo3::prelude::*;
+#[cfg(feature="python-library")]
 use pyo3::exceptions;
 
+#[cfg(feature="python-library")]
 #[pyclass]
 /// `PyReasoner` implements a reasoner for the OWL 2 RL profile (see
 /// https://www.w3.org/TR/owl2-profiles/#OWL_2_RL for details).
@@ -14,6 +18,7 @@ struct PyReasoner {
     reasoner: owl::Reasoner,
 }
 
+#[cfg(feature="python-library")]
 #[pymethods]
 impl PyReasoner {
 
@@ -62,6 +67,7 @@ def get_triples(graph):
     }
 }
 
+#[cfg(feature="python-library")]
 #[pymodule]
 fn reasonable(_py: Python, m: &PyModule) -> PyResult<()> {
     m.add_class::<PyReasoner>()?;

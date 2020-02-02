@@ -7,7 +7,7 @@ test:
 	cargo test
 
 py:
-	cargo build --lib --release
+	cargo build --lib --release --features "python-library"
 	cp ./target/release/libreasonable.so reasonable.so
 	python test.py
 
