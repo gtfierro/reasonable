@@ -89,11 +89,14 @@ impl fmt::Display for ReasoningError {
 /// required to do reasoning.
 ///
 /// ```
+/// use reasonable::owl::Reasoner;
 /// let mut r = Reasoner::new();
 /// // load in an ontology file
-/// r.load_file("Brick.n3").unwrap();
+/// r.load_file("example_models/ontologies/Brick.n3").unwrap();
+/// // load in another ontology file
+/// r.load_file("example_models/ontologies/rdfs.ttl").unwrap();
 /// // load in more triples
-/// r.load_file("sample_model.ttl").unwrap();
+/// r.load_file("example_models/small1.n3").unwrap();
 /// // perform reasoning
 /// r.reason();
 /// // dump to file
@@ -1190,13 +1193,13 @@ mod tests {
     #[test]
     fn test_load_file_ttl() -> Result<(), String> {
         let mut r = Reasoner::new();
-        r.load_file("rdfs.ttl")
+        r.load_file("example_models/ontologies/rdfs.ttl")
     }
 
     #[test]
     fn test_load_file_n3() -> Result<(), String> {
         let mut r = Reasoner::new();
-        r.load_file("Brick.n3")
+        r.load_file("example_models/ontologies/Brick.n3")
     }
 
     #[test]
