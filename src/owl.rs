@@ -1,3 +1,5 @@
+//! The `owl` module implements the rules necessary for OWL 2 RL reasoning
+//!
 extern crate datafrog;
 use datafrog::{Iteration, Variable};
 
@@ -23,18 +25,34 @@ use rdf::writer::rdf_writer::RdfWriter;
 #[allow(dead_code)]
 use crate::common::*;
 
+/// Returns the full URI of the concept in the OWL namespace
+/// ```
+/// let uri = owl!("Thing");
+/// println!(uri);
+/// ```
 macro_rules! owl {
     ($t:expr) => (format!("http://www.w3.org/2002/07/owl#{}", $t));
 }
 
+/// Returns the full URI of the concept in the RDF namespace
+/// ```
+/// let uri = rdf!("type");
+/// println!(uri);
+/// ```
 macro_rules! rdf {
     ($t:expr) => (format!("http://www.w3.org/1999/02/22-rdf-syntax-ns#{}", $t));
 }
 
+/// Returns the full URI of the concept in the RDFS namespace
+/// ```
+/// let uri = rdfs!("type");
+/// println!(uri);
+/// ```
 macro_rules! rdfs {
     ($t:expr) => (format!("http://www.w3.org/2000/01/rdf-schema#{}", $t));
 }
 
+/// Creates a DataFrog variable with the given URI as the only member
 macro_rules! node_relation {
     ($self:expr, $uri:expr) => {
         {
@@ -46,9 +64,13 @@ macro_rules! node_relation {
     };
 }
 
+/// Structured errors that occur during reasoning
 pub struct ReasoningError {
+    /// The OWL-RL rule that produced the violation
     rule: String,
+    /// A human-readable error message
     message: String,
+    // TODO: add a trace of the productions that caused the error
 }
 
 impl ReasoningError {
@@ -63,6 +85,20 @@ impl fmt::Display for ReasoningError {
     }
 }
 
+/// `Reasoner` is the interface to the reasoning engine. Instances of `Reasoner` maintain the state
+/// required to do reasoning.
+///
+/// ```
+/// let mut r = Reasoner::new();
+/// // load in an ontology file
+/// r.load_file("Brick.n3").unwrap();
+/// // load in more triples
+/// r.load_file("sample_model.ttl").unwrap();
+/// // perform reasoning
+/// r.reason();
+/// // dump to file
+/// r.dump_file("output.ttl").unwrap();
+/// ```
 pub struct Reasoner {
     iter1: Iteration,
     index: URIIndex,
@@ -75,6 +111,7 @@ pub struct Reasoner {
 
 #[allow(unused)]
 impl Reasoner {
+    /// Create a new Reasoner instance
     pub fn new() -> Self {
         let mut iter1 = Iteration::new();
         let mut index = URIIndex::new();
@@ -102,6 +139,7 @@ impl Reasoner {
         }
     }
 
+    /// Load in a vector of triples
     pub fn load_triples_str(&mut self, triples: Vec<(&'static str, &'static str, &'static str)>) {
         let trips: Vec<(URI, (URI, URI))> = triples.iter().map(|trip| {
             (self.index.put_str(trip.0), (self.index.put_str(trip.1), self.index.put_str(trip.2)))
@@ -110,6 +148,7 @@ impl Reasoner {
         // self.all_triples_input.insert(trips.into());
     }
 
+    /// Load in a vector of triples
     pub fn load_triples(&mut self, triples: Vec<(String, String, String)>) {
         let trips: Vec<(URI, (URI, URI))> = triples.iter().map(|trip| {
             let trip = trip.clone();
@@ -153,6 +192,9 @@ impl Reasoner {
         escaped_literal
     }
 
+    /// Dump the contents of the reasoner to the given file.
+    /// NOTE: currently `dump_file` prevents the reasoner from being re-used. This is a bug and
+    /// will be amended
     pub fn dump_file(&mut self, filename: &str) -> Result<(), Error> {
         // let mut abbrevs: HashMap<String, Uri> = HashMap::new();
         let mut graph = Graph::new(None);
@@ -211,6 +253,9 @@ impl Reasoner {
         Ok(())
     }
 
+    /// Load the triples in the given file into the Reasoner. This currently accepts
+    /// Turtle-formatted (`.ttl`) and NTriples-formatted (`.n3`) files. If you have issues loading
+    /// in a Turtle file, try converting it to NTriples
     pub fn load_file(&mut self, filename: &str) -> Result<(), String> {
         let data = fs::read_to_string(filename).expect("Unable to read file");
 
@@ -264,6 +309,7 @@ impl Reasoner {
         Ok(())
     }
 
+    /// Perform OWL 2 RL-compatible reasoning on the triples currently loaded into the `Reasoner`
     pub fn reason(&mut self) {
         // TODO: put these URIs inside the index initialization and give easy ways of referring to
         // them
@@ -1114,6 +1160,7 @@ impl Reasoner {
     }
 
 
+    /// Returns the vec of triples currently contained in the Reasoner
     pub fn get_triples(&mut self) -> Vec<(String, String, String)> {
         let instances = self.spo.clone().complete();
 
