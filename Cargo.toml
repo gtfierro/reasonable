@@ -14,5 +14,12 @@ disjoint-sets = "0.4.2"
 log = "0.4"
 env_logger = "0.7.1"
 
+[dev-dependencies]
+criterion = "0.3"
+
+[[bench]]
+name = "my_benchmark"
+harness = false
+
 [profile.release]
 debug = true
