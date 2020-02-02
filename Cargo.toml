@@ -2,6 +2,10 @@
 name = "reasonable"
 version = "0.1.0"
 authors = ["Gabe Fierro <gtfierro@cs.berkeley.edu>"]
+repository = "https://github.com/gtfierro/reasonable"
+homepage = "https://brickschema.org/"
+license-file = "LICENSE"
+readme = "README.md"
 edition = "2018"
 
 [lib]
