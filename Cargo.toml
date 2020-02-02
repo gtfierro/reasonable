@@ -6,6 +6,7 @@ repository = "https://github.com/gtfierro/reasonable"
 homepage = "https://brickschema.org/"
 license-file = "LICENSE"
 readme = "README.md"
+description = "An OWL 2 RL reasoner with reasonable performance"
 edition = "2018"
 
 [lib]
