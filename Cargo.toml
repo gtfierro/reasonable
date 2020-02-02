@@ -9,7 +9,7 @@ name = "reasonable"
 crate-type = ["cdylib", "lib"]
 
 [features]
-python-library = []
+python-library = ["pyo3"]
 
 [dependencies]
 rdf = "0.1.4"
@@ -23,6 +23,7 @@ env_logger = "0.7.1"
 
 [dependencies.pyo3]
 version = "0.9.0-alpha.1"
+optional = true
 features = ["extension-module"]
 
 [dev-dependencies]
