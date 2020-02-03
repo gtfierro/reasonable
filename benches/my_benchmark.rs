@@ -1,62 +1,67 @@
-use criterion::{black_box, criterion_group, criterion_main, Criterion};
+use criterion::{black_box, criterion_group, criterion_main, Criterion, PlotConfiguration};
 use reasonable::owl::Reasoner;
 
-#[inline]
-pub fn brick1() {
-    let mut r = Reasoner::new();
-    r.load_file("example_models/ontologies/Brick.n3").unwrap();
-    r.load_file("example_models/small1.n3").unwrap();
-    r.reason();
+// setup_reasoner!("ontologies/Brick.n3", "small1.n3");
+macro_rules! setup_reasoner {
+    ( $( $file:expr ),* ) => {
+        {
+            let mut r = Reasoner::new();
+            $(
+                r.load_file(&format!("{}", $file).to_string()).unwrap();
+            )*
+            r
+        }
+    };
 }
 
-#[inline]
-pub fn brick2() {
-    let mut r = Reasoner::new();
-    r.load_file("example_models/ontologies/Brick.n3").unwrap();
-    r.load_file("example_models/ontologies/owl.n3").unwrap();
-    r.load_file("example_models/small1.n3").unwrap();
-    r.reason();
-}
+fn bench_simple(c: &mut Criterion) {
+    let plot_config = PlotConfiguration::default();
+    let mut group = c.benchmark_group("ontology_small1");
+    group.plot_config(plot_config);
 
-#[inline]
-pub fn brick3() {
-    let mut r = Reasoner::new();
-    r.load_file("example_models/ontologies/Brick.n3").unwrap();
-    r.load_file("example_models/ontologies/rdfs.ttl").unwrap();
-    r.load_file("example_models/small1.n3").unwrap();
-    r.reason();
-}
+    group.bench_function("brick_small1", move |b| {
+        b.iter_with_setup(|| setup_reasoner![
+        "example_models/ontologies/Brick.n3",
+        "example_models/small1.n3"
+        ], |mut r| r.reason())
+    });
 
-#[inline]
-pub fn brick4() {
-    let mut r = Reasoner::new();
-    r.load_file("example_models/ontologies/Brick.n3").unwrap();
-    r.load_file("example_models/ontologies/owl.n3").unwrap();
-    r.load_file("example_models/ontologies/rdfs.ttl").unwrap();
-    r.load_file("example_models/small1.n3").unwrap();
-    r.reason();
-}
+    group.bench_function("brick+owl_small1", move |b| {
+        b.iter_with_setup(|| setup_reasoner![
+        "example_models/ontologies/Brick.n3",
+        "example_models/ontologies/owl.n3",
+        "example_models/small1.n3"
+        ], |mut r| r.reason())
+    });
 
-pub fn bench_brick1(c: &mut Criterion) {
-    c.bench_function("brick1", |b| b.iter(|| brick1() ));
-}
-pub fn bench_brick2(c: &mut Criterion) {
-    c.bench_function("brick2", |b| b.iter(|| brick2() ));
-}
-pub fn bench_brick3(c: &mut Criterion) {
-    c.bench_function("brick3", |b| b.iter(|| brick3() ));
-}
-pub fn bench_brick4(c: &mut Criterion) {
-    c.bench_function("brick4", |b| b.iter(|| brick4() ));
+    group.bench_function("brick+rdfs_small1", move |b| {
+        b.iter_with_setup(|| setup_reasoner![
+        "example_models/ontologies/Brick.n3",
+        "example_models/ontologies/rdfs.ttl",
+        "example_models/small1.n3"
+        ], |mut r| r.reason())
+    });
+
+    group.bench_function("brick+rdfs+owl_small1", move |b| {
+        b.iter_with_setup(|| setup_reasoner![
+        "example_models/ontologies/Brick.n3",
+        "example_models/ontologies/owl.n3",
+        "example_models/ontologies/rdfs.ttl",
+        "example_models/small1.n3"
+        ], |mut r| r.reason())
+    });
+
+    group.finish()
 }
 
 fn setup() -> Criterion {
     Criterion::default().sample_size(20).with_plots()
 }
 
-criterion_group! {
-    name=benches ;
-    config=setup() ;
-    targets=bench_brick1, bench_brick2, bench_brick3, bench_brick4
+criterion_group!{
+    name=benches;
+    config=setup();
+    targets=bench_simple
 }
+
 criterion_main!(benches);
