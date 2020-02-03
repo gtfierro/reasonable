@@ -8,9 +8,9 @@ def load_file(g, f):
         g.parse(f, format='ntriples')
 
 ontology_files = [
-    "../../example_models/Brick.n3",
-    "../../example_models/owl.n3",
-    "../../example_models/rdfs.ttl",
+    "../../example_models/ontologies/Brick.n3",
+    "../../example_models/ontologies/owl.n3",
+    "../../example_models/ontologies/rdfs.ttl",
 ]
 
 data_files = [
@@ -39,6 +39,7 @@ for data_file in data_files:
         t0 = time.time()
         owlrl.DeductiveClosure(owlrl.OWLRL_Semantics).expand(g)
         t1 = time.time()
+        print(f"owlrl: {data_file} took {t1-t0}")
         all_samples['owlrl'][data_file].append(t1-t0)
 
 
@@ -57,6 +58,7 @@ for data_file in data_files:
         t0 = time.time()
         triples = r.reason()
         t1 = time.time()
+        print(f"reasonable: {data_file} took {t1-t0}")
         all_samples['reasonable'][data_file].append(t1-t0)
 
 
