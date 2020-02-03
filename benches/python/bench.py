@@ -42,9 +42,10 @@ for data_file in data_files:
         onto = world.get_ontology(f"file://./_owlready2_input.ttl").load()
         t0 = time.time()
         owlready2.sync_reasoner(world, infer_property_values =True)
+        G = world.as_rdflib_graph()
         t1 = time.time()
         print(f"    owlready2: {data_file} took {t1-t0}")
-        all_samples['owlready2'][data_file].append(t1-t0)
+        all_samples['owlready2'][data_file].append({'duration': t1-t0, 'triples': len(G)})
 
 
 # OWLRL
@@ -62,7 +63,7 @@ for data_file in data_files:
         owlrl.DeductiveClosure(owlrl.OWLRL_Semantics).expand(g)
         t1 = time.time()
         print(f"    owlrl: {data_file} took {t1-t0}")
-        all_samples['owlrl'][data_file].append(t1-t0)
+        all_samples['owlrl'][data_file].append({'duration': t1-t0, 'triples': len(g)})
 
 
 # reasonable
@@ -82,7 +83,7 @@ for data_file in data_files:
         triples = r.reason()
         t1 = time.time()
         print(f"    reasonable: {data_file} took {t1-t0}")
-        all_samples['reasonable'][data_file].append(t1-t0)
+        all_samples['reasonable'][data_file].append({'duration': t1-t0, 'triples': len(triples)})
 
 
 import pandas as pd
@@ -90,6 +91,6 @@ records = []
 for reasoner, defn in all_samples.items():
     for data_file, samples in defn.items():
         for sample in samples:
-            records.append((reasoner, data_file, sample))
+            records.append((reasoner, data_file, sample['duration'], sample['triples']))
 df = pd.DataFrame.from_records(records)
-df.columns=['reasoner','data_file','duration']
+df.columns=['reasoner','data_file','duration','triples']
