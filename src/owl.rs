@@ -124,10 +124,10 @@ impl Reasoner {
         let all_triples_input = iter1.variable::<(URI, (URI, URI))>("all_triples_input");
 
         // cls-thing, cls-nothing1
-        let u_owl_thing = index.put_str(OWL_THING);
-        let u_owl_nothing = index.put_str(OWL_NOTHING);
-        let u_rdf_type = index.put_str(RDF_TYPE);
-        let u_owl_class = index.put_str(OWL_CLASS);
+        let u_owl_thing = index.put(owl!("Thing"));
+        let u_owl_nothing = index.put(owl!("Nothing"));
+        let u_rdf_type = index.put(rdf!("type"));
+        let u_owl_class = index.put(owl!("Class"));
         let mut input = Vec::new();
         input.push((u_owl_thing, (u_rdf_type, u_owl_class)));
         input.push((u_owl_nothing, (u_rdf_type, u_owl_class)));
