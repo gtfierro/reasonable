@@ -26,9 +26,31 @@ all_samples = {
     'reasonable': {},
 }
 
+
+# owlready2
+import owlready2
+for data_file in data_files:
+    print(f"Benching owlready2 on {data_file}")
+    all_samples['owlready2'][data_file] = []
+    for i in range(N):
+        g = rdflib.Graph()
+        load_file(g, data_file)
+        for ont_file in ontology_files:
+            load_file(g, ont_file)
+        g.serialize("_owlready2_input.ttl", format="ttl")
+        world = owlready2.World()
+        onto = world.get_ontology(f"file://./_owlready2_input.ttl").load()
+        t0 = time.time()
+        owlready2.sync_reasoner(world, infer_property_values =True)
+        t1 = time.time()
+        print(f"    owlready2: {data_file} took {t1-t0}")
+        all_samples['owlready2'][data_file].append(t1-t0)
+
+
 # OWLRL
 import owlrl
 for data_file in data_files:
+    print(f"Benching owlrl on {data_file}")
     all_samples['owlrl'][data_file] = []
     for i in range(N):
         g = rdflib.Graph()
@@ -39,13 +61,14 @@ for data_file in data_files:
         t0 = time.time()
         owlrl.DeductiveClosure(owlrl.OWLRL_Semantics).expand(g)
         t1 = time.time()
-        print(f"owlrl: {data_file} took {t1-t0}")
+        print(f"    owlrl: {data_file} took {t1-t0}")
         all_samples['owlrl'][data_file].append(t1-t0)
 
 
 # reasonable
 import reasonable
 for data_file in data_files:
+    print(f"Benching reasonable on {data_file}")
     all_samples['reasonable'][data_file] = []
     for i in range(N):
         g = rdflib.Graph()
@@ -58,7 +81,7 @@ for data_file in data_files:
         t0 = time.time()
         triples = r.reason()
         t1 = time.time()
-        print(f"reasonable: {data_file} took {t1-t0}")
+        print(f"    reasonable: {data_file} took {t1-t0}")
         all_samples['reasonable'][data_file].append(t1-t0)
 
 
