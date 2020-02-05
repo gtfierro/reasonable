@@ -21,3 +21,6 @@ Cargo.lock
 
 # output files
 output.ttl
+
+# python files
+*.pyc
