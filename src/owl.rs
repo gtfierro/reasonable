@@ -369,6 +369,7 @@ impl Reasoner {
         let prp_fp_isfuncprop = self.iter1.variable::<Triple>("a");
         let prp_fp_hasprop1 = self.iter1.variable::<Triple>("b");
 
+        let rdfs_subclass_relation = node_relation!(self, rdfs!("subClassOf"));
         let owl_inter_relation = node_relation!(self, owl!("intersectionOf"));
         let owl_intersection_of = self.iter1.variable::<(URI, URI)>("owl_intersection_of");
         let owl_union_relation = node_relation!(self, owl!("unionOf"));
@@ -504,6 +505,7 @@ impl Reasoner {
         // T(?p, rdf:type, owl:TransitiveProperty)
         // T(?x, ?p, ?y)
         // T(?y, ?p, ?z) =>  T(?x, ?p, ?z)
+        let owl_transitive_relation = node_relation!(self, owl!("TransitiveProperty"));
         let transitive_properties = self.iter1.variable::<(URI, ())>("transitive_properties");
         let prp_trp_1 = self.iter1.variable::<((URI, URI), URI)>("prp_trp_1");
         let prp_trp_2 = self.iter1.variable::<((URI, URI), URI)>("prp_trp_2");
@@ -512,6 +514,7 @@ impl Reasoner {
         //      T(?p, rdf:type, owl:SymmetricProperty)
         //      T(?x, ?p, ?y)
         //      => T(?y, ?p, ?x)
+        let owl_symprop_relation = node_relation!(self, owl!("SymmetricProperty"));
         let symmetric_properties = self.iter1.variable::<(URI, ())>("symmetric_properties");
 
         // prp-eqp1
@@ -523,6 +526,7 @@ impl Reasoner {
         // T(?p1, owl:equivalentProperty, ?p2)
         // T(?x, ?p2, ?y)
         // => T(?x, ?p1, ?y)
+        let owl_equivprop_relation = node_relation!(self, owl!("equivalentProperty"));
         let equivalent_properties = self.iter1.variable::<(URI, URI)>("equivalent_properties");
         let equivalent_properties_2 = self.iter1.variable::<(URI, URI)>("equivalent_properties_2");
 
@@ -586,6 +590,7 @@ impl Reasoner {
         let cls_svf1_2 = self.iter1.variable::<(URI, (URI, URI, URI))>("cls_svf1_2");
 
         // cls-com
+        let owl_complement_relation = node_relation!(self, owl!("complementOf"));
         let owl_complement_of = self.iter1.variable::<(URI, URI)>("owl_complement_of");
         let things = self.iter1.variable::<(URI, ())>("things");
         let cls_com_1 = self.iter1.variable::<(URI, (URI, URI))>("cls_com_1");
@@ -606,6 +611,7 @@ impl Reasoner {
         // cax-eqc2
         // T(?c1, owl:equivalentClass, ?c2), T(?x, rdf:type, ?c2)  =>
         //  T(?x, rdf:type, ?c1)
+        let owl_equivalent_relation = node_relation!(self, owl!("equivalentClass"));
         let owl_equivalent_class = self.iter1.variable::<(URI, URI)>("owl_equivalent_class");
 
         // cax-dw
@@ -683,36 +689,18 @@ impl Reasoner {
                 owl_some_values_from.from_join(&pso, &owl_somevalues_relation, |&_, &tup, &()| tup);
                 owl_disjoint_with.from_join(&pso, &owl_disjointwith_relation, |&_, &tup, &()| tup);
                 owl_same_as.from_join(&pso, &owl_sameas_relation, |&_, &tup, &()| tup);
-                owl_complement_of.from_map(&self.spo, |&triple| {
-                    let (a, b) = has_pred(triple, owlcomplementof_node);
-                    if a >0 && b > 0 {
-                        complements.insert(a, b);
-                        complements.insert(b, a);
-                    }
+                owl_complement_of.from_join(&pso, &owl_complement_relation, |&_, &(a, b), &()| {
+                    complements.insert(a, b);
+                    complements.insert(b, a);
                     (a, b)
                 });
-                owl_complement_of.from_map(&self.spo, |&triple| {
-                    let (a, b) = has_pred(triple, owlcomplementof_node);
-                    (b, a)
-                });
-
-                owl_equivalent_class.from_map(&self.spo, |&triple| {
-                    let (c1, c2) = has_pred(triple, owlequivclassprop_node);
-                    (c1, c2)
-                });
-                owl_equivalent_class.from_map(&self.spo, |&triple| {
-                    let (c1, c2) = has_pred(triple, owlequivclassprop_node);
-                    (c2, c1)
-                });
-
-                symmetric_properties.from_map(&self.spo, |&triple| {
-                    has_pred_obj(triple, (rdftype_node, owlsymmetricprop_node))
-                });
-
-                transitive_properties.from_map(&self.spo, |&triple| has_pred_obj(triple, (rdftype_node, owltransitiveprop_node)));
-
-                equivalent_properties.from_map(&self.spo, |&triple| has_pred(triple, owlequivprop_node) );
-                equivalent_properties_2.from_map(&equivalent_properties, |&(p1, p2)| (p2, p1));
+                owl_complement_of.from_join(&pso, &owl_complement_relation, |&_, &(a, b), &()| (b, a));
+                owl_equivalent_class.from_join(&pso, &owl_equivalent_relation, |&_, &(c1, c2), &()| (c1, c2));
+                owl_equivalent_class.from_join(&pso, &owl_equivalent_relation, |&_, &(c1, c2), &()| (c2, c1));
+                symmetric_properties.from_join(&rdf_type_inv, &owl_symprop_relation, |&_, &inst, &()| (inst, ()));
+                transitive_properties.from_join(&rdf_type_inv, &owl_transitive_relation, |&_, &inst, &()| (inst, ()));
+                equivalent_properties.from_join(&pso, &owl_equivprop_relation, |&_, &(p1, p2), &()| (p1, p2));
+                equivalent_properties_2.from_join(&pso, &owl_equivprop_relation, |&_, &(p1, p2), &()| (p2, p1));
 
 
 
@@ -825,7 +813,7 @@ impl Reasoner {
                 self.all_triples_input.from_join(&owl_inverse_of2, &pso, |&p2, &p1, &(x, y)| (x, (p2, y)) );
 
                 // cax-sco
-                cax_sco_1.from_map(&self.spo, |&triple| has_pred(triple, rdfssubclass_node));
+                cax_sco_1.from_join(&pso, &rdfs_subclass_relation, |&_, &(c1, c2), &()| (c1, c2));
                 // ?c1, ?x, rdf:type
                 cax_sco_2.from_map(&rdf_type, |&(inst, class)| (class, inst));
                 self.all_triples_input.from_join(&cax_sco_1, &cax_sco_2, |&class, &parent, &inst| (inst, (rdftype_node, parent)));
