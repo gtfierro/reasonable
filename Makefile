@@ -6,10 +6,14 @@ build:
 test:
 	cargo test
 
-py:
+test-python:
 	cargo build --lib --release --features "python-library"
 	cp ./target/release/libreasonable.so reasonable.so
 	python test.py
+
+python-library:
+	maturin build -b pyo3 --cargo-extra-args="--features python-library"
+	maturin publish -b pyo3 --cargo-extra-args="--features python-library"
 
 bench: build
 	./scripts/bench_examples.sh

@@ -4,6 +4,67 @@
 
 An OWL 2 RL reasoner with reasonable performance
 
+## How to Use
+
+### Python
+
+To facilitate usage, we use the [pyo3](https://pyo3.rs/) project to generate Python 3.x bindings to this project.
+Installing these *should* be as easy as `pip install reasonable`.
+
+See also the [`brickschema`](https://github.com/BrickSchema/py-brickschema) package for working with Brick models. The package provides a generic interface to this reasoner and several others.
+
+Usage looks like:
+
+```python
+import reasonable
+
+# import triples from an rdflib Graph
+import rdflib
+g = rdflib.Graph()
+g.parse("example_models/ontologies/Brick.n3", format="n3")
+g.parse("example_models/small1.n3", format="n3")
+
+r = reasonable.PyReasoner()
+r.from_graph(g)
+triples = r.reason()
+print("from rdflib:", len(triples))
+
+# import triples from files on disk
+r = reasonable.PyReasoner()
+r.load_file("example_models/ontologies/Brick.n3")
+r.load_file("example_models/small1.n3")
+triples = r.reason()
+print("from files:", len(triples))
+```
+
+### Rust
+
+See [Rust docs](https://docs.rs/reasonable)
+
+Example of usage from Rust:
+
+```rust
+use ::reasonable::owl::Reasoner;
+use std::env;
+use std::time::Instant;
+use log::info;
+
+fn main() {
+    env_logger::init();
+    let mut r = Reasoner::new();
+    env::args().skip(1).map(|filename| {
+        info!("Loading file {}", &filename);
+        r.load_file(&filename).unwrap()
+    }).count();
+    let reasoning_start = Instant::now();
+    info!("Starting reasoning");
+    r.reason();
+    info!("Reasoning completed in {:.02}sec", reasoning_start.elapsed().as_secs_f64());
+    r.dump_file("output.ttl").unwrap();
+}
+```
+
+
 ## OWL 2 Rules
 
 Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasoning_in_OWL_2_RL_and_RDF_Graphs_using_Rules).
