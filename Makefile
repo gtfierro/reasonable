@@ -12,8 +12,8 @@ test-python:
 	python test.py
 
 python-library:
-	maturin build -b pyo3 --cargo-extra-args="--features python-library"
-	maturin publish -b pyo3 --cargo-extra-args="--features python-library"
+	poetry run maturin build -b pyo3 --cargo-extra-args="--features python-library"
+	poetry run maturin publish -b pyo3 --cargo-extra-args="--features python-library"
 
 bench: build
 	./scripts/bench_examples.sh
