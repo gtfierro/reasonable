@@ -1,0 +1,26 @@
+[[package]]
+category = "dev"
+description = "Build and publish crates with pyo3, rust-cpython and cffi bindings as well as rust binaries as python packages"
+name = "maturin"
+optional = false
+python-versions = ">=3.5"
+version = "0.7.7"
+
+[package.dependencies]
+toml = ">=0.10.0,<0.11.0"
+
+[[package]]
+category = "dev"
+description = "Python Library for Tom's Obvious, Minimal Language"
+name = "toml"
+optional = false
+python-versions = "*"
+version = "0.10.0"
+
+[metadata]
+content-hash = "a1e2f4daa2803f17fcbb147fd6013a652fddf6b711a49e07d4d197fe0bd047c3"
+python-versions = "^3.6"
+
+[metadata.hashes]
+maturin = ["2533c648aa8fa19f7a9d4f62282b4adce2f9c07c49f512005f92911be767555e", "4fd7fcf4e40e984274dc9caf80c08fa16a6c7c1f4ca1f694ba2ac3802b7340aa", "5e6390245a023cbdca39d9276035fdee4d892b44d3ab798ccf2c3443d87e3f98", "7f7f04de2acf379b1ff8993747f11bfb60760c69caf8c43414212cf7cc4b07ef", "87a3d9a94f9c3b8d3ecc57017cdae2b3f1e0f6bfc851509f0b53c2486f312dcc", "aa474d70630833349dac090306fd51a8af2df88080cea74ea4d831b40616ea41"]
+toml = ["229f81c57791a41d65e399fc06bf0848bab550a9dfd5ed66df18ce5f05e73d5c", "235682dd292d5899d361a811df37e04a8828a5b1da3115886b73cf81ebc9100e", "f1db651f9657708513243e61e6cc67d101a39bad662eaa9b5546f789338e07a3"]
