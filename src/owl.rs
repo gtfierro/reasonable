@@ -6,7 +6,7 @@ use datafrog::{Iteration, Variable, Relation};
 use crate::index::URIIndex;
 use crate::disjoint_sets::DisjointSets;
 
-use log::{info, debug, warn, error};
+use log::{info, debug, error};
 use std::fmt;
 use std::fs;
 use std::io::{Write, Error};
@@ -152,6 +152,7 @@ impl Reasoner {
     }
 
     /// Load in a vector of triples
+    #[allow(dead_code)]
     pub fn load_triples_str(&mut self, triples: Vec<(&'static str, &'static str, &'static str)>) {
         let trips: Vec<(URI, (URI, URI))> = triples.iter().map(|trip| {
             (self.index.put_str(trip.0), (self.index.put_str(trip.1), self.index.put_str(trip.2)))
@@ -161,6 +162,7 @@ impl Reasoner {
     }
 
     /// Load in a vector of triples
+    #[allow(dead_code)]
     pub fn load_triples(&mut self, triples: Vec<(String, String, String)>) {
         let trips: Vec<(URI, (URI, URI))> = triples.iter().map(|trip| {
             let trip = trip.clone();
