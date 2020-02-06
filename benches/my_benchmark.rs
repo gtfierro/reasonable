@@ -55,7 +55,7 @@ fn bench_simple(c: &mut Criterion) {
 }
 
 fn setup() -> Criterion {
-    Criterion::default().sample_size(20).with_plots()
+    Criterion::default().sample_size(50).with_plots()
 }
 
 criterion_group!{
