@@ -233,7 +233,12 @@ impl Reasoner {
             if p ==  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" {
                 continue
             }
-            let subject = graph.create_uri_node(&Uri::new(s));
+
+            let subject = add_node_to_graph(&graph, s, false);
+            let predicate = add_node_to_graph(&graph, p, false);
+            let object = add_node_to_graph(&graph, o, true);
+
+            //let subject = graph.create_uri_node(&Uri::new(s));
             //let subject = if p == RDF_TYPE && o == RDFS_LITERAL {
             //    graph.create_literal_node(s)
             //} else {
@@ -245,14 +250,15 @@ impl Reasoner {
             // property
             //let object = if self.suggests_literal(&p) {
             // TODO: remove newlines from the literal? maybe this is put in here by the serializer
-            let object = if o.contains(" ") || self.suggests_literal(&p) {
-                // graph.create_literal_node(o.escape_default().to_string())
-                graph.create_literal_node(self.escape_literal(&o))
-            } else {
-                graph.create_uri_node(&Uri::new(o))
-            };
+            //let object = if o.contains(" ") || self.suggests_literal(&p) {
+            //    // graph.create_literal_node(o.escape_default().to_string())
+            //    graph.create_literal_node(self.escape_literal(&o))
+            //} else {
+            //    graph.create_uri_node(&Uri::new(o))
+            //};
 
-            let predicate = graph.create_uri_node(&Uri::new(p));
+            //let predicate = graph.create_uri_node(&Uri::new(p));
+            info!("OUTPUT: {:?} {:?} {:?}", subject, predicate, object);
             let t = triple::Triple::new(&subject, &predicate, &object);
             graph.add_triple(&t);
         }
@@ -294,7 +300,6 @@ impl Reasoner {
             let subject = node_to_string(triple.subject());
             let predicate = node_to_string(triple.predicate());
             let object = node_to_string(triple.object());
-            debug!("{} {} {}", subject, predicate, object);
 
             let (s, (p, o)) = (self.index.put(subject.to_string()), (self.index.put(predicate.to_string()), self.index.put(object.to_string())));
 
@@ -1192,6 +1197,29 @@ fn node_to_string(n: &Node) -> String {
         Node::LiteralNode{literal, data_type: _, language: _} => literal.to_string(),
         Node::BlankNode{id} => format!("_:{}", id.to_string())
     }
+}
+
+fn add_node_to_graph(graph: &Graph, s: String, is_object: bool) -> Node {
+    if s.starts_with("_:") {
+        graph.create_blank_node_with_id(s.replacen("_:", "", 1))
+    } else if is_object && (s.contains(" ") || suggests_literal(&s)) {
+        graph.create_literal_node(escape_literal(&s))
+    } else {
+        graph.create_uri_node(&Uri::new(s))
+    }
+}
+
+fn suggests_literal(pred: &String) -> bool {
+    *pred == "http://www.w3.org/2000/01/rdf-schema#label".to_string() ||
+    *pred == "http://www.w3.org/2000/01/rdf-schema#comment".to_string() ||
+    *pred == "http://schema.org#email".to_string() ||
+    *pred == "http://schema.org#name".to_string() ||
+    *pred == "http://www.w3.org/2004/02/skos/core#definition".to_string() ||
+    *pred == "http://purl.org/dc/elements/1.1/title"
+}
+
+fn escape_literal(literal: &str) -> String {
+    literal.to_string().replace("\n", "\\n")
 }
 
 #[cfg(test)]
