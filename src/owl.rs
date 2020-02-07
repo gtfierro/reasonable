@@ -146,7 +146,6 @@ impl Reasoner {
         // TODO: pull in the existing triples
         self.iter1 = Iteration::new();
         self.input = input.clone().iter().map(|&(x, (y, z))| (x, (y, z))).collect();
-        println!("input? {}", self.input.len());
         self.all_triples_input = self.iter1.variable::<(URI, (URI, URI))>("all_triples_input");
         self.spo = self.iter1.variable::<(URI, (URI, URI))>("spo");
     }
@@ -267,6 +266,7 @@ impl Reasoner {
         Ok(())
     }
 
+
     /// Load the triples in the given file into the Reasoner. This currently accepts
     /// Turtle-formatted (`.ttl`) and NTriples-formatted (`.n3`) files. If you have issues loading
     /// in a Turtle file, try converting it to NTriples
@@ -291,23 +291,9 @@ impl Reasoner {
         info!("Loaded {} triples from file {}", graph.count(), filename);
         let triples : Vec<(URI, (URI, URI))> = graph.triples_iter().map(|_triple| {
             let triple = _triple;
-            let subject = match triple.subject() {
-                Node::UriNode{uri} => uri.to_string(),
-                Node::LiteralNode{literal, data_type: _, language: _} => &literal,
-                Node::BlankNode{id} => &id,
-            };
-
-            let predicate = match triple.predicate() {
-                Node::UriNode{uri} => uri.to_string(),
-                Node::LiteralNode{literal, data_type: _, language: _} => &literal,
-                Node::BlankNode{id} => &id,
-            };
-
-            let object = match triple.object() {
-                Node::UriNode{uri} => uri.to_string(),
-                Node::LiteralNode{literal, data_type: _, language: _} => &literal,
-                Node::BlankNode{id} => &id,
-            };
+            let subject = node_to_string(triple.subject());
+            let predicate = node_to_string(triple.predicate());
+            let object = node_to_string(triple.object());
             debug!("{} {} {}", subject, predicate, object);
 
             let (s, (p, o)) = (self.index.put(subject.to_string()), (self.index.put(predicate.to_string()), self.index.put(object.to_string())));
@@ -1197,6 +1183,14 @@ impl Reasoner {
             let o = self.index.get(*_o).unwrap();
             (s.clone(), p.clone(), o.clone())
         }).collect()
+    }
+}
+
+fn node_to_string(n: &Node) -> String {
+    match n {
+        Node::UriNode{uri} => uri.to_string().clone(),
+        Node::LiteralNode{literal, data_type: _, language: _} => literal.to_string(),
+        Node::BlankNode{id} => format!("_:{}", id.to_string())
     }
 }
 
