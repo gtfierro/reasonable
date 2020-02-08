@@ -171,38 +171,10 @@ impl Reasoner {
         // self.all_triples_input.insert(trips.into());
     }
 
-    // TODO: inspect the range of the predicate to tell if it should be a literal
-    fn suggests_literal(&self, pred: &String) -> bool {
-        *pred == "http://www.w3.org/2000/01/rdf-schema#label".to_string() ||
-        *pred == "http://www.w3.org/2000/01/rdf-schema#comment".to_string() ||
-        *pred == "http://schema.org#email".to_string() ||
-        *pred == "http://schema.org#name".to_string() ||
-        *pred == "http://www.w3.org/2004/02/skos/core#definition".to_string() ||
-        *pred == "http://purl.org/dc/elements/1.1/title"
-    }
-
     fn add_error(&mut self, rule: String, message: String) {
         let error = ReasoningError::new(rule, message);
         error!("Got error {}", error);
         self.errors.push(error);
-    }
-
-    fn escape_literal(&self, literal: &str) -> String {
-        //if literal.contains('\\') {
-        //    println!("original {}", literal);
-        //}
-        let escaped_literal = literal.to_string().replace("\n", "\\n");
-        //let characters: Vec<char> = vec!['\'', '"', '\\'];
-        //for c in characters {
-        //    let mut escaped_char = "\\".to_string();
-        //    escaped_char.push(c);
-        //    println!("escaped: {:?}", escaped_char);
-        //    escaped_literal.replace(c, &escaped_char);
-        //}
-        //if literal.contains("\n") {
-        //    println!("=> {}", escaped_literal);
-        //}
-        escaped_literal
     }
 
     /// Dump the contents of the reasoner to the given file.
@@ -238,26 +210,6 @@ impl Reasoner {
             let predicate = add_node_to_graph(&graph, p, false);
             let object = add_node_to_graph(&graph, o, true);
 
-            //let subject = graph.create_uri_node(&Uri::new(s));
-            //let subject = if p == RDF_TYPE && o == RDFS_LITERAL {
-            //    graph.create_literal_node(s)
-            //} else {
-            //    graph.create_uri_node(&Uri::new(s))
-            //};
-
-            // determine if the object should be encoded as a literal. Checking for a ' ' is a poor
-            // heuristic; TODO: correct answer is to use the datatype of the predicate's rdfs:range
-            // property
-            //let object = if self.suggests_literal(&p) {
-            // TODO: remove newlines from the literal? maybe this is put in here by the serializer
-            //let object = if o.contains(" ") || self.suggests_literal(&p) {
-            //    // graph.create_literal_node(o.escape_default().to_string())
-            //    graph.create_literal_node(self.escape_literal(&o))
-            //} else {
-            //    graph.create_uri_node(&Uri::new(o))
-            //};
-
-            //let predicate = graph.create_uri_node(&Uri::new(p));
             info!("OUTPUT: {:?} {:?} {:?}", subject, predicate, object);
             let t = triple::Triple::new(&subject, &predicate, &object);
             graph.add_triple(&t);
