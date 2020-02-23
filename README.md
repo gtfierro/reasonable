@@ -1,4 +1,4 @@
-q# Reasonable
+# Reasonable
 
 [![Build Status](https://travis-ci.org/gtfierro/reasonable.svg?branch=master)](https://travis-ci.org/gtfierro/reasonable)
 
