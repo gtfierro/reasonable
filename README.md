@@ -1,8 +1,14 @@
-# Reasonable
+q# Reasonable
 
 [![Build Status](https://travis-ci.org/gtfierro/reasonable.svg?branch=master)](https://travis-ci.org/gtfierro/reasonable)
 
 An OWL 2 RL reasoner with reasonable performance
+
+## Performance
+
+Comparing performance of `reasonable` with [OWLRL](https://github.com/RDFLib/OWL-RL) and [Allegro](https://franz.com/agraph/support/documentation/current/materializer.html). Evaluation consisted of loading Brick models of different sizes into the respective reasoning engine and timing how long it took to produce the materialization. `reasonable` is about 7x faster than Allegro and 38x faster than OWLRL on this workload.
+
+![benchmark](img/benchmark.png)
 
 ## How to Use
 
