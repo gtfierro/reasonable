@@ -2,7 +2,7 @@
 
 PY36_VERSION=3.6.10
 PY37_VERSION=3.7.6
-PY38_VERSION=3.8.1
+PY38_VERSION=3.8.2
 PY36_PATH=$(shell pyenv prefix $(PY36_VERSION))
 PY37_PATH=$(shell pyenv prefix $(PY37_VERSION))
 PY38_PATH=$(shell pyenv prefix $(PY38_VERSION))
