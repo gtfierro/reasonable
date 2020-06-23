@@ -25,11 +25,26 @@ itertools = "0.8"
 disjoint-sets = "0.4.2"
 log = "0.4"
 env_logger = "0.7.1"
+anyhow = "1.0.26"
 
 [dependencies.pyo3]
 version = "0.9.0-alpha.1"
 optional = true
 features = ["extension-module"]
+
+[dependencies.rusqlite]
+git = "https://github.com/phiresky/rusqlite"
+branch = "pr/loadable-extensions"
+features = ["functions", "blob", "loadable_extension"]
+
+[dev-dependencies.rusqlite]
+git = "https://github.com/phiresky/rusqlite"
+branch = "pr/loadable-extensions"
+features = ["functions", "blob"]
+
+[target.x86_64-apple-darwin]
+linker = "x86_64-apple-darwin14-clang"
+ar = "x86_64-apple-darwin14-ar"
 
 [dev-dependencies]
 criterion = "0.3"
