@@ -40,8 +40,8 @@ pub extern "C" fn sqlite3_reasonable_init(
         Ok(()) => {
             eprintln!("[sqlite-reasonable] initialized");
             // TODO: make permanent with sqlite3_auto_extension ?
-            // ffi::SQLITE_OK
-            256
+            ffi::SQLITE_OK
+            // 256
         }
         Err(e) => {
             eprintln!("[sqlite-reasonable] error: {:?}", e);
