@@ -3,7 +3,7 @@
 //! OWL2
 //! Profile](https://www.w3.org/TR/owl2-profiles/#Reasoning_in_OWL_2_RL_and_RDF_Graphs_using_Rules)
 //! website.
-use rusqlite::{ffi, NO_PARAMS};
+use rusqlite::{ffi, NO_PARAMS, params};
 use std::os::raw::c_int;
 use rusqlite::functions::FunctionFlags;
 use rusqlite::types::{Value, ValueRef};
@@ -64,12 +64,17 @@ fn add_functions(db: &rusqlite::Connection) -> anyhow::Result<()> {
 }
 
 fn do_reason(ctx: &Context) -> Result<Box<dyn ToSql>, rusqlite::Error> {
-    if let Ok(table) = ctx.get::<String>(0) {
-        eprintln!("table {:?}", table);
-        let db = ctx.get_connection()?;
-        // TODO: load in the ontology
-        let mut stmt = db.prepare("SELECT subject, predicate, object FROM triples")?;
-        let mut res: Vec<(String, String, String)> = Vec::new();
+    
+    let src_table: String = ctx.get::<String>(0)?;
+    // let dst_table: String = ctx.get::<String>(1)?;
+    // eprintln!("Pull triples from {}, inserting reasoned triples in {}", src_table, dst_table);
+
+    let db = ctx.get_connection()?;
+    // TODO: load in the ontology
+    let mut res: Vec<(String, String, String)> = Vec::new();
+    {
+        let qstr = format!("SELECT subject, predicate, object FROM {}", src_table);
+        let mut stmt = db.prepare(&qstr)?;
         let rows = stmt.query_map(NO_PARAMS, |row| {
                 let t: (String, String, String) = (row.get(0)?, row.get(1)?, row.get(2)?);
                 Ok(t)
@@ -77,13 +82,35 @@ fn do_reason(ctx: &Context) -> Result<Box<dyn ToSql>, rusqlite::Error> {
         for row in rows {
             res.push(row?);
         }
-        
-        eprintln!("started with {} triples", res.len());
-        let mut r = owl::Reasoner::new();
-        r.load_triples(res);
-        r.reason();
-        let reasoned = r.get_triples();
-        eprintln!("now have {} triples", reasoned.len());
     }
+    eprintln!("start with {} triples", res.len());
+
+    db.execute("DROP TABLE IF EXISTS reasoned;", NO_PARAMS)?;
+    db.execute("CREATE TABLE IF NOT EXISTS reasoned(subject TEXT, predicate TEXT, object TEXT);", NO_PARAMS)?;
+
+    let mut r = owl::Reasoner::new();
+    r.load_triples(res);
+    r.reason();
+    let reasoned = r.get_triples();
+    eprintln!("now have {} triples", reasoned.len());
+
+    for (s, p, o) in reasoned.iter() {
+        db.execute("INSERT INTO reasoned(subject, predicate, object) VALUES (?, ?, ?)",
+                    params![s, p, o])?;
+    }
+
+    // if let Ok(table) = ctx.get::<String>(0) {
+    //     
+    //     eprintln!("started with {} triples", res.len());
+    //     // if let Some(r) = ctx.get_aux::<owl::Reasoner>(0 as c_int)? {
+    //     //     eprintln!("reasoner");
+    //     // } else {
+    //     //     let mut r = owl::Reasoner::new();
+    //     //     ctx.set_aux(0 as c_int, r);
+    //     // }
+
+    //     // let mut r = ctx.get_aux::<owl::Reasoner>(0 as c_int)?.unwrap();
+    //     eprintln!("now have {} triples", reasoned.len());
+    // }
     Ok(Box::new("a"))
 }
