@@ -25,10 +25,12 @@ jobs:
       - uses: actions-rs/cargo@v1
         with:
           command: build
+          args: --release
 
       - uses: actions-rs/cargo@v1
         with:
           command: test
+
       - name: deploy release
         uses: WebFreak001/deploy-nightly@v1.0.1
         env:
