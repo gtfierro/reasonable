@@ -29,14 +29,12 @@ jobs:
         with:
           command: test
 
-      - name: deploy release
-        uses: WebFreak001/deploy-nightly@v1.0.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # automatically provided by github actions
+      - uses: meeDamian/github-release@2.0
+        name: deploy release
         with:
-          upload_url: "https://uploads.github.com/repos/gtfierro/reasonable/releases/29427999/assets{?name,label}"
-          release_id: 29427999 # same as above (id can just be taken out the upload_url, it's used to find old releases)
-          asset_path: target/release/reasonable # path to archive to upload
-          asset_name: reasonable-$$ # name to upload the release as, use $$ to insert date (YYYYMMDD) and 6 letter commit hash
-          asset_content_type: application/x-binary # required by GitHub API
-          max_releases: 7 # optional, if there are more releases than this matching the asset_name, the oldest ones are going to be deleted
+        token: ${{ secrets.GITHUB_TOKEN }}
+        name: Nightly Build
+        body: >
+          This is an automatically generated release
+        files: >
+          target/release/reasonable
