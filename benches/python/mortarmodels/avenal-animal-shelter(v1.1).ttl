@@ -1,0 +1,342 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://xbos.io/ontologies/avenal-animal-shelter#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:Level_1 a brick1:Floor ;
+    rdf:label "Level 1" ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brick1:hasPart bldg:Room_10,
+        bldg:Room_13,
+        bldg:Room_14,
+        bldg:Room_15,
+        bldg:Room_16,
+        bldg:Room_17,
+        bldg:Room_18,
+        bldg:Room_2,
+        bldg:Room_20,
+        bldg:Room_3,
+        bldg:Room_4,
+        bldg:Room_5,
+        bldg:Room_6,
+        bldg:Room_7,
+        bldg:Room_8,
+        bldg:Room_9,
+        bldg:Room_A,
+        bldg:Room_B,
+        bldg:Room_east,
+        bldg:Room_north,
+        bldg:Room_south,
+        bldg:Room_west .
+
+<http://xbos.io/ontologies/avenal-animal-shelter#green_button_meter_B/5naUQrn60dFUWQ+K4AycnK/Fg=> a brick_v_1_0_2:Green_Button_Meter ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brickframe:uuid "aeb99bf0-9fee-5c86-8cd3-6c41f58ac3aa" .
+
+bldg:hvac_zone_shelter_corridor_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_A ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brickframe:uri "avenal-animal-shelter/devices/s.pelican/Shelter_Corridor/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_shelter_corridor ;
+    brick1:hasPoint bldg:hvac_zone_shelter_corridor_tstat_cooling_setpoint,
+        bldg:hvac_zone_shelter_corridor_tstat_fan,
+        bldg:hvac_zone_shelter_corridor_tstat_heating_setpoint,
+        bldg:hvac_zone_shelter_corridor_tstat_mode,
+        bldg:hvac_zone_shelter_corridor_tstat_override,
+        bldg:hvac_zone_shelter_corridor_tstat_state,
+        bldg:hvac_zone_shelter_corridor_tstat_temperature .
+
+bldg:meter_0xd8d5b9000000b3ec a brick_v_1_0_2:Building_Electric_Meter ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brickframe:uri "avenal-animal-shelter/s.eagle/0xd8d5b9000000b3ec/i.meter" ;
+    brickframe:uuid "9c5caebd-0c83-3f41-9325-fa67465c80b4" .
+
+bldg:weather_AT565_cloud_coverage a brick_v_1_0_2:Weather_Cloud_Coverage_Sensor ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brickframe:uuid "f243903f-16cd-3362-9506-8a32a5efa4ee" .
+
+bldg:weather_AT565_cloud_height a brick_v_1_0_2:Weather_Cloud_Height_Sensor ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brickframe:uuid "d3c6ce62-3295-312c-ab8e-0debe171621d" .
+
+bldg:weather_AT565_relative_humidity a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brickframe:uuid "003a1759-e1.0.2514-a6d5-981e9b7924d6" .
+
+bldg:weather_AT565_temperature a brick_v_1_0_2:Weather_Temperature_Sensor ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brickframe:uuid "a6e9f305-d76b-3e1a-8b11-e3d312134f02" .
+
+bldg:weather_AT565_wind_direction a brick1:Wind_Direction_Sensor ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brickframe:uuid "f458cf4d-d109-3a3b-ae40-939da6841510" .
+
+bldg:weather_AT565_wind_speed a brick1:Wind_Speed_Sensor ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brickframe:uuid "6410f70b-a594-39bb-94ac-1eb9682a70e7" .
+
+bldg:weather_KTLC1_cloud_coverage a brick_v_1_0_2:Weather_Cloud_Coverage_Sensor ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brickframe:uuid "72950f10-3614-30da-8803-2755cb4731ea" .
+
+bldg:weather_KTLC1_cloud_height a brick_v_1_0_2:Weather_Cloud_Height_Sensor ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brickframe:uuid "2ac5ed07-4f55-31c3-8641-0165462d4f44" .
+
+bldg:weather_KTLC1_relative_humidity a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brickframe:uuid "10ef6a49-4a43-37fd-befc-524eb2b2f104" .
+
+bldg:weather_KTLC1_temperature a brick_v_1_0_2:Weather_Temperature_Sensor ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brickframe:uuid "c3d0f042-2cb7-387c-8867-4190fef4fd2c" .
+
+bldg:weather_KTLC1_wind_direction a brick1:Wind_Direction_Sensor ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brickframe:uuid "f933cb33-1bcb-34e9-8e73-1bae9a023715" .
+
+bldg:weather_KTLC1_wind_speed a brick1:Wind_Speed_Sensor ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brickframe:uuid "6f4e2261-7cc3-3369-a367-01ef3828a7c7" .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:RTU_hvac_zone_shelter_corridor a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brick1:feeds bldg:hvac_zone_shelter_corridor .
+
+bldg:Room_10 a brick1:Room ;
+    rdf:label "Exam Room" ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brick1:isPartOf bldg:HVAC_Zone_shelter_corridor .
+
+bldg:Room_13 a brick1:Room ;
+    rdf:label "Canine Holding 2" ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brick1:isPartOf bldg:HVAC_Zone_shelter_corridor .
+
+bldg:Room_14 a brick1:Room ;
+    rdf:label "Canine Holding 1" ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brick1:isPartOf bldg:HVAC_Zone_shelter_corridor .
+
+bldg:Room_15 a brick1:Room ;
+    rdf:label "Canine Isolation" ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brick1:isPartOf bldg:HVAC_Zone_shelter_corridor .
+
+bldg:Room_16 a brick1:Room ;
+    rdf:label "Canine Quarantine" ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brick1:isPartOf bldg:HVAC_Zone_shelter_corridor .
+
+bldg:Room_17 a brick1:Room ;
+    rdf:label "Loading Dock Office" ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brick1:isPartOf bldg:HVAC_Zone_shelter_corridor .
+
+bldg:Room_18 a brick1:Room ;
+    rdf:label "Isolation room" ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brick1:isPartOf bldg:HVAC_Zone_shelter_corridor .
+
+bldg:Room_2 a brick1:Room ;
+    rdf:label "Officers Station" ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brick1:isPartOf bldg:HVAC_Zone_shelter_corridor .
+
+bldg:Room_20 a brick1:Room ;
+    rdf:label "Unconditioned Kennels" ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brick1:isPartOf bldg:HVAC_Zone_outside .
+
+bldg:Room_3 a brick1:Room ;
+    rdf:label "Unisex Restroom / Lockers" ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brick1:isPartOf bldg:HVAC_Zone_shelter_corridor .
+
+bldg:Room_4 a brick1:Room ;
+    rdf:label "Feline Adoption" ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brick1:isPartOf bldg:HVAC_Zone_shelter_corridor .
+
+bldg:Room_5 a brick1:Room ;
+    rdf:label "Feline Isolation" ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brick1:isPartOf bldg:HVAC_Zone_shelter_corridor .
+
+bldg:Room_6 a brick1:Room ;
+    rdf:label "Feline Quaranteen" ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brick1:isPartOf bldg:HVAC_Zone_shelter_corridor .
+
+bldg:Room_7 a brick1:Room ;
+    rdf:label "Food Prep" ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brick1:isPartOf bldg:HVAC_Zone_shelter_corridor .
+
+bldg:Room_8 a brick1:Room ;
+    rdf:label "Laundry" ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brick1:isPartOf bldg:HVAC_Zone_shelter_corridor .
+
+bldg:Room_9 a brick1:Room ;
+    rdf:label "Feral Feline Holding (no access)" ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brick1:isPartOf bldg:HVAC_Zone_shelter_corridor .
+
+bldg:Room_B a brick1:Room ;
+    rdf:label "Hallway" ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brick1:isPartOf bldg:HVAC_Zone_shelter_corridor .
+
+bldg:Room_east a brick1:Room ;
+    rdf:label "North" ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brick1:isPartOf bldg:HVAC_Zone_outside .
+
+bldg:Room_north a brick1:Room ;
+    rdf:label "West" ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brick1:isPartOf bldg:HVAC_Zone_outside .
+
+bldg:Room_south a brick1:Room ;
+    rdf:label "East" ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brick1:isPartOf bldg:HVAC_Zone_outside .
+
+bldg:Room_west a brick1:Room ;
+    rdf:label "South" ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brick1:isPartOf bldg:HVAC_Zone_outside .
+
+bldg:hvac_zone_shelter_corridor a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-animal-shelter .
+
+bldg:hvac_zone_shelter_corridor_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brickframe:uri "avenal-animal-shelter/devices/s.pelican/Shelter_Corridor/i.xbos.thermostat" ;
+    brickframe:uuid "03d06df4-fc14-3ef9-a47e-486d0d44b05a" .
+
+bldg:hvac_zone_shelter_corridor_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brickframe:uri "avenal-animal-shelter/devices/s.pelican/Shelter_Corridor/i.xbos.thermostat" ;
+    brickframe:uuid "56c278c2-bfe1-3be7-a15b-e8653778a54a" .
+
+bldg:hvac_zone_shelter_corridor_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brickframe:uri "avenal-animal-shelter/devices/s.pelican/Shelter_Corridor/i.xbos.thermostat" ;
+    brickframe:uuid "1010fda7-c6fa-3335-9b16-6c2dee5d5edc" .
+
+bldg:hvac_zone_shelter_corridor_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brickframe:uri "avenal-animal-shelter/devices/s.pelican/Shelter_Corridor/i.xbos.thermostat" ;
+    brickframe:uuid "ee726c16-2c82-3f24-af3d-d8ad7f94a52d" .
+
+bldg:hvac_zone_shelter_corridor_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brickframe:uri "avenal-animal-shelter/devices/s.pelican/Shelter_Corridor/i.xbos.thermostat" ;
+    brickframe:uuid "d8d35e62-3b0c-3c06-a950-10d55c48343a" .
+
+bldg:hvac_zone_shelter_corridor_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brickframe:uri "avenal-animal-shelter/devices/s.pelican/Shelter_Corridor/i.xbos.thermostat" ;
+    brickframe:uuid "21d3a80c-6601-3985-9a9f-91628e050949" .
+
+bldg:hvac_zone_shelter_corridor_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brickframe:uri "avenal-animal-shelter/devices/s.pelican/Shelter_Corridor/i.xbos.thermostat" ;
+    brickframe:uuid "64e6da1b-8cae-3ee7-96d7-4cf7246d207e" .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+bldg:Room_A a brick1:Room ;
+    rdf:label "Hallway" ;
+    brickframe:hasSite bldg:avenal-animal-shelter ;
+    brick1:isPartOf bldg:HVAC_Zone_shelter_corridor .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Weather_Cloud_Coverage_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Weather_Cloud_Height_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Weather_Temperature_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:HVAC_Zone_outside a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-animal-shelter .
+
+bldg:HVAC_Zone_shelter_corridor a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-animal-shelter .
+
+bldg:avenal-animal-shelter a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "4132" ;
+    brickframe:Country "US" ;
+    brickframe:NumFloors "1" ;
+    brickframe:PrimaryFunction "Animal Shelter" ;
+    brickframe:Timezone "America/Los_Angeles" .
+

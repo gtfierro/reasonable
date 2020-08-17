@@ -1,0 +1,3796 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/MRAK#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:AC01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.AHU.AC01.CCV,
+        bldg:MRAK.AHU.AC01.Heating_Valve_Output,
+        bldg:MRAK.AHU.AC01.Mixed_Air_Temp,
+        bldg:MRAK.AHU.AC01.Mode,
+        bldg:MRAK.AHU.AC01.Outside_Air_Temp,
+        bldg:MRAK.AHU.AC01.Return_Air_Temp,
+        bldg:MRAK.AHU.AC01.Supply_Air_Temp,
+        bldg:MRAK.AHU.AC01.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC02 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.AHU.AC02.CCV,
+        bldg:MRAK.AHU.AC02.Heating_Valve_Output,
+        bldg:MRAK.AHU.AC02.Mixed_Air_Temp,
+        bldg:MRAK.AHU.AC02.Mode,
+        bldg:MRAK.AHU.AC02.Outside_Air_Temp,
+        bldg:MRAK.AHU.AC02.Return_Air_Temp,
+        bldg:MRAK.AHU.AC02.Supply_Air_Temp,
+        bldg:MRAK.AHU.AC02.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC03 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:VAVRM103,
+        bldg:VAVRM113,
+        bldg:VAVRM124,
+        bldg:VAVRM124N,
+        bldg:VAVRM124S,
+        bldg:VAVRM126,
+        bldg:VAVRM139,
+        bldg:VAVRM150,
+        bldg:VAVRM150A,
+        bldg:VAVRM150C,
+        bldg:VAVRM150N,
+        bldg:VAVRM150S,
+        bldg:VAVRM151,
+        bldg:VAVRM171,
+        bldg:VAVRM_ENTRY_NO,
+        bldg:VAVRM_ENTRY_SO ;
+    brick1:hasPoint bldg:MRAK.AHU.AC03.CCV,
+        bldg:MRAK.AHU.AC03.Mixed_Air_Temp,
+        bldg:MRAK.AHU.AC03.Mode,
+        bldg:MRAK.AHU.AC03.Outside_Air_Temp,
+        bldg:MRAK.AHU.AC03.Return_Air_Temp,
+        bldg:MRAK.AHU.AC03.Supply_Air_Temp,
+        bldg:MRAK.AHU.AC03.Supply_Air_Temp_Setpoint,
+        bldg:MRAK.AHU.AC03.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC04 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:VAVRM203,
+        bldg:VAVRM204,
+        bldg:VAVRM209,
+        bldg:VAVRM250,
+        bldg:VAVRM267,
+        bldg:VAVRM270,
+        bldg:VAVRM271,
+        bldg:VAVRM300J,
+        bldg:VAVRM356N,
+        bldg:VAVRM373,
+        bldg:VAVRM379,
+        bldg:VAVRM406,
+        bldg:VAVRM410,
+        bldg:VAVRM453,
+        bldg:VAVRM471,
+        bldg:VAVRM500A,
+        bldg:VAVRM567,
+        bldg:VAVRM567AUX,
+        bldg:VAVRM573,
+        bldg:VAVRM573X,
+        bldg:VAVRM581,
+        bldg:VAVRM_NW_AREA ;
+    brick1:hasPoint bldg:MRAK.AHU.AC04.Mixed_Air_Temp,
+        bldg:MRAK.AHU.AC04.Mode,
+        bldg:MRAK.AHU.AC04.Outside_Air_Temp,
+        bldg:MRAK.AHU.AC04.Return_Air_Temp,
+        bldg:MRAK.AHU.AC04.Supply_Air_Temp,
+        bldg:MRAK.AHU.AC04.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC04_AC05 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.AHU.AC04_AC05.Mixed_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC05 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:VAVRM215,
+        bldg:VAVRM220,
+        bldg:VAVRM227,
+        bldg:VAVRM236,
+        bldg:VAVRM239,
+        bldg:VAVRM251,
+        bldg:VAVRM300M,
+        bldg:VAVRM309,
+        bldg:VAVRM329,
+        bldg:VAVRM334X,
+        bldg:VAVRM339,
+        bldg:VAVRM356,
+        bldg:VAVRM413,
+        bldg:VAVRM423,
+        bldg:VAVRM431,
+        bldg:VAVRM439,
+        bldg:VAVRM523,
+        bldg:VAVRM528A,
+        bldg:VAVRM529,
+        bldg:VAVRM537,
+        bldg:VAVRM540,
+        bldg:VAVRM559,
+        bldg:VAVRM_SE_AREA,
+        bldg:VAVRM_SW_AREA ;
+    brick1:hasPoint bldg:MRAK.AHU.AC05.Mixed_Air_Temp,
+        bldg:MRAK.AHU.AC05.Mode,
+        bldg:MRAK.AHU.AC05.Outside_Air_Temp,
+        bldg:MRAK.AHU.AC05.Return_Air_Temp,
+        bldg:MRAK.AHU.AC05.Supply_Air_Temp,
+        bldg:MRAK.AHU.AC05.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:Mrak_ChilledWater_Demand_kBtu a brick_v_1_0_2:Electric_Meter ;
+    brickframe:pointname "Mrak_ChilledWater_Demand_kBtu" ;
+    brickframe:uuid "9a7d1153-6606-3b69-9c16-49cb5baffca6" ;
+    brick1:isPointOf bldg:chiller .
+
+bldg:Mrak_Electricity_Demand_kBtu a brick_v_1_0_2:Building_Electric_Meter ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "Mrak_Electricity_Demand_kBtu" ;
+    brickframe:uuid "c4ce778e-aaab-3615-afac-509a2100e5bf" .
+
+bldg:damperVAVRM103 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM103.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM103 .
+
+bldg:damperVAVRM113 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM113.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM113 .
+
+bldg:damperVAVRM124 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM124.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM124 .
+
+bldg:damperVAVRM124N a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM124N.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM124N .
+
+bldg:damperVAVRM124S a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM124S.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM124S .
+
+bldg:damperVAVRM126 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM126.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM126 .
+
+bldg:damperVAVRM139 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM139.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM139 .
+
+bldg:damperVAVRM150 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM150.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM150 .
+
+bldg:damperVAVRM150A a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM150A.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM150A .
+
+bldg:damperVAVRM150C a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM150C.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM150C .
+
+bldg:damperVAVRM150N a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM150N.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM150N .
+
+bldg:damperVAVRM150S a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM150S.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM150S .
+
+bldg:damperVAVRM151 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM151.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM151 .
+
+bldg:damperVAVRM171 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM171.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM171 .
+
+bldg:damperVAVRM203 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM203.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM203 .
+
+bldg:damperVAVRM204 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM204.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM204 .
+
+bldg:damperVAVRM209 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM209.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM209 .
+
+bldg:damperVAVRM215 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM215.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM215 .
+
+bldg:damperVAVRM220 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM220.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM220 .
+
+bldg:damperVAVRM227 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM227.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM227 .
+
+bldg:damperVAVRM236 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM236.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM236 .
+
+bldg:damperVAVRM239 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM239.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM239 .
+
+bldg:damperVAVRM250 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM250.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM250 .
+
+bldg:damperVAVRM251 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM251.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM251 .
+
+bldg:damperVAVRM267 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM267.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM267 .
+
+bldg:damperVAVRM270 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM270.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM270 .
+
+bldg:damperVAVRM271 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM271.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM271 .
+
+bldg:damperVAVRM300J a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM300J.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM300J .
+
+bldg:damperVAVRM300M a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM300M.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM300M .
+
+bldg:damperVAVRM309 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM309.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM309 .
+
+bldg:damperVAVRM329 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM329.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM329 .
+
+bldg:damperVAVRM334X a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM334X.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM334X .
+
+bldg:damperVAVRM339 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM339.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM339 .
+
+bldg:damperVAVRM356 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM356.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM356 .
+
+bldg:damperVAVRM356N a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM356N.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM356N .
+
+bldg:damperVAVRM373 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM373.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM373 .
+
+bldg:damperVAVRM379 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM379.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM379 .
+
+bldg:damperVAVRM406 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM406.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM406 .
+
+bldg:damperVAVRM410 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM410.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM410 .
+
+bldg:damperVAVRM413 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM413.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM413 .
+
+bldg:damperVAVRM423 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM423.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM423 .
+
+bldg:damperVAVRM431 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM431.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM431 .
+
+bldg:damperVAVRM439 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM439.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM439 .
+
+bldg:damperVAVRM453 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM453.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM453 .
+
+bldg:damperVAVRM471 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM471.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM471 .
+
+bldg:damperVAVRM500A a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM500A.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM500A .
+
+bldg:damperVAVRM523 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM523.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM523 .
+
+bldg:damperVAVRM528A a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM528A.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM528A .
+
+bldg:damperVAVRM529 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM529.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM529 .
+
+bldg:damperVAVRM537 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM537.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM537 .
+
+bldg:damperVAVRM540 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM540.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM540 .
+
+bldg:damperVAVRM559 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM559.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM559 .
+
+bldg:damperVAVRM567 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM567.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM567 .
+
+bldg:damperVAVRM573 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM573.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM573 .
+
+bldg:damperVAVRM573X a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM573X.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM573X .
+
+bldg:damperVAVRM581 a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM581.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM581 .
+
+bldg:damperVAVRM_ENTRY_NO a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM_ENTRY_NO.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM_ENTRY_NO .
+
+bldg:damperVAVRM_ENTRY_SO a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM_ENTRY_SO.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM_ENTRY_SO .
+
+bldg:damperVAVRM_NW_AREA a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM_NW_AREA.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM_NW_AREA .
+
+bldg:damperVAVRM_SE_AREA a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM_SE_AREA.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM_SE_AREA .
+
+bldg:damperVAVRM_SW_AREA a brick1:Damper ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM_SW_AREA.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM_SW_AREA .
+
+bldg:floor1 a brick1:Floor ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM103_room,
+        bldg:RM113_room,
+        bldg:RM124N_room,
+        bldg:RM124S_room,
+        bldg:RM124_room,
+        bldg:RM126_room,
+        bldg:RM139_room,
+        bldg:RM150A_room,
+        bldg:RM150C_room,
+        bldg:RM150N_room,
+        bldg:RM150S_room,
+        bldg:RM150_room,
+        bldg:RM151_room,
+        bldg:RM171_room .
+
+bldg:floor2 a brick1:Floor ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM203_room,
+        bldg:RM204_room,
+        bldg:RM209_room,
+        bldg:RM215_room,
+        bldg:RM220_room,
+        bldg:RM227_room,
+        bldg:RM236_room,
+        bldg:RM239_room,
+        bldg:RM250_room,
+        bldg:RM251_room,
+        bldg:RM267_room,
+        bldg:RM270_room,
+        bldg:RM271_room .
+
+bldg:floor3 a brick1:Floor ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM300J_room,
+        bldg:RM300M_room,
+        bldg:RM309_room,
+        bldg:RM329_room,
+        bldg:RM334X_room,
+        bldg:RM339_room,
+        bldg:RM356N_room,
+        bldg:RM356_room,
+        bldg:RM373_room,
+        bldg:RM379_room .
+
+bldg:floor4 a brick1:Floor ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM406_room,
+        bldg:RM410_room,
+        bldg:RM413_room,
+        bldg:RM423_room,
+        bldg:RM431_room,
+        bldg:RM439_room,
+        bldg:RM453_room,
+        bldg:RM471_room .
+
+bldg:floor5 a brick1:Floor ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM500A_room,
+        bldg:RM523_room,
+        bldg:RM528A_room,
+        bldg:RM529_room,
+        bldg:RM537_room,
+        bldg:RM540_room,
+        bldg:RM559_room,
+        bldg:RM567AUX_room,
+        bldg:RM567_room,
+        bldg:RM573X_room,
+        bldg:RM573_room,
+        bldg:RM581_room .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:MRAK.AHU.AC01.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC01.CCV" ;
+    brickframe:uuid "6a23fe1f-59a4-3c25-a9f4-d6ef1d7c0499" .
+
+bldg:MRAK.AHU.AC01.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC01.Heating Valve Output" ;
+    brickframe:uuid "ca978946-953e-3672-9c30-c74e29a247cd" .
+
+bldg:MRAK.AHU.AC01.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC01.Mixed Air Temp" ;
+    brickframe:uuid "b1148a98-4545-3cd0-8bd2-a1cb9f449a33" .
+
+bldg:MRAK.AHU.AC01.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.AHU.AC01.Mode" ;
+    brickframe:uuid "1487a262-313c-332a-8848-32c3ee13d1fe" .
+
+bldg:MRAK.AHU.AC01.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC01.Outside Air Temp" ;
+    brickframe:uuid "1015c45d-cfb0-307d-990e-5e3e9cc88184" .
+
+bldg:MRAK.AHU.AC01.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC01.Return Air Temp" ;
+    brickframe:uuid "0f1efab1-c30b-3aeb-b8a5-e04061c23097" .
+
+bldg:MRAK.AHU.AC01.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC01.Supply Air Temp" ;
+    brickframe:uuid "731ef310-b80f-31ff-a029-83115a341f54" .
+
+bldg:MRAK.AHU.AC01.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC01.Supply Air Temp Setpoint" ;
+    brickframe:uuid "7d3f870f-12cf-3aba-9f79-18bb842c3ccb" .
+
+bldg:MRAK.AHU.AC02.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC02.CCV" ;
+    brickframe:uuid "40dceb37-1e21-3d75-9b91-e1b2ad526065" .
+
+bldg:MRAK.AHU.AC02.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC02.Heating Valve Output" ;
+    brickframe:uuid "7cff9f42-0d3d-348a-8fbd-4fc1d9c56035" .
+
+bldg:MRAK.AHU.AC02.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC02.Mixed Air Temp" ;
+    brickframe:uuid "6e67c5e9-aa47-3995-bd03-e06e41c8e8f6" .
+
+bldg:MRAK.AHU.AC02.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.AHU.AC02.Mode" ;
+    brickframe:uuid "9cd765d7-00ff-32c9-b46e-16d0d18fbb0e" .
+
+bldg:MRAK.AHU.AC02.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC02.Outside Air Temp" ;
+    brickframe:uuid "ad503d45-cfa2-3df5-9a6e-b944a8179c89" .
+
+bldg:MRAK.AHU.AC02.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC02.Return Air Temp" ;
+    brickframe:uuid "f4da97c1-3861-3789-b303-03c88cebfd36" .
+
+bldg:MRAK.AHU.AC02.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC02.Supply Air Temp" ;
+    brickframe:uuid "fafa5967-2492-302c-9a86-4d29b94bb029" .
+
+bldg:MRAK.AHU.AC02.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC02.Supply Air Temp Setpoint" ;
+    brickframe:uuid "d03e72ae-c1bd-3655-ab6f-9f7c366909b8" .
+
+bldg:MRAK.AHU.AC03.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC03.CCV" ;
+    brickframe:uuid "f11f2c8e-cda2-3743-af9a-a412e05f4887" .
+
+bldg:MRAK.AHU.AC03.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC03.Mixed Air Temp" ;
+    brickframe:uuid "5071dee4-9f55-3e8b-ad7b-a11ab4a974fa" .
+
+bldg:MRAK.AHU.AC03.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.AHU.AC03.Mode" ;
+    brickframe:uuid "6c049dfd-82e6-3f13-83ef-8606c8c88658" .
+
+bldg:MRAK.AHU.AC03.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC03.Outside Air Temp" ;
+    brickframe:uuid "433fac04-ddc8-3f08-90dc-a9258918776b" .
+
+bldg:MRAK.AHU.AC03.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC03.Return Air Temp" ;
+    brickframe:uuid "1a02c244-737d-33eb-aa33-7b5e4f4e0f58" .
+
+bldg:MRAK.AHU.AC03.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC03.Supply Air Temp" ;
+    brickframe:uuid "7d09ab2b-e32b-376f-9c69-9d7b240463ca" .
+
+bldg:MRAK.AHU.AC03.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC03.Supply Air Temp Setpoint" ;
+    brickframe:uuid "865a79ad-ae09-388b-8e79-e03b30125d05" .
+
+bldg:MRAK.AHU.AC03.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC03.Zone Air Temp" ;
+    brickframe:uuid "6bff6d7b-d66e-3cdc-ac31-56609ec7c2ac" .
+
+bldg:MRAK.AHU.AC04.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC04.Mixed Air Temp" ;
+    brickframe:uuid "a062b793-9bbe-3a16-9999-2f4e1075e853" .
+
+bldg:MRAK.AHU.AC04.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.AHU.AC04.Mode" ;
+    brickframe:uuid "2cc843f2-e915-3032-9663-8b2cfbd3eaf6" .
+
+bldg:MRAK.AHU.AC04.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC04.Outside Air Temp" ;
+    brickframe:uuid "6f0dd0d4-0361-3218-a837-877f9998aa7e" .
+
+bldg:MRAK.AHU.AC04.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC04.Return Air Temp" ;
+    brickframe:uuid "51f09f20-d11c-386f-9d43-5261ed6cc907" .
+
+bldg:MRAK.AHU.AC04.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC04.Supply Air Temp" ;
+    brickframe:uuid "a17ec876-f457-3102-8e8d-f4b0d5febaaa" .
+
+bldg:MRAK.AHU.AC04.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC04.Supply Air Temp Setpoint" ;
+    brickframe:uuid "d966aed1-ddd5-3bdb-89ed-0df8dbfb6f0f" .
+
+bldg:MRAK.AHU.AC04_AC05.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC04_AC05.Mixed Air Temp" ;
+    brickframe:uuid "fe921fce-a53a-3fe5-9f4d-464ef8441352" .
+
+bldg:MRAK.AHU.AC05.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC05.Mixed Air Temp" ;
+    brickframe:uuid "61d0f689-8cf5-314b-a387-281a22965546" .
+
+bldg:MRAK.AHU.AC05.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.AHU.AC05.Mode" ;
+    brickframe:uuid "a0d683b4-1274-3730-8350-72cd67b52cdb" .
+
+bldg:MRAK.AHU.AC05.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC05.Outside Air Temp" ;
+    brickframe:uuid "d8d8bae5-d362-3cd8-8f28-ccee9a36e518" .
+
+bldg:MRAK.AHU.AC05.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC05.Return Air Temp" ;
+    brickframe:uuid "9af63094-7331-3d4c-8bf9-0e8f4bea620e" .
+
+bldg:MRAK.AHU.AC05.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC05.Supply Air Temp" ;
+    brickframe:uuid "9f0789db-2902-38d1-8f34-69931c3c4e3b" .
+
+bldg:MRAK.AHU.AC05.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.AHU.AC05.Supply Air Temp Setpoint" ;
+    brickframe:uuid "80b7af4f-73ad-3582-a907-1c906955cd3f" .
+
+bldg:MRAK.CHW.Building_Chilled_Water_Flow a brick_v_1_0_2:Chilled_Water_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.CHW.Building Chilled Water Flow" ;
+    brickframe:uuid "52fb1289-24d8-3d36-a33e-9c1fd81a88b7" .
+
+bldg:MRAK.CHW.Building_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.CHW.Building Chilled Water Return Temp" ;
+    brickframe:uuid "ca884a1c-7649-3f2e-8494-cf2816feff4d" .
+
+bldg:MRAK.CHW.Building_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.CHW.Building Chilled Water Supply Temp" ;
+    brickframe:uuid "02bbeeb8-e151-348b-9f22-b6b91ead1532" .
+
+bldg:MRAK.CHW.Building_Chilled_Water_Supply_Temp_Setpoint a brick_v_1_0_2:Chilled_Water_Supply_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.CHW.Building Chilled Water Supply Temp Setpoint" ;
+    brickframe:uuid "c044b84c-3108-302d-8b30-5d9729b4fd9f" .
+
+bldg:MRAK.CHW.ECONOMIZER a brick1:Damper_Position_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.CHW.ECONOMIZER" ;
+    brickframe:uuid "0e1ce7c2-7794-3fab-92a9-433feb3c4265" .
+
+bldg:MRAK.CHW.Enable a brick1:Enable_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.CHW.Enable" ;
+    brickframe:uuid "4d0a0fdd-e37b-3c64-9f27-073dfb25a1a9" .
+
+bldg:MRAK.CHW.Loop_Chilled_Water_Flow a brick_v_1_0_2:Chilled_Water_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.CHW.Loop Chilled Water Flow" ;
+    brickframe:uuid "00af55ee-6f25-3c4b-b296-dd936fead40f" .
+
+bldg:MRAK.CHW.Loop_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.CHW.Loop Chilled Water Return Temp" ;
+    brickframe:uuid "b7e4f80d-1af8-370a-a971-ca74f770836c" .
+
+bldg:MRAK.CHW.Loop_Chilled_Water_Return_Temp_Setpoint a brick_v_1_0_2:Chilled_Water_Return_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.CHW.Loop Chilled Water Return Temp Setpoint" ;
+    brickframe:uuid "a3e35612-47dd-3454-8376-b835c6d4d23d" .
+
+bldg:MRAK.CHW.Loop_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.CHW.Loop Chilled Water Supply Temp" ;
+    brickframe:uuid "b692c7f2-666c-31e0-aa0f-27fb3e76b367" .
+
+bldg:MRAK.CHW.Loop_Chilled_Water_Supply_Temp_Setpoint a brick_v_1_0_2:Chilled_Water_Supply_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.CHW.Loop Chilled Water Supply Temp Setpoint" ;
+    brickframe:uuid "9de5d3f7-73dd-3cd0-ba27-9c0deaffb5b9" .
+
+bldg:MRAK.CHW.OA_ENABLE a brick_v_1_0_2:Outside_Air_Damper_Command ;
+    brickframe:pointname "MRAK.CHW.OA ENABLE" ;
+    brickframe:uuid "eddb03d1-7f01-3db1-acef-41e3d9bfe612" .
+
+bldg:MRAK.CHW.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.CHW.Outside Air Temp" ;
+    brickframe:uuid "e7ca752d-d951-331c-8975-35f897d78a9d" .
+
+bldg:MRAK.CHW.Pump1_SPEED a brick_v_1_0_2:Speed_Status ;
+    brickframe:pointname "MRAK.CHW.Pump1_SPEED" ;
+    brickframe:uuid "74df5fc3-5575-3fb3-8d2f-1de5f8f99f20" .
+
+<http://buildsys.org/ontologies/MRAK#MRAK.CHW.Pump1_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.CHW.Pump1_Start/Stop" ;
+    brickframe:uuid "df44b45b-1038-34aa-9b6d-bba3c594205b" .
+
+bldg:MRAK.CHW.Pump2_SPEED a brick_v_1_0_2:Speed_Status ;
+    brickframe:pointname "MRAK.CHW.Pump2_SPEED" ;
+    brickframe:uuid "dbe080d5-173c-3c0d-82d9-fd4fd89191b0" .
+
+<http://buildsys.org/ontologies/MRAK#MRAK.CHW.Pump2_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.CHW.Pump2_Start/Stop" ;
+    brickframe:uuid "2c0e4b84-bc74-3fa9-a452-8549d68d08e1" .
+
+bldg:MRAK.ZONE.AC03.RM103.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM103.Day Night Mode" ;
+    brickframe:uuid "8e665e03-6f42-3d70-9cc9-b3a0e580d3e7" .
+
+bldg:MRAK.ZONE.AC03.RM103.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM103.Heating Mode" ;
+    brickframe:uuid "94b7e924-d26e-3472-a807-6c070725dbc8" .
+
+bldg:MRAK.ZONE.AC03.RM103.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM103.Zone Air Damper Command" ;
+    brickframe:uuid "3c0c569c-b9f6-35a9-9dae-be4ceee4183a" .
+
+bldg:MRAK.ZONE.AC03.RM103.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM103.Zone Air Temp" ;
+    brickframe:uuid "e156cd8e-d781-3490-972d-6667059f7530" .
+
+bldg:MRAK.ZONE.AC03.RM103.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM103.Zone Air Temp Setpoint" ;
+    brickframe:uuid "032a78eb-2201-3ff7-9d63-d11f63bfb6f1" .
+
+bldg:MRAK.ZONE.AC03.RM103.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM103.Zone Reheat Valve Command" ;
+    brickframe:uuid "369b6e5f-26c8-3279-afc4-c866f6128c7c" .
+
+bldg:MRAK.ZONE.AC03.RM103.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM103.Zone Supply Air Flow" ;
+    brickframe:uuid "507cdd14-9ee8-397a-8f0a-c9017bccfdea" .
+
+bldg:MRAK.ZONE.AC03.RM113.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM113.Day Night Mode" ;
+    brickframe:uuid "6b8c6108-320f-3ff9-995e-ef64eee4ab0c" .
+
+bldg:MRAK.ZONE.AC03.RM113.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM113.Heating Mode" ;
+    brickframe:uuid "f58d76a9-908c-346a-bcc0-b3df74ce4244" .
+
+bldg:MRAK.ZONE.AC03.RM113.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM113.Zone Air Damper Command" ;
+    brickframe:uuid "a142f87e-0710-3ff8-ac86-4dd60ef1fdff" .
+
+bldg:MRAK.ZONE.AC03.RM113.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM113.Zone Air Temp" ;
+    brickframe:uuid "5a5150b2-af28-37a9-ae99-cd8099bfa10b" .
+
+bldg:MRAK.ZONE.AC03.RM113.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM113.Zone Air Temp Setpoint" ;
+    brickframe:uuid "3663b3da-a49e-30f4-8b54-6d9abca40dc8" .
+
+bldg:MRAK.ZONE.AC03.RM113.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM113.Zone Reheat Valve Command" ;
+    brickframe:uuid "19187f16-4f6b-3e03-acb0-e446e696d2f7" .
+
+bldg:MRAK.ZONE.AC03.RM113.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM113.Zone Supply Air Flow" ;
+    brickframe:uuid "7b67f0e6-f4be-3d82-9566-452d1315943c" .
+
+bldg:MRAK.ZONE.AC03.RM124.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM124.Day Night Mode" ;
+    brickframe:uuid "df612754-3ba4-3d3b-9f6b-8b12048362c9" .
+
+bldg:MRAK.ZONE.AC03.RM124.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM124.Heating Mode" ;
+    brickframe:uuid "80d80be4-4731-38f9-95f6-16c7a06cd4e7" .
+
+bldg:MRAK.ZONE.AC03.RM124.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM124.Zone Air Damper Command" ;
+    brickframe:uuid "d09e3a33-b97d-3cdd-8112-aeb790c587b6" .
+
+bldg:MRAK.ZONE.AC03.RM124.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM124.Zone Air Temp" ;
+    brickframe:uuid "84aaf854-3c4b-3ab8-9c54-ef2b6553cf6b" .
+
+bldg:MRAK.ZONE.AC03.RM124.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM124.Zone Air Temp Setpoint" ;
+    brickframe:uuid "629df521-a886-380e-9f3f-4844ec8d6704" .
+
+bldg:MRAK.ZONE.AC03.RM124.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM124.Zone Reheat Valve Command" ;
+    brickframe:uuid "daf8a642-eae1-32ee-b632-52845f9bead6" .
+
+bldg:MRAK.ZONE.AC03.RM124.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM124.Zone Supply Air Flow" ;
+    brickframe:uuid "4602545b-67c1-3ac0-9a65-2fd37a6cb3d7" .
+
+bldg:MRAK.ZONE.AC03.RM124N.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM124N.Day Night Mode" ;
+    brickframe:uuid "1b815061-791f-347c-bb38-c47c3cfff7e6" .
+
+bldg:MRAK.ZONE.AC03.RM124N.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM124N.Heating Mode" ;
+    brickframe:uuid "20308338-5519-3f74-b480-8ad7062b5cf2" .
+
+bldg:MRAK.ZONE.AC03.RM124N.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM124N.Zone Air Damper Command" ;
+    brickframe:uuid "328acb64-0442-3c71-9b62-f84315bf8bcb" .
+
+bldg:MRAK.ZONE.AC03.RM124N.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM124N.Zone Air Temp" ;
+    brickframe:uuid "0170d58c-aeda-33d6-a119-003c073fcbc9" .
+
+bldg:MRAK.ZONE.AC03.RM124N.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM124N.Zone Air Temp Setpoint" ;
+    brickframe:uuid "0a52812b-9c83-3251-87bd-fbbb478ab7d5" .
+
+bldg:MRAK.ZONE.AC03.RM124N.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM124N.Zone Reheat Valve Command" ;
+    brickframe:uuid "5e08720e-eac2-31f9-bfa3-ba11ed323c3d" .
+
+bldg:MRAK.ZONE.AC03.RM124N.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM124N.Zone Supply Air Flow" ;
+    brickframe:uuid "7d72b595-c001-32a5-9e1c-e052db984b09" .
+
+bldg:MRAK.ZONE.AC03.RM124S.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM124S.Day Night Mode" ;
+    brickframe:uuid "932795e5-8cf6-307b-8847-29618b312a4e" .
+
+bldg:MRAK.ZONE.AC03.RM124S.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM124S.Heating Mode" ;
+    brickframe:uuid "57209a31-8078-309e-8962-d67c7d3107b0" .
+
+bldg:MRAK.ZONE.AC03.RM124S.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM124S.Zone Air Damper Command" ;
+    brickframe:uuid "dd55b445-ec97-319a-a7ac-a2a867e7a436" .
+
+bldg:MRAK.ZONE.AC03.RM124S.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM124S.Zone Air Temp" ;
+    brickframe:uuid "f5bb3736-c41b-32f9-bd52-b8ec85ec24c8" .
+
+bldg:MRAK.ZONE.AC03.RM124S.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM124S.Zone Air Temp Setpoint" ;
+    brickframe:uuid "0db4652e-082a-3dff-9e51-727ac6c6605e" .
+
+bldg:MRAK.ZONE.AC03.RM124S.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM124S.Zone Reheat Valve Command" ;
+    brickframe:uuid "f37c6407-834f-3708-b334-4156ecc84a3f" .
+
+bldg:MRAK.ZONE.AC03.RM124S.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM124S.Zone Supply Air Flow" ;
+    brickframe:uuid "daa3d093-422b-36bf-be6e-be1bd2d167d2" .
+
+bldg:MRAK.ZONE.AC03.RM126.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM126.Day Night Mode" ;
+    brickframe:uuid "035b8a65-aaa7-3b6d-b4a2-11247bfeea0b" .
+
+bldg:MRAK.ZONE.AC03.RM126.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM126.Heating Mode" ;
+    brickframe:uuid "aed0d593-d95e-3fa8-988b-7083cbed756a" .
+
+bldg:MRAK.ZONE.AC03.RM126.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM126.Zone Air Damper Command" ;
+    brickframe:uuid "b786d66b-d1b5-3246-a88e-024e0b738ea5" .
+
+bldg:MRAK.ZONE.AC03.RM126.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM126.Zone Air Temp" ;
+    brickframe:uuid "7dd7020b-20a5-3104-92c2-f0014fc7c31f" .
+
+bldg:MRAK.ZONE.AC03.RM126.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM126.Zone Air Temp Setpoint" ;
+    brickframe:uuid "b83b0d8f-018e-36b1-bd62-2ea16d9bb567" .
+
+bldg:MRAK.ZONE.AC03.RM126.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM126.Zone Reheat Valve Command" ;
+    brickframe:uuid "6840ce70-94f8-32ab-b7c9-2d972149dfb8" .
+
+bldg:MRAK.ZONE.AC03.RM126.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM126.Zone Supply Air Flow" ;
+    brickframe:uuid "e875597c-019e-3b3d-9931-f7dee9a50171" .
+
+bldg:MRAK.ZONE.AC03.RM139.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM139.Day Night Mode" ;
+    brickframe:uuid "866dea77-a673-3047-82ef-092e8dd5d631" .
+
+bldg:MRAK.ZONE.AC03.RM139.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM139.Heating Mode" ;
+    brickframe:uuid "6ac20445-2ad4-3e40-b874-7f7a23e813e4" .
+
+bldg:MRAK.ZONE.AC03.RM139.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM139.Zone Air Damper Command" ;
+    brickframe:uuid "27abd91f-524f-34f5-87cd-21c9d40680c4" .
+
+bldg:MRAK.ZONE.AC03.RM139.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM139.Zone Air Temp" ;
+    brickframe:uuid "0b9cfde1-e79e-3307-b8e9-5e5931fcd744" .
+
+bldg:MRAK.ZONE.AC03.RM139.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM139.Zone Air Temp Setpoint" ;
+    brickframe:uuid "bea0ad9c-d795-362a-af41-cb1125bc7d90" .
+
+bldg:MRAK.ZONE.AC03.RM139.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM139.Zone Reheat Valve Command" ;
+    brickframe:uuid "638c5fca-1ed9-3729-af04-a9d3d4a20f6f" .
+
+bldg:MRAK.ZONE.AC03.RM139.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM139.Zone Supply Air Flow" ;
+    brickframe:uuid "f507ab02-ee97-30f7-a908-ffc12d205120" .
+
+bldg:MRAK.ZONE.AC03.RM150.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150.Day Night Mode" ;
+    brickframe:uuid "a0267a9b-eaac-36ac-9ef3-d8eb6cba502f" .
+
+bldg:MRAK.ZONE.AC03.RM150.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150.Heating Mode" ;
+    brickframe:uuid "df6d6124-cad4-3db4-a2b8-f3b968fd7b05" .
+
+bldg:MRAK.ZONE.AC03.RM150.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150.Zone Air Damper Command" ;
+    brickframe:uuid "6a278b91-a247-3178-956b-3795d34b0d45" .
+
+bldg:MRAK.ZONE.AC03.RM150.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150.Zone Air Temp" ;
+    brickframe:uuid "8f7c8e33-191e-3daa-9aa6-86d26f0460e3" .
+
+bldg:MRAK.ZONE.AC03.RM150.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150.Zone Air Temp Setpoint" ;
+    brickframe:uuid "9e4f7cd8-5484-38c2-a610-b4b906ba6a41" .
+
+bldg:MRAK.ZONE.AC03.RM150.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150.Zone Reheat Valve Command" ;
+    brickframe:uuid "4b1b3747-4630-36f1-9fbc-c3066c1f571f" .
+
+bldg:MRAK.ZONE.AC03.RM150.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150.Zone Supply Air Flow" ;
+    brickframe:uuid "b115998e-4a3f-3965-8450-73ab546202dc" .
+
+bldg:MRAK.ZONE.AC03.RM150A.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150A.Day Night Mode" ;
+    brickframe:uuid "ee5e0263-0069-3683-9a08-546faf011d83" .
+
+bldg:MRAK.ZONE.AC03.RM150A.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150A.Heating Mode" ;
+    brickframe:uuid "667aaf1c-fc0f-3e3a-85f1-3c4df74d3a24" .
+
+bldg:MRAK.ZONE.AC03.RM150A.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150A.Zone Air Damper Command" ;
+    brickframe:uuid "97a54ed9-b9ec-3207-a005-b5b6cbfb0357" .
+
+bldg:MRAK.ZONE.AC03.RM150A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150A.Zone Air Temp" ;
+    brickframe:uuid "bbd463ea-4bef-3593-9022-8c155fce5438" .
+
+bldg:MRAK.ZONE.AC03.RM150A.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150A.Zone Air Temp Setpoint" ;
+    brickframe:uuid "f287a994-7e84-3c54-8633-08269c9cd0ed" .
+
+bldg:MRAK.ZONE.AC03.RM150A.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150A.Zone Supply Air Flow" ;
+    brickframe:uuid "4b7da57a-277e-3e55-9cdb-c896661e393f" .
+
+bldg:MRAK.ZONE.AC03.RM150C.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150C.Day Night Mode" ;
+    brickframe:uuid "86dceb8c-2408-3182-832a-474f6247e040" .
+
+bldg:MRAK.ZONE.AC03.RM150C.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150C.Heating Mode" ;
+    brickframe:uuid "cf1b5324-0998-33bf-8ffc-d790222e9249" .
+
+bldg:MRAK.ZONE.AC03.RM150C.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150C.Zone Air Damper Command" ;
+    brickframe:uuid "c9f3b46e-6016-3567-b588-243be8d8207a" .
+
+bldg:MRAK.ZONE.AC03.RM150C.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150C.Zone Air Temp" ;
+    brickframe:uuid "b305d709-6a9e-33c2-9544-5b730f76f32e" .
+
+bldg:MRAK.ZONE.AC03.RM150C.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150C.Zone Air Temp Setpoint" ;
+    brickframe:uuid "730425da-3605-3da3-94d4-9562a322823e" .
+
+bldg:MRAK.ZONE.AC03.RM150C.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150C.Zone Reheat Valve Command" ;
+    brickframe:uuid "1e452110-58f8-37f7-887e-db12af1740da" .
+
+bldg:MRAK.ZONE.AC03.RM150C.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150C.Zone Supply Air Flow" ;
+    brickframe:uuid "0d53509f-bdd6-32ee-9815-0b0ed618b05d" .
+
+bldg:MRAK.ZONE.AC03.RM150N.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150N.Day Night Mode" ;
+    brickframe:uuid "a07ba24e-3f92-3faf-b503-ed9b9b7c3add" .
+
+bldg:MRAK.ZONE.AC03.RM150N.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150N.Heating Mode" ;
+    brickframe:uuid "958138dc-40bf-3628-a090-a2f04f4c3fb5" .
+
+bldg:MRAK.ZONE.AC03.RM150N.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150N.Zone Air Damper Command" ;
+    brickframe:uuid "9658cd96-fdd5-3422-a722-3dd3da7a6014" .
+
+bldg:MRAK.ZONE.AC03.RM150N.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150N.Zone Air Temp" ;
+    brickframe:uuid "b4892333-9a29-35ab-86b8-6f0e978eee5c" .
+
+bldg:MRAK.ZONE.AC03.RM150N.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150N.Zone Air Temp Setpoint" ;
+    brickframe:uuid "b26a69ce-91b3-3c8f-8f66-1155aa32ecbc" .
+
+bldg:MRAK.ZONE.AC03.RM150N.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150N.Zone Reheat Valve Command" ;
+    brickframe:uuid "0fb21ee7-ce9a-3b6c-bed7-00661d6e845a" .
+
+bldg:MRAK.ZONE.AC03.RM150N.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150N.Zone Supply Air Flow" ;
+    brickframe:uuid "dd5c59f3-da17-3db4-ad7d-21cedf51ce86" .
+
+bldg:MRAK.ZONE.AC03.RM150S.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150S.Day Night Mode" ;
+    brickframe:uuid "e14042d0-afda-310d-818a-cb58928c4db4" .
+
+bldg:MRAK.ZONE.AC03.RM150S.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150S.Heating Mode" ;
+    brickframe:uuid "db987b77-469c-3b1c-8db9-e168597ec92f" .
+
+bldg:MRAK.ZONE.AC03.RM150S.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150S.Zone Air Damper Command" ;
+    brickframe:uuid "8d756c94-db1b-35fd-965e-7b7f2eae5952" .
+
+bldg:MRAK.ZONE.AC03.RM150S.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150S.Zone Air Temp" ;
+    brickframe:uuid "2c3fddb8-13e9-3027-9a10-4e006e0a0fe9" .
+
+bldg:MRAK.ZONE.AC03.RM150S.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150S.Zone Air Temp Setpoint" ;
+    brickframe:uuid "296ebfe1-5958-37b7-87bf-8773586c1fcd" .
+
+bldg:MRAK.ZONE.AC03.RM150S.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150S.Zone Reheat Valve Command" ;
+    brickframe:uuid "5709d772-36a9-3067-afc3-7c534e23933c" .
+
+bldg:MRAK.ZONE.AC03.RM150S.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM150S.Zone Supply Air Flow" ;
+    brickframe:uuid "3555b2a9-029d-3c74-8270-41ee1c839e92" .
+
+bldg:MRAK.ZONE.AC03.RM151.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM151.Day Night Mode" ;
+    brickframe:uuid "803b474a-ceb6-3c32-a793-a3dcad44f6e3" .
+
+bldg:MRAK.ZONE.AC03.RM151.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM151.Heating Mode" ;
+    brickframe:uuid "d84af0f3-87e3-3740-8e5f-3e104ad396e4" .
+
+bldg:MRAK.ZONE.AC03.RM151.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM151.Zone Air Damper Command" ;
+    brickframe:uuid "29c3f72f-d6b7-3d37-921d-d1b36aca04c8" .
+
+bldg:MRAK.ZONE.AC03.RM151.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM151.Zone Air Temp" ;
+    brickframe:uuid "c69f84c4-f125-3338-b3f1-e7cf375e1abb" .
+
+bldg:MRAK.ZONE.AC03.RM151.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM151.Zone Air Temp Setpoint" ;
+    brickframe:uuid "6d0be086-a3ef-355d-a6bf-33c1d06b1451" .
+
+bldg:MRAK.ZONE.AC03.RM151.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM151.Zone Reheat Valve Command" ;
+    brickframe:uuid "398a96c8-7511-3663-98a2-9923079d1d53" .
+
+bldg:MRAK.ZONE.AC03.RM151.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM151.Zone Supply Air Flow" ;
+    brickframe:uuid "ce03609f-5cc8-3412-a30e-acc0d9618d64" .
+
+bldg:MRAK.ZONE.AC03.RM171.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM171.Day Night Mode" ;
+    brickframe:uuid "1bb77ab4-83f4-3737-b012-e64a416f08b4" .
+
+bldg:MRAK.ZONE.AC03.RM171.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM171.Heating Mode" ;
+    brickframe:uuid "a08be084-09e9-3780-a498-4b56f50a6c43" .
+
+bldg:MRAK.ZONE.AC03.RM171.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM171.Zone Air Damper Command" ;
+    brickframe:uuid "55ca8db1-b223-3298-a5e0-709f82dedb55" .
+
+bldg:MRAK.ZONE.AC03.RM171.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM171.Zone Air Temp" ;
+    brickframe:uuid "c6c30588-7856-3773-86ac-bbe6e326c0a5" .
+
+bldg:MRAK.ZONE.AC03.RM171.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM171.Zone Air Temp Setpoint" ;
+    brickframe:uuid "d255bf44-9e56-35d3-8e92-dc5c9cb631b6" .
+
+bldg:MRAK.ZONE.AC03.RM171.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM171.Zone Reheat Valve Command" ;
+    brickframe:uuid "b9512735-f7de-3b04-ba47-c945ce885157" .
+
+bldg:MRAK.ZONE.AC03.RM171.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM171.Zone Supply Air Flow" ;
+    brickframe:uuid "9ca5c49c-ec09-328e-8f11-64d7ca9a43fe" .
+
+bldg:MRAK.ZONE.AC03.RM_ENTRY_NO.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM ENTRY NO.Zone Air Damper Command" ;
+    brickframe:uuid "8b7ff102-02e5-3475-959d-03ed9c2e96b7" .
+
+bldg:MRAK.ZONE.AC03.RM_ENTRY_NO.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM ENTRY NO.Zone Reheat Valve Command" ;
+    brickframe:uuid "f6c0208d-1235-3111-bbc3-259f7710e221" .
+
+bldg:MRAK.ZONE.AC03.RM_ENTRY_SO.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM ENTRY SO.Zone Air Damper Command" ;
+    brickframe:uuid "bf51ef61-57db-3565-8d25-1ca9e50a13ce" .
+
+bldg:MRAK.ZONE.AC03.RM_ENTRY_SO.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC03.RM ENTRY SO.Zone Reheat Valve Command" ;
+    brickframe:uuid "9c95de65-881f-39c7-8465-f15edf45cb77" .
+
+bldg:MRAK.ZONE.AC04.RM203.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM203.Day Night Mode" ;
+    brickframe:uuid "d83fa7d2-791e-3710-9e5f-670ea5a51ad9" .
+
+bldg:MRAK.ZONE.AC04.RM203.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM203.Heating Mode" ;
+    brickframe:uuid "1bca370e-b7ab-35a5-abd4-f02fd043a1dd" .
+
+bldg:MRAK.ZONE.AC04.RM203.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM203.Zone Air Damper Command" ;
+    brickframe:uuid "36cefe2e-7949-3286-b093-325b8e52eafc" .
+
+bldg:MRAK.ZONE.AC04.RM203.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM203.Zone Air Temp" ;
+    brickframe:uuid "b97ff8d5-351d-3cc9-a640-b5696836b5a7" .
+
+bldg:MRAK.ZONE.AC04.RM203.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM203.Zone Air Temp Setpoint" ;
+    brickframe:uuid "fabf09ce-bc02-3bd2-b3b6-2dabf346b7a7" .
+
+bldg:MRAK.ZONE.AC04.RM203.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM203.Zone Reheat Valve Command" ;
+    brickframe:uuid "d69fea55-36dc-3b49-bfee-e68ed6e104a1" .
+
+bldg:MRAK.ZONE.AC04.RM203.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM203.Zone Supply Air Flow" ;
+    brickframe:uuid "53bf1dcd-d28c-30a1-b8f0-4d75d0c9e3c9" .
+
+bldg:MRAK.ZONE.AC04.RM204.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM204.Day Night Mode" ;
+    brickframe:uuid "1e183d99-ff39-3800-8895-21dca7262c0e" .
+
+bldg:MRAK.ZONE.AC04.RM204.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM204.Heating Mode" ;
+    brickframe:uuid "4ec53a5e-e23c-31a3-b539-92204c6f010c" .
+
+bldg:MRAK.ZONE.AC04.RM204.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM204.Zone Air Damper Command" ;
+    brickframe:uuid "04635317-7068-3b95-bb71-55e1f4cf0399" .
+
+bldg:MRAK.ZONE.AC04.RM204.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM204.Zone Air Temp" ;
+    brickframe:uuid "6cb94787-c641-3235-af80-6c95a53bfbe5" .
+
+bldg:MRAK.ZONE.AC04.RM204.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM204.Zone Air Temp Setpoint" ;
+    brickframe:uuid "c4940c5a-6e9a-31a7-9967-f6db5167212a" .
+
+bldg:MRAK.ZONE.AC04.RM204.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM204.Zone Reheat Valve Command" ;
+    brickframe:uuid "90cac968-69a2-3b88-8119-b60655023801" .
+
+bldg:MRAK.ZONE.AC04.RM204.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM204.Zone Supply Air Flow" ;
+    brickframe:uuid "ff9fb623-e98b-3063-bead-c238cbea92f3" .
+
+bldg:MRAK.ZONE.AC04.RM209.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM209.Day Night Mode" ;
+    brickframe:uuid "61f8a123-7276-3837-bc4d-4c7483c388fe" .
+
+bldg:MRAK.ZONE.AC04.RM209.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM209.Heating Mode" ;
+    brickframe:uuid "92aceea3-5313-3187-8a7b-2d70f0184dd2" .
+
+bldg:MRAK.ZONE.AC04.RM209.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM209.Zone Air Damper Command" ;
+    brickframe:uuid "5cb794c3-ed60-3ff3-9a63-23dfae0d94b4" .
+
+bldg:MRAK.ZONE.AC04.RM209.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM209.Zone Air Temp" ;
+    brickframe:uuid "e88326a6-89e0-3410-95ad-fe9eaf3fbb55" .
+
+bldg:MRAK.ZONE.AC04.RM209.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM209.Zone Air Temp Setpoint" ;
+    brickframe:uuid "bbc76eeb-abed-3869-843f-1a7f0dfc8e08" .
+
+bldg:MRAK.ZONE.AC04.RM209.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM209.Zone Reheat Valve Command" ;
+    brickframe:uuid "f59c9048-7177-3b08-9128-cd67e5851e59" .
+
+bldg:MRAK.ZONE.AC04.RM209.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM209.Zone Supply Air Flow" ;
+    brickframe:uuid "1a914533-286b-31ed-9251-23a63eb2199e" .
+
+bldg:MRAK.ZONE.AC04.RM250.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM250.Day Night Mode" ;
+    brickframe:uuid "bab2fa32-da51-3d2f-9822-d5628ba537ed" .
+
+bldg:MRAK.ZONE.AC04.RM250.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM250.Heating Mode" ;
+    brickframe:uuid "e5476e82-999b-3bee-a239-51e048405e96" .
+
+bldg:MRAK.ZONE.AC04.RM250.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM250.Zone Air Damper Command" ;
+    brickframe:uuid "5c6bf867-4d7a-30b0-b40e-5262e6a203c8" .
+
+bldg:MRAK.ZONE.AC04.RM250.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM250.Zone Air Temp" ;
+    brickframe:uuid "b3307688-7ad3-3ed4-af89-770864281fe3" .
+
+bldg:MRAK.ZONE.AC04.RM250.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM250.Zone Air Temp Setpoint" ;
+    brickframe:uuid "9a284c84-0c33-331a-990f-6a27a86849d6" .
+
+bldg:MRAK.ZONE.AC04.RM250.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM250.Zone Reheat Valve Command" ;
+    brickframe:uuid "8800f524-b142-33d7-9438-4f8c86521320" .
+
+bldg:MRAK.ZONE.AC04.RM250.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM250.Zone Supply Air Flow" ;
+    brickframe:uuid "34443be1-b97c-3080-a169-7a63725c59b0" .
+
+bldg:MRAK.ZONE.AC04.RM267.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM267.Day Night Mode" ;
+    brickframe:uuid "627c823b-12ef-3c34-8f70-93c77e63cc76" .
+
+bldg:MRAK.ZONE.AC04.RM267.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM267.Heating Mode" ;
+    brickframe:uuid "f48341a1-339a-3811-a432-0351ec3f41f3" .
+
+bldg:MRAK.ZONE.AC04.RM267.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM267.Zone Air Damper Command" ;
+    brickframe:uuid "1fbb0488-eb03-3936-bec8-665997b0272c" .
+
+bldg:MRAK.ZONE.AC04.RM267.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM267.Zone Air Temp" ;
+    brickframe:uuid "432e38de-7c78-3fbd-a93e-3354f1e96b43" .
+
+bldg:MRAK.ZONE.AC04.RM267.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM267.Zone Air Temp Setpoint" ;
+    brickframe:uuid "57ccf69f-5a11-31ba-922a-008d2fd34ffd" .
+
+bldg:MRAK.ZONE.AC04.RM267.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM267.Zone Reheat Valve Command" ;
+    brickframe:uuid "5d267786-4d43-3c3b-8de0-f2ccbfee50a4" .
+
+bldg:MRAK.ZONE.AC04.RM267.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM267.Zone Supply Air Flow" ;
+    brickframe:uuid "7b4fa554-b018-37f3-a1eb-83e138d5e1a1" .
+
+bldg:MRAK.ZONE.AC04.RM270.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM270.Day Night Mode" ;
+    brickframe:uuid "282fa4c3-5e28-3be6-b70b-19d9c02384ed" .
+
+bldg:MRAK.ZONE.AC04.RM270.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM270.Heating Mode" ;
+    brickframe:uuid "acb6787c-0bbf-3438-9e5a-752666d68f66" .
+
+bldg:MRAK.ZONE.AC04.RM270.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM270.Zone Air Damper Command" ;
+    brickframe:uuid "bc29806b-19d8-313e-814c-f8bd5de2cc1f" .
+
+bldg:MRAK.ZONE.AC04.RM270.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM270.Zone Air Temp" ;
+    brickframe:uuid "7bb0ce9a-0671-355f-a258-d3892da6971e" .
+
+bldg:MRAK.ZONE.AC04.RM270.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM270.Zone Air Temp Setpoint" ;
+    brickframe:uuid "cc14c957-fab3-3eb2-b2ba-4100c10e6d26" .
+
+bldg:MRAK.ZONE.AC04.RM270.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM270.Zone Reheat Valve Command" ;
+    brickframe:uuid "d3a23023-2d98-363d-8caf-ee612530c6ca" .
+
+bldg:MRAK.ZONE.AC04.RM270.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM270.Zone Supply Air Flow" ;
+    brickframe:uuid "6f259e2b-b739-35da-9bb9-d3e0bc2f02ef" .
+
+bldg:MRAK.ZONE.AC04.RM271.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM271.Day Night Mode" ;
+    brickframe:uuid "424c8376-211d-3202-aba0-862fd8a0fa0e" .
+
+bldg:MRAK.ZONE.AC04.RM271.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM271.Heating Mode" ;
+    brickframe:uuid "12d82440-cc18-341f-944e-35ec50fc64cb" .
+
+bldg:MRAK.ZONE.AC04.RM271.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM271.Zone Air Damper Command" ;
+    brickframe:uuid "cc251ef2-9664-3225-bbdb-51c0269449b6" .
+
+bldg:MRAK.ZONE.AC04.RM271.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM271.Zone Air Temp" ;
+    brickframe:uuid "22449199-8785-386e-b792-0815224212c3" .
+
+bldg:MRAK.ZONE.AC04.RM271.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM271.Zone Air Temp Setpoint" ;
+    brickframe:uuid "bc3b19ab-d3a6-3449-805c-fa9de1630200" .
+
+bldg:MRAK.ZONE.AC04.RM271.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM271.Zone Reheat Valve Command" ;
+    brickframe:uuid "2298df1e-f8c0-3d91-ac21-851ff7eb4c6f" .
+
+bldg:MRAK.ZONE.AC04.RM271.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM271.Zone Supply Air Flow" ;
+    brickframe:uuid "19577baa-3e94-3dc0-a5ab-552c14a35a3b" .
+
+bldg:MRAK.ZONE.AC04.RM300J.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM300J.Day Night Mode" ;
+    brickframe:uuid "3d7632bf-9574-3d68-9564-239e2c7108d5" .
+
+bldg:MRAK.ZONE.AC04.RM300J.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM300J.Heating Mode" ;
+    brickframe:uuid "48d3f27b-92f9-3861-9a07-b4048b7fbb4d" .
+
+bldg:MRAK.ZONE.AC04.RM300J.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM300J.Zone Air Damper Command" ;
+    brickframe:uuid "8ce5bba9-7611-3fe9-9db7-5886a0ea4bc4" .
+
+bldg:MRAK.ZONE.AC04.RM300J.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM300J.Zone Air Temp" ;
+    brickframe:uuid "56b95a74-a039-33aa-9eba-c7cdb7247e57" .
+
+bldg:MRAK.ZONE.AC04.RM300J.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM300J.Zone Air Temp Setpoint" ;
+    brickframe:uuid "1ab51a74-d651-3b0b-84c4-e840a531c28e" .
+
+bldg:MRAK.ZONE.AC04.RM300J.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM300J.Zone Reheat Valve Command" ;
+    brickframe:uuid "cfb114c3-3d66-3333-914e-407a32fcb10d" .
+
+bldg:MRAK.ZONE.AC04.RM300J.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM300J.Zone Supply Air Flow" ;
+    brickframe:uuid "51073eb4-6749-3b75-a5ee-1df1b9be2bc4" .
+
+bldg:MRAK.ZONE.AC04.RM356N.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM356N.Day Night Mode" ;
+    brickframe:uuid "5b04bb5c-f908-3fc7-a15f-334dbb30928c" .
+
+bldg:MRAK.ZONE.AC04.RM356N.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM356N.Heating Mode" ;
+    brickframe:uuid "82a893c7-a9e8-3806-be27-4841d76ab322" .
+
+bldg:MRAK.ZONE.AC04.RM356N.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM356N.Zone Air Damper Command" ;
+    brickframe:uuid "16dce0a8-d532-385c-8db4-cc56c143bb4f" .
+
+bldg:MRAK.ZONE.AC04.RM356N.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM356N.Zone Air Temp" ;
+    brickframe:uuid "d8d0807e-9ace-341a-b941-b49818a44e08" .
+
+bldg:MRAK.ZONE.AC04.RM356N.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM356N.Zone Air Temp Setpoint" ;
+    brickframe:uuid "4b774438-bb63-3673-9f3b-63b4dcbb149b" .
+
+bldg:MRAK.ZONE.AC04.RM356N.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM356N.Zone Reheat Valve Command" ;
+    brickframe:uuid "1214dbe3-5efc-3186-9237-a3f7b5d0d1c0" .
+
+bldg:MRAK.ZONE.AC04.RM356N.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM356N.Zone Supply Air Flow" ;
+    brickframe:uuid "b9136ef7-a924-3f1f-aee5-1d2ef6b11e8b" .
+
+bldg:MRAK.ZONE.AC04.RM373.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM373.Day Night Mode" ;
+    brickframe:uuid "0c63b7b6-938c-3d64-acc6-adb836753453" .
+
+bldg:MRAK.ZONE.AC04.RM373.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM373.Heating Mode" ;
+    brickframe:uuid "652e87d6-a5cc-397a-8e17-d7bd21387155" .
+
+bldg:MRAK.ZONE.AC04.RM373.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM373.Zone Air Damper Command" ;
+    brickframe:uuid "d6a3a75e-4f79-312e-b1a7-784372eef2bb" .
+
+bldg:MRAK.ZONE.AC04.RM373.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM373.Zone Air Temp" ;
+    brickframe:uuid "b6d3ebf4-efe2-33fe-8023-180fa13c9b7e" .
+
+bldg:MRAK.ZONE.AC04.RM373.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM373.Zone Air Temp Setpoint" ;
+    brickframe:uuid "a1ec31ce-37ab-3e5e-a3dd-7037d53b0583" .
+
+bldg:MRAK.ZONE.AC04.RM373.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM373.Zone Reheat Valve Command" ;
+    brickframe:uuid "78fe2ea0-a7ac-3a36-bdd5-35105507b80a" .
+
+bldg:MRAK.ZONE.AC04.RM373.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM373.Zone Supply Air Flow" ;
+    brickframe:uuid "e0eee0b7-a43a-395b-b1c6-c7b01e9c769e" .
+
+bldg:MRAK.ZONE.AC04.RM379.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM379.Day Night Mode" ;
+    brickframe:uuid "84fd059e-6f99-333f-8a4b-69e94ffcb0fc" .
+
+bldg:MRAK.ZONE.AC04.RM379.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM379.Heating Mode" ;
+    brickframe:uuid "788e00ef-b698-3d93-bd8f-fb30f4a07007" .
+
+bldg:MRAK.ZONE.AC04.RM379.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM379.Zone Air Damper Command" ;
+    brickframe:uuid "2c1e0a0f-8401-3f0f-aa88-295dd424b3a8" .
+
+bldg:MRAK.ZONE.AC04.RM379.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM379.Zone Air Temp" ;
+    brickframe:uuid "1db1b352-1c2f-3255-abf8-d8cd0f685fb2" .
+
+bldg:MRAK.ZONE.AC04.RM379.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM379.Zone Air Temp Setpoint" ;
+    brickframe:uuid "3e656894-4c63-3c4e-9046-3d71c3749f9f" .
+
+bldg:MRAK.ZONE.AC04.RM379.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM379.Zone Reheat Valve Command" ;
+    brickframe:uuid "5944637d-9be6-3afe-b034-04ce17e94247" .
+
+bldg:MRAK.ZONE.AC04.RM379.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM379.Zone Supply Air Flow" ;
+    brickframe:uuid "2f7236f3-8939-3bb8-8ef1-cf62f404b9de" .
+
+bldg:MRAK.ZONE.AC04.RM406.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM406.Day Night Mode" ;
+    brickframe:uuid "99531b9f-aa35-3b30-a63e-a5ca1b95945e" .
+
+bldg:MRAK.ZONE.AC04.RM406.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM406.Heating Mode" ;
+    brickframe:uuid "73247afd-3ceb-3dd9-b43f-af031a88df7d" .
+
+bldg:MRAK.ZONE.AC04.RM406.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM406.Zone Air Damper Command" ;
+    brickframe:uuid "bcbdf32b-5afb-3acb-862e-fab333d5d46b" .
+
+bldg:MRAK.ZONE.AC04.RM406.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM406.Zone Air Temp" ;
+    brickframe:uuid "a83fcf42-c93e-34ef-b8c7-3ce60c42cd2e" .
+
+bldg:MRAK.ZONE.AC04.RM406.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM406.Zone Air Temp Setpoint" ;
+    brickframe:uuid "cf303a43-e94e-3d45-9991-32ab39e09cda" .
+
+bldg:MRAK.ZONE.AC04.RM406.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM406.Zone Reheat Valve Command" ;
+    brickframe:uuid "895af230-1038-3ed2-b06f-ef10700d9965" .
+
+bldg:MRAK.ZONE.AC04.RM406.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM406.Zone Supply Air Flow" ;
+    brickframe:uuid "3f5ade12-0ef8-3a54-9088-1805540ee772" .
+
+bldg:MRAK.ZONE.AC04.RM410.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM410.Day Night Mode" ;
+    brickframe:uuid "ea396788-da11-33c1-abc2-12a2477d4854" .
+
+bldg:MRAK.ZONE.AC04.RM410.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM410.Heating Mode" ;
+    brickframe:uuid "d31fc49e-d48c-37b3-9048-83c63c2936c9" .
+
+bldg:MRAK.ZONE.AC04.RM410.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM410.Zone Air Damper Command" ;
+    brickframe:uuid "75e06038-6a1a-337e-b635-a99e5229c8e9" .
+
+bldg:MRAK.ZONE.AC04.RM410.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM410.Zone Air Temp" ;
+    brickframe:uuid "d891df97-1eb6-31ed-903b-1a34351b0aa7" .
+
+bldg:MRAK.ZONE.AC04.RM410.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM410.Zone Air Temp Setpoint" ;
+    brickframe:uuid "85105afc-ca5c-34cc-952d-3e5b6561cb6b" .
+
+bldg:MRAK.ZONE.AC04.RM410.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM410.Zone Reheat Valve Command" ;
+    brickframe:uuid "755c6a4d-5d3b-3dd9-8787-bdc44825f518" .
+
+bldg:MRAK.ZONE.AC04.RM410.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM410.Zone Supply Air Flow" ;
+    brickframe:uuid "18d72685-582c-3548-ba15-44d05e7b170c" .
+
+bldg:MRAK.ZONE.AC04.RM453.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM453.Day Night Mode" ;
+    brickframe:uuid "34a5d4c5-a6a3-39b7-97fc-8d6a83744522" .
+
+bldg:MRAK.ZONE.AC04.RM453.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM453.Heating Mode" ;
+    brickframe:uuid "33b78edf-7fdb-306a-82a9-500e33b6155b" .
+
+bldg:MRAK.ZONE.AC04.RM453.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM453.Zone Air Damper Command" ;
+    brickframe:uuid "5fb9913e-e383-329a-b28f-66312452be14" .
+
+bldg:MRAK.ZONE.AC04.RM453.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM453.Zone Air Temp" ;
+    brickframe:uuid "54fe2ef2-3e4d-34a6-b401-57cc2634c7b6" .
+
+bldg:MRAK.ZONE.AC04.RM453.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM453.Zone Air Temp Setpoint" ;
+    brickframe:uuid "2311cebd-ec0d-39a6-9b92-0ec371223ec6" .
+
+bldg:MRAK.ZONE.AC04.RM453.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM453.Zone Reheat Valve Command" ;
+    brickframe:uuid "2ec75c85-1e15-3627-8948-8628a3e6eba4" .
+
+bldg:MRAK.ZONE.AC04.RM453.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM453.Zone Supply Air Flow" ;
+    brickframe:uuid "4707b5e3-f812-3396-aa45-a40d67b7695f" .
+
+bldg:MRAK.ZONE.AC04.RM471.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM471.Day Night Mode" ;
+    brickframe:uuid "f63774f2-7feb-3721-b711-325e3dcabfe5" .
+
+bldg:MRAK.ZONE.AC04.RM471.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM471.Heating Mode" ;
+    brickframe:uuid "c481dc98-3a9d-3d79-a7b9-c1e435fe9efb" .
+
+bldg:MRAK.ZONE.AC04.RM471.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM471.Zone Air Damper Command" ;
+    brickframe:uuid "77985489-c23a-3757-8186-589431545282" .
+
+bldg:MRAK.ZONE.AC04.RM471.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM471.Zone Air Temp" ;
+    brickframe:uuid "80a9110d-ecec-39a2-8f31-0bdbe8300a32" .
+
+bldg:MRAK.ZONE.AC04.RM471.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM471.Zone Air Temp Setpoint" ;
+    brickframe:uuid "c7edc7db-fa4a-3840-ac4c-6a20536785f4" .
+
+bldg:MRAK.ZONE.AC04.RM471.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM471.Zone Reheat Valve Command" ;
+    brickframe:uuid "e186cac9-c3fb-30bd-aa72-d8055d732de9" .
+
+bldg:MRAK.ZONE.AC04.RM471.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM471.Zone Supply Air Flow" ;
+    brickframe:uuid "51.0.27c-bb50-3b23-b27c-20de296787d1" .
+
+bldg:MRAK.ZONE.AC04.RM500A.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM500A.Day Night Mode" ;
+    brickframe:uuid "4b243276-5303-33f3-b550-36202dacca78" .
+
+bldg:MRAK.ZONE.AC04.RM500A.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM500A.Heating Mode" ;
+    brickframe:uuid "59a68777-06d9-3866-8d71-2804b34438cc" .
+
+bldg:MRAK.ZONE.AC04.RM500A.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM500A.Zone Air Damper Command" ;
+    brickframe:uuid "d323a2b6-8a2b-3d1c-9949-02157a74c446" .
+
+bldg:MRAK.ZONE.AC04.RM500A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM500A.Zone Air Temp" ;
+    brickframe:uuid "3f87345b-21cc-3320-b565-19dfc6c5f63d" .
+
+bldg:MRAK.ZONE.AC04.RM500A.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM500A.Zone Air Temp Setpoint" ;
+    brickframe:uuid "370649ef-c4bc-3a29-b4b9-8766bc158f1c" .
+
+bldg:MRAK.ZONE.AC04.RM500A.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM500A.Zone Reheat Valve Command" ;
+    brickframe:uuid "b8f5c958-2b2a-355e-a9c5-3fac616af11e" .
+
+bldg:MRAK.ZONE.AC04.RM500A.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM500A.Zone Supply Air Flow" ;
+    brickframe:uuid "7b95bc16-3528-34c2-ba43-5746e9089ae8" .
+
+bldg:MRAK.ZONE.AC04.RM567.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM567.Day Night Mode" ;
+    brickframe:uuid "c46e8d28-6c6e-35a1-9909-8d14e2bfc736" .
+
+bldg:MRAK.ZONE.AC04.RM567.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM567.Heating Mode" ;
+    brickframe:uuid "2ecd7343-07ae-3701-b1c2-5d118d73969f" .
+
+bldg:MRAK.ZONE.AC04.RM567.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM567.Zone Air Damper Command" ;
+    brickframe:uuid "aa7a4241-8a31-3a02-aea3-9f1b73a35d01" .
+
+bldg:MRAK.ZONE.AC04.RM567.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM567.Zone Air Temp" ;
+    brickframe:uuid "2e752bce-97cc-33e5-bc22-3d6b36ad0290" .
+
+bldg:MRAK.ZONE.AC04.RM567.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM567.Zone Air Temp Setpoint" ;
+    brickframe:uuid "1fd11351-5ff2-3874-90ff-47c6b5794bb2" .
+
+bldg:MRAK.ZONE.AC04.RM567.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM567.Zone Reheat Valve Command" ;
+    brickframe:uuid "35152e36-e925-36cc-8398-2a57d2b45072" .
+
+bldg:MRAK.ZONE.AC04.RM567.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM567.Zone Supply Air Flow" ;
+    brickframe:uuid "b7aa272b-6f5c-3600-b00c-191cef498a71" .
+
+bldg:MRAK.ZONE.AC04.RM567AUX.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM567AUX.Day Night Mode" ;
+    brickframe:uuid "96266a54-731c-3187-a2f4-3ebee54d7ca7" .
+
+bldg:MRAK.ZONE.AC04.RM567AUX.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM567AUX.Heating Mode" ;
+    brickframe:uuid "b22816c4-6af0-32eb-914a-df98c44586a8" .
+
+bldg:MRAK.ZONE.AC04.RM567AUX.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM567AUX.Zone Air Temp" ;
+    brickframe:uuid "d109ca4c-6db7-3285-9511-aa2d56add553" .
+
+bldg:MRAK.ZONE.AC04.RM567AUX.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM567AUX.Zone Air Temp Setpoint" ;
+    brickframe:uuid "3ce8bac3-5d4c-3582-a1ad-665591ed7921" .
+
+bldg:MRAK.ZONE.AC04.RM573.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM573.Day Night Mode" ;
+    brickframe:uuid "f7fcfcdd-e19a-3841-9968-4e9ce6d8dbe8" .
+
+bldg:MRAK.ZONE.AC04.RM573.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM573.Heating Mode" ;
+    brickframe:uuid "130ae408-f4bb-35e7-aa5c-5132d7b8742e" .
+
+bldg:MRAK.ZONE.AC04.RM573.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM573.Zone Air Damper Command" ;
+    brickframe:uuid "3f7313e7-bbe8-3fe9-bb0e-439cad361562" .
+
+bldg:MRAK.ZONE.AC04.RM573.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM573.Zone Air Temp" ;
+    brickframe:uuid "9c2678ac-e12d-3dff-a206-ff646a7ea8ab" .
+
+bldg:MRAK.ZONE.AC04.RM573.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM573.Zone Air Temp Setpoint" ;
+    brickframe:uuid "e1db98ce-a823-3c6e-9d41-ff0a08ec9faf" .
+
+bldg:MRAK.ZONE.AC04.RM573.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM573.Zone Reheat Valve Command" ;
+    brickframe:uuid "7b785a7c-b0f7-34c9-931e-1cb88809221d" .
+
+bldg:MRAK.ZONE.AC04.RM573.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM573.Zone Supply Air Flow" ;
+    brickframe:uuid "73ab0254-cb05-305f-840c-280ac9eba564" .
+
+bldg:MRAK.ZONE.AC04.RM573X.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM573X.Day Night Mode" ;
+    brickframe:uuid "46140ebd-4860-31ea-a496-559f48dc1dae" .
+
+bldg:MRAK.ZONE.AC04.RM573X.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM573X.Heating Mode" ;
+    brickframe:uuid "99eb8ed6-a17d-376b-b76d-5014d32ceed9" .
+
+bldg:MRAK.ZONE.AC04.RM573X.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM573X.Zone Air Damper Command" ;
+    brickframe:uuid "954a3773-68e3-32b2-b52f-3e427c12552c" .
+
+bldg:MRAK.ZONE.AC04.RM573X.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM573X.Zone Air Temp" ;
+    brickframe:uuid "62ef7dec-8c37-3337-a811-ff1a5114c1b0" .
+
+bldg:MRAK.ZONE.AC04.RM573X.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM573X.Zone Air Temp Setpoint" ;
+    brickframe:uuid "f7f2d5d9-192c-3a73-939a-11d93f92aa43" .
+
+bldg:MRAK.ZONE.AC04.RM573X.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM573X.Zone Reheat Valve Command" ;
+    brickframe:uuid "a6f438df-761e-343f-b0ff-b8f9ae39fe5b" .
+
+bldg:MRAK.ZONE.AC04.RM573X.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM573X.Zone Supply Air Flow" ;
+    brickframe:uuid "9cf99446-6148-30e1-b379-e65329efa1c3" .
+
+bldg:MRAK.ZONE.AC04.RM581.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM581.Day Night Mode" ;
+    brickframe:uuid "0d507f3e-9f75-37c4-b269-a449d3eb1009" .
+
+bldg:MRAK.ZONE.AC04.RM581.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM581.Heating Mode" ;
+    brickframe:uuid "974312ae-52dc-3619-9042-b71d6b2d093f" .
+
+bldg:MRAK.ZONE.AC04.RM581.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM581.Zone Air Damper Command" ;
+    brickframe:uuid "e5183aec-b5bc-3a28-9d4c-ef09b81540dd" .
+
+bldg:MRAK.ZONE.AC04.RM581.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM581.Zone Air Temp" ;
+    brickframe:uuid "a6d46d12-6582-3c88-b0b7-dbc8912025aa" .
+
+bldg:MRAK.ZONE.AC04.RM581.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM581.Zone Air Temp Setpoint" ;
+    brickframe:uuid "a3463fb3-4c87-3a6c-a6a5-67fdb44d6d1e" .
+
+bldg:MRAK.ZONE.AC04.RM581.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM581.Zone Reheat Valve Command" ;
+    brickframe:uuid "8653e5db-bc8a-3ea9-bdad-56682c13d6aa" .
+
+bldg:MRAK.ZONE.AC04.RM581.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM581.Zone Supply Air Flow" ;
+    brickframe:uuid "627068af-72ab-3cc9-a0cd-093e5c07d0b7" .
+
+bldg:MRAK.ZONE.AC04.RM_NW_AREA.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM NW AREA.Zone Air Damper Command" ;
+    brickframe:uuid "6f019613-c502-3e43-bc7a-56f337dbbee7" .
+
+bldg:MRAK.ZONE.AC04.RM_NW_AREA.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC04.RM NW AREA.Zone Reheat Valve Command" ;
+    brickframe:uuid "06c761df-8f4a-38af-a5ef-aea86a3cda05" .
+
+bldg:MRAK.ZONE.AC05.RM215.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM215.Day Night Mode" ;
+    brickframe:uuid "509b978e-df14-379c-8836-f300808f0daa" .
+
+bldg:MRAK.ZONE.AC05.RM215.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM215.Heating Mode" ;
+    brickframe:uuid "01cd56bd-87d5-3079-aac0-1a81edee4b53" .
+
+bldg:MRAK.ZONE.AC05.RM215.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM215.Zone Air Damper Command" ;
+    brickframe:uuid "e310d238-5279-3cd0-a5ed-6f3e164fa3b5" .
+
+bldg:MRAK.ZONE.AC05.RM215.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM215.Zone Air Temp" ;
+    brickframe:uuid "1bef5c4c-f8f2-30b4-b01c-f4a757abe8ea" .
+
+bldg:MRAK.ZONE.AC05.RM215.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM215.Zone Air Temp Setpoint" ;
+    brickframe:uuid "94000456-3fb3-3228-9f1b-4bcf97a533c6" .
+
+bldg:MRAK.ZONE.AC05.RM215.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM215.Zone Reheat Valve Command" ;
+    brickframe:uuid "815dfbd9-d7bc-3c03-8d3e-74eae6161c5f" .
+
+bldg:MRAK.ZONE.AC05.RM215.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM215.Zone Supply Air Flow" ;
+    brickframe:uuid "33a9ef0e-7bae-36fc-bc02-e8afdb9e5ed4" .
+
+bldg:MRAK.ZONE.AC05.RM220.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM220.Day Night Mode" ;
+    brickframe:uuid "0074d2d0-896a-3b3b-8052-87ee88870e35" .
+
+bldg:MRAK.ZONE.AC05.RM220.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM220.Heating Mode" ;
+    brickframe:uuid "f92a6dda-525b-3759-a88d-7a0728efe92e" .
+
+bldg:MRAK.ZONE.AC05.RM220.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM220.Zone Air Damper Command" ;
+    brickframe:uuid "c8be4263-e711-3cda-9d23-69a71e544307" .
+
+bldg:MRAK.ZONE.AC05.RM220.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM220.Zone Air Temp" ;
+    brickframe:uuid "6c08df56-7cce-308c-95e1-ed2830116d4f" .
+
+bldg:MRAK.ZONE.AC05.RM220.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM220.Zone Air Temp Setpoint" ;
+    brickframe:uuid "41131aa6-c6f9-3cbc-b265-a439465500db" .
+
+bldg:MRAK.ZONE.AC05.RM220.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM220.Zone Reheat Valve Command" ;
+    brickframe:uuid "2011d341-1f61-3fb1-ab95-f4ef97f32360" .
+
+bldg:MRAK.ZONE.AC05.RM220.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM220.Zone Supply Air Flow" ;
+    brickframe:uuid "1bbb363f-756f-3ae1-b15c-5df249cd5162" .
+
+bldg:MRAK.ZONE.AC05.RM227.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM227.Day Night Mode" ;
+    brickframe:uuid "4001945c-c523-3a0c-a651-ad5525cc20a6" .
+
+bldg:MRAK.ZONE.AC05.RM227.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM227.Heating Mode" ;
+    brickframe:uuid "1239c395-c47c-323e-86c6-c9f9ce8d4883" .
+
+bldg:MRAK.ZONE.AC05.RM227.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM227.Zone Air Damper Command" ;
+    brickframe:uuid "6dd24356-5cd1-3795-b528-6562c2023896" .
+
+bldg:MRAK.ZONE.AC05.RM227.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM227.Zone Air Temp" ;
+    brickframe:uuid "7c3ed38a-7722-3852-acb0-d1a68dfc5bfc" .
+
+bldg:MRAK.ZONE.AC05.RM227.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM227.Zone Air Temp Setpoint" ;
+    brickframe:uuid "7ead274f-0b18-3bd0-8a46-059e48ab6bb3" .
+
+bldg:MRAK.ZONE.AC05.RM227.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM227.Zone Supply Air Flow" ;
+    brickframe:uuid "f859b4f7-51ed-3041-a79d-b1d361eb84a0" .
+
+bldg:MRAK.ZONE.AC05.RM236.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM236.Day Night Mode" ;
+    brickframe:uuid "98c7d9c1-29ce-32f2-bab6-9b0d29b0323b" .
+
+bldg:MRAK.ZONE.AC05.RM236.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM236.Heating Mode" ;
+    brickframe:uuid "1294f1c9-5393-3264-8b24-ea695b23faf3" .
+
+bldg:MRAK.ZONE.AC05.RM236.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM236.Zone Air Damper Command" ;
+    brickframe:uuid "690e35b3-d24d-369a-b507-16d0230c8434" .
+
+bldg:MRAK.ZONE.AC05.RM236.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM236.Zone Air Temp" ;
+    brickframe:uuid "89808aef-0b9b-33c9-9b04-04a4ffde8235" .
+
+bldg:MRAK.ZONE.AC05.RM236.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM236.Zone Air Temp Setpoint" ;
+    brickframe:uuid "a1a906dd-e06b-30f5-a9cb-6de579d5bc8f" .
+
+bldg:MRAK.ZONE.AC05.RM236.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM236.Zone Reheat Valve Command" ;
+    brickframe:uuid "93a8a073-4fc9-396c-b87d-6e3b95940fd4" .
+
+bldg:MRAK.ZONE.AC05.RM236.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM236.Zone Supply Air Flow" ;
+    brickframe:uuid "62f64c7e-d070-3214-97e4-30156f23913e" .
+
+bldg:MRAK.ZONE.AC05.RM239.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM239.Day Night Mode" ;
+    brickframe:uuid "b49bdc11-963f-3aa1-b593-1e77aaffe223" .
+
+bldg:MRAK.ZONE.AC05.RM239.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM239.Heating Mode" ;
+    brickframe:uuid "9e8e8792-de99-34c5-b7e5-5fc3c1b2a83f" .
+
+bldg:MRAK.ZONE.AC05.RM239.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM239.Zone Air Damper Command" ;
+    brickframe:uuid "e2dbd9f7-52d4-3140-80ed-f4c080bc6f57" .
+
+bldg:MRAK.ZONE.AC05.RM239.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM239.Zone Air Temp" ;
+    brickframe:uuid "cf1cf2bf-38d2-3cd8-8f5c-4ce7b212bb58" .
+
+bldg:MRAK.ZONE.AC05.RM239.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM239.Zone Air Temp Setpoint" ;
+    brickframe:uuid "b3baaccf-a3e0-3c9f-a061-e834d529af63" .
+
+bldg:MRAK.ZONE.AC05.RM239.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM239.Zone Reheat Valve Command" ;
+    brickframe:uuid "cb457925-9618-3185-9516-902323e792fa" .
+
+bldg:MRAK.ZONE.AC05.RM239.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM239.Zone Supply Air Flow" ;
+    brickframe:uuid "c2e806e4-e6b3-3975-9b8f-67a305e8bd90" .
+
+bldg:MRAK.ZONE.AC05.RM251.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM251.Day Night Mode" ;
+    brickframe:uuid "f1f1e67c-34b4-3709-95fe-02779ba2129f" .
+
+bldg:MRAK.ZONE.AC05.RM251.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM251.Heating Mode" ;
+    brickframe:uuid "e1b3e3d1-e091-304d-9e4b-e705b4f48ec8" .
+
+bldg:MRAK.ZONE.AC05.RM251.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM251.Zone Air Damper Command" ;
+    brickframe:uuid "62dc82e4-bedf-33ad-9f40-6afe89e7100e" .
+
+bldg:MRAK.ZONE.AC05.RM251.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM251.Zone Air Temp" ;
+    brickframe:uuid "683bc743-527b-3b53-82f9-d2f802d5fa2a" .
+
+bldg:MRAK.ZONE.AC05.RM251.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM251.Zone Air Temp Setpoint" ;
+    brickframe:uuid "13bed6bd-b3be-30cd-9ace-820d571fa8d9" .
+
+bldg:MRAK.ZONE.AC05.RM251.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM251.Zone Reheat Valve Command" ;
+    brickframe:uuid "cfe67bfa-0db7-39ec-b6c0-d26a91f683fb" .
+
+bldg:MRAK.ZONE.AC05.RM251.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM251.Zone Supply Air Flow" ;
+    brickframe:uuid "7364982d-2f78-3c1d-8e75-dca467318549" .
+
+bldg:MRAK.ZONE.AC05.RM300M.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM300M.Day Night Mode" ;
+    brickframe:uuid "528a00cd-e362-333c-aef5-e772f87bd8d4" .
+
+bldg:MRAK.ZONE.AC05.RM300M.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM300M.Heating Mode" ;
+    brickframe:uuid "82f1fe87-916e-352f-802f-56e0bd21e207" .
+
+bldg:MRAK.ZONE.AC05.RM300M.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM300M.Zone Air Damper Command" ;
+    brickframe:uuid "c7e3dd11-d50d-323c-a1c7-2766ab9c74a7" .
+
+bldg:MRAK.ZONE.AC05.RM300M.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM300M.Zone Air Temp" ;
+    brickframe:uuid "7cabe4ae-a28b-3c17-a0b7-b4583bdd308a" .
+
+bldg:MRAK.ZONE.AC05.RM300M.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM300M.Zone Air Temp Setpoint" ;
+    brickframe:uuid "d2015468-02f4-35e9-8090-ce28ed0add17" .
+
+bldg:MRAK.ZONE.AC05.RM300M.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM300M.Zone Reheat Valve Command" ;
+    brickframe:uuid "f77a19c8-c531-316c-8938-c15193d47518" .
+
+bldg:MRAK.ZONE.AC05.RM300M.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM300M.Zone Supply Air Flow" ;
+    brickframe:uuid "bdd9f371-f7a6-36cc-92b1-c1785737e94d" .
+
+bldg:MRAK.ZONE.AC05.RM309.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM309.Day Night Mode" ;
+    brickframe:uuid "470bac1a-e34c-37c6-a030-373de9618298" .
+
+bldg:MRAK.ZONE.AC05.RM309.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM309.Heating Mode" ;
+    brickframe:uuid "a382e12c-a518-369a-b516-4d15120158ba" .
+
+bldg:MRAK.ZONE.AC05.RM309.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM309.Zone Air Damper Command" ;
+    brickframe:uuid "cf50f712-2b15-3024-861e-d8f2b1a24053" .
+
+bldg:MRAK.ZONE.AC05.RM309.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM309.Zone Air Temp" ;
+    brickframe:uuid "f3633873-a971-31d5-bcaa-dad4bf0e34b0" .
+
+bldg:MRAK.ZONE.AC05.RM309.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM309.Zone Air Temp Setpoint" ;
+    brickframe:uuid "e19ac20c-e7f7-3109-a796-8aba49eb2dfb" .
+
+bldg:MRAK.ZONE.AC05.RM309.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM309.Zone Reheat Valve Command" ;
+    brickframe:uuid "f6d9b33a-dbd9-3ee2-aedb-a27945f85057" .
+
+bldg:MRAK.ZONE.AC05.RM309.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM309.Zone Supply Air Flow" ;
+    brickframe:uuid "bcf3de8f-a6bb-3cff-ad19-0b07eb046429" .
+
+bldg:MRAK.ZONE.AC05.RM329.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM329.Day Night Mode" ;
+    brickframe:uuid "7aa1919b-d33f-3bff-8100-cadc64943e37" .
+
+bldg:MRAK.ZONE.AC05.RM329.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM329.Heating Mode" ;
+    brickframe:uuid "293589e0-67c6-3334-b087-f4f49393fd80" .
+
+bldg:MRAK.ZONE.AC05.RM329.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM329.Zone Air Damper Command" ;
+    brickframe:uuid "c2da3a86-5943-3ffa-9a0f-f83bd8feef03" .
+
+bldg:MRAK.ZONE.AC05.RM329.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM329.Zone Air Temp" ;
+    brickframe:uuid "79576288-20e0-3ffc-b785-ac64557b6f9d" .
+
+bldg:MRAK.ZONE.AC05.RM329.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM329.Zone Air Temp Setpoint" ;
+    brickframe:uuid "9fc37bb1-37be-3d89-926b-9845e01f8cce" .
+
+bldg:MRAK.ZONE.AC05.RM329.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM329.Zone Reheat Valve Command" ;
+    brickframe:uuid "ef2a387a-7e94-30af-9d83-8b45f01ad9cf" .
+
+bldg:MRAK.ZONE.AC05.RM329.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM329.Zone Supply Air Flow" ;
+    brickframe:uuid "d7919c24-2cca-3f73-b523-f5a6eb87a4d3" .
+
+bldg:MRAK.ZONE.AC05.RM334X.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM334X.Day Night Mode" ;
+    brickframe:uuid "3272a9e3-176a-3897-b8ef-834d84982adf" .
+
+bldg:MRAK.ZONE.AC05.RM334X.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM334X.Heating Mode" ;
+    brickframe:uuid "b993e7f9-63f3-3b1b-9e36-d04bff525262" .
+
+bldg:MRAK.ZONE.AC05.RM334X.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM334X.Zone Air Damper Command" ;
+    brickframe:uuid "28fa8ca0-c901-363f-836c-95569e5f93a2" .
+
+bldg:MRAK.ZONE.AC05.RM334X.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM334X.Zone Air Temp" ;
+    brickframe:uuid "47e24818-dc69-3d4d-8869-ea62aedbf5b9" .
+
+bldg:MRAK.ZONE.AC05.RM334X.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM334X.Zone Air Temp Setpoint" ;
+    brickframe:uuid "a7e890f1-d7cb-339d-9e2e-1c8ba0494245" .
+
+bldg:MRAK.ZONE.AC05.RM334X.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM334X.Zone Reheat Valve Command" ;
+    brickframe:uuid "d29bdc95-222e-325e-9d67-ea5d3008d21c" .
+
+bldg:MRAK.ZONE.AC05.RM334X.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM334X.Zone Supply Air Flow" ;
+    brickframe:uuid "84afd21b-577f-3178-93f2-1bbfed287eea" .
+
+bldg:MRAK.ZONE.AC05.RM339.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM339.Day Night Mode" ;
+    brickframe:uuid "e44d0c6e-b217-3432-8746-e237e08838ff" .
+
+bldg:MRAK.ZONE.AC05.RM339.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM339.Heating Mode" ;
+    brickframe:uuid "4f2658d9-0074-3077-80a2-d691b42b73aa" .
+
+bldg:MRAK.ZONE.AC05.RM339.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM339.Zone Air Damper Command" ;
+    brickframe:uuid "d3c97fad-9784-31cd-a7a2-dfa89893efa9" .
+
+bldg:MRAK.ZONE.AC05.RM339.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM339.Zone Air Temp" ;
+    brickframe:uuid "46d1a097-e609-32aa-a3e8-7c981fbe311a" .
+
+bldg:MRAK.ZONE.AC05.RM339.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM339.Zone Air Temp Setpoint" ;
+    brickframe:uuid "b52ca6b1-5c2f-3651-b5ab-8cd42ba06714" .
+
+bldg:MRAK.ZONE.AC05.RM339.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM339.Zone Reheat Valve Command" ;
+    brickframe:uuid "0b53f268-f74f-369e-a0dc-594a72306ecb" .
+
+bldg:MRAK.ZONE.AC05.RM339.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM339.Zone Supply Air Flow" ;
+    brickframe:uuid "ccd5a2e2-a83f-36dc-8995-b1af3a0d73a8" .
+
+bldg:MRAK.ZONE.AC05.RM356.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM356.Day Night Mode" ;
+    brickframe:uuid "47460b2f-60e8-38dd-ad0f-4efe86fd86a2" .
+
+bldg:MRAK.ZONE.AC05.RM356.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM356.Heating Mode" ;
+    brickframe:uuid "31b30947-889c-3cfc-a844-11b0dbbb9981" .
+
+bldg:MRAK.ZONE.AC05.RM356.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM356.Zone Air Damper Command" ;
+    brickframe:uuid "1555338e-7f7a-394b-804e-f2c60fe77f96" .
+
+bldg:MRAK.ZONE.AC05.RM356.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM356.Zone Air Temp" ;
+    brickframe:uuid "1161a8e7-88c5-3006-8062-2f8dc8b7a7b7" .
+
+bldg:MRAK.ZONE.AC05.RM356.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM356.Zone Air Temp Setpoint" ;
+    brickframe:uuid "ff32e0db-f1fa-36d1-b5b5-f0e970daaec8" .
+
+bldg:MRAK.ZONE.AC05.RM356.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM356.Zone Reheat Valve Command" ;
+    brickframe:uuid "52ad5e61-a7f7-3257-933f-5ddf8ba10aa3" .
+
+bldg:MRAK.ZONE.AC05.RM356.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM356.Zone Supply Air Flow" ;
+    brickframe:uuid "8efc1471-943f-3189-87aa-28b94f88163a" .
+
+bldg:MRAK.ZONE.AC05.RM413.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM413.Day Night Mode" ;
+    brickframe:uuid "01afcbea-25e7-3571-936d-c54a3b61341a" .
+
+bldg:MRAK.ZONE.AC05.RM413.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM413.Heating Mode" ;
+    brickframe:uuid "a635e0d7-0f60-302a-a6dd-366efc015f67" .
+
+bldg:MRAK.ZONE.AC05.RM413.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM413.Zone Air Damper Command" ;
+    brickframe:uuid "edac8647-7a79-35df-b889-2b89d27664bd" .
+
+bldg:MRAK.ZONE.AC05.RM413.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM413.Zone Air Temp" ;
+    brickframe:uuid "ff0aab9d-03e3-3bda-9295-b29a61f08d13" .
+
+bldg:MRAK.ZONE.AC05.RM413.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM413.Zone Air Temp Setpoint" ;
+    brickframe:uuid "88f793ba-a6f7-3a33-a6ec-1c10ffeed062" .
+
+bldg:MRAK.ZONE.AC05.RM413.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM413.Zone Reheat Valve Command" ;
+    brickframe:uuid "52e0e00b-93e1-387f-ae34-efb3ac74b0f1" .
+
+bldg:MRAK.ZONE.AC05.RM413.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM413.Zone Supply Air Flow" ;
+    brickframe:uuid "ad982fc3-3a10-39e1-8abc-b4b8eb5f38d2" .
+
+bldg:MRAK.ZONE.AC05.RM423.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM423.Day Night Mode" ;
+    brickframe:uuid "e4d2b054-6263-3b08-9c87-ddb9a34a4bae" .
+
+bldg:MRAK.ZONE.AC05.RM423.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM423.Heating Mode" ;
+    brickframe:uuid "2515f3d7-9578-3363-b52a-41bdfcba1619" .
+
+bldg:MRAK.ZONE.AC05.RM423.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM423.Zone Air Damper Command" ;
+    brickframe:uuid "25379907-ddb7-3a81-820b-7d5379b7d00b" .
+
+bldg:MRAK.ZONE.AC05.RM423.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM423.Zone Air Temp" ;
+    brickframe:uuid "9578f891-4508-3f82-916d-cd6e2de3e020" .
+
+bldg:MRAK.ZONE.AC05.RM423.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM423.Zone Air Temp Setpoint" ;
+    brickframe:uuid "a04d3f4f-333e-397d-9500-f14584214a73" .
+
+bldg:MRAK.ZONE.AC05.RM423.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM423.Zone Reheat Valve Command" ;
+    brickframe:uuid "6edecd9f-bffd-3242-af94-814949427444" .
+
+bldg:MRAK.ZONE.AC05.RM423.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM423.Zone Supply Air Flow" ;
+    brickframe:uuid "86761641-39ba-347d-8d98-7d52f63b7bbd" .
+
+bldg:MRAK.ZONE.AC05.RM431.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM431.Day Night Mode" ;
+    brickframe:uuid "d027fa61-5161-3de2-b9ce-88e97607fbbe" .
+
+bldg:MRAK.ZONE.AC05.RM431.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM431.Heating Mode" ;
+    brickframe:uuid "84a69f26-d2b7-3f23-95e4-0cea01060134" .
+
+bldg:MRAK.ZONE.AC05.RM431.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM431.Zone Air Damper Command" ;
+    brickframe:uuid "98b24c86-d5c2-3e67-9e70-bead77357a70" .
+
+bldg:MRAK.ZONE.AC05.RM431.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM431.Zone Air Temp" ;
+    brickframe:uuid "597bd0af-ccec-3514-974c-8f5b293072cd" .
+
+bldg:MRAK.ZONE.AC05.RM431.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM431.Zone Air Temp Setpoint" ;
+    brickframe:uuid "be55fa6c-d32b-37fa-83a4-65baec09d692" .
+
+bldg:MRAK.ZONE.AC05.RM431.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM431.Zone Reheat Valve Command" ;
+    brickframe:uuid "fc949bb6-a99e-3215-83a2-1c0da6815098" .
+
+bldg:MRAK.ZONE.AC05.RM431.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM431.Zone Supply Air Flow" ;
+    brickframe:uuid "583c3a8a-9ca5-3e26-9724-43c90abbc61a" .
+
+bldg:MRAK.ZONE.AC05.RM439.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM439.Day Night Mode" ;
+    brickframe:uuid "2d06b7c6-f38d-3450-9bd4-1cf2c3439aa8" .
+
+bldg:MRAK.ZONE.AC05.RM439.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM439.Heating Mode" ;
+    brickframe:uuid "0a89a0b2-e428-3ce6-b626-fc6a6668c195" .
+
+bldg:MRAK.ZONE.AC05.RM439.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM439.Zone Air Damper Command" ;
+    brickframe:uuid "c7ca92d9-1821-3a99-857f-68f4c497e425" .
+
+bldg:MRAK.ZONE.AC05.RM439.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM439.Zone Air Temp" ;
+    brickframe:uuid "62db76f4-4cc9-3322-8b22-ee8e45c3f395" .
+
+bldg:MRAK.ZONE.AC05.RM439.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM439.Zone Air Temp Setpoint" ;
+    brickframe:uuid "e377fb59-be35-3c64-b4b0-23c84e636982" .
+
+bldg:MRAK.ZONE.AC05.RM439.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM439.Zone Reheat Valve Command" ;
+    brickframe:uuid "e99c2a00-e578-3757-86b5-c412fa2f5298" .
+
+bldg:MRAK.ZONE.AC05.RM439.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM439.Zone Supply Air Flow" ;
+    brickframe:uuid "9f3b3d3f-c504-312f-a6af-d25014d8aa60" .
+
+bldg:MRAK.ZONE.AC05.RM523.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM523.Day Night Mode" ;
+    brickframe:uuid "1f4a5b11-8b6d-3e79-ad75-04a2d7171263" .
+
+bldg:MRAK.ZONE.AC05.RM523.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM523.Heating Mode" ;
+    brickframe:uuid "9e19638d-36bf-38e9-b76a-c2b9a1f34bdc" .
+
+bldg:MRAK.ZONE.AC05.RM523.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM523.Zone Air Damper Command" ;
+    brickframe:uuid "3af78ed3-c063-3f07-bb89-93e23440cc5d" .
+
+bldg:MRAK.ZONE.AC05.RM523.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM523.Zone Air Temp" ;
+    brickframe:uuid "ba7f12b1-e30b-31bb-9cd8-0c9dda557687" .
+
+bldg:MRAK.ZONE.AC05.RM523.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM523.Zone Air Temp Setpoint" ;
+    brickframe:uuid "2d0c912d-8487-33f6-8c35-552baa16ee80" .
+
+bldg:MRAK.ZONE.AC05.RM523.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM523.Zone Reheat Valve Command" ;
+    brickframe:uuid "cb0e7eed-6a1d-3f66-a0be-f0f23170d784" .
+
+bldg:MRAK.ZONE.AC05.RM523.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM523.Zone Supply Air Flow" ;
+    brickframe:uuid "2b365756-0d68-3251-91b3-ee2501fb28df" .
+
+bldg:MRAK.ZONE.AC05.RM528A.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM528A.Day Night Mode" ;
+    brickframe:uuid "7f6c694c-928f-3415-8614-701d2df092e0" .
+
+bldg:MRAK.ZONE.AC05.RM528A.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM528A.Heating Mode" ;
+    brickframe:uuid "a4585b58-2f20-34de-8c6c-4e27effe6a05" .
+
+bldg:MRAK.ZONE.AC05.RM528A.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM528A.Zone Air Damper Command" ;
+    brickframe:uuid "93692e7f-9c4f-3d0d-ad9a-61deb5bbe163" .
+
+bldg:MRAK.ZONE.AC05.RM528A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM528A.Zone Air Temp" ;
+    brickframe:uuid "c746994e-05ac-3789-bf3e-d240b4d3ab6e" .
+
+bldg:MRAK.ZONE.AC05.RM528A.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM528A.Zone Air Temp Setpoint" ;
+    brickframe:uuid "4b8ca89a-ffc7-3ddc-ae78-3f5edc4def22" .
+
+bldg:MRAK.ZONE.AC05.RM528A.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM528A.Zone Reheat Valve Command" ;
+    brickframe:uuid "93ad65ca-b2ec-37b5-93be-a649aa032817" .
+
+bldg:MRAK.ZONE.AC05.RM528A.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM528A.Zone Supply Air Flow" ;
+    brickframe:uuid "a705a6e6-2984-3f84-8431-9b8f34a24d88" .
+
+bldg:MRAK.ZONE.AC05.RM529.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM529.Day Night Mode" ;
+    brickframe:uuid "61f3a4ab-322f-3c21-8e4e-c18beb65138b" .
+
+bldg:MRAK.ZONE.AC05.RM529.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM529.Heating Mode" ;
+    brickframe:uuid "59aae2d1-55ae-33e2-8326-dc4616293ba3" .
+
+bldg:MRAK.ZONE.AC05.RM529.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM529.Zone Air Damper Command" ;
+    brickframe:uuid "af3d03bd-2f30-3db9-abd4-073fdb1.0.2d" .
+
+bldg:MRAK.ZONE.AC05.RM529.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM529.Zone Air Temp" ;
+    brickframe:uuid "3afd38a8-b957-3264-beb9-250e0e619c90" .
+
+bldg:MRAK.ZONE.AC05.RM529.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM529.Zone Air Temp Setpoint" ;
+    brickframe:uuid "6c800f93-5c0b-321b-9092-2bdf548f00e2" .
+
+bldg:MRAK.ZONE.AC05.RM529.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM529.Zone Reheat Valve Command" ;
+    brickframe:uuid "d3099062-63c5-3ef7-b535-e553964b3b40" .
+
+bldg:MRAK.ZONE.AC05.RM529.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM529.Zone Supply Air Flow" ;
+    brickframe:uuid "a3081ff6-140a-32fe-bc92-ab68547d551c" .
+
+bldg:MRAK.ZONE.AC05.RM537.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM537.Day Night Mode" ;
+    brickframe:uuid "c4f81721-515d-38b0-b6a4-8f9ea2ca52ba" .
+
+bldg:MRAK.ZONE.AC05.RM537.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM537.Heating Mode" ;
+    brickframe:uuid "1c6e86f2-7106-3ddb-9ea1-d44ebed7a693" .
+
+bldg:MRAK.ZONE.AC05.RM537.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM537.Zone Air Damper Command" ;
+    brickframe:uuid "bd43d31d-e9fd-3484-a4d1-d32819ec7f17" .
+
+bldg:MRAK.ZONE.AC05.RM537.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM537.Zone Air Temp" ;
+    brickframe:uuid "98a5b536-4093-38ec-b922-67e3867d0754" .
+
+bldg:MRAK.ZONE.AC05.RM537.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM537.Zone Air Temp Setpoint" ;
+    brickframe:uuid "8047e1d8-fcca-3017-86f7-e2c0117e8060" .
+
+bldg:MRAK.ZONE.AC05.RM537.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM537.Zone Reheat Valve Command" ;
+    brickframe:uuid "133aa1ac-9218-3992-b32e-2c4c75d32c76" .
+
+bldg:MRAK.ZONE.AC05.RM537.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM537.Zone Supply Air Flow" ;
+    brickframe:uuid "51e4eced-e1ec-3754-a7ae-183007513ccc" .
+
+bldg:MRAK.ZONE.AC05.RM540.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM540.Day Night Mode" ;
+    brickframe:uuid "5ffed2b5-c210-3eb5-90c2-de7b2df5703a" .
+
+bldg:MRAK.ZONE.AC05.RM540.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM540.Heating Mode" ;
+    brickframe:uuid "9d3c63c0-ab73-3fe1-90bd-da3b9ec45cfb" .
+
+bldg:MRAK.ZONE.AC05.RM540.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM540.Zone Air Damper Command" ;
+    brickframe:uuid "01dbc561-e9d0-371d-81f6-a999db42f300" .
+
+bldg:MRAK.ZONE.AC05.RM540.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM540.Zone Air Temp" ;
+    brickframe:uuid "026ab08d-fb20-304f-b320-ad16bf9b1a8b" .
+
+bldg:MRAK.ZONE.AC05.RM540.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM540.Zone Air Temp Setpoint" ;
+    brickframe:uuid "2a73ede7-0253-3572-8e23-754f6f2dc1a8" .
+
+bldg:MRAK.ZONE.AC05.RM540.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM540.Zone Reheat Valve Command" ;
+    brickframe:uuid "96a08e15-4087-3cb8-b0e0-fa885f8f2927" .
+
+bldg:MRAK.ZONE.AC05.RM540.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM540.Zone Supply Air Flow" ;
+    brickframe:uuid "27418581-59cd-3b5c-b0f7-f6e78245a33d" .
+
+bldg:MRAK.ZONE.AC05.RM559.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM559.Day Night Mode" ;
+    brickframe:uuid "5f901f4d-4048-3128-968e-4862788d5a45" .
+
+bldg:MRAK.ZONE.AC05.RM559.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM559.Heating Mode" ;
+    brickframe:uuid "5be4498c-a98c-3977-ad97-2b6c1088535f" .
+
+bldg:MRAK.ZONE.AC05.RM559.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM559.Zone Air Damper Command" ;
+    brickframe:uuid "6d8dd91e-9237-3844-be8f-c3d54e54e48d" .
+
+bldg:MRAK.ZONE.AC05.RM559.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM559.Zone Air Temp" ;
+    brickframe:uuid "6d5e9a6f-d537-3fa4-90cb-c94c1539384e" .
+
+bldg:MRAK.ZONE.AC05.RM559.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM559.Zone Air Temp Setpoint" ;
+    brickframe:uuid "d6349737-c987-3629-9cf7-d848619a2ad9" .
+
+bldg:MRAK.ZONE.AC05.RM559.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM559.Zone Reheat Valve Command" ;
+    brickframe:uuid "d2e3c5d4-ca15-347d-a512-530c38194227" .
+
+bldg:MRAK.ZONE.AC05.RM559.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM559.Zone Supply Air Flow" ;
+    brickframe:uuid "7627b1e9-a0a0-34cb-8c98-73b215690eaf" .
+
+bldg:MRAK.ZONE.AC05.RM_SE_AREA.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM SE AREA.Zone Air Damper Command" ;
+    brickframe:uuid "64e88749-e9ae-3b64-a94d-b52ca4afaa9c" .
+
+bldg:MRAK.ZONE.AC05.RM_SE_AREA.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM SE AREA.Zone Reheat Valve Command" ;
+    brickframe:uuid "d01f8271-e175-303b-b1f2-d51a71819f45" .
+
+bldg:MRAK.ZONE.AC05.RM_SW_AREA.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM SW AREA.Zone Air Damper Command" ;
+    brickframe:uuid "768d6323-baf9-36fb-9860-c944491671d4" .
+
+bldg:MRAK.ZONE.AC05.RM_SW_AREA.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MRAK ;
+    brickframe:pointname "MRAK.ZONE.AC05.RM SW AREA.Zone Reheat Valve Command" ;
+    brickframe:uuid "e0c6c6f3-8564-30af-9f11-66a8cf72491d" .
+
+bldg:RM103 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM103_room .
+
+bldg:RM113 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM113_room .
+
+bldg:RM124 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM124_room .
+
+bldg:RM124N a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM124N_room .
+
+bldg:RM124S a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM124S_room .
+
+bldg:RM126 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM126_room .
+
+bldg:RM139 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM139_room .
+
+bldg:RM150 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM150_room .
+
+bldg:RM150A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM150A_room .
+
+bldg:RM150C a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM150C_room .
+
+bldg:RM150N a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM150N_room .
+
+bldg:RM150S a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM150S_room .
+
+bldg:RM151 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM151_room .
+
+bldg:RM171 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM171_room .
+
+bldg:RM203 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM203_room .
+
+bldg:RM204 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM204_room .
+
+bldg:RM209 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM209_room .
+
+bldg:RM215 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM215_room .
+
+bldg:RM220 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM220_room .
+
+bldg:RM227 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM227_room .
+
+bldg:RM236 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM236_room .
+
+bldg:RM239 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM239_room .
+
+bldg:RM250 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM250_room .
+
+bldg:RM251 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM251_room .
+
+bldg:RM267 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM267_room .
+
+bldg:RM270 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM270_room .
+
+bldg:RM271 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM271_room .
+
+bldg:RM300J a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM300J_room .
+
+bldg:RM300M a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM300M_room .
+
+bldg:RM309 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM309_room .
+
+bldg:RM329 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM329_room .
+
+bldg:RM334X a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM334X_room .
+
+bldg:RM339 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM339_room .
+
+bldg:RM356 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM356_room .
+
+bldg:RM356N a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM356N_room .
+
+bldg:RM373 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM373_room .
+
+bldg:RM379 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM379_room .
+
+bldg:RM406 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM406_room .
+
+bldg:RM410 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM410_room .
+
+bldg:RM413 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM413_room .
+
+bldg:RM423 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM423_room .
+
+bldg:RM431 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM431_room .
+
+bldg:RM439 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM439_room .
+
+bldg:RM453 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM453_room .
+
+bldg:RM471 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM471_room .
+
+bldg:RM500A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM500A_room .
+
+bldg:RM523 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM523_room .
+
+bldg:RM528A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM528A_room .
+
+bldg:RM529 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM529_room .
+
+bldg:RM537 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM537_room .
+
+bldg:RM540 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM540_room .
+
+bldg:RM559 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM559_room .
+
+bldg:RM567 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM567_room .
+
+bldg:RM567AUX a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM567AUX_room .
+
+bldg:RM573 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM573_room .
+
+bldg:RM573X a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM573X_room .
+
+bldg:RM581 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM581_room .
+
+bldg:RM_ENTRY_NO a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM_ENTRY_NO_room .
+
+bldg:RM_ENTRY_NO_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM_ENTRY_SO a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM_ENTRY_SO_room .
+
+bldg:RM_ENTRY_SO_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM_NW_AREA a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM_NW_AREA_room .
+
+bldg:RM_NW_AREA_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM_SE_AREA a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM_SE_AREA_room .
+
+bldg:RM_SE_AREA_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM_SW_AREA a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPart bldg:RM_SW_AREA_room .
+
+bldg:RM_SW_AREA_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:VAVRM567AUX a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM567AUX ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM567AUX.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC04.RM567AUX.Heating_Mode,
+        bldg:MRAK.ZONE.AC04.RM567AUX.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC04.RM567AUX.Zone_Air_Temp_Setpoint .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+bldg:RM103_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM113_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM124N_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM124S_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM124_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM126_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM139_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM150A_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM150C_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM150N_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM150S_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM150_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM151_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM171_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM203_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM204_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM209_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM215_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM220_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM227_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM236_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM239_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM250_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM251_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM267_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM270_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM271_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM300J_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM300M_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM309_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM329_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM334X_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM339_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM356N_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM356_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM373_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM379_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM406_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM410_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM413_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM423_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM431_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM439_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM453_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM471_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM500A_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM523_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM528A_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM529_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM537_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM540_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM559_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM567AUX_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM567_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM573X_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM573_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:RM581_room a brick1:Room ;
+    brickframe:hasSite bldg:MRAK .
+
+bldg:VAVRM103 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM103 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM103.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC03.RM103.Heating_Mode,
+        bldg:MRAK.ZONE.AC03.RM103.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC03.RM103.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC03.RM103.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC03.RM103.Zone_Supply_Air_Flow .
+
+bldg:VAVRM113 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM113 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM113.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC03.RM113.Heating_Mode,
+        bldg:MRAK.ZONE.AC03.RM113.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC03.RM113.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC03.RM113.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC03.RM113.Zone_Supply_Air_Flow .
+
+bldg:VAVRM124 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM124 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM124.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC03.RM124.Heating_Mode,
+        bldg:MRAK.ZONE.AC03.RM124.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC03.RM124.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC03.RM124.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC03.RM124.Zone_Supply_Air_Flow .
+
+bldg:VAVRM124N a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM124N ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM124N.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC03.RM124N.Heating_Mode,
+        bldg:MRAK.ZONE.AC03.RM124N.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC03.RM124N.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC03.RM124N.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC03.RM124N.Zone_Supply_Air_Flow .
+
+bldg:VAVRM124S a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM124S ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM124S.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC03.RM124S.Heating_Mode,
+        bldg:MRAK.ZONE.AC03.RM124S.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC03.RM124S.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC03.RM124S.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC03.RM124S.Zone_Supply_Air_Flow .
+
+bldg:VAVRM126 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM126 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM126.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC03.RM126.Heating_Mode,
+        bldg:MRAK.ZONE.AC03.RM126.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC03.RM126.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC03.RM126.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC03.RM126.Zone_Supply_Air_Flow .
+
+bldg:VAVRM139 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM139 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM139.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC03.RM139.Heating_Mode,
+        bldg:MRAK.ZONE.AC03.RM139.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC03.RM139.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC03.RM139.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC03.RM139.Zone_Supply_Air_Flow .
+
+bldg:VAVRM150 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM150 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM150.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC03.RM150.Heating_Mode,
+        bldg:MRAK.ZONE.AC03.RM150.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC03.RM150.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC03.RM150.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC03.RM150.Zone_Supply_Air_Flow .
+
+bldg:VAVRM150A a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM150A ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM150A.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC03.RM150A.Heating_Mode,
+        bldg:MRAK.ZONE.AC03.RM150A.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC03.RM150A.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC03.RM150A.Zone_Supply_Air_Flow .
+
+bldg:VAVRM150C a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM150C ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM150C.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC03.RM150C.Heating_Mode,
+        bldg:MRAK.ZONE.AC03.RM150C.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC03.RM150C.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC03.RM150C.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC03.RM150C.Zone_Supply_Air_Flow .
+
+bldg:VAVRM150N a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM150N ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM150N.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC03.RM150N.Heating_Mode,
+        bldg:MRAK.ZONE.AC03.RM150N.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC03.RM150N.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC03.RM150N.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC03.RM150N.Zone_Supply_Air_Flow .
+
+bldg:VAVRM150S a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM150S ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM150S.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC03.RM150S.Heating_Mode,
+        bldg:MRAK.ZONE.AC03.RM150S.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC03.RM150S.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC03.RM150S.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC03.RM150S.Zone_Supply_Air_Flow .
+
+bldg:VAVRM151 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM151 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM151.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC03.RM151.Heating_Mode,
+        bldg:MRAK.ZONE.AC03.RM151.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC03.RM151.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC03.RM151.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC03.RM151.Zone_Supply_Air_Flow .
+
+bldg:VAVRM171 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM171 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM171.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC03.RM171.Heating_Mode,
+        bldg:MRAK.ZONE.AC03.RM171.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC03.RM171.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC03.RM171.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC03.RM171.Zone_Supply_Air_Flow .
+
+bldg:VAVRM203 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM203 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM203.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC04.RM203.Heating_Mode,
+        bldg:MRAK.ZONE.AC04.RM203.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC04.RM203.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC04.RM203.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC04.RM203.Zone_Supply_Air_Flow .
+
+bldg:VAVRM204 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM204 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM204.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC04.RM204.Heating_Mode,
+        bldg:MRAK.ZONE.AC04.RM204.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC04.RM204.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC04.RM204.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC04.RM204.Zone_Supply_Air_Flow .
+
+bldg:VAVRM209 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM209 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM209.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC04.RM209.Heating_Mode,
+        bldg:MRAK.ZONE.AC04.RM209.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC04.RM209.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC04.RM209.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC04.RM209.Zone_Supply_Air_Flow .
+
+bldg:VAVRM215 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM215 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM215.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC05.RM215.Heating_Mode,
+        bldg:MRAK.ZONE.AC05.RM215.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC05.RM215.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC05.RM215.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC05.RM215.Zone_Supply_Air_Flow .
+
+bldg:VAVRM220 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM220 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM220.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC05.RM220.Heating_Mode,
+        bldg:MRAK.ZONE.AC05.RM220.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC05.RM220.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC05.RM220.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC05.RM220.Zone_Supply_Air_Flow .
+
+bldg:VAVRM227 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM227 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM227.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC05.RM227.Heating_Mode,
+        bldg:MRAK.ZONE.AC05.RM227.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC05.RM227.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC05.RM227.Zone_Supply_Air_Flow .
+
+bldg:VAVRM236 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM236 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM236.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC05.RM236.Heating_Mode,
+        bldg:MRAK.ZONE.AC05.RM236.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC05.RM236.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC05.RM236.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC05.RM236.Zone_Supply_Air_Flow .
+
+bldg:VAVRM239 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM239 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM239.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC05.RM239.Heating_Mode,
+        bldg:MRAK.ZONE.AC05.RM239.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC05.RM239.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC05.RM239.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC05.RM239.Zone_Supply_Air_Flow .
+
+bldg:VAVRM250 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM250 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM250.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC04.RM250.Heating_Mode,
+        bldg:MRAK.ZONE.AC04.RM250.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC04.RM250.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC04.RM250.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC04.RM250.Zone_Supply_Air_Flow .
+
+bldg:VAVRM251 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM251 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM251.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC05.RM251.Heating_Mode,
+        bldg:MRAK.ZONE.AC05.RM251.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC05.RM251.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC05.RM251.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC05.RM251.Zone_Supply_Air_Flow .
+
+bldg:VAVRM267 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM267 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM267.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC04.RM267.Heating_Mode,
+        bldg:MRAK.ZONE.AC04.RM267.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC04.RM267.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC04.RM267.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC04.RM267.Zone_Supply_Air_Flow .
+
+bldg:VAVRM270 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM270 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM270.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC04.RM270.Heating_Mode,
+        bldg:MRAK.ZONE.AC04.RM270.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC04.RM270.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC04.RM270.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC04.RM270.Zone_Supply_Air_Flow .
+
+bldg:VAVRM271 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM271 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM271.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC04.RM271.Heating_Mode,
+        bldg:MRAK.ZONE.AC04.RM271.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC04.RM271.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC04.RM271.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC04.RM271.Zone_Supply_Air_Flow .
+
+bldg:VAVRM300J a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM300J ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM300J.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC04.RM300J.Heating_Mode,
+        bldg:MRAK.ZONE.AC04.RM300J.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC04.RM300J.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC04.RM300J.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC04.RM300J.Zone_Supply_Air_Flow .
+
+bldg:VAVRM300M a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM300M ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM300M.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC05.RM300M.Heating_Mode,
+        bldg:MRAK.ZONE.AC05.RM300M.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC05.RM300M.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC05.RM300M.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC05.RM300M.Zone_Supply_Air_Flow .
+
+bldg:VAVRM309 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM309 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM309.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC05.RM309.Heating_Mode,
+        bldg:MRAK.ZONE.AC05.RM309.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC05.RM309.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC05.RM309.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC05.RM309.Zone_Supply_Air_Flow .
+
+bldg:VAVRM329 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM329 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM329.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC05.RM329.Heating_Mode,
+        bldg:MRAK.ZONE.AC05.RM329.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC05.RM329.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC05.RM329.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC05.RM329.Zone_Supply_Air_Flow .
+
+bldg:VAVRM334X a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM334X ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM334X.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC05.RM334X.Heating_Mode,
+        bldg:MRAK.ZONE.AC05.RM334X.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC05.RM334X.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC05.RM334X.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC05.RM334X.Zone_Supply_Air_Flow .
+
+bldg:VAVRM339 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM339 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM339.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC05.RM339.Heating_Mode,
+        bldg:MRAK.ZONE.AC05.RM339.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC05.RM339.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC05.RM339.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC05.RM339.Zone_Supply_Air_Flow .
+
+bldg:VAVRM356 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM356 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM356.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC05.RM356.Heating_Mode,
+        bldg:MRAK.ZONE.AC05.RM356.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC05.RM356.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC05.RM356.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC05.RM356.Zone_Supply_Air_Flow .
+
+bldg:VAVRM356N a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM356N ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM356N.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC04.RM356N.Heating_Mode,
+        bldg:MRAK.ZONE.AC04.RM356N.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC04.RM356N.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC04.RM356N.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC04.RM356N.Zone_Supply_Air_Flow .
+
+bldg:VAVRM373 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM373 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM373.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC04.RM373.Heating_Mode,
+        bldg:MRAK.ZONE.AC04.RM373.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC04.RM373.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC04.RM373.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC04.RM373.Zone_Supply_Air_Flow .
+
+bldg:VAVRM379 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM379 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM379.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC04.RM379.Heating_Mode,
+        bldg:MRAK.ZONE.AC04.RM379.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC04.RM379.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC04.RM379.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC04.RM379.Zone_Supply_Air_Flow .
+
+bldg:VAVRM406 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM406 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM406.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC04.RM406.Heating_Mode,
+        bldg:MRAK.ZONE.AC04.RM406.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC04.RM406.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC04.RM406.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC04.RM406.Zone_Supply_Air_Flow .
+
+bldg:VAVRM410 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM410 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM410.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC04.RM410.Heating_Mode,
+        bldg:MRAK.ZONE.AC04.RM410.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC04.RM410.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC04.RM410.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC04.RM410.Zone_Supply_Air_Flow .
+
+bldg:VAVRM413 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM413 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM413.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC05.RM413.Heating_Mode,
+        bldg:MRAK.ZONE.AC05.RM413.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC05.RM413.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC05.RM413.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC05.RM413.Zone_Supply_Air_Flow .
+
+bldg:VAVRM423 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM423 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM423.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC05.RM423.Heating_Mode,
+        bldg:MRAK.ZONE.AC05.RM423.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC05.RM423.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC05.RM423.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC05.RM423.Zone_Supply_Air_Flow .
+
+bldg:VAVRM431 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM431 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM431.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC05.RM431.Heating_Mode,
+        bldg:MRAK.ZONE.AC05.RM431.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC05.RM431.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC05.RM431.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC05.RM431.Zone_Supply_Air_Flow .
+
+bldg:VAVRM439 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM439 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM439.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC05.RM439.Heating_Mode,
+        bldg:MRAK.ZONE.AC05.RM439.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC05.RM439.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC05.RM439.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC05.RM439.Zone_Supply_Air_Flow .
+
+bldg:VAVRM453 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM453 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM453.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC04.RM453.Heating_Mode,
+        bldg:MRAK.ZONE.AC04.RM453.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC04.RM453.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC04.RM453.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC04.RM453.Zone_Supply_Air_Flow .
+
+bldg:VAVRM471 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM471 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM471.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC04.RM471.Heating_Mode,
+        bldg:MRAK.ZONE.AC04.RM471.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC04.RM471.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC04.RM471.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC04.RM471.Zone_Supply_Air_Flow .
+
+bldg:VAVRM500A a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM500A ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM500A.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC04.RM500A.Heating_Mode,
+        bldg:MRAK.ZONE.AC04.RM500A.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC04.RM500A.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC04.RM500A.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC04.RM500A.Zone_Supply_Air_Flow .
+
+bldg:VAVRM523 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM523 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM523.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC05.RM523.Heating_Mode,
+        bldg:MRAK.ZONE.AC05.RM523.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC05.RM523.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC05.RM523.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC05.RM523.Zone_Supply_Air_Flow .
+
+bldg:VAVRM528A a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM528A ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM528A.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC05.RM528A.Heating_Mode,
+        bldg:MRAK.ZONE.AC05.RM528A.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC05.RM528A.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC05.RM528A.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC05.RM528A.Zone_Supply_Air_Flow .
+
+bldg:VAVRM529 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM529 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM529.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC05.RM529.Heating_Mode,
+        bldg:MRAK.ZONE.AC05.RM529.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC05.RM529.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC05.RM529.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC05.RM529.Zone_Supply_Air_Flow .
+
+bldg:VAVRM537 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM537 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM537.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC05.RM537.Heating_Mode,
+        bldg:MRAK.ZONE.AC05.RM537.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC05.RM537.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC05.RM537.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC05.RM537.Zone_Supply_Air_Flow .
+
+bldg:VAVRM540 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM540 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM540.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC05.RM540.Heating_Mode,
+        bldg:MRAK.ZONE.AC05.RM540.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC05.RM540.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC05.RM540.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC05.RM540.Zone_Supply_Air_Flow .
+
+bldg:VAVRM559 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM559 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM559.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC05.RM559.Heating_Mode,
+        bldg:MRAK.ZONE.AC05.RM559.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC05.RM559.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC05.RM559.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC05.RM559.Zone_Supply_Air_Flow .
+
+bldg:VAVRM567 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM567 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM567.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC04.RM567.Heating_Mode,
+        bldg:MRAK.ZONE.AC04.RM567.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC04.RM567.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC04.RM567.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC04.RM567.Zone_Supply_Air_Flow .
+
+bldg:VAVRM573 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM573 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM573.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC04.RM573.Heating_Mode,
+        bldg:MRAK.ZONE.AC04.RM573.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC04.RM573.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC04.RM573.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC04.RM573.Zone_Supply_Air_Flow .
+
+bldg:VAVRM573X a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM573X ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM573X.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC04.RM573X.Heating_Mode,
+        bldg:MRAK.ZONE.AC04.RM573X.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC04.RM573X.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC04.RM573X.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC04.RM573X.Zone_Supply_Air_Flow .
+
+bldg:VAVRM581 a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM581 ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM581.Day_Night_Mode,
+        bldg:MRAK.ZONE.AC04.RM581.Heating_Mode,
+        bldg:MRAK.ZONE.AC04.RM581.Zone_Air_Temp,
+        bldg:MRAK.ZONE.AC04.RM581.Zone_Air_Temp_Setpoint,
+        bldg:MRAK.ZONE.AC04.RM581.Zone_Reheat_Valve_Command,
+        bldg:MRAK.ZONE.AC04.RM581.Zone_Supply_Air_Flow .
+
+bldg:VAVRM_ENTRY_NO a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM_ENTRY_NO ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM_ENTRY_NO.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM_ENTRY_SO a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM_ENTRY_SO ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC03.RM_ENTRY_SO.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM_NW_AREA a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM_NW_AREA ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC04.RM_NW_AREA.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM_SE_AREA a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM_SE_AREA ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM_SE_AREA.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM_SW_AREA a brick1:VAV ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:feeds bldg:RM_SW_AREA ;
+    brick1:hasPoint bldg:MRAK.ZONE.AC05.RM_SW_AREA.Zone_Reheat_Valve_Command .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:MRAK ;
+    brick1:hasPoint bldg:MRAK.CHW.Building_Chilled_Water_Flow,
+        bldg:MRAK.CHW.Building_Chilled_Water_Return_Temp,
+        bldg:MRAK.CHW.Building_Chilled_Water_Supply_Temp,
+        bldg:MRAK.CHW.Building_Chilled_Water_Supply_Temp_Setpoint,
+        bldg:MRAK.CHW.ECONOMIZER,
+        bldg:MRAK.CHW.Enable,
+        bldg:MRAK.CHW.Loop_Chilled_Water_Flow,
+        bldg:MRAK.CHW.Loop_Chilled_Water_Return_Temp,
+        bldg:MRAK.CHW.Loop_Chilled_Water_Return_Temp_Setpoint,
+        bldg:MRAK.CHW.Loop_Chilled_Water_Supply_Temp,
+        bldg:MRAK.CHW.Loop_Chilled_Water_Supply_Temp_Setpoint,
+        bldg:MRAK.CHW.OA_ENABLE,
+        bldg:MRAK.CHW.Outside_Air_Temp,
+        bldg:MRAK.CHW.Pump1_SPEED,
+        <http://buildsys.org/ontologies/MRAK#MRAK.CHW.Pump1_Start/Stop>,
+        bldg:MRAK.CHW.Pump2_SPEED,
+        <http://buildsys.org/ontologies/MRAK#MRAK.CHW.Pump2_Start/Stop> .
+
+bldg:MRAK a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "97248" ;
+    brickframe:Country "US" .
+

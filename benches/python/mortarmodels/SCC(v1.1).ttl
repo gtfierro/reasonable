@@ -1,0 +1,1354 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/SCC#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:AHU01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:VAVRM1001,
+        bldg:VAVRM1002,
+        bldg:VAVRM1003,
+        bldg:VAVRM1101A,
+        bldg:VAVRM1101_2,
+        bldg:VAVRM1105,
+        bldg:VAVRM1110,
+        bldg:VAVRM1200,
+        bldg:VAVRM1200A,
+        bldg:VAVRM1201,
+        bldg:VAVRM1301,
+        bldg:VAVRM1303,
+        bldg:VAVRM1304,
+        bldg:VAVRM1306,
+        bldg:VAVRM1309,
+        bldg:VAVRM1310,
+        bldg:VAVRM1402,
+        bldg:VAVRM1402A,
+        bldg:VAVRM1405,
+        bldg:VAVRM1410,
+        bldg:VAVRM1413,
+        bldg:VAVRM1415,
+        bldg:VAVRM1417,
+        bldg:VAVRM2001,
+        bldg:VAVRM2001A,
+        bldg:VAVRM2002,
+        bldg:VAVRM2003,
+        bldg:VAVRM2004,
+        bldg:VAVRM2101A,
+        bldg:VAVRM2101_1,
+        bldg:VAVRM2101_2,
+        bldg:VAVRM2102,
+        bldg:VAVRM2103,
+        bldg:VAVRM2201,
+        bldg:VAVRM2203,
+        bldg:VAVRM2204,
+        bldg:VAVRM2301,
+        bldg:VAVRM2303,
+        bldg:VAVRM2310,
+        bldg:VAVRM2311,
+        bldg:VAVRM2312,
+        bldg:VAVRM2401,
+        bldg:VAVRM2405,
+        bldg:VAVRM2407,
+        bldg:VAVRM2410 ;
+    brick1:hasPoint bldg:SCC.AHU.AHU01.CCV,
+        bldg:SCC.AHU.AHU01.Cooling_Valve_Output,
+        bldg:SCC.AHU.AHU01.Heating_Valve_Output,
+        bldg:SCC.AHU.AHU01.Mixed_Air_Temp,
+        bldg:SCC.AHU.AHU01.Mode,
+        bldg:SCC.AHU.AHU01.Outside_Air_Temp_Virtual,
+        bldg:SCC.AHU.AHU01.Return_Air_Temp,
+        bldg:SCC.AHU.AHU01.Supply_Air_Pressure,
+        bldg:SCC.AHU.AHU01.Supply_Air_Temp,
+        bldg:SCC.AHU.AHU01.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU02 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.AHU.AHU02.Heating_Valve_Output,
+        bldg:SCC.AHU.AHU02.Outside_Air_Temp_Virtual,
+        bldg:SCC.AHU.AHU02.Return_Air_Temp,
+        bldg:SCC.AHU.AHU02.Supply_Air_Pressure,
+        bldg:SCC.AHU.AHU02.Supply_Air_Temp,
+        bldg:SCC.AHU.AHU02.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:MAU a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.AHU.MAU.Cooling_Valve_Output ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:SCC_ChilledWater_Demand_kBtu a brick_v_1_0_2:Electric_Meter ;
+    brickframe:pointname "SCC_ChilledWater_Demand_kBtu" ;
+    brickframe:uuid "7f52fa57-4b18-396c-9558-e36b3d7672dd" ;
+    brick1:isPointOf bldg:chiller .
+
+bldg:SCC_Electricity_Demand_kBtu a brick_v_1_0_2:Building_Electric_Meter ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC_Electricity_Demand_kBtu" ;
+    brickframe:uuid "7d8825e5-3dcd-3530-bd8e-ab58f475291b" .
+
+bldg:damperVAVRM1001 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM1001.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1001 .
+
+bldg:damperVAVRM1002 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM1002.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1002 .
+
+bldg:damperVAVRM1003 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM1003.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1003 .
+
+bldg:damperVAVRM1101A a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM1101A.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1101A .
+
+bldg:damperVAVRM1101_2 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM1101_2.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1101_2 .
+
+bldg:damperVAVRM1105 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM1105.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1105 .
+
+bldg:damperVAVRM1110 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM1110.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1110 .
+
+bldg:damperVAVRM1200 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM1200.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1200 .
+
+bldg:damperVAVRM1200A a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM1200A.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1200A .
+
+bldg:damperVAVRM1201 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM1201.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1201 .
+
+bldg:damperVAVRM1301 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM1301.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1301 .
+
+bldg:damperVAVRM1303 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM1303.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1303 .
+
+bldg:damperVAVRM1304 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM1304.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1304 .
+
+bldg:damperVAVRM1306 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM1306.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1306 .
+
+bldg:damperVAVRM1309 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM1309.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1309 .
+
+bldg:damperVAVRM1310 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM1310.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1310 .
+
+bldg:damperVAVRM1402 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM1402.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1402 .
+
+bldg:damperVAVRM1402A a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM1402A.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1402A .
+
+bldg:damperVAVRM1405 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM1405.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1405 .
+
+bldg:damperVAVRM1410 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM1410.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1410 .
+
+bldg:damperVAVRM1413 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM1413.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1413 .
+
+bldg:damperVAVRM1415 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM1415.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1415 .
+
+bldg:damperVAVRM1417 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM1417.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1417 .
+
+bldg:damperVAVRM2001 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM2001.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2001 .
+
+bldg:damperVAVRM2001A a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM2001A.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2001A .
+
+bldg:damperVAVRM2002 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM2002.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2002 .
+
+bldg:damperVAVRM2003 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM2003.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2003 .
+
+bldg:damperVAVRM2004 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM2004.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2004 .
+
+bldg:damperVAVRM2101A a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM2101A.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2101A .
+
+bldg:damperVAVRM2101_1 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM2101_1.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2101_1 .
+
+bldg:damperVAVRM2101_2 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM2101_2.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2101_2 .
+
+bldg:damperVAVRM2102 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM2102.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2102 .
+
+bldg:damperVAVRM2103 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM2103.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2103 .
+
+bldg:damperVAVRM2201 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM2201.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2201 .
+
+bldg:damperVAVRM2203 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM2203.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2203 .
+
+bldg:damperVAVRM2204 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM2204.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2204 .
+
+bldg:damperVAVRM2301 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM2301.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2301 .
+
+bldg:damperVAVRM2303 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM2303.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2303 .
+
+bldg:damperVAVRM2310 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM2310.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2310 .
+
+bldg:damperVAVRM2311 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM2311.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2311 .
+
+bldg:damperVAVRM2312 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM2312.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2312 .
+
+bldg:damperVAVRM2401 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM2401.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2401 .
+
+bldg:damperVAVRM2405 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM2405.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2405 .
+
+bldg:damperVAVRM2407 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM2407.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2407 .
+
+bldg:damperVAVRM2410 a brick1:Damper ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.ZONE.AHU01.RM2410.Heating_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2410 .
+
+bldg:floor1 a brick1:Floor ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM1001_room,
+        bldg:RM1002_room,
+        bldg:RM1003_room,
+        bldg:RM1101A_room,
+        bldg:RM1101_2_room,
+        bldg:RM1105_room,
+        bldg:RM1110_room,
+        bldg:RM1200A_room,
+        bldg:RM1200_room,
+        bldg:RM1201_room,
+        bldg:RM1301_room,
+        bldg:RM1303_room,
+        bldg:RM1304_room,
+        bldg:RM1306_room,
+        bldg:RM1309_room,
+        bldg:RM1310_room,
+        bldg:RM1402A_room,
+        bldg:RM1402_room,
+        bldg:RM1405_room,
+        bldg:RM1410_room,
+        bldg:RM1413_room,
+        bldg:RM1415_room,
+        bldg:RM1417_room .
+
+bldg:floor2 a brick1:Floor ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM2001A_room,
+        bldg:RM2001_room,
+        bldg:RM2002_room,
+        bldg:RM2003_room,
+        bldg:RM2004_room,
+        bldg:RM2101A_room,
+        bldg:RM2101_1_room,
+        bldg:RM2101_2_room,
+        bldg:RM2102_room,
+        bldg:RM2103_room,
+        bldg:RM2201_room,
+        bldg:RM2203_room,
+        bldg:RM2204_room,
+        bldg:RM2301_room,
+        bldg:RM2303_room,
+        bldg:RM2310_room,
+        bldg:RM2311_room,
+        bldg:RM2312_room,
+        bldg:RM2401_room,
+        bldg:RM2405_room,
+        bldg:RM2407_room,
+        bldg:RM2410_room .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:RM1001 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM1001_room .
+
+bldg:RM1002 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM1002_room .
+
+bldg:RM1003 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM1003_room .
+
+bldg:RM1101A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM1101A_room .
+
+bldg:RM1101_2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM1101_2_room .
+
+bldg:RM1105 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM1105_room .
+
+bldg:RM1110 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM1110_room .
+
+bldg:RM1200 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM1200_room .
+
+bldg:RM1200A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM1200A_room .
+
+bldg:RM1201 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM1201_room .
+
+bldg:RM1301 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM1301_room .
+
+bldg:RM1303 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM1303_room .
+
+bldg:RM1304 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM1304_room .
+
+bldg:RM1306 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM1306_room .
+
+bldg:RM1309 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM1309_room .
+
+bldg:RM1310 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM1310_room .
+
+bldg:RM1402 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM1402_room .
+
+bldg:RM1402A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM1402A_room .
+
+bldg:RM1405 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM1405_room .
+
+bldg:RM1410 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM1410_room .
+
+bldg:RM1413 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM1413_room .
+
+bldg:RM1415 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM1415_room .
+
+bldg:RM1417 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM1417_room .
+
+bldg:RM2001 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM2001_room .
+
+bldg:RM2001A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM2001A_room .
+
+bldg:RM2002 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM2002_room .
+
+bldg:RM2003 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM2003_room .
+
+bldg:RM2004 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM2004_room .
+
+bldg:RM2101A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM2101A_room .
+
+bldg:RM2101_1 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM2101_1_room .
+
+bldg:RM2101_2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM2101_2_room .
+
+bldg:RM2102 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM2102_room .
+
+bldg:RM2103 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM2103_room .
+
+bldg:RM2201 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM2201_room .
+
+bldg:RM2203 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM2203_room .
+
+bldg:RM2204 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM2204_room .
+
+bldg:RM2301 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM2301_room .
+
+bldg:RM2303 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM2303_room .
+
+bldg:RM2310 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM2310_room .
+
+bldg:RM2311 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM2311_room .
+
+bldg:RM2312 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM2312_room .
+
+bldg:RM2401 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM2401_room .
+
+bldg:RM2405 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM2405_room .
+
+bldg:RM2407 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM2407_room .
+
+bldg:RM2410 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPart bldg:RM2410_room .
+
+bldg:SCC.AHU.AHU01.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.AHU.AHU01.CCV" ;
+    brickframe:uuid "7c797660-85a3-39d7-a765-b6ffc27ee0b9" .
+
+bldg:SCC.AHU.AHU01.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.AHU.AHU01.Cooling Valve Output" ;
+    brickframe:uuid "798e5ae9-71b7-35ac-b5f6-d5b10722b997" .
+
+bldg:SCC.AHU.AHU01.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.AHU.AHU01.Heating Valve Output" ;
+    brickframe:uuid "f63a9db7-ad4e-3f6b-8d16-281be4f80396" .
+
+bldg:SCC.AHU.AHU01.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.AHU.AHU01.Mixed Air Temp" ;
+    brickframe:uuid "4674f192-4020-3521-8ccd-534c86693d86" .
+
+bldg:SCC.AHU.AHU01.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "SCC.AHU.AHU01.Mode" ;
+    brickframe:uuid "da54af2d-6400-3a56-b60f-3d0088784ba6" .
+
+bldg:SCC.AHU.AHU01.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.AHU.AHU01.Outside Air Temp Virtual" ;
+    brickframe:uuid "e5f7fac2-9d1d-3386-ac2f-f8d6da722603" .
+
+bldg:SCC.AHU.AHU01.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.AHU.AHU01.Return Air Temp" ;
+    brickframe:uuid "5c85335e-8f37-3f0e-8978-e863a4821077" .
+
+bldg:SCC.AHU.AHU01.Supply_Air_Pressure a brick1:Supply_Air_Static_Pressure_Sensor ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.AHU.AHU01.Supply Air Pressure" ;
+    brickframe:uuid "01f3ce63-a286-343c-b351-227cb5d2d264" .
+
+bldg:SCC.AHU.AHU01.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.AHU.AHU01.Supply Air Temp" ;
+    brickframe:uuid "446be724-c5f4-3e2c-bd0e-087325d4d597" .
+
+bldg:SCC.AHU.AHU01.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.AHU.AHU01.Supply Air Temp Setpoint" ;
+    brickframe:uuid "9c08391f-090b-3b48-9bcc-fdbf5a361c2e" .
+
+bldg:SCC.AHU.AHU02.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.AHU.AHU02.Heating Valve Output" ;
+    brickframe:uuid "5d3210f7-252b-37f0-9e8b-bffa342cab5d" .
+
+bldg:SCC.AHU.AHU02.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.AHU.AHU02.Outside Air Temp Virtual" ;
+    brickframe:uuid "f6bd4d68-d7fa-3fe9-8316-b06968ed3900" .
+
+bldg:SCC.AHU.AHU02.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.AHU.AHU02.Return Air Temp" ;
+    brickframe:uuid "c2ce1bda-9084-3760-a565-7f9cbd1a7f7e" .
+
+bldg:SCC.AHU.AHU02.Supply_Air_Pressure a brick1:Supply_Air_Static_Pressure_Sensor ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.AHU.AHU02.Supply Air Pressure" ;
+    brickframe:uuid "3921633a-6a6f-3118-8295-e5e189a9072a" .
+
+bldg:SCC.AHU.AHU02.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.AHU.AHU02.Supply Air Temp" ;
+    brickframe:uuid "47fda010-429b-314f-a75b-03e1a75f3307" .
+
+bldg:SCC.AHU.AHU02.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.AHU.AHU02.Supply Air Temp Setpoint" ;
+    brickframe:uuid "b6cb0b74-36b5-37a6-a554-2ef8debbe987" .
+
+bldg:SCC.AHU.MAU.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.AHU.MAU.Cooling Valve Output" ;
+    brickframe:uuid "7117cfd9-ad4d-300b-8984-320fa4bb0e74" .
+
+bldg:SCC.CHW.Building_Chilled_Water_Flow a brick_v_1_0_2:Chilled_Water_Flow_Sensor ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.CHW.Building Chilled Water Flow" ;
+    brickframe:uuid "1d45cae9-ff42-3fe1-8098-2d0859eb9ed7" .
+
+bldg:SCC.CHW.Building_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.CHW.Building Chilled Water Return Temp" ;
+    brickframe:uuid "d101591c-1a8f-354b-9843-9c19d9b82906" .
+
+bldg:SCC.CHW.Building_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.CHW.Building Chilled Water Supply Temp" ;
+    brickframe:uuid "072637b1-f6a9-39d1-9065-8fc4cb711624" .
+
+bldg:SCC.CHW.Building_Chilled_Water_Supply_Temp_Setpoint a brick_v_1_0_2:Chilled_Water_Supply_Temperature_Setpoint ;
+    brickframe:pointname "SCC.CHW.Building Chilled Water Supply Temp Setpoint" ;
+    brickframe:uuid "da384ed2-eb6f-3066-a069-fe6921d17956" .
+
+bldg:SCC.CHW.CHWP1VFD_FREQ_OUTPUT a brick1:Output_Frequency_Sensor ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.CHW.CHWP1VFD_FREQ OUTPUT" ;
+    brickframe:uuid "df9f45f9-f374-3010-8631-91f85060fc8c" .
+
+bldg:SCC.CHW.CHWP1VFD_PCT_OUTPUT a brick1:Cooling_Request_Percent_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.CHW.CHWP1VFD_PCT OUTPUT" ;
+    brickframe:uuid "539ee730-d701-3d1a-b6a5-1b69dd093907" .
+
+bldg:SCC.CHW.CHWP1VFD_POWER a brick_v_1_0_2:Power_Sensor ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.CHW.CHWP1VFD_POWER" ;
+    brickframe:uuid "48bf2ddc-2b7b-3de7-82db-55407e76663e" .
+
+bldg:SCC.CHW.CHWP1VFD_SPEED a brick_v_1_0_2:Chilled_Water_Pump_VFD_Speed ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.CHW.CHWP1VFD_SPEED" ;
+    brickframe:uuid "dd1b20bd-0eaa-30ed-aa1a-86cd396d5237" .
+
+bldg:SCC.CHW.CHWP2VFD_FREQ_OUTPUT a brick1:Output_Frequency_Sensor ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.CHW.CHWP2VFD_FREQ OUTPUT" ;
+    brickframe:uuid "87769bad-cc9e-3a8d-a339-9b8ff3ac2668" .
+
+bldg:SCC.CHW.CHWP2VFD_PCT_OUTPUT a brick1:Cooling_Request_Percent_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.CHW.CHWP2VFD_PCT OUTPUT" ;
+    brickframe:uuid "e7771349-cc30-36dd-94f8-16de49783db5" .
+
+bldg:SCC.CHW.CHWP2VFD_POWER a brick_v_1_0_2:Power_Sensor ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.CHW.CHWP2VFD_POWER" ;
+    brickframe:uuid "141b9c0e-54a2-3c56-bae0-f55a06d3a0b9" .
+
+bldg:SCC.CHW.CHWP2VFD_SPEED a brick_v_1_0_2:Chilled_Water_Pump_VFD_Speed ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.CHW.CHWP2VFD_SPEED" ;
+    brickframe:uuid "98dd26f3-1d8d-352f-964d-09500e8bb27b" .
+
+bldg:SCC.CHW.ECONOMIZER a brick1:Damper_Position_Command ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.CHW.ECONOMIZER" ;
+    brickframe:uuid "7cd90b57-fc50-3fdb-a618-d3166b9b70e3" .
+
+bldg:SCC.CHW.Enable a brick1:Enable_Command ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.CHW.Enable" ;
+    brickframe:uuid "07d4f802-f11c-3b73-b2ab-e8657b2ac598" .
+
+bldg:SCC.CHW.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.CHW.Outside Air Temp Virtual" ;
+    brickframe:uuid "0e0df44c-3308-3136-83d1-d10c2a43c8c8" .
+
+bldg:SCC.CHW.Pump1_SPEED a brick_v_1_0_2:Speed_Status ;
+    brickframe:pointname "SCC.CHW.Pump1_SPEED" ;
+    brickframe:uuid "ffc212fe-e062-341e-94dc-dd2ba895e5ec" .
+
+<http://buildsys.org/ontologies/SCC#SCC.CHW.Pump1_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.CHW.Pump1_Start/Stop" ;
+    brickframe:uuid "acef1e89-cd67-3112-89ce-c6c9ba91dca7" .
+
+bldg:SCC.CHW.Pump2_SPEED a brick_v_1_0_2:Speed_Status ;
+    brickframe:pointname "SCC.CHW.Pump2_SPEED" ;
+    brickframe:uuid "6c608fef-9ddf-3d9f-acac-235491bb735d" .
+
+<http://buildsys.org/ontologies/SCC#SCC.CHW.Pump2_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.CHW.Pump2_Start/Stop" ;
+    brickframe:uuid "bcede2d0-48cc-30d4-9583-361cf6424835" .
+
+bldg:SCC.ZONE.AHU01.RM1001.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM1001.Heating Damper Command" ;
+    brickframe:uuid "4a4bbc82-798b-334c-8989-67a66181d209" .
+
+bldg:SCC.ZONE.AHU01.RM1002.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM1002.Heating Damper Command" ;
+    brickframe:uuid "90082330-907d-31c7-8437-266f6c2ba815" .
+
+bldg:SCC.ZONE.AHU01.RM1003.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM1003.Heating Damper Command" ;
+    brickframe:uuid "0805bd10-4aa2-33ae-857e-706a355ae8ce" .
+
+bldg:SCC.ZONE.AHU01.RM1101A.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM1101A.Heating Damper Command" ;
+    brickframe:uuid "2e9ce272-9898-3bc7-a618-6b794babf53c" .
+
+bldg:SCC.ZONE.AHU01.RM1101_2.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM1101_2.Heating Damper Command" ;
+    brickframe:uuid "d2f69cc7-511c-3ea9-95b6-8556ac42d77b" .
+
+bldg:SCC.ZONE.AHU01.RM1105.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM1105.Heating Damper Command" ;
+    brickframe:uuid "98e1b0e7-c351-37f1-9085-010b5b76270b" .
+
+bldg:SCC.ZONE.AHU01.RM1110.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM1110.Heating Damper Command" ;
+    brickframe:uuid "32b137b8-e0db-3cd9-8370-03c0a748b3a4" .
+
+bldg:SCC.ZONE.AHU01.RM1200.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM1200.Heating Damper Command" ;
+    brickframe:uuid "db7ae6a9-085e-354b-83dd-6c13d6581505" .
+
+bldg:SCC.ZONE.AHU01.RM1200A.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM1200A.Heating Damper Command" ;
+    brickframe:uuid "2158c43c-b9ff-32a5-9aca-d6355ad3f11e" .
+
+bldg:SCC.ZONE.AHU01.RM1201.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM1201.Heating Damper Command" ;
+    brickframe:uuid "94f831e6-af30-3b5d-bba0-13f6c4d253bf" .
+
+bldg:SCC.ZONE.AHU01.RM1301.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM1301.Heating Damper Command" ;
+    brickframe:uuid "a49d2377-d47a-3edb-8d4e-5563452762a2" .
+
+bldg:SCC.ZONE.AHU01.RM1303.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM1303.Heating Damper Command" ;
+    brickframe:uuid "e6f36fef-e26e-3633-8231-52d067232be4" .
+
+bldg:SCC.ZONE.AHU01.RM1304.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM1304.Heating Damper Command" ;
+    brickframe:uuid "04e41b6b-7de8-31af-97b3-045d37ad59e6" .
+
+bldg:SCC.ZONE.AHU01.RM1306.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM1306.Heating Damper Command" ;
+    brickframe:uuid "c35d7501-af2e-35c8-a96b-85a5e685c7a9" .
+
+bldg:SCC.ZONE.AHU01.RM1309.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM1309.Heating Damper Command" ;
+    brickframe:uuid "a79d3ea0-acaa-35cf-b75a-6957e4418971" .
+
+bldg:SCC.ZONE.AHU01.RM1310.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM1310.Heating Damper Command" ;
+    brickframe:uuid "a26a6fff-6d74-3d1d-bc02-2d176b2523ca" .
+
+bldg:SCC.ZONE.AHU01.RM1402.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM1402.Heating Damper Command" ;
+    brickframe:uuid "afccba81-f7da-3deb-bf65-517505cc0fa7" .
+
+bldg:SCC.ZONE.AHU01.RM1402A.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM1402A.Heating Damper Command" ;
+    brickframe:uuid "82fe98b8-a768-35e2-a0bc-e1a14771d329" .
+
+bldg:SCC.ZONE.AHU01.RM1405.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM1405.Heating Damper Command" ;
+    brickframe:uuid "c880481f-d5fd-3c1b-b1b3-5b3c78fbc510" .
+
+bldg:SCC.ZONE.AHU01.RM1410.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM1410.Heating Damper Command" ;
+    brickframe:uuid "9d0d4b34-f205-34fb-891e-2f7231b60859" .
+
+bldg:SCC.ZONE.AHU01.RM1413.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM1413.Heating Damper Command" ;
+    brickframe:uuid "2c7e72b5-35cc-3b57-ac6d-e3607f30d2f9" .
+
+bldg:SCC.ZONE.AHU01.RM1415.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM1415.Heating Damper Command" ;
+    brickframe:uuid "4655e6f7-ffdc-3529-8912-f062e7a8ffaf" .
+
+bldg:SCC.ZONE.AHU01.RM1417.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM1417.Heating Damper Command" ;
+    brickframe:uuid "28a5e3a4-e0cb-3215-9efa-0d337121875e" .
+
+bldg:SCC.ZONE.AHU01.RM2001.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM2001.Heating Damper Command" ;
+    brickframe:uuid "61583677-b419-3a32-99b0-c22df497dacb" .
+
+bldg:SCC.ZONE.AHU01.RM2001A.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM2001A.Heating Damper Command" ;
+    brickframe:uuid "15247367-a00b-31d5-9163-f70c0ca75cc3" .
+
+bldg:SCC.ZONE.AHU01.RM2002.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM2002.Heating Damper Command" ;
+    brickframe:uuid "74282978-578a-368e-995b-c8c7f11b2531" .
+
+bldg:SCC.ZONE.AHU01.RM2003.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM2003.Heating Damper Command" ;
+    brickframe:uuid "74270400-c5a9-3686-93cf-f2d3e001adf0" .
+
+bldg:SCC.ZONE.AHU01.RM2004.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM2004.Heating Damper Command" ;
+    brickframe:uuid "ac66bb89-b243-3e07-bf93-6788d06b93cb" .
+
+bldg:SCC.ZONE.AHU01.RM2101A.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM2101A.Heating Damper Command" ;
+    brickframe:uuid "7d1312d2-e788-3f5b-8730-278eb3ddcf5a" .
+
+bldg:SCC.ZONE.AHU01.RM2101_1.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM2101_1.Heating Damper Command" ;
+    brickframe:uuid "82a2debd-71e6-34c4-af97-170a92998cc7" .
+
+bldg:SCC.ZONE.AHU01.RM2101_2.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM2101_2.Heating Damper Command" ;
+    brickframe:uuid "1de9ea1a-5412-3e68-a6a3-769783ed496d" .
+
+bldg:SCC.ZONE.AHU01.RM2102.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM2102.Heating Damper Command" ;
+    brickframe:uuid "1dda729b-d471-34fa-9ec6-a360cbd981c3" .
+
+bldg:SCC.ZONE.AHU01.RM2103.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM2103.Heating Damper Command" ;
+    brickframe:uuid "fc9f6110-8044-3e73-b7d0-f152adaf940a" .
+
+bldg:SCC.ZONE.AHU01.RM2201.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM2201.Heating Damper Command" ;
+    brickframe:uuid "bab8f9a7-9539-32e1-90e2-d00e257a5f37" .
+
+bldg:SCC.ZONE.AHU01.RM2203.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM2203.Heating Damper Command" ;
+    brickframe:uuid "257c515f-659e-389e-877c-f537b428850e" .
+
+bldg:SCC.ZONE.AHU01.RM2204.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM2204.Heating Damper Command" ;
+    brickframe:uuid "439f9fe4-ad61-3e67-8f47-5bee9cee83ff" .
+
+bldg:SCC.ZONE.AHU01.RM2301.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM2301.Heating Damper Command" ;
+    brickframe:uuid "3c13807d-51b4-3e72-a2c4-3fe05a4e1d2a" .
+
+bldg:SCC.ZONE.AHU01.RM2303.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM2303.Heating Damper Command" ;
+    brickframe:uuid "d1f21dc1-e216-3508-92cd-10fd43169997" .
+
+bldg:SCC.ZONE.AHU01.RM2310.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM2310.Heating Damper Command" ;
+    brickframe:uuid "e5545b5f-2e5c-3530-aa0c-632ccbf99968" .
+
+bldg:SCC.ZONE.AHU01.RM2311.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM2311.Heating Damper Command" ;
+    brickframe:uuid "8bbf51cf-2a91-3c5f-a253-5c15bf78ecfd" .
+
+bldg:SCC.ZONE.AHU01.RM2312.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM2312.Heating Damper Command" ;
+    brickframe:uuid "93c8695a-62b8-386b-899c-08974efb667c" .
+
+bldg:SCC.ZONE.AHU01.RM2401.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM2401.Heating Damper Command" ;
+    brickframe:uuid "a249e37f-f426-3384-86de-fa4cca235e48" .
+
+bldg:SCC.ZONE.AHU01.RM2405.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM2405.Heating Damper Command" ;
+    brickframe:uuid "1e6470c7-167a-3ea8-b9ab-daf559bd274b" .
+
+bldg:SCC.ZONE.AHU01.RM2407.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM2407.Heating Damper Command" ;
+    brickframe:uuid "543a0341-01.0.252e-a346-8a4de47d14e6" .
+
+bldg:SCC.ZONE.AHU01.RM2410.Heating_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SCC ;
+    brickframe:pointname "SCC.ZONE.AHU01.RM2410.Heating Damper Command" ;
+    brickframe:uuid "d8170b65-7acb-33a2-9785-c023e839b7ad" .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+bldg:RM1001_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM1002_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM1003_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM1101A_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM1101_2_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM1105_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM1110_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM1200A_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM1200_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM1201_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM1301_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM1303_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM1304_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM1306_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM1309_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM1310_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM1402A_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM1402_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM1405_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM1410_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM1413_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM1415_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM1417_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM2001A_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM2001_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM2002_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM2003_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM2004_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM2101A_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM2101_1_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM2101_2_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM2102_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM2103_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM2201_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM2203_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM2204_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM2301_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM2303_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM2310_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM2311_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM2312_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM2401_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM2405_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM2407_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:RM2410_room a brick1:Room ;
+    brickframe:hasSite bldg:SCC .
+
+bldg:VAVRM1001 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM1001 .
+
+bldg:VAVRM1002 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM1002 .
+
+bldg:VAVRM1003 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM1003 .
+
+bldg:VAVRM1101A a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM1101A .
+
+bldg:VAVRM1101_2 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM1101_2 .
+
+bldg:VAVRM1105 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM1105 .
+
+bldg:VAVRM1110 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM1110 .
+
+bldg:VAVRM1200 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM1200 .
+
+bldg:VAVRM1200A a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM1200A .
+
+bldg:VAVRM1201 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM1201 .
+
+bldg:VAVRM1301 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM1301 .
+
+bldg:VAVRM1303 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM1303 .
+
+bldg:VAVRM1304 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM1304 .
+
+bldg:VAVRM1306 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM1306 .
+
+bldg:VAVRM1309 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM1309 .
+
+bldg:VAVRM1310 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM1310 .
+
+bldg:VAVRM1402 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM1402 .
+
+bldg:VAVRM1402A a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM1402A .
+
+bldg:VAVRM1405 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM1405 .
+
+bldg:VAVRM1410 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM1410 .
+
+bldg:VAVRM1413 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM1413 .
+
+bldg:VAVRM1415 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM1415 .
+
+bldg:VAVRM1417 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM1417 .
+
+bldg:VAVRM2001 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM2001 .
+
+bldg:VAVRM2001A a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM2001A .
+
+bldg:VAVRM2002 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM2002 .
+
+bldg:VAVRM2003 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM2003 .
+
+bldg:VAVRM2004 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM2004 .
+
+bldg:VAVRM2101A a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM2101A .
+
+bldg:VAVRM2101_1 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM2101_1 .
+
+bldg:VAVRM2101_2 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM2101_2 .
+
+bldg:VAVRM2102 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM2102 .
+
+bldg:VAVRM2103 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM2103 .
+
+bldg:VAVRM2201 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM2201 .
+
+bldg:VAVRM2203 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM2203 .
+
+bldg:VAVRM2204 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM2204 .
+
+bldg:VAVRM2301 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM2301 .
+
+bldg:VAVRM2303 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM2303 .
+
+bldg:VAVRM2310 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM2310 .
+
+bldg:VAVRM2311 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM2311 .
+
+bldg:VAVRM2312 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM2312 .
+
+bldg:VAVRM2401 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM2401 .
+
+bldg:VAVRM2405 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM2405 .
+
+bldg:VAVRM2407 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM2407 .
+
+bldg:VAVRM2410 a brick1:VAV ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:feeds bldg:RM2410 .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:SCC ;
+    brick1:hasPoint bldg:SCC.CHW.Building_Chilled_Water_Flow,
+        bldg:SCC.CHW.Building_Chilled_Water_Return_Temp,
+        bldg:SCC.CHW.Building_Chilled_Water_Supply_Temp,
+        bldg:SCC.CHW.Building_Chilled_Water_Supply_Temp_Setpoint,
+        bldg:SCC.CHW.CHWP1VFD_FREQ_OUTPUT,
+        bldg:SCC.CHW.CHWP1VFD_PCT_OUTPUT,
+        bldg:SCC.CHW.CHWP1VFD_POWER,
+        bldg:SCC.CHW.CHWP1VFD_SPEED,
+        bldg:SCC.CHW.CHWP2VFD_FREQ_OUTPUT,
+        bldg:SCC.CHW.CHWP2VFD_PCT_OUTPUT,
+        bldg:SCC.CHW.CHWP2VFD_POWER,
+        bldg:SCC.CHW.CHWP2VFD_SPEED,
+        bldg:SCC.CHW.ECONOMIZER,
+        bldg:SCC.CHW.Enable,
+        bldg:SCC.CHW.Outside_Air_Temp_Virtual,
+        bldg:SCC.CHW.Pump1_SPEED,
+        <http://buildsys.org/ontologies/SCC#SCC.CHW.Pump1_Start/Stop>,
+        bldg:SCC.CHW.Pump2_SPEED,
+        <http://buildsys.org/ontologies/SCC#SCC.CHW.Pump2_Start/Stop> .
+
+bldg:SCC a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "43382" ;
+    brickframe:Country "US" .
+

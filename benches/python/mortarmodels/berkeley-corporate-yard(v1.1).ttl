@@ -1,0 +1,578 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://xbos.io/ontologies/berkeley-corporate-yard#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://xbos.io/ontologies/berkeley-corporate-yard#green_button_meter_/kk/FCgt1jyux+kJHViJn1RKnGs=> a brick_v_1_0_2:Green_Button_Meter ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "xbos/sharemydata/s.sharemydata/615217/8408720694/Wh/i.sharemydata" ;
+    brickframe:uuid "83146bd5-7893-3497-a0b8-cfe1af8d9f0f" .
+
+bldg:hvac_zone_cs_open_office_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/CS_Open_Office/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_cs_open_office ;
+    brick1:hasPoint bldg:hvac_zone_cs_open_office_tstat_cooling_setpoint,
+        bldg:hvac_zone_cs_open_office_tstat_fan,
+        bldg:hvac_zone_cs_open_office_tstat_heating_setpoint,
+        bldg:hvac_zone_cs_open_office_tstat_mode,
+        bldg:hvac_zone_cs_open_office_tstat_override,
+        bldg:hvac_zone_cs_open_office_tstat_state,
+        bldg:hvac_zone_cs_open_office_tstat_temperature .
+
+bldg:hvac_zone_electricalshop_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/ElectricalShop/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_electricalshop ;
+    brick1:hasPoint bldg:hvac_zone_electricalshop_tstat_cooling_setpoint,
+        bldg:hvac_zone_electricalshop_tstat_fan,
+        bldg:hvac_zone_electricalshop_tstat_heating_setpoint,
+        bldg:hvac_zone_electricalshop_tstat_mode,
+        bldg:hvac_zone_electricalshop_tstat_override,
+        bldg:hvac_zone_electricalshop_tstat_state,
+        bldg:hvac_zone_electricalshop_tstat_temperature .
+
+bldg:hvac_zone_fac_main_dept_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Fac_Main_Dept/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_fac_main_dept ;
+    brick1:hasPoint bldg:hvac_zone_fac_main_dept_tstat_cooling_setpoint,
+        bldg:hvac_zone_fac_main_dept_tstat_fan,
+        bldg:hvac_zone_fac_main_dept_tstat_heating_setpoint,
+        bldg:hvac_zone_fac_main_dept_tstat_mode,
+        bldg:hvac_zone_fac_main_dept_tstat_override,
+        bldg:hvac_zone_fac_main_dept_tstat_state,
+        bldg:hvac_zone_fac_main_dept_tstat_temperature .
+
+bldg:hvac_zone_green_room_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Green_Room/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_green_room ;
+    brick1:hasPoint bldg:hvac_zone_green_room_tstat_cooling_setpoint,
+        bldg:hvac_zone_green_room_tstat_fan,
+        bldg:hvac_zone_green_room_tstat_heating_setpoint,
+        bldg:hvac_zone_green_room_tstat_mode,
+        bldg:hvac_zone_green_room_tstat_override,
+        bldg:hvac_zone_green_room_tstat_state,
+        bldg:hvac_zone_green_room_tstat_temperature .
+
+bldg:hvac_zone_parks_assembly_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Parks_Assembly/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_parks_assembly ;
+    brick1:hasPoint bldg:hvac_zone_parks_assembly_tstat_cooling_setpoint,
+        bldg:hvac_zone_parks_assembly_tstat_fan,
+        bldg:hvac_zone_parks_assembly_tstat_heating_setpoint,
+        bldg:hvac_zone_parks_assembly_tstat_mode,
+        bldg:hvac_zone_parks_assembly_tstat_override,
+        bldg:hvac_zone_parks_assembly_tstat_state,
+        bldg:hvac_zone_parks_assembly_tstat_temperature .
+
+bldg:hvac_zone_radioshop_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/RadioShop/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_radioshop ;
+    brick1:hasPoint bldg:hvac_zone_radioshop_tstat_cooling_setpoint,
+        bldg:hvac_zone_radioshop_tstat_fan,
+        bldg:hvac_zone_radioshop_tstat_heating_setpoint,
+        bldg:hvac_zone_radioshop_tstat_mode,
+        bldg:hvac_zone_radioshop_tstat_override,
+        bldg:hvac_zone_radioshop_tstat_state,
+        bldg:hvac_zone_radioshop_tstat_temperature .
+
+bldg:hvac_zone_s_and_u_open_office_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/S_and_U_Open_Office/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_s_and_u_open_office ;
+    brick1:hasPoint bldg:hvac_zone_s_and_u_open_office_tstat_cooling_setpoint,
+        bldg:hvac_zone_s_and_u_open_office_tstat_fan,
+        bldg:hvac_zone_s_and_u_open_office_tstat_heating_setpoint,
+        bldg:hvac_zone_s_and_u_open_office_tstat_mode,
+        bldg:hvac_zone_s_and_u_open_office_tstat_override,
+        bldg:hvac_zone_s_and_u_open_office_tstat_state,
+        bldg:hvac_zone_s_and_u_open_office_tstat_temperature .
+
+bldg:hvac_zone_scott_britt_rm_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Scott_Britt_RM/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_scott_britt_rm ;
+    brick1:hasPoint bldg:hvac_zone_scott_britt_rm_tstat_cooling_setpoint,
+        bldg:hvac_zone_scott_britt_rm_tstat_fan,
+        bldg:hvac_zone_scott_britt_rm_tstat_heating_setpoint,
+        bldg:hvac_zone_scott_britt_rm_tstat_mode,
+        bldg:hvac_zone_scott_britt_rm_tstat_override,
+        bldg:hvac_zone_scott_britt_rm_tstat_state,
+        bldg:hvac_zone_scott_britt_rm_tstat_temperature .
+
+bldg:meter_0xd8d5b9000000a176 a brick_v_1_0_2:Building_Electric_Meter ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/s.eagle/0xd8d5b9000000a176/i.meter" ;
+    brickframe:uuid "c9e3c4ca-831a-38e2-a831-6eb036e98df2" .
+
+bldg:weather_KOAK_cloud_coverage a brick_v_1_0_2:Weather_Cloud_Coverage_Sensor ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uuid "7b49f7f2-f142-38a0-b284-42b0aef95b64" .
+
+bldg:weather_KOAK_cloud_height a brick_v_1_0_2:Weather_Cloud_Height_Sensor ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uuid "f510c11b-3a04-3518-b757-7940555abb1d" .
+
+bldg:weather_KOAK_relative_humidity a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uuid "5e55525e-f799-3b7b-8520-8e42730946df" .
+
+bldg:weather_KOAK_temperature a brick_v_1_0_2:Weather_Temperature_Sensor ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uuid "a73c1b67-142f-3b45-baf8-e308619b6bbc" .
+
+bldg:weather_KOAK_wind_direction a brick1:Wind_Direction_Sensor ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uuid "4a939b52-73b5-3016-95d7-34fd1ea1d41f" .
+
+bldg:weather_KOAK_wind_speed a brick1:Wind_Speed_Sensor ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uuid "9a3d08a7-0489-3b9e-981b-2e2e916cd783" .
+
+bldg:weather_LBNL1_cloud_coverage a brick_v_1_0_2:Weather_Cloud_Coverage_Sensor ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uuid "3eaf5926-11a8-3b7c-abdb-d1b06aca2cb6" .
+
+bldg:weather_LBNL1_cloud_height a brick_v_1_0_2:Weather_Cloud_Height_Sensor ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uuid "a3beea1c-65e3-38e1-8710-9fd1d9605caa" .
+
+bldg:weather_LBNL1_relative_humidity a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uuid "5cbf1af8-60ba-3e36-9ed6-b80feb4acae2" .
+
+bldg:weather_LBNL1_temperature a brick_v_1_0_2:Weather_Temperature_Sensor ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uuid "00327584-54b2-35a8-aaed-182747a5dda7" .
+
+bldg:weather_LBNL1_wind_direction a brick1:Wind_Direction_Sensor ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uuid "98180ac6-3a45-3884-afff-0c0341a9b9f1" .
+
+bldg:weather_LBNL1_wind_speed a brick1:Wind_Speed_Sensor ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uuid "fe8d0d04-f8d2-37cc-a582-3978f3699474" .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:RTU_hvac_zone_cs_open_office a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brick1:feeds bldg:hvac_zone_cs_open_office .
+
+bldg:RTU_hvac_zone_electricalshop a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brick1:feeds bldg:hvac_zone_electricalshop .
+
+bldg:RTU_hvac_zone_fac_main_dept a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brick1:feeds bldg:hvac_zone_fac_main_dept .
+
+bldg:RTU_hvac_zone_green_room a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brick1:feeds bldg:hvac_zone_green_room .
+
+bldg:RTU_hvac_zone_parks_assembly a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brick1:feeds bldg:hvac_zone_parks_assembly .
+
+bldg:RTU_hvac_zone_radioshop a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brick1:feeds bldg:hvac_zone_radioshop .
+
+bldg:RTU_hvac_zone_s_and_u_open_office a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brick1:feeds bldg:hvac_zone_s_and_u_open_office .
+
+bldg:RTU_hvac_zone_scott_britt_rm a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brick1:feeds bldg:hvac_zone_scott_britt_rm .
+
+bldg:hvac_zone_cs_open_office a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:berkeley-corporate-yard .
+
+bldg:hvac_zone_cs_open_office_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/CS_Open_Office/i.xbos.thermostat" ;
+    brickframe:uuid "6903ac38-e0af-34f2-ba7f-a370dcf7103e" .
+
+bldg:hvac_zone_cs_open_office_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/CS_Open_Office/i.xbos.thermostat" ;
+    brickframe:uuid "3e1bca12-8a37-34bc-93d7-1fdc89f3bbcd" .
+
+bldg:hvac_zone_cs_open_office_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/CS_Open_Office/i.xbos.thermostat" ;
+    brickframe:uuid "1230ad5b-3e00-39b1-904c-91231.0.27c7" .
+
+bldg:hvac_zone_cs_open_office_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/CS_Open_Office/i.xbos.thermostat" ;
+    brickframe:uuid "7e72c366-d113-3695-99f7-47c89b000409" .
+
+bldg:hvac_zone_cs_open_office_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/CS_Open_Office/i.xbos.thermostat" ;
+    brickframe:uuid "fe426b32-827e-3ece-8f1a-a860494f61f4" .
+
+bldg:hvac_zone_cs_open_office_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/CS_Open_Office/i.xbos.thermostat" ;
+    brickframe:uuid "d1982526-84b1-3ca9-b10d-08ec887c1a26" .
+
+bldg:hvac_zone_cs_open_office_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/CS_Open_Office/i.xbos.thermostat" ;
+    brickframe:uuid "3e876f79-b939-3e32-bde0-b32ffd81dd30" .
+
+bldg:hvac_zone_electricalshop a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:berkeley-corporate-yard .
+
+bldg:hvac_zone_electricalshop_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/ElectricalShop/i.xbos.thermostat" ;
+    brickframe:uuid "7a4f403e-522a-3b8c-929f-046a922f8dd0" .
+
+bldg:hvac_zone_electricalshop_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/ElectricalShop/i.xbos.thermostat" ;
+    brickframe:uuid "1706f3d9-d8fc-325c-bb74-9528946492e2" .
+
+bldg:hvac_zone_electricalshop_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/ElectricalShop/i.xbos.thermostat" ;
+    brickframe:uuid "c4ca52f8-f230-3dce-9105-877ce46f5d13" .
+
+bldg:hvac_zone_electricalshop_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/ElectricalShop/i.xbos.thermostat" ;
+    brickframe:uuid "08e69341-a602-321b-8984-0645df45cd96" .
+
+bldg:hvac_zone_electricalshop_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/ElectricalShop/i.xbos.thermostat" ;
+    brickframe:uuid "b78e8613-42e2-38d9-a011-a8db47c0a61b" .
+
+bldg:hvac_zone_electricalshop_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/ElectricalShop/i.xbos.thermostat" ;
+    brickframe:uuid "2d470919-fecc-3481-afbc-17b41a56f1f1" .
+
+bldg:hvac_zone_electricalshop_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/ElectricalShop/i.xbos.thermostat" ;
+    brickframe:uuid "09e7a34f-1078-301f-8b79-1093562dbfb5" .
+
+bldg:hvac_zone_fac_main_dept a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:berkeley-corporate-yard .
+
+bldg:hvac_zone_fac_main_dept_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Fac_Main_Dept/i.xbos.thermostat" ;
+    brickframe:uuid "59e9a969-4a63-3698-8435-b7e1b864cae0" .
+
+bldg:hvac_zone_fac_main_dept_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Fac_Main_Dept/i.xbos.thermostat" ;
+    brickframe:uuid "35fe5d73-183a-3e17-954e-e61fc3943c6f" .
+
+bldg:hvac_zone_fac_main_dept_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Fac_Main_Dept/i.xbos.thermostat" ;
+    brickframe:uuid "b58ee7c8-158c-3837-840e-cf72d0f0b506" .
+
+bldg:hvac_zone_fac_main_dept_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Fac_Main_Dept/i.xbos.thermostat" ;
+    brickframe:uuid "2f588113-3fc7-30c7-81cb-39db842a4e39" .
+
+bldg:hvac_zone_fac_main_dept_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Fac_Main_Dept/i.xbos.thermostat" ;
+    brickframe:uuid "7d941076-e448-3214-b3e1-f15393dc6ed4" .
+
+bldg:hvac_zone_fac_main_dept_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Fac_Main_Dept/i.xbos.thermostat" ;
+    brickframe:uuid "bf96cd46-c782-322f-9261-dc18c122e98b" .
+
+bldg:hvac_zone_fac_main_dept_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Fac_Main_Dept/i.xbos.thermostat" ;
+    brickframe:uuid "2fb28682-6786-37a5-bb9a-472acee2379d" .
+
+bldg:hvac_zone_green_room a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:berkeley-corporate-yard .
+
+bldg:hvac_zone_green_room_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Green_Room/i.xbos.thermostat" ;
+    brickframe:uuid "95476b12-ef7d-3638-910b-0c8aca4ccac1" .
+
+bldg:hvac_zone_green_room_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Green_Room/i.xbos.thermostat" ;
+    brickframe:uuid "768bd97b-a39c-3d9b-b53a-2ec8f9a317f6" .
+
+bldg:hvac_zone_green_room_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Green_Room/i.xbos.thermostat" ;
+    brickframe:uuid "d4461bf1-30e4-3ea9-8e46-50e61a398a86" .
+
+bldg:hvac_zone_green_room_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Green_Room/i.xbos.thermostat" ;
+    brickframe:uuid "3744e9cd-db91-3053-b4d5-2568c8b917bd" .
+
+bldg:hvac_zone_green_room_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Green_Room/i.xbos.thermostat" ;
+    brickframe:uuid "c9222a6a-e52d-3849-a9c4-e3aaaee5f351" .
+
+bldg:hvac_zone_green_room_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Green_Room/i.xbos.thermostat" ;
+    brickframe:uuid "06bf0f72-1f42-3f6e-8a6e-4450bce49190" .
+
+bldg:hvac_zone_green_room_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Green_Room/i.xbos.thermostat" ;
+    brickframe:uuid "2510b0ae-9be7-31af-b686-1075c02f70f7" .
+
+bldg:hvac_zone_parks_assembly a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:berkeley-corporate-yard .
+
+bldg:hvac_zone_parks_assembly_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Parks_Assembly/i.xbos.thermostat" ;
+    brickframe:uuid "a1fec0c3-e01f-3028-8173-f8946e386321" .
+
+bldg:hvac_zone_parks_assembly_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Parks_Assembly/i.xbos.thermostat" ;
+    brickframe:uuid "293a1704-f132-31fb-9398-b1011e1b0074" .
+
+bldg:hvac_zone_parks_assembly_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Parks_Assembly/i.xbos.thermostat" ;
+    brickframe:uuid "1bb48bb2-fe53-3d02-a283-0413f6a4e1a5" .
+
+bldg:hvac_zone_parks_assembly_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Parks_Assembly/i.xbos.thermostat" ;
+    brickframe:uuid "3eef7476-80f6-3f01-84a8-8ad5115c65e2" .
+
+bldg:hvac_zone_parks_assembly_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Parks_Assembly/i.xbos.thermostat" ;
+    brickframe:uuid "784e6798-62af-3189-8fa7-9d3588de1596" .
+
+bldg:hvac_zone_parks_assembly_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Parks_Assembly/i.xbos.thermostat" ;
+    brickframe:uuid "5d93829c-5cd5-3903-8d23-5e2c0a8aa4e2" .
+
+bldg:hvac_zone_parks_assembly_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Parks_Assembly/i.xbos.thermostat" ;
+    brickframe:uuid "642db070-3b62-3543-8cf3-153b47e10e38" .
+
+bldg:hvac_zone_radioshop a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:berkeley-corporate-yard .
+
+bldg:hvac_zone_radioshop_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/RadioShop/i.xbos.thermostat" ;
+    brickframe:uuid "578cbb77-4156-3477-bb46-1f95062293bc" .
+
+bldg:hvac_zone_radioshop_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/RadioShop/i.xbos.thermostat" ;
+    brickframe:uuid "c9496600-892b-3271-85bb-fec05c918d0e" .
+
+bldg:hvac_zone_radioshop_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/RadioShop/i.xbos.thermostat" ;
+    brickframe:uuid "35240d95-97b0-352f-ad5e-780e4b2d5ce2" .
+
+bldg:hvac_zone_radioshop_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/RadioShop/i.xbos.thermostat" ;
+    brickframe:uuid "79712984-21f1-3e66-a042-7b310ccb5d16" .
+
+bldg:hvac_zone_radioshop_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/RadioShop/i.xbos.thermostat" ;
+    brickframe:uuid "e52746ab-529e-359a-84cf-f5f2b8b80f03" .
+
+bldg:hvac_zone_radioshop_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/RadioShop/i.xbos.thermostat" ;
+    brickframe:uuid "c4723f62-92a1-3f26-b08e-1dc539dd0383" .
+
+bldg:hvac_zone_radioshop_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/RadioShop/i.xbos.thermostat" ;
+    brickframe:uuid "7451e879-f337-3318-940d-016bae6a836c" .
+
+bldg:hvac_zone_s_and_u_open_office a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:berkeley-corporate-yard .
+
+bldg:hvac_zone_s_and_u_open_office_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/S_and_U_Open_Office/i.xbos.thermostat" ;
+    brickframe:uuid "f0246588-8bcc-3b1d-98ba-6e7638106b6e" .
+
+bldg:hvac_zone_s_and_u_open_office_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/S_and_U_Open_Office/i.xbos.thermostat" ;
+    brickframe:uuid "db130a45-5168-35cb-ba6f-d477bd437bc3" .
+
+bldg:hvac_zone_s_and_u_open_office_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/S_and_U_Open_Office/i.xbos.thermostat" ;
+    brickframe:uuid "4d1936d9-fa07-349c-a0c8-e1f1d9d96cf1" .
+
+bldg:hvac_zone_s_and_u_open_office_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/S_and_U_Open_Office/i.xbos.thermostat" ;
+    brickframe:uuid "fea04ddd-1cfa-3f91-8099-15f73dd55c2f" .
+
+bldg:hvac_zone_s_and_u_open_office_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/S_and_U_Open_Office/i.xbos.thermostat" ;
+    brickframe:uuid "3ad557e7-c03c-3a8b-95fa-92b2147dd398" .
+
+bldg:hvac_zone_s_and_u_open_office_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/S_and_U_Open_Office/i.xbos.thermostat" ;
+    brickframe:uuid "0a98d216-5815-3619-9aff-285552ec0fc8" .
+
+bldg:hvac_zone_s_and_u_open_office_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/S_and_U_Open_Office/i.xbos.thermostat" ;
+    brickframe:uuid "3c8e8a0b-e505-39d8-972b-5cb37a42689a" .
+
+bldg:hvac_zone_scott_britt_rm a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:berkeley-corporate-yard .
+
+bldg:hvac_zone_scott_britt_rm_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Scott_Britt_RM/i.xbos.thermostat" ;
+    brickframe:uuid "6ac3e03f-8989-3349-8ae4-74844238158e" .
+
+bldg:hvac_zone_scott_britt_rm_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Scott_Britt_RM/i.xbos.thermostat" ;
+    brickframe:uuid "1652362d-60ac-3e1e-913b-2b2024c5a2db" .
+
+bldg:hvac_zone_scott_britt_rm_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Scott_Britt_RM/i.xbos.thermostat" ;
+    brickframe:uuid "4dcb2faa-984a-3003-ae9d-b60365e2c848" .
+
+bldg:hvac_zone_scott_britt_rm_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Scott_Britt_RM/i.xbos.thermostat" ;
+    brickframe:uuid "ad860bbe-ddc4-31b6-9849-f0ff544f60ed" .
+
+bldg:hvac_zone_scott_britt_rm_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Scott_Britt_RM/i.xbos.thermostat" ;
+    brickframe:uuid "bb2adbf8-5e15-38ce-bc3d-20d4cf9e1c75" .
+
+bldg:hvac_zone_scott_britt_rm_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Scott_Britt_RM/i.xbos.thermostat" ;
+    brickframe:uuid "514011ac-3d05-3f59-ac71-cb78ceef139a" .
+
+bldg:hvac_zone_scott_britt_rm_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:berkeley-corporate-yard ;
+    brickframe:uri "berkeley-corporate-yard/devices/s.pelican/Scott_Britt_RM/i.xbos.thermostat" ;
+    brickframe:uuid "284f10cf-5bba-385e-8ec6-e87a9f0ff4a3" .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Weather_Cloud_Coverage_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Weather_Cloud_Height_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Weather_Temperature_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+bldg:berkeley-corporate-yard a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "3059" ;
+    brickframe:Country "US" ;
+    brickframe:NumFloors "1" ;
+    brickframe:PrimaryFunction "Corporation Yard" ;
+    brickframe:Timezone "America/Los_Angeles" .
+

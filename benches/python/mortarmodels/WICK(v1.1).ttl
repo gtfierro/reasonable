@@ -1,0 +1,639 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/WICK#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:AHU01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:WICK ;
+    brick1:hasPoint bldg:WICK.AHU.AHU01.CCV,
+        bldg:WICK.AHU.AHU01.Cooling_Valve_Output,
+        bldg:WICK.AHU.AHU01.DAMPER,
+        bldg:WICK.AHU.AHU01.Heating_Valve_Output,
+        bldg:WICK.AHU.AHU01.Mode,
+        bldg:WICK.AHU.AHU01.Outside_Air_Temp_Virtual,
+        bldg:WICK.AHU.AHU01.Supply_Air_Temp,
+        bldg:WICK.AHU.AHU01.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU02 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:WICK ;
+    brick1:hasPoint bldg:WICK.AHU.AHU02.CCV,
+        bldg:WICK.AHU.AHU02.Cooling_Valve_Output,
+        bldg:WICK.AHU.AHU02.Heating_Valve_Output,
+        bldg:WICK.AHU.AHU02.Mode,
+        bldg:WICK.AHU.AHU02.Outside_Air_Temp_Virtual,
+        bldg:WICK.AHU.AHU02.Supply_Air_Temp,
+        bldg:WICK.AHU.AHU02.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU03 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:WICK ;
+    brick1:hasPoint bldg:WICK.AHU.AHU03.CCV,
+        bldg:WICK.AHU.AHU03.Cooling_Valve_Output,
+        bldg:WICK.AHU.AHU03.DAMPER,
+        bldg:WICK.AHU.AHU03.Heating_Valve_Output,
+        bldg:WICK.AHU.AHU03.Mode,
+        bldg:WICK.AHU.AHU03.Outside_Air_Temp_Virtual,
+        bldg:WICK.AHU.AHU03.Supply_Air_Temp,
+        bldg:WICK.AHU.AHU03.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU04 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:WICK ;
+    brick1:hasPoint bldg:WICK.AHU.AHU04.CCV,
+        bldg:WICK.AHU.AHU04.Cooling_Valve_Output,
+        bldg:WICK.AHU.AHU04.Heating_Valve_Output,
+        bldg:WICK.AHU.AHU04.Mode,
+        bldg:WICK.AHU.AHU04.Outside_Air_Temp_Virtual,
+        bldg:WICK.AHU.AHU04.Supply_Air_Temp,
+        bldg:WICK.AHU.AHU04.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU05 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:WICK ;
+    brick1:hasPoint bldg:WICK.AHU.AHU05.CCV,
+        bldg:WICK.AHU.AHU05.Cooling_Valve_Output,
+        bldg:WICK.AHU.AHU05.Heating_Valve_Output,
+        bldg:WICK.AHU.AHU05.Mode,
+        bldg:WICK.AHU.AHU05.Outside_Air_Temp_Virtual,
+        bldg:WICK.AHU.AHU05.Supply_Air_Temp,
+        bldg:WICK.AHU.AHU05.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU06 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:WICK ;
+    brick1:hasPoint bldg:WICK.AHU.AHU06.Heating_Valve_Output,
+        bldg:WICK.AHU.AHU06.Mode,
+        bldg:WICK.AHU.AHU06.Outside_Air_Temp_Virtual,
+        bldg:WICK.AHU.AHU06.Supply_Air_Temp,
+        bldg:WICK.AHU.AHU06.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU07 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:WICK ;
+    brick1:hasPoint bldg:WICK.AHU.AHU07.Heating_Valve_Output,
+        bldg:WICK.AHU.AHU07.Mode,
+        bldg:WICK.AHU.AHU07.Outside_Air_Temp_Virtual,
+        bldg:WICK.AHU.AHU07.Supply_Air_Temp,
+        bldg:WICK.AHU.AHU07.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU_AC1 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:WICK ;
+    brick1:hasPoint bldg:WICK.AHU.AHU_AC1.CCV,
+        bldg:WICK.AHU.AHU_AC1.Cooling_Valve_Output,
+        bldg:WICK.AHU.AHU_AC1.Heating_Valve_Output,
+        bldg:WICK.AHU.AHU_AC1.Mode,
+        bldg:WICK.AHU.AHU_AC1.Outside_Air_Temp,
+        bldg:WICK.AHU.AHU_AC1.Outside_Air_Temp_Virtual,
+        bldg:WICK.AHU.AHU_AC1.Supply_Air_Temp,
+        bldg:WICK.AHU.AHU_AC1.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU_AC2 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:WICK ;
+    brick1:hasPoint bldg:WICK.AHU.AHU_AC2.CCV,
+        bldg:WICK.AHU.AHU_AC2.Cooling_Valve_Output,
+        bldg:WICK.AHU.AHU_AC2.Heating_Valve_Output,
+        bldg:WICK.AHU.AHU_AC2.Mode,
+        bldg:WICK.AHU.AHU_AC2.Outside_Air_Temp_Virtual,
+        bldg:WICK.AHU.AHU_AC2.Supply_Air_Temp,
+        bldg:WICK.AHU.AHU_AC2.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU_AC3 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:WICK ;
+    brick1:hasPoint bldg:WICK.AHU.AHU_AC3.CCV,
+        bldg:WICK.AHU.AHU_AC3.Cooling_Valve_Output,
+        bldg:WICK.AHU.AHU_AC3.Mode,
+        bldg:WICK.AHU.AHU_AC3.Outside_Air_Temp_Virtual,
+        bldg:WICK.AHU.AHU_AC3.Supply_Air_Temp,
+        bldg:WICK.AHU.AHU_AC3.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU_AC4 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:WICK ;
+    brick1:hasPoint bldg:WICK.AHU.AHU_AC4.CCV,
+        bldg:WICK.AHU.AHU_AC4.Cooling_Valve_Output,
+        bldg:WICK.AHU.AHU_AC4.Mode,
+        bldg:WICK.AHU.AHU_AC4.Outside_Air_Temp_Virtual,
+        bldg:WICK.AHU.AHU_AC4.Supply_Air_Temp,
+        bldg:WICK.AHU.AHU_AC4.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:Wickson_ChilledWater_Demand_kBtu a brick_v_1_0_2:Electric_Meter ;
+    brickframe:pointname "Wickson_ChilledWater_Demand_kBtu" ;
+    brickframe:uuid "e2cd2d0e-b1ac-3dca-902f-0f59201db91f" ;
+    brick1:isPointOf bldg:chiller .
+
+bldg:Wickson_Electricity_Demand_kBtu a brick_v_1_0_2:Building_Electric_Meter ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "Wickson_Electricity_Demand_kBtu" ;
+    brickframe:uuid "92dde816-e242-357d-afae-11542139bd3d" .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:WICK.AHU.AHU01.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU01.CCV" ;
+    brickframe:uuid "58094335-6739-32b4-8fb7-c6373c6f7dbf" .
+
+bldg:WICK.AHU.AHU01.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU01.Cooling Valve Output" ;
+    brickframe:uuid "da0a38a4-378c-31fe-aced-bd62193d808f" .
+
+bldg:WICK.AHU.AHU01.DAMPER a brick1:Damper_Position_Sensor ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU01.DAMPER" ;
+    brickframe:uuid "8bc88ecb-6909-3486-9089-966509e4b86c" .
+
+bldg:WICK.AHU.AHU01.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU01.Heating Valve Output" ;
+    brickframe:uuid "764392c0-0698-3795-ac1b-014d666fcb9e" .
+
+bldg:WICK.AHU.AHU01.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "WICK.AHU.AHU01.Mode" ;
+    brickframe:uuid "1603fa2a-503b-35d2-b359-5e4ef3fab7f0" .
+
+bldg:WICK.AHU.AHU01.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU01.Outside Air Temp Virtual" ;
+    brickframe:uuid "d0ce3ac6-827f-38ee-b5ae-5d756f5bf821" .
+
+bldg:WICK.AHU.AHU01.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU01.Supply Air Temp" ;
+    brickframe:uuid "71fba9ae-c1ab-3994-979c-7c825620638d" .
+
+bldg:WICK.AHU.AHU01.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU01.Supply Air Temp Setpoint" ;
+    brickframe:uuid "46fcecb0-eb5d-3067-82f8-0ceecb48df39" .
+
+bldg:WICK.AHU.AHU02.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU02.CCV" ;
+    brickframe:uuid "7bfdd3b2-68e8-321c-b7fa-9fd96d272626" .
+
+bldg:WICK.AHU.AHU02.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU02.Cooling Valve Output" ;
+    brickframe:uuid "5d37881a-88ad-3895-8700-f83a4f9a2a3b" .
+
+bldg:WICK.AHU.AHU02.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU02.Heating Valve Output" ;
+    brickframe:uuid "93a4c8e6-2501-30d5-af58-616ee521faf0" .
+
+bldg:WICK.AHU.AHU02.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "WICK.AHU.AHU02.Mode" ;
+    brickframe:uuid "220dc3b8-2a7c-361e-a27e-06759bc8d88d" .
+
+bldg:WICK.AHU.AHU02.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU02.Outside Air Temp Virtual" ;
+    brickframe:uuid "bede0fa3-ad03-32eb-a67f-a795e57d0a1a" .
+
+bldg:WICK.AHU.AHU02.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU02.Supply Air Temp" ;
+    brickframe:uuid "7c95b773-c5a5-34f4-9aed-63a1710613fd" .
+
+bldg:WICK.AHU.AHU02.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU02.Supply Air Temp Setpoint" ;
+    brickframe:uuid "c72b1e26-61c1-3b2b-bea8-9b3fee7015a0" .
+
+bldg:WICK.AHU.AHU03.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU03.CCV" ;
+    brickframe:uuid "4380d691-9cb1-3ec3-9784-cf7e47cd7f7b" .
+
+bldg:WICK.AHU.AHU03.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU03.Cooling Valve Output" ;
+    brickframe:uuid "a0cce7f9-3752-394a-8274-430fd3c7e895" .
+
+bldg:WICK.AHU.AHU03.DAMPER a brick1:Damper_Position_Sensor ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU03.DAMPER" ;
+    brickframe:uuid "0bb3f531-ecda-38e9-b427-c784c4f5cf26" .
+
+bldg:WICK.AHU.AHU03.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU03.Heating Valve Output" ;
+    brickframe:uuid "43604c2c-7b8d-3ef6-b172-f7937ae3ef75" .
+
+bldg:WICK.AHU.AHU03.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "WICK.AHU.AHU03.Mode" ;
+    brickframe:uuid "ab15873b-5205-3583-ba4d-183fe96fcf30" .
+
+bldg:WICK.AHU.AHU03.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU03.Outside Air Temp Virtual" ;
+    brickframe:uuid "ae9f7294-0e67-30b7-9503-c7239ccc7805" .
+
+bldg:WICK.AHU.AHU03.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU03.Supply Air Temp" ;
+    brickframe:uuid "ac287309-33f9-33e9-8e68-c8db3d000041" .
+
+bldg:WICK.AHU.AHU03.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU03.Supply Air Temp Setpoint" ;
+    brickframe:uuid "1f9588cd-7261-317b-9d95-edfea25edd1f" .
+
+bldg:WICK.AHU.AHU04.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU04.CCV" ;
+    brickframe:uuid "6e8c384e-6a36-35c7-8720-44ffa1330e7b" .
+
+bldg:WICK.AHU.AHU04.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU04.Cooling Valve Output" ;
+    brickframe:uuid "6d25df07-12ad-3fd2-9b6d-54d8909a15ba" .
+
+bldg:WICK.AHU.AHU04.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU04.Heating Valve Output" ;
+    brickframe:uuid "87bcd5cb-e2d0-3c01-97f2-81ec6f709615" .
+
+bldg:WICK.AHU.AHU04.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "WICK.AHU.AHU04.Mode" ;
+    brickframe:uuid "cbc49875-a2e0-3dd4-8042-2b925c178505" .
+
+bldg:WICK.AHU.AHU04.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU04.Outside Air Temp Virtual" ;
+    brickframe:uuid "db9d3b34-2b62-3a17-bbd9-d7381880e821" .
+
+bldg:WICK.AHU.AHU04.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU04.Supply Air Temp" ;
+    brickframe:uuid "cf5210c2-cfa4-3353-901c-4ca42e56888d" .
+
+bldg:WICK.AHU.AHU04.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU04.Supply Air Temp Setpoint" ;
+    brickframe:uuid "bad65146-1fa5-3039-928e-cfa97ff4ed8c" .
+
+bldg:WICK.AHU.AHU05.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU05.CCV" ;
+    brickframe:uuid "3019e8ee-0ad1-3151-ac19-0da1acb5de5e" .
+
+bldg:WICK.AHU.AHU05.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU05.Cooling Valve Output" ;
+    brickframe:uuid "a3a84f1b-ecbd-3952-b565-ea341d340856" .
+
+bldg:WICK.AHU.AHU05.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU05.Heating Valve Output" ;
+    brickframe:uuid "d70a890b-bd32-3f4b-a3f6-28264e45d3cc" .
+
+bldg:WICK.AHU.AHU05.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "WICK.AHU.AHU05.Mode" ;
+    brickframe:uuid "a503f06a-44d8-3a6d-a8d2-f2331374ae54" .
+
+bldg:WICK.AHU.AHU05.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU05.Outside Air Temp Virtual" ;
+    brickframe:uuid "be475d44-5df3-3afa-8b8b-79a2bdd9b932" .
+
+bldg:WICK.AHU.AHU05.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU05.Supply Air Temp" ;
+    brickframe:uuid "5b5023ab-6b13-3016-a71f-81accf97ff22" .
+
+bldg:WICK.AHU.AHU05.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU05.Supply Air Temp Setpoint" ;
+    brickframe:uuid "a9a7aa01-83fd-3357-b86b-bf9d8da150ac" .
+
+bldg:WICK.AHU.AHU06.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU06.Heating Valve Output" ;
+    brickframe:uuid "c63c48a6-1a4f-3bb1-8a70-3062b38bb5ec" .
+
+bldg:WICK.AHU.AHU06.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "WICK.AHU.AHU06.Mode" ;
+    brickframe:uuid "22de3052-fe85-37fd-9cb6-4a7e4bd26a3e" .
+
+bldg:WICK.AHU.AHU06.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU06.Outside Air Temp Virtual" ;
+    brickframe:uuid "c7dafdc7-2e46-36af-b382-9fdb2e367d0b" .
+
+bldg:WICK.AHU.AHU06.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU06.Supply Air Temp" ;
+    brickframe:uuid "2018f3d9-158b-3b46-b79a-9120fe43f1da" .
+
+bldg:WICK.AHU.AHU06.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU06.Supply Air Temp Setpoint" ;
+    brickframe:uuid "ae16e3e0-48f2-39ae-8f60-d08f64f9a9b3" .
+
+bldg:WICK.AHU.AHU07.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU07.Heating Valve Output" ;
+    brickframe:uuid "51184210-a827-3ab2-a49b-110786345a81" .
+
+bldg:WICK.AHU.AHU07.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "WICK.AHU.AHU07.Mode" ;
+    brickframe:uuid "88cdf8ad-cfbe-39b6-90c8-4b7b38139b4e" .
+
+bldg:WICK.AHU.AHU07.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU07.Outside Air Temp Virtual" ;
+    brickframe:uuid "68cb8234-b3d6-35c5-af7b-82f0b86e6c22" .
+
+bldg:WICK.AHU.AHU07.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU07.Supply Air Temp" ;
+    brickframe:uuid "9e979712-84fc-388e-a25c-db32c3b455d4" .
+
+bldg:WICK.AHU.AHU07.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU07.Supply Air Temp Setpoint" ;
+    brickframe:uuid "e1111650-1711-3869-9758-1e90b70ab40d" .
+
+bldg:WICK.AHU.AHU_AC1.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU_AC1.CCV" ;
+    brickframe:uuid "7a255a7c-05cd-3e3a-9fcc-a96a1606e651" .
+
+bldg:WICK.AHU.AHU_AC1.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU_AC1.Cooling Valve Output" ;
+    brickframe:uuid "32f838d1-6862-3d99-b5a1-7b266d2d07bb" .
+
+bldg:WICK.AHU.AHU_AC1.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU_AC1.Heating Valve Output" ;
+    brickframe:uuid "a83b1e04-d5d7-3473-9864-680493cba6af" .
+
+bldg:WICK.AHU.AHU_AC1.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "WICK.AHU.AHU_AC1.Mode" ;
+    brickframe:uuid "a76c70fa-f543-318e-9d21-98bb56fbeb44" .
+
+bldg:WICK.AHU.AHU_AC1.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU_AC1.Outside Air Temp" ;
+    brickframe:uuid "9678114c-590f-376c-bfa4-4cc9931ea51f" .
+
+bldg:WICK.AHU.AHU_AC1.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU_AC1.Outside Air Temp Virtual" ;
+    brickframe:uuid "38126b56-3ec6-3639-8bb6-4d72beb1811c" .
+
+bldg:WICK.AHU.AHU_AC1.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU_AC1.Supply Air Temp" ;
+    brickframe:uuid "a148c86d-9c18-3382-b86b-4a006246eac0" .
+
+bldg:WICK.AHU.AHU_AC1.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU_AC1.Supply Air Temp Setpoint" ;
+    brickframe:uuid "f5ba1cce-0f72-321d-8a92-5d1b8fdd4e2c" .
+
+bldg:WICK.AHU.AHU_AC2.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU_AC2.CCV" ;
+    brickframe:uuid "9b03681a-c523-3d63-a4f6-dc6912b102f2" .
+
+bldg:WICK.AHU.AHU_AC2.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU_AC2.Cooling Valve Output" ;
+    brickframe:uuid "3113eee9-37ca-36f2-8e57-5f3eca367c6d" .
+
+bldg:WICK.AHU.AHU_AC2.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU_AC2.Heating Valve Output" ;
+    brickframe:uuid "ec72754d-5d4c-3b38-8f4d-d77099407b7d" .
+
+bldg:WICK.AHU.AHU_AC2.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "WICK.AHU.AHU_AC2.Mode" ;
+    brickframe:uuid "11c94dbc-3a69-3ccb-8d20-f1107fde6492" .
+
+bldg:WICK.AHU.AHU_AC2.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU_AC2.Outside Air Temp Virtual" ;
+    brickframe:uuid "60622d46-b2fc-3662-9bc4-4fe474caffd5" .
+
+bldg:WICK.AHU.AHU_AC2.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU_AC2.Supply Air Temp" ;
+    brickframe:uuid "2caeeafd-64b6-30f6-b231-509a027bbf4e" .
+
+bldg:WICK.AHU.AHU_AC2.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU_AC2.Supply Air Temp Setpoint" ;
+    brickframe:uuid "8569e574-f0ab-34b9-b695-b16d7756213e" .
+
+bldg:WICK.AHU.AHU_AC3.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU_AC3.CCV" ;
+    brickframe:uuid "f44f4134-70bb-33e0-8f0f-f634b0057828" .
+
+bldg:WICK.AHU.AHU_AC3.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU_AC3.Cooling Valve Output" ;
+    brickframe:uuid "2bea10ff-6cdb-378b-a722-56e7425e9505" .
+
+bldg:WICK.AHU.AHU_AC3.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "WICK.AHU.AHU_AC3.Mode" ;
+    brickframe:uuid "4f945d7d-2e6d-3e35-9e38-1075a2574f9c" .
+
+bldg:WICK.AHU.AHU_AC3.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU_AC3.Outside Air Temp Virtual" ;
+    brickframe:uuid "169334df-55c5-3b7c-b949-2a97098285a3" .
+
+bldg:WICK.AHU.AHU_AC3.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU_AC3.Supply Air Temp" ;
+    brickframe:uuid "233133e2-1e95-3b94-9aea-3de61908e027" .
+
+bldg:WICK.AHU.AHU_AC3.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU_AC3.Supply Air Temp Setpoint" ;
+    brickframe:uuid "7607ef4c-9652-3e82-adc2-3701bb96ec14" .
+
+bldg:WICK.AHU.AHU_AC4.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU_AC4.CCV" ;
+    brickframe:uuid "a75f1e90-62f6-3e02-9586-79e7f5876e73" .
+
+bldg:WICK.AHU.AHU_AC4.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU_AC4.Cooling Valve Output" ;
+    brickframe:uuid "34bead94-47c0-33dc-a9ba-0bae8b560851" .
+
+bldg:WICK.AHU.AHU_AC4.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "WICK.AHU.AHU_AC4.Mode" ;
+    brickframe:uuid "3229e6e6-1ee4-393c-af54-c5b05e423fbd" .
+
+bldg:WICK.AHU.AHU_AC4.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU_AC4.Outside Air Temp Virtual" ;
+    brickframe:uuid "7d034020-9b6a-3e71-8b8b-17e988d3ed1f" .
+
+bldg:WICK.AHU.AHU_AC4.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU_AC4.Supply Air Temp" ;
+    brickframe:uuid "204e8ad0-1fbf-3e76-a743-3fc9a8a788c6" .
+
+bldg:WICK.AHU.AHU_AC4.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.AHU.AHU_AC4.Supply Air Temp Setpoint" ;
+    brickframe:uuid "f4f654ea-271b-3cc5-90a9-a84b234f69c6" .
+
+bldg:WICK.CHW.BUILD_DP a brick1:Differential_Pressure_Sensor ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.CHW.BUILD DP" ;
+    brickframe:uuid "d3a36bb6-9697-30e7-8213-0544f8dccc6f" .
+
+bldg:WICK.CHW.BYP_VALVE a brick_v_1_0_2:Chilled_Water_Bypass_Valve ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.CHW.BYP VALVE" ;
+    brickframe:uuid "a7f4c975-03ef-356f-b420-6fd73c3fa09a" .
+
+bldg:WICK.CHW.BYP__VALVE a brick_v_1_0_2:Chilled_Water_Bypass_Valve ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.CHW.BYP  VALVE" ;
+    brickframe:uuid "086985f1-4fbf-347c-8931-e1fa7732e390" .
+
+bldg:WICK.CHW.Building_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.CHW.Building Chilled Water Return Temp" ;
+    brickframe:uuid "22fd0e92-a124-3d5a-9a08-8c034bb3b9ab" .
+
+bldg:WICK.CHW.Building_Chilled_Water_Return_Temp_Setpoint a brick_v_1_0_2:Chilled_Water_Return_Temperature_Setpoint ;
+    brickframe:pointname "WICK.CHW.Building Chilled Water Return Temp Setpoint" ;
+    brickframe:uuid "93541047-a813-3dab-8c46-58b581fc64c6" .
+
+bldg:WICK.CHW.Building_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.CHW.Building Chilled Water Supply Temp" ;
+    brickframe:uuid "1ccc367c-5ba7-342b-bd28-65e67e65b6be" .
+
+bldg:WICK.CHW.Building_Chilled_Water_Supply_Temp_Setpoint a brick_v_1_0_2:Chilled_Water_Supply_Temperature_Setpoint ;
+    brickframe:pointname "WICK.CHW.Building Chilled Water Supply Temp Setpoint" ;
+    brickframe:uuid "343090d4-67a5-3f4f-9310-0faf96cfcfee" .
+
+bldg:WICK.CHW.ECONOMIZER_VALVE a brick1:Valve_Command ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.CHW.ECONOMIZER VALVE" ;
+    brickframe:uuid "eee60999-e71c-3412-a2c7-2ff3b74bfe97" .
+
+bldg:WICK.CHW.Loop_Chilled_Water_Flow a brick_v_1_0_2:Chilled_Water_Flow_Sensor ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.CHW.Loop Chilled Water Flow" ;
+    brickframe:uuid "d296310a-66ea-3ca2-ab50-fec7088483aa" .
+
+bldg:WICK.CHW.Loop_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:WICK ;
+    brickframe:pointname "WICK.CHW.Loop Chilled Water Supply Temp" ;
+    brickframe:uuid "2f125b1f-ebb1-3d04-8fd6-849328d28082" .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:WICK ;
+    brick1:hasPoint bldg:WICK.CHW.BUILD_DP,
+        bldg:WICK.CHW.BYP_VALVE,
+        bldg:WICK.CHW.BYP__VALVE,
+        bldg:WICK.CHW.Building_Chilled_Water_Return_Temp,
+        bldg:WICK.CHW.Building_Chilled_Water_Return_Temp_Setpoint,
+        bldg:WICK.CHW.Building_Chilled_Water_Supply_Temp,
+        bldg:WICK.CHW.Building_Chilled_Water_Supply_Temp_Setpoint,
+        bldg:WICK.CHW.ECONOMIZER_VALVE,
+        bldg:WICK.CHW.Loop_Chilled_Water_Flow,
+        bldg:WICK.CHW.Loop_Chilled_Water_Supply_Temp .
+
+bldg:WICK a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "112937" ;
+    brickframe:Country "US" .
+

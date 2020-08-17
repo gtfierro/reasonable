@@ -1,0 +1,1436 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://xbos.io/ontologies/jesse-turner-center#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:hvac_zone_assembly_111_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/ASSEMBLY_111/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_assembly_111 ;
+    brick1:hasPoint bldg:hvac_zone_assembly_111_tstat_cooling_setpoint,
+        bldg:hvac_zone_assembly_111_tstat_fan,
+        bldg:hvac_zone_assembly_111_tstat_heating_setpoint,
+        bldg:hvac_zone_assembly_111_tstat_mode,
+        bldg:hvac_zone_assembly_111_tstat_override,
+        bldg:hvac_zone_assembly_111_tstat_state,
+        bldg:hvac_zone_assembly_111_tstat_temperature .
+
+bldg:hvac_zone_assembly_112_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/ASSEMBLY_112/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_assembly_112 ;
+    brick1:hasPoint bldg:hvac_zone_assembly_112_tstat_cooling_setpoint,
+        bldg:hvac_zone_assembly_112_tstat_fan,
+        bldg:hvac_zone_assembly_112_tstat_heating_setpoint,
+        bldg:hvac_zone_assembly_112_tstat_mode,
+        bldg:hvac_zone_assembly_112_tstat_override,
+        bldg:hvac_zone_assembly_112_tstat_state,
+        bldg:hvac_zone_assembly_112_tstat_temperature .
+
+bldg:hvac_zone_assembly_113_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/ASSEMBLY_113/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_assembly_113 ;
+    brick1:hasPoint bldg:hvac_zone_assembly_113_tstat_cooling_setpoint,
+        bldg:hvac_zone_assembly_113_tstat_fan,
+        bldg:hvac_zone_assembly_113_tstat_heating_setpoint,
+        bldg:hvac_zone_assembly_113_tstat_mode,
+        bldg:hvac_zone_assembly_113_tstat_override,
+        bldg:hvac_zone_assembly_113_tstat_state,
+        bldg:hvac_zone_assembly_113_tstat_temperature .
+
+bldg:hvac_zone_back_stage_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Back_Stage/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_back_stage ;
+    brick1:hasPoint bldg:hvac_zone_back_stage_tstat_cooling_setpoint,
+        bldg:hvac_zone_back_stage_tstat_fan,
+        bldg:hvac_zone_back_stage_tstat_heating_setpoint,
+        bldg:hvac_zone_back_stage_tstat_mode,
+        bldg:hvac_zone_back_stage_tstat_override,
+        bldg:hvac_zone_back_stage_tstat_state,
+        bldg:hvac_zone_back_stage_tstat_temperature .
+
+bldg:hvac_zone_basketball_court_1_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_1/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_basketball_court_1 ;
+    brick1:hasPoint bldg:hvac_zone_basketball_court_1_tstat_cooling_setpoint,
+        bldg:hvac_zone_basketball_court_1_tstat_fan,
+        bldg:hvac_zone_basketball_court_1_tstat_heating_setpoint,
+        bldg:hvac_zone_basketball_court_1_tstat_mode,
+        bldg:hvac_zone_basketball_court_1_tstat_override,
+        bldg:hvac_zone_basketball_court_1_tstat_state,
+        bldg:hvac_zone_basketball_court_1_tstat_temperature .
+
+bldg:hvac_zone_basketball_court_2_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_2/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_basketball_court_2 ;
+    brick1:hasPoint bldg:hvac_zone_basketball_court_2_tstat_cooling_setpoint,
+        bldg:hvac_zone_basketball_court_2_tstat_fan,
+        bldg:hvac_zone_basketball_court_2_tstat_heating_setpoint,
+        bldg:hvac_zone_basketball_court_2_tstat_mode,
+        bldg:hvac_zone_basketball_court_2_tstat_override,
+        bldg:hvac_zone_basketball_court_2_tstat_state,
+        bldg:hvac_zone_basketball_court_2_tstat_temperature .
+
+bldg:hvac_zone_basketball_court_3_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_3/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_basketball_court_3 ;
+    brick1:hasPoint bldg:hvac_zone_basketball_court_3_tstat_cooling_setpoint,
+        bldg:hvac_zone_basketball_court_3_tstat_fan,
+        bldg:hvac_zone_basketball_court_3_tstat_heating_setpoint,
+        bldg:hvac_zone_basketball_court_3_tstat_mode,
+        bldg:hvac_zone_basketball_court_3_tstat_override,
+        bldg:hvac_zone_basketball_court_3_tstat_state,
+        bldg:hvac_zone_basketball_court_3_tstat_temperature .
+
+bldg:hvac_zone_basketball_court_4_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_4/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_basketball_court_4 ;
+    brick1:hasPoint bldg:hvac_zone_basketball_court_4_tstat_cooling_setpoint,
+        bldg:hvac_zone_basketball_court_4_tstat_fan,
+        bldg:hvac_zone_basketball_court_4_tstat_heating_setpoint,
+        bldg:hvac_zone_basketball_court_4_tstat_mode,
+        bldg:hvac_zone_basketball_court_4_tstat_override,
+        bldg:hvac_zone_basketball_court_4_tstat_state,
+        bldg:hvac_zone_basketball_court_4_tstat_temperature .
+
+bldg:hvac_zone_basketball_court_5_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_5/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_basketball_court_5 ;
+    brick1:hasPoint bldg:hvac_zone_basketball_court_5_tstat_cooling_setpoint,
+        bldg:hvac_zone_basketball_court_5_tstat_fan,
+        bldg:hvac_zone_basketball_court_5_tstat_heating_setpoint,
+        bldg:hvac_zone_basketball_court_5_tstat_mode,
+        bldg:hvac_zone_basketball_court_5_tstat_override,
+        bldg:hvac_zone_basketball_court_5_tstat_state,
+        bldg:hvac_zone_basketball_court_5_tstat_temperature .
+
+bldg:hvac_zone_basketball_court_6_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_6/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_basketball_court_6 ;
+    brick1:hasPoint bldg:hvac_zone_basketball_court_6_tstat_cooling_setpoint,
+        bldg:hvac_zone_basketball_court_6_tstat_fan,
+        bldg:hvac_zone_basketball_court_6_tstat_heating_setpoint,
+        bldg:hvac_zone_basketball_court_6_tstat_mode,
+        bldg:hvac_zone_basketball_court_6_tstat_override,
+        bldg:hvac_zone_basketball_court_6_tstat_state,
+        bldg:hvac_zone_basketball_court_6_tstat_temperature .
+
+bldg:hvac_zone_class_131_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Class_131/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_class_131 ;
+    brick1:hasPoint bldg:hvac_zone_class_131_tstat_cooling_setpoint,
+        bldg:hvac_zone_class_131_tstat_fan,
+        bldg:hvac_zone_class_131_tstat_heating_setpoint,
+        bldg:hvac_zone_class_131_tstat_mode,
+        bldg:hvac_zone_class_131_tstat_override,
+        bldg:hvac_zone_class_131_tstat_state,
+        bldg:hvac_zone_class_131_tstat_temperature .
+
+bldg:hvac_zone_class_132_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Class_132/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_class_132 ;
+    brick1:hasPoint bldg:hvac_zone_class_132_tstat_cooling_setpoint,
+        bldg:hvac_zone_class_132_tstat_fan,
+        bldg:hvac_zone_class_132_tstat_heating_setpoint,
+        bldg:hvac_zone_class_132_tstat_mode,
+        bldg:hvac_zone_class_132_tstat_override,
+        bldg:hvac_zone_class_132_tstat_state,
+        bldg:hvac_zone_class_132_tstat_temperature .
+
+bldg:hvac_zone_control_desk_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Control_Desk/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_control_desk ;
+    brick1:hasPoint bldg:hvac_zone_control_desk_tstat_cooling_setpoint,
+        bldg:hvac_zone_control_desk_tstat_fan,
+        bldg:hvac_zone_control_desk_tstat_heating_setpoint,
+        bldg:hvac_zone_control_desk_tstat_mode,
+        bldg:hvac_zone_control_desk_tstat_override,
+        bldg:hvac_zone_control_desk_tstat_state,
+        bldg:hvac_zone_control_desk_tstat_temperature .
+
+bldg:hvac_zone_dance_room_109_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Dance_Room_109/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_dance_room_109 ;
+    brick1:hasPoint bldg:hvac_zone_dance_room_109_tstat_cooling_setpoint,
+        bldg:hvac_zone_dance_room_109_tstat_fan,
+        bldg:hvac_zone_dance_room_109_tstat_heating_setpoint,
+        bldg:hvac_zone_dance_room_109_tstat_mode,
+        bldg:hvac_zone_dance_room_109_tstat_override,
+        bldg:hvac_zone_dance_room_109_tstat_state,
+        bldg:hvac_zone_dance_room_109_tstat_temperature .
+
+bldg:hvac_zone_electrical_room123_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Electrical_Room123/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_electrical_room123 ;
+    brick1:hasPoint bldg:hvac_zone_electrical_room123_tstat_cooling_setpoint,
+        bldg:hvac_zone_electrical_room123_tstat_fan,
+        bldg:hvac_zone_electrical_room123_tstat_heating_setpoint,
+        bldg:hvac_zone_electrical_room123_tstat_mode,
+        bldg:hvac_zone_electrical_room123_tstat_override,
+        bldg:hvac_zone_electrical_room123_tstat_state,
+        bldg:hvac_zone_electrical_room123_tstat_temperature .
+
+bldg:hvac_zone_fitness_room_138_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Fitness_Room_138/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_fitness_room_138 ;
+    brick1:hasPoint bldg:hvac_zone_fitness_room_138_tstat_cooling_setpoint,
+        bldg:hvac_zone_fitness_room_138_tstat_fan,
+        bldg:hvac_zone_fitness_room_138_tstat_heating_setpoint,
+        bldg:hvac_zone_fitness_room_138_tstat_mode,
+        bldg:hvac_zone_fitness_room_138_tstat_override,
+        bldg:hvac_zone_fitness_room_138_tstat_state,
+        bldg:hvac_zone_fitness_room_138_tstat_temperature .
+
+bldg:hvac_zone_foyer_gallery_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Foyer_Gallery/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_foyer_gallery ;
+    brick1:hasPoint bldg:hvac_zone_foyer_gallery_tstat_cooling_setpoint,
+        bldg:hvac_zone_foyer_gallery_tstat_fan,
+        bldg:hvac_zone_foyer_gallery_tstat_heating_setpoint,
+        bldg:hvac_zone_foyer_gallery_tstat_mode,
+        bldg:hvac_zone_foyer_gallery_tstat_override,
+        bldg:hvac_zone_foyer_gallery_tstat_state,
+        bldg:hvac_zone_foyer_gallery_tstat_temperature .
+
+bldg:hvac_zone_front_entrance_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Front_Entrance/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_front_entrance ;
+    brick1:hasPoint bldg:hvac_zone_front_entrance_tstat_cooling_setpoint,
+        bldg:hvac_zone_front_entrance_tstat_fan,
+        bldg:hvac_zone_front_entrance_tstat_heating_setpoint,
+        bldg:hvac_zone_front_entrance_tstat_mode,
+        bldg:hvac_zone_front_entrance_tstat_override,
+        bldg:hvac_zone_front_entrance_tstat_state,
+        bldg:hvac_zone_front_entrance_tstat_temperature .
+
+bldg:hvac_zone_kitchen_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Kitchen/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_kitchen ;
+    brick1:hasPoint bldg:hvac_zone_kitchen_tstat_cooling_setpoint,
+        bldg:hvac_zone_kitchen_tstat_fan,
+        bldg:hvac_zone_kitchen_tstat_heating_setpoint,
+        bldg:hvac_zone_kitchen_tstat_mode,
+        bldg:hvac_zone_kitchen_tstat_override,
+        bldg:hvac_zone_kitchen_tstat_state,
+        bldg:hvac_zone_kitchen_tstat_temperature .
+
+bldg:hvac_zone_lobby_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Lobby/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_lobby ;
+    brick1:hasPoint bldg:hvac_zone_lobby_tstat_cooling_setpoint,
+        bldg:hvac_zone_lobby_tstat_fan,
+        bldg:hvac_zone_lobby_tstat_heating_setpoint,
+        bldg:hvac_zone_lobby_tstat_mode,
+        bldg:hvac_zone_lobby_tstat_override,
+        bldg:hvac_zone_lobby_tstat_state,
+        bldg:hvac_zone_lobby_tstat_temperature .
+
+bldg:hvac_zone_meeting_room_122_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Meeting_Room_122/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_meeting_room_122 ;
+    brick1:hasPoint bldg:hvac_zone_meeting_room_122_tstat_cooling_setpoint,
+        bldg:hvac_zone_meeting_room_122_tstat_fan,
+        bldg:hvac_zone_meeting_room_122_tstat_heating_setpoint,
+        bldg:hvac_zone_meeting_room_122_tstat_mode,
+        bldg:hvac_zone_meeting_room_122_tstat_override,
+        bldg:hvac_zone_meeting_room_122_tstat_state,
+        bldg:hvac_zone_meeting_room_122_tstat_temperature .
+
+bldg:hvac_zone_multi_purpose_147_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Multi_Purpose_147/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_multi_purpose_147 ;
+    brick1:hasPoint bldg:hvac_zone_multi_purpose_147_tstat_cooling_setpoint,
+        bldg:hvac_zone_multi_purpose_147_tstat_fan,
+        bldg:hvac_zone_multi_purpose_147_tstat_heating_setpoint,
+        bldg:hvac_zone_multi_purpose_147_tstat_mode,
+        bldg:hvac_zone_multi_purpose_147_tstat_override,
+        bldg:hvac_zone_multi_purpose_147_tstat_state,
+        bldg:hvac_zone_multi_purpose_147_tstat_temperature .
+
+bldg:hvac_zone_office_room_148_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Office_Room_148/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_office_room_148 ;
+    brick1:hasPoint bldg:hvac_zone_office_room_148_tstat_cooling_setpoint,
+        bldg:hvac_zone_office_room_148_tstat_fan,
+        bldg:hvac_zone_office_room_148_tstat_heating_setpoint,
+        bldg:hvac_zone_office_room_148_tstat_mode,
+        bldg:hvac_zone_office_room_148_tstat_override,
+        bldg:hvac_zone_office_room_148_tstat_state,
+        bldg:hvac_zone_office_room_148_tstat_temperature .
+
+bldg:hvac_zone_resource_center_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Resource_Center/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_resource_center ;
+    brick1:hasPoint bldg:hvac_zone_resource_center_tstat_cooling_setpoint,
+        bldg:hvac_zone_resource_center_tstat_fan,
+        bldg:hvac_zone_resource_center_tstat_heating_setpoint,
+        bldg:hvac_zone_resource_center_tstat_mode,
+        bldg:hvac_zone_resource_center_tstat_override,
+        bldg:hvac_zone_resource_center_tstat_state,
+        bldg:hvac_zone_resource_center_tstat_temperature .
+
+bldg:meter_MTU1 a brick_v_1_0_2:Building_Electric_Meter ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.ted/MTU1/i.xbos.meter" ;
+    brickframe:uuid "aa7999f7-711c-37a3-b46d-58c1e20ebe2f" .
+
+bldg:weather_KSBD_cloud_coverage a brick_v_1_0_2:Weather_Cloud_Coverage_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uuid "3f61ad70-9741-3cba-a4f0-ac288173c05a" .
+
+bldg:weather_KSBD_cloud_height a brick_v_1_0_2:Weather_Cloud_Height_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uuid "a23cbeb6-0c8c-3e42-a090-04fa2a23d5e0" .
+
+bldg:weather_KSBD_relative_humidity a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uuid "67805bf3-5aa7-3b58-ad4e-666771551c6a" .
+
+bldg:weather_KSBD_temperature a brick_v_1_0_2:Weather_Temperature_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uuid "74874f65-8232-39ad-99a1-b7dc629071f3" .
+
+bldg:weather_KSBD_wind_direction a brick1:Wind_Direction_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uuid "41b82d22-3f6d-3e3b-b26f-0ecac7b58479" .
+
+bldg:weather_KSBD_wind_speed a brick1:Wind_Speed_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uuid "8aa9c1fd-79c5-3675-9506-bf0a0b0d7b58" .
+
+bldg:weather_LSFC1_cloud_coverage a brick_v_1_0_2:Weather_Cloud_Coverage_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uuid "97372a40-3d36-34e1-805e-823fcc30745f" .
+
+bldg:weather_LSFC1_cloud_height a brick_v_1_0_2:Weather_Cloud_Height_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uuid "d2943481-23bf-3d70-9f41-5c74c9642c2d" .
+
+bldg:weather_LSFC1_relative_humidity a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uuid "5befc8ad-4467-3432-a7c4-2054a7c96942" .
+
+bldg:weather_LSFC1_temperature a brick_v_1_0_2:Weather_Temperature_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uuid "4eb8a259-0e1f-36ae-af5d-5e62906c905d" .
+
+bldg:weather_LSFC1_wind_direction a brick1:Wind_Direction_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uuid "fc59f939-3cc9-3330-a0df-81c16972163f" .
+
+bldg:weather_LSFC1_wind_speed a brick1:Wind_Speed_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uuid "2f070d91-5692-3eea-b69d-1ba37879898a" .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:RTU_hvac_zone_assembly_111 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brick1:feeds bldg:hvac_zone_assembly_111 .
+
+bldg:RTU_hvac_zone_assembly_112 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brick1:feeds bldg:hvac_zone_assembly_112 .
+
+bldg:RTU_hvac_zone_assembly_113 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brick1:feeds bldg:hvac_zone_assembly_113 .
+
+bldg:RTU_hvac_zone_back_stage a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brick1:feeds bldg:hvac_zone_back_stage .
+
+bldg:RTU_hvac_zone_basketball_court_1 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brick1:feeds bldg:hvac_zone_basketball_court_1 .
+
+bldg:RTU_hvac_zone_basketball_court_2 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brick1:feeds bldg:hvac_zone_basketball_court_2 .
+
+bldg:RTU_hvac_zone_basketball_court_3 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brick1:feeds bldg:hvac_zone_basketball_court_3 .
+
+bldg:RTU_hvac_zone_basketball_court_4 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brick1:feeds bldg:hvac_zone_basketball_court_4 .
+
+bldg:RTU_hvac_zone_basketball_court_5 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brick1:feeds bldg:hvac_zone_basketball_court_5 .
+
+bldg:RTU_hvac_zone_basketball_court_6 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brick1:feeds bldg:hvac_zone_basketball_court_6 .
+
+bldg:RTU_hvac_zone_class_131 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brick1:feeds bldg:hvac_zone_class_131 .
+
+bldg:RTU_hvac_zone_class_132 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brick1:feeds bldg:hvac_zone_class_132 .
+
+bldg:RTU_hvac_zone_control_desk a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brick1:feeds bldg:hvac_zone_control_desk .
+
+bldg:RTU_hvac_zone_dance_room_109 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brick1:feeds bldg:hvac_zone_dance_room_109 .
+
+bldg:RTU_hvac_zone_electrical_room123 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brick1:feeds bldg:hvac_zone_electrical_room123 .
+
+bldg:RTU_hvac_zone_fitness_room_138 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brick1:feeds bldg:hvac_zone_fitness_room_138 .
+
+bldg:RTU_hvac_zone_foyer_gallery a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brick1:feeds bldg:hvac_zone_foyer_gallery .
+
+bldg:RTU_hvac_zone_front_entrance a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brick1:feeds bldg:hvac_zone_front_entrance .
+
+bldg:RTU_hvac_zone_kitchen a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brick1:feeds bldg:hvac_zone_kitchen .
+
+bldg:RTU_hvac_zone_lobby a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brick1:feeds bldg:hvac_zone_lobby .
+
+bldg:RTU_hvac_zone_meeting_room_122 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brick1:feeds bldg:hvac_zone_meeting_room_122 .
+
+bldg:RTU_hvac_zone_multi_purpose_147 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brick1:feeds bldg:hvac_zone_multi_purpose_147 .
+
+bldg:RTU_hvac_zone_office_room_148 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brick1:feeds bldg:hvac_zone_office_room_148 .
+
+bldg:RTU_hvac_zone_resource_center a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brick1:feeds bldg:hvac_zone_resource_center .
+
+bldg:hvac_zone_assembly_111 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:jesse-turner-center .
+
+bldg:hvac_zone_assembly_111_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/ASSEMBLY_111/i.xbos.thermostat" ;
+    brickframe:uuid "6f471feb-49f3-3475-8573-1c8a2b7fb58a" .
+
+bldg:hvac_zone_assembly_111_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/ASSEMBLY_111/i.xbos.thermostat" ;
+    brickframe:uuid "48c421bb-0dae-3f49-ba68-3bc8f6b22ac1" .
+
+bldg:hvac_zone_assembly_111_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/ASSEMBLY_111/i.xbos.thermostat" ;
+    brickframe:uuid "8c5820b7-bd4e-3ab1-a3f1-c871ec2fc6d1" .
+
+bldg:hvac_zone_assembly_111_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/ASSEMBLY_111/i.xbos.thermostat" ;
+    brickframe:uuid "b6af69de-4a0b-3ffc-99c5-6407cb17c3c8" .
+
+bldg:hvac_zone_assembly_111_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/ASSEMBLY_111/i.xbos.thermostat" ;
+    brickframe:uuid "ee215985-24c3-3eec-8cab-c9681cf9c074" .
+
+bldg:hvac_zone_assembly_111_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/ASSEMBLY_111/i.xbos.thermostat" ;
+    brickframe:uuid "46c8c222-37f0-395e-8aea-4b20bb604a81" .
+
+bldg:hvac_zone_assembly_111_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/ASSEMBLY_111/i.xbos.thermostat" ;
+    brickframe:uuid "1069bb41-86d1-3902-bb6c-4c277baf527c" .
+
+bldg:hvac_zone_assembly_112 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:jesse-turner-center .
+
+bldg:hvac_zone_assembly_112_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/ASSEMBLY_112/i.xbos.thermostat" ;
+    brickframe:uuid "7e015e37-cc6d-3ff9-ba35-c2908e8650fa" .
+
+bldg:hvac_zone_assembly_112_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/ASSEMBLY_112/i.xbos.thermostat" ;
+    brickframe:uuid "9eefe254-bff3-393b-8707-bc3361580bd2" .
+
+bldg:hvac_zone_assembly_112_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/ASSEMBLY_112/i.xbos.thermostat" ;
+    brickframe:uuid "c85cd7d6-c2f8-39a8-a6ff-136378239ef7" .
+
+bldg:hvac_zone_assembly_112_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/ASSEMBLY_112/i.xbos.thermostat" ;
+    brickframe:uuid "d66e4f44-77ee-3053-b148-20f9a51a79fb" .
+
+bldg:hvac_zone_assembly_112_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/ASSEMBLY_112/i.xbos.thermostat" ;
+    brickframe:uuid "b66c5136-790d-3978-b28a-289310e7b820" .
+
+bldg:hvac_zone_assembly_112_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/ASSEMBLY_112/i.xbos.thermostat" ;
+    brickframe:uuid "d796c4f0-9876-30cc-aa69-51148b6d1cdb" .
+
+bldg:hvac_zone_assembly_112_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/ASSEMBLY_112/i.xbos.thermostat" ;
+    brickframe:uuid "929c1107-b6a8-3320-9f88-7fc91e52419b" .
+
+bldg:hvac_zone_assembly_113 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:jesse-turner-center .
+
+bldg:hvac_zone_assembly_113_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/ASSEMBLY_113/i.xbos.thermostat" ;
+    brickframe:uuid "0f02133a-7e72-3a15-a35a-b9fbfc439d48" .
+
+bldg:hvac_zone_assembly_113_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/ASSEMBLY_113/i.xbos.thermostat" ;
+    brickframe:uuid "6c266e69-b51c-3687-abd1-c1068c1e30eb" .
+
+bldg:hvac_zone_assembly_113_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/ASSEMBLY_113/i.xbos.thermostat" ;
+    brickframe:uuid "d3373acd-356d-3d8a-8b80-3af21db2f853" .
+
+bldg:hvac_zone_assembly_113_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/ASSEMBLY_113/i.xbos.thermostat" ;
+    brickframe:uuid "1a2f262d-66d5-3b77-ae6e-f28f33d42c87" .
+
+bldg:hvac_zone_assembly_113_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/ASSEMBLY_113/i.xbos.thermostat" ;
+    brickframe:uuid "374f2f81-408d-3c15-8b02-8e5b41c3acab" .
+
+bldg:hvac_zone_assembly_113_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/ASSEMBLY_113/i.xbos.thermostat" ;
+    brickframe:uuid "790286b1-2716-340d-af48-9a9078500b6e" .
+
+bldg:hvac_zone_assembly_113_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/ASSEMBLY_113/i.xbos.thermostat" ;
+    brickframe:uuid "ff951334-13a9-399e-8c94-1c188d777276" .
+
+bldg:hvac_zone_back_stage a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:jesse-turner-center .
+
+bldg:hvac_zone_back_stage_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Back_Stage/i.xbos.thermostat" ;
+    brickframe:uuid "3b38b9b8-1a8f-3732-87ff-0196c961bbbc" .
+
+bldg:hvac_zone_back_stage_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Back_Stage/i.xbos.thermostat" ;
+    brickframe:uuid "2f25c15f-c42c-3c27-86e9-3addcc3b2406" .
+
+bldg:hvac_zone_back_stage_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Back_Stage/i.xbos.thermostat" ;
+    brickframe:uuid "b41f4ed6-f033-3101-82ea-65730ffee0b7" .
+
+bldg:hvac_zone_back_stage_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Back_Stage/i.xbos.thermostat" ;
+    brickframe:uuid "dcea4c01-82fc-3334-9fda-517602e8861c" .
+
+bldg:hvac_zone_back_stage_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Back_Stage/i.xbos.thermostat" ;
+    brickframe:uuid "24d1192e-60cb-3f9d-ad3c-1dc44de34681" .
+
+bldg:hvac_zone_back_stage_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Back_Stage/i.xbos.thermostat" ;
+    brickframe:uuid "3322d550-c2ec-3cae-9647-02201f992225" .
+
+bldg:hvac_zone_back_stage_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Back_Stage/i.xbos.thermostat" ;
+    brickframe:uuid "db871a91-1034-3557-9dce-7a960eed242f" .
+
+bldg:hvac_zone_basketball_court_1 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:jesse-turner-center .
+
+bldg:hvac_zone_basketball_court_1_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_1/i.xbos.thermostat" ;
+    brickframe:uuid "34de4f8e-c09e-3f33-a946-b9cbc854ca43" .
+
+bldg:hvac_zone_basketball_court_1_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_1/i.xbos.thermostat" ;
+    brickframe:uuid "989648d1-03b6-3b61-854e-14bab5b052b0" .
+
+bldg:hvac_zone_basketball_court_1_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_1/i.xbos.thermostat" ;
+    brickframe:uuid "fc363186-0534-3523-af7a-d7a8b55ea53f" .
+
+bldg:hvac_zone_basketball_court_1_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_1/i.xbos.thermostat" ;
+    brickframe:uuid "0954761c-0cf5-3688-9922-41f4a130c132" .
+
+bldg:hvac_zone_basketball_court_1_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_1/i.xbos.thermostat" ;
+    brickframe:uuid "6e2b37db-2ac6-33e6-9b2e-998e3c3d526e" .
+
+bldg:hvac_zone_basketball_court_1_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_1/i.xbos.thermostat" ;
+    brickframe:uuid "4bf98459-da28-385c-bc26-77e5718d23a4" .
+
+bldg:hvac_zone_basketball_court_1_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_1/i.xbos.thermostat" ;
+    brickframe:uuid "9954edc4-53e5-3618-aaf1-c0d082acfc64" .
+
+bldg:hvac_zone_basketball_court_2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:jesse-turner-center .
+
+bldg:hvac_zone_basketball_court_2_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_2/i.xbos.thermostat" ;
+    brickframe:uuid "687d392b-0f6d-3be4-af3c-094617a8ddfd" .
+
+bldg:hvac_zone_basketball_court_2_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_2/i.xbos.thermostat" ;
+    brickframe:uuid "759a63a9-f468-388c-b1ee-ec4ce168fd07" .
+
+bldg:hvac_zone_basketball_court_2_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_2/i.xbos.thermostat" ;
+    brickframe:uuid "9f9801c2-f4e0-3f46-9357-80970af323c7" .
+
+bldg:hvac_zone_basketball_court_2_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_2/i.xbos.thermostat" ;
+    brickframe:uuid "b998a5c4-379c-3dd7-9cdd-5a26e604f8f4" .
+
+bldg:hvac_zone_basketball_court_2_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_2/i.xbos.thermostat" ;
+    brickframe:uuid "38aecd8c-62ec-36ef-9565-7388b3f15627" .
+
+bldg:hvac_zone_basketball_court_2_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_2/i.xbos.thermostat" ;
+    brickframe:uuid "9a0f9695-0c1e-3a2b-addd-8df027fbd47f" .
+
+bldg:hvac_zone_basketball_court_2_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_2/i.xbos.thermostat" ;
+    brickframe:uuid "f139d288-195a-3203-b0d8-f33790152a75" .
+
+bldg:hvac_zone_basketball_court_3 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:jesse-turner-center .
+
+bldg:hvac_zone_basketball_court_3_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_3/i.xbos.thermostat" ;
+    brickframe:uuid "8761ea05-0183-3fc4-bf22-573098339b41" .
+
+bldg:hvac_zone_basketball_court_3_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_3/i.xbos.thermostat" ;
+    brickframe:uuid "4724be12-c96e-3d07-a268-f54206a18379" .
+
+bldg:hvac_zone_basketball_court_3_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_3/i.xbos.thermostat" ;
+    brickframe:uuid "dd2f17c1-fb1d-3149-a7cc-8710aae26760" .
+
+bldg:hvac_zone_basketball_court_3_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_3/i.xbos.thermostat" ;
+    brickframe:uuid "ec88169d-d876-397d-a81a-c41a5efaf843" .
+
+bldg:hvac_zone_basketball_court_3_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_3/i.xbos.thermostat" ;
+    brickframe:uuid "713059f3-67ae-3eb6-979d-33e897e04363" .
+
+bldg:hvac_zone_basketball_court_3_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_3/i.xbos.thermostat" ;
+    brickframe:uuid "daf2f2a5-11cc-3937-a546-5a17ef2f7544" .
+
+bldg:hvac_zone_basketball_court_3_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_3/i.xbos.thermostat" ;
+    brickframe:uuid "dd741ea0-44aa-3cfc-b540-7a526d4efad0" .
+
+bldg:hvac_zone_basketball_court_4 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:jesse-turner-center .
+
+bldg:hvac_zone_basketball_court_4_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_4/i.xbos.thermostat" ;
+    brickframe:uuid "c96f3f40-d4d4-3059-9bd4-185d4774de30" .
+
+bldg:hvac_zone_basketball_court_4_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_4/i.xbos.thermostat" ;
+    brickframe:uuid "cc9f3778-f4a9-39a3-b5ba-fa1b9cb40e4b" .
+
+bldg:hvac_zone_basketball_court_4_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_4/i.xbos.thermostat" ;
+    brickframe:uuid "5985b3fe-a10e-3f15-b2da-bde1f96b1a88" .
+
+bldg:hvac_zone_basketball_court_4_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_4/i.xbos.thermostat" ;
+    brickframe:uuid "581e7a33-e8cf-3c1d-a361-924e10d8cf69" .
+
+bldg:hvac_zone_basketball_court_4_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_4/i.xbos.thermostat" ;
+    brickframe:uuid "8e2a74d8-1b82-30ef-8d8a-e7590976b416" .
+
+bldg:hvac_zone_basketball_court_4_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_4/i.xbos.thermostat" ;
+    brickframe:uuid "805103e7-8c39-397f-a5d4-23d78d0b6929" .
+
+bldg:hvac_zone_basketball_court_4_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_4/i.xbos.thermostat" ;
+    brickframe:uuid "bdbe0491-29c0-3a6a-9bc6-71c19ae30285" .
+
+bldg:hvac_zone_basketball_court_5 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:jesse-turner-center .
+
+bldg:hvac_zone_basketball_court_5_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_5/i.xbos.thermostat" ;
+    brickframe:uuid "b23380f8-b52e-39c4-b5b8-eb47e64e76fb" .
+
+bldg:hvac_zone_basketball_court_5_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_5/i.xbos.thermostat" ;
+    brickframe:uuid "8ff17920-ca58-3b81-bfd3-d834bc1300f2" .
+
+bldg:hvac_zone_basketball_court_5_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_5/i.xbos.thermostat" ;
+    brickframe:uuid "45e3a05a-3990-3278-bf30-c9b3184b8d13" .
+
+bldg:hvac_zone_basketball_court_5_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_5/i.xbos.thermostat" ;
+    brickframe:uuid "190d9795-1949-3efd-85a6-52f1e865884c" .
+
+bldg:hvac_zone_basketball_court_5_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_5/i.xbos.thermostat" ;
+    brickframe:uuid "ffc8a32d-f76e-33bf-85ee-ed6a89fa3f7e" .
+
+bldg:hvac_zone_basketball_court_5_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_5/i.xbos.thermostat" ;
+    brickframe:uuid "b0464182-b453-3b6c-8d75-0ff1fe3f6b2a" .
+
+bldg:hvac_zone_basketball_court_5_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_5/i.xbos.thermostat" ;
+    brickframe:uuid "e2b18ee2-c5a4-347b-8301-e488bf4b9483" .
+
+bldg:hvac_zone_basketball_court_6 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:jesse-turner-center .
+
+bldg:hvac_zone_basketball_court_6_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_6/i.xbos.thermostat" ;
+    brickframe:uuid "439b9147-fc67-33de-8701-8c6302378265" .
+
+bldg:hvac_zone_basketball_court_6_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_6/i.xbos.thermostat" ;
+    brickframe:uuid "a138fc18-c46f-300a-9411-3b2828967395" .
+
+bldg:hvac_zone_basketball_court_6_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_6/i.xbos.thermostat" ;
+    brickframe:uuid "0ef81967-9c11-37c4-b880-240f7056c57d" .
+
+bldg:hvac_zone_basketball_court_6_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_6/i.xbos.thermostat" ;
+    brickframe:uuid "81d09a1f-5891-361c-9e00-7d0de585b147" .
+
+bldg:hvac_zone_basketball_court_6_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_6/i.xbos.thermostat" ;
+    brickframe:uuid "eaa690bf-55e0-312f-b294-5116dca20240" .
+
+bldg:hvac_zone_basketball_court_6_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_6/i.xbos.thermostat" ;
+    brickframe:uuid "7e2d4b63-9daf-3758-a5dc-1fb69c5c3ba4" .
+
+bldg:hvac_zone_basketball_court_6_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Basketball_Court_6/i.xbos.thermostat" ;
+    brickframe:uuid "98f4dd90-bc1a-3f71-a2df-c2097855cbc4" .
+
+bldg:hvac_zone_class_131 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:jesse-turner-center .
+
+bldg:hvac_zone_class_131_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Class_131/i.xbos.thermostat" ;
+    brickframe:uuid "b2537b04-4cfe-36fd-9b5c-993f52bc09b7" .
+
+bldg:hvac_zone_class_131_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Class_131/i.xbos.thermostat" ;
+    brickframe:uuid "dac4c1e9-0efe-33e2-b061-ff7c8061775f" .
+
+bldg:hvac_zone_class_131_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Class_131/i.xbos.thermostat" ;
+    brickframe:uuid "abad2304-c5e0-3da6-a28f-242aecd570e3" .
+
+bldg:hvac_zone_class_131_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Class_131/i.xbos.thermostat" ;
+    brickframe:uuid "ef6450ba-c6a7-38bd-b4e2-663934ee061b" .
+
+bldg:hvac_zone_class_131_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Class_131/i.xbos.thermostat" ;
+    brickframe:uuid "1d9f18a2-71aa-3abf-a897-85dbb58d9517" .
+
+bldg:hvac_zone_class_131_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Class_131/i.xbos.thermostat" ;
+    brickframe:uuid "dad601e9-4295-3a56-b07a-3f5aa575715a" .
+
+bldg:hvac_zone_class_131_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Class_131/i.xbos.thermostat" ;
+    brickframe:uuid "334d65a3-9ec4-34ed-afcd-cfc32b96572b" .
+
+bldg:hvac_zone_class_132 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:jesse-turner-center .
+
+bldg:hvac_zone_class_132_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Class_132/i.xbos.thermostat" ;
+    brickframe:uuid "7c175c5a-93f6-3684-9d86-97d4b7688544" .
+
+bldg:hvac_zone_class_132_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Class_132/i.xbos.thermostat" ;
+    brickframe:uuid "d543e6a5-5609-3522-9799-b051f4eb31b0" .
+
+bldg:hvac_zone_class_132_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Class_132/i.xbos.thermostat" ;
+    brickframe:uuid "1cc441f1-94d5-3f23-9707-f3822ce28073" .
+
+bldg:hvac_zone_class_132_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Class_132/i.xbos.thermostat" ;
+    brickframe:uuid "ae28c4d5-9b36-36b1-950d-d05198ae78cd" .
+
+bldg:hvac_zone_class_132_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Class_132/i.xbos.thermostat" ;
+    brickframe:uuid "e5585c6b-8ee0-3a8b-837e-6c3eab9db234" .
+
+bldg:hvac_zone_class_132_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Class_132/i.xbos.thermostat" ;
+    brickframe:uuid "98693be1-0f1e-3f28-9903-07d97003ac95" .
+
+bldg:hvac_zone_class_132_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Class_132/i.xbos.thermostat" ;
+    brickframe:uuid "30bb2dbb-70e7-3aee-a244-c84d991f785d" .
+
+bldg:hvac_zone_control_desk a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:jesse-turner-center .
+
+bldg:hvac_zone_control_desk_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Control_Desk/i.xbos.thermostat" ;
+    brickframe:uuid "1cdeb7a4-a475-382e-8ebe-bf7b705827bc" .
+
+bldg:hvac_zone_control_desk_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Control_Desk/i.xbos.thermostat" ;
+    brickframe:uuid "21717f99-5424-3e44-a83a-bafa7c6d30a8" .
+
+bldg:hvac_zone_control_desk_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Control_Desk/i.xbos.thermostat" ;
+    brickframe:uuid "2b5ee192-9ecb-3cde-b90c-bcfc63202b14" .
+
+bldg:hvac_zone_control_desk_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Control_Desk/i.xbos.thermostat" ;
+    brickframe:uuid "998f03c4-b870-39b9-9276-8cc66399450b" .
+
+bldg:hvac_zone_control_desk_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Control_Desk/i.xbos.thermostat" ;
+    brickframe:uuid "8ed9eb54-c78e-3ba0-9607-3f15e2f77865" .
+
+bldg:hvac_zone_control_desk_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Control_Desk/i.xbos.thermostat" ;
+    brickframe:uuid "5906f026-1a20-35f3-a1d3-43dd040a283b" .
+
+bldg:hvac_zone_control_desk_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Control_Desk/i.xbos.thermostat" ;
+    brickframe:uuid "e2f766e0-4582-3276-9427-5e75acbd0691" .
+
+bldg:hvac_zone_dance_room_109 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:jesse-turner-center .
+
+bldg:hvac_zone_dance_room_109_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Dance_Room_109/i.xbos.thermostat" ;
+    brickframe:uuid "fb744c27-72d9-3823-b8c2-33844aff8c44" .
+
+bldg:hvac_zone_dance_room_109_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Dance_Room_109/i.xbos.thermostat" ;
+    brickframe:uuid "ca17b0b1-dcf1-33d6-beea-e0fae935fcab" .
+
+bldg:hvac_zone_dance_room_109_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Dance_Room_109/i.xbos.thermostat" ;
+    brickframe:uuid "e6962043-4cd2-3061-bdd2-3a4306f00b7f" .
+
+bldg:hvac_zone_dance_room_109_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Dance_Room_109/i.xbos.thermostat" ;
+    brickframe:uuid "32654c12-0d0d-3f35-974e-970943332c0e" .
+
+bldg:hvac_zone_dance_room_109_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Dance_Room_109/i.xbos.thermostat" ;
+    brickframe:uuid "12d9decd-5beb-304e-b801-6e4fe892878b" .
+
+bldg:hvac_zone_dance_room_109_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Dance_Room_109/i.xbos.thermostat" ;
+    brickframe:uuid "c1b75cdd-6167-3a3e-b906-7087632f63ef" .
+
+bldg:hvac_zone_dance_room_109_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Dance_Room_109/i.xbos.thermostat" ;
+    brickframe:uuid "83e63219-94c1-3bb8-8623-f1287f15622a" .
+
+bldg:hvac_zone_electrical_room123 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:jesse-turner-center .
+
+bldg:hvac_zone_electrical_room123_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Electrical_Room123/i.xbos.thermostat" ;
+    brickframe:uuid "c39e2be2-77a6-3fce-9f26-eb869691c5e6" .
+
+bldg:hvac_zone_electrical_room123_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Electrical_Room123/i.xbos.thermostat" ;
+    brickframe:uuid "3b39fd2d-e78a-3955-b0f6-00598ef3c529" .
+
+bldg:hvac_zone_electrical_room123_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Electrical_Room123/i.xbos.thermostat" ;
+    brickframe:uuid "071994c9-8b26-3e88-ada9-fe2299314b40" .
+
+bldg:hvac_zone_electrical_room123_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Electrical_Room123/i.xbos.thermostat" ;
+    brickframe:uuid "dc6590a4-71.0.2995-a5ea-830e87ae27ba" .
+
+bldg:hvac_zone_electrical_room123_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Electrical_Room123/i.xbos.thermostat" ;
+    brickframe:uuid "37248018-50ad-3943-a52c-06f1f07158a5" .
+
+bldg:hvac_zone_electrical_room123_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Electrical_Room123/i.xbos.thermostat" ;
+    brickframe:uuid "eec9a287-ec1b-30f5-a344-77c98e9727e2" .
+
+bldg:hvac_zone_electrical_room123_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Electrical_Room123/i.xbos.thermostat" ;
+    brickframe:uuid "d580e7e8-60bc-3ad4-9081-86d626df4008" .
+
+bldg:hvac_zone_fitness_room_138 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:jesse-turner-center .
+
+bldg:hvac_zone_fitness_room_138_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Fitness_Room_138/i.xbos.thermostat" ;
+    brickframe:uuid "a5644694-6982-339a-8954-29eb058906d4" .
+
+bldg:hvac_zone_fitness_room_138_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Fitness_Room_138/i.xbos.thermostat" ;
+    brickframe:uuid "5412c6db-ee20-361c-a741-8100e2843bb2" .
+
+bldg:hvac_zone_fitness_room_138_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Fitness_Room_138/i.xbos.thermostat" ;
+    brickframe:uuid "1ef5476e-e5d4-30b3-88bf-2b5065138676" .
+
+bldg:hvac_zone_fitness_room_138_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Fitness_Room_138/i.xbos.thermostat" ;
+    brickframe:uuid "5d06234d-ce34-3d54-819b-f3927d77e7f1" .
+
+bldg:hvac_zone_fitness_room_138_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Fitness_Room_138/i.xbos.thermostat" ;
+    brickframe:uuid "d7aca65d-c80b-311e-b147-39c0ef625326" .
+
+bldg:hvac_zone_fitness_room_138_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Fitness_Room_138/i.xbos.thermostat" ;
+    brickframe:uuid "d3d7bea1-bd28-31a1-841f-6c142836ac8e" .
+
+bldg:hvac_zone_fitness_room_138_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Fitness_Room_138/i.xbos.thermostat" ;
+    brickframe:uuid "52442f7f-519d-306b-b63b-5bc2077f0ff2" .
+
+bldg:hvac_zone_foyer_gallery a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:jesse-turner-center .
+
+bldg:hvac_zone_foyer_gallery_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Foyer_Gallery/i.xbos.thermostat" ;
+    brickframe:uuid "05a7ce25-0e4b-3526-ad29-484fb3ec2adc" .
+
+bldg:hvac_zone_foyer_gallery_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Foyer_Gallery/i.xbos.thermostat" ;
+    brickframe:uuid "2ceeedce-babe-38d6-abc4-29859e33ea0a" .
+
+bldg:hvac_zone_foyer_gallery_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Foyer_Gallery/i.xbos.thermostat" ;
+    brickframe:uuid "3bc2d2a8-496b-3568-9594-5725c5f93897" .
+
+bldg:hvac_zone_foyer_gallery_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Foyer_Gallery/i.xbos.thermostat" ;
+    brickframe:uuid "ac92efd4-b722-3ebb-873d-5406d2e6695d" .
+
+bldg:hvac_zone_foyer_gallery_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Foyer_Gallery/i.xbos.thermostat" ;
+    brickframe:uuid "ef1d3f3a-cc58-3dc0-8857-67750ba027ef" .
+
+bldg:hvac_zone_foyer_gallery_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Foyer_Gallery/i.xbos.thermostat" ;
+    brickframe:uuid "9a47db92-db5e-323e-b19c-2b1e34106bbd" .
+
+bldg:hvac_zone_foyer_gallery_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Foyer_Gallery/i.xbos.thermostat" ;
+    brickframe:uuid "e3957347-f471-30fd-92f6-16b9291e0ac0" .
+
+bldg:hvac_zone_front_entrance a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:jesse-turner-center .
+
+bldg:hvac_zone_front_entrance_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Front_Entrance/i.xbos.thermostat" ;
+    brickframe:uuid "02342c85-6c80-3cc7-97a5-fc49eaac721b" .
+
+bldg:hvac_zone_front_entrance_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Front_Entrance/i.xbos.thermostat" ;
+    brickframe:uuid "41e89830-01b3-372e-a383-6c3016131336" .
+
+bldg:hvac_zone_front_entrance_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Front_Entrance/i.xbos.thermostat" ;
+    brickframe:uuid "182ba600-f04a-3c1d-ba80-1ba4647d5f13" .
+
+bldg:hvac_zone_front_entrance_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Front_Entrance/i.xbos.thermostat" ;
+    brickframe:uuid "32e1ea47-8ed0-3c59-8364-fb16845039e7" .
+
+bldg:hvac_zone_front_entrance_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Front_Entrance/i.xbos.thermostat" ;
+    brickframe:uuid "1befdbfa-ecea-3c4e-89b8-44eb8f9417be" .
+
+bldg:hvac_zone_front_entrance_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Front_Entrance/i.xbos.thermostat" ;
+    brickframe:uuid "aecc3e65-b318-3fbd-9475-48ce989053ec" .
+
+bldg:hvac_zone_front_entrance_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Front_Entrance/i.xbos.thermostat" ;
+    brickframe:uuid "5d06c821-b38d-39c2-b2b9-1245fbbcb1c6" .
+
+bldg:hvac_zone_kitchen a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:jesse-turner-center .
+
+bldg:hvac_zone_kitchen_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Kitchen/i.xbos.thermostat" ;
+    brickframe:uuid "413921ac-b046-3fe0-8ed6-b1319f55ac76" .
+
+bldg:hvac_zone_kitchen_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Kitchen/i.xbos.thermostat" ;
+    brickframe:uuid "f39b5d6b-c3a9-37aa-979f-b12d1c118e69" .
+
+bldg:hvac_zone_kitchen_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Kitchen/i.xbos.thermostat" ;
+    brickframe:uuid "9bb4490b-2184-322f-b8fb-887d61e2ceb1" .
+
+bldg:hvac_zone_kitchen_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Kitchen/i.xbos.thermostat" ;
+    brickframe:uuid "4e7e317f-577a-32b6-991f-e3f63eea69a3" .
+
+bldg:hvac_zone_kitchen_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Kitchen/i.xbos.thermostat" ;
+    brickframe:uuid "8e7c94f5-08e3-3cd5-8bd2-1b52d4389925" .
+
+bldg:hvac_zone_kitchen_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Kitchen/i.xbos.thermostat" ;
+    brickframe:uuid "9aaf7634-7075-32ad-a978-13ab2fbb2dd2" .
+
+bldg:hvac_zone_kitchen_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Kitchen/i.xbos.thermostat" ;
+    brickframe:uuid "d9182c0b-f9b5-3abf-ac8f-4859283309b3" .
+
+bldg:hvac_zone_lobby a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:jesse-turner-center .
+
+bldg:hvac_zone_lobby_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Lobby/i.xbos.thermostat" ;
+    brickframe:uuid "011b1317-cdf5-34ab-bcce-ffa654780861" .
+
+bldg:hvac_zone_lobby_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Lobby/i.xbos.thermostat" ;
+    brickframe:uuid "b05a5851-3707-33b0-80af-a6e73f7aae01" .
+
+bldg:hvac_zone_lobby_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Lobby/i.xbos.thermostat" ;
+    brickframe:uuid "dab17eb1-ffa9-30ea-b8ee-37e5a8d5eb3a" .
+
+bldg:hvac_zone_lobby_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Lobby/i.xbos.thermostat" ;
+    brickframe:uuid "1a201d34-5560-38c7-86fc-c499a1b0ae72" .
+
+bldg:hvac_zone_lobby_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Lobby/i.xbos.thermostat" ;
+    brickframe:uuid "a5450365-9f29-33ad-ac13-a7a66e20de06" .
+
+bldg:hvac_zone_lobby_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Lobby/i.xbos.thermostat" ;
+    brickframe:uuid "47e1c391-5ff9-3b68-9b2c-72c027e025e0" .
+
+bldg:hvac_zone_lobby_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Lobby/i.xbos.thermostat" ;
+    brickframe:uuid "37a0c7f1-cfb0-3c17-91e9-d48e05301a07" .
+
+bldg:hvac_zone_meeting_room_122 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:jesse-turner-center .
+
+bldg:hvac_zone_meeting_room_122_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Meeting_Room_122/i.xbos.thermostat" ;
+    brickframe:uuid "595e1c9d-2c2e-3728-9448-b02dbe0b8770" .
+
+bldg:hvac_zone_meeting_room_122_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Meeting_Room_122/i.xbos.thermostat" ;
+    brickframe:uuid "6fb91345-8094-3111-a8f2-4dcc4a481edf" .
+
+bldg:hvac_zone_meeting_room_122_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Meeting_Room_122/i.xbos.thermostat" ;
+    brickframe:uuid "2366d779-0c75-3bfc-a05a-30a799975cfc" .
+
+bldg:hvac_zone_meeting_room_122_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Meeting_Room_122/i.xbos.thermostat" ;
+    brickframe:uuid "1a182e82-3469-37fc-966e-a0587e783cc2" .
+
+bldg:hvac_zone_meeting_room_122_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Meeting_Room_122/i.xbos.thermostat" ;
+    brickframe:uuid "1b040085-f87f-34eb-9740-b5a4e085af84" .
+
+bldg:hvac_zone_meeting_room_122_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Meeting_Room_122/i.xbos.thermostat" ;
+    brickframe:uuid "ad783ef5-395d-3fbf-a44b-34874dc39ade" .
+
+bldg:hvac_zone_meeting_room_122_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Meeting_Room_122/i.xbos.thermostat" ;
+    brickframe:uuid "12db46bc-727a-35ce-b5f5-67667832dc86" .
+
+bldg:hvac_zone_multi_purpose_147 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:jesse-turner-center .
+
+bldg:hvac_zone_multi_purpose_147_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Multi_Purpose_147/i.xbos.thermostat" ;
+    brickframe:uuid "ffd2c8d9-48cc-34d7-a194-bd2299a5d169" .
+
+bldg:hvac_zone_multi_purpose_147_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Multi_Purpose_147/i.xbos.thermostat" ;
+    brickframe:uuid "224bd23b-0fa8-3932-97c6-1a9ea1b88191" .
+
+bldg:hvac_zone_multi_purpose_147_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Multi_Purpose_147/i.xbos.thermostat" ;
+    brickframe:uuid "e91c295a-e233-37be-a251-ae8178e4f0c5" .
+
+bldg:hvac_zone_multi_purpose_147_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Multi_Purpose_147/i.xbos.thermostat" ;
+    brickframe:uuid "dfa19fa3-5444-3f02-ba85-41991bc7b92a" .
+
+bldg:hvac_zone_multi_purpose_147_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Multi_Purpose_147/i.xbos.thermostat" ;
+    brickframe:uuid "23ebcc70-ad1e-301c-b2fe-ef24a50ecce8" .
+
+bldg:hvac_zone_multi_purpose_147_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Multi_Purpose_147/i.xbos.thermostat" ;
+    brickframe:uuid "96f347b2-c446-3ff0-9343-55d25005ef2f" .
+
+bldg:hvac_zone_multi_purpose_147_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Multi_Purpose_147/i.xbos.thermostat" ;
+    brickframe:uuid "f0fb0dd9-1ae1-351d-a4b7-7814d4851b58" .
+
+bldg:hvac_zone_office_room_148 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:jesse-turner-center .
+
+bldg:hvac_zone_office_room_148_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Office_Room_148/i.xbos.thermostat" ;
+    brickframe:uuid "3c21c75b-6e06-34b2-8d50-c93b82aa024a" .
+
+bldg:hvac_zone_office_room_148_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Office_Room_148/i.xbos.thermostat" ;
+    brickframe:uuid "e9978b56-f08b-3788-8941-48afe69c1dd4" .
+
+bldg:hvac_zone_office_room_148_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Office_Room_148/i.xbos.thermostat" ;
+    brickframe:uuid "a6f81ad7-2f09-3c9f-94a6-d955aad0b7e3" .
+
+bldg:hvac_zone_office_room_148_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Office_Room_148/i.xbos.thermostat" ;
+    brickframe:uuid "36a1c7df-ab1f-3ee8-8cfe-bc6fcbef3538" .
+
+bldg:hvac_zone_office_room_148_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Office_Room_148/i.xbos.thermostat" ;
+    brickframe:uuid "99cf86f2-eefd-3d31-b288-0f9f7e3c2b9e" .
+
+bldg:hvac_zone_office_room_148_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Office_Room_148/i.xbos.thermostat" ;
+    brickframe:uuid "e653df15-9b85-33d6-9b92-8f3a40266927" .
+
+bldg:hvac_zone_office_room_148_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Office_Room_148/i.xbos.thermostat" ;
+    brickframe:uuid "b59df922-8563-34cd-98bf-e3a11b469c87" .
+
+bldg:hvac_zone_resource_center a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:jesse-turner-center .
+
+bldg:hvac_zone_resource_center_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Resource_Center/i.xbos.thermostat" ;
+    brickframe:uuid "fb668268-4d64-3db0-85b9-31e906227d1f" .
+
+bldg:hvac_zone_resource_center_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Resource_Center/i.xbos.thermostat" ;
+    brickframe:uuid "d340bacb-d56e-3e15-8896-7fa0f8bd683e" .
+
+bldg:hvac_zone_resource_center_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Resource_Center/i.xbos.thermostat" ;
+    brickframe:uuid "2798a1e9-c13a-3b7a-8373-7dd19876451f" .
+
+bldg:hvac_zone_resource_center_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Resource_Center/i.xbos.thermostat" ;
+    brickframe:uuid "a8a92dd4-b003-39f6-a195-f42bac2cfe51" .
+
+bldg:hvac_zone_resource_center_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Resource_Center/i.xbos.thermostat" ;
+    brickframe:uuid "9762df1d-d7f7-37ee-91b9-ce3cf19e6fb0" .
+
+bldg:hvac_zone_resource_center_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Resource_Center/i.xbos.thermostat" ;
+    brickframe:uuid "2fbf592b-fe14-3eb6-9cab-1a1aa6115c9a" .
+
+bldg:hvac_zone_resource_center_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:jesse-turner-center ;
+    brickframe:uri "jesse-turner-center/devices/s.pelican/Resource_Center/i.xbos.thermostat" ;
+    brickframe:uuid "6b1d6617-ad8a-35a7-a086-2123e7e942e2" .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Weather_Cloud_Coverage_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Weather_Cloud_Height_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Weather_Temperature_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+bldg:jesse-turner-center a brick_v_1_0_2:Site ;
+    brickframe:Country "US" ;
+    brickframe:NumFloors "2" ;
+    brickframe:PrimaryFunction "Community Center" ;
+    brickframe:Timezone "America/Los_Angeles" .
+

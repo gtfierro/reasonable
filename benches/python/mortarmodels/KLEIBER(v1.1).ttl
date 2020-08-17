@@ -1,0 +1,159 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/KLEIBER#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:AHU01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:KLEIBER ;
+    brick1:hasPoint bldg:KLEIBER.AHU.AHU01.CCV,
+        bldg:KLEIBER.AHU.AHU01.Cooling_Valve_Output,
+        bldg:KLEIBER.AHU.AHU01.Heating_Valve_Output,
+        bldg:KLEIBER.AHU.AHU01.Mode,
+        bldg:KLEIBER.AHU.AHU01.Outside_Air_Temp,
+        bldg:KLEIBER.AHU.AHU01.Outside_Air_Temp_Virtual,
+        bldg:KLEIBER.AHU.AHU01.Return_Air_Temp,
+        bldg:KLEIBER.AHU.AHU01.Supply_Air_Temp,
+        bldg:KLEIBER.AHU.AHU01.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:KLEIBER.AHU.AHU01.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:KLEIBER ;
+    brickframe:pointname "KLEIBER.AHU.AHU01.CCV" ;
+    brickframe:uuid "cdd72ee7-99d8-3955-aa22-d410fef7a9b2" .
+
+bldg:KLEIBER.AHU.AHU01.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:KLEIBER ;
+    brickframe:pointname "KLEIBER.AHU.AHU01.Cooling Valve Output" ;
+    brickframe:uuid "4faf37b8-b6a7-3008-8ea0-08274b11ce01" .
+
+bldg:KLEIBER.AHU.AHU01.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:KLEIBER ;
+    brickframe:pointname "KLEIBER.AHU.AHU01.Heating Valve Output" ;
+    brickframe:uuid "80970725-f7cc-3c1d-9413-9bde99358347" .
+
+bldg:KLEIBER.AHU.AHU01.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "KLEIBER.AHU.AHU01.Mode" ;
+    brickframe:uuid "792b7dc7-a985-3f9c-a525-b2af107c306e" .
+
+bldg:KLEIBER.AHU.AHU01.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:KLEIBER ;
+    brickframe:pointname "KLEIBER.AHU.AHU01.Outside Air Temp" ;
+    brickframe:uuid "1cfb84e4-3c99-35a7-a25e-48918cb1eba8" .
+
+bldg:KLEIBER.AHU.AHU01.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:KLEIBER ;
+    brickframe:pointname "KLEIBER.AHU.AHU01.Outside Air Temp Virtual" ;
+    brickframe:uuid "16cb1f2e-c31c-32a4-8dd3-baddaca7b7ae" .
+
+bldg:KLEIBER.AHU.AHU01.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:KLEIBER ;
+    brickframe:pointname "KLEIBER.AHU.AHU01.Return Air Temp" ;
+    brickframe:uuid "f806d9b2-d60f-3434-822f-09d8145cd94e" .
+
+bldg:KLEIBER.AHU.AHU01.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:KLEIBER ;
+    brickframe:pointname "KLEIBER.AHU.AHU01.Supply Air Temp" ;
+    brickframe:uuid "0c7f7e7c-0bfa-3adf-a9e7-9c0a95db16b4" .
+
+bldg:KLEIBER.AHU.AHU01.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:KLEIBER ;
+    brickframe:pointname "KLEIBER.AHU.AHU01.Supply Air Temp Setpoint" ;
+    brickframe:uuid "28f98e65-577d-3fa7-ab0c-c99e96339304" .
+
+bldg:KLEIBER.CHW.Building_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:KLEIBER ;
+    brickframe:pointname "KLEIBER.CHW.Building Chilled Water Return Temp" ;
+    brickframe:uuid "29b73e4b-85cd-3a82-a58f-e040b72fb5a6" .
+
+bldg:KLEIBER.CHW.Building_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:KLEIBER ;
+    brickframe:pointname "KLEIBER.CHW.Building Chilled Water Supply Temp" ;
+    brickframe:uuid "5451566d-2ee7-3e92-b3c7-77a7e7da398c" .
+
+bldg:KLEIBER.CHW.Loop_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:KLEIBER ;
+    brickframe:pointname "KLEIBER.CHW.Loop Chilled Water Return Temp" ;
+    brickframe:uuid "4789c84d-874d-3878-a673-93c84f4a0365" .
+
+bldg:KLEIBER.CHW.Loop_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:KLEIBER ;
+    brickframe:pointname "KLEIBER.CHW.Loop Chilled Water Supply Temp" ;
+    brickframe:uuid "91a26552-b595-3e90-9cf1-15ec3940bd36" .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:KLEIBER ;
+    brick1:hasPoint bldg:KLEIBER.CHW.Building_Chilled_Water_Return_Temp,
+        bldg:KLEIBER.CHW.Building_Chilled_Water_Supply_Temp,
+        bldg:KLEIBER.CHW.Loop_Chilled_Water_Return_Temp,
+        bldg:KLEIBER.CHW.Loop_Chilled_Water_Supply_Temp .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:KLEIBER a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "5011" ;
+    brickframe:Country "US" .
+

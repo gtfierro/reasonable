@@ -1,0 +1,190 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/PHSL#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:AHU01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:PHSL ;
+    brick1:hasPoint bldg:PHSL.AHU.AHU01.Cooling_Valve_Output,
+        bldg:PHSL.AHU.AHU01.Heating_Valve_Output,
+        bldg:PHSL.AHU.AHU01.Mixed_Air_Temp,
+        bldg:PHSL.AHU.AHU01.Mode,
+        bldg:PHSL.AHU.AHU01.Outside_Air_Temp,
+        bldg:PHSL.AHU.AHU01.Outside_Air_Temp_Virtual,
+        bldg:PHSL.AHU.AHU01.Return_Air_Temp,
+        bldg:PHSL.AHU.AHU01.Supply_Air_Temp,
+        bldg:PHSL.AHU.AHU01.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:Physics_ChilledWater_Demand_kBtu a brick_v_1_0_2:Electric_Meter ;
+    brickframe:pointname "Physics_ChilledWater_Demand_kBtu" ;
+    brickframe:uuid "a38a7f66-7f94-305c-810a-48c5d119ae24" ;
+    brick1:isPointOf bldg:chiller .
+
+bldg:Physics_Electricity_Demand_kBtu a brick_v_1_0_2:Building_Electric_Meter ;
+    brickframe:hasSite bldg:PHSL ;
+    brickframe:pointname "Physics_Electricity_Demand_kBtu" ;
+    brickframe:uuid "3f0b445b-2670-3861-acd7-5e41d7571786" .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:PHSL.AHU.AHU01.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:PHSL ;
+    brickframe:pointname "PHSL.AHU.AHU01.Cooling Valve Output" ;
+    brickframe:uuid "8bc74702-5b51-3bbc-8233-9deec697e080" .
+
+bldg:PHSL.AHU.AHU01.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:PHSL ;
+    brickframe:pointname "PHSL.AHU.AHU01.Heating Valve Output" ;
+    brickframe:uuid "99fd18d4-ff36-38b1-a8b2-5526a4d8316e" .
+
+bldg:PHSL.AHU.AHU01.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:PHSL ;
+    brickframe:pointname "PHSL.AHU.AHU01.Mixed Air Temp" ;
+    brickframe:uuid "8c579af2-7f7a-3cf6-a4e0-258973bd3273" .
+
+bldg:PHSL.AHU.AHU01.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "PHSL.AHU.AHU01.Mode" ;
+    brickframe:uuid "5d685ca0-e41b-3823-a89a-d2b2b85b40d3" .
+
+bldg:PHSL.AHU.AHU01.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:PHSL ;
+    brickframe:pointname "PHSL.AHU.AHU01.Outside Air Temp" ;
+    brickframe:uuid "5c6ad63e-9ce2-3fd7-9a64-af163f8e7210" .
+
+bldg:PHSL.AHU.AHU01.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:PHSL ;
+    brickframe:pointname "PHSL.AHU.AHU01.Outside Air Temp Virtual" ;
+    brickframe:uuid "3a466bc9-f24c-38cd-9778-a06838d61aa6" .
+
+bldg:PHSL.AHU.AHU01.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:PHSL ;
+    brickframe:pointname "PHSL.AHU.AHU01.Return Air Temp" ;
+    brickframe:uuid "603ff85f-e027-3c60-a46a-93f767507b67" .
+
+bldg:PHSL.AHU.AHU01.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:PHSL ;
+    brickframe:pointname "PHSL.AHU.AHU01.Supply Air Temp" ;
+    brickframe:uuid "9ead3681-3cb2-363b-93c0-f6b10c8a824b" .
+
+bldg:PHSL.AHU.AHU01.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:PHSL ;
+    brickframe:pointname "PHSL.AHU.AHU01.Supply Air Temp Setpoint" ;
+    brickframe:uuid "cc77e666-099b-3621-8225-e7fc1c607de9" .
+
+bldg:PHSL.CHW.Building_Chilled_Water_Flow a brick_v_1_0_2:Chilled_Water_Flow_Sensor ;
+    brickframe:hasSite bldg:PHSL ;
+    brickframe:pointname "PHSL.CHW.Building Chilled Water Flow" ;
+    brickframe:uuid "f63cb755-e318-3a11-8279-b7712775cff4" .
+
+bldg:PHSL.CHW.ECONOMIZER a brick1:Damper_Position_Command ;
+    brickframe:hasSite bldg:PHSL ;
+    brickframe:pointname "PHSL.CHW.ECONOMIZER" ;
+    brickframe:uuid "2d912d12-ab8e-3212-8eb1-ddaa04c93623" .
+
+bldg:PHSL.CHW.Loop_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:PHSL ;
+    brickframe:pointname "PHSL.CHW.Loop Chilled Water Return Temp" ;
+    brickframe:uuid "0991eb82-1779-30a3-a5f9-5ba305ed2b55" .
+
+bldg:PHSL.CHW.Loop_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:PHSL ;
+    brickframe:pointname "PHSL.CHW.Loop Chilled Water Supply Temp" ;
+    brickframe:uuid "37bb2366-83fc-3569-9e33-e74d44610fec" .
+
+bldg:PHSL.CHW.Pump1_SPEED a brick_v_1_0_2:Speed_Status ;
+    brickframe:pointname "PHSL.CHW.Pump1_SPEED" ;
+    brickframe:uuid "8f03b1cd-af79-39aa-9bca-d8d9839ac034" .
+
+<http://buildsys.org/ontologies/PHSL#PHSL.CHW.Pump1_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:PHSL ;
+    brickframe:pointname "PHSL.CHW.Pump1_Start/Stop" ;
+    brickframe:uuid "34f8d79a-3b22-3fed-b9bd-d3786b475631" .
+
+bldg:PHSL.CHW.Pump2_SPEED a brick_v_1_0_2:Speed_Status ;
+    brickframe:pointname "PHSL.CHW.Pump2_SPEED" ;
+    brickframe:uuid "9797ee79-4086-3926-814f-6e813dd225b2" .
+
+<http://buildsys.org/ontologies/PHSL#PHSL.CHW.Pump2_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:PHSL ;
+    brickframe:pointname "PHSL.CHW.Pump2_Start/Stop" ;
+    brickframe:uuid "0b67bb5f-6dd1-3657-8604-e41674772075" .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:PHSL ;
+    brick1:hasPoint bldg:PHSL.CHW.Building_Chilled_Water_Flow,
+        bldg:PHSL.CHW.ECONOMIZER,
+        bldg:PHSL.CHW.Loop_Chilled_Water_Return_Temp,
+        bldg:PHSL.CHW.Loop_Chilled_Water_Supply_Temp,
+        bldg:PHSL.CHW.Pump1_SPEED,
+        <http://buildsys.org/ontologies/PHSL#PHSL.CHW.Pump1_Start/Stop>,
+        bldg:PHSL.CHW.Pump2_SPEED,
+        <http://buildsys.org/ontologies/PHSL#PHSL.CHW.Pump2_Start/Stop> .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:PHSL a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "108184" ;
+    brickframe:Country "US" .
+

@@ -1,0 +1,1325 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://xbos.io/ontologies/orinda-community-center#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:Level_-1 a brick1:Floor ;
+    rdf:label "Level -1" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:hasPart bldg:Room_150,
+        bldg:Room_154 .
+
+bldg:Level_0 a brick1:Floor ;
+    rdf:label "Level 0" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:hasPart bldg:Room_101,
+        bldg:Room_102,
+        bldg:Room_103,
+        bldg:Room_104,
+        bldg:Room_106,
+        bldg:Room_109,
+        bldg:Room_110,
+        bldg:Room_112,
+        bldg:Room_113,
+        bldg:Room_114,
+        bldg:Room_115,
+        bldg:Room_116,
+        bldg:Room_120,
+        bldg:Room_121,
+        bldg:Room_122,
+        bldg:Room_123,
+        bldg:Room_124,
+        bldg:Room_125,
+        bldg:Room_126,
+        bldg:Room_127,
+        bldg:Room_128,
+        bldg:Room_129,
+        bldg:Room_130,
+        bldg:Room_131,
+        bldg:Room_132,
+        bldg:Room_133,
+        bldg:Room_135,
+        bldg:Room_136,
+        bldg:Room_136A,
+        bldg:Room_137,
+        bldg:Room_137A,
+        bldg:Room_140A,
+        bldg:Room_151,
+        bldg:Room_east,
+        bldg:Room_west .
+
+<http://xbos.io/ontologies/orinda-community-center#green_button_meter_RL1Je18qnseJGWLkf295T2D+H8U=> a brick_v_1_0_2:Green_Button_Meter ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uuid "5d4f80c4-e4ef-5d9c-a6e7-0028b0bf24ec" .
+
+bldg:hamilton_010480_air_rh a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasLocation bldg:Room_102 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPointOf bldg:Room_102 .
+
+bldg:hamilton_010480_air_temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasLocation bldg:Room_102 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPointOf bldg:Room_102 .
+
+bldg:hamilton_010480_lux a brick_v_1_0_2:Illumination_Sensor ;
+    brickframe:hasLocation bldg:Room_102 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPointOf bldg:Room_102 .
+
+bldg:hamilton_010480_presence a brick1:Occupancy_Sensor ;
+    brickframe:hasLocation bldg:Room_102 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPointOf bldg:Room_102 .
+
+bldg:hamilton_010481_air_rh a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasLocation bldg:Room_101 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPointOf bldg:Room_101 .
+
+bldg:hamilton_010481_air_temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasLocation bldg:Room_101 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPointOf bldg:Room_101 .
+
+bldg:hamilton_010481_lux a brick_v_1_0_2:Illumination_Sensor ;
+    brickframe:hasLocation bldg:Room_101 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPointOf bldg:Room_101 .
+
+bldg:hamilton_010481_presence a brick1:Occupancy_Sensor ;
+    brickframe:hasLocation bldg:Room_101 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPointOf bldg:Room_101 .
+
+bldg:hamilton_01048b_air_rh a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasLocation bldg:Room_121 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPointOf bldg:Room_121 .
+
+bldg:hamilton_01048b_air_temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasLocation bldg:Room_121 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPointOf bldg:Room_121 .
+
+bldg:hamilton_01048b_lux a brick_v_1_0_2:Illumination_Sensor ;
+    brickframe:hasLocation bldg:Room_121 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPointOf bldg:Room_121 .
+
+bldg:hamilton_01048b_presence a brick1:Occupancy_Sensor ;
+    brickframe:hasLocation bldg:Room_121 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPointOf bldg:Room_121 .
+
+bldg:hamilton_01048c_air_rh a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasLocation bldg:Room_137 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPointOf bldg:Room_137 .
+
+bldg:hamilton_01048c_air_temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasLocation bldg:Room_137 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPointOf bldg:Room_137 .
+
+bldg:hamilton_01048c_lux a brick_v_1_0_2:Illumination_Sensor ;
+    brickframe:hasLocation bldg:Room_137 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPointOf bldg:Room_137 .
+
+bldg:hamilton_01048c_presence a brick1:Occupancy_Sensor ;
+    brickframe:hasLocation bldg:Room_137 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPointOf bldg:Room_137 .
+
+bldg:hamilton_01048d_air_rh a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasLocation bldg:Room_121 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPointOf bldg:Room_121 .
+
+bldg:hamilton_01048d_air_temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasLocation bldg:Room_121 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPointOf bldg:Room_121 .
+
+bldg:hamilton_01048d_lux a brick_v_1_0_2:Illumination_Sensor ;
+    brickframe:hasLocation bldg:Room_121 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPointOf bldg:Room_121 .
+
+bldg:hamilton_01048d_presence a brick1:Occupancy_Sensor ;
+    brickframe:hasLocation bldg:Room_121 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPointOf bldg:Room_121 .
+
+bldg:hamilton_01048f_air_rh a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasLocation bldg:Room_136 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPointOf bldg:Room_136 .
+
+bldg:hamilton_01048f_air_temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasLocation bldg:Room_136 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPointOf bldg:Room_136 .
+
+bldg:hamilton_01048f_lux a brick_v_1_0_2:Illumination_Sensor ;
+    brickframe:hasLocation bldg:Room_136 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPointOf bldg:Room_136 .
+
+bldg:hamilton_01048f_presence a brick1:Occupancy_Sensor ;
+    brickframe:hasLocation bldg:Room_136 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPointOf bldg:Room_136 .
+
+bldg:hvac_zone_ac_1_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_116 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-1/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_ac_1 ;
+    brick1:hasPoint bldg:hvac_zone_ac_1_tstat_cooling_setpoint,
+        bldg:hvac_zone_ac_1_tstat_fan,
+        bldg:hvac_zone_ac_1_tstat_heating_setpoint,
+        bldg:hvac_zone_ac_1_tstat_mode,
+        bldg:hvac_zone_ac_1_tstat_override,
+        bldg:hvac_zone_ac_1_tstat_state,
+        bldg:hvac_zone_ac_1_tstat_temperature .
+
+bldg:hvac_zone_ac_2_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_115 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-2/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_ac_2 ;
+    brick1:hasPoint bldg:hvac_zone_ac_2_tstat_cooling_setpoint,
+        bldg:hvac_zone_ac_2_tstat_fan,
+        bldg:hvac_zone_ac_2_tstat_heating_setpoint,
+        bldg:hvac_zone_ac_2_tstat_mode,
+        bldg:hvac_zone_ac_2_tstat_override,
+        bldg:hvac_zone_ac_2_tstat_state,
+        bldg:hvac_zone_ac_2_tstat_temperature .
+
+bldg:hvac_zone_ac_3_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_120 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-3/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_ac_3 ;
+    brick1:hasPoint bldg:hvac_zone_ac_3_tstat_cooling_setpoint,
+        bldg:hvac_zone_ac_3_tstat_fan,
+        bldg:hvac_zone_ac_3_tstat_heating_setpoint,
+        bldg:hvac_zone_ac_3_tstat_mode,
+        bldg:hvac_zone_ac_3_tstat_override,
+        bldg:hvac_zone_ac_3_tstat_state,
+        bldg:hvac_zone_ac_3_tstat_temperature .
+
+bldg:hvac_zone_ac_4_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_120 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-4/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_ac_4 ;
+    brick1:hasPoint bldg:hvac_zone_ac_4_tstat_cooling_setpoint,
+        bldg:hvac_zone_ac_4_tstat_fan,
+        bldg:hvac_zone_ac_4_tstat_heating_setpoint,
+        bldg:hvac_zone_ac_4_tstat_mode,
+        bldg:hvac_zone_ac_4_tstat_override,
+        bldg:hvac_zone_ac_4_tstat_state,
+        bldg:hvac_zone_ac_4_tstat_temperature .
+
+bldg:hvac_zone_ac_5_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_131 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-5/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_ac_5 ;
+    brick1:hasPoint bldg:hvac_zone_ac_5_tstat_cooling_setpoint,
+        bldg:hvac_zone_ac_5_tstat_fan,
+        bldg:hvac_zone_ac_5_tstat_heating_setpoint,
+        bldg:hvac_zone_ac_5_tstat_mode,
+        bldg:hvac_zone_ac_5_tstat_override,
+        bldg:hvac_zone_ac_5_tstat_state,
+        bldg:hvac_zone_ac_5_tstat_temperature .
+
+bldg:hvac_zone_ac_6_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_121 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-6/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_ac_6 ;
+    brick1:hasPoint bldg:hvac_zone_ac_6_tstat_cooling_setpoint,
+        bldg:hvac_zone_ac_6_tstat_fan,
+        bldg:hvac_zone_ac_6_tstat_heating_setpoint,
+        bldg:hvac_zone_ac_6_tstat_mode,
+        bldg:hvac_zone_ac_6_tstat_override,
+        bldg:hvac_zone_ac_6_tstat_state,
+        bldg:hvac_zone_ac_6_tstat_temperature .
+
+bldg:hvac_zone_ac_7_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_126 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-7/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_ac_7 ;
+    brick1:hasPoint bldg:hvac_zone_ac_7_tstat_cooling_setpoint,
+        bldg:hvac_zone_ac_7_tstat_fan,
+        bldg:hvac_zone_ac_7_tstat_heating_setpoint,
+        bldg:hvac_zone_ac_7_tstat_mode,
+        bldg:hvac_zone_ac_7_tstat_override,
+        bldg:hvac_zone_ac_7_tstat_state,
+        bldg:hvac_zone_ac_7_tstat_temperature .
+
+bldg:hvac_zone_ac_8_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_121 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-8/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_ac_8 ;
+    brick1:hasPoint bldg:hvac_zone_ac_8_tstat_cooling_setpoint,
+        bldg:hvac_zone_ac_8_tstat_fan,
+        bldg:hvac_zone_ac_8_tstat_heating_setpoint,
+        bldg:hvac_zone_ac_8_tstat_mode,
+        bldg:hvac_zone_ac_8_tstat_override,
+        bldg:hvac_zone_ac_8_tstat_state,
+        bldg:hvac_zone_ac_8_tstat_temperature .
+
+bldg:hvac_zone_default a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:hvac_zone_default_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_109 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:controls bldg:RTU_hvac_zone_default .
+
+bldg:hvac_zone_front_office_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_123 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/FRONT_OFFICE/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_front_office ;
+    brick1:hasPoint bldg:hvac_zone_front_office_tstat_cooling_setpoint,
+        bldg:hvac_zone_front_office_tstat_fan,
+        bldg:hvac_zone_front_office_tstat_heating_setpoint,
+        bldg:hvac_zone_front_office_tstat_mode,
+        bldg:hvac_zone_front_office_tstat_override,
+        bldg:hvac_zone_front_office_tstat_state,
+        bldg:hvac_zone_front_office_tstat_temperature .
+
+bldg:hvac_zone_kinder_gym_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_151 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/Kinder_GYM/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_kinder_gym ;
+    brick1:hasPoint bldg:hvac_zone_kinder_gym_tstat_cooling_setpoint,
+        bldg:hvac_zone_kinder_gym_tstat_fan,
+        bldg:hvac_zone_kinder_gym_tstat_heating_setpoint,
+        bldg:hvac_zone_kinder_gym_tstat_mode,
+        bldg:hvac_zone_kinder_gym_tstat_override,
+        bldg:hvac_zone_kinder_gym_tstat_state,
+        bldg:hvac_zone_kinder_gym_tstat_temperature .
+
+bldg:hvac_zone_rm1_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_101 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM1/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_rm1 ;
+    brick1:hasPoint bldg:hvac_zone_rm1_tstat_cooling_setpoint,
+        bldg:hvac_zone_rm1_tstat_fan,
+        bldg:hvac_zone_rm1_tstat_heating_setpoint,
+        bldg:hvac_zone_rm1_tstat_mode,
+        bldg:hvac_zone_rm1_tstat_override,
+        bldg:hvac_zone_rm1_tstat_state,
+        bldg:hvac_zone_rm1_tstat_temperature .
+
+bldg:hvac_zone_rm2_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_102 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM2/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_rm2 ;
+    brick1:hasPoint bldg:hvac_zone_rm2_tstat_cooling_setpoint,
+        bldg:hvac_zone_rm2_tstat_fan,
+        bldg:hvac_zone_rm2_tstat_heating_setpoint,
+        bldg:hvac_zone_rm2_tstat_mode,
+        bldg:hvac_zone_rm2_tstat_override,
+        bldg:hvac_zone_rm2_tstat_state,
+        bldg:hvac_zone_rm2_tstat_temperature .
+
+bldg:hvac_zone_rm6_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_136 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM6/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_rm6 ;
+    brick1:hasPoint bldg:hvac_zone_rm6_tstat_cooling_setpoint,
+        bldg:hvac_zone_rm6_tstat_fan,
+        bldg:hvac_zone_rm6_tstat_heating_setpoint,
+        bldg:hvac_zone_rm6_tstat_mode,
+        bldg:hvac_zone_rm6_tstat_override,
+        bldg:hvac_zone_rm6_tstat_state,
+        bldg:hvac_zone_rm6_tstat_temperature .
+
+bldg:hvac_zone_rm7_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_137 ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM7/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_rm7 ;
+    brick1:hasPoint bldg:hvac_zone_rm7_tstat_cooling_setpoint,
+        bldg:hvac_zone_rm7_tstat_fan,
+        bldg:hvac_zone_rm7_tstat_heating_setpoint,
+        bldg:hvac_zone_rm7_tstat_mode,
+        bldg:hvac_zone_rm7_tstat_override,
+        bldg:hvac_zone_rm7_tstat_state,
+        bldg:hvac_zone_rm7_tstat_temperature .
+
+bldg:meter_0xd8d5b9000000a175 a brick_v_1_0_2:Building_Electric_Meter ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/s.eagle/0xd8d5b9000000a175/i.meter" ;
+    brickframe:uuid "3f078a74-b290-3f88-b90e-46167cb003c6" .
+
+bldg:weather_D3835_cloud_coverage a brick_v_1_0_2:Weather_Cloud_Coverage_Sensor ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uuid "a4ab589e-abb8-3a59-89e2-4199e24275bf" .
+
+bldg:weather_D3835_cloud_height a brick_v_1_0_2:Weather_Cloud_Height_Sensor ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uuid "f0467090-675c-3f38-ae4b-378faf96bd52" .
+
+bldg:weather_D3835_relative_humidity a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uuid "83d57496-5496-36b2-bca5-0bef068254b1" .
+
+bldg:weather_D3835_temperature a brick_v_1_0_2:Weather_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uuid "fd7bbbf6-5f28-321a-99db-def8e84bd4af" .
+
+bldg:weather_D3835_wind_direction a brick1:Wind_Direction_Sensor ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uuid "7b273833-03a0-3aa2-89ad-950335c08966" .
+
+bldg:weather_D3835_wind_speed a brick1:Wind_Speed_Sensor ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uuid "6f4b8e27-1efc-3210-92f9-cc77bad2af7e" .
+
+bldg:weather_LTRC1_cloud_coverage a brick_v_1_0_2:Weather_Cloud_Coverage_Sensor ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uuid "7476b973-9943-30b3-b7d4-3efbd475f0c2" .
+
+bldg:weather_LTRC1_cloud_height a brick_v_1_0_2:Weather_Cloud_Height_Sensor ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uuid "e49fc62d-b8c7-332d-a1e9-005dd8e6c551" .
+
+bldg:weather_LTRC1_relative_humidity a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uuid "ed004826-1c9d-379f-9829-8f8e6b72a216" .
+
+bldg:weather_LTRC1_temperature a brick_v_1_0_2:Weather_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uuid "6a0c663b-7083-3a66-838b-866110f26402" .
+
+bldg:weather_LTRC1_wind_direction a brick1:Wind_Direction_Sensor ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uuid "a382a6d4-9636-3213-8eab-27180fde9ab7" .
+
+bldg:weather_LTRC1_wind_speed a brick1:Wind_Speed_Sensor ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uuid "5bcc561a-d493-31d2-9eca-70a9f489cbbe" .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:HVAC_Zone_ac_1 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:HVAC_Zone_ac_2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:HVAC_Zone_ac_3 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:HVAC_Zone_ac_4 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:HVAC_Zone_ac_6 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:HVAC_Zone_ac_7 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:HVAC_Zone_ac_8 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:HVAC_Zone_front_office a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:HVAC_Zone_kinder_gym a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:HVAC_Zone_rm1 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:HVAC_Zone_rm2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:RTU_hvac_zone_ac_1 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:feeds bldg:hvac_zone_ac_1 .
+
+bldg:RTU_hvac_zone_ac_2 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:feeds bldg:hvac_zone_ac_2 .
+
+bldg:RTU_hvac_zone_ac_3 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:feeds bldg:hvac_zone_ac_3 .
+
+bldg:RTU_hvac_zone_ac_4 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:feeds bldg:hvac_zone_ac_4 .
+
+bldg:RTU_hvac_zone_ac_5 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:feeds bldg:hvac_zone_ac_5 .
+
+bldg:RTU_hvac_zone_ac_6 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:feeds bldg:hvac_zone_ac_6 .
+
+bldg:RTU_hvac_zone_ac_7 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:feeds bldg:hvac_zone_ac_7 .
+
+bldg:RTU_hvac_zone_ac_8 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:feeds bldg:hvac_zone_ac_8 .
+
+bldg:RTU_hvac_zone_front_office a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:feeds bldg:hvac_zone_front_office .
+
+bldg:RTU_hvac_zone_kinder_gym a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:feeds bldg:hvac_zone_kinder_gym .
+
+bldg:RTU_hvac_zone_rm1 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:feeds bldg:hvac_zone_rm1 .
+
+bldg:RTU_hvac_zone_rm2 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:feeds bldg:hvac_zone_rm2 .
+
+bldg:RTU_hvac_zone_rm6 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:feeds bldg:hvac_zone_rm6 .
+
+bldg:RTU_hvac_zone_rm7 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:feeds bldg:hvac_zone_rm7 .
+
+bldg:Room_103 a brick1:Room ;
+    rdf:label "Hall" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_104 a brick1:Room ;
+    rdf:label "Accessible Men's" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_106 a brick1:Room ;
+    rdf:label "Office" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_110 a brick1:Room ;
+    rdf:label "Hall" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_112 a brick1:Room ;
+    rdf:label "Kitchen" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_113 a brick1:Room ;
+    rdf:label "Classroom 4" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_114 a brick1:Room ;
+    rdf:label "Hall" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_122 a brick1:Room ;
+    rdf:label "Entry" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_124 a brick1:Room ;
+    rdf:label "Vending" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_125 a brick1:Room ;
+    rdf:label "Admin Storage" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_127 a brick1:Room ;
+    rdf:label "Hall" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_128 a brick1:Room ;
+    rdf:label "Jan." ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_129 a brick1:Room ;
+    rdf:label "Bath" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_ac_5 .
+
+bldg:Room_130 a brick1:Room ;
+    rdf:label "Kiln Storage" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_ac_5 .
+
+bldg:Room_132 a brick1:Room ;
+    rdf:label "Hall" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_133 a brick1:Room ;
+    rdf:label "Accessible Women's" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_135 a brick1:Room ;
+    rdf:label "Hall" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_136A a brick1:Room ;
+    rdf:label "Utility" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_rm6 .
+
+bldg:Room_137A a brick1:Room ;
+    rdf:label "Utility" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_rm7 .
+
+bldg:Room_140A a brick1:Room ;
+    rdf:label "Hall" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_150 a brick1:Room ;
+    rdf:label "Classroom 3" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_154 a brick1:Room ;
+    rdf:label "Classroom 8" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_east a brick1:Room ;
+    rdf:label "North",
+        "South" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_outside .
+
+bldg:Room_west a brick1:Room ;
+    rdf:label "North",
+        "South" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_outside .
+
+bldg:hvac_zone_ac_1 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:hvac_zone_ac_1_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-1/i.xbos.thermostat" ;
+    brickframe:uuid "81ec4818-81f5-3a48-ad4d-92b2354c7ef4" .
+
+bldg:hvac_zone_ac_1_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-1/i.xbos.thermostat" ;
+    brickframe:uuid "4c450679-4a12-3820-adb2-db833541cb0a" .
+
+bldg:hvac_zone_ac_1_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-1/i.xbos.thermostat" ;
+    brickframe:uuid "86a66c02-5389-38c2-96bd-fbb6ede9ae39" .
+
+bldg:hvac_zone_ac_1_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-1/i.xbos.thermostat" ;
+    brickframe:uuid "1e76394a-46c6-394a-80f3-e6ad83ff8848" .
+
+bldg:hvac_zone_ac_1_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-1/i.xbos.thermostat" ;
+    brickframe:uuid "ed537d3f-7710-35ea-a329-8cf453980a91" .
+
+bldg:hvac_zone_ac_1_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-1/i.xbos.thermostat" ;
+    brickframe:uuid "e8ce9436-b56d-3500-98b6-f82be035f75c" .
+
+bldg:hvac_zone_ac_1_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-1/i.xbos.thermostat" ;
+    brickframe:uuid "141f64da-8ddb-303e-a5ae-5b64deede926" .
+
+bldg:hvac_zone_ac_2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:hvac_zone_ac_2_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-2/i.xbos.thermostat" ;
+    brickframe:uuid "c75b14be-81.0.2c3a-8031-79b6a20d7554" .
+
+bldg:hvac_zone_ac_2_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-2/i.xbos.thermostat" ;
+    brickframe:uuid "f8d9b532-4c6e-35a4-b537-e8e0fe2c0a18" .
+
+bldg:hvac_zone_ac_2_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-2/i.xbos.thermostat" ;
+    brickframe:uuid "2c85c6e9-c6d6-37ef-ba03-648fb578fd15" .
+
+bldg:hvac_zone_ac_2_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-2/i.xbos.thermostat" ;
+    brickframe:uuid "58fe38d2-9d2f-3446-95bc-2b69a1f96305" .
+
+bldg:hvac_zone_ac_2_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-2/i.xbos.thermostat" ;
+    brickframe:uuid "29b1de59-9046-381a-bb98-fa2867d52aeb" .
+
+bldg:hvac_zone_ac_2_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-2/i.xbos.thermostat" ;
+    brickframe:uuid "8b04ac4c-3a98-340e-ab1b-723c1a50fcd6" .
+
+bldg:hvac_zone_ac_2_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-2/i.xbos.thermostat" ;
+    brickframe:uuid "9a4ee90a-741a-37d7-b458-5e0fcabcab5c" .
+
+bldg:hvac_zone_ac_3 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:hvac_zone_ac_3_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-3/i.xbos.thermostat" ;
+    brickframe:uuid "05f28eac-87e9-3652-b9c1-fb0fef3ef733" .
+
+bldg:hvac_zone_ac_3_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-3/i.xbos.thermostat" ;
+    brickframe:uuid "312f1f2f-ebcf-35e1-a686-1ce137687930" .
+
+bldg:hvac_zone_ac_3_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-3/i.xbos.thermostat" ;
+    brickframe:uuid "dac994c7-7c1c-319b-ba00-b7fa5b3f39da" .
+
+bldg:hvac_zone_ac_3_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-3/i.xbos.thermostat" ;
+    brickframe:uuid "5991fadc-fd61-387b-b65a-ab0c116fa9d0" .
+
+bldg:hvac_zone_ac_3_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-3/i.xbos.thermostat" ;
+    brickframe:uuid "c9315f94-887a-3dbe-bcc1-928dba6bfce5" .
+
+bldg:hvac_zone_ac_3_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-3/i.xbos.thermostat" ;
+    brickframe:uuid "d0b601a7-b58c-3d4e-8006-af5010a023da" .
+
+bldg:hvac_zone_ac_3_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-3/i.xbos.thermostat" ;
+    brickframe:uuid "c3debb21-9d79-3f1f-9b99-f2c2955cddb1" .
+
+bldg:hvac_zone_ac_4 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:hvac_zone_ac_4_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-4/i.xbos.thermostat" ;
+    brickframe:uuid "62004757-a7b0-38dc-b627-a008a2bc4d59" .
+
+bldg:hvac_zone_ac_4_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-4/i.xbos.thermostat" ;
+    brickframe:uuid "b5df8ec9-6dca-377d-b8b9-0ac465374867" .
+
+bldg:hvac_zone_ac_4_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-4/i.xbos.thermostat" ;
+    brickframe:uuid "a9e3b6ae-3908-3935-bbe2-f7938cab1c8e" .
+
+bldg:hvac_zone_ac_4_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-4/i.xbos.thermostat" ;
+    brickframe:uuid "671c3822-5d55-3387-8349-40f023729bb8" .
+
+bldg:hvac_zone_ac_4_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-4/i.xbos.thermostat" ;
+    brickframe:uuid "dd0f4cb9-f5e4-3186-8356-46224c692493" .
+
+bldg:hvac_zone_ac_4_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-4/i.xbos.thermostat" ;
+    brickframe:uuid "7fb308fc-46d0-34ee-834f-8ecfb4c65d97" .
+
+bldg:hvac_zone_ac_4_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-4/i.xbos.thermostat" ;
+    brickframe:uuid "736dfa10-9f78-3f21-87bf-d60feac1b596" .
+
+bldg:hvac_zone_ac_5 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:hvac_zone_ac_5_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-5/i.xbos.thermostat" ;
+    brickframe:uuid "af96c171-65f6-3d32-965e-8f828bb2e546" .
+
+bldg:hvac_zone_ac_5_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-5/i.xbos.thermostat" ;
+    brickframe:uuid "4036f066-8179-3e43-bce1-c1b277328aeb" .
+
+bldg:hvac_zone_ac_5_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-5/i.xbos.thermostat" ;
+    brickframe:uuid "02d344e7-ecc2-304a-8043-02124033dbd2" .
+
+bldg:hvac_zone_ac_5_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-5/i.xbos.thermostat" ;
+    brickframe:uuid "0ce26158-300b-306b-b60d-5baf1e85033e" .
+
+bldg:hvac_zone_ac_5_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-5/i.xbos.thermostat" ;
+    brickframe:uuid "16fbe176-7500-3098-8033-d1b283580ea5" .
+
+bldg:hvac_zone_ac_5_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-5/i.xbos.thermostat" ;
+    brickframe:uuid "44704139-a5fe-3cb9-b3f6-8083ef8ff786" .
+
+bldg:hvac_zone_ac_5_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-5/i.xbos.thermostat" ;
+    brickframe:uuid "a12bfb05-427e-3f7f-81ed-7c870b8439b9" .
+
+bldg:hvac_zone_ac_6 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:hvac_zone_ac_6_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-6/i.xbos.thermostat" ;
+    brickframe:uuid "f7744d31-5a3b-3210-b6e5-ec91a8068299" .
+
+bldg:hvac_zone_ac_6_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-6/i.xbos.thermostat" ;
+    brickframe:uuid "48aed002-6724-3eb2-9e59-322470c9ae06" .
+
+bldg:hvac_zone_ac_6_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-6/i.xbos.thermostat" ;
+    brickframe:uuid "3d803593-935f-36e7-976f-7152d928f384" .
+
+bldg:hvac_zone_ac_6_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-6/i.xbos.thermostat" ;
+    brickframe:uuid "2ab58c80-d457-348b-9288-0a085620fa49" .
+
+bldg:hvac_zone_ac_6_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-6/i.xbos.thermostat" ;
+    brickframe:uuid "aeba4269-76a7-3a5a-b5ca-b2bef018bc63" .
+
+bldg:hvac_zone_ac_6_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-6/i.xbos.thermostat" ;
+    brickframe:uuid "8cab0b44-49cc-3946-aecd-3828aae68a58" .
+
+bldg:hvac_zone_ac_6_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-6/i.xbos.thermostat" ;
+    brickframe:uuid "b1954065-f00a-336a-8928-9d2ebb632274" .
+
+bldg:hvac_zone_ac_7 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:hvac_zone_ac_7_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-7/i.xbos.thermostat" ;
+    brickframe:uuid "de45fe86-85b7-3cae-a3c2-a79f85ee5c7a" .
+
+bldg:hvac_zone_ac_7_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-7/i.xbos.thermostat" ;
+    brickframe:uuid "afea8ee4-a06f-3bbb-8db1-1ef734f2f5a9" .
+
+bldg:hvac_zone_ac_7_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-7/i.xbos.thermostat" ;
+    brickframe:uuid "dd7492f7-2e66-35db-8ab2-647c29ac107d" .
+
+bldg:hvac_zone_ac_7_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-7/i.xbos.thermostat" ;
+    brickframe:uuid "d1e5d06e-0ab7-30d3-a096-d2caa8ceb51e" .
+
+bldg:hvac_zone_ac_7_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-7/i.xbos.thermostat" ;
+    brickframe:uuid "4fe6a72f-9ee3-352a-bc05-4adcf4f1dac5" .
+
+bldg:hvac_zone_ac_7_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-7/i.xbos.thermostat" ;
+    brickframe:uuid "460eb7ce-acb9-35f6-be63-4f6a7a7f1f63" .
+
+bldg:hvac_zone_ac_7_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-7/i.xbos.thermostat" ;
+    brickframe:uuid "96bc7231-28fb-389a-9c5d-074afbf14515" .
+
+bldg:hvac_zone_ac_8 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:hvac_zone_ac_8_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-8/i.xbos.thermostat" ;
+    brickframe:uuid "8588254b-feaf-3574-8f99-e978cc6e3e31" .
+
+bldg:hvac_zone_ac_8_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-8/i.xbos.thermostat" ;
+    brickframe:uuid "7fbdff8a-a36b-316b-a622-ab8ba212f256" .
+
+bldg:hvac_zone_ac_8_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-8/i.xbos.thermostat" ;
+    brickframe:uuid "ded86715-8741-310a-afb5-4ae5feec48ab" .
+
+bldg:hvac_zone_ac_8_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-8/i.xbos.thermostat" ;
+    brickframe:uuid "faee6040-d18e-3aff-b1db-a4401e491564" .
+
+bldg:hvac_zone_ac_8_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-8/i.xbos.thermostat" ;
+    brickframe:uuid "078f0e27-e8b9-3d09-91a6-6115c54dd4ba" .
+
+bldg:hvac_zone_ac_8_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-8/i.xbos.thermostat" ;
+    brickframe:uuid "b5b62e75-8519-3948-83a4-ed64633343ff" .
+
+bldg:hvac_zone_ac_8_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/AC-8/i.xbos.thermostat" ;
+    brickframe:uuid "62496f66-463f-30f2-8626-6d2f58168c8d" .
+
+bldg:hvac_zone_front_office a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:hvac_zone_front_office_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/FRONT_OFFICE/i.xbos.thermostat" ;
+    brickframe:uuid "271b4b94-861c-34f1-920f-90e415ae6b3c" .
+
+bldg:hvac_zone_front_office_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/FRONT_OFFICE/i.xbos.thermostat" ;
+    brickframe:uuid "b16ee5d5-bfe0-36b9-8e27-e92437c94715" .
+
+bldg:hvac_zone_front_office_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/FRONT_OFFICE/i.xbos.thermostat" ;
+    brickframe:uuid "526e50d8-a4e1-31ae-b9bf-0ebf064e2f6b" .
+
+bldg:hvac_zone_front_office_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/FRONT_OFFICE/i.xbos.thermostat" ;
+    brickframe:uuid "288ff92a-140b-396a-9a3f-b9b9c0b55c64" .
+
+bldg:hvac_zone_front_office_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/FRONT_OFFICE/i.xbos.thermostat" ;
+    brickframe:uuid "1f4e3cf2-e2b5-3069-9a78-a84526aab29f" .
+
+bldg:hvac_zone_front_office_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/FRONT_OFFICE/i.xbos.thermostat" ;
+    brickframe:uuid "4ae5614c-3671-355a-a0fe-5b786c3b101a" .
+
+bldg:hvac_zone_front_office_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/FRONT_OFFICE/i.xbos.thermostat" ;
+    brickframe:uuid "d1d38ca0-4e16-3c8c-9979-47b87f6bd181" .
+
+bldg:hvac_zone_kinder_gym a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:hvac_zone_kinder_gym_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/Kinder_GYM/i.xbos.thermostat" ;
+    brickframe:uuid "b61f508c-c825-3782-88b6-64d021b6b5bd" .
+
+bldg:hvac_zone_kinder_gym_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/Kinder_GYM/i.xbos.thermostat" ;
+    brickframe:uuid "06ec42fe-60ce-30ee-ac9f-dac21769f2c4" .
+
+bldg:hvac_zone_kinder_gym_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/Kinder_GYM/i.xbos.thermostat" ;
+    brickframe:uuid "4d7fe5b6-44dd-3c07-918f-6a289cd106d3" .
+
+bldg:hvac_zone_kinder_gym_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/Kinder_GYM/i.xbos.thermostat" ;
+    brickframe:uuid "f47896d8-90a1-3082-93cd-6bfc30d71488" .
+
+bldg:hvac_zone_kinder_gym_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/Kinder_GYM/i.xbos.thermostat" ;
+    brickframe:uuid "e2a091bb-a512-3929-8372-5218d74162a0" .
+
+bldg:hvac_zone_kinder_gym_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/Kinder_GYM/i.xbos.thermostat" ;
+    brickframe:uuid "c76bcbbe-44d8-3e87-beee-c44ae896c2c0" .
+
+bldg:hvac_zone_kinder_gym_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/Kinder_GYM/i.xbos.thermostat" ;
+    brickframe:uuid "d8bee2bc-f185-331e-9cec-390f23c46a05" .
+
+bldg:hvac_zone_rm1 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:hvac_zone_rm1_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM1/i.xbos.thermostat" ;
+    brickframe:uuid "82e18950-8456-331f-be5e-158d44b86da1" .
+
+bldg:hvac_zone_rm1_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM1/i.xbos.thermostat" ;
+    brickframe:uuid "e3b419b4-8ff8-3913-a950-ebdca5d4ac19" .
+
+bldg:hvac_zone_rm1_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM1/i.xbos.thermostat" ;
+    brickframe:uuid "7cf4220e-215d-3ead-8aeb-9b9edf70e792" .
+
+bldg:hvac_zone_rm1_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM1/i.xbos.thermostat" ;
+    brickframe:uuid "b1c53fed-0d97-35fd-8a8c-6d1d377b7e4d" .
+
+bldg:hvac_zone_rm1_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM1/i.xbos.thermostat" ;
+    brickframe:uuid "5bc83983-948a-3c88-bc58-b33299e33d8b" .
+
+bldg:hvac_zone_rm1_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM1/i.xbos.thermostat" ;
+    brickframe:uuid "adfb536c-4655-32c8-9b02-d557f3a9e0f7" .
+
+bldg:hvac_zone_rm1_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM1/i.xbos.thermostat" ;
+    brickframe:uuid "b24d6845-f232-37ca-bdbb-644c1b4edf82" .
+
+bldg:hvac_zone_rm2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:hvac_zone_rm2_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM2/i.xbos.thermostat" ;
+    brickframe:uuid "dd7114dd-4ed9-3f34-a393-700c162211d3" .
+
+bldg:hvac_zone_rm2_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM2/i.xbos.thermostat" ;
+    brickframe:uuid "8554591b-2709-350f-8a32-ca88363fe866" .
+
+bldg:hvac_zone_rm2_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM2/i.xbos.thermostat" ;
+    brickframe:uuid "1f3dfbc0-fb8a-30ee-8fbf-e9d23e84752c" .
+
+bldg:hvac_zone_rm2_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM2/i.xbos.thermostat" ;
+    brickframe:uuid "2f57e064-160f-3950-b86f-81315ccd03ad" .
+
+bldg:hvac_zone_rm2_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM2/i.xbos.thermostat" ;
+    brickframe:uuid "636294a3-b84a-3ae4-a022-24ce6411091e" .
+
+bldg:hvac_zone_rm2_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM2/i.xbos.thermostat" ;
+    brickframe:uuid "4f5cd6b0-e049-3f2b-8dea-66195a36cb4d" .
+
+bldg:hvac_zone_rm2_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM2/i.xbos.thermostat" ;
+    brickframe:uuid "7e65be9f-0f54-3ada-9576-d5142c9a3470" .
+
+bldg:hvac_zone_rm6 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:hvac_zone_rm6_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM6/i.xbos.thermostat" ;
+    brickframe:uuid "4cd68263-00e4-3e98-ba6c-389870e5f95b" .
+
+bldg:hvac_zone_rm6_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM6/i.xbos.thermostat" ;
+    brickframe:uuid "93653460-3b5d-372f-be53-0982a6eae40c" .
+
+bldg:hvac_zone_rm6_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM6/i.xbos.thermostat" ;
+    brickframe:uuid "70a60c57-8ed1-35a0-9143-7fc0d072a2a6" .
+
+bldg:hvac_zone_rm6_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM6/i.xbos.thermostat" ;
+    brickframe:uuid "91966844-7c64-3c13-be52-f41cfccd064e" .
+
+bldg:hvac_zone_rm6_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM6/i.xbos.thermostat" ;
+    brickframe:uuid "7d41fec5-d3c7-38a7-b4eb-4eab65751c1a" .
+
+bldg:hvac_zone_rm6_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM6/i.xbos.thermostat" ;
+    brickframe:uuid "299e1271-fd99-3659-9d33-248c5209a31f" .
+
+bldg:hvac_zone_rm6_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM6/i.xbos.thermostat" ;
+    brickframe:uuid "6be58c6e-13e5-3c42-a65f-fb6e92adce69" .
+
+bldg:hvac_zone_rm7 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:hvac_zone_rm7_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM7/i.xbos.thermostat" ;
+    brickframe:uuid "cda13b7d-af05-3429-b653-e4cb02c786dc" .
+
+bldg:hvac_zone_rm7_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM7/i.xbos.thermostat" ;
+    brickframe:uuid "e617b6fa-a92c-3302-92f0-fdcba2c30ab9" .
+
+bldg:hvac_zone_rm7_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM7/i.xbos.thermostat" ;
+    brickframe:uuid "7192ba5d-490a-3614-b4c3-307d80d209e3" .
+
+bldg:hvac_zone_rm7_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM7/i.xbos.thermostat" ;
+    brickframe:uuid "7e3b2806-9589-3885-8c20-782f4e584747" .
+
+bldg:hvac_zone_rm7_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM7/i.xbos.thermostat" ;
+    brickframe:uuid "8c6dca3c-b239-38eb-bbf6-fbf3aeb310ce" .
+
+bldg:hvac_zone_rm7_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM7/i.xbos.thermostat" ;
+    brickframe:uuid "e02e0cb4-e751-3ce4-8c65-f433583d7b18" .
+
+bldg:hvac_zone_rm7_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brickframe:uri "orinda-community-center/devices/s.pelican/RM7/i.xbos.thermostat" ;
+    brickframe:uuid "bc71dbb8-6c4d-3223-a4be-006aa16c6768" .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+bldg:HVAC_Zone_outside a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:HVAC_Zone_rm6 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:HVAC_Zone_rm7 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:Room_109 a brick1:Room ;
+    rdf:label "Office" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_115 a brick1:Room ;
+    rdf:label "O.Y.A." ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_ac_2 .
+
+bldg:Room_116 a brick1:Room ;
+    rdf:label "Maintenance" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_ac_1 .
+
+bldg:Room_123 a brick1:Room ;
+    rdf:label "Office" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_front_office .
+
+bldg:Room_126 a brick1:Room ;
+    rdf:label "Classroom 5" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_ac_7 .
+
+bldg:Room_131 a brick1:Room ;
+    rdf:label "Art Classrrom" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_ac_5 .
+
+bldg:Room_151 a brick1:Room ;
+    rdf:label "Kinder Gym" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_kinder_gym .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Weather_Cloud_Coverage_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Weather_Cloud_Height_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Weather_Temperature_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+bldg:HVAC_Zone_ac_5 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:Room_120 a brick1:Room ;
+    rdf:label "Divisible Mixed-Use" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_ac_3,
+        bldg:HVAC_Zone_ac_4 .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+bldg:Room_101 a brick1:Room ;
+    rdf:label "Classroom 1" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_rm1 .
+
+bldg:Room_102 a brick1:Room ;
+    rdf:label "Classroom 2" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_rm2 .
+
+bldg:Room_136 a brick1:Room ;
+    rdf:label "Classroom 6" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_rm6 .
+
+bldg:Room_137 a brick1:Room ;
+    rdf:label "Classroom 7" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_rm7 .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+bldg:HVAC_Zone_default a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:orinda-community-center .
+
+bldg:Room_121 a brick1:Room ;
+    rdf:label "Inner Court" ;
+    brickframe:hasSite bldg:orinda-community-center ;
+    brick1:isPartOf bldg:HVAC_Zone_ac_6,
+        bldg:HVAC_Zone_ac_8 .
+
+bldg:orinda-community-center a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "20488" ;
+    brickframe:Country "US" ;
+    brickframe:NumFloors "2" ;
+    brickframe:PrimaryFunction "Community Center" ;
+    brickframe:Timezone "America/Los_Angeles" .
+

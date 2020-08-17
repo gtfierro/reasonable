@@ -1,0 +1,2429 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/Bainer#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:AC01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AC01.CCV,
+        bldg:Bainer.AHU.AC01.Mode,
+        bldg:Bainer.AHU.AC01.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC02 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AC02.CCV,
+        bldg:Bainer.AHU.AC02.Mode,
+        bldg:Bainer.AHU.AC02.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC03 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AC03.CCV,
+        bldg:Bainer.AHU.AC03.Mode,
+        bldg:Bainer.AHU.AC03.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC04 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AC04.CCV,
+        bldg:Bainer.AHU.AC04.Mode,
+        bldg:Bainer.AHU.AC04.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC05 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AC05.CCV,
+        bldg:Bainer.AHU.AC05.Mode,
+        bldg:Bainer.AHU.AC05.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC06 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AC06.CCV,
+        bldg:Bainer.AHU.AC06.Mode,
+        bldg:Bainer.AHU.AC06.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC07 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AC07.CCV,
+        bldg:Bainer.AHU.AC07.Mode,
+        bldg:Bainer.AHU.AC07.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC08 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AC08.CCV,
+        bldg:Bainer.AHU.AC08.Mode,
+        bldg:Bainer.AHU.AC08.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC09 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AC09.CCV,
+        bldg:Bainer.AHU.AC09.Mode,
+        bldg:Bainer.AHU.AC09.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC10 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AC10.CCV,
+        bldg:Bainer.AHU.AC10.Mode,
+        bldg:Bainer.AHU.AC10.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC11 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AC11.CCV,
+        bldg:Bainer.AHU.AC11.Mode,
+        bldg:Bainer.AHU.AC11.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC12 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AC12.CCV,
+        bldg:Bainer.AHU.AC12.Mode,
+        bldg:Bainer.AHU.AC12.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC13 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AC13.CCV,
+        bldg:Bainer.AHU.AC13.Mode,
+        bldg:Bainer.AHU.AC13.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC14 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AC14.CCV,
+        bldg:Bainer.AHU.AC14.Mode,
+        bldg:Bainer.AHU.AC14.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC15 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AC15.CCV,
+        bldg:Bainer.AHU.AC15.Mode,
+        bldg:Bainer.AHU.AC15.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU01.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU01.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU01.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU02 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU02.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU02.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU02.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU03 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU03.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU03.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU03.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU04 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU04.CCV,
+        bldg:Bainer.AHU.AHU04.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU04.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU04.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU05 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU05.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU05.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU05.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU06 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU06.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU06.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU06.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU07 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU07.CCV,
+        bldg:Bainer.AHU.AHU07.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU07.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU07.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU08 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU08.CCV,
+        bldg:Bainer.AHU.AHU08.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU08.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU08.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU09 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU09.CCV,
+        bldg:Bainer.AHU.AHU09.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU09.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU09.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU10 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU10.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU10.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU10.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU11 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU11.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU11.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU11.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU12 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU12.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU12.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU12.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU13 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU13.CCV,
+        bldg:Bainer.AHU.AHU13.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU13.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU13.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU14 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU14.CCV,
+        bldg:Bainer.AHU.AHU14.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU14.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU14.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU15 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU15.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU15.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU15.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU16 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU16.CCV,
+        bldg:Bainer.AHU.AHU16.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU16.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU16.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU17 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU17.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU17.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU17.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU18 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU18.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU18.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU18.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU19 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU19.CCV,
+        bldg:Bainer.AHU.AHU19.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU19.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU19.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU20 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU20.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU20.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU20.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU21 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU21.CCV,
+        bldg:Bainer.AHU.AHU21.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU21.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU21.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU22 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU22.CCV,
+        bldg:Bainer.AHU.AHU22.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU22.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU22.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU23 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU23.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU23.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU23.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU24 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU24.CCV,
+        bldg:Bainer.AHU.AHU24.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU24.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU25 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU25.CCV,
+        bldg:Bainer.AHU.AHU25.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU25.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU25.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU26 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU26.CCV,
+        bldg:Bainer.AHU.AHU26.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU26.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU26.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU27 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU27.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU27.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU27.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU28 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU28.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU28.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU28.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU29 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU29.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU29.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU29.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU30 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU30.CCV,
+        bldg:Bainer.AHU.AHU30.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU30.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU30.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU31 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU31.CCV,
+        bldg:Bainer.AHU.AHU31.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU31.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU31.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU32 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU32.CCV,
+        bldg:Bainer.AHU.AHU32.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU32.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU32.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU33 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU33.CCV,
+        bldg:Bainer.AHU.AHU33.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU33.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU34 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU34.CCV,
+        bldg:Bainer.AHU.AHU34.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU34.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU34.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU35 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU35.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU35.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU35.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU36 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU36.CCV,
+        bldg:Bainer.AHU.AHU36.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU36.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU36.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU37 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU37.CCV,
+        bldg:Bainer.AHU.AHU37.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU37.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU37.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU38 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU38.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU38.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU38.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU39 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU39.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU39.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU39.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU40 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU40.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU40.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU40.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU41 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU41.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU41.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU41.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU42 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU42.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU42.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU42.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU43 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU43.CCV,
+        bldg:Bainer.AHU.AHU43.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU43.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU43.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU44 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU44.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU44.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU44.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU45 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU45.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU45.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU45.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU46 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU46.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU46.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU46.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU47 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU47.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU47.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU48 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU48.CCV,
+        bldg:Bainer.AHU.AHU48.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU48.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU49 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU49.CCV,
+        bldg:Bainer.AHU.AHU49.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU49.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU50 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU50.CCV,
+        bldg:Bainer.AHU.AHU50.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU50.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU51 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU51.CCV,
+        bldg:Bainer.AHU.AHU51.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU51.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU52 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU52.CCV,
+        bldg:Bainer.AHU.AHU52.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU52.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU52.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU53 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU53.CCV,
+        bldg:Bainer.AHU.AHU53.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU53.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU53.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU54 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU54.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU54.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU54.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU55 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU55.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU55.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU55.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU56 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU56.CCV,
+        bldg:Bainer.AHU.AHU56.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU56.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU56.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU57 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU57.CCV,
+        bldg:Bainer.AHU.AHU57.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU57.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU57.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU58 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU58.CCV,
+        bldg:Bainer.AHU.AHU58.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU58.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU58.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU59 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU59.CCV,
+        bldg:Bainer.AHU.AHU59.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU59.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU59.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU60 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU60.CCV,
+        bldg:Bainer.AHU.AHU60.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU60.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU60.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU61 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU61.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU61.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU61.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU62 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU62.CCV,
+        bldg:Bainer.AHU.AHU62.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU62.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU62.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU63 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU63.CCV,
+        bldg:Bainer.AHU.AHU63.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU63.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU63.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU64 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU64.CCV,
+        bldg:Bainer.AHU.AHU64.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU64.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU64.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU65 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU65.CCV,
+        bldg:Bainer.AHU.AHU65.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU65.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU66 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU66.CCV,
+        bldg:Bainer.AHU.AHU66.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU66.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU66.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU67 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU67.CCV,
+        bldg:Bainer.AHU.AHU67.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU67.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU68 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU68.CCV,
+        bldg:Bainer.AHU.AHU68.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU68.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU68.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU69 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU69.CCV,
+        bldg:Bainer.AHU.AHU69.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU69.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU69.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU70 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU70.CCV,
+        bldg:Bainer.AHU.AHU70.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU70.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU70.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU71 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU71.CCV,
+        bldg:Bainer.AHU.AHU71.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU71.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU71.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU72 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU72.CCV,
+        bldg:Bainer.AHU.AHU72.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU72.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU72.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU73 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU73.CCV,
+        bldg:Bainer.AHU.AHU73.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU73.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU73.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU74 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.AHU.AHU74.CCV,
+        bldg:Bainer.AHU.AHU74.Fan_Start_Stop,
+        bldg:Bainer.AHU.AHU74.Return_Air_Temp,
+        bldg:Bainer.AHU.AHU74.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:Bainer.AHU.AC01.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AC01.CCV" ;
+    brickframe:uuid "bd6b5287-23c3-3cb5-b67f-1e9c3f6e6ea5" .
+
+bldg:Bainer.AHU.AC01.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "Bainer.AHU.AC01.Mode" ;
+    brickframe:uuid "88487610-346f-3375-884e-9b0f200e3cc2" .
+
+bldg:Bainer.AHU.AC01.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AC01.Zone Air Temp" ;
+    brickframe:uuid "f828bb83-2b4e-30cf-b1e4-99242dfd5119" .
+
+bldg:Bainer.AHU.AC02.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AC02.CCV" ;
+    brickframe:uuid "e43e7734-f877-3eae-bc8c-4b3c58a5ffc2" .
+
+bldg:Bainer.AHU.AC02.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "Bainer.AHU.AC02.Mode" ;
+    brickframe:uuid "e980f78f-4a1d-3b57-beee-b9c2b91faa8b" .
+
+bldg:Bainer.AHU.AC02.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AC02.Zone Air Temp" ;
+    brickframe:uuid "79d38fc6-42d9-3356-8abd-e674f7b2e4b1" .
+
+bldg:Bainer.AHU.AC03.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AC03.CCV" ;
+    brickframe:uuid "00dd0692-228a-3545-bb54-269770014fb1" .
+
+bldg:Bainer.AHU.AC03.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "Bainer.AHU.AC03.Mode" ;
+    brickframe:uuid "5054cefc-2935-3dcf-908e-8fdb3188e81f" .
+
+bldg:Bainer.AHU.AC03.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AC03.Zone Air Temp" ;
+    brickframe:uuid "c3e41bbf-5732-3ac3-8002-bdc96cd6d49f" .
+
+bldg:Bainer.AHU.AC04.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AC04.CCV" ;
+    brickframe:uuid "5e6ccfd4-c8f5-308e-8ed5-b85fe97f4b95" .
+
+bldg:Bainer.AHU.AC04.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "Bainer.AHU.AC04.Mode" ;
+    brickframe:uuid "b54f5832-ab3e-36b1-9b96-6dc2832f2946" .
+
+bldg:Bainer.AHU.AC04.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AC04.Zone Air Temp" ;
+    brickframe:uuid "a5512fe5-36d4-30a5-a5c0-dce2c4da587a" .
+
+bldg:Bainer.AHU.AC05.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AC05.CCV" ;
+    brickframe:uuid "88fbe9d9-9acc-3639-9f0d-a9b203c23ddb" .
+
+bldg:Bainer.AHU.AC05.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "Bainer.AHU.AC05.Mode" ;
+    brickframe:uuid "e8f6c39e-81f1-3433-ab82-879b8217aca8" .
+
+bldg:Bainer.AHU.AC05.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AC05.Zone Air Temp" ;
+    brickframe:uuid "258b2166-cd21-396a-95ce-4e5a139e8304" .
+
+bldg:Bainer.AHU.AC06.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AC06.CCV" ;
+    brickframe:uuid "8ccea3fa-ca52-3cc3-8948-f2d75eea762a" .
+
+bldg:Bainer.AHU.AC06.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "Bainer.AHU.AC06.Mode" ;
+    brickframe:uuid "e7dd5122-7e1d-3c7e-8100-8f746e95d946" .
+
+bldg:Bainer.AHU.AC06.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AC06.Zone Air Temp" ;
+    brickframe:uuid "03798687-0486-3e0d-a908-1c800ecc685a" .
+
+bldg:Bainer.AHU.AC07.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AC07.CCV" ;
+    brickframe:uuid "d9030a3b-05ea-39c9-9772-25bf07995e89" .
+
+bldg:Bainer.AHU.AC07.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "Bainer.AHU.AC07.Mode" ;
+    brickframe:uuid "b520667c-3c60-3caf-a988-5bcf81c48f91" .
+
+bldg:Bainer.AHU.AC07.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AC07.Zone Air Temp" ;
+    brickframe:uuid "b2ddd2fa-ef1c-3fae-8dcd-5075bdef62b2" .
+
+bldg:Bainer.AHU.AC08.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AC08.CCV" ;
+    brickframe:uuid "3712f75b-fd32-3e8c-90b9-2adc13dc327e" .
+
+bldg:Bainer.AHU.AC08.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "Bainer.AHU.AC08.Mode" ;
+    brickframe:uuid "53cd3253-6417-3cb0-99ff-f454f2174331" .
+
+bldg:Bainer.AHU.AC08.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AC08.Zone Air Temp" ;
+    brickframe:uuid "ed0461f4-1038-303e-b8ae-2f6df1bb8e33" .
+
+bldg:Bainer.AHU.AC09.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AC09.CCV" ;
+    brickframe:uuid "e17316be-9647-3a01-88c3-58f5ee5c3c2c" .
+
+bldg:Bainer.AHU.AC09.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "Bainer.AHU.AC09.Mode" ;
+    brickframe:uuid "6e264a00-7886-3b66-a62b-8aad5b66e513" .
+
+bldg:Bainer.AHU.AC09.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AC09.Zone Air Temp" ;
+    brickframe:uuid "83f3ff87-c313-3ff9-a340-4985351260ba" .
+
+bldg:Bainer.AHU.AC10.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AC10.CCV" ;
+    brickframe:uuid "b85e936e-c302-3f20-8aef-4a1abdf61aab" .
+
+bldg:Bainer.AHU.AC10.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "Bainer.AHU.AC10.Mode" ;
+    brickframe:uuid "2269e62a-b8fc-3e43-b59f-ce21e663eb99" .
+
+bldg:Bainer.AHU.AC10.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AC10.Zone Air Temp" ;
+    brickframe:uuid "8fde8453-fe9a-3cd1-91dc-1c9a384fb3de" .
+
+bldg:Bainer.AHU.AC11.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AC11.CCV" ;
+    brickframe:uuid "b4e8c982-02df-39d8-843e-82a42a89e034" .
+
+bldg:Bainer.AHU.AC11.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "Bainer.AHU.AC11.Mode" ;
+    brickframe:uuid "024128b8-e89d-3f34-b2b7-455f22ceecf9" .
+
+bldg:Bainer.AHU.AC11.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AC11.Zone Air Temp" ;
+    brickframe:uuid "af2b798e-720a-3f5c-9f95-621a1bc3e588" .
+
+bldg:Bainer.AHU.AC12.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AC12.CCV" ;
+    brickframe:uuid "db25703a-bb54-3d1f-b09a-d3eedbe981c3" .
+
+bldg:Bainer.AHU.AC12.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "Bainer.AHU.AC12.Mode" ;
+    brickframe:uuid "72de21f8-15a5-3555-93ef-552d14174483" .
+
+bldg:Bainer.AHU.AC12.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AC12.Zone Air Temp" ;
+    brickframe:uuid "b38e0d38-15e0-3b23-9cd9-48825e000dee" .
+
+bldg:Bainer.AHU.AC13.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AC13.CCV" ;
+    brickframe:uuid "5ad3e003-754f-3e2c-8c13-f13665595eba" .
+
+bldg:Bainer.AHU.AC13.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "Bainer.AHU.AC13.Mode" ;
+    brickframe:uuid "0f998447-4d8a-3d36-91c9-9b66b2b90fac" .
+
+bldg:Bainer.AHU.AC13.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AC13.Zone Air Temp" ;
+    brickframe:uuid "b127ebaf-61bf-3b1c-8adb-3b83439804eb" .
+
+bldg:Bainer.AHU.AC14.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AC14.CCV" ;
+    brickframe:uuid "6f56b23b-ec7b-3aa4-8143-0db761472510" .
+
+bldg:Bainer.AHU.AC14.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "Bainer.AHU.AC14.Mode" ;
+    brickframe:uuid "a13f5c3b-3952-3684-8f58-7ac91254af36" .
+
+bldg:Bainer.AHU.AC14.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AC14.Zone Air Temp" ;
+    brickframe:uuid "db7e9f88-ce7a-362e-93ad-1672e046c08a" .
+
+bldg:Bainer.AHU.AC15.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AC15.CCV" ;
+    brickframe:uuid "6d1125ad-46ef-387e-82c2-642a761fd550" .
+
+bldg:Bainer.AHU.AC15.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "Bainer.AHU.AC15.Mode" ;
+    brickframe:uuid "5d59ad2a-8ba2-3cdd-8b2d-03184652ebba" .
+
+bldg:Bainer.AHU.AC15.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AC15.Zone Air Temp" ;
+    brickframe:uuid "e7019c49-348e-3170-85cd-1cbd97293531" .
+
+bldg:Bainer.AHU.AHU01.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU01.Fan Start Stop" ;
+    brickframe:uuid "62e8abcc-6795-3952-bb50-e669598895cf" .
+
+bldg:Bainer.AHU.AHU01.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU01.Return Air Temp" ;
+    brickframe:uuid "83ac871e-ea01-3a44-9126-a8ccf6af3034" .
+
+bldg:Bainer.AHU.AHU01.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU01.Supply Air Temp" ;
+    brickframe:uuid "021eecaa-ded9-3afd-b2a2-ca39753aba7d" .
+
+bldg:Bainer.AHU.AHU02.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU02.Fan Start Stop" ;
+    brickframe:uuid "cab6c43e-fc4d-3368-8f51-8c82dd82f25d" .
+
+bldg:Bainer.AHU.AHU02.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU02.Return Air Temp" ;
+    brickframe:uuid "0cc1835d-af89-30e4-987d-6c1c1defc0c1" .
+
+bldg:Bainer.AHU.AHU02.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU02.Supply Air Temp" ;
+    brickframe:uuid "83e50abe-fb47-3401-9c1c-2d94cf7d3f3d" .
+
+bldg:Bainer.AHU.AHU03.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU03.Fan Start Stop" ;
+    brickframe:uuid "5cfec58c-62b0-3d9b-9097-e496841ce412" .
+
+bldg:Bainer.AHU.AHU03.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU03.Return Air Temp" ;
+    brickframe:uuid "b7fe4873-450e-3f21-8093-5b84e163f072" .
+
+bldg:Bainer.AHU.AHU03.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU03.Supply Air Temp" ;
+    brickframe:uuid "f8892bbc-66f9-37d6-b50e-9656127dcc05" .
+
+bldg:Bainer.AHU.AHU04.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU04.CCV" ;
+    brickframe:uuid "9a07c0d2-c3db-36ca-8602-2c6a296f58c3" .
+
+bldg:Bainer.AHU.AHU04.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU04.Fan Start Stop" ;
+    brickframe:uuid "dd5e3e9a-b713-39e3-a440-1306cf4d6e57" .
+
+bldg:Bainer.AHU.AHU04.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU04.Return Air Temp" ;
+    brickframe:uuid "d7555763-789a-3294-bd59-81e62da130ed" .
+
+bldg:Bainer.AHU.AHU04.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU04.Supply Air Temp" ;
+    brickframe:uuid "05f98a21-e1ef-37ef-80c0-a2f083883831" .
+
+bldg:Bainer.AHU.AHU05.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU05.Fan Start Stop" ;
+    brickframe:uuid "c21d4184-00d9-3db4-840c-b6d5272534d0" .
+
+bldg:Bainer.AHU.AHU05.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU05.Return Air Temp" ;
+    brickframe:uuid "ee221a6c-b237-3650-b481-bbdce817446d" .
+
+bldg:Bainer.AHU.AHU05.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU05.Supply Air Temp" ;
+    brickframe:uuid "b9d1876c-1faa-34d7-87d0-e882938b4404" .
+
+bldg:Bainer.AHU.AHU06.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU06.Fan Start Stop" ;
+    brickframe:uuid "1f86b804-1fc1-34d6-8e63-89dff7a09f5d" .
+
+bldg:Bainer.AHU.AHU06.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU06.Return Air Temp" ;
+    brickframe:uuid "a36ace6b-c8b5-3205-bfba-34c0f274155a" .
+
+bldg:Bainer.AHU.AHU06.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU06.Supply Air Temp" ;
+    brickframe:uuid "07cea37c-8125-36bd-8c36-9aef93e6eca1" .
+
+bldg:Bainer.AHU.AHU07.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU07.CCV" ;
+    brickframe:uuid "26f0f186-c948-3518-8c5a-490fe00d39e1" .
+
+bldg:Bainer.AHU.AHU07.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU07.Fan Start Stop" ;
+    brickframe:uuid "80d34d38-29a9-3c49-93eb-6ba2a829df93" .
+
+bldg:Bainer.AHU.AHU07.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU07.Return Air Temp" ;
+    brickframe:uuid "8f3e7f10-ef2e-3da5-a0da-1bb8b37d436c" .
+
+bldg:Bainer.AHU.AHU07.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU07.Supply Air Temp" ;
+    brickframe:uuid "989b858a-7ce9-3d5c-b217-fb311cc95268" .
+
+bldg:Bainer.AHU.AHU08.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU08.CCV" ;
+    brickframe:uuid "c8bdca19-9a6a-3578-bae8-d24895ac9779" .
+
+bldg:Bainer.AHU.AHU08.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU08.Fan Start Stop" ;
+    brickframe:uuid "c9c724c4-0fed-3c87-83a2-5a4117ee03bd" .
+
+bldg:Bainer.AHU.AHU08.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU08.Return Air Temp" ;
+    brickframe:uuid "e8df55f3-0ada-3786-bc8a-9a78a5f1a13a" .
+
+bldg:Bainer.AHU.AHU08.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU08.Supply Air Temp" ;
+    brickframe:uuid "18a17274-480e-3789-8d7e-75d7ee905482" .
+
+bldg:Bainer.AHU.AHU09.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU09.CCV" ;
+    brickframe:uuid "3f532ba1-d6d0-308c-837f-780cb4bb5f8a" .
+
+bldg:Bainer.AHU.AHU09.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU09.Fan Start Stop" ;
+    brickframe:uuid "c7f9ad02-7a2a-3cec-9d3f-786ec4f34f2e" .
+
+bldg:Bainer.AHU.AHU09.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU09.Return Air Temp" ;
+    brickframe:uuid "cdceb21f-8821-3259-9e37-bd5207e8cbd3" .
+
+bldg:Bainer.AHU.AHU09.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU09.Supply Air Temp" ;
+    brickframe:uuid "61a09cf7-a5c0-3dbb-8728-ba47db519c8d" .
+
+bldg:Bainer.AHU.AHU10.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU10.Fan Start Stop" ;
+    brickframe:uuid "87e8094d-00f4-3047-b26a-67443727b389" .
+
+bldg:Bainer.AHU.AHU10.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU10.Return Air Temp" ;
+    brickframe:uuid "c60f09c3-ef47-31cc-a530-940c38169585" .
+
+bldg:Bainer.AHU.AHU10.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU10.Supply Air Temp" ;
+    brickframe:uuid "c01ce6ba-2b70-30b7-b5b0-d88a545d4abd" .
+
+bldg:Bainer.AHU.AHU11.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU11.Fan Start Stop" ;
+    brickframe:uuid "93b6a588-ccfc-3879-a6f8-cbc7ce9a68b1" .
+
+bldg:Bainer.AHU.AHU11.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU11.Return Air Temp" ;
+    brickframe:uuid "8eb937ae-90b6-3564-9cf9-c4d50685e878" .
+
+bldg:Bainer.AHU.AHU11.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU11.Supply Air Temp" ;
+    brickframe:uuid "b8eda9d7-3369-35fd-aba1-488bd1755024" .
+
+bldg:Bainer.AHU.AHU12.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU12.Fan Start Stop" ;
+    brickframe:uuid "62fc51fc-858d-30e3-9ff6-a64f9df933e0" .
+
+bldg:Bainer.AHU.AHU12.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU12.Return Air Temp" ;
+    brickframe:uuid "7d6d4e89-fd4f-366b-a6bf-28fed45505d1" .
+
+bldg:Bainer.AHU.AHU12.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU12.Supply Air Temp" ;
+    brickframe:uuid "283ebecb-93ea-3c2c-a3f7-d955ee2ab3cb" .
+
+bldg:Bainer.AHU.AHU13.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU13.CCV" ;
+    brickframe:uuid "a01a9f9f-23d9-3c4c-9a4a-5aa255fc55e0" .
+
+bldg:Bainer.AHU.AHU13.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU13.Fan Start Stop" ;
+    brickframe:uuid "179c477a-5e7b-37b5-929f-0111090e6530" .
+
+bldg:Bainer.AHU.AHU13.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU13.Return Air Temp" ;
+    brickframe:uuid "83b4fbf6-abe5-3c1d-9686-d6b2666d8ed5" .
+
+bldg:Bainer.AHU.AHU13.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU13.Supply Air Temp" ;
+    brickframe:uuid "a92f41d0-9288-316b-8226-c4f032825b68" .
+
+bldg:Bainer.AHU.AHU14.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU14.CCV" ;
+    brickframe:uuid "fa7e28d9-178e-3de9-baca-78994d4028d1" .
+
+bldg:Bainer.AHU.AHU14.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU14.Fan Start Stop" ;
+    brickframe:uuid "474c352b-86c1-3c58-bd43-a78c24a54392" .
+
+bldg:Bainer.AHU.AHU14.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU14.Return Air Temp" ;
+    brickframe:uuid "6aff9d08-065e-32dd-8a63-142ea3ad0d28" .
+
+bldg:Bainer.AHU.AHU14.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU14.Supply Air Temp" ;
+    brickframe:uuid "28bc550c-cd8c-3210-9a07-f065295a6025" .
+
+bldg:Bainer.AHU.AHU15.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU15.Fan Start Stop" ;
+    brickframe:uuid "e9041ec0-dd31-3c86-8ff8-313808c78168" .
+
+bldg:Bainer.AHU.AHU15.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU15.Return Air Temp" ;
+    brickframe:uuid "7f8feb72-aada-389a-b1a8-07f58175ed2d" .
+
+bldg:Bainer.AHU.AHU15.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU15.Supply Air Temp" ;
+    brickframe:uuid "79869d6e-eb27-36bb-bbdf-ed7e80603379" .
+
+bldg:Bainer.AHU.AHU16.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU16.CCV" ;
+    brickframe:uuid "c8167375-de71-3e99-82e0-4b813c08bbaa" .
+
+bldg:Bainer.AHU.AHU16.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU16.Fan Start Stop" ;
+    brickframe:uuid "9fd0e492-7798-3df0-a9b8-13ead1405b1d" .
+
+bldg:Bainer.AHU.AHU16.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU16.Return Air Temp" ;
+    brickframe:uuid "a7720403-68e2-324d-9280-bc5e5b6d45c7" .
+
+bldg:Bainer.AHU.AHU16.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU16.Supply Air Temp" ;
+    brickframe:uuid "84517512-bf35-3ab8-8622-526cd9180601" .
+
+bldg:Bainer.AHU.AHU17.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU17.Fan Start Stop" ;
+    brickframe:uuid "b2741db2-e0f3-33bf-b691-73becc341e82" .
+
+bldg:Bainer.AHU.AHU17.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU17.Return Air Temp" ;
+    brickframe:uuid "fb5079db-dfd9-3c57-a61e-4abd57a676ca" .
+
+bldg:Bainer.AHU.AHU17.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU17.Supply Air Temp" ;
+    brickframe:uuid "36e56f4d-5429-3087-9bc5-8b7a1399b80c" .
+
+bldg:Bainer.AHU.AHU18.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU18.Fan Start Stop" ;
+    brickframe:uuid "7efa9c28-9718-3f76-9e7b-c4bce86bf5a7" .
+
+bldg:Bainer.AHU.AHU18.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU18.Return Air Temp" ;
+    brickframe:uuid "c52de183-6aeb-38f7-8ef2-9e34997bdbf8" .
+
+bldg:Bainer.AHU.AHU18.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU18.Supply Air Temp" ;
+    brickframe:uuid "10921a25-8f64-3c82-ae8d-6b948bacc519" .
+
+bldg:Bainer.AHU.AHU19.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU19.CCV" ;
+    brickframe:uuid "4a92ff3b-4a62-3b73-9914-658be21cc902" .
+
+bldg:Bainer.AHU.AHU19.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU19.Fan Start Stop" ;
+    brickframe:uuid "3a72c065-2fd3-30a0-a53f-e3183b53fd12" .
+
+bldg:Bainer.AHU.AHU19.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU19.Return Air Temp" ;
+    brickframe:uuid "f6c162bb-d3eb-3f10-90fa-8a53fce8d91f" .
+
+bldg:Bainer.AHU.AHU19.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU19.Supply Air Temp" ;
+    brickframe:uuid "eb081a6f-f8d4-3dff-8fee-3a3783740404" .
+
+bldg:Bainer.AHU.AHU20.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU20.Fan Start Stop" ;
+    brickframe:uuid "ac90aecc-cb15-3056-ae12-949e167722de" .
+
+bldg:Bainer.AHU.AHU20.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU20.Return Air Temp" ;
+    brickframe:uuid "d43fb609-acbc-3cf2-b5f7-4498ddb35ff3" .
+
+bldg:Bainer.AHU.AHU20.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU20.Supply Air Temp" ;
+    brickframe:uuid "9ffcecfd-31b1-3433-b6b7-7a44ff2f8b09" .
+
+bldg:Bainer.AHU.AHU21.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU21.CCV" ;
+    brickframe:uuid "8538cb51-7034-3c87-ba8c-6d78ec52c4f0" .
+
+bldg:Bainer.AHU.AHU21.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU21.Fan Start Stop" ;
+    brickframe:uuid "97dac389-afbd-3402-8968-fba96ac2a506" .
+
+bldg:Bainer.AHU.AHU21.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU21.Return Air Temp" ;
+    brickframe:uuid "1838dc20-a012-3d84-992f-ef4dcdde5c94" .
+
+bldg:Bainer.AHU.AHU21.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU21.Supply Air Temp" ;
+    brickframe:uuid "8b5b08fe-26dc-3a45-91b4-a4936b25870a" .
+
+bldg:Bainer.AHU.AHU22.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU22.CCV" ;
+    brickframe:uuid "9e8e4c11-1844-3fde-93ca-8ff62b0a7d03" .
+
+bldg:Bainer.AHU.AHU22.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU22.Fan Start Stop" ;
+    brickframe:uuid "04671d6b-36e3-35f9-9130-6e0d6f229bbd" .
+
+bldg:Bainer.AHU.AHU22.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU22.Return Air Temp" ;
+    brickframe:uuid "2b5647ea-4278-379e-ac63-30fddc1d9ead" .
+
+bldg:Bainer.AHU.AHU22.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU22.Supply Air Temp" ;
+    brickframe:uuid "1d6a3c20-9c26-3552-bcfc-80c9ba033756" .
+
+bldg:Bainer.AHU.AHU23.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU23.Fan Start Stop" ;
+    brickframe:uuid "cabf2b0c-aa3e-333b-8a2d-c819b6b14f5d" .
+
+bldg:Bainer.AHU.AHU23.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU23.Return Air Temp" ;
+    brickframe:uuid "da629290-fef3-3d8c-a712-939f859ad406" .
+
+bldg:Bainer.AHU.AHU23.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU23.Supply Air Temp" ;
+    brickframe:uuid "b52e6bad-c369-31a4-8acc-1426e3234a06" .
+
+bldg:Bainer.AHU.AHU24.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU24.CCV" ;
+    brickframe:uuid "dce616d7-2851-325b-8a9e-57c51b681f4e" .
+
+bldg:Bainer.AHU.AHU24.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU24.Fan Start Stop" ;
+    brickframe:uuid "a2561aa1-6c1f-3c82-9d9b-cfd1675ce8df" .
+
+bldg:Bainer.AHU.AHU24.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU24.Supply Air Temp" ;
+    brickframe:uuid "c7de3509-60e5-336d-8293-2304ccdafbdb" .
+
+bldg:Bainer.AHU.AHU25.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU25.CCV" ;
+    brickframe:uuid "9fa8f86c-5632-3774-855d-4ebdf5dacdc3" .
+
+bldg:Bainer.AHU.AHU25.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU25.Fan Start Stop" ;
+    brickframe:uuid "aad4a607-83e0-3405-8c45-9fb8f8d51e62" .
+
+bldg:Bainer.AHU.AHU25.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU25.Return Air Temp" ;
+    brickframe:uuid "62860628-be91-3879-b786-25545c05b7d8" .
+
+bldg:Bainer.AHU.AHU25.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU25.Supply Air Temp" ;
+    brickframe:uuid "dd4505fa-f593-3797-9fb6-1d4ea0a64ee6" .
+
+bldg:Bainer.AHU.AHU26.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU26.CCV" ;
+    brickframe:uuid "be0eb9f4-ee49-3c08-bb48-ef8265e0269a" .
+
+bldg:Bainer.AHU.AHU26.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU26.Fan Start Stop" ;
+    brickframe:uuid "b93e6b28-fd52-3162-8a5f-b54bb6a523fe" .
+
+bldg:Bainer.AHU.AHU26.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU26.Return Air Temp" ;
+    brickframe:uuid "06cf1573-c372-3847-9ad2-67cef5454cbb" .
+
+bldg:Bainer.AHU.AHU26.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU26.Supply Air Temp" ;
+    brickframe:uuid "515d3da9-5020-33b2-944b-aa3298ca028b" .
+
+bldg:Bainer.AHU.AHU27.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU27.Fan Start Stop" ;
+    brickframe:uuid "916e5926-63a6-36b1-a051-9a1b432cbb4f" .
+
+bldg:Bainer.AHU.AHU27.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU27.Return Air Temp" ;
+    brickframe:uuid "18d1f39a-6086-3439-ac33-5f4731293ce0" .
+
+bldg:Bainer.AHU.AHU27.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU27.Supply Air Temp" ;
+    brickframe:uuid "2e051f2b-94ee-35fe-96e4-a585fd742a57" .
+
+bldg:Bainer.AHU.AHU28.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU28.Fan Start Stop" ;
+    brickframe:uuid "211aa492-4569-3d0b-b36b-0513b6e3afa1" .
+
+bldg:Bainer.AHU.AHU28.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU28.Return Air Temp" ;
+    brickframe:uuid "32dccf8a-3374-304b-9353-5aa592225e7e" .
+
+bldg:Bainer.AHU.AHU28.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU28.Supply Air Temp" ;
+    brickframe:uuid "4421e250-5527-3bf0-8044-8edf3342c42b" .
+
+bldg:Bainer.AHU.AHU29.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU29.Fan Start Stop" ;
+    brickframe:uuid "99bfcbed-68ae-3005-b90c-62141ab30991" .
+
+bldg:Bainer.AHU.AHU29.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU29.Return Air Temp" ;
+    brickframe:uuid "ab753de3-5b35-3c97-a898-33e0aab41c53" .
+
+bldg:Bainer.AHU.AHU29.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU29.Supply Air Temp" ;
+    brickframe:uuid "2c531109-3f43-3530-85fe-fe01f606fc48" .
+
+bldg:Bainer.AHU.AHU30.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU30.CCV" ;
+    brickframe:uuid "c3b02478-927b-3aef-baca-9346b895292e" .
+
+bldg:Bainer.AHU.AHU30.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU30.Fan Start Stop" ;
+    brickframe:uuid "6ddddc78-5a3b-3383-82c9-6258ac9c57f3" .
+
+bldg:Bainer.AHU.AHU30.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU30.Return Air Temp" ;
+    brickframe:uuid "0971e253-e34f-3b24-89bc-e6316938c94b" .
+
+bldg:Bainer.AHU.AHU30.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU30.Supply Air Temp" ;
+    brickframe:uuid "e44cea89-7da6-30fa-a892-ceeab4428383" .
+
+bldg:Bainer.AHU.AHU31.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU31.CCV" ;
+    brickframe:uuid "0a9d9086-5720-30c1-884c-5b01cf790f15" .
+
+bldg:Bainer.AHU.AHU31.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU31.Fan Start Stop" ;
+    brickframe:uuid "5ebd87b4-a012-3fd4-a79d-464cbb2380e7" .
+
+bldg:Bainer.AHU.AHU31.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU31.Return Air Temp" ;
+    brickframe:uuid "13f11cee-9529-3ceb-a23d-a6034efb7761" .
+
+bldg:Bainer.AHU.AHU31.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU31.Supply Air Temp" ;
+    brickframe:uuid "bca6106e-6d6c-3a1c-bd7f-16e9f8bcde67" .
+
+bldg:Bainer.AHU.AHU32.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU32.CCV" ;
+    brickframe:uuid "1edd233f-ba3e-3f9a-bea4-8ec2d17c8e4c" .
+
+bldg:Bainer.AHU.AHU32.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU32.Fan Start Stop" ;
+    brickframe:uuid "086f8109-4e7f-3dba-b398-b51bd8dbdbff" .
+
+bldg:Bainer.AHU.AHU32.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU32.Return Air Temp" ;
+    brickframe:uuid "c1129334-97a1-33e4-9383-1def17b2dc2c" .
+
+bldg:Bainer.AHU.AHU32.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU32.Supply Air Temp" ;
+    brickframe:uuid "493b4185-ea04-3c52-92c2-5e10bb2a798d" .
+
+bldg:Bainer.AHU.AHU33.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU33.CCV" ;
+    brickframe:uuid "013455ec-0de5-324b-8b2a-c63e089afda5" .
+
+bldg:Bainer.AHU.AHU33.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU33.Fan Start Stop" ;
+    brickframe:uuid "fc1b5a34-89d0-3867-8875-762ef1863593" .
+
+bldg:Bainer.AHU.AHU33.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU33.Supply Air Temp" ;
+    brickframe:uuid "45110871-e8be-31df-ab08-3052e63d8421" .
+
+bldg:Bainer.AHU.AHU34.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU34.CCV" ;
+    brickframe:uuid "994543a4-f431-32aa-9ac9-465521cac939" .
+
+bldg:Bainer.AHU.AHU34.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU34.Fan Start Stop" ;
+    brickframe:uuid "bbeb0674-2114-3461-8c51-03b4cddaadc8" .
+
+bldg:Bainer.AHU.AHU34.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU34.Return Air Temp" ;
+    brickframe:uuid "9f7b1da2-8e12-36bc-bda8-ec3e9ddb1f47" .
+
+bldg:Bainer.AHU.AHU34.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU34.Supply Air Temp" ;
+    brickframe:uuid "43e5233a-5b42-329c-aee4-e5870b671424" .
+
+bldg:Bainer.AHU.AHU35.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU35.Fan Start Stop" ;
+    brickframe:uuid "f764cd20-f61b-3a07-ab8e-1f06431f308a" .
+
+bldg:Bainer.AHU.AHU35.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU35.Return Air Temp" ;
+    brickframe:uuid "a8e4d614-f10a-3a36-9d10-d156775167de" .
+
+bldg:Bainer.AHU.AHU35.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU35.Supply Air Temp" ;
+    brickframe:uuid "db62e3ad-42b3-36e5-91d9-a199e6d8d0a7" .
+
+bldg:Bainer.AHU.AHU36.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU36.CCV" ;
+    brickframe:uuid "5801a76e-08fe-300f-9904-96b91b87c754" .
+
+bldg:Bainer.AHU.AHU36.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU36.Fan Start Stop" ;
+    brickframe:uuid "cfb8268d-1860-34f0-8fff-318381075d96" .
+
+bldg:Bainer.AHU.AHU36.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU36.Return Air Temp" ;
+    brickframe:uuid "be61ca87-d87c-3fed-b855-912174b3cf3d" .
+
+bldg:Bainer.AHU.AHU36.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU36.Supply Air Temp" ;
+    brickframe:uuid "5dbc262e-b7c5-3804-adaf-4ca0a4ae3258" .
+
+bldg:Bainer.AHU.AHU37.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU37.CCV" ;
+    brickframe:uuid "688866ef-a9d6-3342-904d-4ad53988d812" .
+
+bldg:Bainer.AHU.AHU37.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU37.Fan Start Stop" ;
+    brickframe:uuid "d6bd6aa8-45f3-3175-b89a-6c1fa4b6dcf4" .
+
+bldg:Bainer.AHU.AHU37.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU37.Return Air Temp" ;
+    brickframe:uuid "ce8fa965-b1f1-32d2-a51c-768584cbe4d0" .
+
+bldg:Bainer.AHU.AHU37.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU37.Supply Air Temp" ;
+    brickframe:uuid "d4f66304-0613-3160-aea1-6efc2f20e8ae" .
+
+bldg:Bainer.AHU.AHU38.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU38.Fan Start Stop" ;
+    brickframe:uuid "39d61911-e863-3b4b-9884-7727bf228a52" .
+
+bldg:Bainer.AHU.AHU38.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU38.Return Air Temp" ;
+    brickframe:uuid "7902521a-2cb1-3bdb-a681-c19b6766d0c8" .
+
+bldg:Bainer.AHU.AHU38.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU38.Supply Air Temp" ;
+    brickframe:uuid "9ec7daa5-d11f-364a-9fdf-122bfacd77ca" .
+
+bldg:Bainer.AHU.AHU39.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU39.Fan Start Stop" ;
+    brickframe:uuid "5210e481-946b-338d-b0a2-5f121b31916b" .
+
+bldg:Bainer.AHU.AHU39.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU39.Return Air Temp" ;
+    brickframe:uuid "d4433e6f-fdbd-3c89-824d-bdc0afda4bd4" .
+
+bldg:Bainer.AHU.AHU39.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU39.Supply Air Temp" ;
+    brickframe:uuid "5a9cdb33-e1a9-3d86-b4f5-51b392791f3a" .
+
+bldg:Bainer.AHU.AHU40.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU40.Fan Start Stop" ;
+    brickframe:uuid "1d5c738a-ccb4-30d6-96cc-96d911aa5fa3" .
+
+bldg:Bainer.AHU.AHU40.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU40.Return Air Temp" ;
+    brickframe:uuid "57216124-04fc-39b3-af6f-1164c8fde1b0" .
+
+bldg:Bainer.AHU.AHU40.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU40.Supply Air Temp" ;
+    brickframe:uuid "bb43721a-ce5f-34c5-b5a7-ddcc2b90fed8" .
+
+bldg:Bainer.AHU.AHU41.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU41.Fan Start Stop" ;
+    brickframe:uuid "43be3ce4-7552-3dcc-8ddd-ce6f8ca22dbf" .
+
+bldg:Bainer.AHU.AHU41.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU41.Return Air Temp" ;
+    brickframe:uuid "bbbe04d3-81cb-30be-9797-5237b9ddc466" .
+
+bldg:Bainer.AHU.AHU41.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU41.Supply Air Temp" ;
+    brickframe:uuid "bf38bcc5-1fa3-367e-81ec-cba0a650b50d" .
+
+bldg:Bainer.AHU.AHU42.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU42.Fan Start Stop" ;
+    brickframe:uuid "eab43858-938d-3752-a292-9288b4edd7b0" .
+
+bldg:Bainer.AHU.AHU42.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU42.Return Air Temp" ;
+    brickframe:uuid "facfed7f-8188-3b25-8ec8-a11aaad4dfe0" .
+
+bldg:Bainer.AHU.AHU42.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU42.Supply Air Temp" ;
+    brickframe:uuid "873dade4-4a50-3ef3-85b0-b0688f0cd424" .
+
+bldg:Bainer.AHU.AHU43.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU43.CCV" ;
+    brickframe:uuid "627529f7-67dd-3a7a-a65f-c6c3386b602f" .
+
+bldg:Bainer.AHU.AHU43.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU43.Fan Start Stop" ;
+    brickframe:uuid "9debc3e4-57c5-3c6c-aa11-7f8a36e6346c" .
+
+bldg:Bainer.AHU.AHU43.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU43.Return Air Temp" ;
+    brickframe:uuid "74f1bbdc-0283-3566-ad43-2487682e8172" .
+
+bldg:Bainer.AHU.AHU43.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU43.Supply Air Temp" ;
+    brickframe:uuid "a8d1ec70-7749-3623-b342-9ccc1d13eeec" .
+
+bldg:Bainer.AHU.AHU44.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU44.Fan Start Stop" ;
+    brickframe:uuid "4e6a729b-2356-3516-9946-8bdc404b1343" .
+
+bldg:Bainer.AHU.AHU44.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU44.Return Air Temp" ;
+    brickframe:uuid "77100468-c3ed-3a6f-a582-36ef7c2364df" .
+
+bldg:Bainer.AHU.AHU44.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU44.Supply Air Temp" ;
+    brickframe:uuid "06048825-8040-31b2-b54a-93e382f7c397" .
+
+bldg:Bainer.AHU.AHU45.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU45.Fan Start Stop" ;
+    brickframe:uuid "991a9fac-61ef-30db-9951-b444ceebcc47" .
+
+bldg:Bainer.AHU.AHU45.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU45.Return Air Temp" ;
+    brickframe:uuid "9a11d5c4-8426-3714-be84-b416da7fca64" .
+
+bldg:Bainer.AHU.AHU45.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU45.Supply Air Temp" ;
+    brickframe:uuid "0b5274fa-bfd8-34a5-b7f3-98fbd710a3f0" .
+
+bldg:Bainer.AHU.AHU46.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU46.Fan Start Stop" ;
+    brickframe:uuid "a53805e4-2dd5-3c42-a563-7085997c0d1e" .
+
+bldg:Bainer.AHU.AHU46.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU46.Return Air Temp" ;
+    brickframe:uuid "df1e4dfb-1243-3ae5-aca4-e096f3809bb4" .
+
+bldg:Bainer.AHU.AHU46.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU46.Supply Air Temp" ;
+    brickframe:uuid "839e3871-8c75-365a-9172-f61acd7724ee" .
+
+bldg:Bainer.AHU.AHU47.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU47.Fan Start Stop" ;
+    brickframe:uuid "34f43ee8-c778-39d4-b0f2-62dc965d327f" .
+
+bldg:Bainer.AHU.AHU47.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU47.Supply Air Temp" ;
+    brickframe:uuid "1e57df15-6a38-37e2-8ef6-9dcab9b5a677" .
+
+bldg:Bainer.AHU.AHU48.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU48.CCV" ;
+    brickframe:uuid "f0d39213-8fa8-3e0d-a118-5ee0f9090220" .
+
+bldg:Bainer.AHU.AHU48.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU48.Fan Start Stop" ;
+    brickframe:uuid "f9cda32e-2579-393b-a05e-4eff337c952d" .
+
+bldg:Bainer.AHU.AHU48.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU48.Supply Air Temp" ;
+    brickframe:uuid "decebb0c-4dd7-3472-aed6-666baba3c893" .
+
+bldg:Bainer.AHU.AHU49.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU49.CCV" ;
+    brickframe:uuid "cf503b3e-ab04-3786-96c9-376787d55f67" .
+
+bldg:Bainer.AHU.AHU49.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU49.Fan Start Stop" ;
+    brickframe:uuid "71ce49fa-85d5-3f2e-877d-ed4801f74270" .
+
+bldg:Bainer.AHU.AHU49.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU49.Supply Air Temp" ;
+    brickframe:uuid "9a2b0967-79ab-3c2c-b922-56b664551bbe" .
+
+bldg:Bainer.AHU.AHU50.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU50.CCV" ;
+    brickframe:uuid "74f5c942-5eb3-3784-a97a-5a9e510715c9" .
+
+bldg:Bainer.AHU.AHU50.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU50.Fan Start Stop" ;
+    brickframe:uuid "99b5b9b7-eae1-3bd3-90a3-6e356149d58d" .
+
+bldg:Bainer.AHU.AHU50.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU50.Supply Air Temp" ;
+    brickframe:uuid "155fe8c1-846a-3fce-a823-134b7203f1d9" .
+
+bldg:Bainer.AHU.AHU51.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU51.CCV" ;
+    brickframe:uuid "b047164b-66ed-37f1-b8ee-28d67749b52c" .
+
+bldg:Bainer.AHU.AHU51.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU51.Fan Start Stop" ;
+    brickframe:uuid "4802ca06-c0cf-3eac-821c-712020b4196a" .
+
+bldg:Bainer.AHU.AHU51.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU51.Supply Air Temp" ;
+    brickframe:uuid "1d945b9b-2ead-3f50-80a8-6a6c62a1984d" .
+
+bldg:Bainer.AHU.AHU52.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU52.CCV" ;
+    brickframe:uuid "d94f8cb3-594b-32ea-8261-4efaa94245de" .
+
+bldg:Bainer.AHU.AHU52.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU52.Fan Start Stop" ;
+    brickframe:uuid "f1f85250-d960-3709-b3dc-3065b36ef853" .
+
+bldg:Bainer.AHU.AHU52.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU52.Return Air Temp" ;
+    brickframe:uuid "4bcbdf31-a906-35bf-9e71-81b1329be70a" .
+
+bldg:Bainer.AHU.AHU52.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU52.Supply Air Temp" ;
+    brickframe:uuid "ba3a01f4-0c6d-31ba-b1e3-3aeebd007ea7" .
+
+bldg:Bainer.AHU.AHU53.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU53.CCV" ;
+    brickframe:uuid "ccc203f0-9258-30cb-b14b-d0df1b49c328" .
+
+bldg:Bainer.AHU.AHU53.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU53.Fan Start Stop" ;
+    brickframe:uuid "127f053d-73ad-3f49-9ba5-49727cc80986" .
+
+bldg:Bainer.AHU.AHU53.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU53.Return Air Temp" ;
+    brickframe:uuid "c7b201d7-19d1-3513-b726-cbb9659c5352" .
+
+bldg:Bainer.AHU.AHU53.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU53.Supply Air Temp" ;
+    brickframe:uuid "4a138dc2-04f5-3280-9653-e1a3145c53b6" .
+
+bldg:Bainer.AHU.AHU54.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU54.Fan Start Stop" ;
+    brickframe:uuid "9cfbabc4-9cbb-3759-ae2e-3a61de72f9fa" .
+
+bldg:Bainer.AHU.AHU54.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU54.Return Air Temp" ;
+    brickframe:uuid "aad8a8d8-7a74-310f-a131-98f9a34ea20a" .
+
+bldg:Bainer.AHU.AHU54.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU54.Supply Air Temp" ;
+    brickframe:uuid "9dc5ca7b-3533-396d-aec5-79f114a59a0b" .
+
+bldg:Bainer.AHU.AHU55.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU55.Fan Start Stop" ;
+    brickframe:uuid "636a9305-91.0.2c13-80e7-f0e029141a10" .
+
+bldg:Bainer.AHU.AHU55.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU55.Return Air Temp" ;
+    brickframe:uuid "050df7f6-5f50-359d-b8bc-2de8e3975c7e" .
+
+bldg:Bainer.AHU.AHU55.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU55.Supply Air Temp" ;
+    brickframe:uuid "bbbae573-694e-3055-96e1-77529e1430cd" .
+
+bldg:Bainer.AHU.AHU56.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU56.CCV" ;
+    brickframe:uuid "718a19cf-0d17-3e2a-82c8-3b0bad2b3c3a" .
+
+bldg:Bainer.AHU.AHU56.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU56.Fan Start Stop" ;
+    brickframe:uuid "81dc04b1-7de5-353a-88e5-d339cbd61ab7" .
+
+bldg:Bainer.AHU.AHU56.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU56.Return Air Temp" ;
+    brickframe:uuid "74b6355e-d692-3c6d-b0db-0de82e58075c" .
+
+bldg:Bainer.AHU.AHU56.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU56.Supply Air Temp" ;
+    brickframe:uuid "85805da5-dc96-3b68-9a70-dcc1d94f69de" .
+
+bldg:Bainer.AHU.AHU57.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU57.CCV" ;
+    brickframe:uuid "7aed63e2-09a1-3803-96f0-0198d0aaf692" .
+
+bldg:Bainer.AHU.AHU57.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU57.Fan Start Stop" ;
+    brickframe:uuid "70b23ed3-402d-3cf2-bdcb-76e3c4e3a412" .
+
+bldg:Bainer.AHU.AHU57.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU57.Return Air Temp" ;
+    brickframe:uuid "663f7053-aec5-3473-8d5c-d5c017f2216c" .
+
+bldg:Bainer.AHU.AHU57.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU57.Supply Air Temp" ;
+    brickframe:uuid "23c3eeb4-ea60-3462-889f-d4938031408d" .
+
+bldg:Bainer.AHU.AHU58.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU58.CCV" ;
+    brickframe:uuid "5ac57188-c8af-3d41-8dfd-cd24e020bb37" .
+
+bldg:Bainer.AHU.AHU58.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU58.Fan Start Stop" ;
+    brickframe:uuid "355aa32b-464c-3b0f-9ac1-4b21bc80e414" .
+
+bldg:Bainer.AHU.AHU58.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU58.Return Air Temp" ;
+    brickframe:uuid "dd55f6d6-ddab-3d0b-acc8-0b35b39967bb" .
+
+bldg:Bainer.AHU.AHU58.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU58.Supply Air Temp" ;
+    brickframe:uuid "9afaa287-7b80-3056-a190-c0d35c38f829" .
+
+bldg:Bainer.AHU.AHU59.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU59.CCV" ;
+    brickframe:uuid "d842aefa-aed4-373f-beef-53d0af2f6df5" .
+
+bldg:Bainer.AHU.AHU59.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU59.Fan Start Stop" ;
+    brickframe:uuid "711ad6b8-d781-3678-9b4a-43c9030c1b79" .
+
+bldg:Bainer.AHU.AHU59.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU59.Return Air Temp" ;
+    brickframe:uuid "4e5cfdd7-ff69-34ce-a2c6-e8975988fd31" .
+
+bldg:Bainer.AHU.AHU59.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU59.Supply Air Temp" ;
+    brickframe:uuid "f023ba0b-2676-3951-9f87-1116b962e70f" .
+
+bldg:Bainer.AHU.AHU60.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU60.CCV" ;
+    brickframe:uuid "855c755e-f145-32bf-9b3c-6143ebc30ea8" .
+
+bldg:Bainer.AHU.AHU60.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU60.Fan Start Stop" ;
+    brickframe:uuid "de7a67f3-da8e-3c84-8efb-150451e28bdd" .
+
+bldg:Bainer.AHU.AHU60.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU60.Return Air Temp" ;
+    brickframe:uuid "2a2117b1-3201-39cb-8d1a-83a899426c8a" .
+
+bldg:Bainer.AHU.AHU60.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU60.Supply Air Temp" ;
+    brickframe:uuid "0c4ca86a-f5c4-3ef1-9654-65288783cbd4" .
+
+bldg:Bainer.AHU.AHU61.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU61.Fan Start Stop" ;
+    brickframe:uuid "1d0c110a-40d3-33f8-b47d-276d75ac590f" .
+
+bldg:Bainer.AHU.AHU61.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU61.Return Air Temp" ;
+    brickframe:uuid "4aea5080-6dd6-3593-aa3e-7f75dac22db8" .
+
+bldg:Bainer.AHU.AHU61.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU61.Supply Air Temp" ;
+    brickframe:uuid "b9c35143-2dd6-3d76-add6-c1649d9ff63a" .
+
+bldg:Bainer.AHU.AHU62.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU62.CCV" ;
+    brickframe:uuid "f725b634-8c7e-3341-95bb-178c65168ac8" .
+
+bldg:Bainer.AHU.AHU62.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU62.Fan Start Stop" ;
+    brickframe:uuid "b674e27c-4cc9-3a8a-94be-ba77739edae8" .
+
+bldg:Bainer.AHU.AHU62.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU62.Return Air Temp" ;
+    brickframe:uuid "711bc955-c10f-364c-8ff1-d2703f31a0a7" .
+
+bldg:Bainer.AHU.AHU62.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU62.Supply Air Temp" ;
+    brickframe:uuid "b9a2e180-b2c6-3f97-8df3-f1261a3468c1" .
+
+bldg:Bainer.AHU.AHU63.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU63.CCV" ;
+    brickframe:uuid "2b2967c8-f78c-3b2c-8507-36c8f24e21df" .
+
+bldg:Bainer.AHU.AHU63.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU63.Fan Start Stop" ;
+    brickframe:uuid "ee3d0e7c-234e-33cc-ab04-4f1a90e2c826" .
+
+bldg:Bainer.AHU.AHU63.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU63.Return Air Temp" ;
+    brickframe:uuid "720992eb-5054-39ea-a06c-e5868dd97cbd" .
+
+bldg:Bainer.AHU.AHU63.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU63.Supply Air Temp" ;
+    brickframe:uuid "963ac762-247a-3764-b56f-5af2e21bf636" .
+
+bldg:Bainer.AHU.AHU64.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU64.CCV" ;
+    brickframe:uuid "2dda1172-218e-34ff-b0a2-c3f47c41e0ba" .
+
+bldg:Bainer.AHU.AHU64.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU64.Fan Start Stop" ;
+    brickframe:uuid "0c3d4670-1544-3245-a43f-0c836a383f8a" .
+
+bldg:Bainer.AHU.AHU64.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU64.Return Air Temp" ;
+    brickframe:uuid "1daca3b0-635b-39a1-808d-5650fd560851" .
+
+bldg:Bainer.AHU.AHU64.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU64.Supply Air Temp" ;
+    brickframe:uuid "d41a107d-0168-3c20-9310-9a09477d9b57" .
+
+bldg:Bainer.AHU.AHU65.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU65.CCV" ;
+    brickframe:uuid "ffffbac0-d840-3d59-9cbe-4d85895dec18" .
+
+bldg:Bainer.AHU.AHU65.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU65.Fan Start Stop" ;
+    brickframe:uuid "bdd5e757-1b78-354f-bca3-157b9f378413" .
+
+bldg:Bainer.AHU.AHU65.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU65.Supply Air Temp" ;
+    brickframe:uuid "9b521216-91be-3642-9bf0-d38bfb348d7a" .
+
+bldg:Bainer.AHU.AHU66.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU66.CCV" ;
+    brickframe:uuid "d6eeca78-e851-36b8-8e80-3557ec9909d1" .
+
+bldg:Bainer.AHU.AHU66.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU66.Fan Start Stop" ;
+    brickframe:uuid "0d617744-fb04-319f-be6a-2436b1754a1e" .
+
+bldg:Bainer.AHU.AHU66.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU66.Return Air Temp" ;
+    brickframe:uuid "57c0eb10-fad4-3d1b-8bf9-a777907de544" .
+
+bldg:Bainer.AHU.AHU66.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU66.Supply Air Temp" ;
+    brickframe:uuid "0f6b4b4e-da4f-319d-94ac-91143053bc5d" .
+
+bldg:Bainer.AHU.AHU67.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU67.CCV" ;
+    brickframe:uuid "3984c6df-a520-331a-afcd-c6bb717ea737" .
+
+bldg:Bainer.AHU.AHU67.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU67.Fan Start Stop" ;
+    brickframe:uuid "6b21623a-4c7e-32dc-81fb-c5f3a2901828" .
+
+bldg:Bainer.AHU.AHU67.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU67.Supply Air Temp" ;
+    brickframe:uuid "cfc49f19-cd5a-3817-a877-1b7cf90c4637" .
+
+bldg:Bainer.AHU.AHU68.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU68.CCV" ;
+    brickframe:uuid "2b1bc979-df5c-3d3e-b28a-83faadf817e6" .
+
+bldg:Bainer.AHU.AHU68.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU68.Fan Start Stop" ;
+    brickframe:uuid "62c3e5b8-fbf6-3581-a4ba-11e31dff16e4" .
+
+bldg:Bainer.AHU.AHU68.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU68.Return Air Temp" ;
+    brickframe:uuid "96ad5f11-66a2-314a-9c96-26409bad15da" .
+
+bldg:Bainer.AHU.AHU68.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU68.Supply Air Temp" ;
+    brickframe:uuid "e4c1efd6-d9b3-31f7-8695-774b64ad2cc5" .
+
+bldg:Bainer.AHU.AHU69.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU69.CCV" ;
+    brickframe:uuid "b4dda9a0-03d0-32c4-93ce-514a49764a23" .
+
+bldg:Bainer.AHU.AHU69.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU69.Fan Start Stop" ;
+    brickframe:uuid "b3ffd1e5-5112-3c7e-9c1e-9f164a915861" .
+
+bldg:Bainer.AHU.AHU69.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU69.Return Air Temp" ;
+    brickframe:uuid "db6944ac-61b3-37aa-957b-c54528a2d022" .
+
+bldg:Bainer.AHU.AHU69.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU69.Supply Air Temp" ;
+    brickframe:uuid "141b2587-3772-358f-84af-844db7d20067" .
+
+bldg:Bainer.AHU.AHU70.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU70.CCV" ;
+    brickframe:uuid "4d3de4e8-9244-3ec6-8882-e8173a538c67" .
+
+bldg:Bainer.AHU.AHU70.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU70.Fan Start Stop" ;
+    brickframe:uuid "3d1337ec-731e-3faa-a7c7-0986c076eab6" .
+
+bldg:Bainer.AHU.AHU70.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU70.Return Air Temp" ;
+    brickframe:uuid "d61dcbb4-7911-3317-99ec-b662c7287a44" .
+
+bldg:Bainer.AHU.AHU70.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU70.Supply Air Temp" ;
+    brickframe:uuid "5e432270-cea4-3e7f-9410-299d393f83cc" .
+
+bldg:Bainer.AHU.AHU71.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU71.CCV" ;
+    brickframe:uuid "c4216fda-d3e8-3159-b4e1-6408e63bbb3d" .
+
+bldg:Bainer.AHU.AHU71.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU71.Fan Start Stop" ;
+    brickframe:uuid "7f84def2-2fbe-3140-a12c-6cb23e60369c" .
+
+bldg:Bainer.AHU.AHU71.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU71.Return Air Temp" ;
+    brickframe:uuid "9f0f7ad0-23dc-3291-a46e-157c19fb5803" .
+
+bldg:Bainer.AHU.AHU71.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU71.Supply Air Temp" ;
+    brickframe:uuid "9f13199c-2d9b-388b-ab4b-e028f3062ec3" .
+
+bldg:Bainer.AHU.AHU72.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU72.CCV" ;
+    brickframe:uuid "24a3a6e4-50de-3ad3-85c1-9b2467885520" .
+
+bldg:Bainer.AHU.AHU72.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU72.Fan Start Stop" ;
+    brickframe:uuid "e127a57d-a06d-333a-ba6c-f7b70723a00f" .
+
+bldg:Bainer.AHU.AHU72.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU72.Return Air Temp" ;
+    brickframe:uuid "33c0a566-3252-35e8-af16-418b98311606" .
+
+bldg:Bainer.AHU.AHU72.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU72.Supply Air Temp" ;
+    brickframe:uuid "f8b61f32-5bdd-3593-8a99-89fa5f477ec4" .
+
+bldg:Bainer.AHU.AHU73.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU73.CCV" ;
+    brickframe:uuid "1d99ad63-ffb8-37fe-832f-8804b0eceaa0" .
+
+bldg:Bainer.AHU.AHU73.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU73.Fan Start Stop" ;
+    brickframe:uuid "5ff1d92e-cdfb-3e72-b524-621167c05ded" .
+
+bldg:Bainer.AHU.AHU73.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU73.Return Air Temp" ;
+    brickframe:uuid "48215c1e-bde6-3ef0-9838-be9bc6015b8b" .
+
+bldg:Bainer.AHU.AHU73.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU73.Supply Air Temp" ;
+    brickframe:uuid "7bfff64e-8245-30a2-8ea2-e00edf535a1d" .
+
+bldg:Bainer.AHU.AHU74.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU74.CCV" ;
+    brickframe:uuid "baa2ebfa-38f4-3e45-8570-9b623abfea8d" .
+
+bldg:Bainer.AHU.AHU74.Fan_Start_Stop a brick1:Fan_Start_Stop_Status ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU74.Fan Start Stop" ;
+    brickframe:uuid "a6cf154e-cbb4-39cd-a6a7-d5e6e45dff63" .
+
+bldg:Bainer.AHU.AHU74.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU74.Return Air Temp" ;
+    brickframe:uuid "25196d80-e8d4-3d9d-a956-e7996d603ed7" .
+
+bldg:Bainer.AHU.AHU74.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.AHU.AHU74.Supply Air Temp" ;
+    brickframe:uuid "4e010b03-a3a9-322b-8258-74b16fba3e5b" .
+
+bldg:Bainer.CHW.Building_Chilled_Water_Flow a brick_v_1_0_2:Chilled_Water_Flow_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.CHW.Building Chilled Water Flow" ;
+    brickframe:uuid "eb776238-e8a4-3f2b-beba-44961912a76b" .
+
+bldg:Bainer.CHW.Building_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.CHW.Building Chilled Water Return Temp" ;
+    brickframe:uuid "82ac7369-fd0a-3008-955b-1f2b11f97d04" .
+
+bldg:Bainer.CHW.Building_Chilled_Water_Return_Temp_1 a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.CHW.Building Chilled Water Return Temp 1" ;
+    brickframe:uuid "07600d1b-0a26-33b2-927d-db669bb63f39" .
+
+bldg:Bainer.CHW.Building_Chilled_Water_Return_Temp_Setpoint a brick_v_1_0_2:Chilled_Water_Return_Temperature_Setpoint ;
+    brickframe:pointname "Bainer.CHW.Building Chilled Water Return Temp Setpoint" ;
+    brickframe:uuid "af2e703d-20a3-388e-b27a-c9db8fca30f9" .
+
+bldg:Bainer.CHW.Building_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.CHW.Building Chilled Water Supply Temp" ;
+    brickframe:uuid "c2d09eea-8739-3c4f-bd72-e3e45644dc1a" .
+
+bldg:Bainer.CHW.Building_Chilled_Water_Supply_Temp_2 a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.CHW.Building Chilled Water Supply Temp 2" ;
+    brickframe:uuid "585424c8-6045-3cec-a6d8-7d2afd95e397" .
+
+bldg:Bainer.CHW.Building_Chilled_Water_Supply_Temp_Setpoint a brick_v_1_0_2:Chilled_Water_Supply_Temperature_Setpoint ;
+    brickframe:pointname "Bainer.CHW.Building Chilled Water Supply Temp Setpoint" ;
+    brickframe:uuid "fbb97655-35f3-3b08-85c5-435ba72544fe" .
+
+bldg:Bainer.CHW.Building_Chilled_Water_Supply_Temp_Sp_2 a brick_v_1_0_2:Chilled_Water_Supply_Temperature_Setpoint ;
+    brickframe:pointname "Bainer.CHW.Building Chilled Water Supply Temp Sp 2" ;
+    brickframe:uuid "a91c6a3f-7fea-39d6-8a70-a4d0775b1611" .
+
+bldg:Bainer.CHW.ECONOMIZER a brick1:Damper_Position_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.CHW.ECONOMIZER" ;
+    brickframe:uuid "017e27e4-b71c-3a81-93e8-b778b2f41eae" .
+
+bldg:Bainer.CHW.Enable a brick1:Enable_Command ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.CHW.Enable" ;
+    brickframe:uuid "4a1ec1a1-9bb0-3c2b-91c0-8c9f865aa68b" .
+
+bldg:Bainer.CHW.Loop_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.CHW.Loop Chilled Water Return Temp" ;
+    brickframe:uuid "f99ccab2-7772-3ec5-9104-45a9ec31b7af" .
+
+bldg:Bainer.CHW.Loop_Chilled_Water_Return_Temp_1 a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.CHW.Loop Chilled Water Return Temp 1" ;
+    brickframe:uuid "1b16b3ec-01f9-3aa7-97e2-7a7a4a88f8b7" .
+
+bldg:Bainer.CHW.Loop_Chilled_Water_Return_Temp_Setpoint a brick_v_1_0_2:Chilled_Water_Return_Temperature_Setpoint ;
+    brickframe:pointname "Bainer.CHW.Loop Chilled Water Return Temp Setpoint" ;
+    brickframe:uuid "954a0bf2-eb28-3afe-91e6-811cace3995c" .
+
+bldg:Bainer.CHW.Loop_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.CHW.Loop Chilled Water Supply Temp" ;
+    brickframe:uuid "aa0234df-834f-300f-982b-0c1e6877fd04" .
+
+bldg:Bainer.CHW.Loop_Chilled_Water_Supply_Temp_1 a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.CHW.Loop Chilled Water Supply Temp 1" ;
+    brickframe:uuid "433d89a8-269f-3859-a014-f895468c4688" .
+
+bldg:Bainer.CHW.Loop_Chilled_Water_Supply_Temp_Setpoint a brick_v_1_0_2:Chilled_Water_Supply_Temperature_Setpoint ;
+    brickframe:pointname "Bainer.CHW.Loop Chilled Water Supply Temp Setpoint" ;
+    brickframe:uuid "9244f6d3-6e6a-3fab-b946-c2788ae8abd5" .
+
+bldg:Bainer.CHW.OA_ENABLE a brick_v_1_0_2:Outside_Air_Damper_Command ;
+    brickframe:pointname "Bainer.CHW.OA ENABLE" ;
+    brickframe:uuid "d06fa7b8-56f6-3d3a-a442-6ad1a6d445a3" .
+
+bldg:Bainer.CHW.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.CHW.Outside Air Temp" ;
+    brickframe:uuid "477a6d86-aa58-339b-bad8-8d33b4072191" .
+
+bldg:Bainer.CHW.Pump1_KW a brick_v_1_0_2:Power_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.CHW.Pump1_KW" ;
+    brickframe:uuid "67896de3-0c6e-3fd2-b6ed-70fc72213d89" .
+
+bldg:Bainer.CHW.Pump1_SPEED a brick_v_1_0_2:Speed_Status ;
+    brickframe:pointname "Bainer.CHW.Pump1_SPEED" ;
+    brickframe:uuid "5d029293-b51f-35cd-92a0-ede9e7f044f4" .
+
+bldg:Bainer.CHW.Pump1_SPEED_FB a brick_v_1_0_2:Speed_Status ;
+    brickframe:pointname "Bainer.CHW.Pump1_SPEED FB" ;
+    brickframe:uuid "5c72adfe-612d-397e-9d2f-463635f479e3" .
+
+bldg:Bainer.CHW.Pump2_KW a brick_v_1_0_2:Power_Sensor ;
+    brickframe:hasSite bldg:Bainer ;
+    brickframe:pointname "Bainer.CHW.Pump2_KW" ;
+    brickframe:uuid "ab51644a-0f0c-3004-8779-4938d8d3eb18" .
+
+bldg:Bainer.CHW.Pump2_SPEED a brick_v_1_0_2:Speed_Status ;
+    brickframe:pointname "Bainer.CHW.Pump2_SPEED" ;
+    brickframe:uuid "8615bad0-196c-314d-8e93-3b69ddbf7277" .
+
+bldg:Bainer.CHW.Pump2_SPEED_FB a brick_v_1_0_2:Speed_Status ;
+    brickframe:pointname "Bainer.CHW.Pump2_SPEED FB" ;
+    brickframe:uuid "d1a8fcdf-dc16-3cd3-9577-ca77b0f70789" .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:Bainer ;
+    brick1:hasPoint bldg:Bainer.CHW.Building_Chilled_Water_Flow,
+        bldg:Bainer.CHW.Building_Chilled_Water_Return_Temp,
+        bldg:Bainer.CHW.Building_Chilled_Water_Return_Temp_1,
+        bldg:Bainer.CHW.Building_Chilled_Water_Return_Temp_Setpoint,
+        bldg:Bainer.CHW.Building_Chilled_Water_Supply_Temp,
+        bldg:Bainer.CHW.Building_Chilled_Water_Supply_Temp_2,
+        bldg:Bainer.CHW.Building_Chilled_Water_Supply_Temp_Setpoint,
+        bldg:Bainer.CHW.Building_Chilled_Water_Supply_Temp_Sp_2,
+        bldg:Bainer.CHW.ECONOMIZER,
+        bldg:Bainer.CHW.Enable,
+        bldg:Bainer.CHW.Loop_Chilled_Water_Return_Temp,
+        bldg:Bainer.CHW.Loop_Chilled_Water_Return_Temp_1,
+        bldg:Bainer.CHW.Loop_Chilled_Water_Return_Temp_Setpoint,
+        bldg:Bainer.CHW.Loop_Chilled_Water_Supply_Temp,
+        bldg:Bainer.CHW.Loop_Chilled_Water_Supply_Temp_1,
+        bldg:Bainer.CHW.Loop_Chilled_Water_Supply_Temp_Setpoint,
+        bldg:Bainer.CHW.OA_ENABLE,
+        bldg:Bainer.CHW.Outside_Air_Temp,
+        bldg:Bainer.CHW.Pump1_KW,
+        bldg:Bainer.CHW.Pump1_SPEED,
+        bldg:Bainer.CHW.Pump1_SPEED_FB,
+        bldg:Bainer.CHW.Pump2_KW,
+        bldg:Bainer.CHW.Pump2_SPEED,
+        bldg:Bainer.CHW.Pump2_SPEED_FB .
+
+bldg:Bainer a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "163665" ;
+    brickframe:Country "US" .
+

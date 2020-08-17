@@ -1,0 +1,344 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://xbos.io/ontologies/avenal-recreation-center#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:Level_1 a brick1:Floor ;
+    rdf:label "Level 1" ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brick1:hasPart bldg:Room_1,
+        bldg:Room_10,
+        bldg:Room_3,
+        bldg:Room_4,
+        bldg:Room_6,
+        bldg:Room_7,
+        bldg:Room_8,
+        bldg:Room_east,
+        bldg:Room_south,
+        bldg:Room_west .
+
+<http://xbos.io/ontologies/avenal-recreation-center#green_button_meter_QfpXVpA/GCJH5OVJ9O2ZePSs3mM=> a brick_v_1_0_2:Green_Button_Meter ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brickframe:uuid "64404309-cbf9-5046-b2fe-ed652d733ef2" .
+
+bldg:hvac_zone_large_room_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_4 ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brickframe:uri "avenal-recreation-center/devices/s.pelican/Large_Room/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_large_room ;
+    brick1:hasPoint bldg:hvac_zone_large_room_tstat_cooling_setpoint,
+        bldg:hvac_zone_large_room_tstat_fan,
+        bldg:hvac_zone_large_room_tstat_heating_setpoint,
+        bldg:hvac_zone_large_room_tstat_mode,
+        bldg:hvac_zone_large_room_tstat_override,
+        bldg:hvac_zone_large_room_tstat_state,
+        bldg:hvac_zone_large_room_tstat_temperature .
+
+bldg:hvac_zone_tech_center_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_10 ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brickframe:uri "avenal-recreation-center/devices/s.pelican/Tech_Center/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_tech_center ;
+    brick1:hasPoint bldg:hvac_zone_tech_center_tstat_cooling_setpoint,
+        bldg:hvac_zone_tech_center_tstat_fan,
+        bldg:hvac_zone_tech_center_tstat_heating_setpoint,
+        bldg:hvac_zone_tech_center_tstat_mode,
+        bldg:hvac_zone_tech_center_tstat_override,
+        bldg:hvac_zone_tech_center_tstat_state,
+        bldg:hvac_zone_tech_center_tstat_temperature .
+
+bldg:meter_0xd8d5b9000000a184 a brick_v_1_0_2:Building_Electric_Meter ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brickframe:uri "avenal-recreation-center/s.eagle/0xd8d5b9000000a184/i.meter" ;
+    brickframe:uuid "ad44f2bc-71e6-3c92-9e8c-d38fe61ac9f4" .
+
+bldg:return_damper_20 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brick1:isFedBy bldg:Room_4 .
+
+bldg:return_damper_21 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brick1:isFedBy bldg:Room_4 .
+
+bldg:return_damper_22 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brick1:isFedBy bldg:Room_7 .
+
+bldg:return_damper_23 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brick1:isFedBy bldg:Room_8 .
+
+bldg:weather_AT565_cloud_coverage a brick_v_1_0_2:Weather_Cloud_Coverage_Sensor ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brickframe:uuid "f243903f-16cd-3362-9506-8a32a5efa4ee" .
+
+bldg:weather_AT565_cloud_height a brick_v_1_0_2:Weather_Cloud_Height_Sensor ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brickframe:uuid "d3c6ce62-3295-312c-ab8e-0debe171621d" .
+
+bldg:weather_AT565_relative_humidity a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brickframe:uuid "003a1759-e1.0.2514-a6d5-981e9b7924d6" .
+
+bldg:weather_AT565_temperature a brick_v_1_0_2:Weather_Temperature_Sensor ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brickframe:uuid "a6e9f305-d76b-3e1a-8b11-e3d312134f02" .
+
+bldg:weather_AT565_wind_direction a brick1:Wind_Direction_Sensor ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brickframe:uuid "f458cf4d-d109-3a3b-ae40-939da6841510" .
+
+bldg:weather_AT565_wind_speed a brick1:Wind_Speed_Sensor ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brickframe:uuid "6410f70b-a594-39bb-94ac-1eb9682a70e7" .
+
+bldg:weather_KTLC1_cloud_coverage a brick_v_1_0_2:Weather_Cloud_Coverage_Sensor ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brickframe:uuid "72950f10-3614-30da-8803-2755cb4731ea" .
+
+bldg:weather_KTLC1_cloud_height a brick_v_1_0_2:Weather_Cloud_Height_Sensor ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brickframe:uuid "2ac5ed07-4f55-31c3-8641-0165462d4f44" .
+
+bldg:weather_KTLC1_relative_humidity a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brickframe:uuid "10ef6a49-4a43-37fd-befc-524eb2b2f104" .
+
+bldg:weather_KTLC1_temperature a brick_v_1_0_2:Weather_Temperature_Sensor ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brickframe:uuid "c3d0f042-2cb7-387c-8867-4190fef4fd2c" .
+
+bldg:weather_KTLC1_wind_direction a brick1:Wind_Direction_Sensor ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brickframe:uuid "f933cb33-1bcb-34e9-8e73-1bae9a023715" .
+
+bldg:weather_KTLC1_wind_speed a brick1:Wind_Speed_Sensor ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brickframe:uuid "6f4e2261-7cc3-3369-a367-01ef3828a7c7" .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:RTU_hvac_zone_large_room a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brick1:feeds bldg:hvac_zone_large_room .
+
+bldg:RTU_hvac_zone_tech_center a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brick1:feeds bldg:hvac_zone_tech_center .
+
+bldg:Room_1 a brick1:Room ;
+    rdf:label "Office" ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brick1:isPartOf bldg:HVAC_Zone_large_room .
+
+bldg:Room_3 a brick1:Room ;
+    rdf:label "Main Rec." ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brick1:isPartOf bldg:HVAC_Zone_large_room .
+
+bldg:Room_6 a brick1:Room ;
+    rdf:label "Hall" ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brick1:isPartOf bldg:HVAC_Zone_tech_center .
+
+bldg:Room_east a brick1:Room ;
+    rdf:label "East" ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brick1:isPartOf bldg:HVAC_Zone_outside .
+
+bldg:Room_south a brick1:Room ;
+    rdf:label "South" ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brick1:isPartOf bldg:HVAC_Zone_outside .
+
+bldg:Room_west a brick1:Room ;
+    rdf:label "West" ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brick1:isPartOf bldg:HVAC_Zone_outside .
+
+bldg:hvac_zone_large_room a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-recreation-center .
+
+bldg:hvac_zone_large_room_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brickframe:uri "avenal-recreation-center/devices/s.pelican/Large_Room/i.xbos.thermostat" ;
+    brickframe:uuid "ad78f71d-3d87-3498-9fb6-6368c287e0c4" .
+
+bldg:hvac_zone_large_room_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brickframe:uri "avenal-recreation-center/devices/s.pelican/Large_Room/i.xbos.thermostat" ;
+    brickframe:uuid "b54f68aa-de35-3072-b8be-2205c375eb17" .
+
+bldg:hvac_zone_large_room_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brickframe:uri "avenal-recreation-center/devices/s.pelican/Large_Room/i.xbos.thermostat" ;
+    brickframe:uuid "e7003b6f-2871-3708-afc1-b34c7eadb79b" .
+
+bldg:hvac_zone_large_room_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brickframe:uri "avenal-recreation-center/devices/s.pelican/Large_Room/i.xbos.thermostat" ;
+    brickframe:uuid "dfee698d-a5de-33ac-827d-fab8c073e45e" .
+
+bldg:hvac_zone_large_room_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brickframe:uri "avenal-recreation-center/devices/s.pelican/Large_Room/i.xbos.thermostat" ;
+    brickframe:uuid "130cf325-2939-391b-b7b7-2eeb615c0f9f" .
+
+bldg:hvac_zone_large_room_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brickframe:uri "avenal-recreation-center/devices/s.pelican/Large_Room/i.xbos.thermostat" ;
+    brickframe:uuid "cee3691e-bcb6-313e-ae69-e91b869604c2" .
+
+bldg:hvac_zone_large_room_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brickframe:uri "avenal-recreation-center/devices/s.pelican/Large_Room/i.xbos.thermostat" ;
+    brickframe:uuid "38c5cd68-5a3b-36af-858e-b0ccc0ae860d" .
+
+bldg:hvac_zone_tech_center a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-recreation-center .
+
+bldg:hvac_zone_tech_center_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brickframe:uri "avenal-recreation-center/devices/s.pelican/Tech_Center/i.xbos.thermostat" ;
+    brickframe:uuid "9af9e9c7-9d0e-3f3e-8c17-0902e0391bf2" .
+
+bldg:hvac_zone_tech_center_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brickframe:uri "avenal-recreation-center/devices/s.pelican/Tech_Center/i.xbos.thermostat" ;
+    brickframe:uuid "e93a3a9e-91a3-31e3-a471-5f6bea6c6906" .
+
+bldg:hvac_zone_tech_center_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brickframe:uri "avenal-recreation-center/devices/s.pelican/Tech_Center/i.xbos.thermostat" ;
+    brickframe:uuid "9db6d023-1a07-3f78-aebc-9353ffc2c999" .
+
+bldg:hvac_zone_tech_center_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brickframe:uri "avenal-recreation-center/devices/s.pelican/Tech_Center/i.xbos.thermostat" ;
+    brickframe:uuid "67f0a5e9-5344-392f-aba6-f4f61bec6cbb" .
+
+bldg:hvac_zone_tech_center_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brickframe:uri "avenal-recreation-center/devices/s.pelican/Tech_Center/i.xbos.thermostat" ;
+    brickframe:uuid "107305a1-118b-3a73-8f98-508949201748" .
+
+bldg:hvac_zone_tech_center_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brickframe:uri "avenal-recreation-center/devices/s.pelican/Tech_Center/i.xbos.thermostat" ;
+    brickframe:uuid "d8e066aa-f978-351c-8e00-a8ed2247d99a" .
+
+bldg:hvac_zone_tech_center_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brickframe:uri "avenal-recreation-center/devices/s.pelican/Tech_Center/i.xbos.thermostat" ;
+    brickframe:uuid "274e88a0-0d98-3559-9a71-e63a2f756031" .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+bldg:Room_10 a brick1:Room ;
+    rdf:label "Tech Center" ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brick1:isPartOf bldg:HVAC_Zone_tech_center .
+
+bldg:Room_7 a brick1:Room ;
+    rdf:label "Restroom" ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brick1:isPartOf bldg:HVAC_Zone_tech_center .
+
+bldg:Room_8 a brick1:Room ;
+    rdf:label "Restroom" ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brick1:isPartOf bldg:HVAC_Zone_tech_center .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brick_v_1_0_2:Weather_Cloud_Coverage_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Weather_Cloud_Height_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Weather_Temperature_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+bldg:HVAC_Zone_large_room a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-recreation-center .
+
+bldg:HVAC_Zone_outside a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-recreation-center .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:HVAC_Zone_tech_center a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-recreation-center .
+
+bldg:Room_4 a brick1:Room ;
+    rdf:label "Main Rec." ;
+    brickframe:hasSite bldg:avenal-recreation-center ;
+    brick1:isPartOf bldg:HVAC_Zone_large_room .
+
+bldg:avenal-recreation-center a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "2417" ;
+    brickframe:Country "US" ;
+    brickframe:NumFloors "1" ;
+    brickframe:PrimaryFunction "Recreation Center" ;
+    brickframe:Timezone "America/Los_Angeles" .
+

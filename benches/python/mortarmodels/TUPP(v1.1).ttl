@@ -1,0 +1,631 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/TUPP#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://buildsys.org/ontologies/TUPP#1NE> a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:TUPP ;
+    brick1:hasPoint bldg:TUPP.AHU.1NE.CCV,
+        bldg:TUPP.AHU.1NE.Cooling_Valve_Output,
+        bldg:TUPP.AHU.1NE.Heating_Valve_Output,
+        bldg:TUPP.AHU.1NE.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+<http://buildsys.org/ontologies/TUPP#1NW> a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:TUPP ;
+    brick1:hasPoint bldg:TUPP.AHU.1NW.CCV,
+        bldg:TUPP.AHU.1NW.Cooling_Valve_Output,
+        bldg:TUPP.AHU.1NW.Heating_Valve_Output,
+        bldg:TUPP.AHU.1NW.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+<http://buildsys.org/ontologies/TUPP#1SE> a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:TUPP ;
+    brick1:hasPoint bldg:TUPP.AHU.1SE.CCV,
+        bldg:TUPP.AHU.1SE.Cooling_Valve_Output,
+        bldg:TUPP.AHU.1SE.Heating_Valve_Output,
+        bldg:TUPP.AHU.1SE.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+<http://buildsys.org/ontologies/TUPP#1SW> a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:TUPP ;
+    brick1:hasPoint bldg:TUPP.AHU.1SW.CCV,
+        bldg:TUPP.AHU.1SW.Cooling_Valve_Output,
+        bldg:TUPP.AHU.1SW.Heating_Valve_Output,
+        bldg:TUPP.AHU.1SW.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+<http://buildsys.org/ontologies/TUPP#2NE> a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:TUPP ;
+    brick1:hasPoint bldg:TUPP.AHU.2NE.CCV,
+        bldg:TUPP.AHU.2NE.Cooling_Valve_Output,
+        bldg:TUPP.AHU.2NE.Heating_Valve_Output,
+        bldg:TUPP.AHU.2NE.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+<http://buildsys.org/ontologies/TUPP#2NW> a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:TUPP ;
+    brick1:hasPoint bldg:TUPP.AHU.2NW.CCV,
+        bldg:TUPP.AHU.2NW.Cooling_Valve_Output,
+        bldg:TUPP.AHU.2NW.Heating_Valve_Output,
+        bldg:TUPP.AHU.2NW.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+<http://buildsys.org/ontologies/TUPP#2SE> a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:TUPP ;
+    brick1:hasPoint bldg:TUPP.AHU.2SE.CCV,
+        bldg:TUPP.AHU.2SE.Cooling_Valve_Output,
+        bldg:TUPP.AHU.2SE.Heating_Valve_Output,
+        bldg:TUPP.AHU.2SE.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+<http://buildsys.org/ontologies/TUPP#2SW> a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:TUPP ;
+    brick1:hasPoint bldg:TUPP.AHU.2SW.CCV,
+        bldg:TUPP.AHU.2SW.Cooling_Valve_Output,
+        bldg:TUPP.AHU.2SW.Heating_Valve_Output,
+        bldg:TUPP.AHU.2SW.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+<http://buildsys.org/ontologies/TUPP#3NE> a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:TUPP ;
+    brick1:hasPoint bldg:TUPP.AHU.3NE.CCV,
+        bldg:TUPP.AHU.3NE.Cooling_Valve_Output,
+        bldg:TUPP.AHU.3NE.Heating_Valve_Output,
+        bldg:TUPP.AHU.3NE.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+<http://buildsys.org/ontologies/TUPP#3NW> a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:TUPP ;
+    brick1:hasPoint bldg:TUPP.AHU.3NW.CCV,
+        bldg:TUPP.AHU.3NW.Cooling_Valve_Output,
+        bldg:TUPP.AHU.3NW.Heating_Valve_Output,
+        bldg:TUPP.AHU.3NW.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+<http://buildsys.org/ontologies/TUPP#3SE> a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:TUPP ;
+    brick1:hasPoint bldg:TUPP.AHU.3SE.CCV,
+        bldg:TUPP.AHU.3SE.Cooling_Valve_Output,
+        bldg:TUPP.AHU.3SE.Heating_Valve_Output,
+        bldg:TUPP.AHU.3SE.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+<http://buildsys.org/ontologies/TUPP#3SW> a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:TUPP ;
+    brick1:hasPoint bldg:TUPP.AHU.3SW.CCV,
+        bldg:TUPP.AHU.3SW.Cooling_Valve_Output,
+        bldg:TUPP.AHU.3SW.Heating_Valve_Output,
+        bldg:TUPP.AHU.3SW.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+<http://buildsys.org/ontologies/TUPP#4NE> a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:TUPP ;
+    brick1:hasPoint bldg:TUPP.AHU.4NE.CCV,
+        bldg:TUPP.AHU.4NE.Cooling_Valve_Output,
+        bldg:TUPP.AHU.4NE.Heating_Valve_Output,
+        bldg:TUPP.AHU.4NE.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+<http://buildsys.org/ontologies/TUPP#4NW> a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:TUPP ;
+    brick1:hasPoint bldg:TUPP.AHU.4NW.CCV,
+        bldg:TUPP.AHU.4NW.Cooling_Valve_Output,
+        bldg:TUPP.AHU.4NW.Heating_Valve_Output,
+        bldg:TUPP.AHU.4NW.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+<http://buildsys.org/ontologies/TUPP#4SE> a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:TUPP ;
+    brick1:hasPoint bldg:TUPP.AHU.4SE.CCV,
+        bldg:TUPP.AHU.4SE.Cooling_Valve_Output,
+        bldg:TUPP.AHU.4SE.Heating_Valve_Output,
+        bldg:TUPP.AHU.4SE.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+<http://buildsys.org/ontologies/TUPP#4SW> a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:TUPP ;
+    brick1:hasPoint bldg:TUPP.AHU.4SW.CCV,
+        bldg:TUPP.AHU.4SW.Cooling_Valve_Output,
+        bldg:TUPP.AHU.4SW.Heating_Valve_Output,
+        bldg:TUPP.AHU.4SW.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:Tupper_ChilledWater_Demand_kBtu a brick_v_1_0_2:Electric_Meter ;
+    brickframe:pointname "Tupper_ChilledWater_Demand_kBtu" ;
+    brickframe:uuid "ccc94dc4-5242-3a51-9f2a-6991397d5b94" ;
+    brick1:isPointOf bldg:chiller .
+
+bldg:Tupper_Electricity_Demand_kBtu a brick_v_1_0_2:Building_Electric_Meter ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "Tupper_Electricity_Demand_kBtu" ;
+    brickframe:uuid "0ba942ac-9e44-3c0f-8529-8a59d3187a87" .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:TUPP.AHU.1NE.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.1NE.CCV" ;
+    brickframe:uuid "ad389f7b-5dee-3e9a-b938-1b734db8ce08" .
+
+bldg:TUPP.AHU.1NE.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.1NE.Cooling Valve Output" ;
+    brickframe:uuid "3edfa775-cc76-3c84-9baa-5a4e4aeb4739" .
+
+bldg:TUPP.AHU.1NE.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.1NE.Heating Valve Output" ;
+    brickframe:uuid "e6d2e274-bfdb-3a43-949e-a3acc6f45b75" .
+
+bldg:TUPP.AHU.1NE.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.1NE.Supply Air Temp" ;
+    brickframe:uuid "b3829710-3911-326d-8fc3-540c23e6fd9f" .
+
+bldg:TUPP.AHU.1NW.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.1NW.CCV" ;
+    brickframe:uuid "5da48f24-044a-362e-98cd-68025da2fe35" .
+
+bldg:TUPP.AHU.1NW.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.1NW.Cooling Valve Output" ;
+    brickframe:uuid "b46b4c24-e9d3-3ec0-9d37-048f8130d92f" .
+
+bldg:TUPP.AHU.1NW.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.1NW.Heating Valve Output" ;
+    brickframe:uuid "f47038c6-ddad-3c7a-8696-3f01dd7aa0ca" .
+
+bldg:TUPP.AHU.1NW.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.1NW.Supply Air Temp" ;
+    brickframe:uuid "d507c5a4-1c29-3fcd-8971-dce06890ac65" .
+
+bldg:TUPP.AHU.1SE.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.1SE.CCV" ;
+    brickframe:uuid "36b52291-dd9d-3ada-b8dc-49edafe943c7" .
+
+bldg:TUPP.AHU.1SE.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.1SE.Cooling Valve Output" ;
+    brickframe:uuid "990e55e5-67ac-32e9-bb74-fb18bdd3cfb6" .
+
+bldg:TUPP.AHU.1SE.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.1SE.Heating Valve Output" ;
+    brickframe:uuid "c74554bb-2be2-3501-a8e6-0dbf4d69e611" .
+
+bldg:TUPP.AHU.1SE.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.1SE.Supply Air Temp" ;
+    brickframe:uuid "c835c071-eb5a-3127-8995-c62d099d7ca9" .
+
+bldg:TUPP.AHU.1SW.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.1SW.CCV" ;
+    brickframe:uuid "3286491f-7d83-3a13-ba7d-034baf65c41b" .
+
+bldg:TUPP.AHU.1SW.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.1SW.Cooling Valve Output" ;
+    brickframe:uuid "2fe2ec89-adfc-351b-90c0-a8f313f273d8" .
+
+bldg:TUPP.AHU.1SW.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.1SW.Heating Valve Output" ;
+    brickframe:uuid "9280a288-ce42-3b54-870f-b5c5dda9e159" .
+
+bldg:TUPP.AHU.1SW.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.1SW.Supply Air Temp" ;
+    brickframe:uuid "e5182f9c-9cc7-3365-a04b-31b4ee4f37a3" .
+
+bldg:TUPP.AHU.2NE.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.2NE.CCV" ;
+    brickframe:uuid "59a74ab6-4468-3743-9cb7-bc08b9dc915f" .
+
+bldg:TUPP.AHU.2NE.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.2NE.Cooling Valve Output" ;
+    brickframe:uuid "f1294ea2-396a-395c-aa89-b1484d39b698" .
+
+bldg:TUPP.AHU.2NE.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.2NE.Heating Valve Output" ;
+    brickframe:uuid "e9522b1d-eaad-3f5d-b58f-8305a3ae770a" .
+
+bldg:TUPP.AHU.2NE.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.2NE.Supply Air Temp" ;
+    brickframe:uuid "194651ce-9c24-3d99-bb83-87689038f970" .
+
+bldg:TUPP.AHU.2NW.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.2NW.CCV" ;
+    brickframe:uuid "caa7434e-d578-34b2-b1d1-484a839655a6" .
+
+bldg:TUPP.AHU.2NW.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.2NW.Cooling Valve Output" ;
+    brickframe:uuid "29cfe917-b37e-3260-a616-d3ec3c4bc250" .
+
+bldg:TUPP.AHU.2NW.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.2NW.Heating Valve Output" ;
+    brickframe:uuid "a51eb12a-9aa5-3c5b-b51d-f1b98bd7b267" .
+
+bldg:TUPP.AHU.2NW.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.2NW.Supply Air Temp" ;
+    brickframe:uuid "e4b6937e-43e7-3ca7-9306-8482b0c2b281" .
+
+bldg:TUPP.AHU.2SE.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.2SE.CCV" ;
+    brickframe:uuid "e1ef9382-ddff-3b85-86b6-4ab72fd8acf0" .
+
+bldg:TUPP.AHU.2SE.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.2SE.Cooling Valve Output" ;
+    brickframe:uuid "5416d49d-07ef-3b1f-8dd4-78cf7736428b" .
+
+bldg:TUPP.AHU.2SE.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.2SE.Heating Valve Output" ;
+    brickframe:uuid "8fb861fb-7f89-3ea8-b6f2-db2ff8e2b8ac" .
+
+bldg:TUPP.AHU.2SE.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.2SE.Supply Air Temp" ;
+    brickframe:uuid "2a2c70e2-be27-3504-bdbc-d36c89542575" .
+
+bldg:TUPP.AHU.2SW.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.2SW.CCV" ;
+    brickframe:uuid "6c13e1a5-fc57-3ffb-a2cd-057b4b6876ac" .
+
+bldg:TUPP.AHU.2SW.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.2SW.Cooling Valve Output" ;
+    brickframe:uuid "33c27df5-cf2a-338e-9445-e7a9602eff27" .
+
+bldg:TUPP.AHU.2SW.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.2SW.Heating Valve Output" ;
+    brickframe:uuid "183b5561-e211-3c68-afcc-5ce38edf190c" .
+
+bldg:TUPP.AHU.2SW.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.2SW.Supply Air Temp" ;
+    brickframe:uuid "caa3212f-8489-3d97-afef-8853020bff31" .
+
+bldg:TUPP.AHU.3NE.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.3NE.CCV" ;
+    brickframe:uuid "1175a97a-7a94-3a34-9e3c-26bc8a178a9c" .
+
+bldg:TUPP.AHU.3NE.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.3NE.Cooling Valve Output" ;
+    brickframe:uuid "9e98bfe5-f51b-3ebc-bb77-511ffdbd2ea8" .
+
+bldg:TUPP.AHU.3NE.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.3NE.Heating Valve Output" ;
+    brickframe:uuid "6ad1432e-194d-3f51-ad26-eed7e3b32efe" .
+
+bldg:TUPP.AHU.3NE.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.3NE.Supply Air Temp" ;
+    brickframe:uuid "035e00bd-302f-3c55-b676-4f695ba997a4" .
+
+bldg:TUPP.AHU.3NW.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.3NW.CCV" ;
+    brickframe:uuid "198b6ce7-52da-340e-9138-d05b0effdf61" .
+
+bldg:TUPP.AHU.3NW.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.3NW.Cooling Valve Output" ;
+    brickframe:uuid "628b970e-6a24-3c47-bd6f-d2ae219a25ea" .
+
+bldg:TUPP.AHU.3NW.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.3NW.Heating Valve Output" ;
+    brickframe:uuid "822b35ae-b4d2-3c35-8b91-f5911538839d" .
+
+bldg:TUPP.AHU.3NW.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.3NW.Supply Air Temp" ;
+    brickframe:uuid "2ccaf14b-6ccc-3c62-8201-72b78f6eb147" .
+
+bldg:TUPP.AHU.3SE.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.3SE.CCV" ;
+    brickframe:uuid "a871a927-6a05-3625-951a-65a317d32e27" .
+
+bldg:TUPP.AHU.3SE.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.3SE.Cooling Valve Output" ;
+    brickframe:uuid "76a856ee-0aff-325c-9d95-e1daf8004fea" .
+
+bldg:TUPP.AHU.3SE.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.3SE.Heating Valve Output" ;
+    brickframe:uuid "af99d5bf-d0a0-367d-86ae-ae3b2b6bbd0e" .
+
+bldg:TUPP.AHU.3SE.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.3SE.Supply Air Temp" ;
+    brickframe:uuid "a99ee541-bb1c-3010-9fb0-691b3ffc7815" .
+
+bldg:TUPP.AHU.3SW.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.3SW.CCV" ;
+    brickframe:uuid "bcd70a78-526e-3619-bcbb-ccf287014e0d" .
+
+bldg:TUPP.AHU.3SW.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.3SW.Cooling Valve Output" ;
+    brickframe:uuid "8ffc52d0-f725-3054-a79c-573f94c112d8" .
+
+bldg:TUPP.AHU.3SW.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.3SW.Heating Valve Output" ;
+    brickframe:uuid "e2d9e9eb-ca45-388a-8c0b-2741921f318d" .
+
+bldg:TUPP.AHU.3SW.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.3SW.Supply Air Temp" ;
+    brickframe:uuid "a739075b-52d7-3682-85e8-e26f7a51c01e" .
+
+bldg:TUPP.AHU.4NE.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.4NE.CCV" ;
+    brickframe:uuid "55345a49-a167-3f95-9ad8-77cf929186b6" .
+
+bldg:TUPP.AHU.4NE.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.4NE.Cooling Valve Output" ;
+    brickframe:uuid "00a46634-ff85-30b4-9a23-ae2debcd7539" .
+
+bldg:TUPP.AHU.4NE.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.4NE.Heating Valve Output" ;
+    brickframe:uuid "47f8fceb-fbcf-362a-8e58-277902cc8054" .
+
+bldg:TUPP.AHU.4NE.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.4NE.Supply Air Temp" ;
+    brickframe:uuid "bc8576c2-c6ee-3f6b-a74c-3caf61f298a8" .
+
+bldg:TUPP.AHU.4NW.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.4NW.CCV" ;
+    brickframe:uuid "538f41af-91da-3364-a953-8fb2be2320a4" .
+
+bldg:TUPP.AHU.4NW.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.4NW.Cooling Valve Output" ;
+    brickframe:uuid "0792e1.0.2260-37b5-8244-de2182c5e668" .
+
+bldg:TUPP.AHU.4NW.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.4NW.Heating Valve Output" ;
+    brickframe:uuid "42644b4f-4865-3574-8909-aebc9a49a842" .
+
+bldg:TUPP.AHU.4NW.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.4NW.Supply Air Temp" ;
+    brickframe:uuid "d6625791-d9d0-3b73-8629-83203856a983" .
+
+bldg:TUPP.AHU.4SE.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.4SE.CCV" ;
+    brickframe:uuid "71d5bebd-fc0c-345f-9dbf-3f798947f066" .
+
+bldg:TUPP.AHU.4SE.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.4SE.Cooling Valve Output" ;
+    brickframe:uuid "21ea9fd6-184d-3fe0-92b5-0d49cdb54ad4" .
+
+bldg:TUPP.AHU.4SE.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.4SE.Heating Valve Output" ;
+    brickframe:uuid "1394b0c3-faee-324f-806f-b3d88e7ad8d1" .
+
+bldg:TUPP.AHU.4SE.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.4SE.Supply Air Temp" ;
+    brickframe:uuid "74b1cd28-1078-3ba5-b434-490c26a5a723" .
+
+bldg:TUPP.AHU.4SW.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.4SW.CCV" ;
+    brickframe:uuid "8c8acc9f-59be-3261-8b7b-fcaf13cb827d" .
+
+bldg:TUPP.AHU.4SW.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.4SW.Cooling Valve Output" ;
+    brickframe:uuid "418f8f85-fbbb-3e4e-aab9-04e89aaabf78" .
+
+bldg:TUPP.AHU.4SW.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.4SW.Heating Valve Output" ;
+    brickframe:uuid "3ee0efd8-8c49-315e-bdb5-fb5dc8880f89" .
+
+bldg:TUPP.AHU.4SW.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.AHU.4SW.Supply Air Temp" ;
+    brickframe:uuid "f6f5e4ad-34a0-312b-a364-bbd5968d03e5" .
+
+bldg:TUPP.CHW.BUILDINGDP a brick1:Differential_Pressure_Sensor ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.CHW.BUILDINGDP" ;
+    brickframe:uuid "25a98ca7-96fc-3248-b36c-cff3f1a15aa2" .
+
+bldg:TUPP.CHW.BYPVALVE a brick_v_1_0_2:Chilled_Water_Bypass_Valve ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.CHW.BYPVALVE" ;
+    brickframe:uuid "f4a4646f-5640-3e35-9e13-0a2e4de5f6ce" .
+
+bldg:TUPP.CHW.Building_Chilled_Water_Flow a brick_v_1_0_2:Chilled_Water_Flow_Sensor ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.CHW.Building Chilled Water Flow" ;
+    brickframe:uuid "fc583880-912b-38f7-8dfa-485c02e2b1d7" .
+
+bldg:TUPP.CHW.Building_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.CHW.Building Chilled Water Return Temp" ;
+    brickframe:uuid "793c09d2-9dda-3dd8-8d9c-70c0dcd4491a" .
+
+bldg:TUPP.CHW.Building_Chilled_Water_Return_Temp_Sp a brick_v_1_0_2:Chilled_Water_Return_Temperature_Setpoint ;
+    brickframe:pointname "TUPP.CHW.Building Chilled Water Return Temp Sp" ;
+    brickframe:uuid "a6878c83-e1a6-38d8-aa66-6a1e80dd7a97" .
+
+bldg:TUPP.CHW.Building_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.CHW.Building Chilled Water Supply Temp" ;
+    brickframe:uuid "6b364271-7038-35c4-8fa3-819132e28354" .
+
+bldg:TUPP.CHW.ECONOMIZER a brick1:Damper_Position_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.CHW.ECONOMIZER" ;
+    brickframe:uuid "00e9a89b-c14b-3b80-ae7f-93e1b9379041" .
+
+bldg:TUPP.CHW.ENABLE a brick1:Enable_Command ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.CHW.ENABLE" ;
+    brickframe:uuid "d16bafef-d145-3f01-b31f-875684fb1ded" .
+
+bldg:TUPP.CHW.Loop_Chilled_Water_Flow a brick_v_1_0_2:Chilled_Water_Flow_Sensor ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.CHW.Loop Chilled Water Flow" ;
+    brickframe:uuid "c86f9b53-6653-3d95-a388-0d33c1a3016e" .
+
+bldg:TUPP.CHW.Loop_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.CHW.Loop Chilled Water Return Temp" ;
+    brickframe:uuid "3835b088-c7c4-3f96-98d6-b9bb3b257c3f" .
+
+bldg:TUPP.CHW.Loop_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:TUPP ;
+    brickframe:pointname "TUPP.CHW.Loop Chilled Water Supply Temp" ;
+    brickframe:uuid "55ffb619-6c27-3058-a782-5b4a456f9ca5" .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:TUPP ;
+    brick1:hasPoint bldg:TUPP.CHW.BUILDINGDP,
+        bldg:TUPP.CHW.BYPVALVE,
+        bldg:TUPP.CHW.Building_Chilled_Water_Flow,
+        bldg:TUPP.CHW.Building_Chilled_Water_Return_Temp,
+        bldg:TUPP.CHW.Building_Chilled_Water_Return_Temp_Sp,
+        bldg:TUPP.CHW.Building_Chilled_Water_Supply_Temp,
+        bldg:TUPP.CHW.ECONOMIZER,
+        bldg:TUPP.CHW.ENABLE,
+        bldg:TUPP.CHW.Loop_Chilled_Water_Flow,
+        bldg:TUPP.CHW.Loop_Chilled_Water_Return_Temp,
+        bldg:TUPP.CHW.Loop_Chilled_Water_Supply_Temp .
+
+bldg:TUPP a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "235174" ;
+    brickframe:Country "US" .
+

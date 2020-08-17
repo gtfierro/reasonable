@@ -1,0 +1,1901 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://xbos.io/ontologies/ciee#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:Level_1 a brick1:Floor ;
+    rdf:label "Level 1" ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:hasPart bldg:Room_202,
+        bldg:Room_205,
+        bldg:Room_206,
+        bldg:Room_207,
+        bldg:Room_208,
+        bldg:Room_209,
+        bldg:Room_210,
+        bldg:Room_211,
+        bldg:Room_212,
+        bldg:Room_213,
+        bldg:Room_214,
+        bldg:Room_215,
+        bldg:Room_216,
+        bldg:Room_217,
+        bldg:Room_220,
+        bldg:Room_221,
+        bldg:Room_222,
+        bldg:Room_223,
+        bldg:Room_224,
+        bldg:Room_225,
+        bldg:Room_226,
+        bldg:Room_North .
+
+bldg:Room_201 a brick1:Room ;
+    brickframe:adjacentTo bldg:Room_203 ;
+    brickframe:hasSite bldg:ciee .
+
+bldg:Room_226a a brick1:Room ;
+    brickframe:adjacentTo bldg:Room_226 ;
+    brickframe:hasSite bldg:ciee .
+
+bldg:Room_25 a brick1:Room ;
+    brickframe:adjacentTo bldg:Room_203 ;
+    brickframe:hasSite bldg:ciee .
+
+bldg:Sensor00d56d a brick1:Lighting_System ;
+    rdf:label "Sensor00d56d" ;
+    brickframe:hasLocation bldg:Room_203 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor00d56d/i.xbos.light" ;
+    brick1:feeds bldg:Room_203 ;
+    brick1:hasPoint bldg:Sensor00d56d_ambient,
+        bldg:Sensor00d56d_brightness,
+        bldg:Sensor00d56d_meter,
+        bldg:Sensor00d56d_occupancy,
+        bldg:Sensor00d56d_state .
+
+bldg:Sensor013263 a brick1:Lighting_System ;
+    rdf:label "Sensor013263" ;
+    brickframe:hasLocation bldg:Room_207 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor013263/i.xbos.light" ;
+    brick1:feeds bldg:Room_207 ;
+    brick1:hasPoint bldg:Sensor013263_ambient,
+        bldg:Sensor013263_brightness,
+        bldg:Sensor013263_meter,
+        bldg:Sensor013263_occupancy,
+        bldg:Sensor013263_state .
+
+bldg:Sensor018ff9 a brick1:Lighting_System ;
+    rdf:label "Sensor018ff9" ;
+    brickframe:hasLocation bldg:Room_221 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor018ff9/i.xbos.light" ;
+    brick1:feeds bldg:Room_221 ;
+    brick1:hasPoint bldg:Sensor018ff9_ambient,
+        bldg:Sensor018ff9_brightness,
+        bldg:Sensor018ff9_meter,
+        bldg:Sensor018ff9_occupancy,
+        bldg:Sensor018ff9_state .
+
+bldg:Sensor01902e a brick1:Lighting_System ;
+    rdf:label "Sensor01902e" ;
+    brickframe:hasLocation bldg:Room_220 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01902e/i.xbos.light" ;
+    brick1:feeds bldg:Room_220 ;
+    brick1:hasPoint bldg:Sensor01902e_ambient,
+        bldg:Sensor01902e_brightness,
+        bldg:Sensor01902e_meter,
+        bldg:Sensor01902e_occupancy,
+        bldg:Sensor01902e_state .
+
+bldg:Sensor01907b a brick1:Lighting_System ;
+    rdf:label "Sensor01907b" ;
+    brickframe:hasLocation bldg:Room_221 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01907b/i.xbos.light" ;
+    brick1:feeds bldg:Room_221 ;
+    brick1:hasPoint bldg:Sensor01907b_ambient,
+        bldg:Sensor01907b_brightness,
+        bldg:Sensor01907b_meter,
+        bldg:Sensor01907b_occupancy,
+        bldg:Sensor01907b_state .
+
+bldg:Sensor01930e a brick1:Lighting_System ;
+    rdf:label "Sensor01930e" ;
+    brickframe:hasLocation bldg:Room_220 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01930e/i.xbos.light" ;
+    brick1:feeds bldg:Room_220 ;
+    brick1:hasPoint bldg:Sensor01930e_ambient,
+        bldg:Sensor01930e_brightness,
+        bldg:Sensor01930e_meter,
+        bldg:Sensor01930e_occupancy,
+        bldg:Sensor01930e_state .
+
+bldg:Sensor019324 a brick1:Lighting_System ;
+    rdf:label "Sensor019324" ;
+    brickframe:hasLocation bldg:Room_220 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor019324/i.xbos.light" ;
+    brick1:feeds bldg:Room_220 ;
+    brick1:hasPoint bldg:Sensor019324_ambient,
+        bldg:Sensor019324_brightness,
+        bldg:Sensor019324_meter,
+        bldg:Sensor019324_occupancy,
+        bldg:Sensor019324_state .
+
+bldg:Sensor01934e a brick1:Lighting_System ;
+    rdf:label "Sensor01934e" ;
+    brickframe:hasLocation bldg:Room_221 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01934e/i.xbos.light" ;
+    brick1:feeds bldg:Room_221 ;
+    brick1:hasPoint bldg:Sensor01934e_ambient,
+        bldg:Sensor01934e_brightness,
+        bldg:Sensor01934e_meter,
+        bldg:Sensor01934e_occupancy,
+        bldg:Sensor01934e_state .
+
+bldg:Sensor01935b a brick1:Lighting_System ;
+    rdf:label "Sensor01935b" ;
+    brickframe:hasLocation bldg:Room_220 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01935b/i.xbos.light" ;
+    brick1:feeds bldg:Room_220 ;
+    brick1:hasPoint bldg:Sensor01935b_ambient,
+        bldg:Sensor01935b_brightness,
+        bldg:Sensor01935b_meter,
+        bldg:Sensor01935b_occupancy,
+        bldg:Sensor01935b_state .
+
+bldg:Sensor01942b a brick1:Lighting_System ;
+    rdf:label "Sensor01942b" ;
+    brickframe:hasLocation bldg:Room_221 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01942b/i.xbos.light" ;
+    brick1:feeds bldg:Room_221 ;
+    brick1:hasPoint bldg:Sensor01942b_ambient,
+        bldg:Sensor01942b_brightness,
+        bldg:Sensor01942b_meter,
+        bldg:Sensor01942b_occupancy,
+        bldg:Sensor01942b_state .
+
+bldg:Sensor02309c a brick1:Lighting_System ;
+    rdf:label "Sensor02309c" ;
+    brickframe:hasLocation bldg:Room_220 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02309c/i.xbos.light" ;
+    brick1:feeds bldg:Room_220 ;
+    brick1:hasPoint bldg:Sensor02309c_ambient,
+        bldg:Sensor02309c_brightness,
+        bldg:Sensor02309c_meter,
+        bldg:Sensor02309c_occupancy,
+        bldg:Sensor02309c_state .
+
+bldg:Sensor02d429 a brick1:Lighting_System ;
+    rdf:label "Sensor02d429" ;
+    brickframe:hasLocation bldg:Room_207 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d429/i.xbos.light" ;
+    brick1:feeds bldg:Room_207 ;
+    brick1:hasPoint bldg:Sensor02d429_ambient,
+        bldg:Sensor02d429_brightness,
+        bldg:Sensor02d429_meter,
+        bldg:Sensor02d429_occupancy,
+        bldg:Sensor02d429_state .
+
+bldg:Sensor02d432 a brick1:Lighting_System ;
+    rdf:label "Sensor02d432" ;
+    brickframe:hasLocation bldg:Room_207 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d432/i.xbos.light" ;
+    brick1:feeds bldg:Room_207 ;
+    brick1:hasPoint bldg:Sensor02d432_ambient,
+        bldg:Sensor02d432_brightness,
+        bldg:Sensor02d432_meter,
+        bldg:Sensor02d432_occupancy,
+        bldg:Sensor02d432_state .
+
+bldg:Sensor02d433 a brick1:Lighting_System ;
+    rdf:label "Sensor02d433" ;
+    brickframe:hasLocation bldg:Room_207 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d433/i.xbos.light" ;
+    brick1:feeds bldg:Room_207 ;
+    brick1:hasPoint bldg:Sensor02d433_ambient,
+        bldg:Sensor02d433_brightness,
+        bldg:Sensor02d433_meter,
+        bldg:Sensor02d433_occupancy,
+        bldg:Sensor02d433_state .
+
+bldg:Sensor02d438 a brick1:Lighting_System ;
+    rdf:label "Sensor02d438" ;
+    brickframe:hasLocation bldg:Room_207 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d438/i.xbos.light" ;
+    brick1:feeds bldg:Room_207 ;
+    brick1:hasPoint bldg:Sensor02d438_ambient,
+        bldg:Sensor02d438_brightness,
+        bldg:Sensor02d438_meter,
+        bldg:Sensor02d438_occupancy,
+        bldg:Sensor02d438_state .
+
+bldg:Sensor02d444 a brick1:Lighting_System ;
+    rdf:label "Sensor02d444" ;
+    brickframe:hasLocation bldg:Room_207 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d444/i.xbos.light" ;
+    brick1:feeds bldg:Room_207 ;
+    brick1:hasPoint bldg:Sensor02d444_ambient,
+        bldg:Sensor02d444_brightness,
+        bldg:Sensor02d444_meter,
+        bldg:Sensor02d444_occupancy,
+        bldg:Sensor02d444_state .
+
+bldg:Sensor02d454 a brick1:Lighting_System ;
+    rdf:label "Sensor02d454" ;
+    brickframe:hasLocation bldg:Room_207 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d454/i.xbos.light" ;
+    brick1:feeds bldg:Room_207 ;
+    brick1:hasPoint bldg:Sensor02d454_ambient,
+        bldg:Sensor02d454_brightness,
+        bldg:Sensor02d454_meter,
+        bldg:Sensor02d454_occupancy,
+        bldg:Sensor02d454_state .
+
+bldg:Sensor02d455 a brick1:Lighting_System ;
+    rdf:label "Sensor02d455" ;
+    brickframe:hasLocation bldg:Room_207 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d455/i.xbos.light" ;
+    brick1:feeds bldg:Room_207 ;
+    brick1:hasPoint bldg:Sensor02d455_ambient,
+        bldg:Sensor02d455_brightness,
+        bldg:Sensor02d455_meter,
+        bldg:Sensor02d455_occupancy,
+        bldg:Sensor02d455_state .
+
+bldg:Sensor02d458 a brick1:Lighting_System ;
+    rdf:label "Sensor02d458" ;
+    brickframe:hasLocation bldg:Room_207 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d458/i.xbos.light" ;
+    brick1:feeds bldg:Room_207 ;
+    brick1:hasPoint bldg:Sensor02d458_ambient,
+        bldg:Sensor02d458_brightness,
+        bldg:Sensor02d458_meter,
+        bldg:Sensor02d458_occupancy,
+        bldg:Sensor02d458_state .
+
+bldg:Sensor30005f a brick1:Lighting_System ;
+    rdf:label "Sensor30005f" ;
+    brickframe:hasLocation bldg:Room_221 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor30005f/i.xbos.light" ;
+    brick1:feeds bldg:Room_221 ;
+    brick1:hasPoint bldg:Sensor30005f_ambient,
+        bldg:Sensor30005f_brightness,
+        bldg:Sensor30005f_meter,
+        bldg:Sensor30005f_occupancy,
+        bldg:Sensor30005f_state .
+
+<http://xbos.io/ontologies/ciee#green_button_meter_pLqm959grljrDZTim8kxZmueUHc=> a brick_v_1_0_2:Green_Button_Meter ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uuid "479df1d7-5638-5347-98ff-a13ddef11f97" .
+
+bldg:hamilton_0022_air_rh a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasLocation bldg:Room_216 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d0700000022/i.temperature" ;
+    brickframe:uuid "f8017406-28c8-320d-9fe6-ba8c9ce94b09" ;
+    brick1:isPointOf bldg:Room_216 .
+
+bldg:hamilton_0022_air_temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasLocation bldg:Room_216 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d0700000022/i.temperature" ;
+    brickframe:uuid "b315ed38-fae1-31ae-a53c-9202aa0ef600" ;
+    brick1:isPointOf bldg:Room_216 .
+
+bldg:hamilton_0022_lux a brick_v_1_0_2:Illumination_Sensor ;
+    brickframe:hasLocation bldg:Room_216 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d0700000022/i.temperature" ;
+    brickframe:uuid "9395a1fb-3766-3854-b484-5b6e285c1156" ;
+    brick1:isPointOf bldg:Room_216 .
+
+bldg:hamilton_0022_presence a brick1:Occupancy_Sensor ;
+    brickframe:hasLocation bldg:Room_216 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d0700000022/i.temperature" ;
+    brickframe:uuid "be0a6276-17b4-31a7-bef7-ae6b88d3440b" ;
+    brick1:isPointOf bldg:Room_216 .
+
+bldg:hamilton_0025_air_rh a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasLocation bldg:Room_220 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d0700000025/i.temperature" ;
+    brickframe:uuid "891a1c36-ae4c-3142-a07d-d3b5d3fba271" ;
+    brick1:isPointOf bldg:Room_220 .
+
+bldg:hamilton_0025_air_temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasLocation bldg:Room_220 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d0700000025/i.temperature" ;
+    brickframe:uuid "777faf39-c059-3a2d-b85b-ac3dfb12e54c" ;
+    brick1:isPointOf bldg:Room_220 .
+
+bldg:hamilton_0025_lux a brick_v_1_0_2:Illumination_Sensor ;
+    brickframe:hasLocation bldg:Room_220 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d0700000025/i.temperature" ;
+    brickframe:uuid "96160505-25a9-399b-95db-b972d68bf362" ;
+    brick1:isPointOf bldg:Room_220 .
+
+bldg:hamilton_0025_presence a brick1:Occupancy_Sensor ;
+    brickframe:hasLocation bldg:Room_220 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d0700000025/i.temperature" ;
+    brickframe:uuid "c2c477b4-c02c-32cc-9334-81fe419d0e81" ;
+    brick1:isPointOf bldg:Room_220 .
+
+bldg:hamilton_0027_air_rh a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasLocation bldg:Room_206 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d0700000027/i.temperature" ;
+    brickframe:uuid "789579a2-c37e-3079-b04f-bc32effbb4ef" ;
+    brick1:isPointOf bldg:Room_206 .
+
+bldg:hamilton_0027_air_temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasLocation bldg:Room_206 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d0700000027/i.temperature" ;
+    brickframe:uuid "7d907c16-4851-34be-93a7-46182575fa85" ;
+    brick1:isPointOf bldg:Room_206 .
+
+bldg:hamilton_0027_lux a brick_v_1_0_2:Illumination_Sensor ;
+    brickframe:hasLocation bldg:Room_206 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d0700000027/i.temperature" ;
+    brickframe:uuid "b849d90a-85ec-3c97-8ad0-b0d76f56e6b2" ;
+    brick1:isPointOf bldg:Room_206 .
+
+bldg:hamilton_0027_presence a brick1:Occupancy_Sensor ;
+    brickframe:hasLocation bldg:Room_206 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d0700000027/i.temperature" ;
+    brickframe:uuid "497145c4-2087-3e89-9c8f-f54b87dfb016" ;
+    brick1:isPointOf bldg:Room_206 .
+
+bldg:hamilton_0028_air_rh a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasLocation bldg:Room_214 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d0700000028/i.temperature" ;
+    brickframe:uuid "f62ed54b-7b9e-319b-9b9c-9901c680b983" ;
+    brick1:isPointOf bldg:Room_214 .
+
+bldg:hamilton_0028_air_temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasLocation bldg:Room_214 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d0700000028/i.temperature" ;
+    brickframe:uuid "4c910f33-cd1a-3f1d-a740-48c42e20a28b" ;
+    brick1:isPointOf bldg:Room_214 .
+
+bldg:hamilton_0028_lux a brick_v_1_0_2:Illumination_Sensor ;
+    brickframe:hasLocation bldg:Room_214 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d0700000028/i.temperature" ;
+    brickframe:uuid "a332bccc-9516-3175-beaf-8a478b0c49b0" ;
+    brick1:isPointOf bldg:Room_214 .
+
+bldg:hamilton_0028_presence a brick1:Occupancy_Sensor ;
+    brickframe:hasLocation bldg:Room_214 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d0700000028/i.temperature" ;
+    brickframe:uuid "4e4f0b0f-9918-356b-9b68-fdc49f75867d" ;
+    brick1:isPointOf bldg:Room_214 .
+
+bldg:hamilton_0029_air_rh a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasLocation bldg:Room_205 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d0700000029/i.temperature" ;
+    brickframe:uuid "5dd8b2fa-acff-30ef-b3a6-a0ab3bc054ca" ;
+    brick1:isPointOf bldg:Room_205 .
+
+bldg:hamilton_0029_air_temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasLocation bldg:Room_205 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d0700000029/i.temperature" ;
+    brickframe:uuid "148814c5-e766-3632-b54c-344ff1e469fd" ;
+    brick1:isPointOf bldg:Room_205 .
+
+bldg:hamilton_0029_lux a brick_v_1_0_2:Illumination_Sensor ;
+    brickframe:hasLocation bldg:Room_205 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d0700000029/i.temperature" ;
+    brickframe:uuid "92ccbcb0-84ea-38de-b94a-c89209777ab0" ;
+    brick1:isPointOf bldg:Room_205 .
+
+bldg:hamilton_0029_presence a brick1:Occupancy_Sensor ;
+    brickframe:hasLocation bldg:Room_205 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d0700000029/i.temperature" ;
+    brickframe:uuid "c0623266-12b8-337f-8b37-6bf40e60cfa3" ;
+    brick1:isPointOf bldg:Room_205 .
+
+bldg:hamilton_002a_air_rh a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasLocation bldg:Room_210 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000002a/i.temperature" ;
+    brickframe:uuid "e6cfed6a-52e2-389c-9138-3da02794bd52" ;
+    brick1:isPointOf bldg:Room_210 .
+
+bldg:hamilton_002a_air_temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasLocation bldg:Room_210 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000002a/i.temperature" ;
+    brickframe:uuid "d7cbcd57-d7c0-386c-a1e7-12766f05f2b3" ;
+    brick1:isPointOf bldg:Room_210 .
+
+bldg:hamilton_002a_lux a brick_v_1_0_2:Illumination_Sensor ;
+    brickframe:hasLocation bldg:Room_210 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000002a/i.temperature" ;
+    brickframe:uuid "70e64713-fd4a-3f94-ad7c-ca2f83a74382" ;
+    brick1:isPointOf bldg:Room_210 .
+
+bldg:hamilton_002a_presence a brick1:Occupancy_Sensor ;
+    brickframe:hasLocation bldg:Room_210 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000002a/i.temperature" ;
+    brickframe:uuid "989ed503-9aa2-310e-abd3-464f6169e175" ;
+    brick1:isPointOf bldg:Room_210 .
+
+bldg:hamilton_002b_air_rh a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasLocation bldg:Room_208 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000002b/i.temperature" ;
+    brickframe:uuid "ecce4b33-e4d9-3b87-9e3c-1c93d4c62c08" ;
+    brick1:isPointOf bldg:Room_208 .
+
+bldg:hamilton_002b_air_temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasLocation bldg:Room_208 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000002b/i.temperature" ;
+    brickframe:uuid "e962047c-c314-3e1b-9cc7-0c33d0d18b55" ;
+    brick1:isPointOf bldg:Room_208 .
+
+bldg:hamilton_002b_lux a brick_v_1_0_2:Illumination_Sensor ;
+    brickframe:hasLocation bldg:Room_208 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000002b/i.temperature" ;
+    brickframe:uuid "11996d2f-fe5c-3838-9ae0-727b0d9d30b7" ;
+    brick1:isPointOf bldg:Room_208 .
+
+bldg:hamilton_002b_presence a brick1:Occupancy_Sensor ;
+    brickframe:hasLocation bldg:Room_208 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000002b/i.temperature" ;
+    brickframe:uuid "bdbbbf7c-21c3-3b61-8469-8516a8c666dd" ;
+    brick1:isPointOf bldg:Room_208 .
+
+bldg:hamilton_002c_air_rh a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasLocation bldg:Room_215 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000002c/i.temperature" ;
+    brickframe:uuid "c377a8a4-6905-3479-b355-eade8d62948e" ;
+    brick1:isPointOf bldg:Room_215 .
+
+bldg:hamilton_002c_air_temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasLocation bldg:Room_215 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000002c/i.temperature" ;
+    brickframe:uuid "6e5d4f59-78d3-3085-98e3-f8d46e365c04" ;
+    brick1:isPointOf bldg:Room_215 .
+
+bldg:hamilton_002c_lux a brick_v_1_0_2:Illumination_Sensor ;
+    brickframe:hasLocation bldg:Room_215 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000002c/i.temperature" ;
+    brickframe:uuid "00b88162-0468-34c2-b625-f5db61cc4e7b" ;
+    brick1:isPointOf bldg:Room_215 .
+
+bldg:hamilton_002c_presence a brick1:Occupancy_Sensor ;
+    brickframe:hasLocation bldg:Room_215 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000002c/i.temperature" ;
+    brickframe:uuid "c6adf801-47df-395d-b8a9-9959f8ab972e" ;
+    brick1:isPointOf bldg:Room_215 .
+
+bldg:hamilton_002e_air_rh a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasLocation bldg:Room_209 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000002e/i.temperature" ;
+    brickframe:uuid "6b54bf39-ffbf-30d9-90e5-76f92cba72d0" ;
+    brick1:isPointOf bldg:Room_209 .
+
+bldg:hamilton_002e_air_temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasLocation bldg:Room_209 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000002e/i.temperature" ;
+    brickframe:uuid "e6c1a17d-375d-3018-908b-75b607de190e" ;
+    brick1:isPointOf bldg:Room_209 .
+
+bldg:hamilton_002e_lux a brick_v_1_0_2:Illumination_Sensor ;
+    brickframe:hasLocation bldg:Room_209 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000002e/i.temperature" ;
+    brickframe:uuid "23194baa-a7bf-331e-98cf-33d83c1a0a5f" ;
+    brick1:isPointOf bldg:Room_209 .
+
+bldg:hamilton_002e_presence a brick1:Occupancy_Sensor ;
+    brickframe:hasLocation bldg:Room_209 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000002e/i.temperature" ;
+    brickframe:uuid "242cde13-7d25-306a-bfc8-918ad7bb26d6" ;
+    brick1:isPointOf bldg:Room_209 .
+
+bldg:hamilton_005a_air_rh a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasLocation bldg:Room_212 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000005a/i.temperature" ;
+    brickframe:uuid "a6624658-7cdc-3a9e-a084-f536a493a752" ;
+    brick1:isPointOf bldg:Room_212 .
+
+bldg:hamilton_005a_air_temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasLocation bldg:Room_212 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000005a/i.temperature" ;
+    brickframe:uuid "f1baf473-8578-340d-8a8c-96482dc3f0b2" ;
+    brick1:isPointOf bldg:Room_212 .
+
+bldg:hamilton_005a_lux a brick_v_1_0_2:Illumination_Sensor ;
+    brickframe:hasLocation bldg:Room_212 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000005a/i.temperature" ;
+    brickframe:uuid "93880771-418a-349f-b1bd-d7942641b674" ;
+    brick1:isPointOf bldg:Room_212 .
+
+bldg:hamilton_005a_presence a brick1:Occupancy_Sensor ;
+    brickframe:hasLocation bldg:Room_212 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000005a/i.temperature" ;
+    brickframe:uuid "23d2afce-4c86-37c5-b1c2-f258758c3263" ;
+    brick1:isPointOf bldg:Room_212 .
+
+bldg:hamilton_005b_air_rh a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasLocation bldg:Room_217 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000005b/i.temperature" ;
+    brickframe:uuid "15881ebd-d695-33ac-b1a7-0a466509977a" ;
+    brick1:isPointOf bldg:Room_217 .
+
+bldg:hamilton_005b_air_temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasLocation bldg:Room_217 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000005b/i.temperature" ;
+    brickframe:uuid "2f6cd75c-0a40-3339-8af9-a68b360caa32" ;
+    brick1:isPointOf bldg:Room_217 .
+
+bldg:hamilton_005b_lux a brick_v_1_0_2:Illumination_Sensor ;
+    brickframe:hasLocation bldg:Room_217 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000005b/i.temperature" ;
+    brickframe:uuid "20925ac9-61a2-3ff6-9415-78dc9d56cefc" ;
+    brick1:isPointOf bldg:Room_217 .
+
+bldg:hamilton_005b_presence a brick1:Occupancy_Sensor ;
+    brickframe:hasLocation bldg:Room_217 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000005b/i.temperature" ;
+    brickframe:uuid "e448db62-f95a-386e-a8f0-30085a46a03e" ;
+    brick1:isPointOf bldg:Room_217 .
+
+bldg:hamilton_005c_air_rh a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasLocation bldg:Room_207 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000005c/i.temperature" ;
+    brickframe:uuid "45ea5b21-9d09-359f-a80c-2bb5754f7828" ;
+    brick1:isPointOf bldg:Room_207 .
+
+bldg:hamilton_005c_air_temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasLocation bldg:Room_207 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000005c/i.temperature" ;
+    brickframe:uuid "24f521b8-eef6-3ca8-9c71-59752b0ba45d" ;
+    brick1:isPointOf bldg:Room_207 .
+
+bldg:hamilton_005c_lux a brick_v_1_0_2:Illumination_Sensor ;
+    brickframe:hasLocation bldg:Room_207 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000005c/i.temperature" ;
+    brickframe:uuid "28640fdc-6012-3e41-a759-208c29440ded" ;
+    brick1:isPointOf bldg:Room_207 .
+
+bldg:hamilton_005c_presence a brick1:Occupancy_Sensor ;
+    brickframe:hasLocation bldg:Room_207 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000005c/i.temperature" ;
+    brickframe:uuid "d919a14e-3ebd-3e5b-9727-0df54f287032" ;
+    brick1:isPointOf bldg:Room_207 .
+
+bldg:hamilton_005d_air_rh a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasLocation bldg:Room_208 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000005d/i.temperature" ;
+    brickframe:uuid "fa777824-6473-3004-a705-eec445eb9106" ;
+    brick1:isPointOf bldg:Room_208 .
+
+bldg:hamilton_005d_air_temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasLocation bldg:Room_208 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000005d/i.temperature" ;
+    brickframe:uuid "83ab0b1a-0a96-3530-bb66-f0f092e4a517" ;
+    brick1:isPointOf bldg:Room_208 .
+
+bldg:hamilton_005d_lux a brick_v_1_0_2:Illumination_Sensor ;
+    brickframe:hasLocation bldg:Room_208 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000005d/i.temperature" ;
+    brickframe:uuid "b4c40ab6-d337-3123-b914-5c89dd4a15b1" ;
+    brick1:isPointOf bldg:Room_208 .
+
+bldg:hamilton_005d_presence a brick1:Occupancy_Sensor ;
+    brickframe:hasLocation bldg:Room_208 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000005d/i.temperature" ;
+    brickframe:uuid "47e37419-5091-3877-a476-bb6f942e93af" ;
+    brick1:isPointOf bldg:Room_208 .
+
+bldg:hamilton_005e_air_rh a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasLocation bldg:Room_211 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000005e/i.temperature" ;
+    brickframe:uuid "8de1a7e2-64f5-3e0a-a5f1-edd9220037f4" ;
+    brick1:isPointOf bldg:Room_211 .
+
+bldg:hamilton_005e_air_temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasLocation bldg:Room_211 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000005e/i.temperature" ;
+    brickframe:uuid "9d99692f-c79b-3325-831d-938aedf432b0" ;
+    brick1:isPointOf bldg:Room_211 .
+
+bldg:hamilton_005e_lux a brick_v_1_0_2:Illumination_Sensor ;
+    brickframe:hasLocation bldg:Room_211 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000005e/i.temperature" ;
+    brickframe:uuid "9ba535a0-2c4a-3005-9b20-ae5b9c48a5a8" ;
+    brick1:isPointOf bldg:Room_211 .
+
+bldg:hamilton_005e_presence a brick1:Occupancy_Sensor ;
+    brickframe:hasLocation bldg:Room_211 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000005e/i.temperature" ;
+    brickframe:uuid "cab606d0-6d14-3aff-a0c2-e862ae297f22" ;
+    brick1:isPointOf bldg:Room_211 .
+
+bldg:hamilton_005f_air_rh a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasLocation bldg:Room_220 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000005f/i.temperature" ;
+    brickframe:uuid "522cb9e7-511a-3c8e-8ce4-347053609de2" ;
+    brick1:isPointOf bldg:Room_220 .
+
+bldg:hamilton_005f_air_temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasLocation bldg:Room_220 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000005f/i.temperature" ;
+    brickframe:uuid "1b6c0f3b-6f52-3736-8583-5751a6407d0b" ;
+    brick1:isPointOf bldg:Room_220 .
+
+bldg:hamilton_005f_lux a brick_v_1_0_2:Illumination_Sensor ;
+    brickframe:hasLocation bldg:Room_220 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000005f/i.temperature" ;
+    brickframe:uuid "6aade260-38c1-333c-8a70-fb780e796307" ;
+    brick1:isPointOf bldg:Room_220 .
+
+bldg:hamilton_005f_presence a brick1:Occupancy_Sensor ;
+    brickframe:hasLocation bldg:Room_220 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00126d070000005f/i.temperature" ;
+    brickframe:uuid "d5522fbc-f028-3019-bee2-61367807e178" ;
+    brick1:isPointOf bldg:Room_220 .
+
+bldg:hamilton_0060_air_rh a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasLocation bldg:Room_213 ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isPointOf bldg:Room_213 .
+
+bldg:hamilton_0060_air_temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasLocation bldg:Room_213 ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isPointOf bldg:Room_213 .
+
+bldg:hamilton_0060_lux a brick_v_1_0_2:Illumination_Sensor ;
+    brickframe:hasLocation bldg:Room_213 ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isPointOf bldg:Room_213 .
+
+bldg:hamilton_0060_presence a brick1:Occupancy_Sensor ;
+    brickframe:hasLocation bldg:Room_213 ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isPointOf bldg:Room_213 .
+
+bldg:hamilton_00ad_air_rh a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasLocation bldg:Room_221 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00ad/i.temperature" ;
+    brickframe:uuid "61cc3aea-b039-3356-9035-97b99b00670e" ;
+    brick1:isPointOf bldg:Room_221 .
+
+bldg:hamilton_00ad_air_temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasLocation bldg:Room_221 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00ad/i.temperature" ;
+    brickframe:uuid "38b41c78-3769-330e-be0a-1f88d5ad5196" ;
+    brick1:isPointOf bldg:Room_221 .
+
+bldg:hamilton_00ad_lux a brick_v_1_0_2:Illumination_Sensor ;
+    brickframe:hasLocation bldg:Room_221 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00ad/i.temperature" ;
+    brickframe:uuid "06075dc0-32d8-3771-9e23-9e1254c81409" ;
+    brick1:isPointOf bldg:Room_221 .
+
+bldg:hamilton_00ad_presence a brick1:Occupancy_Sensor ;
+    brickframe:hasLocation bldg:Room_221 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00ad/i.temperature" ;
+    brickframe:uuid "16108a4b-4aec-33f1-8780-8f765e798435" ;
+    brick1:isPointOf bldg:Room_221 .
+
+bldg:hamilton_00b8_air_rh a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasLocation bldg:Room_220 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00b8/i.temperature" ;
+    brickframe:uuid "0c280eea-5074-3879-928d-87524a436fdd" ;
+    brick1:isPointOf bldg:Room_220 .
+
+bldg:hamilton_00b8_air_temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasLocation bldg:Room_220 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00b8/i.temperature" ;
+    brickframe:uuid "7a0f4fc8-85cd-353f-b5f8-4d40e8cd8074" ;
+    brick1:isPointOf bldg:Room_220 .
+
+bldg:hamilton_00b8_lux a brick_v_1_0_2:Illumination_Sensor ;
+    brickframe:hasLocation bldg:Room_220 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00b8/i.temperature" ;
+    brickframe:uuid "ab4c1735-02e1-342d-b6c3-f395dd8e3012" ;
+    brick1:isPointOf bldg:Room_220 .
+
+bldg:hamilton_00b8_presence a brick1:Occupancy_Sensor ;
+    brickframe:hasLocation bldg:Room_220 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00b8/i.temperature" ;
+    brickframe:uuid "2304ba4f-db2c-31f4-bd12-95411152045f" ;
+    brick1:isPointOf bldg:Room_220 .
+
+bldg:hamilton_00dc_air_rh a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasLocation bldg:Room_North ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00dc/i.temperature" ;
+    brickframe:uuid "82720ba9-b67b-38fc-b6fb-f0b8bb5c3ba9" ;
+    brick1:isPointOf bldg:Room_North .
+
+bldg:hamilton_00dc_air_temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasLocation bldg:Room_North ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00dc/i.temperature" ;
+    brickframe:uuid "3e69e12e-8174-3c0f-b369-989c14bf4d28" ;
+    brick1:isPointOf bldg:Room_North .
+
+bldg:hamilton_00dc_lux a brick_v_1_0_2:Illumination_Sensor ;
+    brickframe:hasLocation bldg:Room_North ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00dc/i.temperature" ;
+    brickframe:uuid "203c0ba3-1c57-3405-82db-ce0fd6ed419e" ;
+    brick1:isPointOf bldg:Room_North .
+
+bldg:hamilton_00dc_presence a brick1:Occupancy_Sensor ;
+    brickframe:hasLocation bldg:Room_North ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/sensors/s.hamilton/00dc/i.temperature" ;
+    brickframe:uuid "42c2ad4f-2e7d-3edc-9938-40c5ba205bc2" ;
+    brick1:isPointOf bldg:Room_North .
+
+bldg:meter_0xd8d5b9000000a110 a brick_v_1_0_2:Building_Electric_Meter ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/s.eagle/0xd8d5b9000000a110/i.meter" ;
+    brickframe:uuid "4d6e251a-48e1-3bc0-907d-7d5440c34bb9" ;
+    brick1:isPointOf bldg:hvac_zone_centralzone_tstat,
+        bldg:hvac_zone_eastzone_tstat,
+        bldg:hvac_zone_northzone_tstat,
+        bldg:hvac_zone_southzone_tstat .
+
+bldg:return_damper_12 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isFedBy bldg:Room_208 .
+
+bldg:return_damper_13 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isFedBy bldg:Room_207 .
+
+bldg:return_damper_14 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isFedBy bldg:Room_206 .
+
+bldg:return_damper_15 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isFedBy bldg:Room_209 .
+
+bldg:return_damper_16 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isFedBy bldg:Room_210 .
+
+bldg:return_damper_17 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isFedBy bldg:Room_211 .
+
+bldg:return_damper_18 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isFedBy bldg:Room_212 .
+
+bldg:return_damper_19 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isFedBy bldg:Room_213 .
+
+bldg:return_damper_25 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isFedBy bldg:Room_226 .
+
+bldg:return_damper_27 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isFedBy bldg:Room_225 .
+
+bldg:return_damper_29 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isFedBy bldg:Room_224 .
+
+bldg:return_damper_32 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isFedBy bldg:Room_223 .
+
+bldg:return_damper_35 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isFedBy bldg:Room_222 .
+
+bldg:return_damper_37 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isFedBy bldg:Room_223 .
+
+bldg:return_damper_39 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isFedBy bldg:Room_222 .
+
+bldg:return_damper_42 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isFedBy bldg:Room_214 .
+
+bldg:return_damper_44 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isFedBy bldg:Room_215 .
+
+bldg:return_damper_45 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isFedBy bldg:Room_216 .
+
+bldg:return_damper_46 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isFedBy bldg:Room_217 .
+
+bldg:supply_damper_10 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_208 .
+
+bldg:supply_damper_11 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_208 .
+
+bldg:supply_damper_20 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_209 .
+
+bldg:supply_damper_21 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_210 .
+
+bldg:supply_damper_22 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_211 .
+
+bldg:supply_damper_23 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_212 .
+
+bldg:supply_damper_24 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_213 .
+
+bldg:supply_damper_26 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_226 .
+
+bldg:supply_damper_28 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_225 .
+
+bldg:supply_damper_30 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_224 .
+
+bldg:supply_damper_33 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_223 .
+
+bldg:supply_damper_34 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_222 .
+
+bldg:supply_damper_4 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_206 .
+
+bldg:supply_damper_43 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_214 .
+
+bldg:supply_damper_47 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_215 .
+
+bldg:supply_damper_48 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_216 .
+
+bldg:supply_damper_49 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_217 .
+
+bldg:supply_damper_7 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_207 .
+
+bldg:supply_damper_8 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_207 .
+
+bldg:weather_KOAK_cloud_coverage a brick_v_1_0_2:Weather_Cloud_Coverage_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uuid "7b49f7f2-f142-38a0-b284-42b0aef95b64" .
+
+bldg:weather_KOAK_cloud_height a brick_v_1_0_2:Weather_Cloud_Height_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uuid "f510c11b-3a04-3518-b757-7940555abb1d" .
+
+bldg:weather_KOAK_relative_humidity a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uuid "5e55525e-f799-3b7b-8520-8e42730946df" .
+
+bldg:weather_KOAK_temperature a brick_v_1_0_2:Weather_Temperature_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uuid "a73c1b67-142f-3b45-baf8-e308619b6bbc" .
+
+bldg:weather_KOAK_wind_direction a brick1:Wind_Direction_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uuid "4a939b52-73b5-3016-95d7-34fd1ea1d41f" .
+
+bldg:weather_KOAK_wind_speed a brick1:Wind_Speed_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uuid "9a3d08a7-0489-3b9e-981b-2e2e916cd783" .
+
+bldg:weather_LBNL1_cloud_coverage a brick_v_1_0_2:Weather_Cloud_Coverage_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uuid "3eaf5926-11a8-3b7c-abdb-d1b06aca2cb6" .
+
+bldg:weather_LBNL1_cloud_height a brick_v_1_0_2:Weather_Cloud_Height_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uuid "a3beea1c-65e3-38e1-8710-9fd1d9605caa" .
+
+bldg:weather_LBNL1_relative_humidity a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uuid "5cbf1af8-60ba-3e36-9ed6-b80feb4acae2" .
+
+bldg:weather_LBNL1_temperature a brick_v_1_0_2:Weather_Temperature_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uuid "00327584-54b2-35a8-aaed-182747a5dda7" .
+
+bldg:weather_LBNL1_wind_direction a brick1:Wind_Direction_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uuid "98180ac6-3a45-3884-afff-0c0341a9b9f1" .
+
+bldg:weather_LBNL1_wind_speed a brick1:Wind_Speed_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uuid "fe8d0d04-f8d2-37cc-a582-3978f3699474" .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:RTU_hvac_zone_centralzone a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:feeds bldg:hvac_zone_centralzone .
+
+bldg:RTU_hvac_zone_eastzone a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:feeds bldg:hvac_zone_eastzone .
+
+bldg:RTU_hvac_zone_northzone a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:feeds bldg:hvac_zone_northzone .
+
+bldg:RTU_hvac_zone_southzone a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:feeds bldg:hvac_zone_southzone .
+
+bldg:Room_200 a brick1:Room ;
+    brickframe:hasSite bldg:ciee .
+
+bldg:Room_202 a brick1:Room ;
+    rdf:label "WC" ;
+    brickframe:adjacentTo bldg:Room_203 ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isPartOf bldg:hvac_zone_eastzone .
+
+bldg:Sensor00d56d_ambient a brick_v_1_0_2:Ambient_Illumination_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor00d56d/i.xbos.light" ;
+    brickframe:uuid "b77d5003-1986-312d-84a4-783348031f6b" .
+
+bldg:Sensor00d56d_brightness a brick_v_1_0_2:Lighting_System_Luminance_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor00d56d/i.xbos.light" ;
+    brickframe:uuid "dec2e13a-8b8d-3d48-bf75-161678443fdd" .
+
+bldg:Sensor00d56d_meter a brick_v_1_0_2:Electric_Meter ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor00d56d/i.xbos.meter" ;
+    brickframe:uuid "4ba8333d-74cc-39f2-8938-ead227ad0f95" .
+
+bldg:Sensor00d56d_occupancy a brick1:Occupancy_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor00d56d/i.xbos.occupancy_sensor" ;
+    brickframe:uuid "99870724-722d-3dd6-8a44-138c6c6243af" .
+
+bldg:Sensor00d56d_state a brick_v_1_0_2:Lighting_State ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor00d56d/i.xbos.light" ;
+    brickframe:uuid "be7039a6-fb6b-3ab2-8216-bae08cee04b2" .
+
+bldg:Sensor013263_ambient a brick_v_1_0_2:Ambient_Illumination_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor013263/i.xbos.light" ;
+    brickframe:uuid "92d3217a-bc24-31dc-88a6-d1e16717048b" .
+
+bldg:Sensor013263_brightness a brick_v_1_0_2:Lighting_System_Luminance_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor013263/i.xbos.light" ;
+    brickframe:uuid "879bd484-63ab-39ad-a320-c684311e2f81" .
+
+bldg:Sensor013263_meter a brick_v_1_0_2:Electric_Meter ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor013263/i.xbos.meter" ;
+    brickframe:uuid "7749cd62-333a-35ed-b0d3-ca248b15c360" .
+
+bldg:Sensor013263_occupancy a brick1:Occupancy_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor013263/i.xbos.occupancy_sensor" ;
+    brickframe:uuid "0c51371e-6029-3302-984d-b71d850e899a" .
+
+bldg:Sensor013263_state a brick_v_1_0_2:Lighting_State ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor013263/i.xbos.light" ;
+    brickframe:uuid "f7a9882c-3e70-3f07-be42-46655d3f7929" .
+
+bldg:Sensor018ff9_ambient a brick_v_1_0_2:Ambient_Illumination_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor018ff9/i.xbos.light" ;
+    brickframe:uuid "26bf2d3b-4315-3a2d-a61c-6e0bf2a114fa" .
+
+bldg:Sensor018ff9_brightness a brick_v_1_0_2:Lighting_System_Luminance_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor018ff9/i.xbos.light" ;
+    brickframe:uuid "0e9660b4-78a2-3747-ab52-0ab7c00e5cb2" .
+
+bldg:Sensor018ff9_meter a brick_v_1_0_2:Electric_Meter ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor018ff9/i.xbos.meter" ;
+    brickframe:uuid "e8da2b81-d179-3611-8ac7-4a1619c1407b" .
+
+bldg:Sensor018ff9_occupancy a brick1:Occupancy_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor018ff9/i.xbos.occupancy_sensor" ;
+    brickframe:uuid "191ec5e3-2a12-39e8-8416-212eea0eedd0" .
+
+bldg:Sensor018ff9_state a brick_v_1_0_2:Lighting_State ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor018ff9/i.xbos.light" ;
+    brickframe:uuid "892df924-d3cf-39e3-adee-8ba7ffff3c7f" .
+
+bldg:Sensor01902e_ambient a brick_v_1_0_2:Ambient_Illumination_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01902e/i.xbos.light" ;
+    brickframe:uuid "68329a4a-6942-3901-a374-bef2e604b970" .
+
+bldg:Sensor01902e_brightness a brick_v_1_0_2:Lighting_System_Luminance_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01902e/i.xbos.light" ;
+    brickframe:uuid "9780b442-10d2-3d5d-b8d7-d0e851222310" .
+
+bldg:Sensor01902e_meter a brick_v_1_0_2:Electric_Meter ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01902e/i.xbos.meter" ;
+    brickframe:uuid "33ed7b93-605c-39f4-85b9-e43b3fcdfa7b" .
+
+bldg:Sensor01902e_occupancy a brick1:Occupancy_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01902e/i.xbos.occupancy_sensor" ;
+    brickframe:uuid "c5fefca9-58b3-37b5-ba10-ac178449d9d4" .
+
+bldg:Sensor01902e_state a brick_v_1_0_2:Lighting_State ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01902e/i.xbos.light" ;
+    brickframe:uuid "a2285f62-7b4d-3aa1-8257-c867b26339bb" .
+
+bldg:Sensor01907b_ambient a brick_v_1_0_2:Ambient_Illumination_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01907b/i.xbos.light" ;
+    brickframe:uuid "832c72ec-8722-36cc-a258-28cba7252675" .
+
+bldg:Sensor01907b_brightness a brick_v_1_0_2:Lighting_System_Luminance_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01907b/i.xbos.light" ;
+    brickframe:uuid "ffca54ee-4bb7-3b31-bb5b-dc786a967d13" .
+
+bldg:Sensor01907b_meter a brick_v_1_0_2:Electric_Meter ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01907b/i.xbos.meter" ;
+    brickframe:uuid "e53d51a3-bbe1-3af3-9cf2-649c9ead299b" .
+
+bldg:Sensor01907b_occupancy a brick1:Occupancy_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01907b/i.xbos.occupancy_sensor" ;
+    brickframe:uuid "5ac07704-af4b-3fdb-8038-6f464ce18c35" .
+
+bldg:Sensor01907b_state a brick_v_1_0_2:Lighting_State ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01907b/i.xbos.light" ;
+    brickframe:uuid "fc1f8658-6ad0-36e8-a9d9-803fd9927e6d" .
+
+bldg:Sensor01930e_ambient a brick_v_1_0_2:Ambient_Illumination_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01930e/i.xbos.light" ;
+    brickframe:uuid "63854fcb-0c80-3b79-9652-32e86ff4c494" .
+
+bldg:Sensor01930e_brightness a brick_v_1_0_2:Lighting_System_Luminance_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01930e/i.xbos.light" ;
+    brickframe:uuid "976b7d1e-3081-3615-940b-5b6b2f3e0cc1" .
+
+bldg:Sensor01930e_meter a brick_v_1_0_2:Electric_Meter ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01930e/i.xbos.meter" ;
+    brickframe:uuid "c5c295d9-76e0-34ef-92d5-149fa25f22a3" .
+
+bldg:Sensor01930e_occupancy a brick1:Occupancy_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01930e/i.xbos.occupancy_sensor" ;
+    brickframe:uuid "862089d9-4c06-3ac1-bc1d-84d8d8f122d8" .
+
+bldg:Sensor01930e_state a brick_v_1_0_2:Lighting_State ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01930e/i.xbos.light" ;
+    brickframe:uuid "5f589095-7004-3618-8ac5-ec9f84160f0e" .
+
+bldg:Sensor019324_ambient a brick_v_1_0_2:Ambient_Illumination_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor019324/i.xbos.light" ;
+    brickframe:uuid "223c0b20-3705-3a5e-8985-6fe53d35ee87" .
+
+bldg:Sensor019324_brightness a brick_v_1_0_2:Lighting_System_Luminance_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor019324/i.xbos.light" ;
+    brickframe:uuid "a8045cdc-4e9f-3d8a-90bd-41cb4ef5a317" .
+
+bldg:Sensor019324_meter a brick_v_1_0_2:Electric_Meter ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor019324/i.xbos.meter" ;
+    brickframe:uuid "05dcc4ae-de8c-3c6d-943b-153bebb06e39" .
+
+bldg:Sensor019324_occupancy a brick1:Occupancy_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor019324/i.xbos.occupancy_sensor" ;
+    brickframe:uuid "f91e8678-47a2-3da6-9eec-753f4364044c" .
+
+bldg:Sensor019324_state a brick_v_1_0_2:Lighting_State ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor019324/i.xbos.light" ;
+    brickframe:uuid "403ed576-bea6-3d43-9e53-4f49d1baf4b3" .
+
+bldg:Sensor01934e_ambient a brick_v_1_0_2:Ambient_Illumination_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01934e/i.xbos.light" ;
+    brickframe:uuid "72ab01ef-81c4-340e-96dd-731c2f61fced" .
+
+bldg:Sensor01934e_brightness a brick_v_1_0_2:Lighting_System_Luminance_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01934e/i.xbos.light" ;
+    brickframe:uuid "0979b507-cc83-3db6-85ec-3bf0f4e7fd3a" .
+
+bldg:Sensor01934e_meter a brick_v_1_0_2:Electric_Meter ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01934e/i.xbos.meter" ;
+    brickframe:uuid "ce6ea005-9d70-30e5-83a5-13c312c40aa7" .
+
+bldg:Sensor01934e_occupancy a brick1:Occupancy_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01934e/i.xbos.occupancy_sensor" ;
+    brickframe:uuid "05240142-25e2-33f5-a3f3-bb52f2d934c5" .
+
+bldg:Sensor01934e_state a brick_v_1_0_2:Lighting_State ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01934e/i.xbos.light" ;
+    brickframe:uuid "cfed92df-072d-3f1a-b389-f1fedb02b92f" .
+
+bldg:Sensor01935b_ambient a brick_v_1_0_2:Ambient_Illumination_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01935b/i.xbos.light" ;
+    brickframe:uuid "67d6a720-515b-3db0-be5a-c87723fd4825" .
+
+bldg:Sensor01935b_brightness a brick_v_1_0_2:Lighting_System_Luminance_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01935b/i.xbos.light" ;
+    brickframe:uuid "236f9036-4ba0-308d-9908-281f51404f1c" .
+
+bldg:Sensor01935b_meter a brick_v_1_0_2:Electric_Meter ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01935b/i.xbos.meter" ;
+    brickframe:uuid "6125c4aa-7685-390d-a745-27a19e05ada2" .
+
+bldg:Sensor01935b_occupancy a brick1:Occupancy_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01935b/i.xbos.occupancy_sensor" ;
+    brickframe:uuid "f3262678-43d5-39ab-ab42-13abd3c952f9" .
+
+bldg:Sensor01935b_state a brick_v_1_0_2:Lighting_State ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01935b/i.xbos.light" ;
+    brickframe:uuid "946ac52e-b8c4-3583-96b9-368fcd259667" .
+
+bldg:Sensor01942b_ambient a brick_v_1_0_2:Ambient_Illumination_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01942b/i.xbos.light" ;
+    brickframe:uuid "b5dc6ad5-03cd-3e1c-82da-4de7ec3193a5" .
+
+bldg:Sensor01942b_brightness a brick_v_1_0_2:Lighting_System_Luminance_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01942b/i.xbos.light" ;
+    brickframe:uuid "d79e1cd7-7914-38b0-b373-5a331d28f161" .
+
+bldg:Sensor01942b_meter a brick_v_1_0_2:Electric_Meter ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01942b/i.xbos.meter" ;
+    brickframe:uuid "7fc65a1a-70da-320d-923d-7d33df77e83c" .
+
+bldg:Sensor01942b_occupancy a brick1:Occupancy_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01942b/i.xbos.occupancy_sensor" ;
+    brickframe:uuid "80198599-4d12-3692-8068-e3b9bdd7d79f" .
+
+bldg:Sensor01942b_state a brick_v_1_0_2:Lighting_State ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor01942b/i.xbos.light" ;
+    brickframe:uuid "a8325480-25cb-3a16-b1c4-1d5620ec954c" .
+
+bldg:Sensor02309c_ambient a brick_v_1_0_2:Ambient_Illumination_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02309c/i.xbos.light" ;
+    brickframe:uuid "1980ec87-d9eb-3d7d-bfcb-7f0b79568160" .
+
+bldg:Sensor02309c_brightness a brick_v_1_0_2:Lighting_System_Luminance_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02309c/i.xbos.light" ;
+    brickframe:uuid "2c9aed4f-0f45-33a8-bf54-2faef24592c4" .
+
+bldg:Sensor02309c_meter a brick_v_1_0_2:Electric_Meter ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02309c/i.xbos.meter" ;
+    brickframe:uuid "6db3c938-e7b5-362e-8ec7-fd1715bfa4b6" .
+
+bldg:Sensor02309c_occupancy a brick1:Occupancy_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02309c/i.xbos.occupancy_sensor" ;
+    brickframe:uuid "f5994eac-9691-36a6-8610-599aa3ecbd36" .
+
+bldg:Sensor02309c_state a brick_v_1_0_2:Lighting_State ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02309c/i.xbos.light" ;
+    brickframe:uuid "1613ddae-e839-3eac-8c62-06155821996d" .
+
+bldg:Sensor02d429_ambient a brick_v_1_0_2:Ambient_Illumination_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d429/i.xbos.light" ;
+    brickframe:uuid "93acc55d-50c9-3782-a6de-e8f3931edf18" .
+
+bldg:Sensor02d429_brightness a brick_v_1_0_2:Lighting_System_Luminance_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d429/i.xbos.light" ;
+    brickframe:uuid "4bd1f31e-32f8-3f07-a262-45c8dc6b1351" .
+
+bldg:Sensor02d429_meter a brick_v_1_0_2:Electric_Meter ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d429/i.xbos.meter" ;
+    brickframe:uuid "41016955-fdb1-340e-9d38-f580a2e34800" .
+
+bldg:Sensor02d429_occupancy a brick1:Occupancy_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d429/i.xbos.occupancy_sensor" ;
+    brickframe:uuid "611ac5e9-33a5-3273-9fa6-548d3ad59481" .
+
+bldg:Sensor02d429_state a brick_v_1_0_2:Lighting_State ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d429/i.xbos.light" ;
+    brickframe:uuid "13c60f24-7ea5-3782-90aa-1b84fee54658" .
+
+bldg:Sensor02d432_ambient a brick_v_1_0_2:Ambient_Illumination_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d432/i.xbos.light" ;
+    brickframe:uuid "9a96a0f1-0f54-36cc-ad6e-fbccae543e8a" .
+
+bldg:Sensor02d432_brightness a brick_v_1_0_2:Lighting_System_Luminance_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d432/i.xbos.light" ;
+    brickframe:uuid "17a4d994-4c4b-3f6d-a4b6-718a02482dce" .
+
+bldg:Sensor02d432_meter a brick_v_1_0_2:Electric_Meter ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d432/i.xbos.meter" ;
+    brickframe:uuid "5b812bbc-f1c3-3d43-a655-40a3d44837fc" .
+
+bldg:Sensor02d432_occupancy a brick1:Occupancy_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d432/i.xbos.occupancy_sensor" ;
+    brickframe:uuid "2b3f9905-3bb7-302a-9545-7bfe2eb63547" .
+
+bldg:Sensor02d432_state a brick_v_1_0_2:Lighting_State ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d432/i.xbos.light" ;
+    brickframe:uuid "adfbb150-7952-32d1-9552-2bba5e809912" .
+
+bldg:Sensor02d433_ambient a brick_v_1_0_2:Ambient_Illumination_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d433/i.xbos.light" ;
+    brickframe:uuid "ade164a5-00f2-3489-8047-a53a8c852e08" .
+
+bldg:Sensor02d433_brightness a brick_v_1_0_2:Lighting_System_Luminance_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d433/i.xbos.light" ;
+    brickframe:uuid "4bdbc933-5b63-340d-98c2-a41946545549" .
+
+bldg:Sensor02d433_meter a brick_v_1_0_2:Electric_Meter ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d433/i.xbos.meter" ;
+    brickframe:uuid "c5d201cf-fb7e-3e83-aab3-517e93df1919" .
+
+bldg:Sensor02d433_occupancy a brick1:Occupancy_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d433/i.xbos.occupancy_sensor" ;
+    brickframe:uuid "2f5c888d-c0c6-33b4-9c30-d609f1e16fea" .
+
+bldg:Sensor02d433_state a brick_v_1_0_2:Lighting_State ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d433/i.xbos.light" ;
+    brickframe:uuid "c35a5f2f-84d7-317a-8bd8-12e85a841421" .
+
+bldg:Sensor02d438_ambient a brick_v_1_0_2:Ambient_Illumination_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d438/i.xbos.light" ;
+    brickframe:uuid "0e686ebc-7fea-37d0-bd63-c18e341477ff" .
+
+bldg:Sensor02d438_brightness a brick_v_1_0_2:Lighting_System_Luminance_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d438/i.xbos.light" ;
+    brickframe:uuid "ca5c8a09-b88f-3cb0-9bc0-dadf89b13206" .
+
+bldg:Sensor02d438_meter a brick_v_1_0_2:Electric_Meter ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d438/i.xbos.meter" ;
+    brickframe:uuid "38b1ad08-2c56-3462-87bf-91800a1f3af1" .
+
+bldg:Sensor02d438_occupancy a brick1:Occupancy_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d438/i.xbos.occupancy_sensor" ;
+    brickframe:uuid "afed35be-ef70-341a-8bf4-565d815bfd90" .
+
+bldg:Sensor02d438_state a brick_v_1_0_2:Lighting_State ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d438/i.xbos.light" ;
+    brickframe:uuid "04b40a8a-01f7-396c-bfa5-0296cd7e28c2" .
+
+bldg:Sensor02d444_ambient a brick_v_1_0_2:Ambient_Illumination_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d444/i.xbos.light" ;
+    brickframe:uuid "5114e1f6-8b00-389e-b29d-5f4b7870ee23" .
+
+bldg:Sensor02d444_brightness a brick_v_1_0_2:Lighting_System_Luminance_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d444/i.xbos.light" ;
+    brickframe:uuid "c7e3959c-bb1f-38ca-8255-5b546ce83788" .
+
+bldg:Sensor02d444_meter a brick_v_1_0_2:Electric_Meter ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d444/i.xbos.meter" ;
+    brickframe:uuid "65b682ce-3a1f-3072-b64a-3a354be841c0" .
+
+bldg:Sensor02d444_occupancy a brick1:Occupancy_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d444/i.xbos.occupancy_sensor" ;
+    brickframe:uuid "aefa14ef-a13a-355b-9b87-51511db7f541" .
+
+bldg:Sensor02d444_state a brick_v_1_0_2:Lighting_State ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d444/i.xbos.light" ;
+    brickframe:uuid "18bee112-44c3-34f1-8d3a-c8b4e491b2ac" .
+
+bldg:Sensor02d454_ambient a brick_v_1_0_2:Ambient_Illumination_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d454/i.xbos.light" ;
+    brickframe:uuid "319c7c29-d162-36cf-8675-8bd3e9a5d580" .
+
+bldg:Sensor02d454_brightness a brick_v_1_0_2:Lighting_System_Luminance_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d454/i.xbos.light" ;
+    brickframe:uuid "72df0f41-0f18-35d0-a0f4-acbfa1aa0774" .
+
+bldg:Sensor02d454_meter a brick_v_1_0_2:Electric_Meter ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d454/i.xbos.meter" ;
+    brickframe:uuid "72ef9222-40c4-3914-8e9f-6e050cb9e8fc" .
+
+bldg:Sensor02d454_occupancy a brick1:Occupancy_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d454/i.xbos.occupancy_sensor" ;
+    brickframe:uuid "c27adbad-b1b5-342c-91eb-a6709d365871" .
+
+bldg:Sensor02d454_state a brick_v_1_0_2:Lighting_State ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d454/i.xbos.light" ;
+    brickframe:uuid "65866c55-5918-39de-b72d-e4db58afeb54" .
+
+bldg:Sensor02d455_ambient a brick_v_1_0_2:Ambient_Illumination_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d455/i.xbos.light" ;
+    brickframe:uuid "135ccc6a-a85d-37a1-8f8d-44e7c840d8d6" .
+
+bldg:Sensor02d455_brightness a brick_v_1_0_2:Lighting_System_Luminance_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d455/i.xbos.light" ;
+    brickframe:uuid "e1f4ac24-0cd7-331f-b988-9223b2fb3a53" .
+
+bldg:Sensor02d455_meter a brick_v_1_0_2:Electric_Meter ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d455/i.xbos.meter" ;
+    brickframe:uuid "6537ddc4-2796-3091-876d-554f9bf3ef5a" .
+
+bldg:Sensor02d455_occupancy a brick1:Occupancy_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d455/i.xbos.occupancy_sensor" ;
+    brickframe:uuid "97ba99af-869b-3c43-94e3-93040c9bdd33" .
+
+bldg:Sensor02d455_state a brick_v_1_0_2:Lighting_State ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d455/i.xbos.light" ;
+    brickframe:uuid "a53f841e-ad8f-3d75-b016-c3203c83a847" .
+
+bldg:Sensor02d458_ambient a brick_v_1_0_2:Ambient_Illumination_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d458/i.xbos.light" ;
+    brickframe:uuid "e7307dc6-594d-3940-9d1f-8cf8fb2139ae" .
+
+bldg:Sensor02d458_brightness a brick_v_1_0_2:Lighting_System_Luminance_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d458/i.xbos.light" ;
+    brickframe:uuid "cc470358-7a18-3b53-95b1-e8256f31d0c1" .
+
+bldg:Sensor02d458_meter a brick_v_1_0_2:Electric_Meter ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d458/i.xbos.meter" ;
+    brickframe:uuid "c7713607-1736-30c5-aded-8e848eb42a6a" .
+
+bldg:Sensor02d458_occupancy a brick1:Occupancy_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d458/i.xbos.occupancy_sensor" ;
+    brickframe:uuid "00f45f05-08f9-3def-a977-357493fad61e" .
+
+bldg:Sensor02d458_state a brick_v_1_0_2:Lighting_State ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor02d458/i.xbos.light" ;
+    brickframe:uuid "b353f9b0-e919-33e6-bb91-62fefaa47645" .
+
+bldg:Sensor30005f_ambient a brick_v_1_0_2:Ambient_Illumination_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor30005f/i.xbos.light" ;
+    brickframe:uuid "b2f4f175-1e4c-34d1-b670-c30cbb85f528" .
+
+bldg:Sensor30005f_brightness a brick_v_1_0_2:Lighting_System_Luminance_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor30005f/i.xbos.light" ;
+    brickframe:uuid "647f7ca9-593f-3876-95d3-33832c86ade7" .
+
+bldg:Sensor30005f_meter a brick_v_1_0_2:Electric_Meter ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor30005f/i.xbos.meter" ;
+    brickframe:uuid "3dc5bd0b-d0b9-3a3e-845c-d3bc4f8df220" .
+
+bldg:Sensor30005f_occupancy a brick1:Occupancy_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor30005f/i.xbos.occupancy_sensor" ;
+    brickframe:uuid "3cea0629-6fcd-3c6a-9786-7b571eaaf13d" .
+
+bldg:Sensor30005f_state a brick_v_1_0_2:Lighting_State ;
+    brickframe:uri "ciee/devices/enlighted/s.enlighted/Sensor30005f/i.xbos.light" ;
+    brickframe:uuid "bec90c09-1f1f-393b-9036-a6045952d6c1" .
+
+bldg:hvac_zone_centralzone_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_221 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/venstar/s.venstar/OpenSpace/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_centralzone ;
+    brick1:hasPoint bldg:hvac_zone_centralzone_tstat_cooling_setpoint,
+        bldg:hvac_zone_centralzone_tstat_fan,
+        bldg:hvac_zone_centralzone_tstat_heating_setpoint,
+        bldg:hvac_zone_centralzone_tstat_mode,
+        bldg:hvac_zone_centralzone_tstat_override,
+        bldg:hvac_zone_centralzone_tstat_state,
+        bldg:hvac_zone_centralzone_tstat_temperature .
+
+bldg:hvac_zone_centralzone_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/venstar/s.venstar/OpenSpace/i.xbos.thermostat" ;
+    brickframe:uuid "0d037818-02c2-3e5b-87e9-94570d43b418" .
+
+bldg:hvac_zone_centralzone_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/venstar/s.venstar/OpenSpace/i.xbos.thermostat" ;
+    brickframe:uuid "4a471518-3cdd-3039-ab20-9f0f964e95c0" .
+
+bldg:hvac_zone_centralzone_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/venstar/s.venstar/OpenSpace/i.xbos.thermostat" ;
+    brickframe:uuid "6cbee2ae-06e7-3fc3-a2fc-698fa3deadee" .
+
+bldg:hvac_zone_centralzone_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/venstar/s.venstar/OpenSpace/i.xbos.thermostat" ;
+    brickframe:uuid "22e4f56b-1147-3302-83df-c7631b9b0b79" .
+
+bldg:hvac_zone_centralzone_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/venstar/s.venstar/OpenSpace/i.xbos.thermostat" ;
+    brickframe:uuid "67b3beeb-5a75-338b-b51e-7734781fac02" .
+
+bldg:hvac_zone_centralzone_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/venstar/s.venstar/OpenSpace/i.xbos.thermostat" ;
+    brickframe:uuid "187ed9b8-ee9b-3042-875e-088a08da37ae" .
+
+bldg:hvac_zone_centralzone_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/venstar/s.venstar/OpenSpace/i.xbos.thermostat" ;
+    brickframe:uuid "c05385e5-a947-37a3-902e-f6ea45a43fe8" .
+
+bldg:hvac_zone_eastzone_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_213 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/pelican/s.pelican/SouthEastCorner/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_eastzone ;
+    brick1:hasPoint bldg:hvac_zone_eastzone_tstat_cooling_setpoint,
+        bldg:hvac_zone_eastzone_tstat_fan,
+        bldg:hvac_zone_eastzone_tstat_heating_setpoint,
+        bldg:hvac_zone_eastzone_tstat_mode,
+        bldg:hvac_zone_eastzone_tstat_override,
+        bldg:hvac_zone_eastzone_tstat_state,
+        bldg:hvac_zone_eastzone_tstat_temperature .
+
+bldg:hvac_zone_eastzone_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/pelican/s.pelican/SouthEastCorner/i.xbos.thermostat" ;
+    brickframe:uuid "d38446d4-32cc-34bd-b293-0a3871a6759b" .
+
+bldg:hvac_zone_eastzone_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/pelican/s.pelican/SouthEastCorner/i.xbos.thermostat" ;
+    brickframe:uuid "49cb0dff-b571-3155-b08d-3e7c9aa8a934" .
+
+bldg:hvac_zone_eastzone_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/pelican/s.pelican/SouthEastCorner/i.xbos.thermostat" ;
+    brickframe:uuid "e4d39723-5907-35bd-a9b2-fc57b58b3779" .
+
+bldg:hvac_zone_eastzone_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/pelican/s.pelican/SouthEastCorner/i.xbos.thermostat" ;
+    brickframe:uuid "3bc7ce21-2384-3ebe-aedd-8c2822b5a10c" .
+
+bldg:hvac_zone_eastzone_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/pelican/s.pelican/SouthEastCorner/i.xbos.thermostat" ;
+    brickframe:uuid "388512db-58c4-33ab-93dc-f85abcaf78d4" .
+
+bldg:hvac_zone_eastzone_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/pelican/s.pelican/SouthEastCorner/i.xbos.thermostat" ;
+    brickframe:uuid "7e543d07-16d1-32bb-94af-95a01f4675f9" .
+
+bldg:hvac_zone_eastzone_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/pelican/s.pelican/SouthEastCorner/i.xbos.thermostat" ;
+    brickframe:uuid "b47ba370-bceb-39cf-9552-d1225d910039" .
+
+bldg:hvac_zone_northzone_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_226 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/venstar/s.venstar/Clarity/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_northzone ;
+    brick1:hasPoint bldg:hvac_zone_northzone_tstat_cooling_setpoint,
+        bldg:hvac_zone_northzone_tstat_fan,
+        bldg:hvac_zone_northzone_tstat_heating_setpoint,
+        bldg:hvac_zone_northzone_tstat_mode,
+        bldg:hvac_zone_northzone_tstat_override,
+        bldg:hvac_zone_northzone_tstat_state,
+        bldg:hvac_zone_northzone_tstat_temperature .
+
+bldg:hvac_zone_northzone_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/venstar/s.venstar/Clarity/i.xbos.thermostat" ;
+    brickframe:uuid "9fa56ac1-0f8a-3ad2-86e8-72e816b875ad" .
+
+bldg:hvac_zone_northzone_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/venstar/s.venstar/Clarity/i.xbos.thermostat" ;
+    brickframe:uuid "f1bb9994-4b72-3112-b4a6-e2eb49bd2b6f" .
+
+bldg:hvac_zone_northzone_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/venstar/s.venstar/Clarity/i.xbos.thermostat" ;
+    brickframe:uuid "e4e0db0b-1c15-330e-a864-011e558f542e" .
+
+bldg:hvac_zone_northzone_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/venstar/s.venstar/Clarity/i.xbos.thermostat" ;
+    brickframe:uuid "c74200d0-0ee1-3951-a7f6-2bc8857cb303" .
+
+bldg:hvac_zone_northzone_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/venstar/s.venstar/Clarity/i.xbos.thermostat" ;
+    brickframe:uuid "04a4ac49-a888-38c6-b000-e81e3ff5e630" .
+
+bldg:hvac_zone_northzone_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/venstar/s.venstar/Clarity/i.xbos.thermostat" ;
+    brickframe:uuid "5e55e5b1-007b-39fa-98b6-ae01baa6dccd" .
+
+bldg:hvac_zone_northzone_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/venstar/s.venstar/Clarity/i.xbos.thermostat" ;
+    brickframe:uuid "c7e33fa6-f683-36e9-b97a-7f096e4b57d4" .
+
+bldg:hvac_zone_southzone_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_207 ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/venstar/s.venstar/ConferenceRoom/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_southzone ;
+    brick1:hasPoint bldg:hvac_zone_southzone_tstat_cooling_setpoint,
+        bldg:hvac_zone_southzone_tstat_fan,
+        bldg:hvac_zone_southzone_tstat_heating_setpoint,
+        bldg:hvac_zone_southzone_tstat_mode,
+        bldg:hvac_zone_southzone_tstat_override,
+        bldg:hvac_zone_southzone_tstat_state,
+        bldg:hvac_zone_southzone_tstat_temperature .
+
+bldg:hvac_zone_southzone_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/venstar/s.venstar/ConferenceRoom/i.xbos.thermostat" ;
+    brickframe:uuid "dbbf4a91-107a-3b15-b2c0-a49b54116daa" .
+
+bldg:hvac_zone_southzone_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/venstar/s.venstar/ConferenceRoom/i.xbos.thermostat" ;
+    brickframe:uuid "5c965d7d-e1b4-39a5-b2d8-e3e6cad0e136" .
+
+bldg:hvac_zone_southzone_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/venstar/s.venstar/ConferenceRoom/i.xbos.thermostat" ;
+    brickframe:uuid "eeadc8ed-6255-320d-b845-84f44748fe95" .
+
+bldg:hvac_zone_southzone_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/venstar/s.venstar/ConferenceRoom/i.xbos.thermostat" ;
+    brickframe:uuid "a4639323-1e57-3512-83fb-b01234378fd8" .
+
+bldg:hvac_zone_southzone_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/venstar/s.venstar/ConferenceRoom/i.xbos.thermostat" ;
+    brickframe:uuid "25008947-b7db-32d4-87c1-b93be6dc5097" .
+
+bldg:hvac_zone_southzone_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/venstar/s.venstar/ConferenceRoom/i.xbos.thermostat" ;
+    brickframe:uuid "dfb2b403-fd08-3e9b-bf3f-18c699ce40d6" .
+
+bldg:hvac_zone_southzone_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:ciee ;
+    brickframe:uri "ciee/devices/venstar/s.venstar/ConferenceRoom/i.xbos.thermostat" ;
+    brickframe:uuid "03099008-5224-3b61-b07e-eee445e64620" .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Weather_Cloud_Coverage_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Weather_Cloud_Height_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Weather_Temperature_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+bldg:Room_225 a brick1:Room ;
+    rdf:label "Office" ;
+    brickframe:adjacentTo bldg:Room_221 ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isPartOf bldg:hvac_zone_centralzone .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:Room_224 a brick1:Room ;
+    rdf:label "Office" ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isPartOf bldg:hvac_zone_northzone .
+
+bldg:hvac_zone_northzone a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ciee .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+bldg:Room_203 a brick1:Room ;
+    rdf:label "Copy Room" ;
+    brickframe:adjacentTo bldg:Room_200,
+        bldg:Room_221 ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isPartOf bldg:hvac_zone_eastzone .
+
+bldg:Room_222 a brick1:Room ;
+    rdf:label "Office" ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isPartOf bldg:hvac_zone_centralzone .
+
+bldg:Room_223 a brick1:Room ;
+    rdf:label "Office" ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isPartOf bldg:hvac_zone_centralzone .
+
+bldg:hvac_zone_centralzone a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ciee .
+
+bldg:Room_226 a brick1:Room ;
+    rdf:label "Office" ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isPartOf bldg:hvac_zone_northzone .
+
+bldg:hvac_zone_eastzone a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ciee .
+
+bldg:Room_205 a brick1:Room ;
+    rdf:label "Lobby" ;
+    brickframe:adjacentTo bldg:Room_206 ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isPartOf bldg:hvac_zone_southzone .
+
+bldg:Room_North a brick1:Room ;
+    rdf:label "Outside" ;
+    brickframe:hasSite bldg:ciee .
+
+bldg:hvac_zone_southzone a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ciee .
+
+bldg:Room_210 a brick1:Room ;
+    rdf:label "Office" ;
+    brickframe:adjacentTo bldg:Room_221 ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isPartOf bldg:hvac_zone_southzone .
+
+bldg:Room_212 a brick1:Room ;
+    rdf:label "Office" ;
+    brickframe:adjacentTo bldg:Room_221 ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isPartOf bldg:hvac_zone_southzone .
+
+bldg:Room_206 a brick1:Room ;
+    rdf:label "Office" ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isPartOf bldg:hvac_zone_southzone .
+
+bldg:Room_209 a brick1:Room ;
+    rdf:label "Office" ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isPartOf bldg:hvac_zone_southzone .
+
+bldg:Room_211 a brick1:Room ;
+    rdf:label "Office" ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isPartOf bldg:hvac_zone_southzone .
+
+bldg:Room_213 a brick1:Room ;
+    rdf:label "Office" ;
+    brickframe:adjacentTo bldg:Room_221 ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isPartOf bldg:hvac_zone_eastzone .
+
+bldg:Room_214 a brick1:Room ;
+    rdf:label "Office" ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isPartOf bldg:hvac_zone_eastzone .
+
+bldg:Room_215 a brick1:Room ;
+    rdf:label "Office" ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isPartOf bldg:hvac_zone_eastzone .
+
+bldg:Room_216 a brick1:Room ;
+    rdf:label "Office" ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isPartOf bldg:hvac_zone_eastzone .
+
+bldg:Room_217 a brick1:Room ;
+    rdf:label "Office" ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isPartOf bldg:hvac_zone_eastzone .
+
+bldg:Room_208 a brick1:Room ;
+    rdf:label "Kitchen" ;
+    brickframe:adjacentTo bldg:Room_221 ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isPartOf bldg:hvac_zone_southzone .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+bldg:Room_221 a brick1:Room ;
+    rdf:label "Open Office" ;
+    brickframe:adjacentTo bldg:Room_207,
+        bldg:Room_209,
+        bldg:Room_211,
+        bldg:Room_214,
+        bldg:Room_215,
+        bldg:Room_223,
+        bldg:Room_226 ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isPartOf bldg:hvac_zone_centralzone .
+
+bldg:Room_207 a brick1:Room ;
+    rdf:label "Conference Room" ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isPartOf bldg:hvac_zone_southzone .
+
+bldg:Room_220 a brick1:Room ;
+    rdf:label "Open Office" ;
+    brickframe:adjacentTo bldg:Room_216,
+        bldg:Room_217,
+        bldg:Room_222,
+        bldg:Room_224 ;
+    brickframe:hasSite bldg:ciee ;
+    brick1:isPartOf bldg:hvac_zone_northzone .
+
+bldg:ciee a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "8424" ;
+    brickframe:Country "US" ;
+    brickframe:NumFloors "2" ;
+    brickframe:PrimaryFunction "Office" ;
+    brickframe:Timezone "America/Los_Angeles" .
+

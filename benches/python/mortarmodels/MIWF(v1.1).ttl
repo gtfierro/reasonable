@@ -1,0 +1,547 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/MIWF#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:AHU03_1 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:MIWF ;
+    brick1:hasPoint bldg:MIWF.AHU.AHU03_1.CCV,
+        bldg:MIWF.AHU.AHU03_1.Cooling_Valve_Output,
+        bldg:MIWF.AHU.AHU03_1.Heating_Valve_Output,
+        bldg:MIWF.AHU.AHU03_1.Outside_Air_Temp,
+        bldg:MIWF.AHU.AHU03_1.Supply_Air_Pressure,
+        bldg:MIWF.AHU.AHU03_1.Supply_Air_Temp,
+        bldg:MIWF.AHU.AHU03_1.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU4_1 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:MIWF ;
+    brick1:feeds bldg:VAVRMAVG ;
+    brick1:hasPoint bldg:MIWF.AHU.AHU4_1.Cooling_Valve_Output,
+        bldg:MIWF.AHU.AHU4_1.Heating_Valve_Output,
+        bldg:MIWF.AHU.AHU4_1.Outside_Air_Temp,
+        bldg:MIWF.AHU.AHU4_1.Supply_Air_Pressure,
+        bldg:MIWF.AHU.AHU4_1.Supply_Air_Temp,
+        bldg:MIWF.AHU.AHU4_1.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU4_2 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:MIWF ;
+    brick1:feeds bldg:VAVRMAVG ;
+    brick1:hasPoint bldg:MIWF.AHU.AHU4_2.Cooling_Valve_Output,
+        bldg:MIWF.AHU.AHU4_2.Heating_Valve_Output,
+        bldg:MIWF.AHU.AHU4_2.Outside_Air_Temp,
+        bldg:MIWF.AHU.AHU4_2.Supply_Air_Pressure,
+        bldg:MIWF.AHU.AHU4_2.Supply_Air_Temp,
+        bldg:MIWF.AHU.AHU4_2.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU4_3 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:MIWF ;
+    brick1:feeds bldg:VAVRMAVG ;
+    brick1:hasPoint bldg:MIWF.AHU.AHU4_3.Cooling_Valve_Output,
+        bldg:MIWF.AHU.AHU4_3.Heating_Valve_Output,
+        bldg:MIWF.AHU.AHU4_3.Outside_Air_Temp,
+        bldg:MIWF.AHU.AHU4_3.Supply_Air_Pressure,
+        bldg:MIWF.AHU.AHU4_3.Supply_Air_Temp,
+        bldg:MIWF.AHU.AHU4_3.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU4_4 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:MIWF ;
+    brick1:feeds bldg:VAVRMAVG ;
+    brick1:hasPoint bldg:MIWF.AHU.AHU4_4.Cooling_Valve_Output,
+        bldg:MIWF.AHU.AHU4_4.Heating_Valve_Output,
+        bldg:MIWF.AHU.AHU4_4.Outside_Air_Temp,
+        bldg:MIWF.AHU.AHU4_4.Supply_Air_Pressure,
+        bldg:MIWF.AHU.AHU4_4.Supply_Air_Temp,
+        bldg:MIWF.AHU.AHU4_4.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU4_5 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:MIWF ;
+    brick1:feeds bldg:VAVRMAVG ;
+    brick1:hasPoint bldg:MIWF.AHU.AHU4_5.Cooling_Valve_Output,
+        bldg:MIWF.AHU.AHU4_5.Mixed_Air_Temp,
+        bldg:MIWF.AHU.AHU4_5.Outside_Air_Temp,
+        bldg:MIWF.AHU.AHU4_5.Return_Air_Temp,
+        bldg:MIWF.AHU.AHU4_5.Supply_Air_Pressure,
+        bldg:MIWF.AHU.AHU4_5.Supply_Air_Temp,
+        bldg:MIWF.AHU.AHU4_5.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU4_6 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:MIWF ;
+    brick1:feeds bldg:VAVRMAVG ;
+    brick1:hasPoint bldg:MIWF.AHU.AHU4_6.Cooling_Valve_Output,
+        bldg:MIWF.AHU.AHU4_6.Mixed_Air_Temp,
+        bldg:MIWF.AHU.AHU4_6.Outside_Air_Temp,
+        bldg:MIWF.AHU.AHU4_6.Return_Air_Temp,
+        bldg:MIWF.AHU.AHU4_6.Supply_Air_Pressure,
+        bldg:MIWF.AHU.AHU4_6.Supply_Air_Temp,
+        bldg:MIWF.AHU.AHU4_6.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:MIWF.AHU.AHU03_1.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU03_1.CCV" ;
+    brickframe:uuid "1c6c289e-54d4-3575-a086-11a1be378176" .
+
+bldg:MIWF.AHU.AHU03_1.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU03_1.Cooling Valve Output" ;
+    brickframe:uuid "99183857-3cde-30fa-8cb0-f46a820a966f" .
+
+bldg:MIWF.AHU.AHU03_1.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU03_1.Heating Valve Output" ;
+    brickframe:uuid "68724b9f-f882-362b-883f-a82ad1a67c91" .
+
+bldg:MIWF.AHU.AHU03_1.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU03_1.Outside Air Temp" ;
+    brickframe:uuid "0c9be44f-fdb1-38d7-9e36-862484fc0557" .
+
+bldg:MIWF.AHU.AHU03_1.Supply_Air_Pressure a brick1:Supply_Air_Static_Pressure_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU03_1.Supply Air Pressure" ;
+    brickframe:uuid "a3c79cdf-aa8c-3a06-b911-648923c3cfef" .
+
+bldg:MIWF.AHU.AHU03_1.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU03_1.Supply Air Temp" ;
+    brickframe:uuid "b2664f7a-1bcd-3949-856d-4782efe0280c" .
+
+bldg:MIWF.AHU.AHU03_1.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU03_1.Supply Air Temp Setpoint" ;
+    brickframe:uuid "3efb22c5-de9d-30b7-876c-b80c680faa3d" .
+
+bldg:MIWF.AHU.AHU4_1.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_1.Cooling Valve Output" ;
+    brickframe:uuid "97f8755c-8de5-3421-9ad8-1243e9a97274" .
+
+bldg:MIWF.AHU.AHU4_1.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_1.Heating Valve Output" ;
+    brickframe:uuid "0c8a91e3-b0d9-3b21-9258-3c4893ff33f6" .
+
+bldg:MIWF.AHU.AHU4_1.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_1.Outside Air Temp" ;
+    brickframe:uuid "1750b83b-fd9b-305d-bc9c-369c8ebad5f5" .
+
+bldg:MIWF.AHU.AHU4_1.Supply_Air_Pressure a brick1:Supply_Air_Static_Pressure_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_1.Supply Air Pressure" ;
+    brickframe:uuid "5b3ddf71-c25d-3d33-9874-4b3963362a11" .
+
+bldg:MIWF.AHU.AHU4_1.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_1.Supply Air Temp" ;
+    brickframe:uuid "3255a258-bb93-39ab-8a3c-0dd5f151c41a" .
+
+bldg:MIWF.AHU.AHU4_1.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_1.Supply Air Temp Setpoint" ;
+    brickframe:uuid "c1054c40-2a0f-392a-830a-5f5dfba71e63" .
+
+bldg:MIWF.AHU.AHU4_2.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_2.Cooling Valve Output" ;
+    brickframe:uuid "bd21c4d0-724f-3910-8033-befca9b36b01" .
+
+bldg:MIWF.AHU.AHU4_2.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_2.Heating Valve Output" ;
+    brickframe:uuid "d8e88886-70ce-3e59-8efb-d00acf52515f" .
+
+bldg:MIWF.AHU.AHU4_2.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_2.Outside Air Temp" ;
+    brickframe:uuid "14da98cd-f7d0-31eb-8339-6009d649965a" .
+
+bldg:MIWF.AHU.AHU4_2.Supply_Air_Pressure a brick1:Supply_Air_Static_Pressure_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_2.Supply Air Pressure" ;
+    brickframe:uuid "f6649cc4-3ff8-3872-854e-7bc3e1264793" .
+
+bldg:MIWF.AHU.AHU4_2.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_2.Supply Air Temp" ;
+    brickframe:uuid "2db8d1a7-a97c-3375-9254-f84f51449d32" .
+
+bldg:MIWF.AHU.AHU4_2.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_2.Supply Air Temp Setpoint" ;
+    brickframe:uuid "c8c38b67-1fd2-3024-9f04-6b42f9671d9b" .
+
+bldg:MIWF.AHU.AHU4_3.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_3.Cooling Valve Output" ;
+    brickframe:uuid "d68d1c54-ac1b-3242-bda1-8fbcb3f9bfd2" .
+
+bldg:MIWF.AHU.AHU4_3.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_3.Heating Valve Output" ;
+    brickframe:uuid "942f14d9-4c0e-38e4-a7fb-dbeef2617cdc" .
+
+bldg:MIWF.AHU.AHU4_3.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_3.Outside Air Temp" ;
+    brickframe:uuid "440ac425-a40d-3ce1-a1a1-dca079b4d49c" .
+
+bldg:MIWF.AHU.AHU4_3.Supply_Air_Pressure a brick1:Supply_Air_Static_Pressure_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_3.Supply Air Pressure" ;
+    brickframe:uuid "262f2428-e13f-39c2-9f26-3650fbab2c53" .
+
+bldg:MIWF.AHU.AHU4_3.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_3.Supply Air Temp" ;
+    brickframe:uuid "6694fe20-4ee8-3ade-8e77-f32d59278b03" .
+
+bldg:MIWF.AHU.AHU4_3.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_3.Supply Air Temp Setpoint" ;
+    brickframe:uuid "bfe9493e-b3d9-30c7-8b38-5f20b107324c" .
+
+bldg:MIWF.AHU.AHU4_4.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_4.Cooling Valve Output" ;
+    brickframe:uuid "392cc46f-a403-33d6-b0a7-7126d606c222" .
+
+bldg:MIWF.AHU.AHU4_4.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_4.Heating Valve Output" ;
+    brickframe:uuid "35fa1ebf-363f-3be8-b590-3b4fce0830b4" .
+
+bldg:MIWF.AHU.AHU4_4.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_4.Outside Air Temp" ;
+    brickframe:uuid "e038e616-12a7-3365-a6ac-bae269fad093" .
+
+bldg:MIWF.AHU.AHU4_4.Supply_Air_Pressure a brick1:Supply_Air_Static_Pressure_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_4.Supply Air Pressure" ;
+    brickframe:uuid "6724d2c6-6fdc-3f10-84d7-f7da23c4f96a" .
+
+bldg:MIWF.AHU.AHU4_4.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_4.Supply Air Temp" ;
+    brickframe:uuid "cbc47fef-e188-30ea-80ce-96721e33ac62" .
+
+bldg:MIWF.AHU.AHU4_4.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_4.Supply Air Temp Setpoint" ;
+    brickframe:uuid "151a7d6f-5c4f-35c6-bab0-9218d8ef9858" .
+
+bldg:MIWF.AHU.AHU4_5.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_5.Cooling Valve Output" ;
+    brickframe:uuid "85cfdf85-74d4-3c97-a51c-87cc25c2df60" .
+
+bldg:MIWF.AHU.AHU4_5.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_5.Mixed Air Temp" ;
+    brickframe:uuid "55c37f10-6a26-3e61-a36c-10dac29ad110" .
+
+bldg:MIWF.AHU.AHU4_5.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_5.Outside Air Temp" ;
+    brickframe:uuid "1e58f9a8-2d2d-326e-9247-f034ca193f4c" .
+
+bldg:MIWF.AHU.AHU4_5.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_5.Return Air Temp" ;
+    brickframe:uuid "9915c3c0-6e50-30ba-8fb2-d5bf09b1efa6" .
+
+bldg:MIWF.AHU.AHU4_5.Supply_Air_Pressure a brick1:Supply_Air_Static_Pressure_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_5.Supply Air Pressure" ;
+    brickframe:uuid "b39b0fa5-9fc3-3c34-baa7-40e9c4591437" .
+
+bldg:MIWF.AHU.AHU4_5.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_5.Supply Air Temp" ;
+    brickframe:uuid "d73ce0e2-089e-330a-b54e-e5cbc7418290" .
+
+bldg:MIWF.AHU.AHU4_5.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_5.Supply Air Temp Setpoint" ;
+    brickframe:uuid "30320e67-1897-3003-ba0c-218e242d76e9" .
+
+bldg:MIWF.AHU.AHU4_6.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_6.Cooling Valve Output" ;
+    brickframe:uuid "4cc283b0-083f-3ab1-a40a-ae624d78ba41" .
+
+bldg:MIWF.AHU.AHU4_6.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_6.Mixed Air Temp" ;
+    brickframe:uuid "6cf88f3f-3c24-346c-9d64-dad0f7291546" .
+
+bldg:MIWF.AHU.AHU4_6.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_6.Outside Air Temp" ;
+    brickframe:uuid "76b43e3e-d233-38f3-ae32-b738b0b0aa39" .
+
+bldg:MIWF.AHU.AHU4_6.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_6.Return Air Temp" ;
+    brickframe:uuid "a6495d70-a1cc-3d18-9ccc-beb85ff61395" .
+
+bldg:MIWF.AHU.AHU4_6.Supply_Air_Pressure a brick1:Supply_Air_Static_Pressure_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_6.Supply Air Pressure" ;
+    brickframe:uuid "e691e6bd-f53f-3cb7-ab57-4120d55c1b92" .
+
+bldg:MIWF.AHU.AHU4_6.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_6.Supply Air Temp" ;
+    brickframe:uuid "f7858c89-f838-3630-b0b2-ebf1f93fb4b9" .
+
+bldg:MIWF.AHU.AHU4_6.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.AHU.AHU4_6.Supply Air Temp Setpoint" ;
+    brickframe:uuid "fb1fd77b-1542-3ae7-91ea-3711e722d5f0" .
+
+bldg:MIWF.CHW.Building_Chilled_Water_Flow a brick_v_1_0_2:Chilled_Water_Flow_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.CHW.Building Chilled Water Flow" ;
+    brickframe:uuid "c7454d12-fc44-32b5-8ac5-70dbfca27315" .
+
+bldg:MIWF.CHW.Building_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.CHW.Building Chilled Water Return Temp" ;
+    brickframe:uuid "8244b765-6622-3ac4-a141-5aeaf8d665ab" .
+
+bldg:MIWF.CHW.Building_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.CHW.Building Chilled Water Supply Temp" ;
+    brickframe:uuid "74eacdb3-a6ea-3634-9d5d-c1a717e51edc" .
+
+bldg:MIWF.CHW.Building_Chilled_Water_Supply_Temp_Setpoint a brick_v_1_0_2:Chilled_Water_Supply_Temperature_Setpoint ;
+    brickframe:pointname "MIWF.CHW.Building Chilled Water Supply Temp Setpoint" ;
+    brickframe:uuid "bbebb2db-f0b6-3d18-8691-44957060b861" .
+
+bldg:MIWF.CHW.CHWPB1_DRIVE_KWH a brick1:Energy_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.CHW.CHWPB1_DRIVE KWH" ;
+    brickframe:uuid "75b9b0fb-e8dd-3887-8875-4bd31002e815" .
+
+bldg:MIWF.CHW.CHWPB1_FREQ_OUTPUT a brick1:Output_Frequency_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.CHW.CHWPB1_FREQ OUTPUT" ;
+    brickframe:uuid "db06fcac-0ec1-30e0-b236-443599256380" .
+
+bldg:MIWF.CHW.CHWPB1_POWER a brick_v_1_0_2:Power_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.CHW.CHWPB1_POWER" ;
+    brickframe:uuid "822229d1-a9c8-33f3-8489-a067fea7d211" .
+
+bldg:MIWF.CHW.CHWPB2_DRIVE_KWH a brick1:Energy_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.CHW.CHWPB2_DRIVE KWH" ;
+    brickframe:uuid "e7972990-365b-34a3-bc1f-425385085b34" .
+
+bldg:MIWF.CHW.CHWPB2_FREQ_OUTPUT a brick1:Output_Frequency_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.CHW.CHWPB2_FREQ OUTPUT" ;
+    brickframe:uuid "0a404c9b-47d8-3eb5-a602-fc13a638c087" .
+
+bldg:MIWF.CHW.CHWPB2_POWER a brick_v_1_0_2:Power_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.CHW.CHWPB2_POWER" ;
+    brickframe:uuid "09b7a7e4-53da-3405-8231-12c4451c33bf" .
+
+bldg:MIWF.CHW.CHWPB3_DRIVE_KWH a brick1:Energy_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.CHW.CHWPB3_DRIVE KWH" ;
+    brickframe:uuid "02dc4058-3316-3b49-8efc-a94f98bb53c8" .
+
+bldg:MIWF.CHW.CHWPB3_FREQ_OUTPUT a brick1:Output_Frequency_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.CHW.CHWPB3_FREQ OUTPUT" ;
+    brickframe:uuid "d787370a-7b64-37ad-8e59-bd5f073bc6b8" .
+
+bldg:MIWF.CHW.CHWPB3_POWER a brick_v_1_0_2:Power_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.CHW.CHWPB3_POWER" ;
+    brickframe:uuid "567f5911-c505-3a6f-a024-6efee1706283" .
+
+bldg:MIWF.CHW.ECONOMIZER a brick1:Damper_Position_Command ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.CHW.ECONOMIZER" ;
+    brickframe:uuid "49fad896-b886-3cdc-9112-470ad014e3ad" .
+
+bldg:MIWF.CHW.Enable a brick1:Enable_Command ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.CHW.Enable" ;
+    brickframe:uuid "716200cc-3b7f-3c84-a5b1-5e58585bca22" .
+
+bldg:MIWF.CHW.OA_ENABLE a brick_v_1_0_2:Outside_Air_Damper_Command ;
+    brickframe:pointname "MIWF.CHW.OA ENABLE" ;
+    brickframe:uuid "f0203cbb-70c1-3492-a2ee-042fbadfd163" .
+
+bldg:MIWF.CHW.OA_GT_CHWSP_ENABLE a brick1:Chilled_Water_System_Enable_Command ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.CHW.OA GT CHWSP ENABLE" ;
+    brickframe:uuid "0fda8840-cbd0-3593-9239-d9899e93f969" .
+
+bldg:MIWF.CHW.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.CHW.Outside Air Temp" ;
+    brickframe:uuid "075fa8ad-9334-39fd-9d66-1b4baaa776e8" .
+
+bldg:MIWF.CHW.PUMPENABLE a brick1:Pump_Command ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.CHW.PUMPENABLE" ;
+    brickframe:uuid "e1334526-7714-3f37-8c59-a0466405db56" .
+
+bldg:MIWF.ZONE.AHU4_1.RMAVG.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.ZONE.AHU4_1.RMAVG.Zone Air Temp" ;
+    brickframe:uuid "854b62c1-f7e4-3a0f-b86a-079a38bbd68c" .
+
+bldg:MIWF.ZONE.AHU4_2.RMAVG.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.ZONE.AHU4_2.RMAVG.Zone Air Temp" ;
+    brickframe:uuid "f5ec3154-e75f-38e3-bf83-c34cdf4ea816" .
+
+bldg:MIWF.ZONE.AHU4_3.RMAVG.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.ZONE.AHU4_3.RMAVG.Zone Air Temp" ;
+    brickframe:uuid "42a1aead-9ae6-3ac3-b1ec-c0ac54cf6cee" .
+
+bldg:MIWF.ZONE.AHU4_4.RMAVG.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.ZONE.AHU4_4.RMAVG.Zone Air Temp" ;
+    brickframe:uuid "753ed968-dd44-358d-9daa-582426ba1a95" .
+
+bldg:MIWF.ZONE.AHU4_5.RMAVG.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.ZONE.AHU4_5.RMAVG.Zone Air Temp" ;
+    brickframe:uuid "f03011be-8132-37b8-8a87-639f9e8b9fbb" .
+
+bldg:MIWF.ZONE.AHU4_6.RMAVG.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MIWF ;
+    brickframe:pointname "MIWF.ZONE.AHU4_6.RMAVG.Zone Air Temp" ;
+    brickframe:uuid "5039d51d-2330-3230-9610-69019e80246d" .
+
+bldg:RMAVG a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MIWF ;
+    brick1:hasPart bldg:RMAVG_room .
+
+bldg:RMAVG_room a brick1:Room ;
+    brickframe:hasSite bldg:MIWF .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:VAVRMAVG a brick1:VAV ;
+    brickframe:hasSite bldg:MIWF ;
+    brick1:feeds bldg:RMAVG ;
+    brick1:hasPoint bldg:MIWF.ZONE.AHU4_1.RMAVG.Zone_Air_Temp,
+        bldg:MIWF.ZONE.AHU4_2.RMAVG.Zone_Air_Temp,
+        bldg:MIWF.ZONE.AHU4_3.RMAVG.Zone_Air_Temp,
+        bldg:MIWF.ZONE.AHU4_4.RMAVG.Zone_Air_Temp,
+        bldg:MIWF.ZONE.AHU4_5.RMAVG.Zone_Air_Temp,
+        bldg:MIWF.ZONE.AHU4_6.RMAVG.Zone_Air_Temp .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:MIWF ;
+    brick1:hasPoint bldg:MIWF.CHW.Building_Chilled_Water_Flow,
+        bldg:MIWF.CHW.Building_Chilled_Water_Return_Temp,
+        bldg:MIWF.CHW.Building_Chilled_Water_Supply_Temp,
+        bldg:MIWF.CHW.Building_Chilled_Water_Supply_Temp_Setpoint,
+        bldg:MIWF.CHW.CHWPB1_DRIVE_KWH,
+        bldg:MIWF.CHW.CHWPB1_FREQ_OUTPUT,
+        bldg:MIWF.CHW.CHWPB1_POWER,
+        bldg:MIWF.CHW.CHWPB2_DRIVE_KWH,
+        bldg:MIWF.CHW.CHWPB2_FREQ_OUTPUT,
+        bldg:MIWF.CHW.CHWPB2_POWER,
+        bldg:MIWF.CHW.CHWPB3_DRIVE_KWH,
+        bldg:MIWF.CHW.CHWPB3_FREQ_OUTPUT,
+        bldg:MIWF.CHW.CHWPB3_POWER,
+        bldg:MIWF.CHW.ECONOMIZER,
+        bldg:MIWF.CHW.Enable,
+        bldg:MIWF.CHW.OA_ENABLE,
+        bldg:MIWF.CHW.OA_GT_CHWSP_ENABLE,
+        bldg:MIWF.CHW.Outside_Air_Temp,
+        bldg:MIWF.CHW.PUMPENABLE .
+
+bldg:MIWF a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "58067" ;
+    brickframe:Country "US" .
+

@@ -1,0 +1,203 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/HICK#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:AC01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:HICK ;
+    brick1:hasPoint bldg:HICK.AHU.AC01.Mixed_Air_Temp,
+        bldg:HICK.AHU.AC01.Supply_Air_Temp .
+
+bldg:AC03 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:HICK ;
+    brick1:hasPoint bldg:HICK.AHU.AC03.Day_Night_Mode,
+        bldg:HICK.AHU.AC03.Heat_Cool_Mode,
+        bldg:HICK.AHU.AC03.Zone_Air_Temp,
+        bldg:HICK.AHU.AC03.Zone_Air_Temp_Setpoint .
+
+bldg:AC04 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:HICK ;
+    brick1:hasPoint bldg:HICK.AHU.AC04.Day_Night_Mode,
+        bldg:HICK.AHU.AC04.Heat_Cool_Mode,
+        bldg:HICK.AHU.AC04.Zone_Air_Temp,
+        bldg:HICK.AHU.AC04.Zone_Air_Temp_Setpoint .
+
+bldg:AC05 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:HICK ;
+    brick1:hasPoint bldg:HICK.AHU.AC05.Day_Night_Mode,
+        bldg:HICK.AHU.AC05.Heat_Cool_Mode,
+        bldg:HICK.AHU.AC05.Zone_Air_Temp,
+        bldg:HICK.AHU.AC05.Zone_Air_Temp_Setpoint .
+
+bldg:AC06 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:HICK ;
+    brick1:hasPoint bldg:HICK.AHU.AC06.Day_Night_Mode,
+        bldg:HICK.AHU.AC06.Heat_Cool_Mode,
+        bldg:HICK.AHU.AC06.Zone_Air_Temp,
+        bldg:HICK.AHU.AC06.Zone_Air_Temp_Setpoint .
+
+bldg:AH02 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:HICK ;
+    brick1:hasPoint bldg:HICK.AHU.AH02.Mixed_Air_Temp,
+        bldg:HICK.AHU.AH02.Supply_Air_Temp .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:HICK.AHU.AC01.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:HICK ;
+    brickframe:pointname "HICK.AHU.AC01.Mixed Air Temp" ;
+    brickframe:uuid "483f3ef8-98f3-311d-a299-9c13ecab62a9" .
+
+bldg:HICK.AHU.AC01.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:HICK ;
+    brickframe:pointname "HICK.AHU.AC01.Supply Air Temp" ;
+    brickframe:uuid "7d2f8bd3-dd97-3a07-be68-197fa7e2dc30" .
+
+bldg:HICK.AHU.AC03.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "HICK.AHU.AC03.Day Night Mode" ;
+    brickframe:uuid "bca19d8f-bee3-3b75-adff-86b816e76f04" .
+
+bldg:HICK.AHU.AC03.Heat_Cool_Mode a brick1:Mode_Command ;
+    brickframe:hasSite bldg:HICK ;
+    brickframe:pointname "HICK.AHU.AC03.Heat Cool Mode" ;
+    brickframe:uuid "ef0dfce9-8351-3150-a314-f89daab87bef" .
+
+bldg:HICK.AHU.AC03.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:HICK ;
+    brickframe:pointname "HICK.AHU.AC03.Zone Air Temp" ;
+    brickframe:uuid "e207ded4-2f6c-3b78-92d4-d31719e232ce" .
+
+bldg:HICK.AHU.AC03.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "HICK.AHU.AC03.Zone Air Temp Setpoint" ;
+    brickframe:uuid "c71faf97-32f0-35df-8872-c41fa2aa0e60" .
+
+bldg:HICK.AHU.AC04.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "HICK.AHU.AC04.Day Night Mode" ;
+    brickframe:uuid "393d9104-b712-32ca-a55f-6491d92f98d6" .
+
+bldg:HICK.AHU.AC04.Heat_Cool_Mode a brick1:Mode_Command ;
+    brickframe:hasSite bldg:HICK ;
+    brickframe:pointname "HICK.AHU.AC04.Heat Cool Mode" ;
+    brickframe:uuid "450ada1c-acb5-3d74-bac6-ae0e59e3d666" .
+
+bldg:HICK.AHU.AC04.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:HICK ;
+    brickframe:pointname "HICK.AHU.AC04.Zone Air Temp" ;
+    brickframe:uuid "088ba16b-5705-3ea9-96fe-41cfce0d621f" .
+
+bldg:HICK.AHU.AC04.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "HICK.AHU.AC04.Zone Air Temp Setpoint" ;
+    brickframe:uuid "e51b6403-2863-3f36-9764-e4df36b635be" .
+
+bldg:HICK.AHU.AC05.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "HICK.AHU.AC05.Day Night Mode" ;
+    brickframe:uuid "996c38e9-ff35-34e7-bff8-007c321b9ee2" .
+
+bldg:HICK.AHU.AC05.Heat_Cool_Mode a brick1:Mode_Command ;
+    brickframe:hasSite bldg:HICK ;
+    brickframe:pointname "HICK.AHU.AC05.Heat Cool Mode" ;
+    brickframe:uuid "7a676477-6d1d-3281-9c3d-893ba59261a1" .
+
+bldg:HICK.AHU.AC05.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:HICK ;
+    brickframe:pointname "HICK.AHU.AC05.Zone Air Temp" ;
+    brickframe:uuid "bf47b00a-05bc-3ad9-a3fb-7343b3894a57" .
+
+bldg:HICK.AHU.AC05.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "HICK.AHU.AC05.Zone Air Temp Setpoint" ;
+    brickframe:uuid "7a41bc14-512b-3905-8ac2-c7eabfa2ebe2" .
+
+bldg:HICK.AHU.AC06.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "HICK.AHU.AC06.Day Night Mode" ;
+    brickframe:uuid "5ed156da-662f-387f-947b-00ba39a84e55" .
+
+bldg:HICK.AHU.AC06.Heat_Cool_Mode a brick1:Mode_Command ;
+    brickframe:hasSite bldg:HICK ;
+    brickframe:pointname "HICK.AHU.AC06.Heat Cool Mode" ;
+    brickframe:uuid "3be61cf0-3482-3dc7-82f7-cacc69b63a96" .
+
+bldg:HICK.AHU.AC06.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:HICK ;
+    brickframe:pointname "HICK.AHU.AC06.Zone Air Temp" ;
+    brickframe:uuid "85725615-d8a7-3ef1-b455-979c62db864f" .
+
+bldg:HICK.AHU.AC06.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "HICK.AHU.AC06.Zone Air Temp Setpoint" ;
+    brickframe:uuid "72b60d45-788d-3135-a90e-0da5d15f3f8b" .
+
+bldg:HICK.AHU.AH02.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:HICK ;
+    brickframe:pointname "HICK.AHU.AH02.Mixed Air Temp" ;
+    brickframe:uuid "c090525d-0b0c-3263-947a-4a77bd8d284c" .
+
+bldg:HICK.AHU.AH02.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:HICK ;
+    brickframe:pointname "HICK.AHU.AH02.Supply Air Temp" ;
+    brickframe:uuid "1aef1c67-2c32-3263-bad0-03d9ec20096c" .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:HICK a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "117804" ;
+    brickframe:Country "US" .
+

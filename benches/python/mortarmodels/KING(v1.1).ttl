@@ -1,0 +1,172 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/KING#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:AH01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:KING ;
+    brick1:hasPoint bldg:KING.AHU.AH01.Mixed_Air_Temp,
+        bldg:KING.AHU.AH01.Outside_Air_Temp,
+        bldg:KING.AHU.AH01.Return_Air_Temp,
+        bldg:KING.AHU.AH01.Supply_Air_Temp,
+        bldg:KING.AHU.AH01.Supply_Air_Temp_Setpoint .
+
+bldg:AHU01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:KING ;
+    brick1:hasPoint bldg:KING.AHU.AHU01.Mixed_Air_Temp,
+        bldg:KING.AHU.AHU01.Outside_Air_Temp,
+        bldg:KING.AHU.AHU01.Return_Air_Temp,
+        bldg:KING.AHU.AHU01.Supply_Air_Temp,
+        bldg:KING.AHU.AHU01.Supply_Air_Temp_Setpoint .
+
+bldg:AHU02 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:KING ;
+    brick1:hasPoint bldg:KING.AHU.AHU02.Mixed_Air_Temp,
+        bldg:KING.AHU.AHU02.Outside_Air_Temp,
+        bldg:KING.AHU.AHU02.Return_Air_Temp,
+        bldg:KING.AHU.AHU02.Supply_Air_Temp,
+        bldg:KING.AHU.AHU02.Supply_Air_Temp_Setpoint .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:KING.AHU.AH01.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:KING ;
+    brickframe:pointname "KING.AHU.AH01.Mixed Air Temp" ;
+    brickframe:uuid "a40b565c-dbcb-3147-ad9a-bd42b6cd4451" .
+
+bldg:KING.AHU.AH01.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:KING ;
+    brickframe:pointname "KING.AHU.AH01.Outside Air Temp" ;
+    brickframe:uuid "4a9da3bd-8a71-3792-988f-fb38c36c76b7" .
+
+bldg:KING.AHU.AH01.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:KING ;
+    brickframe:pointname "KING.AHU.AH01.Return Air Temp" ;
+    brickframe:uuid "e4d72469-1c0a-38c9-a7d9-a2738170fa31" .
+
+bldg:KING.AHU.AH01.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:KING ;
+    brickframe:pointname "KING.AHU.AH01.Supply Air Temp" ;
+    brickframe:uuid "735d09b9-2845-39ad-a8bc-e59bb089e8c2" .
+
+bldg:KING.AHU.AH01.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:KING ;
+    brickframe:pointname "KING.AHU.AH01.Supply Air Temp Setpoint" ;
+    brickframe:uuid "af859c3e-5ae5-3a14-b2ee-0bfd73ea06e1" .
+
+bldg:KING.AHU.AHU01.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:KING ;
+    brickframe:pointname "KING.AHU.AHU01.Mixed Air Temp" ;
+    brickframe:uuid "2dd2476f-29eb-3142-8305-9ebacc12df5a" .
+
+bldg:KING.AHU.AHU01.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:KING ;
+    brickframe:pointname "KING.AHU.AHU01.Outside Air Temp" ;
+    brickframe:uuid "59d855c6-6640-336b-9e14-1b88bcc23274" .
+
+bldg:KING.AHU.AHU01.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:KING ;
+    brickframe:pointname "KING.AHU.AHU01.Return Air Temp" ;
+    brickframe:uuid "419ae0d3-7623-334a-80a0-cff2f94cab90" .
+
+bldg:KING.AHU.AHU01.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:KING ;
+    brickframe:pointname "KING.AHU.AHU01.Supply Air Temp" ;
+    brickframe:uuid "6a88dc42-d252-38de-b0e2-699e3ff31ad6" .
+
+bldg:KING.AHU.AHU01.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:KING ;
+    brickframe:pointname "KING.AHU.AHU01.Supply Air Temp Setpoint" ;
+    brickframe:uuid "f2369c8e-727c-3d2e-beb0-9300a6214ec9" .
+
+bldg:KING.AHU.AHU02.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:KING ;
+    brickframe:pointname "KING.AHU.AHU02.Mixed Air Temp" ;
+    brickframe:uuid "bfeea014-e88e-3203-8a5c-4ae269039aa5" .
+
+bldg:KING.AHU.AHU02.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:KING ;
+    brickframe:pointname "KING.AHU.AHU02.Outside Air Temp" ;
+    brickframe:uuid "7aaaedba-0f5a-3ca2-aa11-9fd57ce56bda" .
+
+bldg:KING.AHU.AHU02.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:KING ;
+    brickframe:pointname "KING.AHU.AHU02.Return Air Temp" ;
+    brickframe:uuid "58106879-3287-3bc3-965e-6194f499b68b" .
+
+bldg:KING.AHU.AHU02.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:KING ;
+    brickframe:pointname "KING.AHU.AHU02.Supply Air Temp" ;
+    brickframe:uuid "9dabf8ef-ace1-3627-ac26-a5fb86455b65" .
+
+bldg:KING.AHU.AHU02.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:KING ;
+    brickframe:pointname "KING.AHU.AHU02.Supply Air Temp Setpoint" ;
+    brickframe:uuid "a8b5ba20-3614-3a9c-bf18-18cd362eac67" .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:KING a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "133008" ;
+    brickframe:Country "US" .
+

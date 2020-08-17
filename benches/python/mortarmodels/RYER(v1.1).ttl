@@ -1,0 +1,138 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/RYER#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:AHU01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:RYER ;
+    brick1:hasPoint bldg:RYER.AHU.AHU01.CCV,
+        bldg:RYER.AHU.AHU01.Mixed_Air_Temp,
+        bldg:RYER.AHU.AHU01.Outside_Air_Temp,
+        bldg:RYER.AHU.AHU01.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:RYER.AHU.AHU01.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:RYER ;
+    brickframe:pointname "RYER.AHU.AHU01.CCV" ;
+    brickframe:uuid "63bfe9ce-d222-3308-9382-36f22434671d" .
+
+bldg:RYER.AHU.AHU01.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:RYER ;
+    brickframe:pointname "RYER.AHU.AHU01.Mixed Air Temp" ;
+    brickframe:uuid "b07225be-90b6-3357-a2b4-568aea343115" .
+
+bldg:RYER.AHU.AHU01.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:RYER ;
+    brickframe:pointname "RYER.AHU.AHU01.Outside Air Temp" ;
+    brickframe:uuid "f89b6664-2518-3939-a9a2-c3361ec1ab6f" .
+
+bldg:RYER.AHU.AHU01.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:RYER ;
+    brickframe:pointname "RYER.AHU.AHU01.Supply Air Temp" ;
+    brickframe:uuid "261bef78-c47d-34d4-9660-e775cc56bee0" .
+
+bldg:RYER.CHW.CHWSSETPOINT a brick_v_1_0_2:Chilled_Water_Supply_Temperature_Setpoint ;
+    brickframe:pointname "RYER.CHW.CHWSSETPOINT" ;
+    brickframe:uuid "e816975f-b557-3b6c-892e-18b7213aa1ce" .
+
+bldg:RYER.CHW.ECONOMIZER a brick1:Damper_Position_Command ;
+    brickframe:hasSite bldg:RYER ;
+    brickframe:pointname "RYER.CHW.ECONOMIZER" ;
+    brickframe:uuid "ea7e4c98-de4c-33e1-9e16-3ec8ded150d6" .
+
+bldg:RYER.CHW.Loop_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:RYER ;
+    brickframe:pointname "RYER.CHW.Loop Chilled Water Return Temp" ;
+    brickframe:uuid "d27cfdfc-f8d7-3dbd-8156-309b72a4efc9" .
+
+bldg:RYER.CHW.Loop_Chilled_Water_Return_Temp_Setpoint a brick_v_1_0_2:Chilled_Water_Return_Temperature_Setpoint ;
+    brickframe:pointname "RYER.CHW.Loop Chilled Water Return Temp Setpoint" ;
+    brickframe:uuid "9ce8b0ff-d199-3987-9f4a-b3c6492e6b0f" .
+
+bldg:RYER.CHW.Loop_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:RYER ;
+    brickframe:pointname "RYER.CHW.Loop Chilled Water Supply Temp" ;
+    brickframe:uuid "b7fe4110-9fdf-3869-ba1f-e29c05625195" .
+
+bldg:RYER.CHW.Loop_Chilled_Water_Supply_Temp_Setpoint a brick_v_1_0_2:Chilled_Water_Supply_Temperature_Setpoint ;
+    brickframe:pointname "RYER.CHW.Loop Chilled Water Supply Temp Setpoint" ;
+    brickframe:uuid "ec1fc05d-dc04-35a8-86da-2a709cedb725" .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:RYER ;
+    brick1:hasPoint bldg:RYER.CHW.CHWSSETPOINT,
+        bldg:RYER.CHW.ECONOMIZER,
+        bldg:RYER.CHW.Loop_Chilled_Water_Return_Temp,
+        bldg:RYER.CHW.Loop_Chilled_Water_Return_Temp_Setpoint,
+        bldg:RYER.CHW.Loop_Chilled_Water_Supply_Temp,
+        bldg:RYER.CHW.Loop_Chilled_Water_Supply_Temp_Setpoint .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:RYER a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "42946" ;
+    brickframe:Country "US" .
+

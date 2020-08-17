@@ -1,0 +1,744 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/SURGE3#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:AHU01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:feeds bldg:VAVRM1310,
+        bldg:VAVRM1312,
+        bldg:VAVRM1342,
+        bldg:VAVRM1342B,
+        bldg:VAVRM1350,
+        bldg:VAVRM1350D,
+        bldg:VAVRM1352,
+        bldg:VAVRM1360,
+        bldg:VAVRM1VAV7,
+        bldg:VAVRM1VAV8 ;
+    brick1:hasPoint bldg:SURGE3.AHU.AHU01.CCV,
+        bldg:SURGE3.AHU.AHU01.Cooling_Valve_Output,
+        bldg:SURGE3.AHU.AHU01.Heating_Valve_Output,
+        bldg:SURGE3.AHU.AHU01.Mixed_Air_Temp,
+        bldg:SURGE3.AHU.AHU01.Mode,
+        bldg:SURGE3.AHU.AHU01.Outside_Air_Temp,
+        bldg:SURGE3.AHU.AHU01.Supply_Air_Pressure ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU03 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:hasPoint bldg:SURGE3.AHU.AHU03.CCV,
+        bldg:SURGE3.AHU.AHU03.Cooling_Valve_Output,
+        bldg:SURGE3.AHU.AHU03.Heating_Valve_Output,
+        bldg:SURGE3.AHU.AHU03.Outside_Air_Temp,
+        bldg:SURGE3.AHU.AHU03.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU04 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:hasPoint bldg:SURGE3.AHU.AHU04.CCV,
+        bldg:SURGE3.AHU.AHU04.Cooling_Valve_Output,
+        bldg:SURGE3.AHU.AHU04.Heating_Valve_Output,
+        bldg:SURGE3.AHU.AHU04.Outside_Air_Temp,
+        bldg:SURGE3.AHU.AHU04.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:MULTI a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:hasPoint bldg:SURGE3.AHU.MULTI.Cooling_Valve_Output ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:damperVAVRM1310 a brick1:Damper ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:hasPoint bldg:SURGE3.ZONE.AHU01.RM1310.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1310 .
+
+bldg:damperVAVRM1312 a brick1:Damper ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:hasPoint bldg:SURGE3.ZONE.AHU01.RM1312.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1312 .
+
+bldg:damperVAVRM1342 a brick1:Damper ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:hasPoint bldg:SURGE3.ZONE.AHU01.RM1342.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1342 .
+
+bldg:damperVAVRM1342B a brick1:Damper ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:hasPoint bldg:SURGE3.ZONE.AHU01.RM1342B.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1342B .
+
+bldg:damperVAVRM1350 a brick1:Damper ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:hasPoint bldg:SURGE3.ZONE.AHU01.RM1350.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1350 .
+
+bldg:damperVAVRM1350D a brick1:Damper ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:hasPoint bldg:SURGE3.ZONE.AHU01.RM1350D.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1350D .
+
+bldg:damperVAVRM1352 a brick1:Damper ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:hasPoint bldg:SURGE3.ZONE.AHU01.RM1352.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1352 .
+
+bldg:damperVAVRM1360 a brick1:Damper ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:hasPoint bldg:SURGE3.ZONE.AHU01.RM1360.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1360 .
+
+bldg:damperVAVRM1VAV7 a brick1:Damper ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:hasPoint bldg:SURGE3.ZONE.AHU01.RM1VAV7.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1VAV7 .
+
+bldg:damperVAVRM1VAV8 a brick1:Damper ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:hasPoint bldg:SURGE3.ZONE.AHU01.RM1VAV8.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1VAV8 .
+
+bldg:floor1 a brick1:Floor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:hasPart bldg:RM1310_room,
+        bldg:RM1312_room,
+        bldg:RM1342B_room,
+        bldg:RM1342_room,
+        bldg:RM1350D_room,
+        bldg:RM1350_room,
+        bldg:RM1352_room,
+        bldg:RM1360_room,
+        bldg:RM1VAV7_room,
+        bldg:RM1VAV8_room .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:RM1310 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:hasPart bldg:RM1310_room .
+
+bldg:RM1312 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:hasPart bldg:RM1312_room .
+
+bldg:RM1342 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:hasPart bldg:RM1342_room .
+
+bldg:RM1342B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:hasPart bldg:RM1342B_room .
+
+bldg:RM1350 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:hasPart bldg:RM1350_room .
+
+bldg:RM1350D a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:hasPart bldg:RM1350D_room .
+
+bldg:RM1352 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:hasPart bldg:RM1352_room .
+
+bldg:RM1360 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:hasPart bldg:RM1360_room .
+
+bldg:RM1VAV7 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:hasPart bldg:RM1VAV7_room .
+
+bldg:RM1VAV8 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:hasPart bldg:RM1VAV8_room .
+
+bldg:SURGE3.AHU.AHU01.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.AHU.AHU01.CCV" ;
+    brickframe:uuid "4c8a42a1-049e-3d41-b81c-bda57d40eb20" .
+
+bldg:SURGE3.AHU.AHU01.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.AHU.AHU01.Cooling Valve Output" ;
+    brickframe:uuid "b6495c4d-ef3e-36d1-83c0-a0dbbb88d9cf" .
+
+bldg:SURGE3.AHU.AHU01.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.AHU.AHU01.Heating Valve Output" ;
+    brickframe:uuid "c17f03e2-5d71-3a55-9865-78aa94ec5646" .
+
+bldg:SURGE3.AHU.AHU01.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.AHU.AHU01.Mixed Air Temp" ;
+    brickframe:uuid "3be290db-174a-3977-8126-1634a8308613" .
+
+bldg:SURGE3.AHU.AHU01.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "SURGE3.AHU.AHU01.Mode" ;
+    brickframe:uuid "2a21a48c-2aed-35cc-a96a-d8c5b27f3511" .
+
+bldg:SURGE3.AHU.AHU01.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.AHU.AHU01.Outside Air Temp" ;
+    brickframe:uuid "9de9545f-c497-3649-88b0-223eff9c022b" .
+
+bldg:SURGE3.AHU.AHU01.Supply_Air_Pressure a brick1:Supply_Air_Static_Pressure_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.AHU.AHU01.Supply Air Pressure" ;
+    brickframe:uuid "726e4ed5-9d2e-37a5-936e-c49877061a01" .
+
+bldg:SURGE3.AHU.AHU03.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.AHU.AHU03.CCV" ;
+    brickframe:uuid "054866d5-e90e-3ff6-a272-9a8439055aaf" .
+
+bldg:SURGE3.AHU.AHU03.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.AHU.AHU03.Cooling Valve Output" ;
+    brickframe:uuid "e2c2cb8a-15d8-3848-ae92-a2f2fdfa6141" .
+
+bldg:SURGE3.AHU.AHU03.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.AHU.AHU03.Heating Valve Output" ;
+    brickframe:uuid "b39e6f38-b149-33ea-8e24-99d9466ef6ac" .
+
+bldg:SURGE3.AHU.AHU03.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.AHU.AHU03.Outside Air Temp" ;
+    brickframe:uuid "f740a35d-c18b-3cb4-8147-036f8f72b141" .
+
+bldg:SURGE3.AHU.AHU03.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.AHU.AHU03.Supply Air Temp" ;
+    brickframe:uuid "ba92e35d-21b5-33d2-bf80-cb33b0c9cf25" .
+
+bldg:SURGE3.AHU.AHU04.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.AHU.AHU04.CCV" ;
+    brickframe:uuid "385e7d48-deeb-36ac-bbd0-4a4d5c3ea846" .
+
+bldg:SURGE3.AHU.AHU04.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.AHU.AHU04.Cooling Valve Output" ;
+    brickframe:uuid "f5e7d544-549c-3300-be72-fe424d50ac09" .
+
+bldg:SURGE3.AHU.AHU04.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.AHU.AHU04.Heating Valve Output" ;
+    brickframe:uuid "68fcf666-74f0-34c9-b002-5b3438895d8d" .
+
+bldg:SURGE3.AHU.AHU04.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.AHU.AHU04.Outside Air Temp" ;
+    brickframe:uuid "772f4bdd-a241-39da-b23b-385edac7bb49" .
+
+bldg:SURGE3.AHU.AHU04.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.AHU.AHU04.Supply Air Temp" ;
+    brickframe:uuid "feb350d0-ab45-3270-98ec-891d40a71220" .
+
+bldg:SURGE3.AHU.MULTI.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.AHU.MULTI.Cooling Valve Output" ;
+    brickframe:uuid "b70990fc-1bc7-3289-a44b-f1c320773bfd" .
+
+bldg:SURGE3.CHW.Building_Chilled_Water_Flow a brick_v_1_0_2:Chilled_Water_Flow_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.CHW.Building Chilled Water Flow" ;
+    brickframe:uuid "7db9f6a8-69ae-3524-a847-90096267459e" .
+
+bldg:SURGE3.CHW.Building_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.CHW.Building Chilled Water Return Temp" ;
+    brickframe:uuid "f2907a89-6fe2-3546-92b1-aeb651469ced" .
+
+bldg:SURGE3.CHW.Building_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.CHW.Building Chilled Water Supply Temp" ;
+    brickframe:uuid "f8e04645-d549-3b88-971c-828bd293e1a3" .
+
+bldg:SURGE3.CHW.CHWSETPOINT a brick_v_1_0_2:Chilled_Water_Supply_Temperature_Setpoint ;
+    brickframe:pointname "SURGE3.CHW.CHWSETPOINT" ;
+    brickframe:uuid "a6e76bee-5ecb-38e1-a152-a322c43c36f7" .
+
+bldg:SURGE3.CHW.ECONOMIZER a brick1:Damper_Position_Command ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.CHW.ECONOMIZER" ;
+    brickframe:uuid "40a529f2-413c-3882-b20d-56815bcb8169" .
+
+bldg:SURGE3.CHW.LOOP_DP a brick1:Chilled_Water_Differential_Pressure_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.CHW.LOOP DP" ;
+    brickframe:uuid "67baa5dc-b298-39a0-a022-8700fc96acba" .
+
+bldg:SURGE3.CHW.Loop_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.CHW.Loop Chilled Water Return Temp" ;
+    brickframe:uuid "eecdf248-8ec6-3724-9e6b-0dceffcea1bb" .
+
+bldg:SURGE3.CHW.Loop_Chilled_Water_Return_Temp_CALC a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.CHW.Loop Chilled Water Return Temp CALC" ;
+    brickframe:uuid "ae517829-ffc4-32b2-b566-95b7b3a6f7a9" .
+
+bldg:SURGE3.CHW.Loop_Chilled_Water_Return_Temp_Setpoint a brick_v_1_0_2:Chilled_Water_Return_Temperature_Setpoint ;
+    brickframe:pointname "SURGE3.CHW.Loop Chilled Water Return Temp Setpoint" ;
+    brickframe:uuid "5a6ebc62-87c2-316f-aede-03d028458fbe" .
+
+bldg:SURGE3.CHW.Loop_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.CHW.Loop Chilled Water Supply Temp" ;
+    brickframe:uuid "899a2aa0-5bf8-3315-9fca-33287f6718ac" .
+
+bldg:SURGE3.CHW.Loop_Chilled_Water_Supply_Temp_Setpoint a brick_v_1_0_2:Chilled_Water_Supply_Temperature_Setpoint ;
+    brickframe:pointname "SURGE3.CHW.Loop Chilled Water Supply Temp Setpoint" ;
+    brickframe:uuid "a7f8b3bd-031c-39ea-a6bc-7dc9a11b8e32" .
+
+bldg:SURGE3.CHW.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.CHW.Outside Air Temp" ;
+    brickframe:uuid "d80b0b89-8169-326b-9889-86f16c80f018" .
+
+<http://buildsys.org/ontologies/SURGE3#SURGE3.CHW.Pump1_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.CHW.Pump1_Start/Stop" ;
+    brickframe:uuid "e82ff9d0-3fc6-3b4a-81f7-b7bed751ffac" .
+
+bldg:SURGE3.ZONE.AHU01.RM1310.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1310.Zone Air Damper Command" ;
+    brickframe:uuid "81f00739-d7ee-3674-bd2e-52a4cfe25281" .
+
+bldg:SURGE3.ZONE.AHU01.RM1310.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1310.Zone Air Temp" ;
+    brickframe:uuid "6688de22-a656-313a-9f0f-9456f07009cd" .
+
+bldg:SURGE3.ZONE.AHU01.RM1310.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1310.Zone Air Temp Setpoint" ;
+    brickframe:uuid "49fdf228-01.0.2891-a4c9-6c894c035277" .
+
+bldg:SURGE3.ZONE.AHU01.RM1310.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1310.Zone Reheat Valve Command" ;
+    brickframe:uuid "7b4d3a71-d4ef-37c3-9638-34dd14e99663" .
+
+bldg:SURGE3.ZONE.AHU01.RM1310.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1310.Zone Supply Air Flow" ;
+    brickframe:uuid "19e248e9-5dca-33ad-8014-15c22a950d30" .
+
+bldg:SURGE3.ZONE.AHU01.RM1312.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1312.Zone Air Damper Command" ;
+    brickframe:uuid "921299cc-5f41-3095-ab44-b5b4ec4fcb25" .
+
+bldg:SURGE3.ZONE.AHU01.RM1312.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1312.Zone Air Temp" ;
+    brickframe:uuid "68738b2c-7ab6-3109-be72-20c09dd629bd" .
+
+bldg:SURGE3.ZONE.AHU01.RM1312.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1312.Zone Air Temp Setpoint" ;
+    brickframe:uuid "10b5ab2c-9db5-3431-ae62-f57e00f66f96" .
+
+bldg:SURGE3.ZONE.AHU01.RM1312.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1312.Zone Reheat Valve Command" ;
+    brickframe:uuid "82ecd148-bbbe-3243-83ca-d75eb11e7ac6" .
+
+bldg:SURGE3.ZONE.AHU01.RM1312.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1312.Zone Supply Air Flow" ;
+    brickframe:uuid "3dd9020d-c969-3350-ac04-31be2d0fe681" .
+
+bldg:SURGE3.ZONE.AHU01.RM1342.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1342.Zone Air Damper Command" ;
+    brickframe:uuid "cdcc3693-d7ad-3f52-a2c0-abec6a759639" .
+
+bldg:SURGE3.ZONE.AHU01.RM1342.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1342.Zone Air Temp" ;
+    brickframe:uuid "d4d0c56f-5e89-3e38-ae73-848dc12a7b0d" .
+
+bldg:SURGE3.ZONE.AHU01.RM1342.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1342.Zone Air Temp Setpoint" ;
+    brickframe:uuid "2b540771-fa7e-3fa2-b181-1b02c0f04be2" .
+
+bldg:SURGE3.ZONE.AHU01.RM1342.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1342.Zone Reheat Valve Command" ;
+    brickframe:uuid "be9ba7e3-045c-33d4-be88-314008d28bf7" .
+
+bldg:SURGE3.ZONE.AHU01.RM1342.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1342.Zone Supply Air Flow" ;
+    brickframe:uuid "5cb52358-0ff8-3cb5-a424-97d1d6c3d1bb" .
+
+bldg:SURGE3.ZONE.AHU01.RM1342B.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1342B.Zone Air Damper Command" ;
+    brickframe:uuid "e554899c-5b3d-3171-8124-4406ab30c99a" .
+
+bldg:SURGE3.ZONE.AHU01.RM1342B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1342B.Zone Air Temp" ;
+    brickframe:uuid "b5c9f2ae-4158-3879-92c4-e24bdde2e991" .
+
+bldg:SURGE3.ZONE.AHU01.RM1342B.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1342B.Zone Air Temp Setpoint" ;
+    brickframe:uuid "971f3146-f315-3600-8a6c-da65d2adce50" .
+
+bldg:SURGE3.ZONE.AHU01.RM1342B.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1342B.Zone Reheat Valve Command" ;
+    brickframe:uuid "1f51376b-2f8e-3440-8a8b-199373ff9e33" .
+
+bldg:SURGE3.ZONE.AHU01.RM1342B.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1342B.Zone Supply Air Flow" ;
+    brickframe:uuid "66f6bfe8-06b9-3cb9-a1ac-e4d18e52125f" .
+
+bldg:SURGE3.ZONE.AHU01.RM1350.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1350.Zone Air Damper Command" ;
+    brickframe:uuid "36e0f042-f226-3159-995b-0d470647a827" .
+
+bldg:SURGE3.ZONE.AHU01.RM1350.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1350.Zone Air Temp" ;
+    brickframe:uuid "31a4fcf0-8754-3202-8ea2-8d53d3c00287" .
+
+bldg:SURGE3.ZONE.AHU01.RM1350.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1350.Zone Air Temp Setpoint" ;
+    brickframe:uuid "1971a06d-29ad-379c-a504-2a3698f560cf" .
+
+bldg:SURGE3.ZONE.AHU01.RM1350.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1350.Zone Reheat Valve Command" ;
+    brickframe:uuid "bf198e25-27fa-3a4a-9e3e-67027d602d23" .
+
+bldg:SURGE3.ZONE.AHU01.RM1350.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1350.Zone Supply Air Flow" ;
+    brickframe:uuid "dc6b8971-8770-33ff-b9e9-46b0fc908e2c" .
+
+bldg:SURGE3.ZONE.AHU01.RM1350D.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1350D.Zone Air Damper Command" ;
+    brickframe:uuid "5dc3c689-d154-335f-835b-8f881ddbf7e3" .
+
+bldg:SURGE3.ZONE.AHU01.RM1350D.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1350D.Zone Air Temp" ;
+    brickframe:uuid "cc3c77d2-7838-3c1f-978b-068ae1de688b" .
+
+bldg:SURGE3.ZONE.AHU01.RM1350D.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1350D.Zone Air Temp Setpoint" ;
+    brickframe:uuid "b425df75-fc0d-3d46-b678-b22810a2523e" .
+
+bldg:SURGE3.ZONE.AHU01.RM1350D.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1350D.Zone Reheat Valve Command" ;
+    brickframe:uuid "6675ed78-fd3b-30df-834c-2e5838f7ca42" .
+
+bldg:SURGE3.ZONE.AHU01.RM1350D.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1350D.Zone Supply Air Flow" ;
+    brickframe:uuid "4e0aaa95-01.0.244d-99f4-f724f3d40f75" .
+
+bldg:SURGE3.ZONE.AHU01.RM1352.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1352.Zone Air Damper Command" ;
+    brickframe:uuid "43b6f3c0-bb1d-3b08-9277-b257e5caf7e2" .
+
+bldg:SURGE3.ZONE.AHU01.RM1352.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1352.Zone Air Temp" ;
+    brickframe:uuid "51969fd5-97ba-3828-82b5-32397df382ee" .
+
+bldg:SURGE3.ZONE.AHU01.RM1352.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1352.Zone Air Temp Setpoint" ;
+    brickframe:uuid "a1ab3f55-78a4-38b8-a707-5f51530da949" .
+
+bldg:SURGE3.ZONE.AHU01.RM1352.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1352.Zone Reheat Valve Command" ;
+    brickframe:uuid "b7210e2f-58ea-30c4-883e-3b7bdd1f45a1" .
+
+bldg:SURGE3.ZONE.AHU01.RM1352.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1352.Zone Supply Air Flow" ;
+    brickframe:uuid "972fb274-7576-34e7-8b1e-24588355d57c" .
+
+bldg:SURGE3.ZONE.AHU01.RM1360.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1360.Zone Air Damper Command" ;
+    brickframe:uuid "ed59782e-f7ed-379c-b81c-850833706b6c" .
+
+bldg:SURGE3.ZONE.AHU01.RM1360.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1360.Zone Air Temp" ;
+    brickframe:uuid "7bc6638a-0f95-3aa1-9edb-ab11a149b612" .
+
+bldg:SURGE3.ZONE.AHU01.RM1360.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1360.Zone Air Temp Setpoint" ;
+    brickframe:uuid "697cefc9-73ed-3181-a5a6-2470fed81984" .
+
+bldg:SURGE3.ZONE.AHU01.RM1360.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1360.Zone Reheat Valve Command" ;
+    brickframe:uuid "74f8bd4b-1b89-3dbc-bb0d-f29e0f2a5f3b" .
+
+bldg:SURGE3.ZONE.AHU01.RM1360.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1360.Zone Supply Air Flow" ;
+    brickframe:uuid "d9def4dd-cd6e-316d-9df7-46b4dc83ea5a" .
+
+bldg:SURGE3.ZONE.AHU01.RM1VAV7.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1VAV7.Zone Air Damper Command" ;
+    brickframe:uuid "032e91a5-4d11-3c49-9048-7f784e2c35d3" .
+
+bldg:SURGE3.ZONE.AHU01.RM1VAV7.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1VAV7.Zone Air Temp" ;
+    brickframe:uuid "3a3d1860-18a2-3f13-b920-be0fbc69e005" .
+
+bldg:SURGE3.ZONE.AHU01.RM1VAV7.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1VAV7.Zone Air Temp Setpoint" ;
+    brickframe:uuid "8feaeb5b-9a62-3c56-8f8a-b8bbd4b565b4" .
+
+bldg:SURGE3.ZONE.AHU01.RM1VAV7.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1VAV7.Zone Reheat Valve Command" ;
+    brickframe:uuid "3aa93444-a68b-3d56-9c47-d8b6fb4976f2" .
+
+bldg:SURGE3.ZONE.AHU01.RM1VAV7.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1VAV7.Zone Supply Air Flow" ;
+    brickframe:uuid "c540e658-523c-3349-8ab4-2dee3dbded2c" .
+
+bldg:SURGE3.ZONE.AHU01.RM1VAV8.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1VAV8.Zone Air Damper Command" ;
+    brickframe:uuid "3d186acd-ead6-3060-8f49-56700abbd979" .
+
+bldg:SURGE3.ZONE.AHU01.RM1VAV8.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1VAV8.Zone Air Temp" ;
+    brickframe:uuid "347c5fd0-1af1-3192-ad40-99791bc5708e" .
+
+bldg:SURGE3.ZONE.AHU01.RM1VAV8.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1VAV8.Zone Air Temp Setpoint" ;
+    brickframe:uuid "ae7a371d-72a6-3f75-89b7-cf128ce00ce4" .
+
+bldg:SURGE3.ZONE.AHU01.RM1VAV8.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1VAV8.Zone Reheat Valve Command" ;
+    brickframe:uuid "f2c822d1-2980-3ed9-8305-b25c70b8a465" .
+
+bldg:SURGE3.ZONE.AHU01.RM1VAV8.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brickframe:pointname "SURGE3.ZONE.AHU01.RM1VAV8.Zone Supply Air Flow" ;
+    brickframe:uuid "2e1cbe1b-58fe-33f5-8f1d-dae973cf399f" .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+bldg:RM1310_room a brick1:Room ;
+    brickframe:hasSite bldg:SURGE3 .
+
+bldg:RM1312_room a brick1:Room ;
+    brickframe:hasSite bldg:SURGE3 .
+
+bldg:RM1342B_room a brick1:Room ;
+    brickframe:hasSite bldg:SURGE3 .
+
+bldg:RM1342_room a brick1:Room ;
+    brickframe:hasSite bldg:SURGE3 .
+
+bldg:RM1350D_room a brick1:Room ;
+    brickframe:hasSite bldg:SURGE3 .
+
+bldg:RM1350_room a brick1:Room ;
+    brickframe:hasSite bldg:SURGE3 .
+
+bldg:RM1352_room a brick1:Room ;
+    brickframe:hasSite bldg:SURGE3 .
+
+bldg:RM1360_room a brick1:Room ;
+    brickframe:hasSite bldg:SURGE3 .
+
+bldg:RM1VAV7_room a brick1:Room ;
+    brickframe:hasSite bldg:SURGE3 .
+
+bldg:RM1VAV8_room a brick1:Room ;
+    brickframe:hasSite bldg:SURGE3 .
+
+bldg:VAVRM1310 a brick1:VAV ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:feeds bldg:RM1310 ;
+    brick1:hasPoint bldg:SURGE3.ZONE.AHU01.RM1310.Zone_Air_Temp,
+        bldg:SURGE3.ZONE.AHU01.RM1310.Zone_Air_Temp_Setpoint,
+        bldg:SURGE3.ZONE.AHU01.RM1310.Zone_Reheat_Valve_Command,
+        bldg:SURGE3.ZONE.AHU01.RM1310.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1312 a brick1:VAV ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:feeds bldg:RM1312 ;
+    brick1:hasPoint bldg:SURGE3.ZONE.AHU01.RM1312.Zone_Air_Temp,
+        bldg:SURGE3.ZONE.AHU01.RM1312.Zone_Air_Temp_Setpoint,
+        bldg:SURGE3.ZONE.AHU01.RM1312.Zone_Reheat_Valve_Command,
+        bldg:SURGE3.ZONE.AHU01.RM1312.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1342 a brick1:VAV ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:feeds bldg:RM1342 ;
+    brick1:hasPoint bldg:SURGE3.ZONE.AHU01.RM1342.Zone_Air_Temp,
+        bldg:SURGE3.ZONE.AHU01.RM1342.Zone_Air_Temp_Setpoint,
+        bldg:SURGE3.ZONE.AHU01.RM1342.Zone_Reheat_Valve_Command,
+        bldg:SURGE3.ZONE.AHU01.RM1342.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1342B a brick1:VAV ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:feeds bldg:RM1342B ;
+    brick1:hasPoint bldg:SURGE3.ZONE.AHU01.RM1342B.Zone_Air_Temp,
+        bldg:SURGE3.ZONE.AHU01.RM1342B.Zone_Air_Temp_Setpoint,
+        bldg:SURGE3.ZONE.AHU01.RM1342B.Zone_Reheat_Valve_Command,
+        bldg:SURGE3.ZONE.AHU01.RM1342B.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1350 a brick1:VAV ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:feeds bldg:RM1350 ;
+    brick1:hasPoint bldg:SURGE3.ZONE.AHU01.RM1350.Zone_Air_Temp,
+        bldg:SURGE3.ZONE.AHU01.RM1350.Zone_Air_Temp_Setpoint,
+        bldg:SURGE3.ZONE.AHU01.RM1350.Zone_Reheat_Valve_Command,
+        bldg:SURGE3.ZONE.AHU01.RM1350.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1350D a brick1:VAV ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:feeds bldg:RM1350D ;
+    brick1:hasPoint bldg:SURGE3.ZONE.AHU01.RM1350D.Zone_Air_Temp,
+        bldg:SURGE3.ZONE.AHU01.RM1350D.Zone_Air_Temp_Setpoint,
+        bldg:SURGE3.ZONE.AHU01.RM1350D.Zone_Reheat_Valve_Command,
+        bldg:SURGE3.ZONE.AHU01.RM1350D.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1352 a brick1:VAV ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:feeds bldg:RM1352 ;
+    brick1:hasPoint bldg:SURGE3.ZONE.AHU01.RM1352.Zone_Air_Temp,
+        bldg:SURGE3.ZONE.AHU01.RM1352.Zone_Air_Temp_Setpoint,
+        bldg:SURGE3.ZONE.AHU01.RM1352.Zone_Reheat_Valve_Command,
+        bldg:SURGE3.ZONE.AHU01.RM1352.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1360 a brick1:VAV ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:feeds bldg:RM1360 ;
+    brick1:hasPoint bldg:SURGE3.ZONE.AHU01.RM1360.Zone_Air_Temp,
+        bldg:SURGE3.ZONE.AHU01.RM1360.Zone_Air_Temp_Setpoint,
+        bldg:SURGE3.ZONE.AHU01.RM1360.Zone_Reheat_Valve_Command,
+        bldg:SURGE3.ZONE.AHU01.RM1360.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1VAV7 a brick1:VAV ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:feeds bldg:RM1VAV7 ;
+    brick1:hasPoint bldg:SURGE3.ZONE.AHU01.RM1VAV7.Zone_Air_Temp,
+        bldg:SURGE3.ZONE.AHU01.RM1VAV7.Zone_Air_Temp_Setpoint,
+        bldg:SURGE3.ZONE.AHU01.RM1VAV7.Zone_Reheat_Valve_Command,
+        bldg:SURGE3.ZONE.AHU01.RM1VAV7.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1VAV8 a brick1:VAV ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:feeds bldg:RM1VAV8 ;
+    brick1:hasPoint bldg:SURGE3.ZONE.AHU01.RM1VAV8.Zone_Air_Temp,
+        bldg:SURGE3.ZONE.AHU01.RM1VAV8.Zone_Air_Temp_Setpoint,
+        bldg:SURGE3.ZONE.AHU01.RM1VAV8.Zone_Reheat_Valve_Command,
+        bldg:SURGE3.ZONE.AHU01.RM1VAV8.Zone_Supply_Air_Flow .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:SURGE3 ;
+    brick1:hasPoint bldg:SURGE3.CHW.Building_Chilled_Water_Flow,
+        bldg:SURGE3.CHW.Building_Chilled_Water_Return_Temp,
+        bldg:SURGE3.CHW.Building_Chilled_Water_Supply_Temp,
+        bldg:SURGE3.CHW.CHWSETPOINT,
+        bldg:SURGE3.CHW.ECONOMIZER,
+        bldg:SURGE3.CHW.LOOP_DP,
+        bldg:SURGE3.CHW.Loop_Chilled_Water_Return_Temp,
+        bldg:SURGE3.CHW.Loop_Chilled_Water_Return_Temp_CALC,
+        bldg:SURGE3.CHW.Loop_Chilled_Water_Return_Temp_Setpoint,
+        bldg:SURGE3.CHW.Loop_Chilled_Water_Supply_Temp,
+        bldg:SURGE3.CHW.Loop_Chilled_Water_Supply_Temp_Setpoint,
+        bldg:SURGE3.CHW.Outside_Air_Temp,
+        <http://buildsys.org/ontologies/SURGE3#SURGE3.CHW.Pump1_Start/Stop> .
+
+bldg:SURGE3 a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "58266" ;
+    brickframe:Country "US" .
+

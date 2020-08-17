@@ -1,0 +1,1283 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/VMTH#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:AC01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPoint bldg:VMTH.AHU.AC01.CCV,
+        bldg:VMTH.AHU.AC01.Cooling_Valve_Output,
+        bldg:VMTH.AHU.AC01.Heating_Valve_Output,
+        bldg:VMTH.AHU.AC01.Outside_Air_Temp,
+        bldg:VMTH.AHU.AC01.Outside_Air_Temp_Virtual,
+        bldg:VMTH.AHU.AC01.Supply_Air_Temp,
+        bldg:VMTH.AHU.AC01.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC02 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPoint bldg:VMTH.AHU.AC02.CCV,
+        bldg:VMTH.AHU.AC02.Cooling_Valve_Output,
+        bldg:VMTH.AHU.AC02.Heating_Valve_Output,
+        bldg:VMTH.AHU.AC02.Outside_Air_Temp_Virtual,
+        bldg:VMTH.AHU.AC02.Supply_Air_Temp,
+        bldg:VMTH.AHU.AC02.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC03 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPoint bldg:VMTH.AHU.AC03.CCV,
+        bldg:VMTH.AHU.AC03.Cooling_Valve_Output,
+        bldg:VMTH.AHU.AC03.Heating_Valve_Output,
+        bldg:VMTH.AHU.AC03.Outside_Air_Temp_Virtual,
+        bldg:VMTH.AHU.AC03.Supply_Air_Temp,
+        bldg:VMTH.AHU.AC03.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC04 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPoint bldg:VMTH.AHU.AC04.CCV,
+        bldg:VMTH.AHU.AC04.Cooling_Valve_Output,
+        bldg:VMTH.AHU.AC04.Heating_Valve_Output,
+        bldg:VMTH.AHU.AC04.Outside_Air_Temp_Virtual,
+        bldg:VMTH.AHU.AC04.Supply_Air_Temp,
+        bldg:VMTH.AHU.AC04.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC05 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPoint bldg:VMTH.AHU.AC05.CCV,
+        bldg:VMTH.AHU.AC05.Cooling_Valve_Output,
+        bldg:VMTH.AHU.AC05.Heating_Valve_Output,
+        bldg:VMTH.AHU.AC05.Outside_Air_Temp,
+        bldg:VMTH.AHU.AC05.Outside_Air_Temp_Virtual,
+        bldg:VMTH.AHU.AC05.Supply_Air_Temp,
+        bldg:VMTH.AHU.AC05.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AH05 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:feeds bldg:VAVRM1000M,
+        bldg:VAVRM1041,
+        bldg:VAVRM1044,
+        bldg:VAVRM1046,
+        bldg:VAVRM1047,
+        bldg:VAVRM1049,
+        bldg:VAVRM1061,
+        bldg:VAVRM1063A,
+        bldg:VAVRM1063B,
+        bldg:VAVRM1065E,
+        bldg:VAVRM1065S,
+        bldg:VAVRM1066,
+        bldg:VAVRM1069 .
+
+bldg:damperVAVRM1000M a brick1:Damper ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPoint bldg:VMTH.ZONE.AH05.RM1000M.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1000M .
+
+bldg:damperVAVRM1041 a brick1:Damper ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPoint bldg:VMTH.ZONE.AH05.RM1041.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1041 .
+
+bldg:damperVAVRM1044 a brick1:Damper ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPoint bldg:VMTH.ZONE.AH05.RM1044.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1044 .
+
+bldg:damperVAVRM1046 a brick1:Damper ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPoint bldg:VMTH.ZONE.AH05.RM1046.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1046 .
+
+bldg:damperVAVRM1047 a brick1:Damper ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPoint bldg:VMTH.ZONE.AH05.RM1047.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1047 .
+
+bldg:damperVAVRM1049 a brick1:Damper ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPoint bldg:VMTH.ZONE.AH05.RM1049.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1049 .
+
+bldg:damperVAVRM1061 a brick1:Damper ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPoint bldg:VMTH.ZONE.AH05.RM1061.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1061 .
+
+bldg:damperVAVRM1063A a brick1:Damper ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPoint bldg:VMTH.ZONE.AH05.RM1063A.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1063A .
+
+bldg:damperVAVRM1063B a brick1:Damper ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPoint bldg:VMTH.ZONE.AH05.RM1063B.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1063B .
+
+bldg:damperVAVRM1065E a brick1:Damper ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPoint bldg:VMTH.ZONE.AH05.RM1065E.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1065E .
+
+bldg:damperVAVRM1065S a brick1:Damper ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPoint bldg:VMTH.ZONE.AH05.RM1065S.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1065S .
+
+bldg:damperVAVRM1066 a brick1:Damper ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPoint bldg:VMTH.ZONE.AH05.RM1066.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1066 .
+
+bldg:damperVAVRM1069 a brick1:Damper ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPoint bldg:VMTH.ZONE.AH05.RM1069.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1069 .
+
+bldg:floor1 a brick1:Floor ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPart bldg:RM1000M_room,
+        bldg:RM1041_room,
+        bldg:RM1044_room,
+        bldg:RM1046_room,
+        bldg:RM1047_room,
+        bldg:RM1049_room,
+        bldg:RM1061_room,
+        bldg:RM1063A_room,
+        bldg:RM1063B_room,
+        bldg:RM1065E_room,
+        bldg:RM1065S_room,
+        bldg:RM1066_room,
+        bldg:RM1069_room .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:RM1000M a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPart bldg:RM1000M_room .
+
+bldg:RM1041 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPart bldg:RM1041_room .
+
+bldg:RM1044 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPart bldg:RM1044_room .
+
+bldg:RM1046 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPart bldg:RM1046_room .
+
+bldg:RM1047 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPart bldg:RM1047_room .
+
+bldg:RM1049 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPart bldg:RM1049_room .
+
+bldg:RM1061 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPart bldg:RM1061_room .
+
+bldg:RM1063A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPart bldg:RM1063A_room .
+
+bldg:RM1063B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPart bldg:RM1063B_room .
+
+bldg:RM1065E a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPart bldg:RM1065E_room .
+
+bldg:RM1065S a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPart bldg:RM1065S_room .
+
+bldg:RM1066 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPart bldg:RM1066_room .
+
+bldg:RM1069 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPart bldg:RM1069_room .
+
+bldg:VMTH.AHU.AC01.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC01.CCV" ;
+    brickframe:uuid "072fe2df-91db-3ffd-8f29-63c1daa810e8" .
+
+bldg:VMTH.AHU.AC01.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC01.Cooling Valve Output" ;
+    brickframe:uuid "4d654369-c56d-39b1-9cae-29a6ff59e5ee" .
+
+bldg:VMTH.AHU.AC01.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC01.Heating Valve Output" ;
+    brickframe:uuid "2deb24a4-dbf9-3bd0-a15e-26631b38f03c" .
+
+bldg:VMTH.AHU.AC01.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC01.Outside Air Temp" ;
+    brickframe:uuid "aeaa0f77-d0fc-3e67-b869-be2b3b86fb2b" .
+
+bldg:VMTH.AHU.AC01.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC01.Outside Air Temp Virtual" ;
+    brickframe:uuid "0d2c1fc4-1177-3d2f-9266-f97336e09f80" .
+
+bldg:VMTH.AHU.AC01.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC01.Supply Air Temp" ;
+    brickframe:uuid "1ec87694-27e4-3071-b8a1-af82fd423dbf" .
+
+bldg:VMTH.AHU.AC01.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC01.Supply Air Temp Setpoint" ;
+    brickframe:uuid "c70430aa-f464-3742-a7b9-2bd710683f61" .
+
+bldg:VMTH.AHU.AC02.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC02.CCV" ;
+    brickframe:uuid "082a64c5-62db-3df0-b6e1-b17c888d32fb" .
+
+bldg:VMTH.AHU.AC02.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC02.Cooling Valve Output" ;
+    brickframe:uuid "f8c34c2e-5fa6-36eb-acf3-164e1d2fdc47" .
+
+bldg:VMTH.AHU.AC02.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC02.Heating Valve Output" ;
+    brickframe:uuid "54b6585b-0ea5-3a16-9e99-cf814a8e3434" .
+
+bldg:VMTH.AHU.AC02.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC02.Outside Air Temp Virtual" ;
+    brickframe:uuid "37e9449c-fed1-3ec5-946e-9f87d3e2c5d8" .
+
+bldg:VMTH.AHU.AC02.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC02.Supply Air Temp" ;
+    brickframe:uuid "2b541e07-92d0-3c06-bb39-291dab6b6a6f" .
+
+bldg:VMTH.AHU.AC02.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC02.Supply Air Temp Setpoint" ;
+    brickframe:uuid "e706eb3c-36c5-37a9-a6a6-f814492b550d" .
+
+bldg:VMTH.AHU.AC03.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC03.CCV" ;
+    brickframe:uuid "17edc04b-4867-398b-8ffe-db6b0a038ee1" .
+
+bldg:VMTH.AHU.AC03.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC03.Cooling Valve Output" ;
+    brickframe:uuid "6fa886e9-8254-3b26-bfe6-191ad0cb5356" .
+
+bldg:VMTH.AHU.AC03.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC03.Heating Valve Output" ;
+    brickframe:uuid "fba596f4-a065-3b45-87a5-ee7f42557f58" .
+
+bldg:VMTH.AHU.AC03.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC03.Outside Air Temp Virtual" ;
+    brickframe:uuid "a522833c-d383-3e77-adc8-b7a779d9ae0c" .
+
+bldg:VMTH.AHU.AC03.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC03.Supply Air Temp" ;
+    brickframe:uuid "67f4c699-3271-357d-93ab-d4685a52947a" .
+
+bldg:VMTH.AHU.AC03.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC03.Supply Air Temp Setpoint" ;
+    brickframe:uuid "28a8dafa-d05e-3fde-b45f-7b3beb007d05" .
+
+bldg:VMTH.AHU.AC04.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC04.CCV" ;
+    brickframe:uuid "f8f2c3d7-d058-3aec-a14c-8f9ec7482d6e" .
+
+bldg:VMTH.AHU.AC04.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC04.Cooling Valve Output" ;
+    brickframe:uuid "1971c6b5-4ef5-3c3e-921a-10a0146913c1" .
+
+bldg:VMTH.AHU.AC04.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC04.Heating Valve Output" ;
+    brickframe:uuid "87fede36-a0fd-3deb-8336-69b479c245a3" .
+
+bldg:VMTH.AHU.AC04.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC04.Outside Air Temp Virtual" ;
+    brickframe:uuid "f74f2ecf-ab3e-3f23-add3-f6ecdae343ba" .
+
+bldg:VMTH.AHU.AC04.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC04.Supply Air Temp" ;
+    brickframe:uuid "7ebbf0c5-d976-3f15-bfe2-c40e7e857245" .
+
+bldg:VMTH.AHU.AC04.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC04.Supply Air Temp Setpoint" ;
+    brickframe:uuid "28635143-ea22-3b9e-ab79-4467c92f69f9" .
+
+bldg:VMTH.AHU.AC05.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC05.CCV" ;
+    brickframe:uuid "2746d569-10e7-36f5-8659-037f952ba377" .
+
+bldg:VMTH.AHU.AC05.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC05.Cooling Valve Output" ;
+    brickframe:uuid "663e33af-4b1f-3fdc-83c5-22c12d05e634" .
+
+bldg:VMTH.AHU.AC05.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC05.Heating Valve Output" ;
+    brickframe:uuid "3b052029-5acb-3408-8438-d619cf4762ae" .
+
+bldg:VMTH.AHU.AC05.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC05.Outside Air Temp" ;
+    brickframe:uuid "2aef7de4-f297-33af-8f38-41ec20b21350" .
+
+bldg:VMTH.AHU.AC05.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC05.Outside Air Temp Virtual" ;
+    brickframe:uuid "2e7e6d23-5683-329a-91a1-ad3c9067a7ca" .
+
+bldg:VMTH.AHU.AC05.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC05.Supply Air Temp" ;
+    brickframe:uuid "37095d99-28ce-3136-8f21-82f1039f3210" .
+
+bldg:VMTH.AHU.AC05.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.AHU.AC05.Supply Air Temp Setpoint" ;
+    brickframe:uuid "b7e7dcec-20ac-3061-94ad-5edc70f6cf31" .
+
+bldg:VMTH.CHW.BUILDINGDP a brick1:Differential_Pressure_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.CHW.BUILDINGDP" ;
+    brickframe:uuid "2e89fb0b-3776-30b1-9189-7b7fc0385692" .
+
+bldg:VMTH.CHW.BYPVALVE a brick_v_1_0_2:Chilled_Water_Bypass_Valve ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.CHW.BYPVALVE" ;
+    brickframe:uuid "234c7753-c230-3c7d-999e-b5904d44e2f7" .
+
+bldg:VMTH.CHW.Building_Chilled_Water_Flow a brick_v_1_0_2:Chilled_Water_Flow_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.CHW.Building Chilled Water Flow" ;
+    brickframe:uuid "87a575f6-26a9-379a-865a-d327221848d3" .
+
+bldg:VMTH.CHW.Building_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.CHW.Building Chilled Water Return Temp" ;
+    brickframe:uuid "59b6f0eb-4bb7-34c3-a50c-ecc2b06dfad5" .
+
+bldg:VMTH.CHW.Building_Chilled_Water_Return_Temp_Setpoint a brick_v_1_0_2:Chilled_Water_Return_Temperature_Setpoint ;
+    brickframe:pointname "VMTH.CHW.Building Chilled Water Return Temp Setpoint" ;
+    brickframe:uuid "44efe910-008c-3bc5-89c3-a81263f8b298" .
+
+bldg:VMTH.CHW.Building_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.CHW.Building Chilled Water Supply Temp" ;
+    brickframe:uuid "c620bd82-55e1-38d8-87db-c87cd6e56778" .
+
+bldg:VMTH.CHW.Building_Chilled_Water_Supply_Temp_Setpoint a brick_v_1_0_2:Chilled_Water_Supply_Temperature_Setpoint ;
+    brickframe:pointname "VMTH.CHW.Building Chilled Water Supply Temp Setpoint" ;
+    brickframe:uuid "354f0d22-c885-3288-a016-b01913aadc3e" .
+
+bldg:VMTH.CHW.ECONOMIZER a brick1:Damper_Position_Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.CHW.ECONOMIZER" ;
+    brickframe:uuid "ce3ba7bd-c763-303e-b71d-f026256d5ba2" .
+
+bldg:VMTH.CHW.Loop_Chilled_Water_Flow a brick_v_1_0_2:Chilled_Water_Flow_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.CHW.Loop Chilled Water Flow" ;
+    brickframe:uuid "4768806d-55f5-30bf-8a7a-dfcffa9c8c27" .
+
+bldg:VMTH.CHW.Loop_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.CHW.Loop Chilled Water Return Temp" ;
+    brickframe:uuid "7ed45d60-f456-3c4f-a444-9b87bdad4f76" .
+
+bldg:VMTH.CHW.Loop_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.CHW.Loop Chilled Water Supply Temp" ;
+    brickframe:uuid "f581c543-d57f-33d5-b281-bc4acb391737" .
+
+bldg:VMTH.CHW.Pump1_SPEED a brick_v_1_0_2:Speed_Status ;
+    brickframe:pointname "VMTH.CHW.Pump1_SPEED" ;
+    brickframe:uuid "94665ab0-8c5c-3c15-9fa1-4ffe8441c3de" .
+
+<http://buildsys.org/ontologies/VMTH#VMTH.CHW.Pump1_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.CHW.Pump1_Start/Stop" ;
+    brickframe:uuid "5adfa7b3-5b16-3a31-9a22-72178df1913a" .
+
+bldg:VMTH.CHW.Pump2_SPEED a brick_v_1_0_2:Speed_Status ;
+    brickframe:pointname "VMTH.CHW.Pump2_SPEED" ;
+    brickframe:uuid "4afb05d0-97bb-301d-8802-c9ebe6c97447" .
+
+<http://buildsys.org/ontologies/VMTH#VMTH.CHW.Pump2_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.CHW.Pump2_Start/Stop" ;
+    brickframe:uuid "c4ea8d50-35d0-352a-9e52-a38e6de241ed" .
+
+bldg:VMTH.CHW.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.CHW.Zone Air Temp" ;
+    brickframe:uuid "40ce766e-1b83-3194-bc1b-a35b2d9fcc2e" .
+
+bldg:VMTH.ZONE.AH05.RM1000M.AIR_VOLUME a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1000M.AIR VOLUME" ;
+    brickframe:uuid "5b188bca-86fe-3e5d-b2b1-451638308832" .
+
+bldg:VMTH.ZONE.AH05.RM1000M.CTL_TEMP a brick1:Temperature_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1000M.CTL TEMP" ;
+    brickframe:uuid "f8b66133-462f-3a0f-8e16-e1a8e1ad12e2" .
+
+bldg:VMTH.ZONE.AH05.RM1000M.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1000M.Day Night Mode" ;
+    brickframe:uuid "209e5053-4f19-3a95-bbdc-2993c28ab092" .
+
+bldg:VMTH.ZONE.AH05.RM1000M.Flow a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1000M.Flow" ;
+    brickframe:uuid "2ebe8bd9-8b95-38d1-9d71-8e3a93d42de7" .
+
+bldg:VMTH.ZONE.AH05.RM1000M.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1000M.Heating Mode" ;
+    brickframe:uuid "c0e2c2ee-5ddc-3274-8ee0-38bfdf097cb2" .
+
+bldg:VMTH.ZONE.AH05.RM1000M.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1000M.Zone Air Damper Command" ;
+    brickframe:uuid "510a8714-367e-3d2b-b013-2ae455651e10" .
+
+bldg:VMTH.ZONE.AH05.RM1000M.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1000M.Zone Air Temp" ;
+    brickframe:uuid "b2a3a136-8765-3853-8e9b-fe82487ec8da" .
+
+bldg:VMTH.ZONE.AH05.RM1000M.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1000M.Zone Air Temp Setpoint" ;
+    brickframe:uuid "ccec8a45-4dea-3e95-9e94-2265942e78c7" .
+
+bldg:VMTH.ZONE.AH05.RM1000M.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1000M.Zone Reheat Valve Command" ;
+    brickframe:uuid "05ad7f67-188d-3885-8f77-fdefbcbac097" .
+
+bldg:VMTH.ZONE.AH05.RM1041.AIR_VOLUME a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1041.AIR VOLUME" ;
+    brickframe:uuid "8acb5453-e6f1-30a7-bdd9-c388c40b326e" .
+
+bldg:VMTH.ZONE.AH05.RM1041.CTL_TEMP a brick1:Temperature_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1041.CTL TEMP" ;
+    brickframe:uuid "8e6fef00-6ae0-341a-95db-47f31c5a05c8" .
+
+bldg:VMTH.ZONE.AH05.RM1041.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1041.Day Night Mode" ;
+    brickframe:uuid "6482b96c-5393-3fea-876f-31b6ca5ed80a" .
+
+bldg:VMTH.ZONE.AH05.RM1041.Flow a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1041.Flow" ;
+    brickframe:uuid "8fa5e6a8-21cb-3242-8e9d-fadbf6e01122" .
+
+bldg:VMTH.ZONE.AH05.RM1041.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1041.Heating Mode" ;
+    brickframe:uuid "17f6e1c7-9d3d-32c7-a962-9b0d2be3afce" .
+
+bldg:VMTH.ZONE.AH05.RM1041.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1041.Zone Air Damper Command" ;
+    brickframe:uuid "bde11511-140a-395e-b339-e966316db130" .
+
+bldg:VMTH.ZONE.AH05.RM1041.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1041.Zone Air Temp" ;
+    brickframe:uuid "3d8f847c-3e54-3ae4-838a-88c0e3501548" .
+
+bldg:VMTH.ZONE.AH05.RM1041.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1041.Zone Air Temp Setpoint" ;
+    brickframe:uuid "4bfc7dd0-e408-3031-8615-89768f32efeb" .
+
+bldg:VMTH.ZONE.AH05.RM1041.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1041.Zone Reheat Valve Command" ;
+    brickframe:uuid "15e45fb7-1443-3cf8-bf01-975b27c3066a" .
+
+bldg:VMTH.ZONE.AH05.RM1044.AIR_VOLUME a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1044.AIR VOLUME" ;
+    brickframe:uuid "e3c3019d-1831-3982-bd4f-d6ce996b0c5b" .
+
+bldg:VMTH.ZONE.AH05.RM1044.CTL_TEMP a brick1:Temperature_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1044.CTL TEMP" ;
+    brickframe:uuid "6ac3e31e-9c97-3251-a560-aa0c43743739" .
+
+bldg:VMTH.ZONE.AH05.RM1044.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1044.Day Night Mode" ;
+    brickframe:uuid "bae71279-0a09-3d46-bf50-3e9ed6e13d0c" .
+
+bldg:VMTH.ZONE.AH05.RM1044.Flow a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1044.Flow" ;
+    brickframe:uuid "b85e04d6-beca-342a-8724-5b0450d8441f" .
+
+bldg:VMTH.ZONE.AH05.RM1044.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1044.Heating Mode" ;
+    brickframe:uuid "e8c0cb04-7edd-387a-9a0f-3c3693b604f6" .
+
+bldg:VMTH.ZONE.AH05.RM1044.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1044.Zone Air Damper Command" ;
+    brickframe:uuid "df3974f7-7bce-3897-9729-fc49f652c2ae" .
+
+bldg:VMTH.ZONE.AH05.RM1044.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1044.Zone Air Temp" ;
+    brickframe:uuid "eafb7a85-5dea-3583-b8c5-367ce34d4d83" .
+
+bldg:VMTH.ZONE.AH05.RM1044.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1044.Zone Air Temp Setpoint" ;
+    brickframe:uuid "2585b8c5-a81f-37ae-8ad4-700f4a445189" .
+
+bldg:VMTH.ZONE.AH05.RM1044.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1044.Zone Reheat Valve Command" ;
+    brickframe:uuid "3344f10a-ee04-3e66-b7aa-3fa68fc06214" .
+
+bldg:VMTH.ZONE.AH05.RM1046.AIR_VOLUME a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1046.AIR VOLUME" ;
+    brickframe:uuid "b32df66d-f577-3001-9d43-7f66d62231fc" .
+
+bldg:VMTH.ZONE.AH05.RM1046.CTL_TEMP a brick1:Temperature_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1046.CTL TEMP" ;
+    brickframe:uuid "cc16ce4e-d3de-3989-a7ad-c0683614d7bd" .
+
+bldg:VMTH.ZONE.AH05.RM1046.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1046.Day Night Mode" ;
+    brickframe:uuid "f0528d5d-00b3-3410-8563-c42eb369b8d2" .
+
+bldg:VMTH.ZONE.AH05.RM1046.Flow a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1046.Flow" ;
+    brickframe:uuid "3475b281-3474-3f8c-bed1-0bd64aef5e28" .
+
+bldg:VMTH.ZONE.AH05.RM1046.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1046.Heating Mode" ;
+    brickframe:uuid "a85d8f5b-cd25-3c94-874c-1170005e925a" .
+
+bldg:VMTH.ZONE.AH05.RM1046.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1046.Zone Air Damper Command" ;
+    brickframe:uuid "6979fe1e-c216-32dd-9a3a-5cbb3013c046" .
+
+bldg:VMTH.ZONE.AH05.RM1046.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1046.Zone Air Temp" ;
+    brickframe:uuid "2ac26c5b-ccd9-320b-825c-de685d070334" .
+
+bldg:VMTH.ZONE.AH05.RM1046.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1046.Zone Air Temp Setpoint" ;
+    brickframe:uuid "b27732b7-557a-3a2c-85a8-4842c29d3efb" .
+
+bldg:VMTH.ZONE.AH05.RM1046.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1046.Zone Reheat Valve Command" ;
+    brickframe:uuid "bbd23533-0734-3fb2-bbf5-a2c7e4dcce13" .
+
+bldg:VMTH.ZONE.AH05.RM1047.AIR_VOLUME a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1047.AIR VOLUME" ;
+    brickframe:uuid "95743e96-e6d1-3fcf-bf6f-b82587a09e76" .
+
+bldg:VMTH.ZONE.AH05.RM1047.CTL_TEMP a brick1:Temperature_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1047.CTL TEMP" ;
+    brickframe:uuid "e53d992e-8017-328d-8fe2-bb76a7b336e2" .
+
+bldg:VMTH.ZONE.AH05.RM1047.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1047.Day Night Mode" ;
+    brickframe:uuid "81cb63fa-4d26-35da-9cda-caf6b99ccec8" .
+
+bldg:VMTH.ZONE.AH05.RM1047.Flow a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1047.Flow" ;
+    brickframe:uuid "52deb124-1162-396f-91a2-6f8c6e5bac1c" .
+
+bldg:VMTH.ZONE.AH05.RM1047.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1047.Heating Mode" ;
+    brickframe:uuid "d112305a-d7c6-322a-b02c-0562ecebd396" .
+
+bldg:VMTH.ZONE.AH05.RM1047.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1047.Zone Air Damper Command" ;
+    brickframe:uuid "782248fc-752e-3029-a399-7ae3f57e21ac" .
+
+bldg:VMTH.ZONE.AH05.RM1047.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1047.Zone Air Temp" ;
+    brickframe:uuid "019933dd-eb83-30e2-af56-8b04bb1c4371" .
+
+bldg:VMTH.ZONE.AH05.RM1047.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1047.Zone Air Temp Setpoint" ;
+    brickframe:uuid "dc2849af-4b12-3a25-b2ab-a69b7cab6aed" .
+
+bldg:VMTH.ZONE.AH05.RM1047.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1047.Zone Reheat Valve Command" ;
+    brickframe:uuid "8b762784-9ed1-3193-902d-ca9e2b9b1dd9" .
+
+bldg:VMTH.ZONE.AH05.RM1049.AIR_VOLUME a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1049.AIR VOLUME" ;
+    brickframe:uuid "5fdcdbad-9e87-32d1-a597-91683b396d05" .
+
+bldg:VMTH.ZONE.AH05.RM1049.CTL_TEMP a brick1:Temperature_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1049.CTL TEMP" ;
+    brickframe:uuid "eab4404d-4fb9-3c73-b109-b1033d4ea9e7" .
+
+bldg:VMTH.ZONE.AH05.RM1049.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1049.Day Night Mode" ;
+    brickframe:uuid "5e9f1883-ca9e-3c03-9467-eecf51a0ceb1" .
+
+bldg:VMTH.ZONE.AH05.RM1049.Flow a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1049.Flow" ;
+    brickframe:uuid "2a99e581-2d6c-348f-ba2a-20f75ab73e01" .
+
+bldg:VMTH.ZONE.AH05.RM1049.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1049.Heating Mode" ;
+    brickframe:uuid "19f16689-4ac0-367f-85a4-6941fe9b68ce" .
+
+bldg:VMTH.ZONE.AH05.RM1049.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1049.Zone Air Damper Command" ;
+    brickframe:uuid "7e1a29bc-c65a-3d01-83e9-e5a736d56b0c" .
+
+bldg:VMTH.ZONE.AH05.RM1049.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1049.Zone Air Temp" ;
+    brickframe:uuid "a543063b-9a47-31a0-b077-f1326da40fec" .
+
+bldg:VMTH.ZONE.AH05.RM1049.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1049.Zone Air Temp Setpoint" ;
+    brickframe:uuid "23638916-fc28-312e-80ee-838d2d67a58b" .
+
+bldg:VMTH.ZONE.AH05.RM1049.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1049.Zone Reheat Valve Command" ;
+    brickframe:uuid "d81b9219-676f-344a-b524-8453d6b02ff4" .
+
+bldg:VMTH.ZONE.AH05.RM1061.AIR_VOLUME a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1061.AIR VOLUME" ;
+    brickframe:uuid "e50234cf-aa3f-3774-b0a0-376aac6d7433" .
+
+bldg:VMTH.ZONE.AH05.RM1061.CTL_TEMP a brick1:Temperature_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1061.CTL TEMP" ;
+    brickframe:uuid "e9d40316-32ba-3b97-a75c-fdc1560406b8" .
+
+bldg:VMTH.ZONE.AH05.RM1061.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1061.Day Night Mode" ;
+    brickframe:uuid "13f37ca4-dfc3-3f03-af80-6f8ee398e34f" .
+
+bldg:VMTH.ZONE.AH05.RM1061.Flow a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1061.Flow" ;
+    brickframe:uuid "520762a7-a387-36a4-b4af-996e4c26c2b4" .
+
+bldg:VMTH.ZONE.AH05.RM1061.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1061.Heating Mode" ;
+    brickframe:uuid "339feb22-be07-3946-94a3-79ea9e33129b" .
+
+bldg:VMTH.ZONE.AH05.RM1061.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1061.Zone Air Damper Command" ;
+    brickframe:uuid "8556fc92-ca57-36e0-b970-d60a0c2d76fa" .
+
+bldg:VMTH.ZONE.AH05.RM1061.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1061.Zone Air Temp" ;
+    brickframe:uuid "c6d9603a-7990-34f6-b211-27533c21567c" .
+
+bldg:VMTH.ZONE.AH05.RM1061.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1061.Zone Air Temp Setpoint" ;
+    brickframe:uuid "74b47c95-c1bd-325b-8272-6df61cb072cb" .
+
+bldg:VMTH.ZONE.AH05.RM1061.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1061.Zone Reheat Valve Command" ;
+    brickframe:uuid "459c553e-b4c6-3fc7-b74b-b7b59ae14cb2" .
+
+bldg:VMTH.ZONE.AH05.RM1063A.AIR_VOLUME a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1063A.AIR VOLUME" ;
+    brickframe:uuid "77b1f578-c4fe-399c-b904-ff10932a4392" .
+
+bldg:VMTH.ZONE.AH05.RM1063A.CTL_TEMP a brick1:Temperature_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1063A.CTL TEMP" ;
+    brickframe:uuid "19eeb1de-206f-332d-b8cb-e7152e3eaad4" .
+
+bldg:VMTH.ZONE.AH05.RM1063A.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1063A.Day Night Mode" ;
+    brickframe:uuid "7a3eb4cd-e396-3165-b186-b0b15b1edc07" .
+
+bldg:VMTH.ZONE.AH05.RM1063A.Flow a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1063A.Flow" ;
+    brickframe:uuid "aab3d4a5-85f2-354e-8215-63e412dd620d" .
+
+bldg:VMTH.ZONE.AH05.RM1063A.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1063A.Heating Mode" ;
+    brickframe:uuid "5c7dd816-9197-3c65-896a-edf96623531f" .
+
+bldg:VMTH.ZONE.AH05.RM1063A.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1063A.Zone Air Damper Command" ;
+    brickframe:uuid "c3ada1e2-2982-35e8-840e-77bb56dbc7c0" .
+
+bldg:VMTH.ZONE.AH05.RM1063A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1063A.Zone Air Temp" ;
+    brickframe:uuid "e5b59b3d-e874-35c7-a5ce-c5367d35de17" .
+
+bldg:VMTH.ZONE.AH05.RM1063A.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1063A.Zone Air Temp Setpoint" ;
+    brickframe:uuid "4e77b81f-9665-3aed-988e-3cc16be106bb" .
+
+bldg:VMTH.ZONE.AH05.RM1063A.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1063A.Zone Reheat Valve Command" ;
+    brickframe:uuid "23412d4b-1fd8-3a10-9a0c-c0fdbada4b98" .
+
+bldg:VMTH.ZONE.AH05.RM1063B.AIR_VOLUME a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1063B.AIR VOLUME" ;
+    brickframe:uuid "d1a7ba2a-a6b8-394c-8c7a-df4eba6d73cb" .
+
+bldg:VMTH.ZONE.AH05.RM1063B.CTL_TEMP a brick1:Temperature_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1063B.CTL TEMP" ;
+    brickframe:uuid "68118cc3-fdbf-3254-94c8-f4758344031e" .
+
+bldg:VMTH.ZONE.AH05.RM1063B.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1063B.Day Night Mode" ;
+    brickframe:uuid "f629f4b0-37d8-330e-a382-b371c4fdc7ce" .
+
+bldg:VMTH.ZONE.AH05.RM1063B.Flow a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1063B.Flow" ;
+    brickframe:uuid "31923ca4-c7bb-366d-9de6-2e90700a72fc" .
+
+bldg:VMTH.ZONE.AH05.RM1063B.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1063B.Heating Mode" ;
+    brickframe:uuid "c63648ac-3f15-30dc-b8f0-55e68e7ec524" .
+
+bldg:VMTH.ZONE.AH05.RM1063B.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1063B.Zone Air Damper Command" ;
+    brickframe:uuid "9544dc69-9cf9-3901-8dc2-398dd9a20961" .
+
+bldg:VMTH.ZONE.AH05.RM1063B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1063B.Zone Air Temp" ;
+    brickframe:uuid "bf012181-a5af-3ed3-98b5-3a4d858a8dea" .
+
+bldg:VMTH.ZONE.AH05.RM1063B.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1063B.Zone Air Temp Setpoint" ;
+    brickframe:uuid "70bee173-5ebf-3469-8e70-72a7a90417f2" .
+
+bldg:VMTH.ZONE.AH05.RM1063B.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1063B.Zone Reheat Valve Command" ;
+    brickframe:uuid "dbf38651-b40e-3579-8dae-4c41d742c94d" .
+
+bldg:VMTH.ZONE.AH05.RM1065E.AIR_VOLUME a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1065E.AIR VOLUME" ;
+    brickframe:uuid "04c2b18a-30bc-3216-9fab-0ee18faf2aad" .
+
+bldg:VMTH.ZONE.AH05.RM1065E.CTL_TEMP a brick1:Temperature_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1065E.CTL TEMP" ;
+    brickframe:uuid "020db62e-afb9-38ec-8755-6dd060967d3d" .
+
+bldg:VMTH.ZONE.AH05.RM1065E.Flow a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1065E.Flow" ;
+    brickframe:uuid "3d268d0d-12b3-39be-825e-77c31a22e56f" .
+
+bldg:VMTH.ZONE.AH05.RM1065E.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1065E.Heating Mode" ;
+    brickframe:uuid "92d977c8-1ef6-3c8f-87fd-284b62ebdf66" .
+
+bldg:VMTH.ZONE.AH05.RM1065E.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1065E.Zone Air Damper Command" ;
+    brickframe:uuid "a54baf09-5f96-34a6-a1ef-164ccba7fc2e" .
+
+bldg:VMTH.ZONE.AH05.RM1065E.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1065E.Zone Air Temp" ;
+    brickframe:uuid "9e57156e-c9a4-3012-98f2-45eb30d77252" .
+
+bldg:VMTH.ZONE.AH05.RM1065E.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1065E.Zone Air Temp Setpoint" ;
+    brickframe:uuid "7399c79a-f5ff-32c5-a08a-0af3e6b978e8" .
+
+bldg:VMTH.ZONE.AH05.RM1065E.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1065E.Zone Reheat Valve Command" ;
+    brickframe:uuid "b6fb59ed-11c2-39ed-8637-2ef84e33832d" .
+
+bldg:VMTH.ZONE.AH05.RM1065S.AIR_VOLUME a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1065S.AIR VOLUME" ;
+    brickframe:uuid "0e755370-123b-3e69-b390-6198430e59e0" .
+
+bldg:VMTH.ZONE.AH05.RM1065S.CTL_TEMP a brick1:Temperature_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1065S.CTL TEMP" ;
+    brickframe:uuid "74110851-3fa4-35af-9ac2-6c838b0810eb" .
+
+bldg:VMTH.ZONE.AH05.RM1065S.Flow a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1065S.Flow" ;
+    brickframe:uuid "e32b560b-d999-3be0-9306-4b6d187b2318" .
+
+bldg:VMTH.ZONE.AH05.RM1065S.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1065S.Heating Mode" ;
+    brickframe:uuid "777da016-5eae-336c-b827-d7a290371be0" .
+
+bldg:VMTH.ZONE.AH05.RM1065S.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1065S.Zone Air Damper Command" ;
+    brickframe:uuid "f5ef77c8-2d5d-3594-a65a-c46927ebbba1" .
+
+bldg:VMTH.ZONE.AH05.RM1065S.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1065S.Zone Air Temp" ;
+    brickframe:uuid "f3803039-3cf8-381c-b6bb-023f61f2dd03" .
+
+bldg:VMTH.ZONE.AH05.RM1065S.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1065S.Zone Air Temp Setpoint" ;
+    brickframe:uuid "b97658d3-67a9-3bde-a4fa-3cc2a049745c" .
+
+bldg:VMTH.ZONE.AH05.RM1065S.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1065S.Zone Reheat Valve Command" ;
+    brickframe:uuid "1b53230e-889c-3e52-a631-8fb34f3afe14" .
+
+bldg:VMTH.ZONE.AH05.RM1066.AIR_VOLUME a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1066.AIR VOLUME" ;
+    brickframe:uuid "63237aca-7da3-39fd-b76a-b99b1823b953" .
+
+bldg:VMTH.ZONE.AH05.RM1066.CTL_TEMP a brick1:Temperature_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1066.CTL TEMP" ;
+    brickframe:uuid "ef426b27-a91f-318c-8799-6c854f19007a" .
+
+bldg:VMTH.ZONE.AH05.RM1066.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1066.Day Night Mode" ;
+    brickframe:uuid "f332ef6f-3e6f-3d96-b828-b8625acc84b0" .
+
+bldg:VMTH.ZONE.AH05.RM1066.Flow a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1066.Flow" ;
+    brickframe:uuid "9e21b4b1-d819-3a79-a9a7-862c1a905434" .
+
+bldg:VMTH.ZONE.AH05.RM1066.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1066.Heating Mode" ;
+    brickframe:uuid "b4109679-2711-3d1c-affc-c40c870a3ae2" .
+
+bldg:VMTH.ZONE.AH05.RM1066.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1066.Zone Air Damper Command" ;
+    brickframe:uuid "ab885aed-2557-3059-914c-9265815c63ce" .
+
+bldg:VMTH.ZONE.AH05.RM1066.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1066.Zone Air Temp" ;
+    brickframe:uuid "8143a885-c0c3-3038-a548-b48f20739f5f" .
+
+bldg:VMTH.ZONE.AH05.RM1066.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1066.Zone Air Temp Setpoint" ;
+    brickframe:uuid "89d7bc21-27db-31e7-a546-b5df851a7afa" .
+
+bldg:VMTH.ZONE.AH05.RM1066.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1066.Zone Reheat Valve Command" ;
+    brickframe:uuid "cbc36a62-cbd6-3f4a-b28c-08ed6d4d0dbc" .
+
+bldg:VMTH.ZONE.AH05.RM1069.AIR_VOLUME a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1069.AIR VOLUME" ;
+    brickframe:uuid "8b36fabb-4d51-3dd7-b697-d8a1bccc0366" .
+
+bldg:VMTH.ZONE.AH05.RM1069.CTL_TEMP a brick1:Temperature_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1069.CTL TEMP" ;
+    brickframe:uuid "a620d32f-999b-3978-897c-bb1457faf2a3" .
+
+bldg:VMTH.ZONE.AH05.RM1069.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1069.Day Night Mode" ;
+    brickframe:uuid "1dea08d8-8ad6-324e-a24b-0d4671ab900e" .
+
+bldg:VMTH.ZONE.AH05.RM1069.Flow a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1069.Flow" ;
+    brickframe:uuid "d7418237-e5aa-37e2-9f39-15e19a1bd2a0" .
+
+bldg:VMTH.ZONE.AH05.RM1069.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1069.Heating Mode" ;
+    brickframe:uuid "1dfe6263-1d02-3fb5-b194-804535923f92" .
+
+bldg:VMTH.ZONE.AH05.RM1069.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1069.Zone Air Damper Command" ;
+    brickframe:uuid "b78f0770-502f-31e4-aee0-df2dfea9c37f" .
+
+bldg:VMTH.ZONE.AH05.RM1069.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1069.Zone Air Temp" ;
+    brickframe:uuid "f82bb346-0af7-3ebb-bb35-7286febb124f" .
+
+bldg:VMTH.ZONE.AH05.RM1069.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1069.Zone Air Temp Setpoint" ;
+    brickframe:uuid "39fe5bcf-f80a-308d-b9b3-a4b79434d75b" .
+
+bldg:VMTH.ZONE.AH05.RM1069.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:VMTH ;
+    brickframe:pointname "VMTH.ZONE.AH05.RM1069.Zone Reheat Valve Command" ;
+    brickframe:uuid "5b72b58a-9fdd-36cb-87e5-721c64d86ce6" .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+bldg:RM1000M_room a brick1:Room ;
+    brickframe:hasSite bldg:VMTH .
+
+bldg:RM1041_room a brick1:Room ;
+    brickframe:hasSite bldg:VMTH .
+
+bldg:RM1044_room a brick1:Room ;
+    brickframe:hasSite bldg:VMTH .
+
+bldg:RM1046_room a brick1:Room ;
+    brickframe:hasSite bldg:VMTH .
+
+bldg:RM1047_room a brick1:Room ;
+    brickframe:hasSite bldg:VMTH .
+
+bldg:RM1049_room a brick1:Room ;
+    brickframe:hasSite bldg:VMTH .
+
+bldg:RM1061_room a brick1:Room ;
+    brickframe:hasSite bldg:VMTH .
+
+bldg:RM1063A_room a brick1:Room ;
+    brickframe:hasSite bldg:VMTH .
+
+bldg:RM1063B_room a brick1:Room ;
+    brickframe:hasSite bldg:VMTH .
+
+bldg:RM1065E_room a brick1:Room ;
+    brickframe:hasSite bldg:VMTH .
+
+bldg:RM1065S_room a brick1:Room ;
+    brickframe:hasSite bldg:VMTH .
+
+bldg:RM1066_room a brick1:Room ;
+    brickframe:hasSite bldg:VMTH .
+
+bldg:RM1069_room a brick1:Room ;
+    brickframe:hasSite bldg:VMTH .
+
+bldg:VAVRM1000M a brick1:VAV ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:feeds bldg:RM1000M ;
+    brick1:hasPoint bldg:VMTH.ZONE.AH05.RM1000M.AIR_VOLUME,
+        bldg:VMTH.ZONE.AH05.RM1000M.CTL_TEMP,
+        bldg:VMTH.ZONE.AH05.RM1000M.Day_Night_Mode,
+        bldg:VMTH.ZONE.AH05.RM1000M.Flow,
+        bldg:VMTH.ZONE.AH05.RM1000M.Heating_Mode,
+        bldg:VMTH.ZONE.AH05.RM1000M.Zone_Air_Temp,
+        bldg:VMTH.ZONE.AH05.RM1000M.Zone_Air_Temp_Setpoint,
+        bldg:VMTH.ZONE.AH05.RM1000M.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM1041 a brick1:VAV ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:feeds bldg:RM1041 ;
+    brick1:hasPoint bldg:VMTH.ZONE.AH05.RM1041.AIR_VOLUME,
+        bldg:VMTH.ZONE.AH05.RM1041.CTL_TEMP,
+        bldg:VMTH.ZONE.AH05.RM1041.Day_Night_Mode,
+        bldg:VMTH.ZONE.AH05.RM1041.Flow,
+        bldg:VMTH.ZONE.AH05.RM1041.Heating_Mode,
+        bldg:VMTH.ZONE.AH05.RM1041.Zone_Air_Temp,
+        bldg:VMTH.ZONE.AH05.RM1041.Zone_Air_Temp_Setpoint,
+        bldg:VMTH.ZONE.AH05.RM1041.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM1044 a brick1:VAV ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:feeds bldg:RM1044 ;
+    brick1:hasPoint bldg:VMTH.ZONE.AH05.RM1044.AIR_VOLUME,
+        bldg:VMTH.ZONE.AH05.RM1044.CTL_TEMP,
+        bldg:VMTH.ZONE.AH05.RM1044.Day_Night_Mode,
+        bldg:VMTH.ZONE.AH05.RM1044.Flow,
+        bldg:VMTH.ZONE.AH05.RM1044.Heating_Mode,
+        bldg:VMTH.ZONE.AH05.RM1044.Zone_Air_Temp,
+        bldg:VMTH.ZONE.AH05.RM1044.Zone_Air_Temp_Setpoint,
+        bldg:VMTH.ZONE.AH05.RM1044.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM1046 a brick1:VAV ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:feeds bldg:RM1046 ;
+    brick1:hasPoint bldg:VMTH.ZONE.AH05.RM1046.AIR_VOLUME,
+        bldg:VMTH.ZONE.AH05.RM1046.CTL_TEMP,
+        bldg:VMTH.ZONE.AH05.RM1046.Day_Night_Mode,
+        bldg:VMTH.ZONE.AH05.RM1046.Flow,
+        bldg:VMTH.ZONE.AH05.RM1046.Heating_Mode,
+        bldg:VMTH.ZONE.AH05.RM1046.Zone_Air_Temp,
+        bldg:VMTH.ZONE.AH05.RM1046.Zone_Air_Temp_Setpoint,
+        bldg:VMTH.ZONE.AH05.RM1046.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM1047 a brick1:VAV ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:feeds bldg:RM1047 ;
+    brick1:hasPoint bldg:VMTH.ZONE.AH05.RM1047.AIR_VOLUME,
+        bldg:VMTH.ZONE.AH05.RM1047.CTL_TEMP,
+        bldg:VMTH.ZONE.AH05.RM1047.Day_Night_Mode,
+        bldg:VMTH.ZONE.AH05.RM1047.Flow,
+        bldg:VMTH.ZONE.AH05.RM1047.Heating_Mode,
+        bldg:VMTH.ZONE.AH05.RM1047.Zone_Air_Temp,
+        bldg:VMTH.ZONE.AH05.RM1047.Zone_Air_Temp_Setpoint,
+        bldg:VMTH.ZONE.AH05.RM1047.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM1049 a brick1:VAV ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:feeds bldg:RM1049 ;
+    brick1:hasPoint bldg:VMTH.ZONE.AH05.RM1049.AIR_VOLUME,
+        bldg:VMTH.ZONE.AH05.RM1049.CTL_TEMP,
+        bldg:VMTH.ZONE.AH05.RM1049.Day_Night_Mode,
+        bldg:VMTH.ZONE.AH05.RM1049.Flow,
+        bldg:VMTH.ZONE.AH05.RM1049.Heating_Mode,
+        bldg:VMTH.ZONE.AH05.RM1049.Zone_Air_Temp,
+        bldg:VMTH.ZONE.AH05.RM1049.Zone_Air_Temp_Setpoint,
+        bldg:VMTH.ZONE.AH05.RM1049.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM1061 a brick1:VAV ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:feeds bldg:RM1061 ;
+    brick1:hasPoint bldg:VMTH.ZONE.AH05.RM1061.AIR_VOLUME,
+        bldg:VMTH.ZONE.AH05.RM1061.CTL_TEMP,
+        bldg:VMTH.ZONE.AH05.RM1061.Day_Night_Mode,
+        bldg:VMTH.ZONE.AH05.RM1061.Flow,
+        bldg:VMTH.ZONE.AH05.RM1061.Heating_Mode,
+        bldg:VMTH.ZONE.AH05.RM1061.Zone_Air_Temp,
+        bldg:VMTH.ZONE.AH05.RM1061.Zone_Air_Temp_Setpoint,
+        bldg:VMTH.ZONE.AH05.RM1061.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM1063A a brick1:VAV ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:feeds bldg:RM1063A ;
+    brick1:hasPoint bldg:VMTH.ZONE.AH05.RM1063A.AIR_VOLUME,
+        bldg:VMTH.ZONE.AH05.RM1063A.CTL_TEMP,
+        bldg:VMTH.ZONE.AH05.RM1063A.Day_Night_Mode,
+        bldg:VMTH.ZONE.AH05.RM1063A.Flow,
+        bldg:VMTH.ZONE.AH05.RM1063A.Heating_Mode,
+        bldg:VMTH.ZONE.AH05.RM1063A.Zone_Air_Temp,
+        bldg:VMTH.ZONE.AH05.RM1063A.Zone_Air_Temp_Setpoint,
+        bldg:VMTH.ZONE.AH05.RM1063A.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM1063B a brick1:VAV ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:feeds bldg:RM1063B ;
+    brick1:hasPoint bldg:VMTH.ZONE.AH05.RM1063B.AIR_VOLUME,
+        bldg:VMTH.ZONE.AH05.RM1063B.CTL_TEMP,
+        bldg:VMTH.ZONE.AH05.RM1063B.Day_Night_Mode,
+        bldg:VMTH.ZONE.AH05.RM1063B.Flow,
+        bldg:VMTH.ZONE.AH05.RM1063B.Heating_Mode,
+        bldg:VMTH.ZONE.AH05.RM1063B.Zone_Air_Temp,
+        bldg:VMTH.ZONE.AH05.RM1063B.Zone_Air_Temp_Setpoint,
+        bldg:VMTH.ZONE.AH05.RM1063B.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM1065E a brick1:VAV ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:feeds bldg:RM1065E ;
+    brick1:hasPoint bldg:VMTH.ZONE.AH05.RM1065E.AIR_VOLUME,
+        bldg:VMTH.ZONE.AH05.RM1065E.CTL_TEMP,
+        bldg:VMTH.ZONE.AH05.RM1065E.Flow,
+        bldg:VMTH.ZONE.AH05.RM1065E.Heating_Mode,
+        bldg:VMTH.ZONE.AH05.RM1065E.Zone_Air_Temp,
+        bldg:VMTH.ZONE.AH05.RM1065E.Zone_Air_Temp_Setpoint,
+        bldg:VMTH.ZONE.AH05.RM1065E.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM1065S a brick1:VAV ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:feeds bldg:RM1065S ;
+    brick1:hasPoint bldg:VMTH.ZONE.AH05.RM1065S.AIR_VOLUME,
+        bldg:VMTH.ZONE.AH05.RM1065S.CTL_TEMP,
+        bldg:VMTH.ZONE.AH05.RM1065S.Flow,
+        bldg:VMTH.ZONE.AH05.RM1065S.Heating_Mode,
+        bldg:VMTH.ZONE.AH05.RM1065S.Zone_Air_Temp,
+        bldg:VMTH.ZONE.AH05.RM1065S.Zone_Air_Temp_Setpoint,
+        bldg:VMTH.ZONE.AH05.RM1065S.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM1066 a brick1:VAV ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:feeds bldg:RM1066 ;
+    brick1:hasPoint bldg:VMTH.ZONE.AH05.RM1066.AIR_VOLUME,
+        bldg:VMTH.ZONE.AH05.RM1066.CTL_TEMP,
+        bldg:VMTH.ZONE.AH05.RM1066.Day_Night_Mode,
+        bldg:VMTH.ZONE.AH05.RM1066.Flow,
+        bldg:VMTH.ZONE.AH05.RM1066.Heating_Mode,
+        bldg:VMTH.ZONE.AH05.RM1066.Zone_Air_Temp,
+        bldg:VMTH.ZONE.AH05.RM1066.Zone_Air_Temp_Setpoint,
+        bldg:VMTH.ZONE.AH05.RM1066.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM1069 a brick1:VAV ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:feeds bldg:RM1069 ;
+    brick1:hasPoint bldg:VMTH.ZONE.AH05.RM1069.AIR_VOLUME,
+        bldg:VMTH.ZONE.AH05.RM1069.CTL_TEMP,
+        bldg:VMTH.ZONE.AH05.RM1069.Day_Night_Mode,
+        bldg:VMTH.ZONE.AH05.RM1069.Flow,
+        bldg:VMTH.ZONE.AH05.RM1069.Heating_Mode,
+        bldg:VMTH.ZONE.AH05.RM1069.Zone_Air_Temp,
+        bldg:VMTH.ZONE.AH05.RM1069.Zone_Air_Temp_Setpoint,
+        bldg:VMTH.ZONE.AH05.RM1069.Zone_Reheat_Valve_Command .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:VMTH ;
+    brick1:hasPoint bldg:VMTH.CHW.BUILDINGDP,
+        bldg:VMTH.CHW.BYPVALVE,
+        bldg:VMTH.CHW.Building_Chilled_Water_Flow,
+        bldg:VMTH.CHW.Building_Chilled_Water_Return_Temp,
+        bldg:VMTH.CHW.Building_Chilled_Water_Return_Temp_Setpoint,
+        bldg:VMTH.CHW.Building_Chilled_Water_Supply_Temp,
+        bldg:VMTH.CHW.Building_Chilled_Water_Supply_Temp_Setpoint,
+        bldg:VMTH.CHW.ECONOMIZER,
+        bldg:VMTH.CHW.Loop_Chilled_Water_Flow,
+        bldg:VMTH.CHW.Loop_Chilled_Water_Return_Temp,
+        bldg:VMTH.CHW.Loop_Chilled_Water_Supply_Temp,
+        bldg:VMTH.CHW.Pump1_SPEED,
+        <http://buildsys.org/ontologies/VMTH#VMTH.CHW.Pump1_Start/Stop>,
+        bldg:VMTH.CHW.Pump2_SPEED,
+        <http://buildsys.org/ontologies/VMTH#VMTH.CHW.Pump2_Start/Stop>,
+        bldg:VMTH.CHW.Zone_Air_Temp .
+
+bldg:VMTH a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "84828" ;
+    brickframe:Country "US" .
+

@@ -1,0 +1,3159 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/MEYR#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:AHU01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:VAVELEV_HALL1,
+        bldg:VAVELEV_HALL2,
+        bldg:VAVELEV_HALL3,
+        bldg:VAVELEV_HALL4,
+        bldg:VAVHALL,
+        bldg:VAVRM1154A,
+        bldg:VAVRM1154D,
+        bldg:VAVRM1154E,
+        bldg:VAVRM1154W,
+        bldg:VAVRM1202,
+        bldg:VAVRM1223N,
+        bldg:VAVRM1223S,
+        bldg:VAVRM1249,
+        bldg:VAVRM1254,
+        bldg:VAVRM1256,
+        bldg:VAVRM1258,
+        bldg:VAVRM2127,
+        bldg:VAVRM2202,
+        bldg:VAVRM2206,
+        bldg:VAVRM2218,
+        bldg:VAVRM2219E,
+        bldg:VAVRM2222A,
+        bldg:VAVRM2223,
+        bldg:VAVRM2223A,
+        bldg:VAVRM2223C,
+        bldg:VAVRM2249,
+        bldg:VAVRM2251,
+        bldg:VAVRM3153,
+        bldg:VAVRM3202,
+        bldg:VAVRM3208E,
+        bldg:VAVRM3208W,
+        bldg:VAVRM3217,
+        bldg:VAVRM3249,
+        bldg:VAVRM3252,
+        bldg:VAVRM3253,
+        bldg:VAVRM4204,
+        bldg:VAVRM4206,
+        bldg:VAVRM4218N,
+        bldg:VAVRM4218S,
+        bldg:VAVRM4249,
+        bldg:VAVRM4251,
+        bldg:VAVVEST1,
+        bldg:VAVVEST2,
+        bldg:VAVVEST3,
+        bldg:VAVVEST4 .
+
+bldg:AHU02 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:VAVHALL,
+        bldg:VAVHALLS,
+        bldg:VAVRM1103,
+        bldg:VAVRM1103R,
+        bldg:VAVRM1105,
+        bldg:VAVRM1111,
+        bldg:VAVRM1113,
+        bldg:VAVRM1114,
+        bldg:VAVRM1131N,
+        bldg:VAVRM1131S,
+        bldg:VAVRM1135,
+        bldg:VAVRM1138,
+        bldg:VAVRM1139,
+        bldg:VAVRM2111,
+        bldg:VAVRM2131,
+        bldg:VAVRM2131E,
+        bldg:VAVRM2131NE,
+        bldg:VAVRM2131SE,
+        bldg:VAVRM2154,
+        bldg:VAVRM3111,
+        bldg:VAVRM3135,
+        bldg:VAVRM3135B,
+        bldg:VAVRM3135D,
+        bldg:VAVRM3138,
+        bldg:VAVRM3148,
+        bldg:VAVRM3150B,
+        bldg:VAVRM4111,
+        bldg:VAVRM4123A,
+        bldg:VAVRM4138N,
+        bldg:VAVRM4138S,
+        bldg:VAVRM4150,
+        bldg:VAVRM4202,
+        bldg:VAVRM4202_A,
+        bldg:VAVRM4202_B,
+        bldg:VAVVEST1,
+        bldg:VAVVEST2,
+        bldg:VAVVEST3,
+        bldg:VAVVEST4 .
+
+bldg:MEYR.OFC.AHU.Flow a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.OFC.AHU.Flow" ;
+    brickframe:uuid "2c1bc3ff-29b0-3718-ad07-2f0fe21f7e89" .
+
+bldg:Meyer_ChilledWater_Demand_kBtu a brick_v_1_0_2:Electric_Meter ;
+    brickframe:pointname "Meyer_ChilledWater_Demand_kBtu" ;
+    brickframe:uuid "ec3a104c-fa61-31a4-8c5d-10ede3b9c217" ;
+    brick1:isPointOf bldg:chiller .
+
+bldg:Meyer_Electricity_Demand_kBtu a brick_v_1_0_2:Building_Electric_Meter ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "Meyer_Electricity_Demand_kBtu" ;
+    brickframe:uuid "56111b11-79c1-3cc0-b3af-f2c9e2dda573" .
+
+bldg:damperVAVRM1103 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM1103.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1103 .
+
+bldg:damperVAVRM1103R a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM1103R.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1103R .
+
+bldg:damperVAVRM1105 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM1105.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1105 .
+
+bldg:damperVAVRM1111 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM1111.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1111 .
+
+bldg:damperVAVRM1113 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM1113.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1113 .
+
+bldg:damperVAVRM1114 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM1114.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1114 .
+
+bldg:damperVAVRM1131N a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM1131N.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1131N .
+
+bldg:damperVAVRM1131S a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM1131S.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1131S .
+
+bldg:damperVAVRM1135 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM1135.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1135 .
+
+bldg:damperVAVRM1138 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM1138.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1138 .
+
+bldg:damperVAVRM1139 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM1139.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1139 .
+
+bldg:damperVAVRM1154A a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM1154A.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1154A .
+
+bldg:damperVAVRM1154D a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM1154D.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1154D .
+
+bldg:damperVAVRM1154E a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM1154E.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1154E .
+
+bldg:damperVAVRM1154W a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM1154W.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1154W .
+
+bldg:damperVAVRM1202 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM1202.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1202 .
+
+bldg:damperVAVRM1223N a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM1223N.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1223N .
+
+bldg:damperVAVRM1223S a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM1223S.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1223S .
+
+bldg:damperVAVRM1249 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM1249.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1249 .
+
+bldg:damperVAVRM1254 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM1254.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1254 .
+
+bldg:damperVAVRM1256 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM1256.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1256 .
+
+bldg:damperVAVRM1258 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM1258.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1258 .
+
+bldg:damperVAVRM2111 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM2111.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2111 .
+
+bldg:damperVAVRM2127 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM2127.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2127 .
+
+bldg:damperVAVRM2131 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM2131.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2131 .
+
+bldg:damperVAVRM2131E a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM2131E.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2131E .
+
+bldg:damperVAVRM2131NE a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM2131NE.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2131NE .
+
+bldg:damperVAVRM2131SE a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM2131SE.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2131SE .
+
+bldg:damperVAVRM2154 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM2154.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2154 .
+
+bldg:damperVAVRM2202 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM2202.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2202 .
+
+bldg:damperVAVRM2206 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM2206.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2206 .
+
+bldg:damperVAVRM2218 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM2218.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2218 .
+
+bldg:damperVAVRM2219E a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM2219E.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2219E .
+
+bldg:damperVAVRM2222A a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM2222A.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2222A .
+
+bldg:damperVAVRM2223 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM2223.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2223 .
+
+bldg:damperVAVRM2223A a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM2223A.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2223A .
+
+bldg:damperVAVRM2223C a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM2223C.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2223C .
+
+bldg:damperVAVRM2249 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM2249.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2249 .
+
+bldg:damperVAVRM2251 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM2251.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2251 .
+
+bldg:damperVAVRM3111 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM3111.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM3111 .
+
+bldg:damperVAVRM3135 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM3135.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM3135 .
+
+bldg:damperVAVRM3135B a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM3135B.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM3135B .
+
+bldg:damperVAVRM3135D a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM3135D.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM3135D .
+
+bldg:damperVAVRM3138 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM3138.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM3138 .
+
+bldg:damperVAVRM3148 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM3148.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM3148 .
+
+bldg:damperVAVRM3150B a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM3150B.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM3150B .
+
+bldg:damperVAVRM3153 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM3153.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM3153 .
+
+bldg:damperVAVRM3202 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM3202.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM3202 .
+
+bldg:damperVAVRM3208E a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM3208E.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM3208E .
+
+bldg:damperVAVRM3208W a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM3208W.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM3208W .
+
+bldg:damperVAVRM3217 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM3217.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM3217 .
+
+bldg:damperVAVRM3249 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM3249.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM3249 .
+
+bldg:damperVAVRM3252 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM3252.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM3252 .
+
+bldg:damperVAVRM3253 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM3253.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM3253 .
+
+bldg:damperVAVRM4111 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM4111.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM4111 .
+
+bldg:damperVAVRM4123A a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM4123A.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM4123A .
+
+bldg:damperVAVRM4138N a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM4138N.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM4138N .
+
+bldg:damperVAVRM4138S a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM4138S.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM4138S .
+
+bldg:damperVAVRM4150 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM4150.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM4150 .
+
+bldg:damperVAVRM4202 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM4202.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM4202 .
+
+bldg:damperVAVRM4202_A a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM4202_A.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM4202_A .
+
+bldg:damperVAVRM4202_B a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM4202_B.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM4202_B .
+
+bldg:damperVAVRM4204 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM4204.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM4204 .
+
+bldg:damperVAVRM4206 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM4206.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM4206 .
+
+bldg:damperVAVRM4218N a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM4218N.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM4218N .
+
+bldg:damperVAVRM4218S a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM4218S.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM4218S .
+
+bldg:damperVAVRM4249 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM4249.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM4249 .
+
+bldg:damperVAVRM4251 a brick1:Damper ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM4251.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM4251 .
+
+bldg:floor1 a brick1:Floor ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM1103R_room,
+        bldg:RM1103_room,
+        bldg:RM1105_room,
+        bldg:RM1111_room,
+        bldg:RM1113_room,
+        bldg:RM1114_room,
+        bldg:RM1131N_room,
+        bldg:RM1131S_room,
+        bldg:RM1135_room,
+        bldg:RM1138_room,
+        bldg:RM1139_room,
+        bldg:RM1154A_room,
+        bldg:RM1154D_room,
+        bldg:RM1154E_room,
+        bldg:RM1154W_room,
+        bldg:RM1202_room,
+        bldg:RM1223N_room,
+        bldg:RM1223S_room,
+        bldg:RM1249_room,
+        bldg:RM1254_room,
+        bldg:RM1256_room,
+        bldg:RM1258_room .
+
+bldg:floor2 a brick1:Floor ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM2111_room,
+        bldg:RM2127_room,
+        bldg:RM2131E_room,
+        bldg:RM2131NE_room,
+        bldg:RM2131SE_room,
+        bldg:RM2131_room,
+        bldg:RM2154_room,
+        bldg:RM2202_room,
+        bldg:RM2206_room,
+        bldg:RM2218_room,
+        bldg:RM2219E_room,
+        bldg:RM2222A_room,
+        bldg:RM2223A_room,
+        bldg:RM2223C_room,
+        bldg:RM2223_room,
+        bldg:RM2249_room,
+        bldg:RM2251_room .
+
+bldg:floor3 a brick1:Floor ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM3111_room,
+        bldg:RM3135B_room,
+        bldg:RM3135D_room,
+        bldg:RM3135_room,
+        bldg:RM3138_room,
+        bldg:RM3148_room,
+        bldg:RM3150B_room,
+        bldg:RM3153_room,
+        bldg:RM3202_room,
+        bldg:RM3208E_room,
+        bldg:RM3208W_room,
+        bldg:RM3217_room,
+        bldg:RM3249_room,
+        bldg:RM3252_room,
+        bldg:RM3253_room .
+
+bldg:floor4 a brick1:Floor ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM4111_room,
+        bldg:RM4123A_room,
+        bldg:RM4138N_room,
+        bldg:RM4138S_room,
+        bldg:RM4150_room,
+        bldg:RM4202_A_room,
+        bldg:RM4202_B_room,
+        bldg:RM4202_room,
+        bldg:RM4204_room,
+        bldg:RM4206_room,
+        bldg:RM4218N_room,
+        bldg:RM4218S_room,
+        bldg:RM4249_room,
+        bldg:RM4251_room .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:ELEV_HALL1 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:ELEV_HALL2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:ELEV_HALL3 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:ELEV_HALL4 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:HALL a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:HALLS a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:MEYR.CHW.Building_Chilled_Water_Flow a brick_v_1_0_2:Chilled_Water_Flow_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.CHW.Building Chilled Water Flow" ;
+    brickframe:uuid "5253aef7-95cd-34f7-b431-6d98e88eb8ae" .
+
+bldg:MEYR.CHW.Building_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.CHW.Building Chilled Water Supply Temp" ;
+    brickframe:uuid "2705f137-304b-37b8-927c-1380bdda6247" .
+
+bldg:MEYR.CHW.Building_Chilled_Water_Supply_Temp_Setpoint a brick_v_1_0_2:Chilled_Water_Supply_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.CHW.Building Chilled Water Supply Temp Setpoint" ;
+    brickframe:uuid "f9432bfc-079f-3645-87ae-77a98a93b6f3" .
+
+bldg:MEYR.CHW.Lab_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.CHW.Lab Chilled Water Return Temp" ;
+    brickframe:uuid "879c550d-fdc3-3a5f-a59d-9bbf9eadc50c" .
+
+bldg:MEYR.CHW.Loop_Chilled_Water_Flow a brick_v_1_0_2:Chilled_Water_Flow_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.CHW.Loop Chilled Water Flow" ;
+    brickframe:uuid "1ee2fb69-33ff-367f-a763-213374b7eb8d" .
+
+bldg:MEYR.CHW.Loop_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.CHW.Loop Chilled Water Return Temp" ;
+    brickframe:uuid "2cef3726-136f-3bc8-a6a6-d55808f26145" .
+
+bldg:MEYR.CHW.Loop_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.CHW.Loop Chilled Water Supply Temp" ;
+    brickframe:uuid "493a8d6d-a374-38c3-98f4-d0d26ead1d2b" .
+
+bldg:MEYR.CHW.Office_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.CHW.Office Chilled Water Return Temp" ;
+    brickframe:uuid "0d1ef081-ec65-363f-83d0-6399f701ca43" .
+
+bldg:MEYR.ZONE.AHU01.ELEV_HALL1.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.ELEV HALL1.VLV1 COMD" ;
+    brickframe:uuid "a603a359-a6c7-3f4c-a6a0-6eadd4acc4b8" .
+
+bldg:MEYR.ZONE.AHU01.ELEV_HALL2.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.ELEV HALL2.VLV1 COMD" ;
+    brickframe:uuid "967adbab-fee7-3f0d-9f3e-02b228796f4d" .
+
+bldg:MEYR.ZONE.AHU01.ELEV_HALL3.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.ELEV HALL3.VLV1 COMD" ;
+    brickframe:uuid "1fc5cff3-9cb6-3c63-8196-f1906b864e06" .
+
+bldg:MEYR.ZONE.AHU01.ELEV_HALL4.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.ELEV HALL4.VLV1 COMD" ;
+    brickframe:uuid "7e45f7e4-d3c7-3a91-b1a5-62c5610c4892" .
+
+bldg:MEYR.ZONE.AHU01.HALL.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.HALL.VLV1 COMD" ;
+    brickframe:uuid "d4ea36e3-2af2-3f4a-bd61-af3b385db59f" .
+
+bldg:MEYR.ZONE.AHU01.RM1154A.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1154A.Zone Air Damper Command" ;
+    brickframe:uuid "5c5db0b8-461d-303b-b287-b5d738a6e4fb" .
+
+bldg:MEYR.ZONE.AHU01.RM1154A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1154A.Zone Air Temp" ;
+    brickframe:uuid "0849e432-8c27-310d-b1a5-8f371d92e3f8" .
+
+bldg:MEYR.ZONE.AHU01.RM1154A.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1154A.Zone Air Temp Setpoint" ;
+    brickframe:uuid "959aed19-af4c-31bd-95a6-f2ec647988ff" .
+
+bldg:MEYR.ZONE.AHU01.RM1154D.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1154D.VLV1 COMD" ;
+    brickframe:uuid "0609e375-92c5-3991-9260-16f9bbc86cb6" .
+
+bldg:MEYR.ZONE.AHU01.RM1154D.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1154D.Zone Air Damper Command" ;
+    brickframe:uuid "6ec33de2-6964-3ed2-84da-c2f68900afef" .
+
+bldg:MEYR.ZONE.AHU01.RM1154D.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1154D.Zone Air Temp" ;
+    brickframe:uuid "f2b86a65-4204-3162-a7a5-69a765adc3a4" .
+
+bldg:MEYR.ZONE.AHU01.RM1154D.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1154D.Zone Air Temp Setpoint" ;
+    brickframe:uuid "ab609282-5f76-328d-80e0-7d803d8a2f8a" .
+
+bldg:MEYR.ZONE.AHU01.RM1154D.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1154D.Zone Supply Air Temp" ;
+    brickframe:uuid "26c743e6-4167-31a4-bd96-3046d2b9fd40" .
+
+bldg:MEYR.ZONE.AHU01.RM1154E.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1154E.VLV1 COMD" ;
+    brickframe:uuid "b52b2ef8-f618-31e2-8d22-d7983b1c7ea6" .
+
+bldg:MEYR.ZONE.AHU01.RM1154E.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1154E.Zone Air Damper Command" ;
+    brickframe:uuid "7539193d-e83a-3fcd-b66d-d9a17bab081e" .
+
+bldg:MEYR.ZONE.AHU01.RM1154E.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1154E.Zone Air Temp" ;
+    brickframe:uuid "cdf97321-d67b-3548-8463-bfc8cf1d9da5" .
+
+bldg:MEYR.ZONE.AHU01.RM1154E.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1154E.Zone Air Temp Setpoint" ;
+    brickframe:uuid "2fb3ce20-d33f-3118-b19a-ed1182503024" .
+
+bldg:MEYR.ZONE.AHU01.RM1154E.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1154E.Zone Supply Air Temp" ;
+    brickframe:uuid "6c51e6a7-f7e0-35ba-aa42-264fda77987b" .
+
+bldg:MEYR.ZONE.AHU01.RM1154W.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1154W.VLV1 COMD" ;
+    brickframe:uuid "ad4a967d-0c6a-37ef-8acc-c713bf00c80b" .
+
+bldg:MEYR.ZONE.AHU01.RM1154W.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1154W.Zone Air Damper Command" ;
+    brickframe:uuid "89a72785-15e9-3c64-acff-46a77d5222e1" .
+
+bldg:MEYR.ZONE.AHU01.RM1154W.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1154W.Zone Air Temp" ;
+    brickframe:uuid "8cbe33d6-0288-3544-acf7-243b7d7d7aa5" .
+
+bldg:MEYR.ZONE.AHU01.RM1154W.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1154W.Zone Air Temp Setpoint" ;
+    brickframe:uuid "038be092-6888-3e4b-9122-da333262a3ef" .
+
+bldg:MEYR.ZONE.AHU01.RM1154W.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1154W.Zone Supply Air Temp" ;
+    brickframe:uuid "9990c087-51.0.20e2-ae97-50e189c53d3e" .
+
+bldg:MEYR.ZONE.AHU01.RM1202.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1202.Zone Air Damper Command" ;
+    brickframe:uuid "7f480758-2f20-30aa-a3ca-aabc6ef33c69" .
+
+bldg:MEYR.ZONE.AHU01.RM1202.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1202.Zone Air Temp" ;
+    brickframe:uuid "894ce369-c873-30c2-90ef-dbadfdfbb856" .
+
+bldg:MEYR.ZONE.AHU01.RM1202.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1202.Zone Air Temp Setpoint" ;
+    brickframe:uuid "5c8ea5db-1bde-359c-971f-24d094b19edd" .
+
+bldg:MEYR.ZONE.AHU01.RM1223N.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1223N.VLV1 COMD" ;
+    brickframe:uuid "96cde4a6-982f-3711-953f-0e3884458276" .
+
+bldg:MEYR.ZONE.AHU01.RM1223N.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1223N.Zone Air Damper Command" ;
+    brickframe:uuid "478e91f5-d883-338a-b677-0cbce7c05a6d" .
+
+bldg:MEYR.ZONE.AHU01.RM1223N.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1223N.Zone Air Temp" ;
+    brickframe:uuid "40c72a03-2904-3635-9e34-91f6884e0727" .
+
+bldg:MEYR.ZONE.AHU01.RM1223N.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1223N.Zone Air Temp Setpoint" ;
+    brickframe:uuid "cd9782be-6d70-35f8-9700-48a502c00810" .
+
+bldg:MEYR.ZONE.AHU01.RM1223N.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1223N.Zone Supply Air Temp" ;
+    brickframe:uuid "6a45b74e-09ca-3212-8952-6322625c9a48" .
+
+bldg:MEYR.ZONE.AHU01.RM1223S.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1223S.VLV1 COMD" ;
+    brickframe:uuid "59449860-5009-3496-ac38-e4edeb907edb" .
+
+bldg:MEYR.ZONE.AHU01.RM1223S.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1223S.Zone Air Damper Command" ;
+    brickframe:uuid "3e6cd259-09c4-3ef8-9118-22730a0a9072" .
+
+bldg:MEYR.ZONE.AHU01.RM1223S.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1223S.Zone Air Temp" ;
+    brickframe:uuid "f543128d-988a-32de-89b0-000561c8ac17" .
+
+bldg:MEYR.ZONE.AHU01.RM1223S.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1223S.Zone Air Temp Setpoint" ;
+    brickframe:uuid "188654a0-d302-3889-acd5-0611ebcc7784" .
+
+bldg:MEYR.ZONE.AHU01.RM1223S.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1223S.Zone Supply Air Temp" ;
+    brickframe:uuid "9425f963-d1b1-32b8-b803-6b3c5e27fdef" .
+
+bldg:MEYR.ZONE.AHU01.RM1249.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1249.VLV1 COMD" ;
+    brickframe:uuid "b60aab51-e270-330c-a432-a1ba23374227" .
+
+bldg:MEYR.ZONE.AHU01.RM1249.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1249.Zone Air Damper Command" ;
+    brickframe:uuid "bc57471f-a280-38da-bb01-845504c7de83" .
+
+bldg:MEYR.ZONE.AHU01.RM1249.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1249.Zone Air Temp" ;
+    brickframe:uuid "7072b604-a25e-3b4b-ae9f-2e8fa15437f3" .
+
+bldg:MEYR.ZONE.AHU01.RM1249.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1249.Zone Air Temp Setpoint" ;
+    brickframe:uuid "62ca4373-3617-3672-8078-157ae4229c48" .
+
+bldg:MEYR.ZONE.AHU01.RM1249.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1249.Zone Supply Air Temp" ;
+    brickframe:uuid "19d7fcb4-1b77-3307-b842-d9f20fe08640" .
+
+bldg:MEYR.ZONE.AHU01.RM1254.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1254.Zone Air Damper Command" ;
+    brickframe:uuid "94c6f8b1-a0a3-34d4-bacc-15202841f618" .
+
+bldg:MEYR.ZONE.AHU01.RM1254.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1254.Zone Air Temp" ;
+    brickframe:uuid "42f5679d-80d9-3ede-9a37-50f7935b7d46" .
+
+bldg:MEYR.ZONE.AHU01.RM1254.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1254.Zone Air Temp Setpoint" ;
+    brickframe:uuid "0d7edf3a-878c-3f7e-ae4b-52825d727c98" .
+
+bldg:MEYR.ZONE.AHU01.RM1256.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1256.Zone Air Damper Command" ;
+    brickframe:uuid "ae3a0377-e83e-3169-a3c9-04194846c105" .
+
+bldg:MEYR.ZONE.AHU01.RM1256.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1256.Zone Air Temp" ;
+    brickframe:uuid "5263fb34-d23b-3d2a-9fe2-49c14606e53c" .
+
+bldg:MEYR.ZONE.AHU01.RM1256.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1256.Zone Air Temp Setpoint" ;
+    brickframe:uuid "2c0dc01e-ba0c-3cba-8d33-982ac0d98b5a" .
+
+bldg:MEYR.ZONE.AHU01.RM1258.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1258.Zone Air Damper Command" ;
+    brickframe:uuid "106ed93a-f88a-3699-a533-4f79184bd3d0" .
+
+bldg:MEYR.ZONE.AHU01.RM1258.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1258.Zone Air Temp" ;
+    brickframe:uuid "033f470f-bddb-38ba-af2d-19587ec65008" .
+
+bldg:MEYR.ZONE.AHU01.RM1258.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM1258.Zone Air Temp Setpoint" ;
+    brickframe:uuid "2061dc01-71f2-3687-b570-9c9b167e9b1f" .
+
+bldg:MEYR.ZONE.AHU01.RM2127.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2127.Zone Air Damper Command" ;
+    brickframe:uuid "565a01bb-d374-31f9-b6ed-84563e76bed1" .
+
+bldg:MEYR.ZONE.AHU01.RM2127.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2127.Zone Air Temp" ;
+    brickframe:uuid "3ebfecab-5f6b-355e-a2b5-7854ca96d1ab" .
+
+bldg:MEYR.ZONE.AHU01.RM2127.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2127.Zone Air Temp Setpoint" ;
+    brickframe:uuid "5d87592f-868b-3677-a07b-2aafe74a2428" .
+
+bldg:MEYR.ZONE.AHU01.RM2202.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2202.Zone Air Damper Command" ;
+    brickframe:uuid "d89f1cbf-60a6-3c32-a466-bcfb16fa7a6a" .
+
+bldg:MEYR.ZONE.AHU01.RM2202.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2202.Zone Air Temp" ;
+    brickframe:uuid "697978cb-29fe-36d8-a159-1eda2dea8fb1" .
+
+bldg:MEYR.ZONE.AHU01.RM2202.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2202.Zone Air Temp Setpoint" ;
+    brickframe:uuid "33eed079-8d34-3968-8181-240278978980" .
+
+bldg:MEYR.ZONE.AHU01.RM2206.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2206.Zone Air Damper Command" ;
+    brickframe:uuid "e241bd0b-406d-3ee3-aa01-d842219f72e9" .
+
+bldg:MEYR.ZONE.AHU01.RM2206.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2206.Zone Air Temp" ;
+    brickframe:uuid "b2b126cd-e520-3344-97bd-454b1e5dbe29" .
+
+bldg:MEYR.ZONE.AHU01.RM2206.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2206.Zone Air Temp Setpoint" ;
+    brickframe:uuid "87c682b4-18b2-339d-b41b-4c22b7df8cf9" .
+
+bldg:MEYR.ZONE.AHU01.RM2218.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2218.Zone Air Damper Command" ;
+    brickframe:uuid "9b46a415-b5a5-3365-85be-42f60c9227fa" .
+
+bldg:MEYR.ZONE.AHU01.RM2218.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2218.Zone Air Temp" ;
+    brickframe:uuid "6dcacf3e-37b1-36bc-88cc-b53ab03743ab" .
+
+bldg:MEYR.ZONE.AHU01.RM2218.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2218.Zone Air Temp Setpoint" ;
+    brickframe:uuid "202b1c13-ec01-356e-a910-1174a3943f0e" .
+
+bldg:MEYR.ZONE.AHU01.RM2219E.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2219E.VLV1 COMD" ;
+    brickframe:uuid "c39d637f-79d2-31e8-9d1c-6ff6a617aba6" .
+
+bldg:MEYR.ZONE.AHU01.RM2219E.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2219E.Zone Air Damper Command" ;
+    brickframe:uuid "122c12bb-dcbb-3783-811d-0418290e17ee" .
+
+bldg:MEYR.ZONE.AHU01.RM2219E.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2219E.Zone Air Temp" ;
+    brickframe:uuid "0f51225e-5332-3e7c-a891-53099ff249ea" .
+
+bldg:MEYR.ZONE.AHU01.RM2219E.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2219E.Zone Air Temp Setpoint" ;
+    brickframe:uuid "bc382df4-d9f9-307c-bee5-bcca2ad5929d" .
+
+bldg:MEYR.ZONE.AHU01.RM2219E.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2219E.Zone Supply Air Temp" ;
+    brickframe:uuid "1de71924-ac53-3e16-9fd6-9be4e3410dca" .
+
+bldg:MEYR.ZONE.AHU01.RM2222A.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2222A.Zone Air Damper Command" ;
+    brickframe:uuid "5920a443-ce6e-3aae-b54c-e9e66772e1a6" .
+
+bldg:MEYR.ZONE.AHU01.RM2222A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2222A.Zone Air Temp" ;
+    brickframe:uuid "8cb47ebb-c01b-3816-bc82-d25be2e67722" .
+
+bldg:MEYR.ZONE.AHU01.RM2222A.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2222A.Zone Air Temp Setpoint" ;
+    brickframe:uuid "28215215-ce74-3c04-b171-c7dfaff21977" .
+
+bldg:MEYR.ZONE.AHU01.RM2223.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2223.VLV1 COMD" ;
+    brickframe:uuid "10d010e9-82bf-3671-bcec-d7713c3d1e95" .
+
+bldg:MEYR.ZONE.AHU01.RM2223.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2223.Zone Air Damper Command" ;
+    brickframe:uuid "83c5c8f4-77d2-30de-a8f1-a1ba9f8290e2" .
+
+bldg:MEYR.ZONE.AHU01.RM2223.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2223.Zone Air Temp" ;
+    brickframe:uuid "360114bf-b15c-300a-8cc1-60c4becb03fd" .
+
+bldg:MEYR.ZONE.AHU01.RM2223.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2223.Zone Air Temp Setpoint" ;
+    brickframe:uuid "e156e745-92a0-3e38-8a27-0c6120403654" .
+
+bldg:MEYR.ZONE.AHU01.RM2223.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2223.Zone Supply Air Temp" ;
+    brickframe:uuid "64492a07-5c14-3ba5-a334-acf9a618605a" .
+
+bldg:MEYR.ZONE.AHU01.RM2223A.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2223A.VLV1 COMD" ;
+    brickframe:uuid "109976c3-bc11-3cd5-99c0-99d9fe706bbf" .
+
+bldg:MEYR.ZONE.AHU01.RM2223A.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2223A.Zone Air Damper Command" ;
+    brickframe:uuid "4f312094-2411-372b-b939-55ddb3c12b37" .
+
+bldg:MEYR.ZONE.AHU01.RM2223A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2223A.Zone Air Temp" ;
+    brickframe:uuid "000540a7-99a0-3378-816c-39b4081c30fb" .
+
+bldg:MEYR.ZONE.AHU01.RM2223A.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2223A.Zone Air Temp Setpoint" ;
+    brickframe:uuid "1dfde35a-b078-3767-9886-e5ec5f544a41" .
+
+bldg:MEYR.ZONE.AHU01.RM2223A.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2223A.Zone Supply Air Temp" ;
+    brickframe:uuid "bda14192-24f8-3b30-bff4-836790aefe76" .
+
+bldg:MEYR.ZONE.AHU01.RM2223C.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2223C.VLV1 COMD" ;
+    brickframe:uuid "b0b24998-f9dc-3b19-9a82-5431b2104542" .
+
+bldg:MEYR.ZONE.AHU01.RM2223C.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2223C.Zone Air Damper Command" ;
+    brickframe:uuid "aa8f4a5c-7253-398c-b151-a266f636f6bc" .
+
+bldg:MEYR.ZONE.AHU01.RM2223C.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2223C.Zone Air Temp" ;
+    brickframe:uuid "ed753c94-56bc-3020-9d95-3d3cf4b40a86" .
+
+bldg:MEYR.ZONE.AHU01.RM2223C.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2223C.Zone Air Temp Setpoint" ;
+    brickframe:uuid "2c7f627d-3425-3079-8ed8-451fbe71b783" .
+
+bldg:MEYR.ZONE.AHU01.RM2223C.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2223C.Zone Supply Air Temp" ;
+    brickframe:uuid "fbc201e6-1ca7-3c1e-b0cb-0fca69632262" .
+
+bldg:MEYR.ZONE.AHU01.RM2249.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2249.VLV1 COMD" ;
+    brickframe:uuid "7c2f298d-fb70-3e6a-9d65-52f5ece72db0" .
+
+bldg:MEYR.ZONE.AHU01.RM2249.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2249.Zone Air Damper Command" ;
+    brickframe:uuid "814add6e-80a2-305d-9939-868655745116" .
+
+bldg:MEYR.ZONE.AHU01.RM2249.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2249.Zone Air Temp" ;
+    brickframe:uuid "55a8c1a0-6235-31c7-b270-fe9ce9947c36" .
+
+bldg:MEYR.ZONE.AHU01.RM2249.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2249.Zone Air Temp Setpoint" ;
+    brickframe:uuid "c53069a9-7b9c-376b-909a-cb9315d70a54" .
+
+bldg:MEYR.ZONE.AHU01.RM2249.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2249.Zone Supply Air Temp" ;
+    brickframe:uuid "6b575cb5-a038-3a38-9847-1abc16f04f01" .
+
+bldg:MEYR.ZONE.AHU01.RM2251.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2251.VLV1 COMD" ;
+    brickframe:uuid "f4cd68ee-18e5-3f5e-ae58-e5e662b1553d" .
+
+bldg:MEYR.ZONE.AHU01.RM2251.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2251.Zone Air Damper Command" ;
+    brickframe:uuid "dffac915-be39-3866-8be0-a377390e7924" .
+
+bldg:MEYR.ZONE.AHU01.RM2251.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2251.Zone Air Temp" ;
+    brickframe:uuid "aa2c4347-3eed-3b0f-be2b-22bf43a4ed14" .
+
+bldg:MEYR.ZONE.AHU01.RM2251.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2251.Zone Air Temp Setpoint" ;
+    brickframe:uuid "ba304594-c51d-3941-94e3-5c397ab98f1d" .
+
+bldg:MEYR.ZONE.AHU01.RM2251.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM2251.Zone Supply Air Temp" ;
+    brickframe:uuid "748109b2-c6cd-3979-8457-87b22c2673a8" .
+
+bldg:MEYR.ZONE.AHU01.RM3153.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3153.VLV1 COMD" ;
+    brickframe:uuid "16b91c54-743e-312b-b50b-ee1d5d21b6ab" .
+
+bldg:MEYR.ZONE.AHU01.RM3153.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3153.Zone Air Damper Command" ;
+    brickframe:uuid "1251a700-19f4-3752-9125-908f91c6530c" .
+
+bldg:MEYR.ZONE.AHU01.RM3153.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3153.Zone Air Temp" ;
+    brickframe:uuid "7e37e2b3-4a9c-32d1-b107-f92ba1800a66" .
+
+bldg:MEYR.ZONE.AHU01.RM3153.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3153.Zone Air Temp Setpoint" ;
+    brickframe:uuid "2484abef-2437-337c-b292-5f676de99bea" .
+
+bldg:MEYR.ZONE.AHU01.RM3153.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3153.Zone Supply Air Temp" ;
+    brickframe:uuid "b82434b5-1090-3b1a-824e-63e93b9a4adf" .
+
+bldg:MEYR.ZONE.AHU01.RM3202.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3202.Zone Air Damper Command" ;
+    brickframe:uuid "8cd0b2fb-4d5b-341f-b0ef-f499fbf40640" .
+
+bldg:MEYR.ZONE.AHU01.RM3202.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3202.Zone Air Temp" ;
+    brickframe:uuid "e978a9be-4ebb-3306-96f0-1c39d862ebaf" .
+
+bldg:MEYR.ZONE.AHU01.RM3202.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3202.Zone Air Temp Setpoint" ;
+    brickframe:uuid "b360ad7e-636d-330c-a03c-1248790fb3a8" .
+
+bldg:MEYR.ZONE.AHU01.RM3208E.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3208E.Zone Air Damper Command" ;
+    brickframe:uuid "2f77b701-17cd-3b05-ba18-94711306fe23" .
+
+bldg:MEYR.ZONE.AHU01.RM3208E.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3208E.Zone Air Temp" ;
+    brickframe:uuid "424f6c16-583c-3b62-8d14-82b1544e7753" .
+
+bldg:MEYR.ZONE.AHU01.RM3208E.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3208E.Zone Air Temp Setpoint" ;
+    brickframe:uuid "ba28e5c6-65fa-3af9-8937-cecfbcfb2479" .
+
+bldg:MEYR.ZONE.AHU01.RM3208W.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3208W.Zone Air Damper Command" ;
+    brickframe:uuid "b67f6147-f095-3eb7-b08b-604f5c127a69" .
+
+bldg:MEYR.ZONE.AHU01.RM3208W.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3208W.Zone Air Temp" ;
+    brickframe:uuid "72616c8e-a8ff-3811-8256-85189c50a82b" .
+
+bldg:MEYR.ZONE.AHU01.RM3208W.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3208W.Zone Air Temp Setpoint" ;
+    brickframe:uuid "0a8b393e-54d1-37cc-8b0b-5d7f7844accc" .
+
+bldg:MEYR.ZONE.AHU01.RM3217.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3217.VLV1 COMD" ;
+    brickframe:uuid "bf6f0523-0b4f-3fb6-9ebe-3d11f3b80759" .
+
+bldg:MEYR.ZONE.AHU01.RM3217.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3217.Zone Air Damper Command" ;
+    brickframe:uuid "7ce624a6-719e-308f-b9d5-49c034283ade" .
+
+bldg:MEYR.ZONE.AHU01.RM3217.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3217.Zone Air Temp" ;
+    brickframe:uuid "97ac3a12-3d41-3444-843a-6a8d3a845ddb" .
+
+bldg:MEYR.ZONE.AHU01.RM3217.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3217.Zone Air Temp Setpoint" ;
+    brickframe:uuid "cc28504c-996e-3417-b5f9-77847dd6e7af" .
+
+bldg:MEYR.ZONE.AHU01.RM3217.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3217.Zone Supply Air Temp" ;
+    brickframe:uuid "3d1b5184-9111-3f31-bb5d-16e3460cab30" .
+
+bldg:MEYR.ZONE.AHU01.RM3249.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3249.VLV1 COMD" ;
+    brickframe:uuid "a4e7a008-d612-3b70-a32d-7a51754ac1b4" .
+
+bldg:MEYR.ZONE.AHU01.RM3249.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3249.Zone Air Damper Command" ;
+    brickframe:uuid "cd41aa66-c5de-3fdc-ae1a-6756d29ad6ba" .
+
+bldg:MEYR.ZONE.AHU01.RM3249.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3249.Zone Air Temp" ;
+    brickframe:uuid "1ebc01d2-3c54-3a01-bc94-a55d1520504a" .
+
+bldg:MEYR.ZONE.AHU01.RM3249.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3249.Zone Air Temp Setpoint" ;
+    brickframe:uuid "e9c7bdad-a14c-36db-8642-f6b4ee97b67a" .
+
+bldg:MEYR.ZONE.AHU01.RM3249.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3249.Zone Supply Air Temp" ;
+    brickframe:uuid "b018cebc-0913-3944-9b63-f85633a2c38d" .
+
+bldg:MEYR.ZONE.AHU01.RM3252.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3252.Zone Air Damper Command" ;
+    brickframe:uuid "b382f193-b4fb-37b7-a8f0-258ef7c72d51" .
+
+bldg:MEYR.ZONE.AHU01.RM3252.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3252.Zone Air Temp" ;
+    brickframe:uuid "7383fb04-a74e-300a-83c5-29b478e1710a" .
+
+bldg:MEYR.ZONE.AHU01.RM3252.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3252.Zone Air Temp Setpoint" ;
+    brickframe:uuid "528d62f4-89b3-3911-a978-4654b606e2de" .
+
+bldg:MEYR.ZONE.AHU01.RM3253.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3253.VLV1 COMD" ;
+    brickframe:uuid "cb246c00-0bab-3106-83ff-2e2b92c5b7f1" .
+
+bldg:MEYR.ZONE.AHU01.RM3253.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3253.Zone Air Damper Command" ;
+    brickframe:uuid "5b0e85eb-c1e8-394a-96b4-977d40a9ef7d" .
+
+bldg:MEYR.ZONE.AHU01.RM3253.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3253.Zone Air Temp" ;
+    brickframe:uuid "7109584f-9693-319b-bb09-4658cc277b6e" .
+
+bldg:MEYR.ZONE.AHU01.RM3253.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3253.Zone Air Temp Setpoint" ;
+    brickframe:uuid "4d668b24-d031-3866-9251-de723be649d4" .
+
+bldg:MEYR.ZONE.AHU01.RM3253.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM3253.Zone Supply Air Temp" ;
+    brickframe:uuid "c47ac4b6-edba-34da-9dba-5eabbd3b28a6" .
+
+bldg:MEYR.ZONE.AHU01.RM4204.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM4204.Zone Air Damper Command" ;
+    brickframe:uuid "6acdfd35-30c1-3283-8c41-b4c81ea55cdd" .
+
+bldg:MEYR.ZONE.AHU01.RM4204.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM4204.Zone Air Temp" ;
+    brickframe:uuid "3b806f9d-7166-3b92-b435-ff51a7e89c09" .
+
+bldg:MEYR.ZONE.AHU01.RM4204.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM4204.Zone Air Temp Setpoint" ;
+    brickframe:uuid "b6f38432-b014-3ce5-b12c-f1b76126cc2f" .
+
+bldg:MEYR.ZONE.AHU01.RM4206.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM4206.Zone Air Damper Command" ;
+    brickframe:uuid "a12c336b-ad5a-3a32-ab94-a2a9ad12495f" .
+
+bldg:MEYR.ZONE.AHU01.RM4206.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM4206.Zone Air Temp" ;
+    brickframe:uuid "1ef4e5cd-cfd2-321d-92ba-e841f6de2586" .
+
+bldg:MEYR.ZONE.AHU01.RM4206.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM4206.Zone Air Temp Setpoint" ;
+    brickframe:uuid "f1e63eb0-cd18-35bf-a5bd-124fe2d9c829" .
+
+bldg:MEYR.ZONE.AHU01.RM4218N.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM4218N.VLV1 COMD" ;
+    brickframe:uuid "053f7d93-6926-31e1-abee-ebdcfc2d5e52" .
+
+bldg:MEYR.ZONE.AHU01.RM4218N.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM4218N.Zone Air Damper Command" ;
+    brickframe:uuid "8963a2db-e3b9-3125-85ca-bb6bcb43b63e" .
+
+bldg:MEYR.ZONE.AHU01.RM4218N.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM4218N.Zone Air Temp" ;
+    brickframe:uuid "828c71c0-626e-3c4b-b3d6-77da3f23a446" .
+
+bldg:MEYR.ZONE.AHU01.RM4218N.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM4218N.Zone Air Temp Setpoint" ;
+    brickframe:uuid "4e385e74-0f88-3927-99cd-34e80569883f" .
+
+bldg:MEYR.ZONE.AHU01.RM4218N.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM4218N.Zone Supply Air Temp" ;
+    brickframe:uuid "7987b378-0d37-3505-a65c-5447893f38a9" .
+
+bldg:MEYR.ZONE.AHU01.RM4218S.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM4218S.VLV1 COMD" ;
+    brickframe:uuid "0a28ae36-9a81-3500-9a83-2d459c346635" .
+
+bldg:MEYR.ZONE.AHU01.RM4218S.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM4218S.Zone Air Damper Command" ;
+    brickframe:uuid "ea172b47-5fe4-3148-b260-e8c60d2a484e" .
+
+bldg:MEYR.ZONE.AHU01.RM4218S.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM4218S.Zone Air Temp" ;
+    brickframe:uuid "c579abb4-e685-3e07-b08a-a73c11269d04" .
+
+bldg:MEYR.ZONE.AHU01.RM4218S.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM4218S.Zone Air Temp Setpoint" ;
+    brickframe:uuid "0d3d26a5-c632-3f3f-92df-54207e8acfe0" .
+
+bldg:MEYR.ZONE.AHU01.RM4218S.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM4218S.Zone Supply Air Temp" ;
+    brickframe:uuid "2b9fe020-8769-309e-858f-ab349bd83c1c" .
+
+bldg:MEYR.ZONE.AHU01.RM4249.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM4249.VLV1 COMD" ;
+    brickframe:uuid "638ea9bb-70fa-3807-9b05-bf786fe6a151" .
+
+bldg:MEYR.ZONE.AHU01.RM4249.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM4249.Zone Air Damper Command" ;
+    brickframe:uuid "38c63e85-01af-3457-814b-2f7458f31801" .
+
+bldg:MEYR.ZONE.AHU01.RM4249.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM4249.Zone Air Temp" ;
+    brickframe:uuid "8845f417-dccd-3812-bc2f-966aaa7c79ab" .
+
+bldg:MEYR.ZONE.AHU01.RM4249.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM4249.Zone Air Temp Setpoint" ;
+    brickframe:uuid "166dcab9-2a68-3ce8-859f-35a01e5bbc9f" .
+
+bldg:MEYR.ZONE.AHU01.RM4249.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM4249.Zone Supply Air Temp" ;
+    brickframe:uuid "2cb62e12-cc15-3552-89f8-dae4c6429034" .
+
+bldg:MEYR.ZONE.AHU01.RM4251.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM4251.VLV1 COMD" ;
+    brickframe:uuid "473c04fe-c48a-3362-a82f-6588c0b86799" .
+
+bldg:MEYR.ZONE.AHU01.RM4251.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM4251.Zone Air Damper Command" ;
+    brickframe:uuid "b63dc448-9341-3e23-811d-cb6aad5af4ea" .
+
+bldg:MEYR.ZONE.AHU01.RM4251.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM4251.Zone Air Temp" ;
+    brickframe:uuid "4e708f3d-3343-36fc-b341-2c25a778e08a" .
+
+bldg:MEYR.ZONE.AHU01.RM4251.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM4251.Zone Air Temp Setpoint" ;
+    brickframe:uuid "89e23312-7668-3930-b3e1-c7d1109212ab" .
+
+bldg:MEYR.ZONE.AHU01.RM4251.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.RM4251.Zone Supply Air Temp" ;
+    brickframe:uuid "e9a970a5-c807-366e-809c-d805180b0749" .
+
+bldg:MEYR.ZONE.AHU01.VEST1.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.VEST1.VLV1 COMD" ;
+    brickframe:uuid "5f36ef98-f01c-3782-bc74-578b355405f5" .
+
+bldg:MEYR.ZONE.AHU01.VEST2.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.VEST2.VLV1 COMD" ;
+    brickframe:uuid "d73b17f7-3323-3f9d-86e2-99ade1ab1604" .
+
+bldg:MEYR.ZONE.AHU01.VEST3.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.VEST3.VLV1 COMD" ;
+    brickframe:uuid "b9271fba-b813-35a5-9b94-b3f7063eff80" .
+
+bldg:MEYR.ZONE.AHU01.VEST4.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU01.VEST4.VLV1 COMD" ;
+    brickframe:uuid "def2904d-9abc-330c-bb4f-05ab6b7bf91f" .
+
+bldg:MEYR.ZONE.AHU02.HALL.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.HALL.VLV1 COMD" ;
+    brickframe:uuid "371373a9-62d1-32c6-a331-6062b4d94278" .
+
+bldg:MEYR.ZONE.AHU02.HALLS.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.HALLS.VLV1 COMD" ;
+    brickframe:uuid "cc5cf953-4949-3731-8269-e0ce561834b9" .
+
+bldg:MEYR.ZONE.AHU02.RM1103.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1103.VLV1 COMD" ;
+    brickframe:uuid "2e6933e1-e381-3c46-a426-c24e4a19e008" .
+
+bldg:MEYR.ZONE.AHU02.RM1103.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1103.Zone Air Damper Command" ;
+    brickframe:uuid "0e141436-d333-3afd-8357-af696556d5ab" .
+
+bldg:MEYR.ZONE.AHU02.RM1103.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1103.Zone Air Temp" ;
+    brickframe:uuid "5f15cdd8-5e9f-35a8-9e9b-f7c135996024" .
+
+bldg:MEYR.ZONE.AHU02.RM1103.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1103.Zone Air Temp Setpoint" ;
+    brickframe:uuid "c0371ae0-3ec0-301a-b288-acdf898c16f7" .
+
+bldg:MEYR.ZONE.AHU02.RM1103.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1103.Zone Supply Air Temp" ;
+    brickframe:uuid "61423f32-4001-3d86-b85b-1afccb64208c" .
+
+bldg:MEYR.ZONE.AHU02.RM1103R.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1103R.VLV1 COMD" ;
+    brickframe:uuid "fc72f031-b15c-3b48-bc43-23045f54affb" .
+
+bldg:MEYR.ZONE.AHU02.RM1103R.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1103R.Zone Air Damper Command" ;
+    brickframe:uuid "5d0e367d-67f5-3db4-aaa9-0355213aace2" .
+
+bldg:MEYR.ZONE.AHU02.RM1103R.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1103R.Zone Air Temp" ;
+    brickframe:uuid "86e61d19-1e60-340f-9323-ce891ebec2bc" .
+
+bldg:MEYR.ZONE.AHU02.RM1103R.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1103R.Zone Air Temp Setpoint" ;
+    brickframe:uuid "25205d9a-b872-3721-9624-dadb21fed5aa" .
+
+bldg:MEYR.ZONE.AHU02.RM1103R.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1103R.Zone Supply Air Temp" ;
+    brickframe:uuid "f5685854-2d05-33e3-a19a-d5040d188964" .
+
+bldg:MEYR.ZONE.AHU02.RM1105.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1105.VLV1 COMD" ;
+    brickframe:uuid "45ba686e-1281-35e1-b836-2ea86237e492" .
+
+bldg:MEYR.ZONE.AHU02.RM1105.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1105.Zone Air Damper Command" ;
+    brickframe:uuid "f75c18bc-c48d-3ec3-9c0d-d476c4abd543" .
+
+bldg:MEYR.ZONE.AHU02.RM1105.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1105.Zone Air Temp" ;
+    brickframe:uuid "386e3004-b2f2-3756-8934-fc19161a2eeb" .
+
+bldg:MEYR.ZONE.AHU02.RM1105.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1105.Zone Air Temp Setpoint" ;
+    brickframe:uuid "ad298d39-f881-3df3-85c9-2ac73e2214f4" .
+
+bldg:MEYR.ZONE.AHU02.RM1105.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1105.Zone Supply Air Temp" ;
+    brickframe:uuid "b29895e5-e589-30db-9e4f-efe58eb81f3f" .
+
+bldg:MEYR.ZONE.AHU02.RM1111.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1111.VLV1 COMD" ;
+    brickframe:uuid "45bcdd92-17f2-3f33-95f6-6aeca196aa99" .
+
+bldg:MEYR.ZONE.AHU02.RM1111.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1111.Zone Air Damper Command" ;
+    brickframe:uuid "694b1a63-1f3c-3001-b226-43c53aacf0ac" .
+
+bldg:MEYR.ZONE.AHU02.RM1111.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1111.Zone Air Temp" ;
+    brickframe:uuid "c7319fcc-f749-3675-bab3-bb7f63b6efc9" .
+
+bldg:MEYR.ZONE.AHU02.RM1111.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1111.Zone Air Temp Setpoint" ;
+    brickframe:uuid "255a9491-0546-37dc-8660-3a6e32c59f49" .
+
+bldg:MEYR.ZONE.AHU02.RM1111.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1111.Zone Supply Air Temp" ;
+    brickframe:uuid "9c0fb56c-b40e-36b4-b746-ad5309b2338a" .
+
+bldg:MEYR.ZONE.AHU02.RM1113.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1113.VLV1 COMD" ;
+    brickframe:uuid "f0704e00-9a59-342e-845f-1b47d70dc861" .
+
+bldg:MEYR.ZONE.AHU02.RM1113.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1113.Zone Air Damper Command" ;
+    brickframe:uuid "c6015918-e643-3fad-b680-a225790521e6" .
+
+bldg:MEYR.ZONE.AHU02.RM1113.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1113.Zone Air Temp" ;
+    brickframe:uuid "bdeaaa10-9dbc-34b1-aef1-1a5c3c64292b" .
+
+bldg:MEYR.ZONE.AHU02.RM1113.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1113.Zone Air Temp Setpoint" ;
+    brickframe:uuid "dc31cfae-5278-394f-b36c-171c57d842fb" .
+
+bldg:MEYR.ZONE.AHU02.RM1113.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1113.Zone Supply Air Temp" ;
+    brickframe:uuid "88f059eb-c59a-3fea-9eb1-aa5efac81dc1" .
+
+bldg:MEYR.ZONE.AHU02.RM1114.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1114.Zone Air Damper Command" ;
+    brickframe:uuid "8c21ff1d-d5f6-34d4-a00c-088653882600" .
+
+bldg:MEYR.ZONE.AHU02.RM1114.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1114.Zone Air Temp" ;
+    brickframe:uuid "fc311c9d-6425-324a-8b71-f859c1ea4178" .
+
+bldg:MEYR.ZONE.AHU02.RM1114.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1114.Zone Air Temp Setpoint" ;
+    brickframe:uuid "de8666e0-e44a-3b0b-b462-7bc63061fa77" .
+
+bldg:MEYR.ZONE.AHU02.RM1131N.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1131N.VLV1 COMD" ;
+    brickframe:uuid "c25790e0-210b-3454-9e29-6925db325d02" .
+
+bldg:MEYR.ZONE.AHU02.RM1131N.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1131N.Zone Air Damper Command" ;
+    brickframe:uuid "19adb38f-62dc-35d1-bced-e37966e99a26" .
+
+bldg:MEYR.ZONE.AHU02.RM1131N.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1131N.Zone Air Temp" ;
+    brickframe:uuid "393b1840-a0e4-3ecb-a2a8-6838f9cf3ad5" .
+
+bldg:MEYR.ZONE.AHU02.RM1131N.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1131N.Zone Air Temp Setpoint" ;
+    brickframe:uuid "892befde-1c6f-30c6-9dde-d475e4ff7305" .
+
+bldg:MEYR.ZONE.AHU02.RM1131N.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1131N.Zone Supply Air Temp" ;
+    brickframe:uuid "dd369cee-39aa-362a-be51-a055f5be490d" .
+
+bldg:MEYR.ZONE.AHU02.RM1131S.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1131S.VLV1 COMD" ;
+    brickframe:uuid "4bcba7b6-a60d-384d-8244-3eb799f76f48" .
+
+bldg:MEYR.ZONE.AHU02.RM1131S.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1131S.Zone Air Damper Command" ;
+    brickframe:uuid "77322a50-5cc3-3d5c-b2f5-cb9b43512512" .
+
+bldg:MEYR.ZONE.AHU02.RM1131S.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1131S.Zone Air Temp" ;
+    brickframe:uuid "2bfc7842-9b43-3f94-ab98-51f1f39a9646" .
+
+bldg:MEYR.ZONE.AHU02.RM1131S.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1131S.Zone Air Temp Setpoint" ;
+    brickframe:uuid "737d4376-2c15-36c3-ba79-dcd66f7e0eb6" .
+
+bldg:MEYR.ZONE.AHU02.RM1131S.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1131S.Zone Supply Air Temp" ;
+    brickframe:uuid "0dd11c58-ae6a-3c72-aa3b-b5cc5c99bfc3" .
+
+bldg:MEYR.ZONE.AHU02.RM1135.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1135.VLV1 COMD" ;
+    brickframe:uuid "714838e0-f2fe-3726-9604-7fa21096172e" .
+
+bldg:MEYR.ZONE.AHU02.RM1135.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1135.Zone Air Damper Command" ;
+    brickframe:uuid "6d772516-7b76-3a90-9c9b-711225d8b61c" .
+
+bldg:MEYR.ZONE.AHU02.RM1135.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1135.Zone Air Temp" ;
+    brickframe:uuid "1600d16c-8d4c-3036-94b9-42964ee4bd69" .
+
+bldg:MEYR.ZONE.AHU02.RM1135.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1135.Zone Air Temp Setpoint" ;
+    brickframe:uuid "5d8209a6-b3af-3d4f-a5cc-edafacaa9bd9" .
+
+bldg:MEYR.ZONE.AHU02.RM1135.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1135.Zone Supply Air Temp" ;
+    brickframe:uuid "d4604793-1b63-343f-bfe1-d2aa06a0a709" .
+
+bldg:MEYR.ZONE.AHU02.RM1138.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1138.Zone Air Damper Command" ;
+    brickframe:uuid "038096fe-829a-314f-aa5c-291735089336" .
+
+bldg:MEYR.ZONE.AHU02.RM1138.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1138.Zone Air Temp" ;
+    brickframe:uuid "23e0e620-f55f-31bb-adf3-a6fd80f0ea51" .
+
+bldg:MEYR.ZONE.AHU02.RM1138.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1138.Zone Air Temp Setpoint" ;
+    brickframe:uuid "5c0349d4-a6eb-3ea5-be55-1f6242c77220" .
+
+bldg:MEYR.ZONE.AHU02.RM1139.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1139.VLV1 COMD" ;
+    brickframe:uuid "c717c8e0-83f1-337b-ad69-d96c525173a9" .
+
+bldg:MEYR.ZONE.AHU02.RM1139.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1139.Zone Air Damper Command" ;
+    brickframe:uuid "48f5c3bb-daca-3569-a66f-50247f1219d2" .
+
+bldg:MEYR.ZONE.AHU02.RM1139.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1139.Zone Air Temp" ;
+    brickframe:uuid "9373e6c0-0ef4-3b33-b65c-155edc480b67" .
+
+bldg:MEYR.ZONE.AHU02.RM1139.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1139.Zone Air Temp Setpoint" ;
+    brickframe:uuid "0a54116e-2701-3477-b930-dede1d71074e" .
+
+bldg:MEYR.ZONE.AHU02.RM1139.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM1139.Zone Supply Air Temp" ;
+    brickframe:uuid "cf2b156d-6894-350e-b156-26f216e44c2a" .
+
+bldg:MEYR.ZONE.AHU02.RM2111.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM2111.VLV1 COMD" ;
+    brickframe:uuid "84f9a917-e344-33db-9be0-50f0113d5a68" .
+
+bldg:MEYR.ZONE.AHU02.RM2111.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM2111.Zone Air Damper Command" ;
+    brickframe:uuid "2da61546-2c1c-3566-8623-d458083891e1" .
+
+bldg:MEYR.ZONE.AHU02.RM2111.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM2111.Zone Air Temp" ;
+    brickframe:uuid "9c58f26d-621c-3754-a185-d92bcf5b0e13" .
+
+bldg:MEYR.ZONE.AHU02.RM2111.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM2111.Zone Air Temp Setpoint" ;
+    brickframe:uuid "5315f719-d50b-3220-b0fa-9c44607add94" .
+
+bldg:MEYR.ZONE.AHU02.RM2111.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM2111.Zone Supply Air Temp" ;
+    brickframe:uuid "19b57438-1bb5-39e6-a8b8-51dfce0ee565" .
+
+bldg:MEYR.ZONE.AHU02.RM2131.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM2131.Zone Air Damper Command" ;
+    brickframe:uuid "f3f035dd-a9c4-31c9-b943-819ed7a6f1e4" .
+
+bldg:MEYR.ZONE.AHU02.RM2131.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM2131.Zone Air Temp" ;
+    brickframe:uuid "2bd600af-c0a4-3071-a705-ce370468ca2c" .
+
+bldg:MEYR.ZONE.AHU02.RM2131.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM2131.Zone Air Temp Setpoint" ;
+    brickframe:uuid "91040328-c5e1-3c87-96ab-69fc3810852a" .
+
+bldg:MEYR.ZONE.AHU02.RM2131E.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM2131E.VLV1 COMD" ;
+    brickframe:uuid "261474b0-93c2-3277-8df3-ba2f54090a9b" .
+
+bldg:MEYR.ZONE.AHU02.RM2131E.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM2131E.Zone Air Damper Command" ;
+    brickframe:uuid "83f9c169-6894-3233-b727-179dff413e68" .
+
+bldg:MEYR.ZONE.AHU02.RM2131E.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM2131E.Zone Air Temp" ;
+    brickframe:uuid "60f73639-c60a-3923-8cda-00ce3df42693" .
+
+bldg:MEYR.ZONE.AHU02.RM2131E.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM2131E.Zone Air Temp Setpoint" ;
+    brickframe:uuid "e26d91ee-9167-3fa0-bcae-f52be0937337" .
+
+bldg:MEYR.ZONE.AHU02.RM2131E.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM2131E.Zone Supply Air Temp" ;
+    brickframe:uuid "69ad4f03-2a93-3c5c-abbb-bfc9014e4a33" .
+
+bldg:MEYR.ZONE.AHU02.RM2131NE.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM2131NE.VLV1 COMD" ;
+    brickframe:uuid "76a54148-0cfc-3518-b52b-4e44d38a15eb" .
+
+bldg:MEYR.ZONE.AHU02.RM2131NE.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM2131NE.Zone Air Damper Command" ;
+    brickframe:uuid "081f244e-bbf7-3e92-b5c7-8b860a083b76" .
+
+bldg:MEYR.ZONE.AHU02.RM2131NE.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM2131NE.Zone Air Temp" ;
+    brickframe:uuid "490df671-31d8-3a2e-895e-5dff5f8edaba" .
+
+bldg:MEYR.ZONE.AHU02.RM2131NE.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM2131NE.Zone Air Temp Setpoint" ;
+    brickframe:uuid "36d0ae19-44fc-3de5-8d4b-db32bff84374" .
+
+bldg:MEYR.ZONE.AHU02.RM2131NE.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM2131NE.Zone Supply Air Temp" ;
+    brickframe:uuid "5bb1158c-6c97-36ee-ae8c-63f6f979e509" .
+
+bldg:MEYR.ZONE.AHU02.RM2131SE.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM2131SE.VLV1 COMD" ;
+    brickframe:uuid "9efd953c-36fb-3b68-a15f-f1fa4ab56002" .
+
+bldg:MEYR.ZONE.AHU02.RM2131SE.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM2131SE.Zone Air Damper Command" ;
+    brickframe:uuid "b274f447-063d-3cfe-a610-d78f6301c59f" .
+
+bldg:MEYR.ZONE.AHU02.RM2131SE.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM2131SE.Zone Air Temp" ;
+    brickframe:uuid "1b012d79-576e-3cf5-bd7c-f8263301e2b2" .
+
+bldg:MEYR.ZONE.AHU02.RM2131SE.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM2131SE.Zone Air Temp Setpoint" ;
+    brickframe:uuid "17854817-fabc-35ad-8a6d-07d7a4782cbb" .
+
+bldg:MEYR.ZONE.AHU02.RM2131SE.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM2131SE.Zone Supply Air Temp" ;
+    brickframe:uuid "6e7d09eb-b6fd-3f51-8deb-e3b7f237d63e" .
+
+bldg:MEYR.ZONE.AHU02.RM2154.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM2154.Zone Air Damper Command" ;
+    brickframe:uuid "352a2a88-bc3b-3eee-8269-0f51fd854c72" .
+
+bldg:MEYR.ZONE.AHU02.RM2154.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM2154.Zone Air Temp" ;
+    brickframe:uuid "8e9a86da-f0cc-3ca5-81be-1de2780fa45a" .
+
+bldg:MEYR.ZONE.AHU02.RM2154.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM2154.Zone Air Temp Setpoint" ;
+    brickframe:uuid "4c2aae8b-61cc-3ad7-a8bb-867325cd9e58" .
+
+bldg:MEYR.ZONE.AHU02.RM3111.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3111.VLV1 COMD" ;
+    brickframe:uuid "e0e1433c-4bce-3e9c-b5b3-8563a4e48620" .
+
+bldg:MEYR.ZONE.AHU02.RM3111.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3111.Zone Air Damper Command" ;
+    brickframe:uuid "80cb1d31-827a-3c48-bc16-3be69f628dd7" .
+
+bldg:MEYR.ZONE.AHU02.RM3111.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3111.Zone Air Temp" ;
+    brickframe:uuid "0cabbd7c-08cf-3fd9-80d3-9e402badaf01" .
+
+bldg:MEYR.ZONE.AHU02.RM3111.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3111.Zone Air Temp Setpoint" ;
+    brickframe:uuid "c3ca03ad-9f4b-3ccc-8c50-4af23e996da5" .
+
+bldg:MEYR.ZONE.AHU02.RM3111.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3111.Zone Supply Air Temp" ;
+    brickframe:uuid "ad6e73a3-ae0a-3734-8f09-d8aedd30c340" .
+
+bldg:MEYR.ZONE.AHU02.RM3135.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3135.VLV1 COMD" ;
+    brickframe:uuid "20dd3ae2-65ed-30eb-951b-716b15765af6" .
+
+bldg:MEYR.ZONE.AHU02.RM3135.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3135.Zone Air Damper Command" ;
+    brickframe:uuid "e0661eed-341d-31f1-9244-5d556b10a9d2" .
+
+bldg:MEYR.ZONE.AHU02.RM3135.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3135.Zone Air Temp" ;
+    brickframe:uuid "80426fd2-57fb-3581-a24a-e1df2cf5de1c" .
+
+bldg:MEYR.ZONE.AHU02.RM3135.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3135.Zone Air Temp Setpoint" ;
+    brickframe:uuid "6ab06003-6364-39c0-97d8-28fd094ac7f3" .
+
+bldg:MEYR.ZONE.AHU02.RM3135.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3135.Zone Supply Air Temp" ;
+    brickframe:uuid "ccf29bc9-5cd6-3e0a-bd1a-f0aa15c7b064" .
+
+bldg:MEYR.ZONE.AHU02.RM3135B.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3135B.VLV1 COMD" ;
+    brickframe:uuid "874055e9-e2dd-3ceb-a385-58ede13c64ee" .
+
+bldg:MEYR.ZONE.AHU02.RM3135B.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3135B.Zone Air Damper Command" ;
+    brickframe:uuid "9f15b66c-f8a6-3c25-af41-0ddfe21f07f2" .
+
+bldg:MEYR.ZONE.AHU02.RM3135B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3135B.Zone Air Temp" ;
+    brickframe:uuid "d90ff3df-df8a-30dc-9cb7-ee8e2ba65ec7" .
+
+bldg:MEYR.ZONE.AHU02.RM3135B.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3135B.Zone Air Temp Setpoint" ;
+    brickframe:uuid "3e38e8c5-2121-3da5-92b3-e8db427f904b" .
+
+bldg:MEYR.ZONE.AHU02.RM3135B.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3135B.Zone Supply Air Temp" ;
+    brickframe:uuid "dee21fe5-6913-3010-aadc-cb61918986a1" .
+
+bldg:MEYR.ZONE.AHU02.RM3135D.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3135D.VLV1 COMD" ;
+    brickframe:uuid "54f914f9-c687-3c2b-93c0-b4769c9320c9" .
+
+bldg:MEYR.ZONE.AHU02.RM3135D.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3135D.Zone Air Damper Command" ;
+    brickframe:uuid "645c1074-7947-3e72-93bf-512781e8f678" .
+
+bldg:MEYR.ZONE.AHU02.RM3135D.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3135D.Zone Air Temp" ;
+    brickframe:uuid "69d99a4c-f402-3dd5-b6cf-8dc0a56df2d1" .
+
+bldg:MEYR.ZONE.AHU02.RM3135D.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3135D.Zone Air Temp Setpoint" ;
+    brickframe:uuid "b5825476-75aa-39b8-a669-83ba4efac5dd" .
+
+bldg:MEYR.ZONE.AHU02.RM3135D.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3135D.Zone Supply Air Temp" ;
+    brickframe:uuid "7cf623e9-aa53-3fd6-a0ed-53e2ed504f47" .
+
+bldg:MEYR.ZONE.AHU02.RM3138.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3138.Zone Air Damper Command" ;
+    brickframe:uuid "ff8a7f07-fb17-3a99-83a2-e5787ef9231d" .
+
+bldg:MEYR.ZONE.AHU02.RM3138.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3138.Zone Air Temp" ;
+    brickframe:uuid "5e7a8fe5-7a58-3649-89e4-6e5799111a00" .
+
+bldg:MEYR.ZONE.AHU02.RM3138.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3138.Zone Air Temp Setpoint" ;
+    brickframe:uuid "44f3acbb-8b25-3830-b740-d9c97e902721" .
+
+bldg:MEYR.ZONE.AHU02.RM3148.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3148.Zone Air Damper Command" ;
+    brickframe:uuid "3facc087-e64c-3489-ba8b-640d6db57938" .
+
+bldg:MEYR.ZONE.AHU02.RM3148.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3148.Zone Air Temp" ;
+    brickframe:uuid "f3f8fd3e-9ab5-3749-ba94-ab5315881ab7" .
+
+bldg:MEYR.ZONE.AHU02.RM3148.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3148.Zone Air Temp Setpoint" ;
+    brickframe:uuid "c820de36-30b2-3f18-a4c6-619943278ba6" .
+
+bldg:MEYR.ZONE.AHU02.RM3150B.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3150B.VLV1 COMD" ;
+    brickframe:uuid "e3daad87-01c3-3bf8-ac44-dadf88847575" .
+
+bldg:MEYR.ZONE.AHU02.RM3150B.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3150B.Zone Air Damper Command" ;
+    brickframe:uuid "10ea6139-005b-3013-b9f0-910c3f83882f" .
+
+bldg:MEYR.ZONE.AHU02.RM3150B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3150B.Zone Air Temp" ;
+    brickframe:uuid "6bd05c89-f54a-3ac3-a8a7-fff20bcb1514" .
+
+bldg:MEYR.ZONE.AHU02.RM3150B.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3150B.Zone Air Temp Setpoint" ;
+    brickframe:uuid "4d08892d-149a-3e0e-9061-8faf9aee4f54" .
+
+bldg:MEYR.ZONE.AHU02.RM3150B.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM3150B.Zone Supply Air Temp" ;
+    brickframe:uuid "c26903d4-2f4a-3344-a918-5505de5e3f2e" .
+
+bldg:MEYR.ZONE.AHU02.RM4111.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4111.VLV1 COMD" ;
+    brickframe:uuid "c8013102-fed0-319a-b56f-8ee3ad726e81" .
+
+bldg:MEYR.ZONE.AHU02.RM4111.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4111.Zone Air Damper Command" ;
+    brickframe:uuid "3142c695-bc5d-367a-a2a7-fcf91c29a7dd" .
+
+bldg:MEYR.ZONE.AHU02.RM4111.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4111.Zone Air Temp" ;
+    brickframe:uuid "be8fb8c3-5187-3cb2-8096-44c7d48f8f49" .
+
+bldg:MEYR.ZONE.AHU02.RM4111.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4111.Zone Air Temp Setpoint" ;
+    brickframe:uuid "714a97d8-6ffb-3334-abb5-adaad178af85" .
+
+bldg:MEYR.ZONE.AHU02.RM4111.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4111.Zone Supply Air Temp" ;
+    brickframe:uuid "f9310d03-40ab-3dfb-9b93-f86f1d96ee18" .
+
+bldg:MEYR.ZONE.AHU02.RM4123A.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4123A.VLV1 COMD" ;
+    brickframe:uuid "0473ebc6-19de-3ebd-b6db-3b765fa44184" .
+
+bldg:MEYR.ZONE.AHU02.RM4123A.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4123A.Zone Air Damper Command" ;
+    brickframe:uuid "380a7b7a-e43b-3b28-84f5-a41dfd9ec447" .
+
+bldg:MEYR.ZONE.AHU02.RM4123A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4123A.Zone Air Temp" ;
+    brickframe:uuid "5539ae50-5462-312b-abf8-f9df661b6ba7" .
+
+bldg:MEYR.ZONE.AHU02.RM4123A.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4123A.Zone Air Temp Setpoint" ;
+    brickframe:uuid "9b499df3-9d6f-3156-ae2b-9f8ce4cdf2ff" .
+
+bldg:MEYR.ZONE.AHU02.RM4123A.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4123A.Zone Supply Air Temp" ;
+    brickframe:uuid "b1d5e82b-c018-3a36-a931-f26e7bd2c6b3" .
+
+bldg:MEYR.ZONE.AHU02.RM4138N.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4138N.VLV1 COMD" ;
+    brickframe:uuid "bf4369d7-211f-3104-aff0-731da464b838" .
+
+bldg:MEYR.ZONE.AHU02.RM4138N.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4138N.Zone Air Damper Command" ;
+    brickframe:uuid "79d3626f-5c21-363b-9ed7-09976939e4da" .
+
+bldg:MEYR.ZONE.AHU02.RM4138N.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4138N.Zone Air Temp" ;
+    brickframe:uuid "69723425-5b76-307d-ba66-cdd00bdbf550" .
+
+bldg:MEYR.ZONE.AHU02.RM4138N.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4138N.Zone Air Temp Setpoint" ;
+    brickframe:uuid "2fe6fb66-009c-34f8-aae0-ea09f633269e" .
+
+bldg:MEYR.ZONE.AHU02.RM4138N.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4138N.Zone Supply Air Temp" ;
+    brickframe:uuid "48728f45-d3c5-31ee-a576-b68312a8ff32" .
+
+bldg:MEYR.ZONE.AHU02.RM4138S.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4138S.VLV1 COMD" ;
+    brickframe:uuid "0b2dfe1a-8fcd-31b2-a230-f6cd8e92c9e8" .
+
+bldg:MEYR.ZONE.AHU02.RM4138S.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4138S.Zone Air Damper Command" ;
+    brickframe:uuid "d42c601f-c6ec-3238-bc4b-58d76f6e75bd" .
+
+bldg:MEYR.ZONE.AHU02.RM4138S.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4138S.Zone Air Temp" ;
+    brickframe:uuid "1132e223-db80-307c-8e41-0a993f2d7787" .
+
+bldg:MEYR.ZONE.AHU02.RM4138S.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4138S.Zone Air Temp Setpoint" ;
+    brickframe:uuid "b9b54a95-328c-38a9-8e7b-d302ff006f39" .
+
+bldg:MEYR.ZONE.AHU02.RM4138S.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4138S.Zone Supply Air Temp" ;
+    brickframe:uuid "e172cabb-c546-349b-9b1a-3928d70b032b" .
+
+bldg:MEYR.ZONE.AHU02.RM4150.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4150.Zone Air Damper Command" ;
+    brickframe:uuid "292099b2-6f0d-36a5-ab24-c29bc4260933" .
+
+bldg:MEYR.ZONE.AHU02.RM4150.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4150.Zone Air Temp" ;
+    brickframe:uuid "e68fd699-bc54-3095-8eb1-2756bc2b7a8b" .
+
+bldg:MEYR.ZONE.AHU02.RM4150.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4150.Zone Air Temp Setpoint" ;
+    brickframe:uuid "98b228b2-2c53-31bf-a879-5b7324755c16" .
+
+bldg:MEYR.ZONE.AHU02.RM4202.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4202.Zone Air Damper Command" ;
+    brickframe:uuid "387e3ab3-91.0.2c9e-b2b5-f16211c68536" .
+
+bldg:MEYR.ZONE.AHU02.RM4202.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4202.Zone Air Temp" ;
+    brickframe:uuid "a1d2e45b-80cd-3fdd-9488-ea9f23a14061" .
+
+bldg:MEYR.ZONE.AHU02.RM4202.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4202.Zone Air Temp Setpoint" ;
+    brickframe:uuid "9b60d962-b7ab-3291-b293-960b5544a069" .
+
+bldg:MEYR.ZONE.AHU02.RM4202_A.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4202_A.VLV1 COMD" ;
+    brickframe:uuid "702d4c84-6d68-3ebb-875d-0a49069f3558" .
+
+bldg:MEYR.ZONE.AHU02.RM4202_A.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4202_A.Zone Air Damper Command" ;
+    brickframe:uuid "d94c2f98-654f-3615-bab1-291b2a605de4" .
+
+bldg:MEYR.ZONE.AHU02.RM4202_A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4202_A.Zone Air Temp" ;
+    brickframe:uuid "330edb4d-ecea-33e0-a090-0e04f2fc17d1" .
+
+bldg:MEYR.ZONE.AHU02.RM4202_A.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4202_A.Zone Air Temp Setpoint" ;
+    brickframe:uuid "1c7b5309-0baf-37b6-84e5-788c5cb29d3b" .
+
+bldg:MEYR.ZONE.AHU02.RM4202_A.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4202_A.Zone Supply Air Temp" ;
+    brickframe:uuid "4f91c45c-382b-3ca8-984c-5f75c6cd09d4" .
+
+bldg:MEYR.ZONE.AHU02.RM4202_B.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4202_B.Zone Air Damper Command" ;
+    brickframe:uuid "fe37bae7-eff4-3f13-934c-9e82ccc3b2ec" .
+
+bldg:MEYR.ZONE.AHU02.RM4202_B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4202_B.Zone Air Temp" ;
+    brickframe:uuid "9bddaeb4-ab32-340f-8ac8-16b4307c3d9d" .
+
+bldg:MEYR.ZONE.AHU02.RM4202_B.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MEYR.ZONE.AHU02.RM4202_B.Zone Air Temp Setpoint" ;
+    brickframe:uuid "2e67a3e9-ea3b-3602-b4da-12bbe6a61c9d" .
+
+bldg:MEYR.ZONE.AHU02.VEST1.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.VEST1.VLV1 COMD" ;
+    brickframe:uuid "98c9cb90-564c-3b19-b4d6-b839007e1224" .
+
+bldg:MEYR.ZONE.AHU02.VEST2.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.VEST2.VLV1 COMD" ;
+    brickframe:uuid "2fec1687-a5b2-31ef-bc37-512c61e31032" .
+
+bldg:MEYR.ZONE.AHU02.VEST3.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.VEST3.VLV1 COMD" ;
+    brickframe:uuid "b1e1add1-82ea-3090-8735-745902513c51" .
+
+bldg:MEYR.ZONE.AHU02.VEST4.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:MEYR ;
+    brickframe:pointname "MEYR.ZONE.AHU02.VEST4.VLV1 COMD" ;
+    brickframe:uuid "b2ba805a-072d-3f45-9e4f-b19a06f3e03f" .
+
+bldg:RM1103 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM1103_room .
+
+bldg:RM1103R a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM1103R_room .
+
+bldg:RM1105 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM1105_room .
+
+bldg:RM1111 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM1111_room .
+
+bldg:RM1113 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM1113_room .
+
+bldg:RM1114 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM1114_room .
+
+bldg:RM1131N a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM1131N_room .
+
+bldg:RM1131S a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM1131S_room .
+
+bldg:RM1135 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM1135_room .
+
+bldg:RM1138 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM1138_room .
+
+bldg:RM1139 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM1139_room .
+
+bldg:RM1154A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM1154A_room .
+
+bldg:RM1154D a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM1154D_room .
+
+bldg:RM1154E a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM1154E_room .
+
+bldg:RM1154W a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM1154W_room .
+
+bldg:RM1202 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM1202_room .
+
+bldg:RM1223N a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM1223N_room .
+
+bldg:RM1223S a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM1223S_room .
+
+bldg:RM1249 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM1249_room .
+
+bldg:RM1254 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM1254_room .
+
+bldg:RM1256 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM1256_room .
+
+bldg:RM1258 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM1258_room .
+
+bldg:RM2111 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM2111_room .
+
+bldg:RM2127 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM2127_room .
+
+bldg:RM2131 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM2131_room .
+
+bldg:RM2131E a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM2131E_room .
+
+bldg:RM2131NE a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM2131NE_room .
+
+bldg:RM2131SE a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM2131SE_room .
+
+bldg:RM2154 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM2154_room .
+
+bldg:RM2202 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM2202_room .
+
+bldg:RM2206 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM2206_room .
+
+bldg:RM2218 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM2218_room .
+
+bldg:RM2219E a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM2219E_room .
+
+bldg:RM2222A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM2222A_room .
+
+bldg:RM2223 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM2223_room .
+
+bldg:RM2223A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM2223A_room .
+
+bldg:RM2223C a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM2223C_room .
+
+bldg:RM2249 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM2249_room .
+
+bldg:RM2251 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM2251_room .
+
+bldg:RM3111 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM3111_room .
+
+bldg:RM3135 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM3135_room .
+
+bldg:RM3135B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM3135B_room .
+
+bldg:RM3135D a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM3135D_room .
+
+bldg:RM3138 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM3138_room .
+
+bldg:RM3148 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM3148_room .
+
+bldg:RM3150B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM3150B_room .
+
+bldg:RM3153 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM3153_room .
+
+bldg:RM3202 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM3202_room .
+
+bldg:RM3208E a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM3208E_room .
+
+bldg:RM3208W a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM3208W_room .
+
+bldg:RM3217 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM3217_room .
+
+bldg:RM3249 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM3249_room .
+
+bldg:RM3252 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM3252_room .
+
+bldg:RM3253 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM3253_room .
+
+bldg:RM4111 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM4111_room .
+
+bldg:RM4123A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM4123A_room .
+
+bldg:RM4138N a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM4138N_room .
+
+bldg:RM4138S a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM4138S_room .
+
+bldg:RM4150 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM4150_room .
+
+bldg:RM4202 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM4202_room .
+
+bldg:RM4202_A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM4202_A_room .
+
+bldg:RM4202_B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM4202_B_room .
+
+bldg:RM4204 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM4204_room .
+
+bldg:RM4206 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM4206_room .
+
+bldg:RM4218N a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM4218N_room .
+
+bldg:RM4218S a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM4218S_room .
+
+bldg:RM4249 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM4249_room .
+
+bldg:RM4251 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPart bldg:RM4251_room .
+
+bldg:VAVELEV_HALL1 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:ELEV_HALL1 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.ELEV_HALL1.VLV1_COMD .
+
+bldg:VAVELEV_HALL2 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:ELEV_HALL2 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.ELEV_HALL2.VLV1_COMD .
+
+bldg:VAVELEV_HALL3 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:ELEV_HALL3 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.ELEV_HALL3.VLV1_COMD .
+
+bldg:VAVELEV_HALL4 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:ELEV_HALL4 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.ELEV_HALL4.VLV1_COMD .
+
+bldg:VAVHALLS a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:HALLS ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.HALLS.VLV1_COMD .
+
+bldg:VEST1 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:VEST2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:VEST3 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:VEST4 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:hasPoint bldg:MEYR.CHW.Building_Chilled_Water_Flow,
+        bldg:MEYR.CHW.Building_Chilled_Water_Supply_Temp,
+        bldg:MEYR.CHW.Building_Chilled_Water_Supply_Temp_Setpoint,
+        bldg:MEYR.CHW.Lab_Chilled_Water_Return_Temp,
+        bldg:MEYR.CHW.Loop_Chilled_Water_Flow,
+        bldg:MEYR.CHW.Loop_Chilled_Water_Return_Temp,
+        bldg:MEYR.CHW.Loop_Chilled_Water_Supply_Temp,
+        bldg:MEYR.CHW.Office_Chilled_Water_Return_Temp .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+bldg:RM1103R_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM1103_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM1105_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM1111_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM1113_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM1114_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM1131N_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM1131S_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM1135_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM1138_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM1139_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM1154A_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM1154D_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM1154E_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM1154W_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM1202_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM1223N_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM1223S_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM1249_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM1254_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM1256_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM1258_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM2111_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM2127_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM2131E_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM2131NE_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM2131SE_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM2131_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM2154_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM2202_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM2206_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM2218_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM2219E_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM2222A_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM2223A_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM2223C_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM2223_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM2249_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM2251_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM3111_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM3135B_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM3135D_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM3135_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM3138_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM3148_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM3150B_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM3153_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM3202_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM3208E_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM3208W_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM3217_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM3249_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM3252_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM3253_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM4111_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM4123A_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM4138N_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM4138S_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM4150_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM4202_A_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM4202_B_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM4202_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM4204_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM4206_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM4218N_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM4218S_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM4249_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:RM4251_room a brick1:Room ;
+    brickframe:hasSite bldg:MEYR .
+
+bldg:VAVHALL a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:HALL ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.HALL.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU02.HALL.VLV1_COMD .
+
+bldg:VAVRM1103 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM1103 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM1103.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU02.RM1103.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM1103.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU02.RM1103.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1103R a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM1103R ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM1103R.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU02.RM1103R.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM1103R.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU02.RM1103R.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1105 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM1105 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM1105.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU02.RM1105.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM1105.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU02.RM1105.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1111 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM1111 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM1111.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU02.RM1111.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM1111.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU02.RM1111.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1113 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM1113 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM1113.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU02.RM1113.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM1113.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU02.RM1113.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1114 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM1114 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM1114.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM1114.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1131N a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM1131N ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM1131N.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU02.RM1131N.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM1131N.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU02.RM1131N.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1131S a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM1131S ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM1131S.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU02.RM1131S.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM1131S.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU02.RM1131S.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1135 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM1135 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM1135.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU02.RM1135.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM1135.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU02.RM1135.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1138 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM1138 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM1138.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM1138.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1139 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM1139 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM1139.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU02.RM1139.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM1139.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU02.RM1139.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1154A a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM1154A ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM1154A.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM1154A.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1154D a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM1154D ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM1154D.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU01.RM1154D.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM1154D.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU01.RM1154D.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1154E a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM1154E ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM1154E.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU01.RM1154E.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM1154E.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU01.RM1154E.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1154W a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM1154W ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM1154W.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU01.RM1154W.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM1154W.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU01.RM1154W.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1202 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM1202 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM1202.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM1202.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1223N a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM1223N ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM1223N.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU01.RM1223N.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM1223N.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU01.RM1223N.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1223S a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM1223S ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM1223S.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU01.RM1223S.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM1223S.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU01.RM1223S.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1249 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM1249 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM1249.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU01.RM1249.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM1249.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU01.RM1249.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1254 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM1254 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM1254.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM1254.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1256 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM1256 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM1256.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM1256.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1258 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM1258 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM1258.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM1258.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM2111 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM2111 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM2111.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU02.RM2111.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM2111.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU02.RM2111.Zone_Supply_Air_Temp .
+
+bldg:VAVRM2127 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM2127 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM2127.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM2127.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM2131 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM2131 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM2131.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM2131.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM2131E a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM2131E ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM2131E.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU02.RM2131E.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM2131E.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU02.RM2131E.Zone_Supply_Air_Temp .
+
+bldg:VAVRM2131NE a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM2131NE ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM2131NE.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU02.RM2131NE.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM2131NE.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU02.RM2131NE.Zone_Supply_Air_Temp .
+
+bldg:VAVRM2131SE a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM2131SE ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM2131SE.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU02.RM2131SE.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM2131SE.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU02.RM2131SE.Zone_Supply_Air_Temp .
+
+bldg:VAVRM2154 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM2154 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM2154.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM2154.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM2202 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM2202 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM2202.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM2202.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM2206 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM2206 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM2206.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM2206.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM2218 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM2218 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM2218.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM2218.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM2219E a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM2219E ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM2219E.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU01.RM2219E.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM2219E.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU01.RM2219E.Zone_Supply_Air_Temp .
+
+bldg:VAVRM2222A a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM2222A ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM2222A.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM2222A.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM2223 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM2223 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM2223.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU01.RM2223.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM2223.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU01.RM2223.Zone_Supply_Air_Temp .
+
+bldg:VAVRM2223A a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM2223A ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM2223A.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU01.RM2223A.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM2223A.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU01.RM2223A.Zone_Supply_Air_Temp .
+
+bldg:VAVRM2223C a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM2223C ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM2223C.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU01.RM2223C.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM2223C.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU01.RM2223C.Zone_Supply_Air_Temp .
+
+bldg:VAVRM2249 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM2249 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM2249.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU01.RM2249.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM2249.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU01.RM2249.Zone_Supply_Air_Temp .
+
+bldg:VAVRM2251 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM2251 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM2251.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU01.RM2251.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM2251.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU01.RM2251.Zone_Supply_Air_Temp .
+
+bldg:VAVRM3111 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM3111 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM3111.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU02.RM3111.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM3111.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU02.RM3111.Zone_Supply_Air_Temp .
+
+bldg:VAVRM3135 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM3135 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM3135.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU02.RM3135.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM3135.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU02.RM3135.Zone_Supply_Air_Temp .
+
+bldg:VAVRM3135B a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM3135B ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM3135B.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU02.RM3135B.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM3135B.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU02.RM3135B.Zone_Supply_Air_Temp .
+
+bldg:VAVRM3135D a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM3135D ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM3135D.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU02.RM3135D.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM3135D.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU02.RM3135D.Zone_Supply_Air_Temp .
+
+bldg:VAVRM3138 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM3138 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM3138.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM3138.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM3148 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM3148 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM3148.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM3148.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM3150B a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM3150B ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM3150B.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU02.RM3150B.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM3150B.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU02.RM3150B.Zone_Supply_Air_Temp .
+
+bldg:VAVRM3153 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM3153 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM3153.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU01.RM3153.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM3153.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU01.RM3153.Zone_Supply_Air_Temp .
+
+bldg:VAVRM3202 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM3202 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM3202.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM3202.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM3208E a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM3208E ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM3208E.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM3208E.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM3208W a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM3208W ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM3208W.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM3208W.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM3217 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM3217 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM3217.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU01.RM3217.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM3217.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU01.RM3217.Zone_Supply_Air_Temp .
+
+bldg:VAVRM3249 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM3249 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM3249.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU01.RM3249.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM3249.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU01.RM3249.Zone_Supply_Air_Temp .
+
+bldg:VAVRM3252 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM3252 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM3252.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM3252.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM3253 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM3253 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM3253.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU01.RM3253.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM3253.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU01.RM3253.Zone_Supply_Air_Temp .
+
+bldg:VAVRM4111 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM4111 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM4111.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU02.RM4111.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM4111.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU02.RM4111.Zone_Supply_Air_Temp .
+
+bldg:VAVRM4123A a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM4123A ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM4123A.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU02.RM4123A.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM4123A.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU02.RM4123A.Zone_Supply_Air_Temp .
+
+bldg:VAVRM4138N a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM4138N ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM4138N.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU02.RM4138N.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM4138N.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU02.RM4138N.Zone_Supply_Air_Temp .
+
+bldg:VAVRM4138S a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM4138S ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM4138S.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU02.RM4138S.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM4138S.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU02.RM4138S.Zone_Supply_Air_Temp .
+
+bldg:VAVRM4150 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM4150 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM4150.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM4150.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM4202 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM4202 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM4202.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM4202.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM4202_A a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM4202_A ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM4202_A.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU02.RM4202_A.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM4202_A.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU02.RM4202_A.Zone_Supply_Air_Temp .
+
+bldg:VAVRM4202_B a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM4202_B ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU02.RM4202_B.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU02.RM4202_B.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM4204 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM4204 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM4204.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM4204.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM4206 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM4206 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM4206.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM4206.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM4218N a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM4218N ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM4218N.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU01.RM4218N.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM4218N.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU01.RM4218N.Zone_Supply_Air_Temp .
+
+bldg:VAVRM4218S a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM4218S ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM4218S.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU01.RM4218S.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM4218S.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU01.RM4218S.Zone_Supply_Air_Temp .
+
+bldg:VAVRM4249 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM4249 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM4249.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU01.RM4249.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM4249.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU01.RM4249.Zone_Supply_Air_Temp .
+
+bldg:VAVRM4251 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:RM4251 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.RM4251.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU01.RM4251.Zone_Air_Temp,
+        bldg:MEYR.ZONE.AHU01.RM4251.Zone_Air_Temp_Setpoint,
+        bldg:MEYR.ZONE.AHU01.RM4251.Zone_Supply_Air_Temp .
+
+bldg:VAVVEST1 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:VEST1 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.VEST1.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU02.VEST1.VLV1_COMD .
+
+bldg:VAVVEST2 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:VEST2 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.VEST2.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU02.VEST2.VLV1_COMD .
+
+bldg:VAVVEST3 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:VEST3 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.VEST3.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU02.VEST3.VLV1_COMD .
+
+bldg:VAVVEST4 a brick1:VAV ;
+    brickframe:hasSite bldg:MEYR ;
+    brick1:feeds bldg:VEST4 ;
+    brick1:hasPoint bldg:MEYR.ZONE.AHU01.VEST4.VLV1_COMD,
+        bldg:MEYR.ZONE.AHU02.VEST4.VLV1_COMD .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:MEYR a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "212616" ;
+    brickframe:Country "US" .
+

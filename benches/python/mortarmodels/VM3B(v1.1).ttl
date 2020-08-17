@@ -1,0 +1,178 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/VM3B#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:AHU01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:VM3B ;
+    brick1:hasPoint bldg:VM3B.AHU.AHU01.CCV,
+        bldg:VM3B.AHU.AHU01.Cooling_Valve_Output,
+        bldg:VM3B.AHU.AHU01.Outside_Air_Temp_Virtual,
+        bldg:VM3B.AHU.AHU01.Supply_Air_Temp,
+        bldg:VM3B.AHU.AHU01.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU02 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:VM3B ;
+    brick1:hasPoint bldg:VM3B.AHU.AHU02.CCV,
+        bldg:VM3B.AHU.AHU02.Cooling_Valve_Output,
+        bldg:VM3B.AHU.AHU02.Supply_Air_Temp,
+        bldg:VM3B.AHU.AHU02.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU03 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:VM3B ;
+    brick1:hasPoint bldg:VM3B.AHU.AHU03.CCV,
+        bldg:VM3B.AHU.AHU03.Cooling_Valve_Output,
+        bldg:VM3B.AHU.AHU03.Supply_Air_Temp,
+        bldg:VM3B.AHU.AHU03.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:VM3B.AHU.AHU01.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:VM3B ;
+    brickframe:pointname "VM3B.AHU.AHU01.CCV" ;
+    brickframe:uuid "2fc6b7ac-7cb6-369f-81e7-98ef8f914da7" .
+
+bldg:VM3B.AHU.AHU01.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:VM3B ;
+    brickframe:pointname "VM3B.AHU.AHU01.Cooling Valve Output" ;
+    brickframe:uuid "8b61c163-3b6c-30ef-8cd6-8a7cdf388aa7" .
+
+bldg:VM3B.AHU.AHU01.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VM3B ;
+    brickframe:pointname "VM3B.AHU.AHU01.Outside Air Temp Virtual" ;
+    brickframe:uuid "e6ec3059-8c8e-3dae-85a0-a35573e5eeff" .
+
+bldg:VM3B.AHU.AHU01.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VM3B ;
+    brickframe:pointname "VM3B.AHU.AHU01.Supply Air Temp" ;
+    brickframe:uuid "db7ad36e-d445-3e1c-9a80-ae0cd2512e82" .
+
+bldg:VM3B.AHU.AHU01.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:VM3B ;
+    brickframe:pointname "VM3B.AHU.AHU01.Supply Air Temp Setpoint" ;
+    brickframe:uuid "38e9e55b-fa2d-3e19-9c41-7cc51c180ee4" .
+
+bldg:VM3B.AHU.AHU02.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:VM3B ;
+    brickframe:pointname "VM3B.AHU.AHU02.CCV" ;
+    brickframe:uuid "7aa01ade-fae5-33f3-bf82-681837063545" .
+
+bldg:VM3B.AHU.AHU02.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:VM3B ;
+    brickframe:pointname "VM3B.AHU.AHU02.Cooling Valve Output" ;
+    brickframe:uuid "d57f965d-75f0-3311-b5b8-029d43a9af48" .
+
+bldg:VM3B.AHU.AHU02.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VM3B ;
+    brickframe:pointname "VM3B.AHU.AHU02.Supply Air Temp" ;
+    brickframe:uuid "e8cdccef-ca1a-379c-87cd-5f4fa7812b30" .
+
+bldg:VM3B.AHU.AHU02.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:VM3B ;
+    brickframe:pointname "VM3B.AHU.AHU02.Supply Air Temp Setpoint" ;
+    brickframe:uuid "24dde362-630b-3b31-9846-f2058a36ef47" .
+
+bldg:VM3B.AHU.AHU03.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:VM3B ;
+    brickframe:pointname "VM3B.AHU.AHU03.CCV" ;
+    brickframe:uuid "f77708ff-a415-3382-9009-b8bb1b5842e8" .
+
+bldg:VM3B.AHU.AHU03.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:VM3B ;
+    brickframe:pointname "VM3B.AHU.AHU03.Cooling Valve Output" ;
+    brickframe:uuid "8335a0e0-4fdf-3554-bab1-e110d5ef24b9" .
+
+bldg:VM3B.AHU.AHU03.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VM3B ;
+    brickframe:pointname "VM3B.AHU.AHU03.Supply Air Temp" ;
+    brickframe:uuid "dc764b35-5736-349b-a7a4-ca2e581d75f6" .
+
+bldg:VM3B.AHU.AHU03.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:VM3B ;
+    brickframe:pointname "VM3B.AHU.AHU03.Supply Air Temp Setpoint" ;
+    brickframe:uuid "ed03871a-fa3b-35a9-b4dd-77612096188d" .
+
+bldg:VM3B.CHW.Enable a brick1:Enable_Command ;
+    brickframe:hasSite bldg:VM3B ;
+    brickframe:pointname "VM3B.CHW.Enable" ;
+    brickframe:uuid "1b9b8ebb-befa-3dfe-afae-5770b5ac1e97" .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:VM3B ;
+    brick1:hasPoint bldg:VM3B.CHW.Enable .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:VM3B a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "117061" ;
+    brickframe:Country "US" .
+

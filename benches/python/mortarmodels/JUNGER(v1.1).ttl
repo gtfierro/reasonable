@@ -1,0 +1,1351 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/JUNGER#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:AC01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:VAVRM0003 .
+
+bldg:AC02 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:VAVRM0004 .
+
+bldg:AC03 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:VAVMEZZ .
+
+bldg:AHU01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:VAVRM0003,
+        bldg:VAVRM0003_MIX,
+        bldg:VAVRM0004,
+        bldg:VAVRM0004_MIX,
+        bldg:VAVRM0005,
+        bldg:VAVRM0005_MIX,
+        bldg:VAVRM0101,
+        bldg:VAVRM0101_MIX,
+        bldg:VAVRM0103,
+        bldg:VAVRM0103_MIX,
+        bldg:VAVRM0105,
+        bldg:VAVRM0105_MIX,
+        bldg:VAVRM0107,
+        bldg:VAVRM0107_MIX,
+        bldg:VAVRM0109,
+        bldg:VAVRM0109_MIX,
+        bldg:VAVRM0111,
+        bldg:VAVRM0111_MIX,
+        bldg:VAVRM0112,
+        bldg:VAVRM0112_MIX,
+        bldg:VAVRM0113,
+        bldg:VAVRM0113_MIX,
+        bldg:VAVRM0115,
+        bldg:VAVRM0115_MIX,
+        bldg:VAVRM0116,
+        bldg:VAVRM0116_MIX,
+        bldg:VAVRM0120A,
+        bldg:VAVRM0120A_MIX,
+        bldg:VAVRM0120B,
+        bldg:VAVRM0120B_MIX,
+        bldg:VAVRM0199,
+        bldg:VAVRM0199_MIX ;
+    brick1:hasPoint bldg:JUNGER.AHU.AHU01.CCV,
+        bldg:JUNGER.AHU.AHU01.Cooling_Valve_Output,
+        bldg:JUNGER.AHU.AHU01.Mixed_Air_Temp,
+        bldg:JUNGER.AHU.AHU01.Outside_Air_Temp,
+        bldg:JUNGER.AHU.AHU01.Return_Air_Temp,
+        bldg:JUNGER.AHU.AHU01.Supply_Air_Temp,
+        bldg:JUNGER.AHU.AHU01.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU02 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPoint bldg:JUNGER.AHU.AHU02.Supply_Air_Temp,
+        bldg:JUNGER.AHU.AHU02.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:damperVAVRM0003 a brick1:Damper ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0003.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM0003 .
+
+bldg:damperVAVRM0004 a brick1:Damper ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0004.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM0004 .
+
+bldg:damperVAVRM0005 a brick1:Damper ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0005.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM0005 .
+
+bldg:damperVAVRM0111 a brick1:Damper ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0111.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM0111 .
+
+bldg:damperVAVRM0112 a brick1:Damper ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0112.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM0112 .
+
+bldg:damperVAVRM0113 a brick1:Damper ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0113.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM0113 .
+
+bldg:damperVAVRM0115 a brick1:Damper ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0115.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM0115 .
+
+bldg:damperVAVRM0116 a brick1:Damper ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0116.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM0116 .
+
+bldg:damperVAVRM0120A a brick1:Damper ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0120A.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM0120A .
+
+bldg:damperVAVRM0120B a brick1:Damper ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0120B.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM0120B .
+
+bldg:floor0 a brick1:Floor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0003_MIX_room,
+        bldg:RM0003_room,
+        bldg:RM0004_MIX_room,
+        bldg:RM0004_room,
+        bldg:RM0005_MIX_room,
+        bldg:RM0005_room,
+        bldg:RM0101_MIX_room,
+        bldg:RM0101_room,
+        bldg:RM0103_MIX_room,
+        bldg:RM0103_room,
+        bldg:RM0105_MIX_room,
+        bldg:RM0105_room,
+        bldg:RM0107_MIX_room,
+        bldg:RM0107_room,
+        bldg:RM0109_MIX_room,
+        bldg:RM0109_room,
+        bldg:RM0111_MIX_room,
+        bldg:RM0111_room,
+        bldg:RM0112_MIX_room,
+        bldg:RM0112_room,
+        bldg:RM0113_MIX_room,
+        bldg:RM0113_room,
+        bldg:RM0115_MIX_room,
+        bldg:RM0115_room,
+        bldg:RM0116_MIX_room,
+        bldg:RM0116_room,
+        bldg:RM0120A_MIX_room,
+        bldg:RM0120A_room,
+        bldg:RM0120B_MIX_room,
+        bldg:RM0120B_room,
+        bldg:RM0199_MIX_room,
+        bldg:RM0199_room .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:JUNGER.AHU.AHU01.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.AHU.AHU01.CCV" ;
+    brickframe:uuid "c41721c8-9dc5-3c49-9f6a-64e26747a374" .
+
+bldg:JUNGER.AHU.AHU01.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.AHU.AHU01.Cooling Valve Output" ;
+    brickframe:uuid "0f053062-ecda-37de-b71c-de4372af2117" .
+
+bldg:JUNGER.AHU.AHU01.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.AHU.AHU01.Mixed Air Temp" ;
+    brickframe:uuid "6953c411-e891-3ca8-ad8a-6e808d29abb0" .
+
+bldg:JUNGER.AHU.AHU01.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.AHU.AHU01.Outside Air Temp" ;
+    brickframe:uuid "04331946-a419-392f-991a-dc86f2adc829" .
+
+bldg:JUNGER.AHU.AHU01.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.AHU.AHU01.Return Air Temp" ;
+    brickframe:uuid "91a21917-561e-3981-98dc-e5c5395237ce" .
+
+bldg:JUNGER.AHU.AHU01.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.AHU.AHU01.Supply Air Temp" ;
+    brickframe:uuid "c7b6ade9-b435-3e50-81c0-8abbddfd24d2" .
+
+bldg:JUNGER.AHU.AHU01.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.AHU.AHU01.Supply Air Temp Setpoint" ;
+    brickframe:uuid "d4ea7d20-0884-3b8f-9e0e-6bc84f7dc80b" .
+
+bldg:JUNGER.AHU.AHU02.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.AHU.AHU02.Supply Air Temp" ;
+    brickframe:uuid "bcce596f-6f00-3f76-95a1-a1381f57d1e9" .
+
+bldg:JUNGER.AHU.AHU02.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.AHU.AHU02.Supply Air Temp Setpoint" ;
+    brickframe:uuid "9ce436f5-93f5-32c3-9097-43affb6ee64c" .
+
+bldg:JUNGER.CHW.Building_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.CHW.Building Chilled Water Return Temp" ;
+    brickframe:uuid "4bce6227-0b8b-3a74-9c3d-6737b041b9ae" .
+
+bldg:JUNGER.CHW.Building_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.CHW.Building Chilled Water Supply Temp" ;
+    brickframe:uuid "6a6e6cab-4216-3f81-87b5-da4631d697a0" .
+
+bldg:JUNGER.CHW.ECONOMIZER a brick1:Damper_Position_Command ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.CHW.ECONOMIZER" ;
+    brickframe:uuid "8f8097ab-9ae8-3557-ad3c-4cb6b0b8a3d7" .
+
+bldg:JUNGER.CHW.Enable a brick1:Enable_Command ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.CHW.Enable" ;
+    brickframe:uuid "ee220684-1536-302d-bd1b-c180bfe880e2" .
+
+bldg:JUNGER.CHW.Loop_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.CHW.Loop Chilled Water Return Temp" ;
+    brickframe:uuid "7c65964e-cc1d-3455-b81f-10c919879b9a" .
+
+bldg:JUNGER.CHW.Loop_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.CHW.Loop Chilled Water Supply Temp" ;
+    brickframe:uuid "a1474f70-25aa-31cf-846a-e97132c4b358" .
+
+bldg:JUNGER.CHW.OA_ENABLE a brick_v_1_0_2:Outside_Air_Damper_Command ;
+    brickframe:pointname "JUNGER.CHW.OA ENABLE" ;
+    brickframe:uuid "a6f88565-8b18-3366-8fdf-ba3617776d97" .
+
+bldg:JUNGER.CHW.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.CHW.Outside Air Temp" ;
+    brickframe:uuid "dee7a440-a967-3c40-8912-00f92806fcf1" .
+
+bldg:JUNGER.CHW.Pump1_SPEED a brick_v_1_0_2:Speed_Status ;
+    brickframe:pointname "JUNGER.CHW.Pump1_SPEED" ;
+    brickframe:uuid "b3abf470-e523-384e-b8db-f796581b5c9e" .
+
+<http://buildsys.org/ontologies/JUNGER#JUNGER.CHW.Pump1_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.CHW.Pump1_Start/Stop" ;
+    brickframe:uuid "24bac8db-5558-3055-ae41-674a45bda441" .
+
+bldg:JUNGER.CHW.Pump2_SPEED a brick_v_1_0_2:Speed_Status ;
+    brickframe:pointname "JUNGER.CHW.Pump2_SPEED" ;
+    brickframe:uuid "ca8286be-768a-3d38-942f-9ef39cbfd309" .
+
+<http://buildsys.org/ontologies/JUNGER#JUNGER.CHW.Pump2_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.CHW.Pump2_Start/Stop" ;
+    brickframe:uuid "9aa03c14-f69a-336e-ab56-104ff30569cc" .
+
+bldg:JUNGER.ZONE.AC01.RM0003.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "JUNGER.ZONE.AC01.RM0003.Day Night Mode" ;
+    brickframe:uuid "b21bc2f4-5c29-3a28-be65-f3fa3f6dd96b" .
+
+bldg:JUNGER.ZONE.AC01.RM0003.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AC01.RM0003.FAN" ;
+    brickframe:uuid "e5760c9e-fa35-3f2d-8137-db16cfc1220a" .
+
+bldg:JUNGER.ZONE.AC01.RM0003.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AC01.RM0003.Heating Mode" ;
+    brickframe:uuid "b0b10a0b-1f65-3dcc-9777-a57ba1b726db" .
+
+bldg:JUNGER.ZONE.AC01.RM0003.VLV_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AC01.RM0003.VLV COMD" ;
+    brickframe:uuid "53a3925e-703f-33d2-b959-9629a1411f98" .
+
+bldg:JUNGER.ZONE.AC01.RM0003.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AC01.RM0003.Zone Air Temp" ;
+    brickframe:uuid "8421b76b-0952-316e-a88b-40340c8fde42" .
+
+bldg:JUNGER.ZONE.AC01.RM0003.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "JUNGER.ZONE.AC01.RM0003.Zone Air Temp Setpoint" ;
+    brickframe:uuid "74f16638-7fc4-341c-aa4f-8ac3dcc9457f" .
+
+bldg:JUNGER.ZONE.AC02.RM0004.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "JUNGER.ZONE.AC02.RM0004.Day Night Mode" ;
+    brickframe:uuid "bf23f8d1-7151-3f48-8568-001cc9b1a019" .
+
+bldg:JUNGER.ZONE.AC02.RM0004.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AC02.RM0004.FAN" ;
+    brickframe:uuid "f11f290c-7aae-31f2-babf-4d06e5e9152e" .
+
+bldg:JUNGER.ZONE.AC02.RM0004.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AC02.RM0004.Heating Mode" ;
+    brickframe:uuid "3dfe697b-c183-3ff1-a93d-9568dbb23806" .
+
+bldg:JUNGER.ZONE.AC02.RM0004.VLV_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AC02.RM0004.VLV COMD" ;
+    brickframe:uuid "cbd8371d-3654-3128-87c7-4d29fc4c524b" .
+
+bldg:JUNGER.ZONE.AC02.RM0004.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AC02.RM0004.Zone Air Temp" ;
+    brickframe:uuid "6feae946-dd6d-333e-b16e-4637a0ca4c3e" .
+
+bldg:JUNGER.ZONE.AC02.RM0004.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "JUNGER.ZONE.AC02.RM0004.Zone Air Temp Setpoint" ;
+    brickframe:uuid "e844b8b4-f509-33a8-a53c-5306557f7eb9" .
+
+bldg:JUNGER.ZONE.AC03.MEZZ.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AC03.MEZZ.FAN" ;
+    brickframe:uuid "ae924132-f3b4-34b8-b762-324ea4515f21" .
+
+bldg:JUNGER.ZONE.AC03.MEZZ.VLV_2_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AC03.MEZZ.VLV 2 COMD" ;
+    brickframe:uuid "563010d2-0fc2-323a-8699-d00184726663" .
+
+bldg:JUNGER.ZONE.AHU01.RM0003.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0003.Zone Air Damper Command" ;
+    brickframe:uuid "6131b704-330b-3e85-8f0b-4e23e06aed1a" .
+
+bldg:JUNGER.ZONE.AHU01.RM0003.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0003.Zone Air Temp" ;
+    brickframe:uuid "38497639-92ed-37c7-be96-e988c30d1669" .
+
+bldg:JUNGER.ZONE.AHU01.RM0003.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0003.Zone Air Temp Setpoint" ;
+    brickframe:uuid "ba445a13-c2d9-32fc-b306-d5ccc92f057b" .
+
+bldg:JUNGER.ZONE.AHU01.RM0003.Zone_Percent_Air_Flow a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0003.Zone Percent Air Flow" ;
+    brickframe:uuid "0a6d950a-a3a7-3ba7-bdee-a26e6f7efb23" .
+
+bldg:JUNGER.ZONE.AHU01.RM0003.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0003.Zone Reheat Valve Command" ;
+    brickframe:uuid "fddb72fc-6ddf-3fad-84e5-701a8b391a96" .
+
+bldg:JUNGER.ZONE.AHU01.RM0003.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0003.Zone Supply Air Flow" ;
+    brickframe:uuid "962b79d4-d1c2-3a67-8099-eb37655c0f16" .
+
+bldg:JUNGER.ZONE.AHU01.RM0003_MIX.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0003_MIX.Zone Air Temp" ;
+    brickframe:uuid "b1b01850-f4be-3451-a6eb-c931f5c2282d" .
+
+bldg:JUNGER.ZONE.AHU01.RM0004.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0004.Zone Air Damper Command" ;
+    brickframe:uuid "b948814a-0e74-3b71-ad1a-b98ad9353283" .
+
+bldg:JUNGER.ZONE.AHU01.RM0004.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0004.Zone Air Temp" ;
+    brickframe:uuid "ad59d983-0772-3e3f-9161-7f0fc8bf5f64" .
+
+bldg:JUNGER.ZONE.AHU01.RM0004.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0004.Zone Air Temp Setpoint" ;
+    brickframe:uuid "620d1cbd-af34-31b3-a221-b7df0a6b404e" .
+
+bldg:JUNGER.ZONE.AHU01.RM0004.Zone_Percent_Air_Flow a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0004.Zone Percent Air Flow" ;
+    brickframe:uuid "6612432d-3017-317e-8c75-925437057ad6" .
+
+bldg:JUNGER.ZONE.AHU01.RM0004.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0004.Zone Reheat Valve Command" ;
+    brickframe:uuid "a1142ace-b058-35b0-a810-aaecd35f96f4" .
+
+bldg:JUNGER.ZONE.AHU01.RM0004.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0004.Zone Supply Air Flow" ;
+    brickframe:uuid "ebec5ff4-e000-392c-88b4-803934ce4bf0" .
+
+bldg:JUNGER.ZONE.AHU01.RM0004_MIX.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0004_MIX.Zone Air Temp" ;
+    brickframe:uuid "3e82465c-927f-3e0e-adea-5f80bfcf388d" .
+
+bldg:JUNGER.ZONE.AHU01.RM0005.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0005.Zone Air Damper Command" ;
+    brickframe:uuid "d7af9343-05c8-3a67-9f60-b11bdaa24516" .
+
+bldg:JUNGER.ZONE.AHU01.RM0005.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0005.Zone Air Temp" ;
+    brickframe:uuid "1aa517df-b8fe-35f1-a3a2-8d51b065498e" .
+
+bldg:JUNGER.ZONE.AHU01.RM0005.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0005.Zone Air Temp Setpoint" ;
+    brickframe:uuid "06cff60b-91e8-334c-864e-9962866cbc56" .
+
+bldg:JUNGER.ZONE.AHU01.RM0005.Zone_Percent_Air_Flow a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0005.Zone Percent Air Flow" ;
+    brickframe:uuid "0d870b16-286d-30b6-926c-851c31992617" .
+
+bldg:JUNGER.ZONE.AHU01.RM0005.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0005.Zone Reheat Valve Command" ;
+    brickframe:uuid "32afe300-1b66-3e64-99f1-2e6f3cc90273" .
+
+bldg:JUNGER.ZONE.AHU01.RM0005.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0005.Zone Supply Air Flow" ;
+    brickframe:uuid "9394f871-300b-31cd-b4cf-4be5da3d770f" .
+
+bldg:JUNGER.ZONE.AHU01.RM0005_MIX.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0005_MIX.Zone Air Temp" ;
+    brickframe:uuid "3aa2239a-8b2c-3748-a2c6-ebcf03059e78" .
+
+bldg:JUNGER.ZONE.AHU01.RM0101.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0101.Zone Air Temp" ;
+    brickframe:uuid "f0e7520c-5f31-3313-87e5-c7645a691cd9" .
+
+bldg:JUNGER.ZONE.AHU01.RM0101.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0101.Zone Air Temp Setpoint" ;
+    brickframe:uuid "fdcfa9e1-d355-34ef-b46b-155b01bdbe39" .
+
+bldg:JUNGER.ZONE.AHU01.RM0101.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0101.Zone Reheat Valve Command" ;
+    brickframe:uuid "ffb1a4a9-18bf-3feb-8089-c7df8026ed3a" .
+
+bldg:JUNGER.ZONE.AHU01.RM0101.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0101.Zone Supply Air Temp" ;
+    brickframe:uuid "677b8e5b-7eb0-34cb-aa1c-c254a3079470" .
+
+bldg:JUNGER.ZONE.AHU01.RM0101_MIX.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0101_MIX.Zone Air Temp" ;
+    brickframe:uuid "fd423343-f082-3d42-b15d-03af229ca63d" .
+
+bldg:JUNGER.ZONE.AHU01.RM0103.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0103.Zone Air Temp" ;
+    brickframe:uuid "a9b2c131-0597-368a-b3f9-41efbd155378" .
+
+bldg:JUNGER.ZONE.AHU01.RM0103.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0103.Zone Air Temp Setpoint" ;
+    brickframe:uuid "5a958d16-1e3d-330a-92bb-97c595286baa" .
+
+bldg:JUNGER.ZONE.AHU01.RM0103.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0103.Zone Reheat Valve Command" ;
+    brickframe:uuid "d9abba51-b8a0-3b82-8a1f-23128a37e02b" .
+
+bldg:JUNGER.ZONE.AHU01.RM0103.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0103.Zone Supply Air Temp" ;
+    brickframe:uuid "d3542723-1b26-3475-8a8d-52b7bceec0db" .
+
+bldg:JUNGER.ZONE.AHU01.RM0103_MIX.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0103_MIX.Zone Air Temp" ;
+    brickframe:uuid "de70900c-4421-355c-80f4-b3f8a188dbd6" .
+
+bldg:JUNGER.ZONE.AHU01.RM0105.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0105.Zone Air Temp" ;
+    brickframe:uuid "504b2e4f-2261-3501-a499-7ec14e991824" .
+
+bldg:JUNGER.ZONE.AHU01.RM0105.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0105.Zone Air Temp Setpoint" ;
+    brickframe:uuid "a288eaa0-20c2-3e88-a79b-71856446f3be" .
+
+bldg:JUNGER.ZONE.AHU01.RM0105.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0105.Zone Reheat Valve Command" ;
+    brickframe:uuid "c8133fd5-2ea6-3793-a605-6efb3db01473" .
+
+bldg:JUNGER.ZONE.AHU01.RM0105.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0105.Zone Supply Air Temp" ;
+    brickframe:uuid "05fd167a-a29d-301c-a9fd-82809096753f" .
+
+bldg:JUNGER.ZONE.AHU01.RM0105_MIX.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0105_MIX.Zone Air Temp" ;
+    brickframe:uuid "99e11b2b-d9b7-34e2-96d0-e7db2ca90157" .
+
+bldg:JUNGER.ZONE.AHU01.RM0107.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0107.Zone Air Temp" ;
+    brickframe:uuid "8381a9b4-f233-30ea-a4cb-ecca0b681fcc" .
+
+bldg:JUNGER.ZONE.AHU01.RM0107.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0107.Zone Air Temp Setpoint" ;
+    brickframe:uuid "4b0595d5-ce44-3637-be04-9f34e9f4a691" .
+
+bldg:JUNGER.ZONE.AHU01.RM0107.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0107.Zone Reheat Valve Command" ;
+    brickframe:uuid "8fd5b2d0-cc7f-3a3a-8544-eb4afc9611b1" .
+
+bldg:JUNGER.ZONE.AHU01.RM0107.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0107.Zone Supply Air Temp" ;
+    brickframe:uuid "25604adf-5624-3ce0-be0f-d1d3d31de31e" .
+
+bldg:JUNGER.ZONE.AHU01.RM0107_MIX.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0107_MIX.Zone Air Temp" ;
+    brickframe:uuid "ed8b281e-8f85-3c90-9f67-d18ecb55baa6" .
+
+bldg:JUNGER.ZONE.AHU01.RM0109.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0109.Zone Air Temp" ;
+    brickframe:uuid "a2236e43-25be-3c21-bf61-eaf9bf031ab4" .
+
+bldg:JUNGER.ZONE.AHU01.RM0109.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0109.Zone Air Temp Setpoint" ;
+    brickframe:uuid "8d0e9aa3-cd15-346f-80ee-8bdd2b6dac10" .
+
+bldg:JUNGER.ZONE.AHU01.RM0109.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0109.Zone Reheat Valve Command" ;
+    brickframe:uuid "f6283261-fb8d-377e-a4ea-724accf43cd3" .
+
+bldg:JUNGER.ZONE.AHU01.RM0109.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0109.Zone Supply Air Temp" ;
+    brickframe:uuid "3d338638-88ec-3d49-9ba8-9f65b3b6185c" .
+
+bldg:JUNGER.ZONE.AHU01.RM0109_MIX.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0109_MIX.Zone Air Temp" ;
+    brickframe:uuid "1fc3f6ca-1c1f-38b7-bea6-9e222f541c6c" .
+
+bldg:JUNGER.ZONE.AHU01.RM0111.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0111.Zone Air Damper Command" ;
+    brickframe:uuid "3651434f-9158-3afb-b001-1081c7be16bb" .
+
+bldg:JUNGER.ZONE.AHU01.RM0111.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0111.Zone Air Temp" ;
+    brickframe:uuid "aac8dfbb-bfb3-328c-a07a-dccac5a75814" .
+
+bldg:JUNGER.ZONE.AHU01.RM0111.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0111.Zone Air Temp Setpoint" ;
+    brickframe:uuid "3c9f7f34-d1.0.2a87-9453-25c6ca5c0172" .
+
+bldg:JUNGER.ZONE.AHU01.RM0111.Zone_Percent_Air_Flow a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0111.Zone Percent Air Flow" ;
+    brickframe:uuid "721f1669-ba38-387f-965f-ca40521e50ca" .
+
+bldg:JUNGER.ZONE.AHU01.RM0111.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0111.Zone Reheat Valve Command" ;
+    brickframe:uuid "cd51b296-3196-37b0-9598-189219852d36" .
+
+bldg:JUNGER.ZONE.AHU01.RM0111.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0111.Zone Supply Air Flow" ;
+    brickframe:uuid "28e15b74-f637-30df-89b3-5a77f97afb28" .
+
+bldg:JUNGER.ZONE.AHU01.RM0111_MIX.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0111_MIX.Zone Air Temp" ;
+    brickframe:uuid "ffc876e4-3ffb-3b95-8748-56a715df2452" .
+
+bldg:JUNGER.ZONE.AHU01.RM0112.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0112.Zone Air Damper Command" ;
+    brickframe:uuid "499eb2f2-a6ef-396f-93f6-74f102f3aa37" .
+
+bldg:JUNGER.ZONE.AHU01.RM0112.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0112.Zone Air Temp" ;
+    brickframe:uuid "d646da6d-a927-303c-a275-4edc4d2e8b40" .
+
+bldg:JUNGER.ZONE.AHU01.RM0112.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0112.Zone Air Temp Setpoint" ;
+    brickframe:uuid "971297bd-9ef7-3f9c-b84f-9765f593fc65" .
+
+bldg:JUNGER.ZONE.AHU01.RM0112.Zone_Percent_Air_Flow a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0112.Zone Percent Air Flow" ;
+    brickframe:uuid "6b935bbf-6124-33e5-b5a9-a35055529650" .
+
+bldg:JUNGER.ZONE.AHU01.RM0112.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0112.Zone Reheat Valve Command" ;
+    brickframe:uuid "a34294ff-3e04-3442-8988-7acd47b961ae" .
+
+bldg:JUNGER.ZONE.AHU01.RM0112.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0112.Zone Supply Air Flow" ;
+    brickframe:uuid "00461f28-eae1-3c2e-a4e9-2fd33e15ca77" .
+
+bldg:JUNGER.ZONE.AHU01.RM0112_MIX.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0112_MIX.Zone Air Temp" ;
+    brickframe:uuid "000ce0fa-7ee3-3ff2-a5c7-9860d74d2432" .
+
+bldg:JUNGER.ZONE.AHU01.RM0113.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0113.Zone Air Damper Command" ;
+    brickframe:uuid "fad17caf-492d-32d2-8938-731c9e993c6b" .
+
+bldg:JUNGER.ZONE.AHU01.RM0113.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0113.Zone Air Temp" ;
+    brickframe:uuid "710ab6df-f7ba-3453-9f73-33d1072d4e7f" .
+
+bldg:JUNGER.ZONE.AHU01.RM0113.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0113.Zone Air Temp Setpoint" ;
+    brickframe:uuid "332459b5-bce0-3c71-9c57-0656b31d1617" .
+
+bldg:JUNGER.ZONE.AHU01.RM0113.Zone_Percent_Air_Flow a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0113.Zone Percent Air Flow" ;
+    brickframe:uuid "09e97dd5-6936-376e-884e-74b92e498484" .
+
+bldg:JUNGER.ZONE.AHU01.RM0113.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0113.Zone Reheat Valve Command" ;
+    brickframe:uuid "d6f75932-aea8-3099-8cc9-8242d4e9304f" .
+
+bldg:JUNGER.ZONE.AHU01.RM0113.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0113.Zone Supply Air Flow" ;
+    brickframe:uuid "dff51f4a-1797-3674-b7cd-a6a0ca6ae567" .
+
+bldg:JUNGER.ZONE.AHU01.RM0113_MIX.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0113_MIX.Zone Air Temp" ;
+    brickframe:uuid "8b0b82b1-1f4b-37ee-bca9-9202ce68e2eb" .
+
+bldg:JUNGER.ZONE.AHU01.RM0115.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0115.Zone Air Damper Command" ;
+    brickframe:uuid "ea095c83-7047-3738-bd18-99dd1c4c7374" .
+
+bldg:JUNGER.ZONE.AHU01.RM0115.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0115.Zone Air Temp" ;
+    brickframe:uuid "1ec4dfb7-1a5a-39a3-a1c7-6dfbf0134456" .
+
+bldg:JUNGER.ZONE.AHU01.RM0115.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0115.Zone Air Temp Setpoint" ;
+    brickframe:uuid "b4f2f854-8eca-3c67-8b02-2151452dc3a3" .
+
+bldg:JUNGER.ZONE.AHU01.RM0115.Zone_Percent_Air_Flow a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0115.Zone Percent Air Flow" ;
+    brickframe:uuid "e5d640f4-73f6-3b00-843b-2fe2ed303515" .
+
+bldg:JUNGER.ZONE.AHU01.RM0115.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0115.Zone Reheat Valve Command" ;
+    brickframe:uuid "ddbcbda6-10d6-3238-939a-c38137fa268e" .
+
+bldg:JUNGER.ZONE.AHU01.RM0115.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0115.Zone Supply Air Flow" ;
+    brickframe:uuid "62193e07-12d3-3a75-bba1-be3d899976f2" .
+
+bldg:JUNGER.ZONE.AHU01.RM0115_MIX.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0115_MIX.Zone Air Temp" ;
+    brickframe:uuid "d6ca0102-b787-3118-971f-bfb82373ee2b" .
+
+bldg:JUNGER.ZONE.AHU01.RM0116.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0116.Zone Air Damper Command" ;
+    brickframe:uuid "ce20f191-dee7-3f0e-a75c-55d87741efaa" .
+
+bldg:JUNGER.ZONE.AHU01.RM0116.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0116.Zone Air Temp" ;
+    brickframe:uuid "c00a7b37-f5ba-3629-8d8f-447fa19f4aa3" .
+
+bldg:JUNGER.ZONE.AHU01.RM0116.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0116.Zone Air Temp Setpoint" ;
+    brickframe:uuid "443e89db-5f53-389d-8505-93471b81ac11" .
+
+bldg:JUNGER.ZONE.AHU01.RM0116.Zone_Percent_Air_Flow a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0116.Zone Percent Air Flow" ;
+    brickframe:uuid "51079e5b-123c-338f-a2c0-c05ddd7c63f4" .
+
+bldg:JUNGER.ZONE.AHU01.RM0116.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0116.Zone Reheat Valve Command" ;
+    brickframe:uuid "8446f7ff-5504-32d9-8a6e-495147519476" .
+
+bldg:JUNGER.ZONE.AHU01.RM0116.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0116.Zone Supply Air Flow" ;
+    brickframe:uuid "c0ecccad-baa7-35f8-84c9-dbef6155a29a" .
+
+bldg:JUNGER.ZONE.AHU01.RM0116_MIX.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0116_MIX.Zone Air Temp" ;
+    brickframe:uuid "1b68bb15-5f3c-3efa-a5cb-6d6173c3a6ec" .
+
+bldg:JUNGER.ZONE.AHU01.RM0120A.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0120A.Zone Air Damper Command" ;
+    brickframe:uuid "e0f0cedb-8a94-344d-87b8-2c1ee9d0a5d3" .
+
+bldg:JUNGER.ZONE.AHU01.RM0120A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0120A.Zone Air Temp" ;
+    brickframe:uuid "b9ac1a05-ac68-329e-ba7b-29ebba826554" .
+
+bldg:JUNGER.ZONE.AHU01.RM0120A.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0120A.Zone Air Temp Setpoint" ;
+    brickframe:uuid "02014653-ff23-32bf-ad41-0fbef4234bea" .
+
+bldg:JUNGER.ZONE.AHU01.RM0120A.Zone_Percent_Air_Flow a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0120A.Zone Percent Air Flow" ;
+    brickframe:uuid "2e8c8a02-6f87-341d-910d-1a1c1729abe2" .
+
+bldg:JUNGER.ZONE.AHU01.RM0120A.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0120A.Zone Supply Air Flow" ;
+    brickframe:uuid "fc498005-ad69-38de-8aec-911fb9def628" .
+
+bldg:JUNGER.ZONE.AHU01.RM0120A.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0120A.Zone Supply Air Temp" ;
+    brickframe:uuid "ebfc456f-5f5d-3a07-8a19-de3b7ce126f4" .
+
+bldg:JUNGER.ZONE.AHU01.RM0120A_MIX.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0120A_MIX.Zone Air Temp" ;
+    brickframe:uuid "a5a9d3ed-b831-3aea-bd75-a6d331b3b4bc" .
+
+bldg:JUNGER.ZONE.AHU01.RM0120B.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0120B.Zone Air Damper Command" ;
+    brickframe:uuid "7336aa19-db52-3719-812b-3baa38fd6155" .
+
+bldg:JUNGER.ZONE.AHU01.RM0120B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0120B.Zone Air Temp" ;
+    brickframe:uuid "c1de142e-6838-33c8-8f89-8a579b750b2b" .
+
+bldg:JUNGER.ZONE.AHU01.RM0120B.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0120B.Zone Air Temp Setpoint" ;
+    brickframe:uuid "d27da0d2-5d3e-3391-a518-eb95526e54a4" .
+
+bldg:JUNGER.ZONE.AHU01.RM0120B.Zone_Percent_Air_Flow a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0120B.Zone Percent Air Flow" ;
+    brickframe:uuid "bb283642-712e-3661-9247-50bc4b5f73ae" .
+
+bldg:JUNGER.ZONE.AHU01.RM0120B.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0120B.Zone Supply Air Flow" ;
+    brickframe:uuid "fff2fc46-5a12-32fe-8dbd-b6c98cee51f1" .
+
+bldg:JUNGER.ZONE.AHU01.RM0120B.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0120B.Zone Supply Air Temp" ;
+    brickframe:uuid "c827445b-c8f4-3a95-9566-09249dce47d7" .
+
+bldg:JUNGER.ZONE.AHU01.RM0120B_MIX.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0120B_MIX.Zone Air Temp" ;
+    brickframe:uuid "f3632067-a121-3574-88a4-ef5afb9810c6" .
+
+bldg:JUNGER.ZONE.AHU01.RM0199.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0199.Zone Air Temp" ;
+    brickframe:uuid "2d491831-18d4-35cc-b35c-9a5a0d8acfb6" .
+
+bldg:JUNGER.ZONE.AHU01.RM0199.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0199.Zone Air Temp Setpoint" ;
+    brickframe:uuid "61c16a49-3715-3f65-956b-849c7c8998fe" .
+
+bldg:JUNGER.ZONE.AHU01.RM0199.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0199.Zone Reheat Valve Command" ;
+    brickframe:uuid "0c7beb96-c8bf-3e95-ba68-27cd8983460d" .
+
+bldg:JUNGER.ZONE.AHU01.RM0199.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0199.Zone Supply Air Temp" ;
+    brickframe:uuid "2da7f46b-ea14-301e-85f4-483e4059cc2a" .
+
+bldg:JUNGER.ZONE.AHU01.RM0199_MIX.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:JUNGER ;
+    brickframe:pointname "JUNGER.ZONE.AHU01.RM0199_MIX.Zone Air Temp" ;
+    brickframe:uuid "3a8c8cfb-5ff7-388e-a69a-2d439abf7241" .
+
+bldg:MEZZ a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0003 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0003_room .
+
+bldg:RM0003_MIX a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0003_MIX_room .
+
+bldg:RM0004 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0004_room .
+
+bldg:RM0004_MIX a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0004_MIX_room .
+
+bldg:RM0005 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0005_room .
+
+bldg:RM0005_MIX a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0005_MIX_room .
+
+bldg:RM0101 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0101_room .
+
+bldg:RM0101_MIX a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0101_MIX_room .
+
+bldg:RM0103 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0103_room .
+
+bldg:RM0103_MIX a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0103_MIX_room .
+
+bldg:RM0105 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0105_room .
+
+bldg:RM0105_MIX a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0105_MIX_room .
+
+bldg:RM0107 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0107_room .
+
+bldg:RM0107_MIX a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0107_MIX_room .
+
+bldg:RM0109 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0109_room .
+
+bldg:RM0109_MIX a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0109_MIX_room .
+
+bldg:RM0111 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0111_room .
+
+bldg:RM0111_MIX a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0111_MIX_room .
+
+bldg:RM0112 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0112_room .
+
+bldg:RM0112_MIX a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0112_MIX_room .
+
+bldg:RM0113 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0113_room .
+
+bldg:RM0113_MIX a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0113_MIX_room .
+
+bldg:RM0115 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0115_room .
+
+bldg:RM0115_MIX a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0115_MIX_room .
+
+bldg:RM0116 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0116_room .
+
+bldg:RM0116_MIX a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0116_MIX_room .
+
+bldg:RM0120A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0120A_room .
+
+bldg:RM0120A_MIX a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0120A_MIX_room .
+
+bldg:RM0120B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0120B_room .
+
+bldg:RM0120B_MIX a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0120B_MIX_room .
+
+bldg:RM0199 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0199_room .
+
+bldg:RM0199_MIX a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPart bldg:RM0199_MIX_room .
+
+bldg:VAVMEZZ a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:MEZZ ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AC03.MEZZ.FAN,
+        bldg:JUNGER.ZONE.AC03.MEZZ.VLV_2_COMD .
+
+bldg:VAVRM0003_MIX a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0003_MIX ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0003_MIX.Zone_Air_Temp .
+
+bldg:VAVRM0004_MIX a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0004_MIX ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0004_MIX.Zone_Air_Temp .
+
+bldg:VAVRM0005_MIX a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0005_MIX ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0005_MIX.Zone_Air_Temp .
+
+bldg:VAVRM0101 a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0101 ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0101.Zone_Air_Temp,
+        bldg:JUNGER.ZONE.AHU01.RM0101.Zone_Air_Temp_Setpoint,
+        bldg:JUNGER.ZONE.AHU01.RM0101.Zone_Reheat_Valve_Command,
+        bldg:JUNGER.ZONE.AHU01.RM0101.Zone_Supply_Air_Temp .
+
+bldg:VAVRM0101_MIX a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0101_MIX ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0101_MIX.Zone_Air_Temp .
+
+bldg:VAVRM0103 a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0103 ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0103.Zone_Air_Temp,
+        bldg:JUNGER.ZONE.AHU01.RM0103.Zone_Air_Temp_Setpoint,
+        bldg:JUNGER.ZONE.AHU01.RM0103.Zone_Reheat_Valve_Command,
+        bldg:JUNGER.ZONE.AHU01.RM0103.Zone_Supply_Air_Temp .
+
+bldg:VAVRM0103_MIX a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0103_MIX ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0103_MIX.Zone_Air_Temp .
+
+bldg:VAVRM0105 a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0105 ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0105.Zone_Air_Temp,
+        bldg:JUNGER.ZONE.AHU01.RM0105.Zone_Air_Temp_Setpoint,
+        bldg:JUNGER.ZONE.AHU01.RM0105.Zone_Reheat_Valve_Command,
+        bldg:JUNGER.ZONE.AHU01.RM0105.Zone_Supply_Air_Temp .
+
+bldg:VAVRM0105_MIX a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0105_MIX ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0105_MIX.Zone_Air_Temp .
+
+bldg:VAVRM0107 a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0107 ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0107.Zone_Air_Temp,
+        bldg:JUNGER.ZONE.AHU01.RM0107.Zone_Air_Temp_Setpoint,
+        bldg:JUNGER.ZONE.AHU01.RM0107.Zone_Reheat_Valve_Command,
+        bldg:JUNGER.ZONE.AHU01.RM0107.Zone_Supply_Air_Temp .
+
+bldg:VAVRM0107_MIX a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0107_MIX ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0107_MIX.Zone_Air_Temp .
+
+bldg:VAVRM0109 a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0109 ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0109.Zone_Air_Temp,
+        bldg:JUNGER.ZONE.AHU01.RM0109.Zone_Air_Temp_Setpoint,
+        bldg:JUNGER.ZONE.AHU01.RM0109.Zone_Reheat_Valve_Command,
+        bldg:JUNGER.ZONE.AHU01.RM0109.Zone_Supply_Air_Temp .
+
+bldg:VAVRM0109_MIX a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0109_MIX ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0109_MIX.Zone_Air_Temp .
+
+bldg:VAVRM0111_MIX a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0111_MIX ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0111_MIX.Zone_Air_Temp .
+
+bldg:VAVRM0112_MIX a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0112_MIX ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0112_MIX.Zone_Air_Temp .
+
+bldg:VAVRM0113_MIX a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0113_MIX ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0113_MIX.Zone_Air_Temp .
+
+bldg:VAVRM0115_MIX a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0115_MIX ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0115_MIX.Zone_Air_Temp .
+
+bldg:VAVRM0116_MIX a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0116_MIX ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0116_MIX.Zone_Air_Temp .
+
+bldg:VAVRM0120A_MIX a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0120A_MIX ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0120A_MIX.Zone_Air_Temp .
+
+bldg:VAVRM0120B_MIX a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0120B_MIX ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0120B_MIX.Zone_Air_Temp .
+
+bldg:VAVRM0199 a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0199 ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0199.Zone_Air_Temp,
+        bldg:JUNGER.ZONE.AHU01.RM0199.Zone_Air_Temp_Setpoint,
+        bldg:JUNGER.ZONE.AHU01.RM0199.Zone_Reheat_Valve_Command,
+        bldg:JUNGER.ZONE.AHU01.RM0199.Zone_Supply_Air_Temp .
+
+bldg:VAVRM0199_MIX a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0199_MIX ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0199_MIX.Zone_Air_Temp .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+bldg:RM0003_MIX_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0003_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0004_MIX_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0004_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0005_MIX_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0005_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0101_MIX_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0101_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0103_MIX_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0103_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0105_MIX_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0105_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0107_MIX_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0107_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0109_MIX_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0109_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0111_MIX_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0111_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0112_MIX_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0112_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0113_MIX_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0113_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0115_MIX_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0115_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0116_MIX_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0116_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0120A_MIX_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0120A_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0120B_MIX_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0120B_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0199_MIX_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:RM0199_room a brick1:Room ;
+    brickframe:hasSite bldg:JUNGER .
+
+bldg:VAVRM0005 a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0005 ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0005.Zone_Air_Temp,
+        bldg:JUNGER.ZONE.AHU01.RM0005.Zone_Air_Temp_Setpoint,
+        bldg:JUNGER.ZONE.AHU01.RM0005.Zone_Percent_Air_Flow,
+        bldg:JUNGER.ZONE.AHU01.RM0005.Zone_Reheat_Valve_Command,
+        bldg:JUNGER.ZONE.AHU01.RM0005.Zone_Supply_Air_Flow .
+
+bldg:VAVRM0111 a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0111 ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0111.Zone_Air_Temp,
+        bldg:JUNGER.ZONE.AHU01.RM0111.Zone_Air_Temp_Setpoint,
+        bldg:JUNGER.ZONE.AHU01.RM0111.Zone_Percent_Air_Flow,
+        bldg:JUNGER.ZONE.AHU01.RM0111.Zone_Reheat_Valve_Command,
+        bldg:JUNGER.ZONE.AHU01.RM0111.Zone_Supply_Air_Flow .
+
+bldg:VAVRM0112 a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0112 ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0112.Zone_Air_Temp,
+        bldg:JUNGER.ZONE.AHU01.RM0112.Zone_Air_Temp_Setpoint,
+        bldg:JUNGER.ZONE.AHU01.RM0112.Zone_Percent_Air_Flow,
+        bldg:JUNGER.ZONE.AHU01.RM0112.Zone_Reheat_Valve_Command,
+        bldg:JUNGER.ZONE.AHU01.RM0112.Zone_Supply_Air_Flow .
+
+bldg:VAVRM0113 a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0113 ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0113.Zone_Air_Temp,
+        bldg:JUNGER.ZONE.AHU01.RM0113.Zone_Air_Temp_Setpoint,
+        bldg:JUNGER.ZONE.AHU01.RM0113.Zone_Percent_Air_Flow,
+        bldg:JUNGER.ZONE.AHU01.RM0113.Zone_Reheat_Valve_Command,
+        bldg:JUNGER.ZONE.AHU01.RM0113.Zone_Supply_Air_Flow .
+
+bldg:VAVRM0115 a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0115 ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0115.Zone_Air_Temp,
+        bldg:JUNGER.ZONE.AHU01.RM0115.Zone_Air_Temp_Setpoint,
+        bldg:JUNGER.ZONE.AHU01.RM0115.Zone_Percent_Air_Flow,
+        bldg:JUNGER.ZONE.AHU01.RM0115.Zone_Reheat_Valve_Command,
+        bldg:JUNGER.ZONE.AHU01.RM0115.Zone_Supply_Air_Flow .
+
+bldg:VAVRM0116 a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0116 ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0116.Zone_Air_Temp,
+        bldg:JUNGER.ZONE.AHU01.RM0116.Zone_Air_Temp_Setpoint,
+        bldg:JUNGER.ZONE.AHU01.RM0116.Zone_Percent_Air_Flow,
+        bldg:JUNGER.ZONE.AHU01.RM0116.Zone_Reheat_Valve_Command,
+        bldg:JUNGER.ZONE.AHU01.RM0116.Zone_Supply_Air_Flow .
+
+bldg:VAVRM0120A a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0120A ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0120A.Zone_Air_Temp,
+        bldg:JUNGER.ZONE.AHU01.RM0120A.Zone_Air_Temp_Setpoint,
+        bldg:JUNGER.ZONE.AHU01.RM0120A.Zone_Percent_Air_Flow,
+        bldg:JUNGER.ZONE.AHU01.RM0120A.Zone_Supply_Air_Flow,
+        bldg:JUNGER.ZONE.AHU01.RM0120A.Zone_Supply_Air_Temp .
+
+bldg:VAVRM0120B a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0120B ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AHU01.RM0120B.Zone_Air_Temp,
+        bldg:JUNGER.ZONE.AHU01.RM0120B.Zone_Air_Temp_Setpoint,
+        bldg:JUNGER.ZONE.AHU01.RM0120B.Zone_Percent_Air_Flow,
+        bldg:JUNGER.ZONE.AHU01.RM0120B.Zone_Supply_Air_Flow,
+        bldg:JUNGER.ZONE.AHU01.RM0120B.Zone_Supply_Air_Temp .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:hasPoint bldg:JUNGER.CHW.Building_Chilled_Water_Return_Temp,
+        bldg:JUNGER.CHW.Building_Chilled_Water_Supply_Temp,
+        bldg:JUNGER.CHW.ECONOMIZER,
+        bldg:JUNGER.CHW.Enable,
+        bldg:JUNGER.CHW.Loop_Chilled_Water_Return_Temp,
+        bldg:JUNGER.CHW.Loop_Chilled_Water_Supply_Temp,
+        bldg:JUNGER.CHW.OA_ENABLE,
+        bldg:JUNGER.CHW.Outside_Air_Temp,
+        bldg:JUNGER.CHW.Pump1_SPEED,
+        <http://buildsys.org/ontologies/JUNGER#JUNGER.CHW.Pump1_Start/Stop>,
+        bldg:JUNGER.CHW.Pump2_SPEED,
+        <http://buildsys.org/ontologies/JUNGER#JUNGER.CHW.Pump2_Start/Stop> .
+
+bldg:VAVRM0003 a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0003 ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AC01.RM0003.Day_Night_Mode,
+        bldg:JUNGER.ZONE.AC01.RM0003.FAN,
+        bldg:JUNGER.ZONE.AC01.RM0003.Heating_Mode,
+        bldg:JUNGER.ZONE.AC01.RM0003.VLV_COMD,
+        bldg:JUNGER.ZONE.AC01.RM0003.Zone_Air_Temp,
+        bldg:JUNGER.ZONE.AC01.RM0003.Zone_Air_Temp_Setpoint,
+        bldg:JUNGER.ZONE.AHU01.RM0003.Zone_Air_Temp,
+        bldg:JUNGER.ZONE.AHU01.RM0003.Zone_Air_Temp_Setpoint,
+        bldg:JUNGER.ZONE.AHU01.RM0003.Zone_Percent_Air_Flow,
+        bldg:JUNGER.ZONE.AHU01.RM0003.Zone_Reheat_Valve_Command,
+        bldg:JUNGER.ZONE.AHU01.RM0003.Zone_Supply_Air_Flow .
+
+bldg:VAVRM0004 a brick1:VAV ;
+    brickframe:hasSite bldg:JUNGER ;
+    brick1:feeds bldg:RM0004 ;
+    brick1:hasPoint bldg:JUNGER.ZONE.AC02.RM0004.Day_Night_Mode,
+        bldg:JUNGER.ZONE.AC02.RM0004.FAN,
+        bldg:JUNGER.ZONE.AC02.RM0004.Heating_Mode,
+        bldg:JUNGER.ZONE.AC02.RM0004.VLV_COMD,
+        bldg:JUNGER.ZONE.AC02.RM0004.Zone_Air_Temp,
+        bldg:JUNGER.ZONE.AC02.RM0004.Zone_Air_Temp_Setpoint,
+        bldg:JUNGER.ZONE.AHU01.RM0004.Zone_Air_Temp,
+        bldg:JUNGER.ZONE.AHU01.RM0004.Zone_Air_Temp_Setpoint,
+        bldg:JUNGER.ZONE.AHU01.RM0004.Zone_Percent_Air_Flow,
+        bldg:JUNGER.ZONE.AHU01.RM0004.Zone_Reheat_Valve_Command,
+        bldg:JUNGER.ZONE.AHU01.RM0004.Zone_Supply_Air_Flow .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:JUNGER a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "32699" ;
+    brickframe:Country "US" .
+

@@ -1,0 +1,333 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/OLS#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:AHU_SF01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:OLS ;
+    brick1:hasPoint bldg:OLS.AHU.AHU_SF01.Cooling_Valve_Output,
+        bldg:OLS.AHU.AHU_SF01.Heating_Valve_Output,
+        bldg:OLS.AHU.AHU_SF01.Mixed_Air_Temp,
+        bldg:OLS.AHU.AHU_SF01.Mode,
+        bldg:OLS.AHU.AHU_SF01.Outside_Air_Temp_Virtual,
+        bldg:OLS.AHU.AHU_SF01.Supply_Air_Pressure,
+        bldg:OLS.AHU.AHU_SF01.Supply_Air_Temp,
+        bldg:OLS.AHU.AHU_SF01.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU_SF02 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:OLS ;
+    brick1:hasPoint bldg:OLS.AHU.AHU_SF02.CCV,
+        bldg:OLS.AHU.AHU_SF02.Cooling_Valve_Output,
+        bldg:OLS.AHU.AHU_SF02.Heating_Valve_Output,
+        bldg:OLS.AHU.AHU_SF02.Mixed_Air_Temp,
+        bldg:OLS.AHU.AHU_SF02.Mode,
+        bldg:OLS.AHU.AHU_SF02.Outside_Air_Temp_Virtual,
+        bldg:OLS.AHU.AHU_SF02.Supply_Air_Pressure,
+        bldg:OLS.AHU.AHU_SF02.Supply_Air_Temp,
+        bldg:OLS.AHU.AHU_SF02.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU_SF1_2 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:OLS ;
+    brick1:hasPoint bldg:OLS.AHU.AHU_SF1_2.Return_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:Olson_ChilledWater_Demand_kBtu a brick_v_1_0_2:Electric_Meter ;
+    brickframe:pointname "Olson_ChilledWater_Demand_kBtu" ;
+    brickframe:uuid "8a5881d5-b4a9-32da-a4cc-e8239b51590c" ;
+    brick1:isPointOf bldg:chiller .
+
+bldg:Olson_Electricity_Demand_kBtu a brick_v_1_0_2:Building_Electric_Meter ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "Olson_Electricity_Demand_kBtu" ;
+    brickframe:uuid "7f998cc3-20f9-3ede-b559-34c421d21ff8" .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:OLS.AHU.AHU_SF01.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.AHU.AHU_SF01.Cooling Valve Output" ;
+    brickframe:uuid "fd669b96-7f3a-321e-8006-bb845aa8ab68" .
+
+bldg:OLS.AHU.AHU_SF01.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.AHU.AHU_SF01.Heating Valve Output" ;
+    brickframe:uuid "0cb207a2-a8f4-38fc-8254-992ce5ab396b" .
+
+bldg:OLS.AHU.AHU_SF01.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.AHU.AHU_SF01.Mixed Air Temp" ;
+    brickframe:uuid "cb0138ce-87ec-3a2a-93fd-116dc7a2334e" .
+
+bldg:OLS.AHU.AHU_SF01.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "OLS.AHU.AHU_SF01.Mode" ;
+    brickframe:uuid "85c0332d-36e1-35e2-8d52-a74adf7e81ee" .
+
+bldg:OLS.AHU.AHU_SF01.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.AHU.AHU_SF01.Outside Air Temp Virtual" ;
+    brickframe:uuid "6f8b4077-ca2e-39ce-b3c7-1483c13e0992" .
+
+bldg:OLS.AHU.AHU_SF01.Supply_Air_Pressure a brick1:Supply_Air_Static_Pressure_Sensor ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.AHU.AHU_SF01.Supply Air Pressure" ;
+    brickframe:uuid "b3f513bb-c9ec-3863-b5cc-29de308754d5" .
+
+bldg:OLS.AHU.AHU_SF01.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.AHU.AHU_SF01.Supply Air Temp" ;
+    brickframe:uuid "a2871537-c7c5-35bd-9fd3-b21d5919720a" .
+
+bldg:OLS.AHU.AHU_SF01.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.AHU.AHU_SF01.Supply Air Temp Setpoint" ;
+    brickframe:uuid "0b575e31-4910-327d-990a-8d9b88d828e6" .
+
+bldg:OLS.AHU.AHU_SF02.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.AHU.AHU_SF02.CCV" ;
+    brickframe:uuid "87bfb24a-dfe0-3723-9ad1-9fa96960a335" .
+
+bldg:OLS.AHU.AHU_SF02.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.AHU.AHU_SF02.Cooling Valve Output" ;
+    brickframe:uuid "f80177e9-bd18-3aed-a621-e80b11771bb8" .
+
+bldg:OLS.AHU.AHU_SF02.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.AHU.AHU_SF02.Heating Valve Output" ;
+    brickframe:uuid "47e51336-1890-3290-bd13-359411846457" .
+
+bldg:OLS.AHU.AHU_SF02.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.AHU.AHU_SF02.Mixed Air Temp" ;
+    brickframe:uuid "9accd084-c4d6-35b3-a596-1e62c35fe742" .
+
+bldg:OLS.AHU.AHU_SF02.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "OLS.AHU.AHU_SF02.Mode" ;
+    brickframe:uuid "39f65f71-9fe9-3694-b7d1-e79511b4705c" .
+
+bldg:OLS.AHU.AHU_SF02.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.AHU.AHU_SF02.Outside Air Temp Virtual" ;
+    brickframe:uuid "4f6175f5-2a34-3e89-82c3-8985a01410f0" .
+
+bldg:OLS.AHU.AHU_SF02.Supply_Air_Pressure a brick1:Supply_Air_Static_Pressure_Sensor ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.AHU.AHU_SF02.Supply Air Pressure" ;
+    brickframe:uuid "a7c1e2e7-eaa7-3598-a372-67f2f9fbd9e6" .
+
+bldg:OLS.AHU.AHU_SF02.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.AHU.AHU_SF02.Supply Air Temp" ;
+    brickframe:uuid "2c422f67-e2fb-39c4-a401-c1c1dc629547" .
+
+bldg:OLS.AHU.AHU_SF02.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.AHU.AHU_SF02.Supply Air Temp Setpoint" ;
+    brickframe:uuid "93771c40-d8e0-35d7-9c40-02014d79d972" .
+
+bldg:OLS.AHU.AHU_SF1_2.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.AHU.AHU_SF1_2.Return Air Temp" ;
+    brickframe:uuid "cb61e1c3-d3f7-3e97-a1d3-54afce7c3a33" .
+
+bldg:OLS.CHW.Building_Chilled_Water_Flow a brick_v_1_0_2:Chilled_Water_Flow_Sensor ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.CHW.Building Chilled Water Flow" ;
+    brickframe:uuid "230d0e59-1eb6-3c4e-97eb-993bc8631547" .
+
+bldg:OLS.CHW.Building_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.CHW.Building Chilled Water Return Temp" ;
+    brickframe:uuid "115a7b0b-ec48-3e03-9215-9b763dc14e08" .
+
+bldg:OLS.CHW.Building_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.CHW.Building Chilled Water Supply Temp" ;
+    brickframe:uuid "b719b732-a5a3-31db-a62a-62d9817486f9" .
+
+bldg:OLS.CHW.CHWP1_FREQ_OUTPUT a brick1:Output_Frequency_Sensor ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.CHW.CHWP1_FREQ OUTPUT" ;
+    brickframe:uuid "23f5b58b-e548-33f8-a213-0545df482d52" .
+
+bldg:OLS.CHW.CHWP1_PCT_OUTPUT a brick1:Cooling_Request_Percent_Setpoint ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.CHW.CHWP1_PCT OUTPUT" ;
+    brickframe:uuid "b2dd59f5-7a46-3650-b600-01e1e0d80fd9" .
+
+bldg:OLS.CHW.CHWP1_POWER a brick_v_1_0_2:Power_Sensor ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.CHW.CHWP1_POWER" ;
+    brickframe:uuid "2839655c-9d67-3789-83a4-1e866848fe60" .
+
+bldg:OLS.CHW.CHWP1_SPEED a brick_v_1_0_2:Chilled_Water_Pump_VFD_Speed ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.CHW.CHWP1_SPEED" ;
+    brickframe:uuid "af867b54-dff0-3d01-bd46-edd8f2d4db1d" .
+
+bldg:OLS.CHW.CHWP2_FREQ_OUTPUT a brick1:Output_Frequency_Sensor ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.CHW.CHWP2_FREQ OUTPUT" ;
+    brickframe:uuid "cf95ec52-ff29-36ba-9a96-2ca891a0dec3" .
+
+bldg:OLS.CHW.CHWP2_PCT_OUTPUT a brick1:Cooling_Request_Percent_Setpoint ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.CHW.CHWP2_PCT OUTPUT" ;
+    brickframe:uuid "35cd0616-a53e-3f00-a293-321938bf457e" .
+
+bldg:OLS.CHW.CHWP2_POWER a brick_v_1_0_2:Power_Sensor ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.CHW.CHWP2_POWER" ;
+    brickframe:uuid "98b10844-9aaa-38da-9521-3b4b07576334" .
+
+bldg:OLS.CHW.CHWP2_SPEED a brick_v_1_0_2:Chilled_Water_Pump_VFD_Speed ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.CHW.CHWP2_SPEED" ;
+    brickframe:uuid "5858163c-ab4f-3bb0-a91c-8fae1ffb456b" .
+
+bldg:OLS.CHW.CHWP3_FREQ_OUTPUT a brick1:Output_Frequency_Sensor ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.CHW.CHWP3_FREQ OUTPUT" ;
+    brickframe:uuid "badee8f3-efa9-384e-b76a-bc463bdc5e58" .
+
+bldg:OLS.CHW.CHWP3_PCT_OUTPUT a brick1:Cooling_Request_Percent_Setpoint ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.CHW.CHWP3_PCT OUTPUT" ;
+    brickframe:uuid "b76295d4-aa71-3e03-b9fc-ab0579ce9ac4" .
+
+bldg:OLS.CHW.CHWP3_POWER a brick_v_1_0_2:Power_Sensor ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.CHW.CHWP3_POWER" ;
+    brickframe:uuid "a452971a-a82c-3c89-9d54-199a6e9cacc4" .
+
+bldg:OLS.CHW.CHWP3_SPEED a brick_v_1_0_2:Chilled_Water_Pump_VFD_Speed ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.CHW.CHWP3_SPEED" ;
+    brickframe:uuid "52386b72-3528-3689-b223-389e2fd62cf9" .
+
+bldg:OLS.CHW.ECONOMIZER a brick1:Damper_Position_Command ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.CHW.ECONOMIZER" ;
+    brickframe:uuid "737afb4f-f5d4-31bb-9c61-811019a33847" .
+
+bldg:OLS.CHW.Enable a brick1:Enable_Command ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.CHW.Enable" ;
+    brickframe:uuid "9c054678-08e6-36ec-ade5-b2744149dba0" .
+
+bldg:OLS.CHW.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.CHW.Outside Air Temp" ;
+    brickframe:uuid "59f5d3ba-70b2-355b-b4f1-6ec5815a61eb" .
+
+<http://buildsys.org/ontologies/OLS#OLS.CHW.Pump1_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.CHW.Pump1_Start/Stop" ;
+    brickframe:uuid "63b1c2fb-ed9e-3511-a67b-9849a8f1af88" .
+
+<http://buildsys.org/ontologies/OLS#OLS.CHW.Pump2_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.CHW.Pump2_Start/Stop" ;
+    brickframe:uuid "0236b9d1-8727-3fa0-be74-7b3e5033fb0a" .
+
+<http://buildsys.org/ontologies/OLS#OLS.CHW.Pump3_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:OLS ;
+    brickframe:pointname "OLS.CHW.Pump3_Start/Stop" ;
+    brickframe:uuid "61adb564-83a0-39bf-9879-6a6c1206da8b" .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:OLS ;
+    brick1:hasPoint bldg:OLS.CHW.Building_Chilled_Water_Flow,
+        bldg:OLS.CHW.Building_Chilled_Water_Return_Temp,
+        bldg:OLS.CHW.Building_Chilled_Water_Supply_Temp,
+        bldg:OLS.CHW.CHWP1_FREQ_OUTPUT,
+        bldg:OLS.CHW.CHWP1_PCT_OUTPUT,
+        bldg:OLS.CHW.CHWP1_POWER,
+        bldg:OLS.CHW.CHWP1_SPEED,
+        bldg:OLS.CHW.CHWP2_FREQ_OUTPUT,
+        bldg:OLS.CHW.CHWP2_PCT_OUTPUT,
+        bldg:OLS.CHW.CHWP2_POWER,
+        bldg:OLS.CHW.CHWP2_SPEED,
+        bldg:OLS.CHW.CHWP3_FREQ_OUTPUT,
+        bldg:OLS.CHW.CHWP3_PCT_OUTPUT,
+        bldg:OLS.CHW.CHWP3_POWER,
+        bldg:OLS.CHW.CHWP3_SPEED,
+        bldg:OLS.CHW.ECONOMIZER,
+        bldg:OLS.CHW.Enable,
+        bldg:OLS.CHW.Outside_Air_Temp,
+        <http://buildsys.org/ontologies/OLS#OLS.CHW.Pump1_Start/Stop>,
+        <http://buildsys.org/ontologies/OLS#OLS.CHW.Pump2_Start/Stop>,
+        <http://buildsys.org/ontologies/OLS#OLS.CHW.Pump3_Start/Stop> .
+
+bldg:OLS a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "53229" ;
+    brickframe:Country "US" .
+

@@ -1,0 +1,151 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/KERR#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:KERR ;
+    brick1:hasPoint bldg:KERR.CHW.Building_Chilled_Water_Flow,
+        bldg:KERR.CHW.Building_Chilled_Water_Return_Temp,
+        bldg:KERR.CHW.Building_Chilled_Water_Supply_Temp,
+        bldg:KERR.CHW.Building_Chilled_Water_Supply_Temp_Sp,
+        bldg:KERR.CHW.ECONOMIZER,
+        bldg:KERR.CHW.ENABLE,
+        bldg:KERR.CHW.Loop_Chilled_Water_Return_Temp,
+        bldg:KERR.CHW.Loop_Chilled_Water_Supply_Temp,
+        bldg:KERR.CHW.OA_ENABLE,
+        bldg:KERR.CHW.Outside_Air_Temp,
+        bldg:KERR.CHW.Pump3_SPEED,
+        <http://buildsys.org/ontologies/KERR#KERR.CHW.Pump3_Start/Stop>,
+        <http://buildsys.org/ontologies/KERR#KERR.CHW.Pump4_Start/Stop> .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:KERR.CHW.Building_Chilled_Water_Flow a brick_v_1_0_2:Chilled_Water_Flow_Sensor ;
+    brickframe:hasSite bldg:KERR ;
+    brickframe:pointname "KERR.CHW.Building Chilled Water Flow" ;
+    brickframe:uuid "1b5b3bf2-75a1-3447-9278-8c15631688e3" .
+
+bldg:KERR.CHW.Building_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:KERR ;
+    brickframe:pointname "KERR.CHW.Building Chilled Water Return Temp" ;
+    brickframe:uuid "5621aa60-838d-3f68-8f9d-e4af87d5df8a" .
+
+bldg:KERR.CHW.Building_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:KERR ;
+    brickframe:pointname "KERR.CHW.Building Chilled Water Supply Temp" ;
+    brickframe:uuid "a0f7219c-550c-33fe-835c-2ed5beba2bb1" .
+
+bldg:KERR.CHW.Building_Chilled_Water_Supply_Temp_Sp a brick_v_1_0_2:Chilled_Water_Supply_Temperature_Setpoint ;
+    brickframe:pointname "KERR.CHW.Building Chilled Water Supply Temp Sp" ;
+    brickframe:uuid "6e9ed73c-f927-3bb7-8080-4d06e0f28943" .
+
+bldg:KERR.CHW.ECONOMIZER a brick1:Damper_Position_Command ;
+    brickframe:hasSite bldg:KERR ;
+    brickframe:pointname "KERR.CHW.ECONOMIZER" ;
+    brickframe:uuid "73cb4e5b-f0e9-3e9d-b724-eb34b7e434fe" .
+
+bldg:KERR.CHW.ENABLE a brick1:Enable_Command ;
+    brickframe:hasSite bldg:KERR ;
+    brickframe:pointname "KERR.CHW.ENABLE" ;
+    brickframe:uuid "40f1a89e-78b4-3b8d-bbb3-c1231303e817" .
+
+bldg:KERR.CHW.Loop_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:KERR ;
+    brickframe:pointname "KERR.CHW.Loop Chilled Water Return Temp" ;
+    brickframe:uuid "0f890bca-9982-3af2-9cef-e17920d6e9e1" .
+
+bldg:KERR.CHW.Loop_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:KERR ;
+    brickframe:pointname "KERR.CHW.Loop Chilled Water Supply Temp" ;
+    brickframe:uuid "bfa9def2-bed1-31d4-bb37-a9e634e05013" .
+
+bldg:KERR.CHW.OA_ENABLE a brick_v_1_0_2:Outside_Air_Damper_Command ;
+    brickframe:pointname "KERR.CHW.OA ENABLE" ;
+    brickframe:uuid "d415a642-b184-3f38-8e17-a08bb68a0182" .
+
+bldg:KERR.CHW.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:KERR ;
+    brickframe:pointname "KERR.CHW.Outside Air Temp" ;
+    brickframe:uuid "80b864e9-d1d2-3201-8985-5888251077a2" .
+
+bldg:KERR.CHW.Pump3_SPEED a brick_v_1_0_2:Speed_Status ;
+    brickframe:pointname "KERR.CHW.Pump3_SPEED" ;
+    brickframe:uuid "def01139-835f-31ea-b1e3-5ada66fe3326" .
+
+<http://buildsys.org/ontologies/KERR#KERR.CHW.Pump3_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:KERR ;
+    brickframe:pointname "KERR.CHW.Pump3_Start/Stop" ;
+    brickframe:uuid "9ff1c30a-c31c-3e8a-8c17-5363fe8e42a3" .
+
+<http://buildsys.org/ontologies/KERR#KERR.CHW.Pump4_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:KERR ;
+    brickframe:pointname "KERR.CHW.Pump4_Start/Stop" ;
+    brickframe:uuid "98daac12-793a-3c28-9f83-ce6f628ec9cb" .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:KERR a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "64452" ;
+    brickframe:Country "US" .
+

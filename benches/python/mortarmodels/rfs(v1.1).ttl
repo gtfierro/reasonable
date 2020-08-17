@@ -1,0 +1,471 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://xbos.io/ontologies/rfs#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:Level_1 a brick1:Floor ;
+    rdf:label "Level 1" ;
+    brickframe:hasSite bldg:rfs ;
+    brick1:hasPart bldg:Room_1,
+        bldg:Room_10,
+        bldg:Room_2,
+        bldg:Room_3,
+        bldg:Room_4,
+        bldg:Room_5,
+        bldg:Room_6,
+        bldg:Room_7,
+        bldg:Room_8,
+        bldg:Room_9 .
+
+bldg:boiler a brick_v_1_0_2:PlugStrip ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/boiler/s.tplink.v0/0/i.xbos.plug" ;
+    brick1:hasPoint bldg:boiler_power,
+        bldg:boiler_state .
+
+bldg:fan a brick_v_1_0_2:PlugStrip ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/fan/s.tplink.v0/0/i.xbos.plug" ;
+    brick1:hasPoint bldg:fan_power,
+        bldg:fan_state .
+
+bldg:heater a brick_v_1_0_2:PlugStrip ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/heater/s.tplink.v0/0/i.xbos.plug" ;
+    brick1:hasPoint bldg:heater_power,
+        bldg:heater_state .
+
+bldg:hvac_zone_michaels_office_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_1 ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/s.pelican/Michaels_Office/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_michaels_office ;
+    brick1:hasPoint bldg:hvac_zone_michaels_office_tstat_cooling_setpoint,
+        bldg:hvac_zone_michaels_office_tstat_fan,
+        bldg:hvac_zone_michaels_office_tstat_heating_setpoint,
+        bldg:hvac_zone_michaels_office_tstat_mode,
+        bldg:hvac_zone_michaels_office_tstat_override,
+        bldg:hvac_zone_michaels_office_tstat_state,
+        bldg:hvac_zone_michaels_office_tstat_temperature .
+
+bldg:hvac_zone_sra_office_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_2 ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/s.pelican/SRA_Office/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_sra_office ;
+    brick1:hasPoint bldg:hvac_zone_sra_office_tstat_cooling_setpoint,
+        bldg:hvac_zone_sra_office_tstat_fan,
+        bldg:hvac_zone_sra_office_tstat_heating_setpoint,
+        bldg:hvac_zone_sra_office_tstat_mode,
+        bldg:hvac_zone_sra_office_tstat_override,
+        bldg:hvac_zone_sra_office_tstat_state,
+        bldg:hvac_zone_sra_office_tstat_temperature .
+
+bldg:hvac_zone_student_office_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_3 ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/s.pelican/Student_Office/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_student_office ;
+    brick1:hasPoint bldg:hvac_zone_student_office_tstat_cooling_setpoint,
+        bldg:hvac_zone_student_office_tstat_fan,
+        bldg:hvac_zone_student_office_tstat_heating_setpoint,
+        bldg:hvac_zone_student_office_tstat_mode,
+        bldg:hvac_zone_student_office_tstat_override,
+        bldg:hvac_zone_student_office_tstat_state,
+        bldg:hvac_zone_student_office_tstat_temperature .
+
+bldg:meter_MTU1 a brick_v_1_0_2:Building_Electric_Meter ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/s.ted/MTU1/i.xbos.meter" ;
+    brickframe:uuid "82047932-2583-31a0-bb69-d5a1b798bd58" .
+
+bldg:microwave a brick_v_1_0_2:PlugStrip ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/microwave/s.tplink.v0/0/i.xbos.plug" ;
+    brick1:hasPoint bldg:microwave_power,
+        bldg:microwave_state .
+
+bldg:printer a brick_v_1_0_2:PlugStrip ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/printer/s.tplink.v0/0/i.xbos.plug" ;
+    brick1:hasPoint bldg:printer_power,
+        bldg:printer_state .
+
+bldg:refrigerator a brick_v_1_0_2:PlugStrip ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/refrigerator/s.tplink.v0/0/i.xbos.plug" ;
+    brick1:hasPoint bldg:refrigerator_power,
+        bldg:refrigerator_state .
+
+bldg:weather_D7213_cloud_coverage a brick_v_1_0_2:Weather_Cloud_Coverage_Sensor ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uuid "2f4bee9f-896a-3058-8bdf-59a40d441c2d" .
+
+bldg:weather_D7213_cloud_height a brick_v_1_0_2:Weather_Cloud_Height_Sensor ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uuid "fb7acb9d-239b-30be-a240-ba75db9b4568" .
+
+bldg:weather_D7213_relative_humidity a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uuid "e4e28a18-4ae5-3031-a0e4-b19b7d32a75a" .
+
+bldg:weather_D7213_temperature a brick_v_1_0_2:Weather_Temperature_Sensor ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uuid "17b51832-bd64-3585-a313-94de305b6233" .
+
+bldg:weather_D7213_wind_direction a brick1:Wind_Direction_Sensor ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uuid "b1885b6c-03af-322d-9eb2-8eb11624b40a" .
+
+bldg:weather_D7213_wind_speed a brick1:Wind_Speed_Sensor ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uuid "26141067-95d5-3717-9914-6c9851893072" .
+
+bldg:weather_KOAK_cloud_coverage a brick_v_1_0_2:Weather_Cloud_Coverage_Sensor ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uuid "7b49f7f2-f142-38a0-b284-42b0aef95b64" .
+
+bldg:weather_KOAK_cloud_height a brick_v_1_0_2:Weather_Cloud_Height_Sensor ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uuid "f510c11b-3a04-3518-b757-7940555abb1d" .
+
+bldg:weather_KOAK_relative_humidity a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uuid "5e55525e-f799-3b7b-8520-8e42730946df" .
+
+bldg:weather_KOAK_temperature a brick_v_1_0_2:Weather_Temperature_Sensor ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uuid "a73c1b67-142f-3b45-baf8-e308619b6bbc" .
+
+bldg:weather_KOAK_wind_direction a brick1:Wind_Direction_Sensor ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uuid "4a939b52-73b5-3016-95d7-34fd1ea1d41f" .
+
+bldg:weather_KOAK_wind_speed a brick1:Wind_Speed_Sensor ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uuid "9a3d08a7-0489-3b9e-981b-2e2e916cd783" .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:HVAC_Zone_michaels_office a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:rfs .
+
+bldg:HVAC_Zone_sra_office a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:rfs .
+
+bldg:HVAC_Zone_student_office a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:rfs .
+
+bldg:RTU_hvac_zone_michaels_office a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:rfs ;
+    brick1:feeds bldg:hvac_zone_michaels_office .
+
+bldg:RTU_hvac_zone_sra_office a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:rfs ;
+    brick1:feeds bldg:hvac_zone_sra_office .
+
+bldg:RTU_hvac_zone_student_office a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:rfs ;
+    brick1:feeds bldg:hvac_zone_student_office .
+
+bldg:Room_10 a brick1:Room ;
+    rdf:label "Bathroom" ;
+    brickframe:hasSite bldg:rfs ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_4 a brick1:Room ;
+    rdf:label "Ofc #4" ;
+    brickframe:hasSite bldg:rfs ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_5 a brick1:Room ;
+    rdf:label "Stairs" ;
+    brickframe:hasSite bldg:rfs ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_6 a brick1:Room ;
+    rdf:label "Bathroom" ;
+    brickframe:hasSite bldg:rfs ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_7 a brick1:Room ;
+    rdf:label "Mail Room" ;
+    brickframe:hasSite bldg:rfs ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_8 a brick1:Room ;
+    rdf:label "Kitchen" ;
+    brickframe:hasSite bldg:rfs ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_9 a brick1:Room ;
+    rdf:label "Room" ;
+    brickframe:hasSite bldg:rfs ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:boiler_power a brick_v_1_0_2:Electric_Meter ;
+    brickframe:uri "rfs/devices/boiler/s.tplink.v0/0/i.xbos.plug" ;
+    brickframe:uuid "d379a1e4-1e74-3e8c-90c4-20c793366a5b" .
+
+bldg:boiler_state a brick1:On_Off_Command ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/boiler/s.tplink.v0/0/i.xbos.plug" ;
+    brickframe:uuid "b704faeb-ea0d-3fa3-993b-b3f4515e122d" .
+
+bldg:fan_power a brick_v_1_0_2:Electric_Meter ;
+    brickframe:uri "rfs/devices/fan/s.tplink.v0/0/i.xbos.plug" ;
+    brickframe:uuid "9407b0e0-52c7-3378-a2a4-ccf8cbb06576" .
+
+bldg:fan_state a brick1:On_Off_Command ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/fan/s.tplink.v0/0/i.xbos.plug" ;
+    brickframe:uuid "cc8a1c1d-0b9a-31d4-9155-83bf7f796e36" .
+
+bldg:heater_power a brick_v_1_0_2:Electric_Meter ;
+    brickframe:uri "rfs/devices/heater/s.tplink.v0/0/i.xbos.plug" ;
+    brickframe:uuid "e1616de0-9c34-3722-b10a-e45f8002548e" .
+
+bldg:heater_state a brick1:On_Off_Command ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/heater/s.tplink.v0/0/i.xbos.plug" ;
+    brickframe:uuid "71544d3b-ef64-3641-a1d5-6a14d29eb737" .
+
+bldg:hvac_zone_michaels_office a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:rfs .
+
+bldg:hvac_zone_michaels_office_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/s.pelican/Michaels_Office/i.xbos.thermostat" ;
+    brickframe:uuid "b713cc0b-a07b-3350-8384-9e253cc510ad" .
+
+bldg:hvac_zone_michaels_office_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/s.pelican/Michaels_Office/i.xbos.thermostat" ;
+    brickframe:uuid "3b1776f1-a34f-36b4-afd7-b8517dd2494b" .
+
+bldg:hvac_zone_michaels_office_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/s.pelican/Michaels_Office/i.xbos.thermostat" ;
+    brickframe:uuid "b8af208b-1277-3f0b-8d89-1aaa8cc6e1f4" .
+
+bldg:hvac_zone_michaels_office_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/s.pelican/Michaels_Office/i.xbos.thermostat" ;
+    brickframe:uuid "659dbab7-23e9-356a-a521-7c09493027c1" .
+
+bldg:hvac_zone_michaels_office_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/s.pelican/Michaels_Office/i.xbos.thermostat" ;
+    brickframe:uuid "7079de56-c6c9-31f3-971b-24bd8ac75f5c" .
+
+bldg:hvac_zone_michaels_office_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/s.pelican/Michaels_Office/i.xbos.thermostat" ;
+    brickframe:uuid "5b6f2287-3bde-359d-8c48-54773111ef8f" .
+
+bldg:hvac_zone_michaels_office_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/s.pelican/Michaels_Office/i.xbos.thermostat" ;
+    brickframe:uuid "c082de11-179d-3ce3-94a3-820782fd347f" .
+
+bldg:hvac_zone_sra_office a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:rfs .
+
+bldg:hvac_zone_sra_office_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/s.pelican/SRA_Office/i.xbos.thermostat" ;
+    brickframe:uuid "c3237989-734f-3cbb-b527-3bdc08f59cba" .
+
+bldg:hvac_zone_sra_office_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/s.pelican/SRA_Office/i.xbos.thermostat" ;
+    brickframe:uuid "097f9c45-9c94-37bf-8102-ef20856a461f" .
+
+bldg:hvac_zone_sra_office_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/s.pelican/SRA_Office/i.xbos.thermostat" ;
+    brickframe:uuid "25369c58-c362-3119-b284-f39a9c12de38" .
+
+bldg:hvac_zone_sra_office_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/s.pelican/SRA_Office/i.xbos.thermostat" ;
+    brickframe:uuid "3b004ec1-ba18-3d8f-af29-2c82245f0688" .
+
+bldg:hvac_zone_sra_office_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/s.pelican/SRA_Office/i.xbos.thermostat" ;
+    brickframe:uuid "76ad6ee4-1308-3077-a95a-be77e1aa2a3a" .
+
+bldg:hvac_zone_sra_office_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/s.pelican/SRA_Office/i.xbos.thermostat" ;
+    brickframe:uuid "45114cfe-e324-37d2-b1fa-2dfe0005f40f" .
+
+bldg:hvac_zone_sra_office_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/s.pelican/SRA_Office/i.xbos.thermostat" ;
+    brickframe:uuid "94428aae-ff89-3a63-9dc3-4c375307ce20" .
+
+bldg:hvac_zone_student_office a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:rfs .
+
+bldg:hvac_zone_student_office_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/s.pelican/Student_Office/i.xbos.thermostat" ;
+    brickframe:uuid "d9bc606d-c1b8-3ab7-9161-3e38743c5fd5" .
+
+bldg:hvac_zone_student_office_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/s.pelican/Student_Office/i.xbos.thermostat" ;
+    brickframe:uuid "ae9cf302-65af-3078-8b54-919e26356531" .
+
+bldg:hvac_zone_student_office_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/s.pelican/Student_Office/i.xbos.thermostat" ;
+    brickframe:uuid "0ba0b5d9-1427-386c-a448-361e5904da29" .
+
+bldg:hvac_zone_student_office_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/s.pelican/Student_Office/i.xbos.thermostat" ;
+    brickframe:uuid "c7b81da5-5db5-383c-a1df-a4f2862cd1aa" .
+
+bldg:hvac_zone_student_office_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/s.pelican/Student_Office/i.xbos.thermostat" ;
+    brickframe:uuid "ab0b3b76-ff4f-3ef1-9d4a-55884eeaeb8f" .
+
+bldg:hvac_zone_student_office_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/s.pelican/Student_Office/i.xbos.thermostat" ;
+    brickframe:uuid "ef5022f3-b3da-3d3f-ac7b-593ec2fbab15" .
+
+bldg:hvac_zone_student_office_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/s.pelican/Student_Office/i.xbos.thermostat" ;
+    brickframe:uuid "9156e757-519c-354c-83cd-7c8b51f966dc" .
+
+bldg:microwave_power a brick_v_1_0_2:Electric_Meter ;
+    brickframe:uri "rfs/devices/microwave/s.tplink.v0/0/i.xbos.plug" ;
+    brickframe:uuid "cffc586d-8e16-3e8e-afad-4395108bbde2" .
+
+bldg:microwave_state a brick1:On_Off_Command ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/microwave/s.tplink.v0/0/i.xbos.plug" ;
+    brickframe:uuid "843020ce-2c92-346e-866e-271dbfd7c8d9" .
+
+bldg:printer_power a brick_v_1_0_2:Electric_Meter ;
+    brickframe:uri "rfs/devices/printer/s.tplink.v0/0/i.xbos.plug" ;
+    brickframe:uuid "a073d8b1-99a8-34af-b945-fe497e9e4e1d" .
+
+bldg:printer_state a brick1:On_Off_Command ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/printer/s.tplink.v0/0/i.xbos.plug" ;
+    brickframe:uuid "d4a0e3ec-cabe-3776-bccc-e25e781c3a4a" .
+
+bldg:refrigerator_power a brick_v_1_0_2:Electric_Meter ;
+    brickframe:uri "rfs/devices/refrigerator/s.tplink.v0/0/i.xbos.plug" ;
+    brickframe:uuid "82f1d8f2-eab4-3d7f-8f66-1d3734cce641" .
+
+bldg:refrigerator_state a brick1:On_Off_Command ;
+    brickframe:hasSite bldg:rfs ;
+    brickframe:uri "rfs/devices/refrigerator/s.tplink.v0/0/i.xbos.plug" ;
+    brickframe:uuid "f2f65de4-aa41-37be-aaa0-f4e667185132" .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+bldg:Room_1 a brick1:Room ;
+    rdf:label "Michaels_Office" ;
+    brickframe:hasSite bldg:rfs ;
+    brick1:isPartOf bldg:HVAC_Zone_michaels_office .
+
+bldg:Room_2 a brick1:Room ;
+    rdf:label "SRA_Office" ;
+    brickframe:hasSite bldg:rfs ;
+    brick1:isPartOf bldg:HVAC_Zone_sra_office .
+
+bldg:Room_3 a brick1:Room ;
+    rdf:label "Student_Office" ;
+    brickframe:hasSite bldg:rfs ;
+    brick1:isPartOf bldg:HVAC_Zone_student_office .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Weather_Cloud_Coverage_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Weather_Cloud_Height_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Weather_Temperature_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+bldg:HVAC_Zone_default a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:rfs .
+
+bldg:rfs a brick_v_1_0_2:Site ;
+    brickframe:Country "US" ;
+    brickframe:NumFloors "2" ;
+    brickframe:PrimaryFunction "Office" ;
+    brickframe:Timezone "America/Los_Angeles" .
+

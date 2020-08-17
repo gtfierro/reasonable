@@ -1,0 +1,1004 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/ROES#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:AC07 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:feeds bldg:VAVRM050,
+        bldg:VAVRM055N,
+        bldg:VAVRM055S,
+        bldg:VAVRM057,
+        bldg:VAVRM066N,
+        bldg:VAVRM066S,
+        bldg:VAVRM068,
+        bldg:VAVRM152,
+        bldg:VAVRM154,
+        bldg:VAVRM156,
+        bldg:VAVRM156A,
+        bldg:VAVRM158,
+        bldg:VAVRM160,
+        bldg:VAVRM162,
+        bldg:VAVRM164,
+        bldg:VAVRM166,
+        bldg:VAVRM168 ;
+    brick1:hasPoint bldg:ROES.AHU.AC07.CCV,
+        bldg:ROES.AHU.AC07.Cooling_Valve_Output,
+        bldg:ROES.AHU.AC07.Mixed_Air_Temp,
+        bldg:ROES.AHU.AC07.Mode,
+        bldg:ROES.AHU.AC07.Outside_Air_Temp_Virtual,
+        bldg:ROES.AHU.AC07.Return_Air_Temp,
+        bldg:ROES.AHU.AC07.Supply_Air_Temp,
+        bldg:ROES.AHU.AC07.Supply_Air_Temp_Setpoint,
+        bldg:ROES.AHU.AC07.Zone_Air_Temp .
+
+bldg:damperVAVRM050 a brick1:Damper ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM050.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM050 .
+
+bldg:damperVAVRM055N a brick1:Damper ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM055N.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM055N .
+
+bldg:damperVAVRM055S a brick1:Damper ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM055S.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM055S .
+
+bldg:damperVAVRM057 a brick1:Damper ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM057.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM057 .
+
+bldg:damperVAVRM066N a brick1:Damper ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM066N.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM066N .
+
+bldg:damperVAVRM066S a brick1:Damper ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM066S.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM066S .
+
+bldg:damperVAVRM068 a brick1:Damper ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM068.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM068 .
+
+bldg:damperVAVRM152 a brick1:Damper ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM152.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM152 .
+
+bldg:damperVAVRM154 a brick1:Damper ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM154.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM154 .
+
+bldg:damperVAVRM156 a brick1:Damper ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM156.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM156 .
+
+bldg:damperVAVRM156A a brick1:Damper ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM156A.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM156A .
+
+bldg:damperVAVRM158 a brick1:Damper ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM158.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM158 .
+
+bldg:damperVAVRM160 a brick1:Damper ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM160.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM160 .
+
+bldg:damperVAVRM162 a brick1:Damper ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM162.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM162 .
+
+bldg:damperVAVRM164 a brick1:Damper ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM164.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM164 .
+
+bldg:damperVAVRM166 a brick1:Damper ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM166.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM166 .
+
+bldg:damperVAVRM168 a brick1:Damper ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM168.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM168 .
+
+bldg:floor0 a brick1:Floor ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPart bldg:RM050_room,
+        bldg:RM055N_room,
+        bldg:RM055S_room,
+        bldg:RM057_room,
+        bldg:RM066N_room,
+        bldg:RM066S_room,
+        bldg:RM068_room .
+
+bldg:floor1 a brick1:Floor ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPart bldg:RM152_room,
+        bldg:RM154_room,
+        bldg:RM156A_room,
+        bldg:RM156_room,
+        bldg:RM158_room,
+        bldg:RM160_room,
+        bldg:RM162_room,
+        bldg:RM164_room,
+        bldg:RM166_room,
+        bldg:RM168_room .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:RM050 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPart bldg:RM050_room .
+
+bldg:RM055N a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPart bldg:RM055N_room .
+
+bldg:RM055S a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPart bldg:RM055S_room .
+
+bldg:RM057 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPart bldg:RM057_room .
+
+bldg:RM066N a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPart bldg:RM066N_room .
+
+bldg:RM066S a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPart bldg:RM066S_room .
+
+bldg:RM068 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPart bldg:RM068_room .
+
+bldg:RM152 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPart bldg:RM152_room .
+
+bldg:RM154 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPart bldg:RM154_room .
+
+bldg:RM156 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPart bldg:RM156_room .
+
+bldg:RM156A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPart bldg:RM156A_room .
+
+bldg:RM158 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPart bldg:RM158_room .
+
+bldg:RM160 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPart bldg:RM160_room .
+
+bldg:RM162 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPart bldg:RM162_room .
+
+bldg:RM164 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPart bldg:RM164_room .
+
+bldg:RM166 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPart bldg:RM166_room .
+
+bldg:RM168 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:hasPart bldg:RM168_room .
+
+bldg:ROES.AHU.AC07.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.AHU.AC07.CCV" ;
+    brickframe:uuid "51d6393d-2ef8-3d78-87c9-707863e86021" .
+
+bldg:ROES.AHU.AC07.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.AHU.AC07.Cooling Valve Output" ;
+    brickframe:uuid "ab30cdf3-9d4b-3889-913d-6f94ad1442cb" .
+
+bldg:ROES.AHU.AC07.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.AHU.AC07.Mixed Air Temp" ;
+    brickframe:uuid "19c45302-59c7-35f6-839b-e69fa3e2b72f" .
+
+bldg:ROES.AHU.AC07.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "ROES.AHU.AC07.Mode" ;
+    brickframe:uuid "046bab04-a30d-33bb-aa02-0ca3ce72bbc3" .
+
+bldg:ROES.AHU.AC07.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.AHU.AC07.Outside Air Temp Virtual" ;
+    brickframe:uuid "928099d2-7102-3c97-9fa3-27b9cd70cb81" .
+
+bldg:ROES.AHU.AC07.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.AHU.AC07.Return Air Temp" ;
+    brickframe:uuid "a133064b-143e-30c7-b37d-aec607048f3a" .
+
+bldg:ROES.AHU.AC07.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.AHU.AC07.Supply Air Temp" ;
+    brickframe:uuid "65bd204b-d390-38bc-a106-6e049e89adbc" .
+
+bldg:ROES.AHU.AC07.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.AHU.AC07.Supply Air Temp Setpoint" ;
+    brickframe:uuid "66699195-238d-3a59-ab25-d283d026c78c" .
+
+bldg:ROES.AHU.AC07.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.AHU.AC07.Zone Air Temp" ;
+    brickframe:uuid "65c32728-7468-3e6b-b3a4-02ee6acf0afb" .
+
+bldg:ROES.ZONE.AC07.RM050.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "ROES.ZONE.AC07.RM050.Day Night Mode" ;
+    brickframe:uuid "35bd25c0-0883-3d47-a863-c3a7fec9406c" .
+
+bldg:ROES.ZONE.AC07.RM050.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM050.Heating Mode" ;
+    brickframe:uuid "7f7ec202-3964-34b9-9d9f-34a99a5bf39c" .
+
+bldg:ROES.ZONE.AC07.RM050.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM050.Zone Air Damper Command" ;
+    brickframe:uuid "af1a5a21-e7ee-398a-aa1e-755a6c88ca7f" .
+
+bldg:ROES.ZONE.AC07.RM050.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM050.Zone Air Temp" ;
+    brickframe:uuid "fb31d1aa-6608-3a66-9a99-9349f30daefe" .
+
+bldg:ROES.ZONE.AC07.RM050.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ROES.ZONE.AC07.RM050.Zone Air Temp Setpoint" ;
+    brickframe:uuid "f8dd42bc-9ad2-3fe1-aa55-077c6e5a7b38" .
+
+bldg:ROES.ZONE.AC07.RM050.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM050.Zone Supply Air Flow" ;
+    brickframe:uuid "a29a0816-c109-3833-bc76-91ff28109c74" .
+
+bldg:ROES.ZONE.AC07.RM055N.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "ROES.ZONE.AC07.RM055N.Day Night Mode" ;
+    brickframe:uuid "758291f8-0400-3098-99bc-6f6d677ae3a4" .
+
+bldg:ROES.ZONE.AC07.RM055N.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM055N.Heating Mode" ;
+    brickframe:uuid "27fee21a-36c0-3cfe-b96a-a15253208fa6" .
+
+bldg:ROES.ZONE.AC07.RM055N.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM055N.Zone Air Damper Command" ;
+    brickframe:uuid "1ecf9dba-2e0e-33f8-87dc-6e8daab65c95" .
+
+bldg:ROES.ZONE.AC07.RM055N.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM055N.Zone Air Temp" ;
+    brickframe:uuid "e3e1cad1-7b5c-301a-abee-b0f2a7903139" .
+
+bldg:ROES.ZONE.AC07.RM055N.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ROES.ZONE.AC07.RM055N.Zone Air Temp Setpoint" ;
+    brickframe:uuid "bad022ad-2b38-374d-8a54-3ac87f1041a3" .
+
+bldg:ROES.ZONE.AC07.RM055N.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM055N.Zone Supply Air Flow" ;
+    brickframe:uuid "16430193-4763-32d8-8775-56207d94c299" .
+
+bldg:ROES.ZONE.AC07.RM055S.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "ROES.ZONE.AC07.RM055S.Day Night Mode" ;
+    brickframe:uuid "ca9f0e45-697c-3be3-82ad-172f173b75bd" .
+
+bldg:ROES.ZONE.AC07.RM055S.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM055S.Heating Mode" ;
+    brickframe:uuid "981b1884-7acd-3a3d-906e-1efb8840e8e6" .
+
+bldg:ROES.ZONE.AC07.RM055S.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM055S.Zone Air Damper Command" ;
+    brickframe:uuid "b95de781-9a9e-34ee-9682-e10b7fc23212" .
+
+bldg:ROES.ZONE.AC07.RM055S.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM055S.Zone Air Temp" ;
+    brickframe:uuid "96e01c44-68ff-3512-916f-c99ddeff2597" .
+
+bldg:ROES.ZONE.AC07.RM055S.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ROES.ZONE.AC07.RM055S.Zone Air Temp Setpoint" ;
+    brickframe:uuid "fc14aa12-b1eb-37fd-a456-f037627a1c12" .
+
+bldg:ROES.ZONE.AC07.RM055S.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM055S.Zone Supply Air Flow" ;
+    brickframe:uuid "96388963-b94a-3048-9888-22d33d7c8ab4" .
+
+bldg:ROES.ZONE.AC07.RM057.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "ROES.ZONE.AC07.RM057.Day Night Mode" ;
+    brickframe:uuid "158bb0c7-82a3-36db-b4be-04fd75d13ae7" .
+
+bldg:ROES.ZONE.AC07.RM057.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM057.Heating Mode" ;
+    brickframe:uuid "12860e2f-f7c5-361e-bd5d-b0e452a925ae" .
+
+bldg:ROES.ZONE.AC07.RM057.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM057.Zone Air Damper Command" ;
+    brickframe:uuid "d5232cd8-e847-3d54-bd56-760095874cba" .
+
+bldg:ROES.ZONE.AC07.RM057.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM057.Zone Air Temp" ;
+    brickframe:uuid "41554fc2-9467-304a-9c2c-dcdb39aa4528" .
+
+bldg:ROES.ZONE.AC07.RM057.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ROES.ZONE.AC07.RM057.Zone Air Temp Setpoint" ;
+    brickframe:uuid "d6015282-1a42-30e9-b2f9-1defc8c0d0d1" .
+
+bldg:ROES.ZONE.AC07.RM057.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM057.Zone Supply Air Flow" ;
+    brickframe:uuid "8e885411-4e1c-3fbd-9c9f-1682915dc810" .
+
+bldg:ROES.ZONE.AC07.RM066N.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "ROES.ZONE.AC07.RM066N.Day Night Mode" ;
+    brickframe:uuid "2b9c6229-ccf6-3373-b577-ff04dd4c8110" .
+
+bldg:ROES.ZONE.AC07.RM066N.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM066N.Heating Mode" ;
+    brickframe:uuid "a64e3cc2-d705-3b47-b4e8-75f02839e89d" .
+
+bldg:ROES.ZONE.AC07.RM066N.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM066N.Zone Air Damper Command" ;
+    brickframe:uuid "056c66a7-1b2f-3714-9c6d-9d11433432b5" .
+
+bldg:ROES.ZONE.AC07.RM066N.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM066N.Zone Air Temp" ;
+    brickframe:uuid "3f013e57-4925-39c2-812f-219f656245cf" .
+
+bldg:ROES.ZONE.AC07.RM066N.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ROES.ZONE.AC07.RM066N.Zone Air Temp Setpoint" ;
+    brickframe:uuid "c29e8e65-c151-3f38-ad85-7b7a52dd86c8" .
+
+bldg:ROES.ZONE.AC07.RM066N.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM066N.Zone Supply Air Flow" ;
+    brickframe:uuid "56055c59-c1e8-3e69-82ff-7a25e0769429" .
+
+bldg:ROES.ZONE.AC07.RM066S.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "ROES.ZONE.AC07.RM066S.Day Night Mode" ;
+    brickframe:uuid "39e1cd93-5dc7-3856-97ca-86b15cc82896" .
+
+bldg:ROES.ZONE.AC07.RM066S.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM066S.Heating Mode" ;
+    brickframe:uuid "3e3c883b-3657-3bf9-b881-25fe35e665dc" .
+
+bldg:ROES.ZONE.AC07.RM066S.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM066S.Zone Air Damper Command" ;
+    brickframe:uuid "78cd2898-1c57-329e-bb3c-118665f59481" .
+
+bldg:ROES.ZONE.AC07.RM066S.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM066S.Zone Air Temp" ;
+    brickframe:uuid "96a8c45e-3a1f-337f-b638-b39618765241" .
+
+bldg:ROES.ZONE.AC07.RM066S.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ROES.ZONE.AC07.RM066S.Zone Air Temp Setpoint" ;
+    brickframe:uuid "203e1741-c232-31c8-a73d-bc58b3402dbc" .
+
+bldg:ROES.ZONE.AC07.RM066S.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM066S.Zone Supply Air Flow" ;
+    brickframe:uuid "e99424cb-cb9c-3a51-8e8b-62c60d6f261b" .
+
+bldg:ROES.ZONE.AC07.RM068.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "ROES.ZONE.AC07.RM068.Day Night Mode" ;
+    brickframe:uuid "e113cc7f-38b4-3494-9142-fc8a3013a643" .
+
+bldg:ROES.ZONE.AC07.RM068.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM068.Heating Mode" ;
+    brickframe:uuid "58712ccf-1ce2-3bdf-b826-649428b627c9" .
+
+bldg:ROES.ZONE.AC07.RM068.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM068.Zone Air Damper Command" ;
+    brickframe:uuid "c3dc4223-2b6e-3618-96fb-6c7b36dc1c0f" .
+
+bldg:ROES.ZONE.AC07.RM068.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM068.Zone Air Temp" ;
+    brickframe:uuid "6d5bd024-b65f-34f9-a251-4de1403c33fa" .
+
+bldg:ROES.ZONE.AC07.RM068.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ROES.ZONE.AC07.RM068.Zone Air Temp Setpoint" ;
+    brickframe:uuid "eb84ea62-a8b5-3011-b0e5-0abc485c74f1" .
+
+bldg:ROES.ZONE.AC07.RM068.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM068.Zone Supply Air Flow" ;
+    brickframe:uuid "91759d13-5404-3fc1-8803-adb8b54949f5" .
+
+bldg:ROES.ZONE.AC07.RM152.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "ROES.ZONE.AC07.RM152.Day Night Mode" ;
+    brickframe:uuid "9260a3dc-8d0b-3cce-9c25-39fb32ce412c" .
+
+bldg:ROES.ZONE.AC07.RM152.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM152.Heating Mode" ;
+    brickframe:uuid "ba84ba6e-a76e-3d82-bed6-331d25162c1b" .
+
+bldg:ROES.ZONE.AC07.RM152.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM152.Zone Air Damper Command" ;
+    brickframe:uuid "c8d5c229-b27b-3d24-8f3d-5a7f9a05d51e" .
+
+bldg:ROES.ZONE.AC07.RM152.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM152.Zone Air Temp" ;
+    brickframe:uuid "0893e65e-f75f-32e7-b220-90258941fb11" .
+
+bldg:ROES.ZONE.AC07.RM152.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ROES.ZONE.AC07.RM152.Zone Air Temp Setpoint" ;
+    brickframe:uuid "eaac79a3-dc41-3f3c-92fb-3d9f54fd14b1" .
+
+bldg:ROES.ZONE.AC07.RM152.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM152.Zone Supply Air Flow" ;
+    brickframe:uuid "8b77793d-65a8-3b31-a5b7-31780c138da8" .
+
+bldg:ROES.ZONE.AC07.RM154.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "ROES.ZONE.AC07.RM154.Day Night Mode" ;
+    brickframe:uuid "dd17b92d-b6f2-3ba1-b273-e6529662d598" .
+
+bldg:ROES.ZONE.AC07.RM154.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM154.Heating Mode" ;
+    brickframe:uuid "29b6618a-7443-3869-ae23-09176189fb76" .
+
+bldg:ROES.ZONE.AC07.RM154.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM154.Zone Air Damper Command" ;
+    brickframe:uuid "72c5188e-9591-3ab0-a0e3-407a04613f0b" .
+
+bldg:ROES.ZONE.AC07.RM154.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM154.Zone Air Temp" ;
+    brickframe:uuid "4e11a64c-0c54-3f7d-a294-ef3045441aaa" .
+
+bldg:ROES.ZONE.AC07.RM154.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ROES.ZONE.AC07.RM154.Zone Air Temp Setpoint" ;
+    brickframe:uuid "4cadac44-ad3b-3939-8191-49992f5ba162" .
+
+bldg:ROES.ZONE.AC07.RM154.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM154.Zone Supply Air Flow" ;
+    brickframe:uuid "23d6b7d6-cd6e-33b9-8b87-cfdca77983f8" .
+
+bldg:ROES.ZONE.AC07.RM156.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "ROES.ZONE.AC07.RM156.Day Night Mode" ;
+    brickframe:uuid "5a6c5817-b14d-3409-9130-813c30d1115f" .
+
+bldg:ROES.ZONE.AC07.RM156.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM156.Heating Mode" ;
+    brickframe:uuid "b8ece96c-39e1-35b9-8eba-18f95347f19e" .
+
+bldg:ROES.ZONE.AC07.RM156.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM156.Zone Air Damper Command" ;
+    brickframe:uuid "feb9f002-7a26-3611-933a-e4defa5a4661" .
+
+bldg:ROES.ZONE.AC07.RM156.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM156.Zone Air Temp" ;
+    brickframe:uuid "f70bf671-5453-3789-b907-b482efa5baca" .
+
+bldg:ROES.ZONE.AC07.RM156.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ROES.ZONE.AC07.RM156.Zone Air Temp Setpoint" ;
+    brickframe:uuid "16d6c0bc-ccd5-3d98-9b47-408b3ad88ac0" .
+
+bldg:ROES.ZONE.AC07.RM156.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM156.Zone Supply Air Flow" ;
+    brickframe:uuid "fb1bc172-2042-3010-aa94-668d97dc6607" .
+
+bldg:ROES.ZONE.AC07.RM156A.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "ROES.ZONE.AC07.RM156A.Day Night Mode" ;
+    brickframe:uuid "6b37806d-93ba-35ca-8667-081cdf86d1bb" .
+
+bldg:ROES.ZONE.AC07.RM156A.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM156A.Heating Mode" ;
+    brickframe:uuid "47639a35-ac2f-3dcd-b2a6-2b62b57b7c8b" .
+
+bldg:ROES.ZONE.AC07.RM156A.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM156A.Zone Air Damper Command" ;
+    brickframe:uuid "448d4f0d-0f95-3267-839b-ce29e759a916" .
+
+bldg:ROES.ZONE.AC07.RM156A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM156A.Zone Air Temp" ;
+    brickframe:uuid "6e750027-db2d-3309-ad9d-433d2893c2c9" .
+
+bldg:ROES.ZONE.AC07.RM156A.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ROES.ZONE.AC07.RM156A.Zone Air Temp Setpoint" ;
+    brickframe:uuid "14462dc3-75ea-34a4-b485-046a50881325" .
+
+bldg:ROES.ZONE.AC07.RM156A.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM156A.Zone Supply Air Flow" ;
+    brickframe:uuid "57deac19-df19-3433-a9d6-1fd91b24b84b" .
+
+bldg:ROES.ZONE.AC07.RM158.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "ROES.ZONE.AC07.RM158.Day Night Mode" ;
+    brickframe:uuid "18af09bf-63b5-39bf-ab24-5fbc596fbef3" .
+
+bldg:ROES.ZONE.AC07.RM158.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM158.Heating Mode" ;
+    brickframe:uuid "99a01952-eff7-339c-995e-83eda458dd6e" .
+
+bldg:ROES.ZONE.AC07.RM158.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM158.Zone Air Damper Command" ;
+    brickframe:uuid "41760e7d-6759-38a9-b740-3bb8af55bdcf" .
+
+bldg:ROES.ZONE.AC07.RM158.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM158.Zone Air Temp" ;
+    brickframe:uuid "0576a800-855b-3af8-a1e5-4a18211489d6" .
+
+bldg:ROES.ZONE.AC07.RM158.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ROES.ZONE.AC07.RM158.Zone Air Temp Setpoint" ;
+    brickframe:uuid "1eb32e58-2205-3f3c-abca-04e1841ad493" .
+
+bldg:ROES.ZONE.AC07.RM158.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM158.Zone Supply Air Flow" ;
+    brickframe:uuid "b93a2819-04c3-32bf-9869-189ef37111d8" .
+
+bldg:ROES.ZONE.AC07.RM160.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "ROES.ZONE.AC07.RM160.Day Night Mode" ;
+    brickframe:uuid "478171a3-5461-3c9f-be32-b67a39a1a204" .
+
+bldg:ROES.ZONE.AC07.RM160.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM160.Heating Mode" ;
+    brickframe:uuid "327115c4-5a2e-3fae-9fc5-62291a170c59" .
+
+bldg:ROES.ZONE.AC07.RM160.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM160.Zone Air Damper Command" ;
+    brickframe:uuid "607b168b-e974-39ef-94f6-ff463462b7ae" .
+
+bldg:ROES.ZONE.AC07.RM160.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM160.Zone Air Temp" ;
+    brickframe:uuid "a6efbbfe-3844-3349-b672-f93890934668" .
+
+bldg:ROES.ZONE.AC07.RM160.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ROES.ZONE.AC07.RM160.Zone Air Temp Setpoint" ;
+    brickframe:uuid "4db1082d-e816-3d50-b21b-79478351a3ae" .
+
+bldg:ROES.ZONE.AC07.RM160.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM160.Zone Supply Air Flow" ;
+    brickframe:uuid "f5a4b0cc-e6dc-3aa9-9483-e266571cf0ba" .
+
+bldg:ROES.ZONE.AC07.RM162.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "ROES.ZONE.AC07.RM162.Day Night Mode" ;
+    brickframe:uuid "153bdbe7-d1b7-3dbd-a957-df1ccd19c6cd" .
+
+bldg:ROES.ZONE.AC07.RM162.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM162.Heating Mode" ;
+    brickframe:uuid "dfb7df13-50eb-3830-9f11-79383ed0b5a8" .
+
+bldg:ROES.ZONE.AC07.RM162.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM162.Zone Air Damper Command" ;
+    brickframe:uuid "e08c5754-465f-3ad4-a38a-d18d2d12e11f" .
+
+bldg:ROES.ZONE.AC07.RM162.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM162.Zone Air Temp" ;
+    brickframe:uuid "e237a05d-df29-3384-a3bd-469e6102c0fd" .
+
+bldg:ROES.ZONE.AC07.RM162.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ROES.ZONE.AC07.RM162.Zone Air Temp Setpoint" ;
+    brickframe:uuid "4558c6dc-8b36-3c50-bdb1-fcbbf84f5a54" .
+
+bldg:ROES.ZONE.AC07.RM162.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM162.Zone Supply Air Flow" ;
+    brickframe:uuid "c9d0b6d0-0618-3fe2-8a80-079affc3bad6" .
+
+bldg:ROES.ZONE.AC07.RM164.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "ROES.ZONE.AC07.RM164.Day Night Mode" ;
+    brickframe:uuid "e6486603-9368-3736-836f-7d3e4f67eaa4" .
+
+bldg:ROES.ZONE.AC07.RM164.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM164.Heating Mode" ;
+    brickframe:uuid "177988ae-c373-3b89-b347-d0b11cc553b1" .
+
+bldg:ROES.ZONE.AC07.RM164.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM164.Zone Air Damper Command" ;
+    brickframe:uuid "8fbd17f6-e0ce-3eba-956f-649cd589b997" .
+
+bldg:ROES.ZONE.AC07.RM164.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM164.Zone Air Temp" ;
+    brickframe:uuid "81a88cd3-54e5-3fff-b7d0-e2139c998bc1" .
+
+bldg:ROES.ZONE.AC07.RM164.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ROES.ZONE.AC07.RM164.Zone Air Temp Setpoint" ;
+    brickframe:uuid "25e7553b-bfe6-3b26-98fd-0b55110b9cdd" .
+
+bldg:ROES.ZONE.AC07.RM164.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM164.Zone Supply Air Flow" ;
+    brickframe:uuid "94374668-3ba6-3de9-ac77-479a6bef46b2" .
+
+bldg:ROES.ZONE.AC07.RM166.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "ROES.ZONE.AC07.RM166.Day Night Mode" ;
+    brickframe:uuid "91e76a72-cd75-3e03-a68d-79f18aa6bd69" .
+
+bldg:ROES.ZONE.AC07.RM166.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM166.Heating Mode" ;
+    brickframe:uuid "eaeb0886-466c-31a8-9622-18c94ce27450" .
+
+bldg:ROES.ZONE.AC07.RM166.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM166.Zone Air Damper Command" ;
+    brickframe:uuid "bad26b61-e345-3837-973f-d732938c46af" .
+
+bldg:ROES.ZONE.AC07.RM166.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM166.Zone Air Temp" ;
+    brickframe:uuid "7ed7ea49-c0a0-321d-aaaa-237480851081" .
+
+bldg:ROES.ZONE.AC07.RM166.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ROES.ZONE.AC07.RM166.Zone Air Temp Setpoint" ;
+    brickframe:uuid "89ca181b-0eb3-3392-8dbf-4bc43e314700" .
+
+bldg:ROES.ZONE.AC07.RM166.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM166.Zone Supply Air Flow" ;
+    brickframe:uuid "d4e1256e-3e3d-3d89-ae5e-09c43d00d494" .
+
+bldg:ROES.ZONE.AC07.RM168.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "ROES.ZONE.AC07.RM168.Day Night Mode" ;
+    brickframe:uuid "d3ced2f8-a1b6-3bd4-aa82-0c0f5590423a" .
+
+bldg:ROES.ZONE.AC07.RM168.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM168.Heating Mode" ;
+    brickframe:uuid "570725de-c75d-377b-9e5f-ec9634b55d8a" .
+
+bldg:ROES.ZONE.AC07.RM168.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM168.Zone Air Damper Command" ;
+    brickframe:uuid "530981ad-9c81-30ff-a813-0842325240fd" .
+
+bldg:ROES.ZONE.AC07.RM168.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM168.Zone Air Temp" ;
+    brickframe:uuid "78dfd546-3aac-3d63-a7a0-73587c9ae8e3" .
+
+bldg:ROES.ZONE.AC07.RM168.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ROES.ZONE.AC07.RM168.Zone Air Temp Setpoint" ;
+    brickframe:uuid "81cbf202-b11d-30fb-824c-591f4ab26538" .
+
+bldg:ROES.ZONE.AC07.RM168.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ROES ;
+    brickframe:pointname "ROES.ZONE.AC07.RM168.Zone Supply Air Flow" ;
+    brickframe:uuid "a15688c5-7451-36ea-8347-94e0348c2757" .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+bldg:RM050_room a brick1:Room ;
+    brickframe:hasSite bldg:ROES .
+
+bldg:RM055N_room a brick1:Room ;
+    brickframe:hasSite bldg:ROES .
+
+bldg:RM055S_room a brick1:Room ;
+    brickframe:hasSite bldg:ROES .
+
+bldg:RM057_room a brick1:Room ;
+    brickframe:hasSite bldg:ROES .
+
+bldg:RM066N_room a brick1:Room ;
+    brickframe:hasSite bldg:ROES .
+
+bldg:RM066S_room a brick1:Room ;
+    brickframe:hasSite bldg:ROES .
+
+bldg:RM068_room a brick1:Room ;
+    brickframe:hasSite bldg:ROES .
+
+bldg:RM152_room a brick1:Room ;
+    brickframe:hasSite bldg:ROES .
+
+bldg:RM154_room a brick1:Room ;
+    brickframe:hasSite bldg:ROES .
+
+bldg:RM156A_room a brick1:Room ;
+    brickframe:hasSite bldg:ROES .
+
+bldg:RM156_room a brick1:Room ;
+    brickframe:hasSite bldg:ROES .
+
+bldg:RM158_room a brick1:Room ;
+    brickframe:hasSite bldg:ROES .
+
+bldg:RM160_room a brick1:Room ;
+    brickframe:hasSite bldg:ROES .
+
+bldg:RM162_room a brick1:Room ;
+    brickframe:hasSite bldg:ROES .
+
+bldg:RM164_room a brick1:Room ;
+    brickframe:hasSite bldg:ROES .
+
+bldg:RM166_room a brick1:Room ;
+    brickframe:hasSite bldg:ROES .
+
+bldg:RM168_room a brick1:Room ;
+    brickframe:hasSite bldg:ROES .
+
+bldg:VAVRM050 a brick1:VAV ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:feeds bldg:RM050 ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM050.Day_Night_Mode,
+        bldg:ROES.ZONE.AC07.RM050.Heating_Mode,
+        bldg:ROES.ZONE.AC07.RM050.Zone_Air_Temp,
+        bldg:ROES.ZONE.AC07.RM050.Zone_Air_Temp_Setpoint,
+        bldg:ROES.ZONE.AC07.RM050.Zone_Supply_Air_Flow .
+
+bldg:VAVRM055N a brick1:VAV ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:feeds bldg:RM055N ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM055N.Day_Night_Mode,
+        bldg:ROES.ZONE.AC07.RM055N.Heating_Mode,
+        bldg:ROES.ZONE.AC07.RM055N.Zone_Air_Temp,
+        bldg:ROES.ZONE.AC07.RM055N.Zone_Air_Temp_Setpoint,
+        bldg:ROES.ZONE.AC07.RM055N.Zone_Supply_Air_Flow .
+
+bldg:VAVRM055S a brick1:VAV ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:feeds bldg:RM055S ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM055S.Day_Night_Mode,
+        bldg:ROES.ZONE.AC07.RM055S.Heating_Mode,
+        bldg:ROES.ZONE.AC07.RM055S.Zone_Air_Temp,
+        bldg:ROES.ZONE.AC07.RM055S.Zone_Air_Temp_Setpoint,
+        bldg:ROES.ZONE.AC07.RM055S.Zone_Supply_Air_Flow .
+
+bldg:VAVRM057 a brick1:VAV ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:feeds bldg:RM057 ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM057.Day_Night_Mode,
+        bldg:ROES.ZONE.AC07.RM057.Heating_Mode,
+        bldg:ROES.ZONE.AC07.RM057.Zone_Air_Temp,
+        bldg:ROES.ZONE.AC07.RM057.Zone_Air_Temp_Setpoint,
+        bldg:ROES.ZONE.AC07.RM057.Zone_Supply_Air_Flow .
+
+bldg:VAVRM066N a brick1:VAV ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:feeds bldg:RM066N ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM066N.Day_Night_Mode,
+        bldg:ROES.ZONE.AC07.RM066N.Heating_Mode,
+        bldg:ROES.ZONE.AC07.RM066N.Zone_Air_Temp,
+        bldg:ROES.ZONE.AC07.RM066N.Zone_Air_Temp_Setpoint,
+        bldg:ROES.ZONE.AC07.RM066N.Zone_Supply_Air_Flow .
+
+bldg:VAVRM066S a brick1:VAV ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:feeds bldg:RM066S ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM066S.Day_Night_Mode,
+        bldg:ROES.ZONE.AC07.RM066S.Heating_Mode,
+        bldg:ROES.ZONE.AC07.RM066S.Zone_Air_Temp,
+        bldg:ROES.ZONE.AC07.RM066S.Zone_Air_Temp_Setpoint,
+        bldg:ROES.ZONE.AC07.RM066S.Zone_Supply_Air_Flow .
+
+bldg:VAVRM068 a brick1:VAV ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:feeds bldg:RM068 ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM068.Day_Night_Mode,
+        bldg:ROES.ZONE.AC07.RM068.Heating_Mode,
+        bldg:ROES.ZONE.AC07.RM068.Zone_Air_Temp,
+        bldg:ROES.ZONE.AC07.RM068.Zone_Air_Temp_Setpoint,
+        bldg:ROES.ZONE.AC07.RM068.Zone_Supply_Air_Flow .
+
+bldg:VAVRM152 a brick1:VAV ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:feeds bldg:RM152 ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM152.Day_Night_Mode,
+        bldg:ROES.ZONE.AC07.RM152.Heating_Mode,
+        bldg:ROES.ZONE.AC07.RM152.Zone_Air_Temp,
+        bldg:ROES.ZONE.AC07.RM152.Zone_Air_Temp_Setpoint,
+        bldg:ROES.ZONE.AC07.RM152.Zone_Supply_Air_Flow .
+
+bldg:VAVRM154 a brick1:VAV ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:feeds bldg:RM154 ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM154.Day_Night_Mode,
+        bldg:ROES.ZONE.AC07.RM154.Heating_Mode,
+        bldg:ROES.ZONE.AC07.RM154.Zone_Air_Temp,
+        bldg:ROES.ZONE.AC07.RM154.Zone_Air_Temp_Setpoint,
+        bldg:ROES.ZONE.AC07.RM154.Zone_Supply_Air_Flow .
+
+bldg:VAVRM156 a brick1:VAV ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:feeds bldg:RM156 ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM156.Day_Night_Mode,
+        bldg:ROES.ZONE.AC07.RM156.Heating_Mode,
+        bldg:ROES.ZONE.AC07.RM156.Zone_Air_Temp,
+        bldg:ROES.ZONE.AC07.RM156.Zone_Air_Temp_Setpoint,
+        bldg:ROES.ZONE.AC07.RM156.Zone_Supply_Air_Flow .
+
+bldg:VAVRM156A a brick1:VAV ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:feeds bldg:RM156A ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM156A.Day_Night_Mode,
+        bldg:ROES.ZONE.AC07.RM156A.Heating_Mode,
+        bldg:ROES.ZONE.AC07.RM156A.Zone_Air_Temp,
+        bldg:ROES.ZONE.AC07.RM156A.Zone_Air_Temp_Setpoint,
+        bldg:ROES.ZONE.AC07.RM156A.Zone_Supply_Air_Flow .
+
+bldg:VAVRM158 a brick1:VAV ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:feeds bldg:RM158 ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM158.Day_Night_Mode,
+        bldg:ROES.ZONE.AC07.RM158.Heating_Mode,
+        bldg:ROES.ZONE.AC07.RM158.Zone_Air_Temp,
+        bldg:ROES.ZONE.AC07.RM158.Zone_Air_Temp_Setpoint,
+        bldg:ROES.ZONE.AC07.RM158.Zone_Supply_Air_Flow .
+
+bldg:VAVRM160 a brick1:VAV ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:feeds bldg:RM160 ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM160.Day_Night_Mode,
+        bldg:ROES.ZONE.AC07.RM160.Heating_Mode,
+        bldg:ROES.ZONE.AC07.RM160.Zone_Air_Temp,
+        bldg:ROES.ZONE.AC07.RM160.Zone_Air_Temp_Setpoint,
+        bldg:ROES.ZONE.AC07.RM160.Zone_Supply_Air_Flow .
+
+bldg:VAVRM162 a brick1:VAV ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:feeds bldg:RM162 ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM162.Day_Night_Mode,
+        bldg:ROES.ZONE.AC07.RM162.Heating_Mode,
+        bldg:ROES.ZONE.AC07.RM162.Zone_Air_Temp,
+        bldg:ROES.ZONE.AC07.RM162.Zone_Air_Temp_Setpoint,
+        bldg:ROES.ZONE.AC07.RM162.Zone_Supply_Air_Flow .
+
+bldg:VAVRM164 a brick1:VAV ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:feeds bldg:RM164 ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM164.Day_Night_Mode,
+        bldg:ROES.ZONE.AC07.RM164.Heating_Mode,
+        bldg:ROES.ZONE.AC07.RM164.Zone_Air_Temp,
+        bldg:ROES.ZONE.AC07.RM164.Zone_Air_Temp_Setpoint,
+        bldg:ROES.ZONE.AC07.RM164.Zone_Supply_Air_Flow .
+
+bldg:VAVRM166 a brick1:VAV ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:feeds bldg:RM166 ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM166.Day_Night_Mode,
+        bldg:ROES.ZONE.AC07.RM166.Heating_Mode,
+        bldg:ROES.ZONE.AC07.RM166.Zone_Air_Temp,
+        bldg:ROES.ZONE.AC07.RM166.Zone_Air_Temp_Setpoint,
+        bldg:ROES.ZONE.AC07.RM166.Zone_Supply_Air_Flow .
+
+bldg:VAVRM168 a brick1:VAV ;
+    brickframe:hasSite bldg:ROES ;
+    brick1:feeds bldg:RM168 ;
+    brick1:hasPoint bldg:ROES.ZONE.AC07.RM168.Day_Night_Mode,
+        bldg:ROES.ZONE.AC07.RM168.Heating_Mode,
+        bldg:ROES.ZONE.AC07.RM168.Zone_Air_Temp,
+        bldg:ROES.ZONE.AC07.RM168.Zone_Air_Temp_Setpoint,
+        bldg:ROES.ZONE.AC07.RM168.Zone_Supply_Air_Flow .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:ROES a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "20605" ;
+    brickframe:Country "US" .
+

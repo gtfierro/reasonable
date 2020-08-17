@@ -1,0 +1,683 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/MANN#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:AC05 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:hasPoint bldg:MANN.AHU.AC05.Cooling_Valve_Output ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC06 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:hasPoint bldg:MANN.AHU.AC06.Cooling_Valve_Output ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU05 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:feeds bldg:VAVRM142,
+        bldg:VAVRM150,
+        bldg:VAVRM151,
+        bldg:VAVRM153 ;
+    brick1:hasPoint bldg:MANN.AHU.AHU05.CCV,
+        bldg:MANN.AHU.AHU05.Heating_Valve_Output,
+        bldg:MANN.AHU.AHU05.Outside_Air_Temp,
+        bldg:MANN.AHU.AHU05.Outside_Air_Temp_Virtual,
+        bldg:MANN.AHU.AHU05.Supply_Air_Temp,
+        bldg:MANN.AHU.AHU05.Supply_Air_Temp_Setpoint,
+        bldg:MANN.AHU.AHU05.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU06 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:feeds bldg:VAVRM141,
+        bldg:VAVRM141_MIX,
+        bldg:VAVRM145,
+        bldg:VAVRM145_MIX,
+        bldg:VAVRM146,
+        bldg:VAVRM146_MIX,
+        bldg:VAVRM147,
+        bldg:VAVRM147_MIX,
+        bldg:VAVRM149 ;
+    brick1:hasPoint bldg:MANN.AHU.AHU06.CCV,
+        bldg:MANN.AHU.AHU06.Heating_Valve_Output,
+        bldg:MANN.AHU.AHU06.Mixed_Air_Temp,
+        bldg:MANN.AHU.AHU06.Outside_Air_Temp_Virtual,
+        bldg:MANN.AHU.AHU06.Return_Air_Temp,
+        bldg:MANN.AHU.AHU06.Supply_Air_Temp,
+        bldg:MANN.AHU.AHU06.Supply_Air_Temp_Setpoint,
+        bldg:MANN.AHU.AHU06.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:floor1 a brick1:Floor ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:hasPart bldg:RM141_MIX_room,
+        bldg:RM141_room,
+        bldg:RM142_room,
+        bldg:RM145_MIX_room,
+        bldg:RM145_room,
+        bldg:RM146_MIX_room,
+        bldg:RM146_room,
+        bldg:RM147_MIX_room,
+        bldg:RM147_room,
+        bldg:RM149_room,
+        bldg:RM150_room,
+        bldg:RM151_room,
+        bldg:RM153_room .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:MANN.AHU.AC05.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.AHU.AC05.Cooling Valve Output" ;
+    brickframe:uuid "1a667281-bf21-3668-8ec0-90559e783d7c" .
+
+bldg:MANN.AHU.AC06.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.AHU.AC06.Cooling Valve Output" ;
+    brickframe:uuid "7608c9e8-c58e-3b38-9882-87f8121519e5" .
+
+bldg:MANN.AHU.AHU05.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.AHU.AHU05.CCV" ;
+    brickframe:uuid "8b154b46-57f2-312f-8fde-de89b5f239f2" .
+
+bldg:MANN.AHU.AHU05.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.AHU.AHU05.Heating Valve Output" ;
+    brickframe:uuid "3e77ab6d-0e64-3024-b7e2-75ebad164043" .
+
+bldg:MANN.AHU.AHU05.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.AHU.AHU05.Outside Air Temp" ;
+    brickframe:uuid "43a4139b-86e0-345c-a0f8-86a82199c581" .
+
+bldg:MANN.AHU.AHU05.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.AHU.AHU05.Outside Air Temp Virtual" ;
+    brickframe:uuid "01f86656-9b02-38a5-aed3-c28dfaf09014" .
+
+bldg:MANN.AHU.AHU05.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.AHU.AHU05.Supply Air Temp" ;
+    brickframe:uuid "eb3d8169-444b-3cbf-b10e-acb1c0741994" .
+
+bldg:MANN.AHU.AHU05.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.AHU.AHU05.Supply Air Temp Setpoint" ;
+    brickframe:uuid "e4ab11b0-edaf-3943-b621-93aa7d692050" .
+
+bldg:MANN.AHU.AHU05.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.AHU.AHU05.Zone Air Temp" ;
+    brickframe:uuid "a67a257a-b3a3-33d9-a2ef-09094dd16549" .
+
+bldg:MANN.AHU.AHU06.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.AHU.AHU06.CCV" ;
+    brickframe:uuid "5d84d906-3c91-340a-b23d-57fb7dae306b" .
+
+bldg:MANN.AHU.AHU06.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.AHU.AHU06.Heating Valve Output" ;
+    brickframe:uuid "868f4179-034f-3c42-ac34-44bdda762406" .
+
+bldg:MANN.AHU.AHU06.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.AHU.AHU06.Mixed Air Temp" ;
+    brickframe:uuid "28acf9b1-163b-3050-98bb-76b173397190" .
+
+bldg:MANN.AHU.AHU06.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.AHU.AHU06.Outside Air Temp Virtual" ;
+    brickframe:uuid "e656c5f5-5872-3c3c-8ad6-5738d6c14008" .
+
+bldg:MANN.AHU.AHU06.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.AHU.AHU06.Return Air Temp" ;
+    brickframe:uuid "26fff45b-91b2-385f-b7e8-0a749d69e818" .
+
+bldg:MANN.AHU.AHU06.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.AHU.AHU06.Supply Air Temp" ;
+    brickframe:uuid "ccd964a4-0c4a-3209-bf33-6d1476771182" .
+
+bldg:MANN.AHU.AHU06.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.AHU.AHU06.Supply Air Temp Setpoint" ;
+    brickframe:uuid "25329ab9-03e1-36c8-aa85-06cce57e9659" .
+
+bldg:MANN.AHU.AHU06.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.AHU.AHU06.Zone Air Temp" ;
+    brickframe:uuid "91f9a8e8-2a64-34a9-a7b2-c506d8d1c7b8" .
+
+bldg:MANN.CHW.Building_Chilled_Water_Flow a brick_v_1_0_2:Chilled_Water_Flow_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.CHW.Building Chilled Water Flow" ;
+    brickframe:uuid "0f3f9e2d-4ed5-3698-8dbb-4a5b9c6c5707" .
+
+bldg:MANN.CHW.Building_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.CHW.Building Chilled Water Return Temp" ;
+    brickframe:uuid "8038dfcb-7ed6-3e70-8160-10fb4cf1cf50" .
+
+bldg:MANN.CHW.Building_Chilled_Water_Return_Temp_Setpoint a brick_v_1_0_2:Chilled_Water_Return_Temperature_Setpoint ;
+    brickframe:pointname "MANN.CHW.Building Chilled Water Return Temp Setpoint" ;
+    brickframe:uuid "dffef789-8237-3d0a-b132-888427c326d2" .
+
+bldg:MANN.CHW.Building_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.CHW.Building Chilled Water Supply Temp" ;
+    brickframe:uuid "e8883d6e-5f4a-3779-abe3-032dcd1b5c09" .
+
+bldg:MANN.CHW.Building_Chilled_Water_Supply_Temp_Setpoint a brick_v_1_0_2:Chilled_Water_Supply_Temperature_Setpoint ;
+    brickframe:pointname "MANN.CHW.Building Chilled Water Supply Temp Setpoint" ;
+    brickframe:uuid "23d121.0.27a4-335f-aa6d-6f3904c7f84a" .
+
+bldg:MANN.CHW.Enable a brick1:Enable_Command ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.CHW.Enable" ;
+    brickframe:uuid "23745ef8-52f8-311b-a491-c9d704148ad9" .
+
+bldg:MANN.CHW.Loop_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.CHW.Loop Chilled Water Return Temp" ;
+    brickframe:uuid "4b1468b8-7d54-3fd3-b067-d29c9c9a9a69" .
+
+bldg:MANN.CHW.Loop_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.CHW.Loop Chilled Water Supply Temp" ;
+    brickframe:uuid "752fe6b8-ad4c-35f8-aa8e-6a1d7848b7ca" .
+
+bldg:MANN.CHW.OA_ENABLE a brick_v_1_0_2:Outside_Air_Damper_Command ;
+    brickframe:pointname "MANN.CHW.OA ENABLE" ;
+    brickframe:uuid "0e1d973b-8b55-32f5-ba62-3b2d9b54c289" .
+
+bldg:MANN.CHW.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.CHW.Outside Air Temp" ;
+    brickframe:uuid "0da274b7-18b4-351f-adc4-d6b7ae32a8af" .
+
+bldg:MANN.CHW.Pump1_SPEED a brick_v_1_0_2:Speed_Status ;
+    brickframe:pointname "MANN.CHW.Pump1_SPEED" ;
+    brickframe:uuid "f268095c-f575-3862-85e2-8cc9eb0d410b" .
+
+<http://buildsys.org/ontologies/MANN#MANN.CHW.Pump1_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.CHW.Pump1_Start/Stop" ;
+    brickframe:uuid "7dc01851-4beb-397e-ab61.0.21.0.2a20f" .
+
+bldg:MANN.CHW.Pump2_SPEED a brick_v_1_0_2:Speed_Status ;
+    brickframe:pointname "MANN.CHW.Pump2_SPEED" ;
+    brickframe:uuid "25193577-6212-393d-b94f-188812ae022f" .
+
+<http://buildsys.org/ontologies/MANN#MANN.CHW.Pump2_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.CHW.Pump2_Start/Stop" ;
+    brickframe:uuid "9b3c779a-6671-3767-b0a9-795465fd4a37" .
+
+bldg:MANN.ZONE.AHU05.RM142.Zone_Air_Control_Temp a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MANN.ZONE.AHU05.RM142.Zone Air Control Temp" ;
+    brickframe:uuid "0f0c375f-d720-3849-8e0a-da109b749421" .
+
+bldg:MANN.ZONE.AHU05.RM142.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.ZONE.AHU05.RM142.Zone Air Temp" ;
+    brickframe:uuid "31b6d034-f878-365a-bac7-e53d3cb8c285" .
+
+bldg:MANN.ZONE.AHU05.RM142.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MANN.ZONE.AHU05.RM142.Zone Air Temp Setpoint" ;
+    brickframe:uuid "93774620-82b5-3e87-97ba-a0a1d11c452d" .
+
+bldg:MANN.ZONE.AHU05.RM142.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.ZONE.AHU05.RM142.Zone Reheat Valve Command" ;
+    brickframe:uuid "6f1dd823-bcd6-3d79-8fa0-066c50d8d2dd" .
+
+bldg:MANN.ZONE.AHU05.RM142.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.ZONE.AHU05.RM142.Zone Supply Air Temp" ;
+    brickframe:uuid "a421dd71-4d3c-3fa3-b523-8006cc29b66f" .
+
+bldg:MANN.ZONE.AHU05.RM150.Zone_Air_Control_Temp a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MANN.ZONE.AHU05.RM150.Zone Air Control Temp" ;
+    brickframe:uuid "33603ef7-c3a1-3776-a63b-7085a3329721" .
+
+bldg:MANN.ZONE.AHU05.RM150.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.ZONE.AHU05.RM150.Zone Air Temp" ;
+    brickframe:uuid "ad5ce3c7-b0c7-3859-a3e8-44a1c70194f7" .
+
+bldg:MANN.ZONE.AHU05.RM150.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MANN.ZONE.AHU05.RM150.Zone Air Temp Setpoint" ;
+    brickframe:uuid "7210d5dc-0ff5-3611-8657-368f93854663" .
+
+bldg:MANN.ZONE.AHU05.RM150.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.ZONE.AHU05.RM150.Zone Reheat Valve Command" ;
+    brickframe:uuid "80c317c1-59a0-351e-9325-3a7a69b71bb7" .
+
+bldg:MANN.ZONE.AHU05.RM150.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.ZONE.AHU05.RM150.Zone Supply Air Temp" ;
+    brickframe:uuid "0321ec84-2b24-34d7-a670-154f63a5b32a" .
+
+bldg:MANN.ZONE.AHU05.RM151.Zone_Air_Control_Temp a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MANN.ZONE.AHU05.RM151.Zone Air Control Temp" ;
+    brickframe:uuid "76eeb325-da4f-30a0-b6e3-ad14061e7866" .
+
+bldg:MANN.ZONE.AHU05.RM151.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.ZONE.AHU05.RM151.Zone Air Temp" ;
+    brickframe:uuid "fd72f114-d606-3a38-b1f0-000f0bb22d3a" .
+
+bldg:MANN.ZONE.AHU05.RM151.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MANN.ZONE.AHU05.RM151.Zone Air Temp Setpoint" ;
+    brickframe:uuid "76dc3436-6c8f-3bf8-8d59-68970f4d1e6c" .
+
+bldg:MANN.ZONE.AHU05.RM151.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.ZONE.AHU05.RM151.Zone Reheat Valve Command" ;
+    brickframe:uuid "3a25d380-1ef6-3c22-9656-5dbc4ee783c2" .
+
+bldg:MANN.ZONE.AHU05.RM151.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.ZONE.AHU05.RM151.Zone Supply Air Temp" ;
+    brickframe:uuid "4ca2f3f6-85ac-3828-a241-dbcdef2bc4fa" .
+
+bldg:MANN.ZONE.AHU05.RM153.Zone_Air_Control_Temp a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MANN.ZONE.AHU05.RM153.Zone Air Control Temp" ;
+    brickframe:uuid "6482f5e4-2954-34f3-b3cd-d55b371ac755" .
+
+bldg:MANN.ZONE.AHU05.RM153.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.ZONE.AHU05.RM153.Zone Air Temp" ;
+    brickframe:uuid "f1c65123-d62d-3a98-88ad-f450add720c3" .
+
+bldg:MANN.ZONE.AHU05.RM153.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MANN.ZONE.AHU05.RM153.Zone Air Temp Setpoint" ;
+    brickframe:uuid "94452afa-8679-35f7-91fe-792370b9cbd2" .
+
+bldg:MANN.ZONE.AHU05.RM153.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.ZONE.AHU05.RM153.Zone Reheat Valve Command" ;
+    brickframe:uuid "9c152ff5-1741-3db5-b36b-bbb36cdce393" .
+
+bldg:MANN.ZONE.AHU05.RM153.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.ZONE.AHU05.RM153.Zone Supply Air Temp" ;
+    brickframe:uuid "31a5d041-12e4-3dcd-96aa-fca311a14c2e" .
+
+bldg:MANN.ZONE.AHU06.RM141.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.ZONE.AHU06.RM141.Zone Air Temp" ;
+    brickframe:uuid "e44c9697-e327-30f4-ac21-9f402914da2e" .
+
+bldg:MANN.ZONE.AHU06.RM141.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MANN.ZONE.AHU06.RM141.Zone Air Temp Setpoint" ;
+    brickframe:uuid "b11a9656-0b3d-3ff2-ae6d-d31982ea7059" .
+
+bldg:MANN.ZONE.AHU06.RM141.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.ZONE.AHU06.RM141.Zone Reheat Valve Command" ;
+    brickframe:uuid "04106074-c4cc-327b-84b9-645b1a701b25" .
+
+bldg:MANN.ZONE.AHU06.RM141.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.ZONE.AHU06.RM141.Zone Supply Air Temp" ;
+    brickframe:uuid "2f4657f3-fda6-357e-966a-0da2f169f482" .
+
+bldg:MANN.ZONE.AHU06.RM141_MIX.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.ZONE.AHU06.RM141_MIX.Zone Air Temp" ;
+    brickframe:uuid "e717ab4d-b26d-3c2d-a260-1cfe762d7dc5" .
+
+bldg:MANN.ZONE.AHU06.RM145.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.ZONE.AHU06.RM145.Zone Air Temp" ;
+    brickframe:uuid "e5e131b9-d60d-3165-8af6-0971d692dfd0" .
+
+bldg:MANN.ZONE.AHU06.RM145.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MANN.ZONE.AHU06.RM145.Zone Air Temp Setpoint" ;
+    brickframe:uuid "f53bacf0-b6a3-36ac-9bd9-02d8662bc74d" .
+
+bldg:MANN.ZONE.AHU06.RM145.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.ZONE.AHU06.RM145.Zone Reheat Valve Command" ;
+    brickframe:uuid "d57b21d0-9ad0-3767-8a19-5386fdd725b7" .
+
+bldg:MANN.ZONE.AHU06.RM145.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.ZONE.AHU06.RM145.Zone Supply Air Temp" ;
+    brickframe:uuid "0498443e-dbd6-3cfa-9825-b03db797fb31" .
+
+bldg:MANN.ZONE.AHU06.RM145_MIX.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.ZONE.AHU06.RM145_MIX.Zone Air Temp" ;
+    brickframe:uuid "80e5fc38-d5f1-3d6b-8296-2d6cf7329b90" .
+
+bldg:MANN.ZONE.AHU06.RM146.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.ZONE.AHU06.RM146.Zone Air Temp" ;
+    brickframe:uuid "c8231c16-3070-3f31-b566-fa1142cde701" .
+
+bldg:MANN.ZONE.AHU06.RM146.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MANN.ZONE.AHU06.RM146.Zone Air Temp Setpoint" ;
+    brickframe:uuid "03412dc3-052a-3068-a431-cbceedfbda04" .
+
+bldg:MANN.ZONE.AHU06.RM146.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.ZONE.AHU06.RM146.Zone Reheat Valve Command" ;
+    brickframe:uuid "91925d68-4f75-3dfe-bcb0-08fb4848fc8e" .
+
+bldg:MANN.ZONE.AHU06.RM146.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.ZONE.AHU06.RM146.Zone Supply Air Temp" ;
+    brickframe:uuid "f7f80087-b0c5-3332-9784-3e0d71c43c5d" .
+
+bldg:MANN.ZONE.AHU06.RM146_MIX.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.ZONE.AHU06.RM146_MIX.Zone Air Temp" ;
+    brickframe:uuid "7b74783d-ee28-34d6-a064-07bb0dbe480a" .
+
+bldg:MANN.ZONE.AHU06.RM147.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.ZONE.AHU06.RM147.Zone Air Temp" ;
+    brickframe:uuid "62cedd11-6b0f-3297-9e92-7f22a089f994" .
+
+bldg:MANN.ZONE.AHU06.RM147.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "MANN.ZONE.AHU06.RM147.Zone Air Temp Setpoint" ;
+    brickframe:uuid "f6cc395b-fca5-3f47-807d-a648f9352421" .
+
+bldg:MANN.ZONE.AHU06.RM147.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.ZONE.AHU06.RM147.Zone Reheat Valve Command" ;
+    brickframe:uuid "723e6b5d-d1e2-3d5e-b6d0-b2bd28d2edb9" .
+
+bldg:MANN.ZONE.AHU06.RM147.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.ZONE.AHU06.RM147.Zone Supply Air Temp" ;
+    brickframe:uuid "ce141708-0394-3759-9a9a-d1cee1bba7bd" .
+
+bldg:MANN.ZONE.AHU06.RM147_MIX.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.ZONE.AHU06.RM147_MIX.Zone Air Temp" ;
+    brickframe:uuid "04287b29-82da-3a71-9e1b-901106c1703b" .
+
+bldg:MANN.ZONE.AHU06.RM149.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MANN ;
+    brickframe:pointname "MANN.ZONE.AHU06.RM149.Zone Air Temp" ;
+    brickframe:uuid "901ad19f-377c-39c3-9ebc-4c4a870fc38b" .
+
+bldg:RM141 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:hasPart bldg:RM141_room .
+
+bldg:RM141_MIX a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:hasPart bldg:RM141_MIX_room .
+
+bldg:RM142 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:hasPart bldg:RM142_room .
+
+bldg:RM145 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:hasPart bldg:RM145_room .
+
+bldg:RM145_MIX a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:hasPart bldg:RM145_MIX_room .
+
+bldg:RM146 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:hasPart bldg:RM146_room .
+
+bldg:RM146_MIX a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:hasPart bldg:RM146_MIX_room .
+
+bldg:RM147 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:hasPart bldg:RM147_room .
+
+bldg:RM147_MIX a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:hasPart bldg:RM147_MIX_room .
+
+bldg:RM149 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:hasPart bldg:RM149_room .
+
+bldg:RM150 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:hasPart bldg:RM150_room .
+
+bldg:RM151 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:hasPart bldg:RM151_room .
+
+bldg:RM153 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:hasPart bldg:RM153_room .
+
+bldg:VAVRM141 a brick1:VAV ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:feeds bldg:RM141 ;
+    brick1:hasPoint bldg:MANN.ZONE.AHU06.RM141.Zone_Air_Temp,
+        bldg:MANN.ZONE.AHU06.RM141.Zone_Air_Temp_Setpoint,
+        bldg:MANN.ZONE.AHU06.RM141.Zone_Reheat_Valve_Command,
+        bldg:MANN.ZONE.AHU06.RM141.Zone_Supply_Air_Temp .
+
+bldg:VAVRM141_MIX a brick1:VAV ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:feeds bldg:RM141_MIX ;
+    brick1:hasPoint bldg:MANN.ZONE.AHU06.RM141_MIX.Zone_Air_Temp .
+
+bldg:VAVRM142 a brick1:VAV ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:feeds bldg:RM142 ;
+    brick1:hasPoint bldg:MANN.ZONE.AHU05.RM142.Zone_Air_Control_Temp,
+        bldg:MANN.ZONE.AHU05.RM142.Zone_Air_Temp,
+        bldg:MANN.ZONE.AHU05.RM142.Zone_Air_Temp_Setpoint,
+        bldg:MANN.ZONE.AHU05.RM142.Zone_Reheat_Valve_Command,
+        bldg:MANN.ZONE.AHU05.RM142.Zone_Supply_Air_Temp .
+
+bldg:VAVRM145 a brick1:VAV ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:feeds bldg:RM145 ;
+    brick1:hasPoint bldg:MANN.ZONE.AHU06.RM145.Zone_Air_Temp,
+        bldg:MANN.ZONE.AHU06.RM145.Zone_Air_Temp_Setpoint,
+        bldg:MANN.ZONE.AHU06.RM145.Zone_Reheat_Valve_Command,
+        bldg:MANN.ZONE.AHU06.RM145.Zone_Supply_Air_Temp .
+
+bldg:VAVRM145_MIX a brick1:VAV ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:feeds bldg:RM145_MIX ;
+    brick1:hasPoint bldg:MANN.ZONE.AHU06.RM145_MIX.Zone_Air_Temp .
+
+bldg:VAVRM146 a brick1:VAV ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:feeds bldg:RM146 ;
+    brick1:hasPoint bldg:MANN.ZONE.AHU06.RM146.Zone_Air_Temp,
+        bldg:MANN.ZONE.AHU06.RM146.Zone_Air_Temp_Setpoint,
+        bldg:MANN.ZONE.AHU06.RM146.Zone_Reheat_Valve_Command,
+        bldg:MANN.ZONE.AHU06.RM146.Zone_Supply_Air_Temp .
+
+bldg:VAVRM146_MIX a brick1:VAV ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:feeds bldg:RM146_MIX ;
+    brick1:hasPoint bldg:MANN.ZONE.AHU06.RM146_MIX.Zone_Air_Temp .
+
+bldg:VAVRM147 a brick1:VAV ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:feeds bldg:RM147 ;
+    brick1:hasPoint bldg:MANN.ZONE.AHU06.RM147.Zone_Air_Temp,
+        bldg:MANN.ZONE.AHU06.RM147.Zone_Air_Temp_Setpoint,
+        bldg:MANN.ZONE.AHU06.RM147.Zone_Reheat_Valve_Command,
+        bldg:MANN.ZONE.AHU06.RM147.Zone_Supply_Air_Temp .
+
+bldg:VAVRM147_MIX a brick1:VAV ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:feeds bldg:RM147_MIX ;
+    brick1:hasPoint bldg:MANN.ZONE.AHU06.RM147_MIX.Zone_Air_Temp .
+
+bldg:VAVRM149 a brick1:VAV ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:feeds bldg:RM149 ;
+    brick1:hasPoint bldg:MANN.ZONE.AHU06.RM149.Zone_Air_Temp .
+
+bldg:VAVRM150 a brick1:VAV ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:feeds bldg:RM150 ;
+    brick1:hasPoint bldg:MANN.ZONE.AHU05.RM150.Zone_Air_Control_Temp,
+        bldg:MANN.ZONE.AHU05.RM150.Zone_Air_Temp,
+        bldg:MANN.ZONE.AHU05.RM150.Zone_Air_Temp_Setpoint,
+        bldg:MANN.ZONE.AHU05.RM150.Zone_Reheat_Valve_Command,
+        bldg:MANN.ZONE.AHU05.RM150.Zone_Supply_Air_Temp .
+
+bldg:VAVRM151 a brick1:VAV ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:feeds bldg:RM151 ;
+    brick1:hasPoint bldg:MANN.ZONE.AHU05.RM151.Zone_Air_Control_Temp,
+        bldg:MANN.ZONE.AHU05.RM151.Zone_Air_Temp,
+        bldg:MANN.ZONE.AHU05.RM151.Zone_Air_Temp_Setpoint,
+        bldg:MANN.ZONE.AHU05.RM151.Zone_Reheat_Valve_Command,
+        bldg:MANN.ZONE.AHU05.RM151.Zone_Supply_Air_Temp .
+
+bldg:VAVRM153 a brick1:VAV ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:feeds bldg:RM153 ;
+    brick1:hasPoint bldg:MANN.ZONE.AHU05.RM153.Zone_Air_Control_Temp,
+        bldg:MANN.ZONE.AHU05.RM153.Zone_Air_Temp,
+        bldg:MANN.ZONE.AHU05.RM153.Zone_Air_Temp_Setpoint,
+        bldg:MANN.ZONE.AHU05.RM153.Zone_Reheat_Valve_Command,
+        bldg:MANN.ZONE.AHU05.RM153.Zone_Supply_Air_Temp .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+bldg:RM141_MIX_room a brick1:Room ;
+    brickframe:hasSite bldg:MANN .
+
+bldg:RM141_room a brick1:Room ;
+    brickframe:hasSite bldg:MANN .
+
+bldg:RM142_room a brick1:Room ;
+    brickframe:hasSite bldg:MANN .
+
+bldg:RM145_MIX_room a brick1:Room ;
+    brickframe:hasSite bldg:MANN .
+
+bldg:RM145_room a brick1:Room ;
+    brickframe:hasSite bldg:MANN .
+
+bldg:RM146_MIX_room a brick1:Room ;
+    brickframe:hasSite bldg:MANN .
+
+bldg:RM146_room a brick1:Room ;
+    brickframe:hasSite bldg:MANN .
+
+bldg:RM147_MIX_room a brick1:Room ;
+    brickframe:hasSite bldg:MANN .
+
+bldg:RM147_room a brick1:Room ;
+    brickframe:hasSite bldg:MANN .
+
+bldg:RM149_room a brick1:Room ;
+    brickframe:hasSite bldg:MANN .
+
+bldg:RM150_room a brick1:Room ;
+    brickframe:hasSite bldg:MANN .
+
+bldg:RM151_room a brick1:Room ;
+    brickframe:hasSite bldg:MANN .
+
+bldg:RM153_room a brick1:Room ;
+    brickframe:hasSite bldg:MANN .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:MANN ;
+    brick1:hasPoint bldg:MANN.CHW.Building_Chilled_Water_Flow,
+        bldg:MANN.CHW.Building_Chilled_Water_Return_Temp,
+        bldg:MANN.CHW.Building_Chilled_Water_Return_Temp_Setpoint,
+        bldg:MANN.CHW.Building_Chilled_Water_Supply_Temp,
+        bldg:MANN.CHW.Building_Chilled_Water_Supply_Temp_Setpoint,
+        bldg:MANN.CHW.Enable,
+        bldg:MANN.CHW.Loop_Chilled_Water_Return_Temp,
+        bldg:MANN.CHW.Loop_Chilled_Water_Supply_Temp,
+        bldg:MANN.CHW.OA_ENABLE,
+        bldg:MANN.CHW.Outside_Air_Temp,
+        bldg:MANN.CHW.Pump1_SPEED,
+        <http://buildsys.org/ontologies/MANN#MANN.CHW.Pump1_Start/Stop>,
+        bldg:MANN.CHW.Pump2_SPEED,
+        <http://buildsys.org/ontologies/MANN#MANN.CHW.Pump2_Start/Stop> .
+
+bldg:MANN a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "16792" ;
+    brickframe:Country "US" .
+

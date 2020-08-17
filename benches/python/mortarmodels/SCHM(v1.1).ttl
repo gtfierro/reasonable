@@ -1,0 +1,165 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/SCHM#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:AHU04 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:SCHM ;
+    brick1:hasPoint bldg:SCHM.AHU.AHU04.CCV,
+        bldg:SCHM.AHU.AHU04.Cooling_Valve_Output,
+        bldg:SCHM.AHU.AHU04.Heating_Valve_Output,
+        bldg:SCHM.AHU.AHU04.Mixed_Air_Temp,
+        bldg:SCHM.AHU.AHU04.Mode,
+        bldg:SCHM.AHU.AHU04.Outside_Air_Temp,
+        bldg:SCHM.AHU.AHU04.Return_Air_Temp,
+        bldg:SCHM.AHU.AHU04.Supply_Air_Temp,
+        bldg:SCHM.AHU.AHU04.Supply_Air_Temp_Setpoint,
+        bldg:SCHM.AHU.AHU04.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:SCHM.AHU.AHU04.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:SCHM ;
+    brickframe:pointname "SCHM.AHU.AHU04.CCV" ;
+    brickframe:uuid "56dbc66d-bc82-30e9-ac4a-3b6d834fa981" .
+
+bldg:SCHM.AHU.AHU04.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:SCHM ;
+    brickframe:pointname "SCHM.AHU.AHU04.Cooling Valve Output" ;
+    brickframe:uuid "28f12214-83c6-369b-89eb-3b0da3688203" .
+
+bldg:SCHM.AHU.AHU04.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:SCHM ;
+    brickframe:pointname "SCHM.AHU.AHU04.Heating Valve Output" ;
+    brickframe:uuid "de9b908b-38f2-36bb-b528-382592c0f72c" .
+
+bldg:SCHM.AHU.AHU04.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SCHM ;
+    brickframe:pointname "SCHM.AHU.AHU04.Mixed Air Temp" ;
+    brickframe:uuid "97f8d6c6-02c9-31f1-b499-e15e5e974ca0" .
+
+bldg:SCHM.AHU.AHU04.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "SCHM.AHU.AHU04.Mode" ;
+    brickframe:uuid "6a1c19df-f7e6-3b72-85cb-3ba6dd8ef5ed" .
+
+bldg:SCHM.AHU.AHU04.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SCHM ;
+    brickframe:pointname "SCHM.AHU.AHU04.Outside Air Temp" ;
+    brickframe:uuid "0daec80b-9bc5-3244-ad74-78e2a9ddba20" .
+
+bldg:SCHM.AHU.AHU04.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SCHM ;
+    brickframe:pointname "SCHM.AHU.AHU04.Return Air Temp" ;
+    brickframe:uuid "3d0ee3ae-12b4-3172-bb71-6fe1d584abc1" .
+
+bldg:SCHM.AHU.AHU04.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SCHM ;
+    brickframe:pointname "SCHM.AHU.AHU04.Supply Air Temp" ;
+    brickframe:uuid "2445e1a5-6ffa-39d1-920c-864841a37fb9" .
+
+bldg:SCHM.AHU.AHU04.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:SCHM ;
+    brickframe:pointname "SCHM.AHU.AHU04.Supply Air Temp Setpoint" ;
+    brickframe:uuid "4a53b99b-0af1-3b7a-ac17-4a059e9f21e1" .
+
+bldg:SCHM.AHU.AHU04.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SCHM ;
+    brickframe:pointname "SCHM.AHU.AHU04.Zone Air Temp" ;
+    brickframe:uuid "e3e961a5-1b68-35fe-9fbf-a8e86175af41" .
+
+bldg:SCHM.CHW.Building_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:SCHM ;
+    brickframe:pointname "SCHM.CHW.Building Chilled Water Return Temp" ;
+    brickframe:uuid "33f4bb33-292e-378a-bafc-f7c1662856f4" .
+
+bldg:SCHM.CHW.Building_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:SCHM ;
+    brickframe:pointname "SCHM.CHW.Building Chilled Water Supply Temp" ;
+    brickframe:uuid "c25cffdc-6aa1-3fa0-b661-2fbfa32cd7f0" .
+
+bldg:SCHM.CHW.Loop_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:SCHM ;
+    brickframe:pointname "SCHM.CHW.Loop Chilled Water Return Temp" ;
+    brickframe:uuid "e8cf7e7b-209d-34bf-ac6c-f66595c14b54" .
+
+bldg:SCHM.CHW.Loop_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:SCHM ;
+    brickframe:pointname "SCHM.CHW.Loop Chilled Water Supply Temp" ;
+    brickframe:uuid "9701b53e-0359-354b-ac2e-cb299a8aa0b7" .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:SCHM ;
+    brick1:hasPoint bldg:SCHM.CHW.Building_Chilled_Water_Return_Temp,
+        bldg:SCHM.CHW.Building_Chilled_Water_Supply_Temp,
+        bldg:SCHM.CHW.Loop_Chilled_Water_Return_Temp,
+        bldg:SCHM.CHW.Loop_Chilled_Water_Supply_Temp .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:SCHM a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "7056" ;
+    brickframe:Country "US" .
+

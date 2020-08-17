@@ -1,0 +1,2171 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/THUR#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:AC01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:VAVRM1100,
+        bldg:VAVRM1113,
+        bldg:VAVRM1121,
+        bldg:VAVRM1127,
+        bldg:VAVRM1131,
+        bldg:VAVRM1135,
+        bldg:VAVRM1151,
+        bldg:VAVRM1153,
+        bldg:VAVRM1162,
+        bldg:VAVRM1163,
+        bldg:VAVRM1165,
+        bldg:VAVRM1202,
+        bldg:VAVRM1202A,
+        bldg:VAVRM1202B ;
+    brick1:hasPoint bldg:THUR.AHU.AC01.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC02 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:VAVRM1167,
+        bldg:VAVRM1171,
+        bldg:VAVRM1213,
+        bldg:VAVRM1219,
+        bldg:VAVRM1222,
+        bldg:VAVRM1223,
+        bldg:VAVRM1224,
+        bldg:VAVRM1228,
+        bldg:VAVRM1232,
+        bldg:VAVRM1233,
+        bldg:VAVRM1233A,
+        bldg:VAVRM1233B,
+        bldg:VAVRM1236B,
+        bldg:VAVRM1236C,
+        bldg:VAVRM1271,
+        bldg:VAVRM1279,
+        bldg:VAVRM1282 ;
+    brick1:hasPoint bldg:THUR.AHU.AC02.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC03 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:VAVRM1210A,
+        bldg:VAVRM1225C,
+        bldg:VAVRM1225D,
+        bldg:VAVRM1225H,
+        bldg:VAVRM1264 ;
+    brick1:hasPoint bldg:THUR.AHU.AC03.Heating_Valve_Output,
+        bldg:THUR.AHU.AC03.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC04 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:VAVRM1015A,
+        bldg:VAVRM1302,
+        bldg:VAVRM1303 ;
+    brick1:hasPoint bldg:THUR.AHU.AC04.Heating_Valve_Output ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC3 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPoint bldg:THUR.AHU.AC3.Cooling_Valve_Output ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC4 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPoint bldg:THUR.AHU.AC4.Cooling_Valve_Output ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPoint bldg:THUR.AHU.AHU01.CCV,
+        bldg:THUR.AHU.AHU01.Cooling_Valve_Output,
+        bldg:THUR.AHU.AHU01.Mixed_Air_Temp,
+        bldg:THUR.AHU.AHU01.Mode,
+        bldg:THUR.AHU.AHU01.Outside_Air_Temp,
+        bldg:THUR.AHU.AHU01.Outside_Air_Temp_Virtual,
+        bldg:THUR.AHU.AHU01.Return_Air_Temp,
+        bldg:THUR.AHU.AHU01.Supply_Air_Pressure,
+        bldg:THUR.AHU.AHU01.Supply_Air_Temp,
+        bldg:THUR.AHU.AHU01.Supply_Air_Temp_Setpoint,
+        bldg:THUR.AHU.AHU01.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU02 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPoint bldg:THUR.AHU.AHU02.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU03 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPoint bldg:THUR.AHU.AHU03.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:PF1 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPoint bldg:THUR.AHU.PF1.Cooling_Valve_Output ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:Thurman_ChilledWater_Demand_kBtu a brick_v_1_0_2:Electric_Meter ;
+    brickframe:pointname "Thurman_ChilledWater_Demand_kBtu" ;
+    brickframe:uuid "b80199cd-9fc9-3294-aab3-43c8a934a081" ;
+    brick1:isPointOf bldg:chiller .
+
+bldg:Thurman_Electricity_Demand_kBtu a brick_v_1_0_2:Building_Electric_Meter ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "Thurman_Electricity_Demand_kBtu" ;
+    brickframe:uuid "33dc37b4-3826-3320-a09a-a723f4df64ae" .
+
+bldg:damperVAVRM1100 a brick1:Damper ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPoint bldg:THUR.ZONE.AC01.RM1100.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1100 .
+
+bldg:damperVAVRM1113 a brick1:Damper ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPoint bldg:THUR.ZONE.AC01.RM1113.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1113 .
+
+bldg:damperVAVRM1121 a brick1:Damper ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPoint bldg:THUR.ZONE.AC01.RM1121.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1121 .
+
+bldg:damperVAVRM1127 a brick1:Damper ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPoint bldg:THUR.ZONE.AC01.RM1127.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1127 .
+
+bldg:damperVAVRM1131 a brick1:Damper ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPoint bldg:THUR.ZONE.AC01.RM1131.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1131 .
+
+bldg:damperVAVRM1135 a brick1:Damper ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPoint bldg:THUR.ZONE.AC01.RM1135.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1135 .
+
+bldg:damperVAVRM1151 a brick1:Damper ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPoint bldg:THUR.ZONE.AC01.RM1151.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1151 .
+
+bldg:damperVAVRM1153 a brick1:Damper ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPoint bldg:THUR.ZONE.AC01.RM1153.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1153 .
+
+bldg:damperVAVRM1162 a brick1:Damper ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPoint bldg:THUR.ZONE.AC01.RM1162.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1162 .
+
+bldg:damperVAVRM1163 a brick1:Damper ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPoint bldg:THUR.ZONE.AC01.RM1163.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1163 .
+
+bldg:damperVAVRM1165 a brick1:Damper ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPoint bldg:THUR.ZONE.AC01.RM1165.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1165 .
+
+bldg:damperVAVRM1202 a brick1:Damper ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPoint bldg:THUR.ZONE.AC01.RM1202.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1202 .
+
+bldg:damperVAVRM1202A a brick1:Damper ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPoint bldg:THUR.ZONE.AC01.RM1202A.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1202A .
+
+bldg:damperVAVRM1202B a brick1:Damper ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPoint bldg:THUR.ZONE.AC01.RM1202B.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1202B .
+
+bldg:floor1 a brick1:Floor ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1015A_room,
+        bldg:RM1100_room,
+        bldg:RM1113_room,
+        bldg:RM1121_room,
+        bldg:RM1127_room,
+        bldg:RM1131_room,
+        bldg:RM1135_room,
+        bldg:RM1151_room,
+        bldg:RM1153_room,
+        bldg:RM1162_room,
+        bldg:RM1163_room,
+        bldg:RM1165_room,
+        bldg:RM1167_room,
+        bldg:RM1171_room,
+        bldg:RM1202A_room,
+        bldg:RM1202B_room,
+        bldg:RM1202_room,
+        bldg:RM1210A_room,
+        bldg:RM1213_room,
+        bldg:RM1219_room,
+        bldg:RM1222_room,
+        bldg:RM1223_room,
+        bldg:RM1224_room,
+        bldg:RM1225C_room,
+        bldg:RM1225D_room,
+        bldg:RM1225H_room,
+        bldg:RM1228_room,
+        bldg:RM1232_room,
+        bldg:RM1233A_room,
+        bldg:RM1233B_room,
+        bldg:RM1233_room,
+        bldg:RM1236B_room,
+        bldg:RM1236C_room,
+        bldg:RM1264_room,
+        bldg:RM1271_room,
+        bldg:RM1279_room,
+        bldg:RM1282_room,
+        bldg:RM1302_room,
+        bldg:RM1303_room .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:RM1015A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1015A_room .
+
+bldg:RM1100 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1100_room .
+
+bldg:RM1113 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1113_room .
+
+bldg:RM1121 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1121_room .
+
+bldg:RM1127 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1127_room .
+
+bldg:RM1131 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1131_room .
+
+bldg:RM1135 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1135_room .
+
+bldg:RM1151 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1151_room .
+
+bldg:RM1153 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1153_room .
+
+bldg:RM1162 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1162_room .
+
+bldg:RM1163 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1163_room .
+
+bldg:RM1165 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1165_room .
+
+bldg:RM1167 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1167_room .
+
+bldg:RM1171 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1171_room .
+
+bldg:RM1202 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1202_room .
+
+bldg:RM1202A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1202A_room .
+
+bldg:RM1202B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1202B_room .
+
+bldg:RM1210A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1210A_room .
+
+bldg:RM1213 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1213_room .
+
+bldg:RM1219 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1219_room .
+
+bldg:RM1222 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1222_room .
+
+bldg:RM1223 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1223_room .
+
+bldg:RM1224 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1224_room .
+
+bldg:RM1225C a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1225C_room .
+
+bldg:RM1225D a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1225D_room .
+
+bldg:RM1225H a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1225H_room .
+
+bldg:RM1228 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1228_room .
+
+bldg:RM1232 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1232_room .
+
+bldg:RM1233 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1233_room .
+
+bldg:RM1233A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1233A_room .
+
+bldg:RM1233B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1233B_room .
+
+bldg:RM1236B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1236B_room .
+
+bldg:RM1236C a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1236C_room .
+
+bldg:RM1264 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1264_room .
+
+bldg:RM1271 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1271_room .
+
+bldg:RM1279 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1279_room .
+
+bldg:RM1282 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1282_room .
+
+bldg:RM1302 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1302_room .
+
+bldg:RM1303 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPart bldg:RM1303_room .
+
+bldg:THUR.AHU.AC01.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.AHU.AC01.Zone Air Temp" ;
+    brickframe:uuid "f542a72c-0f40-35b2-b835-3fe0b892ef19" .
+
+bldg:THUR.AHU.AC02.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.AHU.AC02.Zone Air Temp" ;
+    brickframe:uuid "f938021d-e14e-38aa-9e4f-7dd5f366b102" .
+
+bldg:THUR.AHU.AC03.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.AHU.AC03.Heating Valve Output" ;
+    brickframe:uuid "2d10affa-6c57-3ce2-b34a-30918c146595" .
+
+bldg:THUR.AHU.AC03.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.AHU.AC03.Zone Air Temp" ;
+    brickframe:uuid "2a32d492-9d03-31d8-ae84-fda08c8c56a9" .
+
+bldg:THUR.AHU.AC04.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.AHU.AC04.Heating Valve Output" ;
+    brickframe:uuid "18a476ab-1519-37fd-abce-fafba960c5f3" .
+
+bldg:THUR.AHU.AC3.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.AHU.AC3.Cooling Valve Output" ;
+    brickframe:uuid "78fad74f-a4ce-3aa0-ba8a-829705c50644" .
+
+bldg:THUR.AHU.AC4.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.AHU.AC4.Cooling Valve Output" ;
+    brickframe:uuid "17896265-f9d5-3493-9e8b-465266f0e567" .
+
+bldg:THUR.AHU.AHU01.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.AHU.AHU01.CCV" ;
+    brickframe:uuid "ee8482d0-84e6-36d0-b579-5471d27ce7a4" .
+
+bldg:THUR.AHU.AHU01.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.AHU.AHU01.Cooling Valve Output" ;
+    brickframe:uuid "2741a225-16b4-3f6d-94f3-7e1d30feb216" .
+
+bldg:THUR.AHU.AHU01.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.AHU.AHU01.Mixed Air Temp" ;
+    brickframe:uuid "d8ccad50-4a77-363a-8439-bef43d983cb1" .
+
+bldg:THUR.AHU.AHU01.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.AHU.AHU01.Mode" ;
+    brickframe:uuid "90fec69e-7f98-3d4a-a3f8-ceccf9c0f8d7" .
+
+bldg:THUR.AHU.AHU01.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.AHU.AHU01.Outside Air Temp" ;
+    brickframe:uuid "15919317-611c-3095-9a04-3d7f521d476d" .
+
+bldg:THUR.AHU.AHU01.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.AHU.AHU01.Outside Air Temp Virtual" ;
+    brickframe:uuid "5b8a5f3d-8d03-331f-9d3d-8820d8bdda66" .
+
+bldg:THUR.AHU.AHU01.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.AHU.AHU01.Return Air Temp" ;
+    brickframe:uuid "92b21782-89f9-3fad-8fb0-aa5b70bb6239" .
+
+bldg:THUR.AHU.AHU01.Supply_Air_Pressure a brick1:Supply_Air_Static_Pressure_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.AHU.AHU01.Supply Air Pressure" ;
+    brickframe:uuid "6356e519-3163-3d23-8238-a505a55bf5ff" .
+
+bldg:THUR.AHU.AHU01.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.AHU.AHU01.Supply Air Temp" ;
+    brickframe:uuid "796a8bf0-90f9-3b30-a981-cc8e3a2d5f5a" .
+
+bldg:THUR.AHU.AHU01.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.AHU.AHU01.Supply Air Temp Setpoint" ;
+    brickframe:uuid "563f6f89-c7b7-3677-ba86-a65226865fcb" .
+
+bldg:THUR.AHU.AHU01.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.AHU.AHU01.Zone Air Temp" ;
+    brickframe:uuid "f50f6849-f54f-3a76-bbfe-158869d947b3" .
+
+bldg:THUR.AHU.AHU02.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.AHU.AHU02.Zone Air Temp" ;
+    brickframe:uuid "e75d6b3e-8555-34a2-bf1e-4cb70d4dcc9b" .
+
+bldg:THUR.AHU.AHU03.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.AHU.AHU03.Zone Air Temp" ;
+    brickframe:uuid "0511cdbf-bd82-3f90-af96-0604c9078fca" .
+
+bldg:THUR.AHU.PF1.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.AHU.PF1.Cooling Valve Output" ;
+    brickframe:uuid "50fc8f1b-c835-3791-b8e3-9610d84c3e1c" .
+
+bldg:THUR.CHW.Building_Chilled_Water_Flow a brick_v_1_0_2:Chilled_Water_Flow_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.CHW.Building Chilled Water Flow" ;
+    brickframe:uuid "f705872d-c648-38ec-a1cb-598fda01d3fe" .
+
+bldg:THUR.CHW.Building_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.CHW.Building Chilled Water Return Temp" ;
+    brickframe:uuid "ecfbc069-c6f0-3371-81df-75316d05e3f7" .
+
+bldg:THUR.CHW.Building_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.CHW.Building Chilled Water Supply Temp" ;
+    brickframe:uuid "77272727-d008-329e-88b9-2cf6f5d23572" .
+
+bldg:THUR.CHW.Building_Chilled_Water_Supply_Temp_Setpoint a brick_v_1_0_2:Chilled_Water_Supply_Temperature_Setpoint ;
+    brickframe:pointname "THUR.CHW.Building Chilled Water Supply Temp Setpoint" ;
+    brickframe:uuid "253d4ff6-1eaf-3508-b9d6-bb1a9b5800bf" .
+
+bldg:THUR.CHW.CHWP2A_FREQ_OUTPUT a brick1:Output_Frequency_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.CHW.CHWP2A_FREQ OUTPUT" ;
+    brickframe:uuid "774d7f46-adc6-3cf0-b855-300d491504db" .
+
+bldg:THUR.CHW.CHWP2A_PCT_OUTPUT a brick1:Cooling_Request_Percent_Setpoint ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.CHW.CHWP2A_PCT OUTPUT" ;
+    brickframe:uuid "8ad874a8-45c7-3cd1-87e1-7c25429bb150" .
+
+bldg:THUR.CHW.CHWP2A_POWER a brick_v_1_0_2:Power_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.CHW.CHWP2A_POWER" ;
+    brickframe:uuid "a16cb419-e165-3724-8ffe-c4b51bfc5088" .
+
+bldg:THUR.CHW.CHWP2A_SPEED a brick_v_1_0_2:Chilled_Water_Pump_VFD_Speed ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.CHW.CHWP2A_SPEED" ;
+    brickframe:uuid "c7430c7c-2691-37e6-ba5f-fc281f009c07" .
+
+bldg:THUR.CHW.CHWP2B_FREQ_OUTPUT a brick1:Output_Frequency_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.CHW.CHWP2B_FREQ OUTPUT" ;
+    brickframe:uuid "7f1959e2-f44e-31d0-9962-61ea8da29f9e" .
+
+bldg:THUR.CHW.CHWP2B_PCT_OUTPUT a brick1:Cooling_Request_Percent_Setpoint ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.CHW.CHWP2B_PCT OUTPUT" ;
+    brickframe:uuid "7a7bdfb1-3642-34f5-9b37-f499a752e45c" .
+
+bldg:THUR.CHW.CHWP2B_POWER a brick_v_1_0_2:Power_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.CHW.CHWP2B_POWER" ;
+    brickframe:uuid "c049f12f-9383-35a1-b6bc-c6f5ce43ef6d" .
+
+bldg:THUR.CHW.CHWP2B_SPEED a brick_v_1_0_2:Chilled_Water_Pump_VFD_Speed ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.CHW.CHWP2B_SPEED" ;
+    brickframe:uuid "e65b69bd-079c-3f0a-8476-8bc804df1aee" .
+
+bldg:THUR.CHW.ECONOMIZER a brick1:Damper_Position_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.CHW.ECONOMIZER" ;
+    brickframe:uuid "0fdee82f-b09e-33cb-b1a2-b8cc822bf74b" .
+
+bldg:THUR.CHW.Enable a brick1:Enable_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.CHW.Enable" ;
+    brickframe:uuid "3ba4c8a2-5eb4-35e1-85ee-72606c7e16fc" .
+
+bldg:THUR.CHW.Loop_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.CHW.Loop Chilled Water Return Temp" ;
+    brickframe:uuid "b5a90324-cfe4-35d8-894f-9939dcd86cda" .
+
+bldg:THUR.CHW.Loop_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.CHW.Loop Chilled Water Supply Temp" ;
+    brickframe:uuid "bfa30432-3fcd-37de-bbe9-e67f9826bf22" .
+
+bldg:THUR.CHW.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.CHW.Outside Air Temp" ;
+    brickframe:uuid "f35f83c1-2914-3e31-8c5f-faba16256747" .
+
+bldg:THUR.CHW.WEST_CHWP_FREQ_OUTPUT a brick1:Output_Frequency_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.CHW.WEST CHWP_FREQ OUTPUT" ;
+    brickframe:uuid "ed72a75d-0d9c-36da-803e-2d5e30f30497" .
+
+bldg:THUR.CHW.WEST_CHWP_PCT_OUTPUT a brick1:Cooling_Request_Percent_Setpoint ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.CHW.WEST CHWP_PCT OUTPUT" ;
+    brickframe:uuid "72d0fb13-6d3f-3c7e-bdb3-d7b38418bc5f" .
+
+bldg:THUR.CHW.WEST_CHWP_POWER a brick_v_1_0_2:Power_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.CHW.WEST CHWP_POWER" ;
+    brickframe:uuid "edd29e9d-ec16-3325-9cbf-0bcde4ac11b2" .
+
+bldg:THUR.CHW.WEST_CHWP_SPEED a brick_v_1_0_2:Chilled_Water_Pump_VFD_Speed ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.CHW.WEST CHWP_SPEED" ;
+    brickframe:uuid "1b8dc5e2-9676-3407-a461-3d80d41869e7" .
+
+bldg:THUR.ZONE.AC01.RM1100.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1100.Day Night Mode" ;
+    brickframe:uuid "f9c30ed0-070e-3b2f-a397-4b79e3c285ff" .
+
+bldg:THUR.ZONE.AC01.RM1100.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1100.Heating Mode" ;
+    brickframe:uuid "ef090e5b-7318-31eb-901b-538572582a7b" .
+
+bldg:THUR.ZONE.AC01.RM1100.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1100.Zone Air Damper Command" ;
+    brickframe:uuid "d16343e1-949e-3be1-b300-8eed057c13ec" .
+
+bldg:THUR.ZONE.AC01.RM1100.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1100.Zone Air Temp" ;
+    brickframe:uuid "bca06451-76d3-38ed-8b59-6a1fc10691f9" .
+
+bldg:THUR.ZONE.AC01.RM1100.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1100.Zone Air Temp Setpoint" ;
+    brickframe:uuid "e7718f27-fd82-3c87-9979-7ea1a88a8c1d" .
+
+bldg:THUR.ZONE.AC01.RM1100.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1100.Zone Reheat Valve Command" ;
+    brickframe:uuid "26ab278f-50ae-330e-9ad7-3bdf1df2ceaa" .
+
+bldg:THUR.ZONE.AC01.RM1100.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1100.Zone Supply Air Flow" ;
+    brickframe:uuid "58855ea6-3031-362d-a9f3-291.0.28848e" .
+
+bldg:THUR.ZONE.AC01.RM1113.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1113.Day Night Mode" ;
+    brickframe:uuid "57914a21-7ea7-315c-be55-ddd9fb39b65a" .
+
+bldg:THUR.ZONE.AC01.RM1113.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1113.Heating Mode" ;
+    brickframe:uuid "4bf627e1-e8d5-3bd7-b083-2f5622b49c07" .
+
+bldg:THUR.ZONE.AC01.RM1113.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1113.Zone Air Damper Command" ;
+    brickframe:uuid "db434e13-2376-3720-971f-ed6da63cea53" .
+
+bldg:THUR.ZONE.AC01.RM1113.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1113.Zone Air Temp" ;
+    brickframe:uuid "817122d1-8f04-3184-bd1b-f38e12614ee9" .
+
+bldg:THUR.ZONE.AC01.RM1113.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1113.Zone Air Temp Setpoint" ;
+    brickframe:uuid "ece0f0a6-05fd-3739-a798-6e86dc0e2612" .
+
+bldg:THUR.ZONE.AC01.RM1113.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1113.Zone Reheat Valve Command" ;
+    brickframe:uuid "69b8b56d-686e-310e-9060-7f1522a2ff42" .
+
+bldg:THUR.ZONE.AC01.RM1113.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1113.Zone Supply Air Flow" ;
+    brickframe:uuid "e728f688-1567-3736-b357-f67ee7307722" .
+
+bldg:THUR.ZONE.AC01.RM1121.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1121.Day Night Mode" ;
+    brickframe:uuid "1d58d77a-a2df-3ba5-bfac-60680133dbc8" .
+
+bldg:THUR.ZONE.AC01.RM1121.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1121.Heating Mode" ;
+    brickframe:uuid "5d0c2f45-7ebf-377e-8145-1df817ae1d49" .
+
+bldg:THUR.ZONE.AC01.RM1121.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1121.Zone Air Damper Command" ;
+    brickframe:uuid "988320cc-adca-3b37-8c3a-cb688c3a60d3" .
+
+bldg:THUR.ZONE.AC01.RM1121.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1121.Zone Air Temp" ;
+    brickframe:uuid "934e0458-8996-3144-ab68-6c51c8f633af" .
+
+bldg:THUR.ZONE.AC01.RM1121.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1121.Zone Air Temp Setpoint" ;
+    brickframe:uuid "b2e1f42e-08bb-3489-8a52-94cdb80846c7" .
+
+bldg:THUR.ZONE.AC01.RM1121.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1121.Zone Reheat Valve Command" ;
+    brickframe:uuid "5928cf37-cdda-3cd0-91fc-2b224f6608a0" .
+
+bldg:THUR.ZONE.AC01.RM1121.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1121.Zone Supply Air Flow" ;
+    brickframe:uuid "0250c18e-a64d-30f2-8aa6-c1eefc064c9d" .
+
+bldg:THUR.ZONE.AC01.RM1127.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1127.Day Night Mode" ;
+    brickframe:uuid "afdac923-f7a2-3ad3-8e4d-ef2e4ff71f5c" .
+
+bldg:THUR.ZONE.AC01.RM1127.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1127.Heating Mode" ;
+    brickframe:uuid "354bf655-5f35-31b3-945e-ba5df555a1d3" .
+
+bldg:THUR.ZONE.AC01.RM1127.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1127.Zone Air Damper Command" ;
+    brickframe:uuid "70191fd2-5318-3ed5-90ec-e9a8ad8ef2fb" .
+
+bldg:THUR.ZONE.AC01.RM1127.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1127.Zone Air Temp" ;
+    brickframe:uuid "375e17f4-91b1-36fd-b286-f8857b610b4f" .
+
+bldg:THUR.ZONE.AC01.RM1127.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1127.Zone Air Temp Setpoint" ;
+    brickframe:uuid "ddab038f-e3ad-3714-b984-53337ce7af3b" .
+
+bldg:THUR.ZONE.AC01.RM1127.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1127.Zone Reheat Valve Command" ;
+    brickframe:uuid "d865c946-f9f7-3349-814b-1874db70f729" .
+
+bldg:THUR.ZONE.AC01.RM1127.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1127.Zone Supply Air Flow" ;
+    brickframe:uuid "2bcb9e73-5f88-3535-bd55-50e293908ae2" .
+
+bldg:THUR.ZONE.AC01.RM1131.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1131.Day Night Mode" ;
+    brickframe:uuid "0fe9b775-180f-366d-97fc-5fbbb38ad528" .
+
+bldg:THUR.ZONE.AC01.RM1131.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1131.Heating Mode" ;
+    brickframe:uuid "3ee9cf9e-d500-3f08-87f8-2cbd0fb8a95c" .
+
+bldg:THUR.ZONE.AC01.RM1131.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1131.Zone Air Damper Command" ;
+    brickframe:uuid "1bd7ce7f-2eb0-3772-b591-fb518a517c37" .
+
+bldg:THUR.ZONE.AC01.RM1131.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1131.Zone Air Temp" ;
+    brickframe:uuid "e720733e-10ed-3b8f-ac20-1eaa35457f11" .
+
+bldg:THUR.ZONE.AC01.RM1131.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1131.Zone Air Temp Setpoint" ;
+    brickframe:uuid "9bcdca86-16f3-399f-9d15-9664ec611ca9" .
+
+bldg:THUR.ZONE.AC01.RM1131.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1131.Zone Reheat Valve Command" ;
+    brickframe:uuid "337ce90f-1a16-3d34-93ee-cb6bd992dfb4" .
+
+bldg:THUR.ZONE.AC01.RM1131.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1131.Zone Supply Air Flow" ;
+    brickframe:uuid "7a606eb4-9a8d-3d9a-810e-98678c47c658" .
+
+bldg:THUR.ZONE.AC01.RM1135.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1135.Day Night Mode" ;
+    brickframe:uuid "91e73ee4-dd9e-3cef-8146-2194e8ce856f" .
+
+bldg:THUR.ZONE.AC01.RM1135.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1135.Heating Mode" ;
+    brickframe:uuid "5dfc2282-eab8-3f2a-83d7-38c8f125d7a6" .
+
+bldg:THUR.ZONE.AC01.RM1135.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1135.Zone Air Damper Command" ;
+    brickframe:uuid "fe8e0b21-8cef-36b0-97e3-e730abdfe567" .
+
+bldg:THUR.ZONE.AC01.RM1135.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1135.Zone Air Temp" ;
+    brickframe:uuid "116ea242-942d-327a-8b3b-898a1276f0b6" .
+
+bldg:THUR.ZONE.AC01.RM1135.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1135.Zone Air Temp Setpoint" ;
+    brickframe:uuid "9dd90e6b-a815-38f3-81ab-59cb2caf2c01" .
+
+bldg:THUR.ZONE.AC01.RM1135.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1135.Zone Reheat Valve Command" ;
+    brickframe:uuid "352ed934-a1d7-3c04-a654-24665b37828d" .
+
+bldg:THUR.ZONE.AC01.RM1135.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1135.Zone Supply Air Flow" ;
+    brickframe:uuid "9c80c5a4-ac01-3920-99d4-d6f482d4de21" .
+
+bldg:THUR.ZONE.AC01.RM1151.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1151.Day Night Mode" ;
+    brickframe:uuid "89edc024-e462-3715-9187-3db0253e3e6a" .
+
+bldg:THUR.ZONE.AC01.RM1151.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1151.Heating Mode" ;
+    brickframe:uuid "6d2dfc21-51ce-3f25-b4f7-ad5322e06eb9" .
+
+bldg:THUR.ZONE.AC01.RM1151.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1151.Zone Air Damper Command" ;
+    brickframe:uuid "5ce7140c-4d99-3887-b2a4-3c28956bafff" .
+
+bldg:THUR.ZONE.AC01.RM1151.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1151.Zone Air Temp" ;
+    brickframe:uuid "cb083a72-b655-360b-9a20-506e8a8032fd" .
+
+bldg:THUR.ZONE.AC01.RM1151.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1151.Zone Air Temp Setpoint" ;
+    brickframe:uuid "87685142-7e50-3264-8ee1-550c0939c5b2" .
+
+bldg:THUR.ZONE.AC01.RM1151.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1151.Zone Reheat Valve Command" ;
+    brickframe:uuid "9f2663dc-045b-3e58-9da9-5d7a86251f1a" .
+
+bldg:THUR.ZONE.AC01.RM1151.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1151.Zone Supply Air Flow" ;
+    brickframe:uuid "21139736-2b5f-344c-b428-484be0bb196c" .
+
+bldg:THUR.ZONE.AC01.RM1153.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1153.Day Night Mode" ;
+    brickframe:uuid "86617577-79ea-3e28-a444-dc98ae1af9f7" .
+
+bldg:THUR.ZONE.AC01.RM1153.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1153.Heating Mode" ;
+    brickframe:uuid "b2d4e8f1-2a46-3655-8f88-c56f02ce6d88" .
+
+bldg:THUR.ZONE.AC01.RM1153.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1153.Zone Air Damper Command" ;
+    brickframe:uuid "835d63ef-e418-39d5-8d1e-3dad0622f2f8" .
+
+bldg:THUR.ZONE.AC01.RM1153.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1153.Zone Air Temp" ;
+    brickframe:uuid "6777de58-2c51-3534-aff9-4d7b7c1a1fa5" .
+
+bldg:THUR.ZONE.AC01.RM1153.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1153.Zone Air Temp Setpoint" ;
+    brickframe:uuid "b835d138-317e-3cd8-b308-b6f62961427b" .
+
+bldg:THUR.ZONE.AC01.RM1153.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1153.Zone Reheat Valve Command" ;
+    brickframe:uuid "6a3a6c6c-d06c-32a2-baef-fa2a70b5365c" .
+
+bldg:THUR.ZONE.AC01.RM1153.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1153.Zone Supply Air Flow" ;
+    brickframe:uuid "bf611ffc-9bbd-30df-a61d-86f654e4d56f" .
+
+bldg:THUR.ZONE.AC01.RM1162.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1162.Day Night Mode" ;
+    brickframe:uuid "2b69f50e-b146-339d-b707-3fc8f262cfd3" .
+
+bldg:THUR.ZONE.AC01.RM1162.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1162.Heating Mode" ;
+    brickframe:uuid "78fbbcfc-4af6-37d6-8072-0988a971eb3f" .
+
+bldg:THUR.ZONE.AC01.RM1162.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1162.Zone Air Damper Command" ;
+    brickframe:uuid "9df9d519-d3b4-3b7d-a0a5-c20556f3154a" .
+
+bldg:THUR.ZONE.AC01.RM1162.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1162.Zone Air Temp" ;
+    brickframe:uuid "18a3a592-5291-3240-aed6-3d8d9576aa9f" .
+
+bldg:THUR.ZONE.AC01.RM1162.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1162.Zone Air Temp Setpoint" ;
+    brickframe:uuid "e2c77c55-051d-317d-bfa4-ff78daffa128" .
+
+bldg:THUR.ZONE.AC01.RM1162.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1162.Zone Supply Air Flow" ;
+    brickframe:uuid "85defc6b-4aef-3985-beab-9479110ab4d4" .
+
+bldg:THUR.ZONE.AC01.RM1163.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1163.Day Night Mode" ;
+    brickframe:uuid "dc36dd0a-7d27-36b7-8fba-c68cecb04b5d" .
+
+bldg:THUR.ZONE.AC01.RM1163.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1163.Heating Mode" ;
+    brickframe:uuid "db404203-a205-3807-985a-ffa2e6e7a137" .
+
+bldg:THUR.ZONE.AC01.RM1163.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1163.Zone Air Damper Command" ;
+    brickframe:uuid "77e2ab1a-35bb-34b3-959f-4bee7fd6fc13" .
+
+bldg:THUR.ZONE.AC01.RM1163.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1163.Zone Air Temp" ;
+    brickframe:uuid "953d5599-31c3-3c1a-aa5f-43c6eef53f82" .
+
+bldg:THUR.ZONE.AC01.RM1163.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1163.Zone Air Temp Setpoint" ;
+    brickframe:uuid "1272d6f2-31.0.2ccc-b11e-a8bccc35e4ee" .
+
+bldg:THUR.ZONE.AC01.RM1163.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1163.Zone Reheat Valve Command" ;
+    brickframe:uuid "aa2c845b-17c4-3204-a479-56725fcd2269" .
+
+bldg:THUR.ZONE.AC01.RM1163.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1163.Zone Supply Air Flow" ;
+    brickframe:uuid "8240b655-04d6-31dc-ba08-08934405cb8d" .
+
+bldg:THUR.ZONE.AC01.RM1165.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1165.Day Night Mode" ;
+    brickframe:uuid "3c3f73a8-8500-301d-939a-5c7a792163e5" .
+
+bldg:THUR.ZONE.AC01.RM1165.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1165.Heating Mode" ;
+    brickframe:uuid "3d38a5ea-24fe-35b7-9449-dccddbc39e4e" .
+
+bldg:THUR.ZONE.AC01.RM1165.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1165.Zone Air Damper Command" ;
+    brickframe:uuid "82e21b1b-a6b3-354f-931d-aa390d6764ef" .
+
+bldg:THUR.ZONE.AC01.RM1165.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1165.Zone Air Temp" ;
+    brickframe:uuid "292b9506-3695-3879-bbb4-4fdf2fefd916" .
+
+bldg:THUR.ZONE.AC01.RM1165.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1165.Zone Air Temp Setpoint" ;
+    brickframe:uuid "fe071628-e99e-3a68-8001-a0a40074162c" .
+
+bldg:THUR.ZONE.AC01.RM1165.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1165.Zone Supply Air Flow" ;
+    brickframe:uuid "a4699a13-d46c-3897-840f-ab1123ba449e" .
+
+bldg:THUR.ZONE.AC01.RM1202.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1202.Day Night Mode" ;
+    brickframe:uuid "469e49d1-e580-3230-937a-96adc7d4f1d7" .
+
+bldg:THUR.ZONE.AC01.RM1202.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1202.Heating Mode" ;
+    brickframe:uuid "c9856c69-7c09-32ee-91f0-ce6947a059df" .
+
+bldg:THUR.ZONE.AC01.RM1202.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1202.Zone Air Damper Command" ;
+    brickframe:uuid "9e498eb0-52fa-39b8-918a-e6c82e92e74a" .
+
+bldg:THUR.ZONE.AC01.RM1202.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1202.Zone Air Temp" ;
+    brickframe:uuid "e6ec208b-5a55-3063-bd7e-f5d7ed534729" .
+
+bldg:THUR.ZONE.AC01.RM1202.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1202.Zone Air Temp Setpoint" ;
+    brickframe:uuid "47a787d5-2174-34d5-8896-c631cbf99b76" .
+
+bldg:THUR.ZONE.AC01.RM1202.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1202.Zone Reheat Valve Command" ;
+    brickframe:uuid "fcb1cc4a-3ec8-3dad-89e7-4f2511338ee3" .
+
+bldg:THUR.ZONE.AC01.RM1202.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1202.Zone Supply Air Flow" ;
+    brickframe:uuid "65f3c9b4-1bd8-3b3a-81b6-c24ee538cf8f" .
+
+bldg:THUR.ZONE.AC01.RM1202A.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1202A.Day Night Mode" ;
+    brickframe:uuid "ac05bd32-4562-3a0c-86fc-5cf3f15357ce" .
+
+bldg:THUR.ZONE.AC01.RM1202A.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1202A.Heating Mode" ;
+    brickframe:uuid "041203aa-5086-3596-8152-c0f0e563ba40" .
+
+bldg:THUR.ZONE.AC01.RM1202A.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1202A.Zone Air Damper Command" ;
+    brickframe:uuid "9698dd08-b78c-31e9-ab05-3b046ad9962c" .
+
+bldg:THUR.ZONE.AC01.RM1202A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1202A.Zone Air Temp" ;
+    brickframe:uuid "2533367b-6914-31ac-a524-d462accdff9d" .
+
+bldg:THUR.ZONE.AC01.RM1202A.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1202A.Zone Air Temp Setpoint" ;
+    brickframe:uuid "bd56b9f6-51c9-3c9a-acf2-5e867c4791d8" .
+
+bldg:THUR.ZONE.AC01.RM1202A.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1202A.Zone Reheat Valve Command" ;
+    brickframe:uuid "11725f0c-fd7c-3af5-8c3b-41da90b37a91" .
+
+bldg:THUR.ZONE.AC01.RM1202A.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1202A.Zone Supply Air Flow" ;
+    brickframe:uuid "ff50b688-e41b-3e43-b634-77559eba65fc" .
+
+bldg:THUR.ZONE.AC01.RM1202B.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1202B.Day Night Mode" ;
+    brickframe:uuid "03f65108-861c-302a-9587-265052b55a22" .
+
+bldg:THUR.ZONE.AC01.RM1202B.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1202B.Heating Mode" ;
+    brickframe:uuid "e1158f8e-1d33-353b-af73-f3a5695fbd9c" .
+
+bldg:THUR.ZONE.AC01.RM1202B.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1202B.Zone Air Damper Command" ;
+    brickframe:uuid "4799ae9f-e66b-3996-9854-a28ec9db3338" .
+
+bldg:THUR.ZONE.AC01.RM1202B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1202B.Zone Air Temp" ;
+    brickframe:uuid "aa0c971d-2342-3a10-89e3-5a4d20b12ef8" .
+
+bldg:THUR.ZONE.AC01.RM1202B.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1202B.Zone Air Temp Setpoint" ;
+    brickframe:uuid "0b0a63b8-d2d7-3f88-a65d-fcca8de42e31" .
+
+bldg:THUR.ZONE.AC01.RM1202B.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC01.RM1202B.Zone Supply Air Flow" ;
+    brickframe:uuid "1cb97eca-2cdc-3ace-a7de-2d94061c8a61" .
+
+bldg:THUR.ZONE.AC02.RM1167.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1167.Day Night Mode" ;
+    brickframe:uuid "cca98c7e-eeb5-361a-9893-2353a52cc6a0" .
+
+bldg:THUR.ZONE.AC02.RM1167.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1167.FAN" ;
+    brickframe:uuid "002d3ace-3c03-34c4-b663-660c3b22fd2b" .
+
+bldg:THUR.ZONE.AC02.RM1167.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1167.Heating Mode" ;
+    brickframe:uuid "c3aead5a-6703-3a27-ae31-21c23dc499ee" .
+
+bldg:THUR.ZONE.AC02.RM1167.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1167.Zone Air Temp" ;
+    brickframe:uuid "be387ba5-d2d4-34e7-b0ff-c486a95b0b0c" .
+
+bldg:THUR.ZONE.AC02.RM1167.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1167.Zone Air Temp Setpoint" ;
+    brickframe:uuid "fc320e3b-e2e0-3dc7-9aeb-48975b65405a" .
+
+bldg:THUR.ZONE.AC02.RM1171.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1171.Day Night Mode" ;
+    brickframe:uuid "0ad31366-3203-3ca0-91e6-71c42224d305" .
+
+bldg:THUR.ZONE.AC02.RM1171.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1171.FAN" ;
+    brickframe:uuid "83477a22-0a3d-33a3-91f4-9d29783325b6" .
+
+bldg:THUR.ZONE.AC02.RM1171.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1171.Heating Mode" ;
+    brickframe:uuid "195d8ccf-77da-365d-9040-d84694c9f4c0" .
+
+bldg:THUR.ZONE.AC02.RM1171.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1171.Zone Air Temp" ;
+    brickframe:uuid "03bcd1e6-e553-30d9-a396-bf2b3758d034" .
+
+bldg:THUR.ZONE.AC02.RM1171.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1171.Zone Air Temp Setpoint" ;
+    brickframe:uuid "ecef45ac-abc7-3d19-9310-378cdfe03cd9" .
+
+bldg:THUR.ZONE.AC02.RM1213.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1213.Day Night Mode" ;
+    brickframe:uuid "d0df0729-a59c-3153-9efd-27fe6941cd58" .
+
+bldg:THUR.ZONE.AC02.RM1213.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1213.FAN" ;
+    brickframe:uuid "5c0899f9-db70-3b45-9efa-7930740e96d6" .
+
+bldg:THUR.ZONE.AC02.RM1213.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1213.Heating Mode" ;
+    brickframe:uuid "244b365f-91ca-33b7-8610-8f0726899b52" .
+
+bldg:THUR.ZONE.AC02.RM1213.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1213.Zone Air Temp" ;
+    brickframe:uuid "751700bc-be4d-3edb-9629-53936a9081be" .
+
+bldg:THUR.ZONE.AC02.RM1213.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1213.Zone Air Temp Setpoint" ;
+    brickframe:uuid "f209a596-82c1-3ab5-819b-f8fd1d7a072a" .
+
+bldg:THUR.ZONE.AC02.RM1219.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1219.Day Night Mode" ;
+    brickframe:uuid "b10543b0-5e73-399f-a825-fc328e9ece40" .
+
+bldg:THUR.ZONE.AC02.RM1219.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1219.FAN" ;
+    brickframe:uuid "d872138b-cf9b-3f81-90e8-8c6b36044961" .
+
+bldg:THUR.ZONE.AC02.RM1219.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1219.Heating Mode" ;
+    brickframe:uuid "5db3783c-cc7e-3b0d-8584-9e7f0bcc358f" .
+
+bldg:THUR.ZONE.AC02.RM1219.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1219.Zone Air Temp" ;
+    brickframe:uuid "399c5956-3c16-362f-aa1d-dc6611741ece" .
+
+bldg:THUR.ZONE.AC02.RM1219.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1219.Zone Air Temp Setpoint" ;
+    brickframe:uuid "3a0e73e6-8f7b-390e-a53c-ead58e7b6205" .
+
+bldg:THUR.ZONE.AC02.RM1222.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1222.Day Night Mode" ;
+    brickframe:uuid "50ef9f61-604c-36d7-9469-32eca2f3f694" .
+
+bldg:THUR.ZONE.AC02.RM1222.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1222.FAN" ;
+    brickframe:uuid "696693b5-7fdd-356b-8d80-cceb808f4f05" .
+
+bldg:THUR.ZONE.AC02.RM1222.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1222.Heating Mode" ;
+    brickframe:uuid "eea459eb-fd04-309c-aa82-2e03929b1e7e" .
+
+bldg:THUR.ZONE.AC02.RM1222.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1222.Zone Air Temp" ;
+    brickframe:uuid "b37c646d-c745-34c1-8c1c-f0cdc6d536fc" .
+
+bldg:THUR.ZONE.AC02.RM1222.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1222.Zone Air Temp Setpoint" ;
+    brickframe:uuid "bfd70980-4f8f-3bb8-b2eb-60e59cbc4c28" .
+
+bldg:THUR.ZONE.AC02.RM1223.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1223.Day Night Mode" ;
+    brickframe:uuid "2b6d003a-55b8-333c-ac1b-587b3c662037" .
+
+bldg:THUR.ZONE.AC02.RM1223.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1223.FAN" ;
+    brickframe:uuid "61cfa33e-a44a-3a7f-9c18-f73838204a37" .
+
+bldg:THUR.ZONE.AC02.RM1223.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1223.Heating Mode" ;
+    brickframe:uuid "45204460-f7e1-346d-b2d1-60e7f0817675" .
+
+bldg:THUR.ZONE.AC02.RM1223.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1223.Zone Air Temp" ;
+    brickframe:uuid "d8a1f6b8-0213-30e1-afd5-0ad217949b01" .
+
+bldg:THUR.ZONE.AC02.RM1223.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1223.Zone Air Temp Setpoint" ;
+    brickframe:uuid "de191de8-6944-3202-b551-1c8441e5276f" .
+
+bldg:THUR.ZONE.AC02.RM1224.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1224.Day Night Mode" ;
+    brickframe:uuid "02fa0e2e-7983-36b2-a35a-1f7236897489" .
+
+bldg:THUR.ZONE.AC02.RM1224.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1224.FAN" ;
+    brickframe:uuid "a391394d-32d9-37ce-9af7-5be38341d051" .
+
+bldg:THUR.ZONE.AC02.RM1224.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1224.Heating Mode" ;
+    brickframe:uuid "c023f7ff-8561-37bb-9051-00b87c063577" .
+
+bldg:THUR.ZONE.AC02.RM1224.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1224.Zone Air Temp" ;
+    brickframe:uuid "cd012812-c69f-3a0c-b43d-c1a633dcfb68" .
+
+bldg:THUR.ZONE.AC02.RM1224.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1224.Zone Air Temp Setpoint" ;
+    brickframe:uuid "edc95933-13a0-3a59-a559-e6b7051734ae" .
+
+bldg:THUR.ZONE.AC02.RM1228.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1228.Day Night Mode" ;
+    brickframe:uuid "35dc10f8-4d09-3999-87db-892bd3b0da19" .
+
+bldg:THUR.ZONE.AC02.RM1228.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1228.FAN" ;
+    brickframe:uuid "d95a9cfc-8aaa-30ec-beeb-b919c239eac6" .
+
+bldg:THUR.ZONE.AC02.RM1228.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1228.Heating Mode" ;
+    brickframe:uuid "593658b6-408c-3acc-bd7c-dfd4aefcecca" .
+
+bldg:THUR.ZONE.AC02.RM1228.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1228.Zone Air Temp" ;
+    brickframe:uuid "1fc61baa-54ed-3472-94be-fd916fe144d3" .
+
+bldg:THUR.ZONE.AC02.RM1228.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1228.Zone Air Temp Setpoint" ;
+    brickframe:uuid "96ac9a75-ed06-3377-a3ae-b5668a8e8a44" .
+
+bldg:THUR.ZONE.AC02.RM1232.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1232.Day Night Mode" ;
+    brickframe:uuid "191151bb-e8aa-397e-bfe2-c7fd7b3655c7" .
+
+bldg:THUR.ZONE.AC02.RM1232.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1232.FAN" ;
+    brickframe:uuid "fb09f9d0-f4b4-3db2-9aaf-dc9ab0276e20" .
+
+bldg:THUR.ZONE.AC02.RM1232.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1232.Heating Mode" ;
+    brickframe:uuid "8b7ba058-32f7-32d3-ae81-53b44603dbda" .
+
+bldg:THUR.ZONE.AC02.RM1232.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1232.Zone Air Temp" ;
+    brickframe:uuid "c1cf2564-b994-3ae6-9c08-5c921c951172" .
+
+bldg:THUR.ZONE.AC02.RM1232.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1232.Zone Air Temp Setpoint" ;
+    brickframe:uuid "50990111-81.0.2c95-8a1b-0a2c58adb2a7" .
+
+bldg:THUR.ZONE.AC02.RM1233.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1233.Day Night Mode" ;
+    brickframe:uuid "0cc3ef05-ffb3-33f1-b9dd-f7ee4dc8ae91" .
+
+bldg:THUR.ZONE.AC02.RM1233.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1233.FAN" ;
+    brickframe:uuid "48407398-8806-3f5f-b875-0bc5611185e7" .
+
+bldg:THUR.ZONE.AC02.RM1233.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1233.Heating Mode" ;
+    brickframe:uuid "6c17eab0-fc11-3752-93fd-f72236ff9e88" .
+
+bldg:THUR.ZONE.AC02.RM1233.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1233.Zone Air Temp" ;
+    brickframe:uuid "64036ad0-15dc-35c7-bdc5-998639567b8c" .
+
+bldg:THUR.ZONE.AC02.RM1233.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1233.Zone Air Temp Setpoint" ;
+    brickframe:uuid "ce44df34-5bbe-3098-b5c5-9c383d17ac05" .
+
+bldg:THUR.ZONE.AC02.RM1233A.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1233A.Day Night Mode" ;
+    brickframe:uuid "986296c9-f56b-3e54-a0c2-60ec7d08b35d" .
+
+bldg:THUR.ZONE.AC02.RM1233A.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1233A.FAN" ;
+    brickframe:uuid "5529c2c1-559f-32e3-b073-9b8eaa94f670" .
+
+bldg:THUR.ZONE.AC02.RM1233A.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1233A.Heating Mode" ;
+    brickframe:uuid "4387e389-0540-3c5a-9052-5862daba00a0" .
+
+bldg:THUR.ZONE.AC02.RM1233A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1233A.Zone Air Temp" ;
+    brickframe:uuid "fff551fe-0fb9-3dfb-a548-241851878ee3" .
+
+bldg:THUR.ZONE.AC02.RM1233A.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1233A.Zone Air Temp Setpoint" ;
+    brickframe:uuid "b14ceba2-ead8-3682-b72b-c7730d104f02" .
+
+bldg:THUR.ZONE.AC02.RM1233B.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1233B.Day Night Mode" ;
+    brickframe:uuid "552d5c00-c53b-3b46-961b-6dc96151cd3b" .
+
+bldg:THUR.ZONE.AC02.RM1233B.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1233B.FAN" ;
+    brickframe:uuid "f10fb2d2-2530-3c02-8fc8-72a44813165d" .
+
+bldg:THUR.ZONE.AC02.RM1233B.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1233B.Heating Mode" ;
+    brickframe:uuid "96237b09-1b08-3f05-bdb9-18f1f6f984e7" .
+
+bldg:THUR.ZONE.AC02.RM1233B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1233B.Zone Air Temp" ;
+    brickframe:uuid "41cec3cd-caed-3a34-8e81-f38177eca8af" .
+
+bldg:THUR.ZONE.AC02.RM1233B.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1233B.Zone Air Temp Setpoint" ;
+    brickframe:uuid "f8957e4c-4f8b-3054-a475-4a60d4b3871d" .
+
+bldg:THUR.ZONE.AC02.RM1236B.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1236B.Day Night Mode" ;
+    brickframe:uuid "3c7363c3-472f-32f0-87e9-284dd6eb3895" .
+
+bldg:THUR.ZONE.AC02.RM1236B.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1236B.FAN" ;
+    brickframe:uuid "55377ad7-b372-39c5-a8ca-6d56ef374c56" .
+
+bldg:THUR.ZONE.AC02.RM1236B.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1236B.Heating Mode" ;
+    brickframe:uuid "afbb3252-07af-3889-92d6-fc13249b4e56" .
+
+bldg:THUR.ZONE.AC02.RM1236B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1236B.Zone Air Temp" ;
+    brickframe:uuid "8b64b273-fda6-3457-970c-88c4b93a465a" .
+
+bldg:THUR.ZONE.AC02.RM1236B.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1236B.Zone Air Temp Setpoint" ;
+    brickframe:uuid "15a9c0f3-886f-347c-8f7d-189ca64fe919" .
+
+bldg:THUR.ZONE.AC02.RM1236C.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1236C.Day Night Mode" ;
+    brickframe:uuid "b8426aa2-c0ab-32b8-be84-d6a69ce897c7" .
+
+bldg:THUR.ZONE.AC02.RM1236C.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1236C.FAN" ;
+    brickframe:uuid "10ca5c49-828c-395f-9ae2-edf35d548a61" .
+
+bldg:THUR.ZONE.AC02.RM1236C.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1236C.Heating Mode" ;
+    brickframe:uuid "7ef957ff-68c4-35c6-8261-94d40b5ba3de" .
+
+bldg:THUR.ZONE.AC02.RM1236C.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1236C.Zone Air Temp" ;
+    brickframe:uuid "7a82fec7-bb54-3f82-8733-063400672974" .
+
+bldg:THUR.ZONE.AC02.RM1236C.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1236C.Zone Air Temp Setpoint" ;
+    brickframe:uuid "2bb70ee6-fce4-34fb-b377-0997dada7695" .
+
+bldg:THUR.ZONE.AC02.RM1271.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1271.Day Night Mode" ;
+    brickframe:uuid "c74b31f6-2791-3682-9fbd-38118a99f4ee" .
+
+bldg:THUR.ZONE.AC02.RM1271.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1271.FAN" ;
+    brickframe:uuid "93ad7954-7cce-3db9-8b47-7d5f6b5c75d9" .
+
+bldg:THUR.ZONE.AC02.RM1271.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1271.Heating Mode" ;
+    brickframe:uuid "a6fea26f-870a-34b8-b69f-345ca7c996c1" .
+
+bldg:THUR.ZONE.AC02.RM1271.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1271.Zone Air Temp" ;
+    brickframe:uuid "1358ce6c-063e-34de-9c35-fcbd12253324" .
+
+bldg:THUR.ZONE.AC02.RM1271.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1271.Zone Air Temp Setpoint" ;
+    brickframe:uuid "06dfd6bc-d6ba-3939-96ae-e71ce9c66827" .
+
+bldg:THUR.ZONE.AC02.RM1279.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1279.Day Night Mode" ;
+    brickframe:uuid "9db8e550-2248-3607-a7ec-6c3b50e72c15" .
+
+bldg:THUR.ZONE.AC02.RM1279.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1279.FAN" ;
+    brickframe:uuid "bf3ef6a4-79f5-3bf4-b1e1-9eaad7b9514b" .
+
+bldg:THUR.ZONE.AC02.RM1279.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1279.Heating Mode" ;
+    brickframe:uuid "a1431cd7-5eb4-31c8-81ff-11de4811ba33" .
+
+bldg:THUR.ZONE.AC02.RM1279.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1279.Zone Air Temp" ;
+    brickframe:uuid "983d1001-71bb-39fd-ba6f-05207067aab9" .
+
+bldg:THUR.ZONE.AC02.RM1279.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1279.Zone Air Temp Setpoint" ;
+    brickframe:uuid "6ff98fcd-a67f-3550-a906-17de827dc627" .
+
+bldg:THUR.ZONE.AC02.RM1282.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1282.Day Night Mode" ;
+    brickframe:uuid "ebbc9b71-8335-3316-bcb2-ff515c240a65" .
+
+bldg:THUR.ZONE.AC02.RM1282.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1282.FAN" ;
+    brickframe:uuid "a88f2ba4-163f-3276-8f07-0d165395a15d" .
+
+bldg:THUR.ZONE.AC02.RM1282.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1282.Heating Mode" ;
+    brickframe:uuid "cc547043-96ab-3c49-a05f-401aa2377a04" .
+
+bldg:THUR.ZONE.AC02.RM1282.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1282.Zone Air Temp" ;
+    brickframe:uuid "3a9abf93-b3e2-3b44-a214-fbcc46d93f4a" .
+
+bldg:THUR.ZONE.AC02.RM1282.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC02.RM1282.Zone Air Temp Setpoint" ;
+    brickframe:uuid "6f1.0.23-5358-3a21-94e2-516f495c84c4" .
+
+bldg:THUR.ZONE.AC03.RM1210A.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC03.RM1210A.Day Night Mode" ;
+    brickframe:uuid "6ea2d6cf-eb9a-3d76-9192-f0e1420b3a33" .
+
+bldg:THUR.ZONE.AC03.RM1210A.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC03.RM1210A.FAN" ;
+    brickframe:uuid "a6e07f60-bf44-3ea2-8b8d-0f545a80bdda" .
+
+bldg:THUR.ZONE.AC03.RM1210A.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC03.RM1210A.Heating Mode" ;
+    brickframe:uuid "466c9b04-dd0c-3c5a-b11e-7ff86b062a8d" .
+
+bldg:THUR.ZONE.AC03.RM1210A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC03.RM1210A.Zone Air Temp" ;
+    brickframe:uuid "787cafca-14d8-3921-a9e9-b4c4df41cef7" .
+
+bldg:THUR.ZONE.AC03.RM1210A.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC03.RM1210A.Zone Air Temp Setpoint" ;
+    brickframe:uuid "9d27f3f8-ed3d-3535-8bb7-31d9f1bc587f" .
+
+bldg:THUR.ZONE.AC03.RM1225C.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC03.RM1225C.Day Night Mode" ;
+    brickframe:uuid "05f5b2ca-8886-30cf-8fcf-6497791618e8" .
+
+bldg:THUR.ZONE.AC03.RM1225C.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC03.RM1225C.FAN" ;
+    brickframe:uuid "019be359-e425-3fd6-accf-ff7fa34e4369" .
+
+bldg:THUR.ZONE.AC03.RM1225C.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC03.RM1225C.Heating Mode" ;
+    brickframe:uuid "67644511-1e8a-3c1e-b895-ca09d2920d25" .
+
+bldg:THUR.ZONE.AC03.RM1225C.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC03.RM1225C.Zone Air Temp" ;
+    brickframe:uuid "f7f020a8-3a94-324f-ba83-bf5a84971584" .
+
+bldg:THUR.ZONE.AC03.RM1225C.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC03.RM1225C.Zone Air Temp Setpoint" ;
+    brickframe:uuid "f411587c-327c-3a09-a751-b5812ba5b417" .
+
+bldg:THUR.ZONE.AC03.RM1225D.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC03.RM1225D.Day Night Mode" ;
+    brickframe:uuid "d3cd6909-af90-38e9-8df7-e24bc175e007" .
+
+bldg:THUR.ZONE.AC03.RM1225D.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC03.RM1225D.FAN" ;
+    brickframe:uuid "d4ac4088-3b30-3552-a196-9cafcf14c804" .
+
+bldg:THUR.ZONE.AC03.RM1225D.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC03.RM1225D.Heating Mode" ;
+    brickframe:uuid "fd1e3396-37c1-37ab-99b1-634efee04d50" .
+
+bldg:THUR.ZONE.AC03.RM1225D.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC03.RM1225D.Zone Air Temp" ;
+    brickframe:uuid "f13e3525-2e4c-368a-b6f5-aa8033eff064" .
+
+bldg:THUR.ZONE.AC03.RM1225D.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC03.RM1225D.Zone Air Temp Setpoint" ;
+    brickframe:uuid "6b628e4b-581c-3f05-a48b-11e95f85655f" .
+
+bldg:THUR.ZONE.AC03.RM1225H.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC03.RM1225H.Day Night Mode" ;
+    brickframe:uuid "544e92a0-3bd4-30ef-84b2-9f2f0af26282" .
+
+bldg:THUR.ZONE.AC03.RM1225H.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC03.RM1225H.FAN" ;
+    brickframe:uuid "80011160-2c53-3293-980b-52198b892c20" .
+
+bldg:THUR.ZONE.AC03.RM1225H.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC03.RM1225H.Heating Mode" ;
+    brickframe:uuid "504935e6-cba3-311c-ac5b-54fa47dfd805" .
+
+bldg:THUR.ZONE.AC03.RM1225H.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC03.RM1225H.Zone Air Temp" ;
+    brickframe:uuid "fd4944e2-82d6-3d46-be5f-a0a81755b4ac" .
+
+bldg:THUR.ZONE.AC03.RM1225H.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC03.RM1225H.Zone Air Temp Setpoint" ;
+    brickframe:uuid "da82834f-c294-3e7e-aa74-5cba1c40d03c" .
+
+bldg:THUR.ZONE.AC03.RM1264.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC03.RM1264.Day Night Mode" ;
+    brickframe:uuid "ba5faf07-e7e2-3fc7-b30c-30fa035e25d0" .
+
+bldg:THUR.ZONE.AC03.RM1264.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC03.RM1264.FAN" ;
+    brickframe:uuid "fd692858-4254-3a1e-a084-7c726825b314" .
+
+bldg:THUR.ZONE.AC03.RM1264.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC03.RM1264.Heating Mode" ;
+    brickframe:uuid "06999543-2682-3ec6-8aba-41f55a9fdcfe" .
+
+bldg:THUR.ZONE.AC03.RM1264.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC03.RM1264.Zone Air Temp" ;
+    brickframe:uuid "c9325cde-1129-3d64-a3c6-1e0507191ccf" .
+
+bldg:THUR.ZONE.AC03.RM1264.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC03.RM1264.Zone Air Temp Setpoint" ;
+    brickframe:uuid "c5d1c861-776b-3142-b8f1-b135e5629cef" .
+
+bldg:THUR.ZONE.AC04.RM1015A.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC04.RM1015A.Day Night Mode" ;
+    brickframe:uuid "31550482-b27c-3329-bf2a-ee1cd815838b" .
+
+bldg:THUR.ZONE.AC04.RM1015A.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC04.RM1015A.Heating Mode" ;
+    brickframe:uuid "4c414eb7-898b-31cf-821d-bc09ace071c8" .
+
+bldg:THUR.ZONE.AC04.RM1015A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC04.RM1015A.Zone Air Temp" ;
+    brickframe:uuid "456b5efe-3067-35a5-b391-c13b0cd94272" .
+
+bldg:THUR.ZONE.AC04.RM1015A.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC04.RM1015A.Zone Air Temp Setpoint" ;
+    brickframe:uuid "2fbade2a-ae94-3c8c-b35a-bd47b8a9dccb" .
+
+bldg:THUR.ZONE.AC04.RM1302.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC04.RM1302.Day Night Mode" ;
+    brickframe:uuid "b831f75b-e7a2-3023-8ede-1712f9555cf9" .
+
+bldg:THUR.ZONE.AC04.RM1302.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC04.RM1302.Heating Mode" ;
+    brickframe:uuid "37587275-18a3-3413-b2b6-a61955da6f6d" .
+
+bldg:THUR.ZONE.AC04.RM1302.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC04.RM1302.Zone Air Temp" ;
+    brickframe:uuid "6b2307ea-d56a-3564-a169-b7da1a2049d1" .
+
+bldg:THUR.ZONE.AC04.RM1302.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC04.RM1302.Zone Air Temp Setpoint" ;
+    brickframe:uuid "1fdc181e-1b96-3163-81ed-2bd8b842a7aa" .
+
+bldg:THUR.ZONE.AC04.RM1303.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "THUR.ZONE.AC04.RM1303.Day Night Mode" ;
+    brickframe:uuid "22d7648c-097e-393c-b3cb-a1b5a812633f" .
+
+bldg:THUR.ZONE.AC04.RM1303.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC04.RM1303.Heating Mode" ;
+    brickframe:uuid "d11788fe-c0a9-31ae-aa0f-426eb3adbaf6" .
+
+bldg:THUR.ZONE.AC04.RM1303.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:THUR ;
+    brickframe:pointname "THUR.ZONE.AC04.RM1303.Zone Air Temp" ;
+    brickframe:uuid "ff0c1a9c-7333-3d6d-b1f0-80e48cbb7e4a" .
+
+bldg:THUR.ZONE.AC04.RM1303.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "THUR.ZONE.AC04.RM1303.Zone Air Temp Setpoint" ;
+    brickframe:uuid "0cefdfa7-a162-3199-8c1e-47a09cec6d69" .
+
+bldg:VAVRM1015A a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1015A ;
+    brick1:hasPoint bldg:THUR.ZONE.AC04.RM1015A.Day_Night_Mode,
+        bldg:THUR.ZONE.AC04.RM1015A.Heating_Mode,
+        bldg:THUR.ZONE.AC04.RM1015A.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC04.RM1015A.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1167 a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1167 ;
+    brick1:hasPoint bldg:THUR.ZONE.AC02.RM1167.Day_Night_Mode,
+        bldg:THUR.ZONE.AC02.RM1167.FAN,
+        bldg:THUR.ZONE.AC02.RM1167.Heating_Mode,
+        bldg:THUR.ZONE.AC02.RM1167.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC02.RM1167.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1171 a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1171 ;
+    brick1:hasPoint bldg:THUR.ZONE.AC02.RM1171.Day_Night_Mode,
+        bldg:THUR.ZONE.AC02.RM1171.FAN,
+        bldg:THUR.ZONE.AC02.RM1171.Heating_Mode,
+        bldg:THUR.ZONE.AC02.RM1171.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC02.RM1171.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1210A a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1210A ;
+    brick1:hasPoint bldg:THUR.ZONE.AC03.RM1210A.Day_Night_Mode,
+        bldg:THUR.ZONE.AC03.RM1210A.FAN,
+        bldg:THUR.ZONE.AC03.RM1210A.Heating_Mode,
+        bldg:THUR.ZONE.AC03.RM1210A.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC03.RM1210A.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1213 a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1213 ;
+    brick1:hasPoint bldg:THUR.ZONE.AC02.RM1213.Day_Night_Mode,
+        bldg:THUR.ZONE.AC02.RM1213.FAN,
+        bldg:THUR.ZONE.AC02.RM1213.Heating_Mode,
+        bldg:THUR.ZONE.AC02.RM1213.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC02.RM1213.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1219 a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1219 ;
+    brick1:hasPoint bldg:THUR.ZONE.AC02.RM1219.Day_Night_Mode,
+        bldg:THUR.ZONE.AC02.RM1219.FAN,
+        bldg:THUR.ZONE.AC02.RM1219.Heating_Mode,
+        bldg:THUR.ZONE.AC02.RM1219.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC02.RM1219.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1222 a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1222 ;
+    brick1:hasPoint bldg:THUR.ZONE.AC02.RM1222.Day_Night_Mode,
+        bldg:THUR.ZONE.AC02.RM1222.FAN,
+        bldg:THUR.ZONE.AC02.RM1222.Heating_Mode,
+        bldg:THUR.ZONE.AC02.RM1222.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC02.RM1222.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1223 a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1223 ;
+    brick1:hasPoint bldg:THUR.ZONE.AC02.RM1223.Day_Night_Mode,
+        bldg:THUR.ZONE.AC02.RM1223.FAN,
+        bldg:THUR.ZONE.AC02.RM1223.Heating_Mode,
+        bldg:THUR.ZONE.AC02.RM1223.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC02.RM1223.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1224 a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1224 ;
+    brick1:hasPoint bldg:THUR.ZONE.AC02.RM1224.Day_Night_Mode,
+        bldg:THUR.ZONE.AC02.RM1224.FAN,
+        bldg:THUR.ZONE.AC02.RM1224.Heating_Mode,
+        bldg:THUR.ZONE.AC02.RM1224.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC02.RM1224.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1225C a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1225C ;
+    brick1:hasPoint bldg:THUR.ZONE.AC03.RM1225C.Day_Night_Mode,
+        bldg:THUR.ZONE.AC03.RM1225C.FAN,
+        bldg:THUR.ZONE.AC03.RM1225C.Heating_Mode,
+        bldg:THUR.ZONE.AC03.RM1225C.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC03.RM1225C.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1225D a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1225D ;
+    brick1:hasPoint bldg:THUR.ZONE.AC03.RM1225D.Day_Night_Mode,
+        bldg:THUR.ZONE.AC03.RM1225D.FAN,
+        bldg:THUR.ZONE.AC03.RM1225D.Heating_Mode,
+        bldg:THUR.ZONE.AC03.RM1225D.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC03.RM1225D.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1225H a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1225H ;
+    brick1:hasPoint bldg:THUR.ZONE.AC03.RM1225H.Day_Night_Mode,
+        bldg:THUR.ZONE.AC03.RM1225H.FAN,
+        bldg:THUR.ZONE.AC03.RM1225H.Heating_Mode,
+        bldg:THUR.ZONE.AC03.RM1225H.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC03.RM1225H.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1228 a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1228 ;
+    brick1:hasPoint bldg:THUR.ZONE.AC02.RM1228.Day_Night_Mode,
+        bldg:THUR.ZONE.AC02.RM1228.FAN,
+        bldg:THUR.ZONE.AC02.RM1228.Heating_Mode,
+        bldg:THUR.ZONE.AC02.RM1228.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC02.RM1228.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1232 a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1232 ;
+    brick1:hasPoint bldg:THUR.ZONE.AC02.RM1232.Day_Night_Mode,
+        bldg:THUR.ZONE.AC02.RM1232.FAN,
+        bldg:THUR.ZONE.AC02.RM1232.Heating_Mode,
+        bldg:THUR.ZONE.AC02.RM1232.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC02.RM1232.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1233 a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1233 ;
+    brick1:hasPoint bldg:THUR.ZONE.AC02.RM1233.Day_Night_Mode,
+        bldg:THUR.ZONE.AC02.RM1233.FAN,
+        bldg:THUR.ZONE.AC02.RM1233.Heating_Mode,
+        bldg:THUR.ZONE.AC02.RM1233.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC02.RM1233.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1233A a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1233A ;
+    brick1:hasPoint bldg:THUR.ZONE.AC02.RM1233A.Day_Night_Mode,
+        bldg:THUR.ZONE.AC02.RM1233A.FAN,
+        bldg:THUR.ZONE.AC02.RM1233A.Heating_Mode,
+        bldg:THUR.ZONE.AC02.RM1233A.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC02.RM1233A.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1233B a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1233B ;
+    brick1:hasPoint bldg:THUR.ZONE.AC02.RM1233B.Day_Night_Mode,
+        bldg:THUR.ZONE.AC02.RM1233B.FAN,
+        bldg:THUR.ZONE.AC02.RM1233B.Heating_Mode,
+        bldg:THUR.ZONE.AC02.RM1233B.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC02.RM1233B.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1236B a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1236B ;
+    brick1:hasPoint bldg:THUR.ZONE.AC02.RM1236B.Day_Night_Mode,
+        bldg:THUR.ZONE.AC02.RM1236B.FAN,
+        bldg:THUR.ZONE.AC02.RM1236B.Heating_Mode,
+        bldg:THUR.ZONE.AC02.RM1236B.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC02.RM1236B.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1236C a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1236C ;
+    brick1:hasPoint bldg:THUR.ZONE.AC02.RM1236C.Day_Night_Mode,
+        bldg:THUR.ZONE.AC02.RM1236C.FAN,
+        bldg:THUR.ZONE.AC02.RM1236C.Heating_Mode,
+        bldg:THUR.ZONE.AC02.RM1236C.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC02.RM1236C.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1264 a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1264 ;
+    brick1:hasPoint bldg:THUR.ZONE.AC03.RM1264.Day_Night_Mode,
+        bldg:THUR.ZONE.AC03.RM1264.FAN,
+        bldg:THUR.ZONE.AC03.RM1264.Heating_Mode,
+        bldg:THUR.ZONE.AC03.RM1264.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC03.RM1264.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1271 a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1271 ;
+    brick1:hasPoint bldg:THUR.ZONE.AC02.RM1271.Day_Night_Mode,
+        bldg:THUR.ZONE.AC02.RM1271.FAN,
+        bldg:THUR.ZONE.AC02.RM1271.Heating_Mode,
+        bldg:THUR.ZONE.AC02.RM1271.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC02.RM1271.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1279 a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1279 ;
+    brick1:hasPoint bldg:THUR.ZONE.AC02.RM1279.Day_Night_Mode,
+        bldg:THUR.ZONE.AC02.RM1279.FAN,
+        bldg:THUR.ZONE.AC02.RM1279.Heating_Mode,
+        bldg:THUR.ZONE.AC02.RM1279.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC02.RM1279.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1282 a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1282 ;
+    brick1:hasPoint bldg:THUR.ZONE.AC02.RM1282.Day_Night_Mode,
+        bldg:THUR.ZONE.AC02.RM1282.FAN,
+        bldg:THUR.ZONE.AC02.RM1282.Heating_Mode,
+        bldg:THUR.ZONE.AC02.RM1282.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC02.RM1282.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1302 a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1302 ;
+    brick1:hasPoint bldg:THUR.ZONE.AC04.RM1302.Day_Night_Mode,
+        bldg:THUR.ZONE.AC04.RM1302.Heating_Mode,
+        bldg:THUR.ZONE.AC04.RM1302.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC04.RM1302.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1303 a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1303 ;
+    brick1:hasPoint bldg:THUR.ZONE.AC04.RM1303.Day_Night_Mode,
+        bldg:THUR.ZONE.AC04.RM1303.Heating_Mode,
+        bldg:THUR.ZONE.AC04.RM1303.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC04.RM1303.Zone_Air_Temp_Setpoint .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+bldg:RM1015A_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1100_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1113_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1121_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1127_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1131_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1135_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1151_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1153_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1162_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1163_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1165_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1167_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1171_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1202A_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1202B_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1202_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1210A_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1213_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1219_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1222_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1223_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1224_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1225C_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1225D_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1225H_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1228_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1232_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1233A_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1233B_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1233_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1236B_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1236C_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1264_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1271_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1279_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1282_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1302_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:RM1303_room a brick1:Room ;
+    brickframe:hasSite bldg:THUR .
+
+bldg:VAVRM1100 a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1100 ;
+    brick1:hasPoint bldg:THUR.ZONE.AC01.RM1100.Day_Night_Mode,
+        bldg:THUR.ZONE.AC01.RM1100.Heating_Mode,
+        bldg:THUR.ZONE.AC01.RM1100.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC01.RM1100.Zone_Air_Temp_Setpoint,
+        bldg:THUR.ZONE.AC01.RM1100.Zone_Reheat_Valve_Command,
+        bldg:THUR.ZONE.AC01.RM1100.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1113 a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1113 ;
+    brick1:hasPoint bldg:THUR.ZONE.AC01.RM1113.Day_Night_Mode,
+        bldg:THUR.ZONE.AC01.RM1113.Heating_Mode,
+        bldg:THUR.ZONE.AC01.RM1113.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC01.RM1113.Zone_Air_Temp_Setpoint,
+        bldg:THUR.ZONE.AC01.RM1113.Zone_Reheat_Valve_Command,
+        bldg:THUR.ZONE.AC01.RM1113.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1121 a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1121 ;
+    brick1:hasPoint bldg:THUR.ZONE.AC01.RM1121.Day_Night_Mode,
+        bldg:THUR.ZONE.AC01.RM1121.Heating_Mode,
+        bldg:THUR.ZONE.AC01.RM1121.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC01.RM1121.Zone_Air_Temp_Setpoint,
+        bldg:THUR.ZONE.AC01.RM1121.Zone_Reheat_Valve_Command,
+        bldg:THUR.ZONE.AC01.RM1121.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1127 a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1127 ;
+    brick1:hasPoint bldg:THUR.ZONE.AC01.RM1127.Day_Night_Mode,
+        bldg:THUR.ZONE.AC01.RM1127.Heating_Mode,
+        bldg:THUR.ZONE.AC01.RM1127.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC01.RM1127.Zone_Air_Temp_Setpoint,
+        bldg:THUR.ZONE.AC01.RM1127.Zone_Reheat_Valve_Command,
+        bldg:THUR.ZONE.AC01.RM1127.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1131 a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1131 ;
+    brick1:hasPoint bldg:THUR.ZONE.AC01.RM1131.Day_Night_Mode,
+        bldg:THUR.ZONE.AC01.RM1131.Heating_Mode,
+        bldg:THUR.ZONE.AC01.RM1131.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC01.RM1131.Zone_Air_Temp_Setpoint,
+        bldg:THUR.ZONE.AC01.RM1131.Zone_Reheat_Valve_Command,
+        bldg:THUR.ZONE.AC01.RM1131.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1135 a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1135 ;
+    brick1:hasPoint bldg:THUR.ZONE.AC01.RM1135.Day_Night_Mode,
+        bldg:THUR.ZONE.AC01.RM1135.Heating_Mode,
+        bldg:THUR.ZONE.AC01.RM1135.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC01.RM1135.Zone_Air_Temp_Setpoint,
+        bldg:THUR.ZONE.AC01.RM1135.Zone_Reheat_Valve_Command,
+        bldg:THUR.ZONE.AC01.RM1135.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1151 a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1151 ;
+    brick1:hasPoint bldg:THUR.ZONE.AC01.RM1151.Day_Night_Mode,
+        bldg:THUR.ZONE.AC01.RM1151.Heating_Mode,
+        bldg:THUR.ZONE.AC01.RM1151.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC01.RM1151.Zone_Air_Temp_Setpoint,
+        bldg:THUR.ZONE.AC01.RM1151.Zone_Reheat_Valve_Command,
+        bldg:THUR.ZONE.AC01.RM1151.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1153 a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1153 ;
+    brick1:hasPoint bldg:THUR.ZONE.AC01.RM1153.Day_Night_Mode,
+        bldg:THUR.ZONE.AC01.RM1153.Heating_Mode,
+        bldg:THUR.ZONE.AC01.RM1153.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC01.RM1153.Zone_Air_Temp_Setpoint,
+        bldg:THUR.ZONE.AC01.RM1153.Zone_Reheat_Valve_Command,
+        bldg:THUR.ZONE.AC01.RM1153.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1162 a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1162 ;
+    brick1:hasPoint bldg:THUR.ZONE.AC01.RM1162.Day_Night_Mode,
+        bldg:THUR.ZONE.AC01.RM1162.Heating_Mode,
+        bldg:THUR.ZONE.AC01.RM1162.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC01.RM1162.Zone_Air_Temp_Setpoint,
+        bldg:THUR.ZONE.AC01.RM1162.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1163 a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1163 ;
+    brick1:hasPoint bldg:THUR.ZONE.AC01.RM1163.Day_Night_Mode,
+        bldg:THUR.ZONE.AC01.RM1163.Heating_Mode,
+        bldg:THUR.ZONE.AC01.RM1163.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC01.RM1163.Zone_Air_Temp_Setpoint,
+        bldg:THUR.ZONE.AC01.RM1163.Zone_Reheat_Valve_Command,
+        bldg:THUR.ZONE.AC01.RM1163.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1165 a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1165 ;
+    brick1:hasPoint bldg:THUR.ZONE.AC01.RM1165.Day_Night_Mode,
+        bldg:THUR.ZONE.AC01.RM1165.Heating_Mode,
+        bldg:THUR.ZONE.AC01.RM1165.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC01.RM1165.Zone_Air_Temp_Setpoint,
+        bldg:THUR.ZONE.AC01.RM1165.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1202 a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1202 ;
+    brick1:hasPoint bldg:THUR.ZONE.AC01.RM1202.Day_Night_Mode,
+        bldg:THUR.ZONE.AC01.RM1202.Heating_Mode,
+        bldg:THUR.ZONE.AC01.RM1202.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC01.RM1202.Zone_Air_Temp_Setpoint,
+        bldg:THUR.ZONE.AC01.RM1202.Zone_Reheat_Valve_Command,
+        bldg:THUR.ZONE.AC01.RM1202.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1202A a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1202A ;
+    brick1:hasPoint bldg:THUR.ZONE.AC01.RM1202A.Day_Night_Mode,
+        bldg:THUR.ZONE.AC01.RM1202A.Heating_Mode,
+        bldg:THUR.ZONE.AC01.RM1202A.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC01.RM1202A.Zone_Air_Temp_Setpoint,
+        bldg:THUR.ZONE.AC01.RM1202A.Zone_Reheat_Valve_Command,
+        bldg:THUR.ZONE.AC01.RM1202A.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1202B a brick1:VAV ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:feeds bldg:RM1202B ;
+    brick1:hasPoint bldg:THUR.ZONE.AC01.RM1202B.Day_Night_Mode,
+        bldg:THUR.ZONE.AC01.RM1202B.Heating_Mode,
+        bldg:THUR.ZONE.AC01.RM1202B.Zone_Air_Temp,
+        bldg:THUR.ZONE.AC01.RM1202B.Zone_Air_Temp_Setpoint,
+        bldg:THUR.ZONE.AC01.RM1202B.Zone_Supply_Air_Flow .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:THUR ;
+    brick1:hasPoint bldg:THUR.CHW.Building_Chilled_Water_Flow,
+        bldg:THUR.CHW.Building_Chilled_Water_Return_Temp,
+        bldg:THUR.CHW.Building_Chilled_Water_Supply_Temp,
+        bldg:THUR.CHW.Building_Chilled_Water_Supply_Temp_Setpoint,
+        bldg:THUR.CHW.CHWP2A_FREQ_OUTPUT,
+        bldg:THUR.CHW.CHWP2A_PCT_OUTPUT,
+        bldg:THUR.CHW.CHWP2A_POWER,
+        bldg:THUR.CHW.CHWP2A_SPEED,
+        bldg:THUR.CHW.CHWP2B_FREQ_OUTPUT,
+        bldg:THUR.CHW.CHWP2B_PCT_OUTPUT,
+        bldg:THUR.CHW.CHWP2B_POWER,
+        bldg:THUR.CHW.CHWP2B_SPEED,
+        bldg:THUR.CHW.ECONOMIZER,
+        bldg:THUR.CHW.Enable,
+        bldg:THUR.CHW.Loop_Chilled_Water_Return_Temp,
+        bldg:THUR.CHW.Loop_Chilled_Water_Supply_Temp,
+        bldg:THUR.CHW.Outside_Air_Temp,
+        bldg:THUR.CHW.WEST_CHWP_FREQ_OUTPUT,
+        bldg:THUR.CHW.WEST_CHWP_PCT_OUTPUT,
+        bldg:THUR.CHW.WEST_CHWP_POWER,
+        bldg:THUR.CHW.WEST_CHWP_SPEED .
+
+bldg:THUR a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "58399" ;
+    brickframe:Country "US" .
+

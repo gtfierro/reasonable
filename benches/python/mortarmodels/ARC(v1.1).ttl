@@ -1,0 +1,3453 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/ARC#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:AHU01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:VAVRM108,
+        bldg:VAVRM108_MIX ;
+    brick1:hasPoint bldg:ARC.AHU.AHU01.Cooling_Valve_Output,
+        bldg:ARC.AHU.AHU01.Heating_Valve_Output,
+        bldg:ARC.AHU.AHU01.Mixed_Air_Temp,
+        bldg:ARC.AHU.AHU01.Mode,
+        bldg:ARC.AHU.AHU01.Outside_Air_Temp,
+        bldg:ARC.AHU.AHU01.Outside_Air_Temp_Virtual,
+        bldg:ARC.AHU.AHU01.Return_Air_Temp,
+        bldg:ARC.AHU.AHU01.Supply_Air_Pressure,
+        bldg:ARC.AHU.AHU01.Supply_Air_Temp,
+        bldg:ARC.AHU.AHU01.Supply_Air_Temp_Setpoint,
+        bldg:ARC.AHU.AHU01.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU02 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:VAVRM101,
+        bldg:VAVRM104,
+        bldg:VAVRM105,
+        bldg:VAVRM106,
+        bldg:VAVRM110E,
+        bldg:VAVRM110W,
+        bldg:VAVRM112,
+        bldg:VAVRM113,
+        bldg:VAVRM115,
+        bldg:VAVRM116,
+        bldg:VAVRM120,
+        bldg:VAVRM121,
+        bldg:VAVRM150,
+        bldg:VAVRM152,
+        bldg:VAVRM152A,
+        bldg:VAVRM154,
+        bldg:VAVRM156,
+        bldg:VAVRM158,
+        bldg:VAVRM215,
+        bldg:VAVRM220,
+        bldg:VAVRM224,
+        bldg:VAVRM227,
+        bldg:VAVRM238,
+        bldg:VAVRM241,
+        bldg:VAVRM252 ;
+    brick1:hasPoint bldg:ARC.AHU.AHU02.Cooling_Valve_Output,
+        bldg:ARC.AHU.AHU02.Heating_Valve_Output,
+        bldg:ARC.AHU.AHU02.Mixed_Air_Temp,
+        bldg:ARC.AHU.AHU02.Mode,
+        bldg:ARC.AHU.AHU02.Outside_Air_Temp,
+        bldg:ARC.AHU.AHU02.Outside_Air_Temp_Virtual,
+        bldg:ARC.AHU.AHU02.Return_Air_Temp,
+        bldg:ARC.AHU.AHU02.Supply_Air_Pressure,
+        bldg:ARC.AHU.AHU02.Supply_Air_Temp,
+        bldg:ARC.AHU.AHU02.Supply_Air_Temp_Setpoint,
+        bldg:ARC.AHU.AHU02.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU03 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.AHU.AHU03.Cooling_Valve_Output,
+        bldg:ARC.AHU.AHU03.Heating_Valve_Output,
+        bldg:ARC.AHU.AHU03.Mixed_Air_Temp,
+        bldg:ARC.AHU.AHU03.Mode,
+        bldg:ARC.AHU.AHU03.Outside_Air_Temp,
+        bldg:ARC.AHU.AHU03.Outside_Air_Temp_Virtual,
+        bldg:ARC.AHU.AHU03.Return_Air_Temp,
+        bldg:ARC.AHU.AHU03.Supply_Air_Temp,
+        bldg:ARC.AHU.AHU03.Supply_Air_Temp_Setpoint,
+        bldg:ARC.AHU.AHU03.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU04 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.AHU.AHU04.Cooling_Valve_Output,
+        bldg:ARC.AHU.AHU04.Heating_Valve_Output,
+        bldg:ARC.AHU.AHU04.Mixed_Air_Temp,
+        bldg:ARC.AHU.AHU04.Mode,
+        bldg:ARC.AHU.AHU04.Outside_Air_Temp,
+        bldg:ARC.AHU.AHU04.Outside_Air_Temp_Virtual,
+        bldg:ARC.AHU.AHU04.Return_Air_Temp,
+        bldg:ARC.AHU.AHU04.Supply_Air_Temp,
+        bldg:ARC.AHU.AHU04.Supply_Air_Temp_Setpoint,
+        bldg:ARC.AHU.AHU04.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU05 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:VAVRM203,
+        bldg:VAVRM207,
+        bldg:VAVRM212,
+        bldg:VAVRM245,
+        bldg:VAVRM247,
+        bldg:VAVRM270,
+        bldg:VAVRM272 ;
+    brick1:hasPoint bldg:ARC.AHU.AHU05.Cooling_Valve_Output,
+        bldg:ARC.AHU.AHU05.Heating_Valve_Output,
+        bldg:ARC.AHU.AHU05.Mixed_Air_Temp,
+        bldg:ARC.AHU.AHU05.Mode,
+        bldg:ARC.AHU.AHU05.Outside_Air_Temp,
+        bldg:ARC.AHU.AHU05.Outside_Air_Temp_Virtual,
+        bldg:ARC.AHU.AHU05.Return_Air_Temp,
+        bldg:ARC.AHU.AHU05.Supply_Air_Pressure,
+        bldg:ARC.AHU.AHU05.Supply_Air_Temp,
+        bldg:ARC.AHU.AHU05.Supply_Air_Temp_Setpoint,
+        bldg:ARC.AHU.AHU05.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU06 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:VAVRM136,
+        bldg:VAVRM136_LAB,
+        bldg:VAVRM137,
+        bldg:VAVRM137_LAB,
+        bldg:VAVRM146,
+        bldg:VAVRM146_LAB,
+        bldg:VAVRM149,
+        bldg:VAVRM149_LAB,
+        bldg:VAVRM161A,
+        bldg:VAVRM161A_LAB,
+        bldg:VAVRM161B,
+        bldg:VAVRM161B_LAB ;
+    brick1:hasPoint bldg:ARC.AHU.AHU06.Cooling_Valve_Output,
+        bldg:ARC.AHU.AHU06.Heating_Valve_Output,
+        bldg:ARC.AHU.AHU06.Mode,
+        bldg:ARC.AHU.AHU06.Outside_Air_Temp,
+        bldg:ARC.AHU.AHU06.Outside_Air_Temp_Virtual,
+        bldg:ARC.AHU.AHU06.Supply_Air_Temp,
+        bldg:ARC.AHU.AHU06.Supply_Air_Temp_Setpoint,
+        bldg:ARC.AHU.AHU06.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU07 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:VAVRM126,
+        bldg:VAVRM127,
+        bldg:VAVRM129,
+        bldg:VAVRM159,
+        bldg:VAVRM160,
+        bldg:VAVRM163,
+        bldg:VAVRM164,
+        bldg:VAVRM165,
+        bldg:VAVRM202,
+        bldg:VAVRM205,
+        bldg:VAVRM210,
+        bldg:VAVRM251,
+        bldg:VAVRM253,
+        bldg:VAVRM258 ;
+    brick1:hasPoint bldg:ARC.AHU.AHU07.Cooling_Valve_Output,
+        bldg:ARC.AHU.AHU07.Heating_Valve_Output,
+        bldg:ARC.AHU.AHU07.Mixed_Air_Temp,
+        bldg:ARC.AHU.AHU07.Mode,
+        bldg:ARC.AHU.AHU07.Outside_Air_Temp,
+        bldg:ARC.AHU.AHU07.Outside_Air_Temp_Virtual,
+        bldg:ARC.AHU.AHU07.Return_Air_Temp,
+        bldg:ARC.AHU.AHU07.Supply_Air_Pressure,
+        bldg:ARC.AHU.AHU07.Supply_Air_Temp,
+        bldg:ARC.AHU.AHU07.Supply_Air_Temp_Setpoint,
+        bldg:ARC.AHU.AHU07.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:ARC_ChilledWater_Demand_kBtu a brick_v_1_0_2:Electric_Meter ;
+    brickframe:pointname "ARC_ChilledWater_Demand_kBtu" ;
+    brickframe:uuid "daae825e-f555-3c4b-8033-7225e9bfe0c9" ;
+    brick1:isPointOf bldg:chiller .
+
+bldg:ARC_Electricity_Demand_kBtu a brick_v_1_0_2:Building_Electric_Meter ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC_Electricity_Demand_kBtu" ;
+    brickframe:uuid "a3f92f9c-58f7-3e54-a997-4b9e3da6ca03" .
+
+bldg:damperVAVRM101 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM101.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM101 .
+
+bldg:damperVAVRM104 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM104.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM104 .
+
+bldg:damperVAVRM105 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM105.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM105 .
+
+bldg:damperVAVRM106 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM106.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM106 .
+
+bldg:damperVAVRM108 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU01.RM108.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM108 .
+
+bldg:damperVAVRM110E a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM110E.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM110E .
+
+bldg:damperVAVRM110W a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM110W.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM110W .
+
+bldg:damperVAVRM112 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM112.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM112 .
+
+bldg:damperVAVRM113 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM113.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM113 .
+
+bldg:damperVAVRM115 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM115.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM115 .
+
+bldg:damperVAVRM116 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM116.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM116 .
+
+bldg:damperVAVRM120 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM120.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM120 .
+
+bldg:damperVAVRM121 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM121.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM121 .
+
+bldg:damperVAVRM126 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU07.RM126.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM126 .
+
+bldg:damperVAVRM127 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU07.RM127.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM127 .
+
+bldg:damperVAVRM129 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU07.RM129.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM129 .
+
+bldg:damperVAVRM150 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM150.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM150 .
+
+bldg:damperVAVRM152 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM152.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM152 .
+
+bldg:damperVAVRM152A a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM152A.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM152A .
+
+bldg:damperVAVRM154 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM154.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM154 .
+
+bldg:damperVAVRM156 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM156.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM156 .
+
+bldg:damperVAVRM158 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM158.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM158 .
+
+bldg:damperVAVRM159 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU07.RM159.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM159 .
+
+bldg:damperVAVRM160 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU07.RM160.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM160 .
+
+bldg:damperVAVRM163 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU07.RM163.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM163 .
+
+bldg:damperVAVRM164 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU07.RM164.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM164 .
+
+bldg:damperVAVRM165 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU07.RM165.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM165 .
+
+bldg:damperVAVRM202 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU07.RM202.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM202 .
+
+bldg:damperVAVRM203 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU05.RM203.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM203 .
+
+bldg:damperVAVRM205 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU07.RM205.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM205 .
+
+bldg:damperVAVRM207 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU05.RM207.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM207 .
+
+bldg:damperVAVRM210 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU07.RM210.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM210 .
+
+bldg:damperVAVRM212 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU05.RM212.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM212 .
+
+bldg:damperVAVRM215 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM215.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM215 .
+
+bldg:damperVAVRM220 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM220.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM220 .
+
+bldg:damperVAVRM224 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM224.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM224 .
+
+bldg:damperVAVRM227 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM227.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM227 .
+
+bldg:damperVAVRM238 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM238.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM238 .
+
+bldg:damperVAVRM241 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM241.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM241 .
+
+bldg:damperVAVRM245 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU05.RM245.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM245 .
+
+bldg:damperVAVRM247 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU05.RM247.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM247 .
+
+bldg:damperVAVRM251 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU07.RM251.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM251 .
+
+bldg:damperVAVRM252 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM252.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM252 .
+
+bldg:damperVAVRM253 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU07.RM253.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM253 .
+
+bldg:damperVAVRM258 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU07.RM258.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM258 .
+
+bldg:damperVAVRM270 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU05.RM270.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM270 .
+
+bldg:damperVAVRM272 a brick1:Damper ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU05.RM272.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM272 .
+
+bldg:floor1 a brick1:Floor ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM101_room,
+        bldg:RM104_room,
+        bldg:RM105_room,
+        bldg:RM106_room,
+        bldg:RM108_MIX_room,
+        bldg:RM108_room,
+        bldg:RM110E_room,
+        bldg:RM110W_room,
+        bldg:RM112_room,
+        bldg:RM113_room,
+        bldg:RM115_room,
+        bldg:RM116_room,
+        bldg:RM120_room,
+        bldg:RM121_room,
+        bldg:RM126_room,
+        bldg:RM127_room,
+        bldg:RM129_room,
+        bldg:RM136_LAB_room,
+        bldg:RM136_room,
+        bldg:RM137_LAB_room,
+        bldg:RM137_room,
+        bldg:RM146_LAB_room,
+        bldg:RM146_room,
+        bldg:RM149_LAB_room,
+        bldg:RM149_room,
+        bldg:RM150_room,
+        bldg:RM152A_room,
+        bldg:RM152_room,
+        bldg:RM154_room,
+        bldg:RM156_room,
+        bldg:RM158_room,
+        bldg:RM159_room,
+        bldg:RM160_room,
+        bldg:RM161A_LAB_room,
+        bldg:RM161A_room,
+        bldg:RM161B_LAB_room,
+        bldg:RM161B_room,
+        bldg:RM163_room,
+        bldg:RM164_room,
+        bldg:RM165_room .
+
+bldg:floor2 a brick1:Floor ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM202_room,
+        bldg:RM203_room,
+        bldg:RM205_room,
+        bldg:RM207_room,
+        bldg:RM210_room,
+        bldg:RM212_room,
+        bldg:RM215_room,
+        bldg:RM220_room,
+        bldg:RM224_room,
+        bldg:RM227_room,
+        bldg:RM238_room,
+        bldg:RM241_room,
+        bldg:RM245_room,
+        bldg:RM247_room,
+        bldg:RM251_room,
+        bldg:RM252_room,
+        bldg:RM253_room,
+        bldg:RM258_room,
+        bldg:RM270_room,
+        bldg:RM272_room .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:ARC.AHU.AHU01.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU01.Cooling Valve Output" ;
+    brickframe:uuid "f517346b-b142-36b0-b627-553c24b9fdec" .
+
+bldg:ARC.AHU.AHU01.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU01.Heating Valve Output" ;
+    brickframe:uuid "8ff00db5-3b87-3b31-a4c5-fed74b9e7965" .
+
+bldg:ARC.AHU.AHU01.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU01.Mixed Air Temp" ;
+    brickframe:uuid "72fef7b9-84b0-3c61-9713-13ff26e7dac4" .
+
+bldg:ARC.AHU.AHU01.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "ARC.AHU.AHU01.Mode" ;
+    brickframe:uuid "479e016e-8471-3e36-8040-45a80593161f" .
+
+bldg:ARC.AHU.AHU01.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU01.Outside Air Temp" ;
+    brickframe:uuid "df66f934-5db7-3dcd-bf17-9b0093bdd00f" .
+
+bldg:ARC.AHU.AHU01.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU01.Outside Air Temp Virtual" ;
+    brickframe:uuid "98d6cba3-b717-3f88-96a0-af116bb2014e" .
+
+bldg:ARC.AHU.AHU01.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU01.Return Air Temp" ;
+    brickframe:uuid "06e1b1cc-667e-3314-a9ea-f30742360c29" .
+
+bldg:ARC.AHU.AHU01.Supply_Air_Pressure a brick1:Supply_Air_Static_Pressure_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU01.Supply Air Pressure" ;
+    brickframe:uuid "94b312ef-e35d-33b6-953a-2480b4abff53" .
+
+bldg:ARC.AHU.AHU01.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU01.Supply Air Temp" ;
+    brickframe:uuid "745b0777-6a7d-3e65-af84-d62db59dc2eb" .
+
+bldg:ARC.AHU.AHU01.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU01.Supply Air Temp Setpoint" ;
+    brickframe:uuid "27355cc2-96e2-3ed3-ac7b-3370eec8402b" .
+
+bldg:ARC.AHU.AHU01.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU01.Zone Air Temp" ;
+    brickframe:uuid "0cdf1523-c538-3561-9a12-374843c6c0e2" .
+
+bldg:ARC.AHU.AHU02.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU02.Cooling Valve Output" ;
+    brickframe:uuid "91d29274-bade-344f-a851-c681d599a61c" .
+
+bldg:ARC.AHU.AHU02.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU02.Heating Valve Output" ;
+    brickframe:uuid "6128a958-e11a-3600-a36c-63a2aec0ca67" .
+
+bldg:ARC.AHU.AHU02.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU02.Mixed Air Temp" ;
+    brickframe:uuid "2959ef14-294a-3bd0-9839-a7c24137ed0b" .
+
+bldg:ARC.AHU.AHU02.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "ARC.AHU.AHU02.Mode" ;
+    brickframe:uuid "8996e100-ccec-31b1-a086-6ec25c115afc" .
+
+bldg:ARC.AHU.AHU02.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU02.Outside Air Temp" ;
+    brickframe:uuid "91fe383a-9ddb-3d8f-a44d-f9a58eded302" .
+
+bldg:ARC.AHU.AHU02.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU02.Outside Air Temp Virtual" ;
+    brickframe:uuid "fb250be5-027f-3551-a382-28309990f27c" .
+
+bldg:ARC.AHU.AHU02.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU02.Return Air Temp" ;
+    brickframe:uuid "c5747e22-dcbe-332a-8564-26ed9bcf12ec" .
+
+bldg:ARC.AHU.AHU02.Supply_Air_Pressure a brick1:Supply_Air_Static_Pressure_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU02.Supply Air Pressure" ;
+    brickframe:uuid "bd506377-4bfb-3248-aea0-781be229a039" .
+
+bldg:ARC.AHU.AHU02.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU02.Supply Air Temp" ;
+    brickframe:uuid "3054d790-5afc-38c7-95dc-3f9f50eabbc9" .
+
+bldg:ARC.AHU.AHU02.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU02.Supply Air Temp Setpoint" ;
+    brickframe:uuid "09892749-2874-3215-8bb2-348cba8da534" .
+
+bldg:ARC.AHU.AHU02.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU02.Zone Air Temp" ;
+    brickframe:uuid "4a8692a8-5186-308b-bc5d-d05f9b23f2bc" .
+
+bldg:ARC.AHU.AHU03.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU03.Cooling Valve Output" ;
+    brickframe:uuid "cf645498-7875-3eba-99fd-0d8a35726577" .
+
+bldg:ARC.AHU.AHU03.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU03.Heating Valve Output" ;
+    brickframe:uuid "f4568fa2-ff4c-386a-a011-9f7aea570f81" .
+
+bldg:ARC.AHU.AHU03.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU03.Mixed Air Temp" ;
+    brickframe:uuid "43a5b398-2068-3419-a4c0-64605f1b9a4f" .
+
+bldg:ARC.AHU.AHU03.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "ARC.AHU.AHU03.Mode" ;
+    brickframe:uuid "35600060-1754-30a3-a66a-1f7e15c05580" .
+
+bldg:ARC.AHU.AHU03.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU03.Outside Air Temp" ;
+    brickframe:uuid "5d3b101d-78b0-3a34-a328-f483f0a908ef" .
+
+bldg:ARC.AHU.AHU03.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU03.Outside Air Temp Virtual" ;
+    brickframe:uuid "e90d6c14-bec2-3efe-a855-1934ad3e7d1f" .
+
+bldg:ARC.AHU.AHU03.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU03.Return Air Temp" ;
+    brickframe:uuid "cfabd4dd-9f88-3e08-b0fe-d8fdb926e282" .
+
+bldg:ARC.AHU.AHU03.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU03.Supply Air Temp" ;
+    brickframe:uuid "e1501d12-b948-3bda-b943-ee0cdd532943" .
+
+bldg:ARC.AHU.AHU03.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU03.Supply Air Temp Setpoint" ;
+    brickframe:uuid "19a719d0-822e-3e24-a836-9595f8a9d614" .
+
+bldg:ARC.AHU.AHU03.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU03.Zone Air Temp" ;
+    brickframe:uuid "37c92c83-a90e-3bca-86bc-56029d3860d2" .
+
+bldg:ARC.AHU.AHU04.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU04.Cooling Valve Output" ;
+    brickframe:uuid "48840038-8fd3-3581-bfd0-13ff99713838" .
+
+bldg:ARC.AHU.AHU04.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU04.Heating Valve Output" ;
+    brickframe:uuid "ab00db47-29b0-312e-bdfd-26b534db25c0" .
+
+bldg:ARC.AHU.AHU04.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU04.Mixed Air Temp" ;
+    brickframe:uuid "d8cc3ac3-6c46-37b5-ba05-f6363c84ee41" .
+
+bldg:ARC.AHU.AHU04.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "ARC.AHU.AHU04.Mode" ;
+    brickframe:uuid "d6520e6c-646f-3073-862a-2a80286a3fb3" .
+
+bldg:ARC.AHU.AHU04.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU04.Outside Air Temp" ;
+    brickframe:uuid "8e51a8d1-af87-3d6c-babd-b9b27d4d5cd6" .
+
+bldg:ARC.AHU.AHU04.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU04.Outside Air Temp Virtual" ;
+    brickframe:uuid "65f457db-d8b4-3a94-b435-ef749cd8380a" .
+
+bldg:ARC.AHU.AHU04.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU04.Return Air Temp" ;
+    brickframe:uuid "70e986f4-2bec-3f7e-aadc-8cebba478bef" .
+
+bldg:ARC.AHU.AHU04.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU04.Supply Air Temp" ;
+    brickframe:uuid "09513234-3c7f-3d88-bc6f-ebd9206809e1" .
+
+bldg:ARC.AHU.AHU04.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU04.Supply Air Temp Setpoint" ;
+    brickframe:uuid "58465fb4-a9d0-37e3-8301-ed1599b33b4b" .
+
+bldg:ARC.AHU.AHU04.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU04.Zone Air Temp" ;
+    brickframe:uuid "115409b6-5321-3cb6-8bfc-8e0a24e211f9" .
+
+bldg:ARC.AHU.AHU05.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU05.Cooling Valve Output" ;
+    brickframe:uuid "f6c995e0-b27e-305b-8ac1-6c90b3676e60" .
+
+bldg:ARC.AHU.AHU05.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU05.Heating Valve Output" ;
+    brickframe:uuid "3ee1f05f-94a5-306e-bd52-920689993607" .
+
+bldg:ARC.AHU.AHU05.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU05.Mixed Air Temp" ;
+    brickframe:uuid "e7b75505-a26a-3d08-9821-b1e9e1dfa5ea" .
+
+bldg:ARC.AHU.AHU05.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "ARC.AHU.AHU05.Mode" ;
+    brickframe:uuid "b52daa98-2ada-3aa3-9996-4c48791cce48" .
+
+bldg:ARC.AHU.AHU05.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU05.Outside Air Temp" ;
+    brickframe:uuid "ad397f92-f7e3-395a-9178-95cb9ded078e" .
+
+bldg:ARC.AHU.AHU05.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU05.Outside Air Temp Virtual" ;
+    brickframe:uuid "b6ffbcff-312e-3955-b5d8-c1b82165186d" .
+
+bldg:ARC.AHU.AHU05.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU05.Return Air Temp" ;
+    brickframe:uuid "fc67e781-ddfa-3044-bffe-ccaa99314abf" .
+
+bldg:ARC.AHU.AHU05.Supply_Air_Pressure a brick1:Supply_Air_Static_Pressure_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU05.Supply Air Pressure" ;
+    brickframe:uuid "f84e00bd-04a1-31d2-a6e3-4479c2a5bfea" .
+
+bldg:ARC.AHU.AHU05.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU05.Supply Air Temp" ;
+    brickframe:uuid "26600c09-669e-38e6-a3b0-8e288d6eefef" .
+
+bldg:ARC.AHU.AHU05.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU05.Supply Air Temp Setpoint" ;
+    brickframe:uuid "7d1ecfa7-c6bc-3cc3-9f42-8464b0fca7c4" .
+
+bldg:ARC.AHU.AHU05.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU05.Zone Air Temp" ;
+    brickframe:uuid "05c0d674-15db-3004-a74f-f260da753709" .
+
+bldg:ARC.AHU.AHU06.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU06.Cooling Valve Output" ;
+    brickframe:uuid "750b47d1-ee5e-367e-b98d-315747f5f51c" .
+
+bldg:ARC.AHU.AHU06.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU06.Heating Valve Output" ;
+    brickframe:uuid "0842054e-eb14-3ed4-91c9-2f2b570b9aa7" .
+
+bldg:ARC.AHU.AHU06.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "ARC.AHU.AHU06.Mode" ;
+    brickframe:uuid "e4244916-8e11-37fd-80d2-cd91667dfd57" .
+
+bldg:ARC.AHU.AHU06.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU06.Outside Air Temp" ;
+    brickframe:uuid "203b4902-f8b8-3108-81b9-956351fc1f09" .
+
+bldg:ARC.AHU.AHU06.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU06.Outside Air Temp Virtual" ;
+    brickframe:uuid "6b705439-b006-31f5-a6eb-ce4f1b61f7bd" .
+
+bldg:ARC.AHU.AHU06.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU06.Supply Air Temp" ;
+    brickframe:uuid "ae0beaf7-6b7c-3864-a81c-24d49bde38f2" .
+
+bldg:ARC.AHU.AHU06.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU06.Supply Air Temp Setpoint" ;
+    brickframe:uuid "24b4e18f-5e2f-3dc7-9a77-44773bd2052a" .
+
+bldg:ARC.AHU.AHU06.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU06.Zone Air Temp" ;
+    brickframe:uuid "e3df844d-98e7-3fc6-a8e3-e953096d7872" .
+
+bldg:ARC.AHU.AHU07.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU07.Cooling Valve Output" ;
+    brickframe:uuid "0a5b8cf1-362c-3683-9c0e-39e4ab6d6346" .
+
+bldg:ARC.AHU.AHU07.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU07.Heating Valve Output" ;
+    brickframe:uuid "97ef09fb-e937-3ebf-84f7-cb4646057923" .
+
+bldg:ARC.AHU.AHU07.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU07.Mixed Air Temp" ;
+    brickframe:uuid "1aa452fe-6522-3f23-8fbb-eb2c893bba25" .
+
+bldg:ARC.AHU.AHU07.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "ARC.AHU.AHU07.Mode" ;
+    brickframe:uuid "5d50340a-4076-305a-a431-a6dfd48d2bee" .
+
+bldg:ARC.AHU.AHU07.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU07.Outside Air Temp" ;
+    brickframe:uuid "fb2def47-9d51-3917-ae8f-4c57f35be23a" .
+
+bldg:ARC.AHU.AHU07.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU07.Outside Air Temp Virtual" ;
+    brickframe:uuid "c4b0ef86-453d-308d-9b36-97781a01edfe" .
+
+bldg:ARC.AHU.AHU07.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU07.Return Air Temp" ;
+    brickframe:uuid "51726a89-5920-3cf5-89ec-66346b5a8f60" .
+
+bldg:ARC.AHU.AHU07.Supply_Air_Pressure a brick1:Supply_Air_Static_Pressure_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU07.Supply Air Pressure" ;
+    brickframe:uuid "4d9e92fd-e954-3040-acd3-9b715bf754c1" .
+
+bldg:ARC.AHU.AHU07.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU07.Supply Air Temp" ;
+    brickframe:uuid "41ae0db2-50c5-3c00-864c-e03ba5a27cd4" .
+
+bldg:ARC.AHU.AHU07.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU07.Supply Air Temp Setpoint" ;
+    brickframe:uuid "eb52a210-94a7-329c-b7eb-70a798537bc4" .
+
+bldg:ARC.AHU.AHU07.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.AHU.AHU07.Zone Air Temp" ;
+    brickframe:uuid "843b08e6-0026-3cf8-ab74-6527b73c6f88" .
+
+bldg:ARC.CHW.Building_Chilled_Water_Flow a brick_v_1_0_2:Chilled_Water_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.CHW.Building Chilled Water Flow" ;
+    brickframe:uuid "3324178b-c7aa-3610-b27b-149060df7fc5" .
+
+bldg:ARC.CHW.Building_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.CHW.Building Chilled Water Return Temp" ;
+    brickframe:uuid "cf40e6d7-33f0-34e7-aba2-24615bac4181" .
+
+bldg:ARC.CHW.Building_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.CHW.Building Chilled Water Supply Temp" ;
+    brickframe:uuid "0d62231f-898b-3f42-b683-57220ac92907" .
+
+bldg:ARC.CHW.CHWP3VFDSPEED a brick_v_1_0_2:Chilled_Water_Pump_VFD_Speed ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.CHW.CHWP3VFDSPEED" ;
+    brickframe:uuid "a7e0d999-e11b-36c8-9371-831056fffc5f" .
+
+bldg:ARC.CHW.CHWP4VFDSPEED a brick_v_1_0_2:Chilled_Water_Pump_VFD_Speed ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.CHW.CHWP4VFDSPEED" ;
+    brickframe:uuid "7e6e89f6-6ef4-374a-aa55-cee555bea108" .
+
+bldg:ARC.CHW.ECONOMIZER a brick1:Damper_Position_Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.CHW.ECONOMIZER" ;
+    brickframe:uuid "24d062d7-5666-3a7e-8d3b-297d8b45b70b" .
+
+bldg:ARC.CHW.Enable a brick1:Enable_Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.CHW.Enable" ;
+    brickframe:uuid "70d89912-b1.0.2abb-a1df-c8b3ebc72204" .
+
+bldg:ARC.CHW.Loop_Chilled_Water_Flow a brick_v_1_0_2:Chilled_Water_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.CHW.Loop Chilled Water Flow" ;
+    brickframe:uuid "4cf62b35-6fa6-30b6-bf5f-7afd0ec1ce5b" .
+
+bldg:ARC.CHW.Loop_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.CHW.Loop Chilled Water Return Temp" ;
+    brickframe:uuid "772d2daf-b2a5-3470-8869-ba68dc181565" .
+
+bldg:ARC.CHW.Loop_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.CHW.Loop Chilled Water Supply Temp" ;
+    brickframe:uuid "046999d3-22b8-3d88-ae9a-aebc8bbb711c" .
+
+bldg:ARC.CHW.Loop_Chilled_Water_Supply_Temp_Setpoint a brick_v_1_0_2:Chilled_Water_Supply_Temperature_Setpoint ;
+    brickframe:pointname "ARC.CHW.Loop Chilled Water Supply Temp Setpoint" ;
+    brickframe:uuid "89af90f6-8bc7-3d68-a447-8b7fb9c47a7d" .
+
+bldg:ARC.CHW.OA_ENABLE a brick_v_1_0_2:Outside_Air_Damper_Command ;
+    brickframe:pointname "ARC.CHW.OA ENABLE" ;
+    brickframe:uuid "00b2e8f1-d068-3e92-8421-ea771e1dbbfd" .
+
+bldg:ARC.CHW.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.CHW.Outside Air Temp" ;
+    brickframe:uuid "f148315b-6788-3561-8972-1c71cbcbefc0" .
+
+bldg:ARC.CHW.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.CHW.Outside Air Temp Virtual" ;
+    brickframe:uuid "a0af48e5-ecd4-3752-aed7-7baa4663852b" .
+
+bldg:ARC.CHW.Pump3_SPEED a brick_v_1_0_2:Speed_Status ;
+    brickframe:pointname "ARC.CHW.Pump3_SPEED" ;
+    brickframe:uuid "57a0f18b-824d-3a80-9e6d-e6a466ff29ce" .
+
+<http://buildsys.org/ontologies/ARC#ARC.CHW.Pump3_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.CHW.Pump3_Start/Stop" ;
+    brickframe:uuid "913ac3c8-77de-324b-a8fa-8b656f12d105" .
+
+bldg:ARC.CHW.Pump3__DRIVE_KWH a brick_v_1_0_2:Power_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.CHW.Pump3__DRIVE KWH" ;
+    brickframe:uuid "8a07d4a5-34f1-3355-acac-e67bb0dc5453" .
+
+bldg:ARC.CHW.Pump3__FREQ_OUTPUT a brick1:Output_Frequency_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.CHW.Pump3__FREQ OUTPUT" ;
+    brickframe:uuid "1703d764-c328-3a68-a24c-70f149077614" .
+
+bldg:ARC.CHW.Pump3__POWER a brick_v_1_0_2:Power_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.CHW.Pump3__POWER" ;
+    brickframe:uuid "e7cccb23-1a70-3285-840a-1d6fba290a41" .
+
+bldg:ARC.CHW.Pump3__SPEED a brick_v_1_0_2:Speed_Status ;
+    brickframe:pointname "ARC.CHW.Pump3__SPEED" ;
+    brickframe:uuid "e37a889e-49f8-39b1-b0af-b64115da2593" .
+
+bldg:ARC.CHW.Pump4_SPEED a brick_v_1_0_2:Speed_Status ;
+    brickframe:pointname "ARC.CHW.Pump4_SPEED" ;
+    brickframe:uuid "5163914d-5610-3695-9c69-863c6da0cf9c" .
+
+<http://buildsys.org/ontologies/ARC#ARC.CHW.Pump4_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.CHW.Pump4_Start/Stop" ;
+    brickframe:uuid "75a637a0-1b5c-3b7f-8d8c-c543b7776afd" .
+
+bldg:ARC.CHW.Pump4__DRIVE_KWH a brick_v_1_0_2:Power_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.CHW.Pump4__DRIVE KWH" ;
+    brickframe:uuid "6dc0c4d4-279b-3970-8f6c-1cf4266c0486" .
+
+bldg:ARC.CHW.Pump4__FREQ_OUTPUT a brick1:Output_Frequency_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.CHW.Pump4__FREQ OUTPUT" ;
+    brickframe:uuid "53662a6a-f38c-3492-b328-62d6e8f831cb" .
+
+bldg:ARC.CHW.Pump4__POWER a brick_v_1_0_2:Power_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.CHW.Pump4__POWER" ;
+    brickframe:uuid "4c913c5f-5ed7-3893-92aa-649a995530d9" .
+
+bldg:ARC.CHW.Pump4__SPEED a brick_v_1_0_2:Speed_Status ;
+    brickframe:pointname "ARC.CHW.Pump4__SPEED" ;
+    brickframe:uuid "e7f1e48b-f6c2-3e20-8928-50e12c181a63" .
+
+bldg:ARC.ZONE.AHU01.RM108.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU01.RM108.Zone Air Damper Command" ;
+    brickframe:uuid "03849778-a243-3759-867b-742481f204bf" .
+
+bldg:ARC.ZONE.AHU01.RM108.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU01.RM108.Zone Air Temp" ;
+    brickframe:uuid "679fad32-8462-33e6-90c5-b1823f7ef600" .
+
+bldg:ARC.ZONE.AHU01.RM108.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU01.RM108.Zone Air Temp Setpoint" ;
+    brickframe:uuid "8dee54a4-2be0-3530-a589-dffec894f278" .
+
+bldg:ARC.ZONE.AHU01.RM108.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU01.RM108.Zone Reheat Valve Command" ;
+    brickframe:uuid "57fe6277-4ac1-37d2-83c7-da49e3fedab1" .
+
+bldg:ARC.ZONE.AHU01.RM108.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU01.RM108.Zone Supply Air Flow" ;
+    brickframe:uuid "6b7d6b1e-1dc2-37aa-8f97-b56678507df0" .
+
+bldg:ARC.ZONE.AHU01.RM108.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU01.RM108.Zone Supply Air Temp" ;
+    brickframe:uuid "c91de1d2-38fe-3663-a455-653a37b1e999" .
+
+bldg:ARC.ZONE.AHU01.RM108_MIX.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU01.RM108_MIX.Zone Air Temp" ;
+    brickframe:uuid "440a13d6-b47c-3ce0-ac93-729f794c50a0" .
+
+bldg:ARC.ZONE.AHU02.RM101.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM101.Zone Air Damper Command" ;
+    brickframe:uuid "59e8f391-4305-3df0-8953-5426a4c4d2bd" .
+
+bldg:ARC.ZONE.AHU02.RM101.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM101.Zone Air Temp" ;
+    brickframe:uuid "426458b1-e09f-3738-843b-ba582d6ea796" .
+
+bldg:ARC.ZONE.AHU02.RM101.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM101.Zone Air Temp Setpoint" ;
+    brickframe:uuid "36a90e6b-f4d4-3e1e-9ef5-9f2e0f100a4b" .
+
+bldg:ARC.ZONE.AHU02.RM101.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM101.Zone Reheat Valve Command" ;
+    brickframe:uuid "952db92f-4cd1-3543-b880-92333272e4d2" .
+
+bldg:ARC.ZONE.AHU02.RM101.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM101.Zone Supply Air Flow" ;
+    brickframe:uuid "2ebf6250-faf4-3ba8-b852-4f457c91fc10" .
+
+bldg:ARC.ZONE.AHU02.RM101.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM101.Zone Supply Air Temp" ;
+    brickframe:uuid "eb4bdfbc-0402-325a-90a7-4d74cb9ee34c" .
+
+bldg:ARC.ZONE.AHU02.RM104.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM104.Zone Air Damper Command" ;
+    brickframe:uuid "b868f9ce-d3ee-3c73-87cd-a38c5633bd1f" .
+
+bldg:ARC.ZONE.AHU02.RM104.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM104.Zone Air Temp" ;
+    brickframe:uuid "25ff282c-f626-3930-a5a2-5bbae325b49e" .
+
+bldg:ARC.ZONE.AHU02.RM104.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM104.Zone Air Temp Setpoint" ;
+    brickframe:uuid "58e79167-f0d3-32c2-8ae9-8779af8b1387" .
+
+bldg:ARC.ZONE.AHU02.RM104.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM104.Zone Reheat Valve Command" ;
+    brickframe:uuid "64aa5a08-f07d-371c-a0fd-9152d3d3f356" .
+
+bldg:ARC.ZONE.AHU02.RM104.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM104.Zone Supply Air Flow" ;
+    brickframe:uuid "a9575714-dd90-3c17-bf16-95730ffd9ba9" .
+
+bldg:ARC.ZONE.AHU02.RM104.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM104.Zone Supply Air Temp" ;
+    brickframe:uuid "e54a4540-4f00-3914-b4e5-dc7d820db27a" .
+
+bldg:ARC.ZONE.AHU02.RM105.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM105.Zone Air Damper Command" ;
+    brickframe:uuid "003c50b3-014b-388f-b463-b47dc163293f" .
+
+bldg:ARC.ZONE.AHU02.RM105.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM105.Zone Air Temp" ;
+    brickframe:uuid "ed0c77f5-345c-3574-8eb2-e57fbc28c0c7" .
+
+bldg:ARC.ZONE.AHU02.RM105.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM105.Zone Air Temp Setpoint" ;
+    brickframe:uuid "a6ca252e-24e5-3b6d-955f-08c8cf7ca873" .
+
+bldg:ARC.ZONE.AHU02.RM105.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM105.Zone Reheat Valve Command" ;
+    brickframe:uuid "a17221a8-abda-302c-b0f1-9586de584efb" .
+
+bldg:ARC.ZONE.AHU02.RM105.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM105.Zone Supply Air Flow" ;
+    brickframe:uuid "e1a40602-a01c-3f59-9ffa-d01ae9c9960f" .
+
+bldg:ARC.ZONE.AHU02.RM105.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM105.Zone Supply Air Temp" ;
+    brickframe:uuid "66c6a23c-70de-3d83-8f03-7f2a517cad76" .
+
+bldg:ARC.ZONE.AHU02.RM106.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM106.Zone Air Damper Command" ;
+    brickframe:uuid "2bfbe5e1-77a1-3bbf-ad74-8dc2aa05efd9" .
+
+bldg:ARC.ZONE.AHU02.RM106.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM106.Zone Air Temp" ;
+    brickframe:uuid "22e1d2fe-870d-3f49-84a8-62a1d879041b" .
+
+bldg:ARC.ZONE.AHU02.RM106.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM106.Zone Air Temp Setpoint" ;
+    brickframe:uuid "81fe6561-9398-3764-a252-28ae2c51fc67" .
+
+bldg:ARC.ZONE.AHU02.RM106.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM106.Zone Reheat Valve Command" ;
+    brickframe:uuid "f9f133cb-3f6f-3496-a626-60cd995b7937" .
+
+bldg:ARC.ZONE.AHU02.RM106.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM106.Zone Supply Air Flow" ;
+    brickframe:uuid "08a4bd71-b810-37fd-9187-1d220c072c71" .
+
+bldg:ARC.ZONE.AHU02.RM106.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM106.Zone Supply Air Temp" ;
+    brickframe:uuid "a6558e23-b22f-3e81-a70e-a7f4f6d4a511" .
+
+bldg:ARC.ZONE.AHU02.RM110E.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM110E.Zone Air Damper Command" ;
+    brickframe:uuid "f53237fe-5285-3d59-9d15-4122025e6c2f" .
+
+bldg:ARC.ZONE.AHU02.RM110E.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM110E.Zone Air Temp" ;
+    brickframe:uuid "62fe3e2e-dec0-3a30-afab-967a80e7b57e" .
+
+bldg:ARC.ZONE.AHU02.RM110E.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM110E.Zone Air Temp Setpoint" ;
+    brickframe:uuid "c1cc22fd-bbcb-3400-905a-4502255d2351" .
+
+bldg:ARC.ZONE.AHU02.RM110E.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM110E.Zone Reheat Valve Command" ;
+    brickframe:uuid "e2c8c71f-8524-378b-a7b6-8be19792742c" .
+
+bldg:ARC.ZONE.AHU02.RM110E.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM110E.Zone Supply Air Flow" ;
+    brickframe:uuid "431d0c9a-cf55-38b5-a729-c56bc9d95b91" .
+
+bldg:ARC.ZONE.AHU02.RM110E.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM110E.Zone Supply Air Temp" ;
+    brickframe:uuid "38f7aeee-7728-3cec-b491-f3e8f4b42157" .
+
+bldg:ARC.ZONE.AHU02.RM110W.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM110W.Zone Air Damper Command" ;
+    brickframe:uuid "36e25bfa-4d69-39b5-b04b-5b8dda66b901" .
+
+bldg:ARC.ZONE.AHU02.RM110W.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM110W.Zone Air Temp" ;
+    brickframe:uuid "7be98992-2fba-3a15-ad73-b6b0a6fc11f7" .
+
+bldg:ARC.ZONE.AHU02.RM110W.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM110W.Zone Air Temp Setpoint" ;
+    brickframe:uuid "85cb7de8-7229-3f42-a5da-c132df9b1a55" .
+
+bldg:ARC.ZONE.AHU02.RM110W.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM110W.Zone Reheat Valve Command" ;
+    brickframe:uuid "e313ca87-7a37-3527-9d6b-b07ade287f30" .
+
+bldg:ARC.ZONE.AHU02.RM110W.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM110W.Zone Supply Air Flow" ;
+    brickframe:uuid "c85e2a87-8990-3fdd-b1f2-09541a7f0863" .
+
+bldg:ARC.ZONE.AHU02.RM110W.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM110W.Zone Supply Air Temp" ;
+    brickframe:uuid "fb18292d-884a-34f8-9187-0a35ddeb0b68" .
+
+bldg:ARC.ZONE.AHU02.RM112.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM112.Zone Air Damper Command" ;
+    brickframe:uuid "68ef7e1b-39e2-3462-9288-8a78f6f6e2b1" .
+
+bldg:ARC.ZONE.AHU02.RM112.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM112.Zone Air Temp" ;
+    brickframe:uuid "8f6f6b8e-055b-35e9-a565-d458166b5ae6" .
+
+bldg:ARC.ZONE.AHU02.RM112.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM112.Zone Air Temp Setpoint" ;
+    brickframe:uuid "14a2e61e-3fa0-3542-9543-7e81127c8fb1" .
+
+bldg:ARC.ZONE.AHU02.RM112.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM112.Zone Reheat Valve Command" ;
+    brickframe:uuid "f6499ec8-ca8b-3b8c-820a-ca9b37bfa127" .
+
+bldg:ARC.ZONE.AHU02.RM112.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM112.Zone Supply Air Flow" ;
+    brickframe:uuid "11aefccd-0a46-35c3-a446-1e13667e3d4f" .
+
+bldg:ARC.ZONE.AHU02.RM112.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM112.Zone Supply Air Temp" ;
+    brickframe:uuid "fb38063d-1477-34be-a52b-e5e136181822" .
+
+bldg:ARC.ZONE.AHU02.RM113.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM113.Zone Air Damper Command" ;
+    brickframe:uuid "2ff11b6f-f152-303a-b52d-76410b8053b3" .
+
+bldg:ARC.ZONE.AHU02.RM113.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM113.Zone Air Temp" ;
+    brickframe:uuid "e21c7e06-aa67-37a1-9be9-696fef1f5520" .
+
+bldg:ARC.ZONE.AHU02.RM113.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM113.Zone Air Temp Setpoint" ;
+    brickframe:uuid "b0de9182-640e-3da6-be4a-4061034706e5" .
+
+bldg:ARC.ZONE.AHU02.RM113.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM113.Zone Reheat Valve Command" ;
+    brickframe:uuid "d2198d93-f1f6-3ffe-afa8-79137168d6ee" .
+
+bldg:ARC.ZONE.AHU02.RM113.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM113.Zone Supply Air Flow" ;
+    brickframe:uuid "beaa0ab4-7af6-35fc-abaa-652295977f7a" .
+
+bldg:ARC.ZONE.AHU02.RM113.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM113.Zone Supply Air Temp" ;
+    brickframe:uuid "165c9c71-5646-3ba8-89f3-e4ea89696652" .
+
+bldg:ARC.ZONE.AHU02.RM115.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM115.Zone Air Damper Command" ;
+    brickframe:uuid "5cf72068-b00a-3088-bd7b-8855f7f4bcde" .
+
+bldg:ARC.ZONE.AHU02.RM115.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM115.Zone Air Temp" ;
+    brickframe:uuid "800546af-0c53-30a0-84ab-da01b07bc098" .
+
+bldg:ARC.ZONE.AHU02.RM115.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM115.Zone Air Temp Setpoint" ;
+    brickframe:uuid "344cac1c-8df0-3853-8de2-802a2fdfbc19" .
+
+bldg:ARC.ZONE.AHU02.RM115.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM115.Zone Reheat Valve Command" ;
+    brickframe:uuid "d77007ad-f6b3-3cc8-b3bb-7e8f34164de8" .
+
+bldg:ARC.ZONE.AHU02.RM115.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM115.Zone Supply Air Flow" ;
+    brickframe:uuid "24c6fcb7-8892-3579-909b-5716f3f4eedd" .
+
+bldg:ARC.ZONE.AHU02.RM115.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM115.Zone Supply Air Temp" ;
+    brickframe:uuid "6beed83f-5a6c-3e91-9ad8-633557b55c11" .
+
+bldg:ARC.ZONE.AHU02.RM116.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM116.Zone Air Damper Command" ;
+    brickframe:uuid "4cf5d1c1-306b-3181-9009-1088d1a4a1dd" .
+
+bldg:ARC.ZONE.AHU02.RM116.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM116.Zone Air Temp" ;
+    brickframe:uuid "c8ea9468-506a-3544-99cb-4f1cabe34616" .
+
+bldg:ARC.ZONE.AHU02.RM116.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM116.Zone Air Temp Setpoint" ;
+    brickframe:uuid "da39675e-aeb2-3d6f-b9a5-330ce6748951" .
+
+bldg:ARC.ZONE.AHU02.RM116.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM116.Zone Reheat Valve Command" ;
+    brickframe:uuid "d490ea4b-72ea-36af-9be5-0a1a65e2f510" .
+
+bldg:ARC.ZONE.AHU02.RM116.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM116.Zone Supply Air Flow" ;
+    brickframe:uuid "90e8838d-f5cf-392d-bb14-e63292a5910f" .
+
+bldg:ARC.ZONE.AHU02.RM116.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM116.Zone Supply Air Temp" ;
+    brickframe:uuid "620b3a92-b05d-3d8c-b415-3a3410e5b72b" .
+
+bldg:ARC.ZONE.AHU02.RM120.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM120.Zone Air Damper Command" ;
+    brickframe:uuid "6076fa47-ecf7-3da9-ae4f-42fd550ed8b7" .
+
+bldg:ARC.ZONE.AHU02.RM120.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM120.Zone Air Temp" ;
+    brickframe:uuid "d97de60f-9c02-3057-8736-8a50c40a7ccc" .
+
+bldg:ARC.ZONE.AHU02.RM120.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM120.Zone Air Temp Setpoint" ;
+    brickframe:uuid "5eee9206-84af-30c8-b4af-cf1c1ac86e6f" .
+
+bldg:ARC.ZONE.AHU02.RM120.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM120.Zone Reheat Valve Command" ;
+    brickframe:uuid "acadf988-e67a-343d-9321-3c8e88a32252" .
+
+bldg:ARC.ZONE.AHU02.RM120.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM120.Zone Supply Air Flow" ;
+    brickframe:uuid "cd31439f-bb6b-352d-b588-2c71378cb0a1" .
+
+bldg:ARC.ZONE.AHU02.RM120.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM120.Zone Supply Air Temp" ;
+    brickframe:uuid "452fd596-c92a-3c7a-be55-417e62c2ddf3" .
+
+bldg:ARC.ZONE.AHU02.RM121.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM121.Zone Air Damper Command" ;
+    brickframe:uuid "815bf13c-ed29-31c5-ad73-36264dc730a7" .
+
+bldg:ARC.ZONE.AHU02.RM121.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM121.Zone Air Temp" ;
+    brickframe:uuid "ed0afc45-1a36-3da7-be3c-e1b37d600b14" .
+
+bldg:ARC.ZONE.AHU02.RM121.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM121.Zone Air Temp Setpoint" ;
+    brickframe:uuid "1bc2bd9c-acd5-3227-acf0-3d155d9467d1" .
+
+bldg:ARC.ZONE.AHU02.RM121.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM121.Zone Reheat Valve Command" ;
+    brickframe:uuid "dbeecb29-a5f9-3a81-b11b-b07328bf7891" .
+
+bldg:ARC.ZONE.AHU02.RM121.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM121.Zone Supply Air Flow" ;
+    brickframe:uuid "b40aa527-1f13-30a8-b646-8d862ec5d83e" .
+
+bldg:ARC.ZONE.AHU02.RM121.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM121.Zone Supply Air Temp" ;
+    brickframe:uuid "216748b6-6a6b-32e7-b966-3b960aab42d1" .
+
+bldg:ARC.ZONE.AHU02.RM150.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM150.Zone Air Damper Command" ;
+    brickframe:uuid "602aab6f-656f-3690-b787-1f940fa63cdd" .
+
+bldg:ARC.ZONE.AHU02.RM150.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM150.Zone Air Temp" ;
+    brickframe:uuid "eaae97d4-28dd-3c4e-8278-d4c9809b29aa" .
+
+bldg:ARC.ZONE.AHU02.RM150.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM150.Zone Air Temp Setpoint" ;
+    brickframe:uuid "da5027c8-f4c6-3235-ba99-d6a48844a448" .
+
+bldg:ARC.ZONE.AHU02.RM150.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM150.Zone Reheat Valve Command" ;
+    brickframe:uuid "74e7a245-28a7-3b2a-b149-f62b6154a45b" .
+
+bldg:ARC.ZONE.AHU02.RM150.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM150.Zone Supply Air Flow" ;
+    brickframe:uuid "2d90a16b-f6e6-3763-9029-ceae32b5970f" .
+
+bldg:ARC.ZONE.AHU02.RM152.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM152.Zone Air Damper Command" ;
+    brickframe:uuid "ffb059a9-e867-30fa-893f-ac87408547e5" .
+
+bldg:ARC.ZONE.AHU02.RM152.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM152.Zone Air Temp" ;
+    brickframe:uuid "ba2584d0-b078-3359-a775-138014bb62d1" .
+
+bldg:ARC.ZONE.AHU02.RM152.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM152.Zone Air Temp Setpoint" ;
+    brickframe:uuid "ae465b01-4f9a-3dc7-b7bb-20c4a25c10ef" .
+
+bldg:ARC.ZONE.AHU02.RM152.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM152.Zone Reheat Valve Command" ;
+    brickframe:uuid "03d2b8dc-9273-3d64-99b6-29a5ee104e26" .
+
+bldg:ARC.ZONE.AHU02.RM152.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM152.Zone Supply Air Flow" ;
+    brickframe:uuid "b8307b1e-1692-3824-be95-119f994a264a" .
+
+bldg:ARC.ZONE.AHU02.RM152.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM152.Zone Supply Air Temp" ;
+    brickframe:uuid "572541d2-0bee-3b49-9824-91ff34f574d4" .
+
+bldg:ARC.ZONE.AHU02.RM152A.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM152A.Zone Air Damper Command" ;
+    brickframe:uuid "813d9944-20df-37d4-87e0-5532d972c2d4" .
+
+bldg:ARC.ZONE.AHU02.RM152A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM152A.Zone Air Temp" ;
+    brickframe:uuid "b47102cf-7a78-3d4e-b285-59424158cc26" .
+
+bldg:ARC.ZONE.AHU02.RM152A.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM152A.Zone Air Temp Setpoint" ;
+    brickframe:uuid "9683005a-f1c5-3a26-917f-785b8c105ed7" .
+
+bldg:ARC.ZONE.AHU02.RM152A.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM152A.Zone Reheat Valve Command" ;
+    brickframe:uuid "8a9b2e87-f220-3d9b-8019-a5628f7209e7" .
+
+bldg:ARC.ZONE.AHU02.RM152A.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM152A.Zone Supply Air Flow" ;
+    brickframe:uuid "1c5c6ce7-e7ad-3157-800e-cbb9cc538204" .
+
+bldg:ARC.ZONE.AHU02.RM152A.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM152A.Zone Supply Air Temp" ;
+    brickframe:uuid "eb2cda0b-6b4c-34ee-abe5-98c2780cfa2b" .
+
+bldg:ARC.ZONE.AHU02.RM154.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM154.Zone Air Damper Command" ;
+    brickframe:uuid "2fd44775-6408-358d-952b-521b6502fdd8" .
+
+bldg:ARC.ZONE.AHU02.RM154.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM154.Zone Air Temp" ;
+    brickframe:uuid "b4dbad75-f8e9-3655-b14d-9a4fd45203cf" .
+
+bldg:ARC.ZONE.AHU02.RM154.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM154.Zone Air Temp Setpoint" ;
+    brickframe:uuid "d49ed65e-ff25-32f9-93a1-8178ce272f44" .
+
+bldg:ARC.ZONE.AHU02.RM154.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM154.Zone Reheat Valve Command" ;
+    brickframe:uuid "ff7c5404-15db-3804-98eb-67a11f7b5590" .
+
+bldg:ARC.ZONE.AHU02.RM154.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM154.Zone Supply Air Flow" ;
+    brickframe:uuid "6fd394c1-6634-38ae-947a-0929866d639f" .
+
+bldg:ARC.ZONE.AHU02.RM154.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM154.Zone Supply Air Temp" ;
+    brickframe:uuid "0619fac3-edd3-3d62-beda-c5d1858c4832" .
+
+bldg:ARC.ZONE.AHU02.RM156.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM156.Zone Air Damper Command" ;
+    brickframe:uuid "b54fb377-cfe8-3a23-8b9e-a55f89e5a826" .
+
+bldg:ARC.ZONE.AHU02.RM156.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM156.Zone Air Temp" ;
+    brickframe:uuid "b4836ab4-fc30-3c59-bae7-b58d368e2304" .
+
+bldg:ARC.ZONE.AHU02.RM156.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM156.Zone Air Temp Setpoint" ;
+    brickframe:uuid "e4db08b2-4b16-314b-83ba-a070851ff6e7" .
+
+bldg:ARC.ZONE.AHU02.RM156.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM156.Zone Reheat Valve Command" ;
+    brickframe:uuid "478940a6-99a3-3643-94a0-55a86aaf079a" .
+
+bldg:ARC.ZONE.AHU02.RM156.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM156.Zone Supply Air Flow" ;
+    brickframe:uuid "c7925744-0dbb-3bf8-8ef7-8f800f3ba783" .
+
+bldg:ARC.ZONE.AHU02.RM156.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM156.Zone Supply Air Temp" ;
+    brickframe:uuid "82ec09f3-2a96-32d2-a322-96104d9ded2e" .
+
+bldg:ARC.ZONE.AHU02.RM158.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM158.Zone Air Damper Command" ;
+    brickframe:uuid "24272e62-1f65-3768-b361-0fa23deacb77" .
+
+bldg:ARC.ZONE.AHU02.RM158.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM158.Zone Air Temp" ;
+    brickframe:uuid "ea29b696-598a-3ac2-af54-d9e0cdff778e" .
+
+bldg:ARC.ZONE.AHU02.RM158.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM158.Zone Air Temp Setpoint" ;
+    brickframe:uuid "f8e826a0-a73e-36f9-9f78-5d4e686f911a" .
+
+bldg:ARC.ZONE.AHU02.RM158.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM158.Zone Reheat Valve Command" ;
+    brickframe:uuid "35319fa7-9007-32d5-bbce-2d919e258b68" .
+
+bldg:ARC.ZONE.AHU02.RM158.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM158.Zone Supply Air Flow" ;
+    brickframe:uuid "812183f9-41a2-36c1-94f0-88a2a5772eb8" .
+
+bldg:ARC.ZONE.AHU02.RM158.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM158.Zone Supply Air Temp" ;
+    brickframe:uuid "3c16be69-e745-396b-b85d-b78ee0b26ff2" .
+
+bldg:ARC.ZONE.AHU02.RM215.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM215.Zone Air Damper Command" ;
+    brickframe:uuid "1bdbf943-e4bf-3c86-a1ec-3d46f3592b1a" .
+
+bldg:ARC.ZONE.AHU02.RM215.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM215.Zone Air Temp" ;
+    brickframe:uuid "7c861b73-60db-3dc5-a275-c937eec853d0" .
+
+bldg:ARC.ZONE.AHU02.RM215.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM215.Zone Air Temp Setpoint" ;
+    brickframe:uuid "79f4f937-0846-32d1-b3a0-987a8338bbba" .
+
+bldg:ARC.ZONE.AHU02.RM215.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM215.Zone Reheat Valve Command" ;
+    brickframe:uuid "dd9a9363-135f-3a73-9881-25f65f65eb61" .
+
+bldg:ARC.ZONE.AHU02.RM215.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM215.Zone Supply Air Flow" ;
+    brickframe:uuid "ca400cb0-20a3-3cbd-ae1b-749e8066159e" .
+
+bldg:ARC.ZONE.AHU02.RM215.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM215.Zone Supply Air Temp" ;
+    brickframe:uuid "14331b1f-b66c-3d03-b80e-a8170dfd88a0" .
+
+bldg:ARC.ZONE.AHU02.RM220.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM220.Zone Air Damper Command" ;
+    brickframe:uuid "137839ec-7642-3344-ad0d-91746efcd0e5" .
+
+bldg:ARC.ZONE.AHU02.RM220.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM220.Zone Air Temp" ;
+    brickframe:uuid "9b70e379-bc7d-3cee-9354-0550d2d1614a" .
+
+bldg:ARC.ZONE.AHU02.RM220.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM220.Zone Air Temp Setpoint" ;
+    brickframe:uuid "ad7d534b-48b9-3cbb-97a9-ee91f0d06aa9" .
+
+bldg:ARC.ZONE.AHU02.RM220.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM220.Zone Reheat Valve Command" ;
+    brickframe:uuid "a2caffc6-5940-334e-924c-245c2e7ac8ce" .
+
+bldg:ARC.ZONE.AHU02.RM220.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM220.Zone Supply Air Flow" ;
+    brickframe:uuid "3f696f12-64ce-3db6-8a05-8772abcacba8" .
+
+bldg:ARC.ZONE.AHU02.RM220.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM220.Zone Supply Air Temp" ;
+    brickframe:uuid "b937d848-2f96-3821-b985-09e4cbf99f46" .
+
+bldg:ARC.ZONE.AHU02.RM224.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM224.Zone Air Damper Command" ;
+    brickframe:uuid "6f599e71-8240-3351-9e8b-d69ac498ddc0" .
+
+bldg:ARC.ZONE.AHU02.RM224.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM224.Zone Air Temp" ;
+    brickframe:uuid "47c34851-d9fe-3e40-8119-b6712b6a534f" .
+
+bldg:ARC.ZONE.AHU02.RM224.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM224.Zone Air Temp Setpoint" ;
+    brickframe:uuid "4326629b-4276-388e-81b3-42e88ae0686c" .
+
+bldg:ARC.ZONE.AHU02.RM224.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM224.Zone Reheat Valve Command" ;
+    brickframe:uuid "46611ca9-d1bf-3e20-a9b0-eec8d0d5a0f0" .
+
+bldg:ARC.ZONE.AHU02.RM224.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM224.Zone Supply Air Flow" ;
+    brickframe:uuid "63607000-177f-3234-a993-ea1a71604523" .
+
+bldg:ARC.ZONE.AHU02.RM224.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM224.Zone Supply Air Temp" ;
+    brickframe:uuid "45055540-3116-3efb-ad52-5c70171c8860" .
+
+bldg:ARC.ZONE.AHU02.RM227.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM227.Zone Air Damper Command" ;
+    brickframe:uuid "d1559f79-af78-39c6-9d6c-22dcb1f53ef4" .
+
+bldg:ARC.ZONE.AHU02.RM227.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM227.Zone Air Temp" ;
+    brickframe:uuid "c8faa0e6-a093-3cbf-a1b7-5a196950dfe5" .
+
+bldg:ARC.ZONE.AHU02.RM227.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM227.Zone Air Temp Setpoint" ;
+    brickframe:uuid "601b754a-a407-31b9-9487-4b43f557ff7a" .
+
+bldg:ARC.ZONE.AHU02.RM227.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM227.Zone Reheat Valve Command" ;
+    brickframe:uuid "48b43b85-df9c-33c3-bfc1-8d702b10aa0a" .
+
+bldg:ARC.ZONE.AHU02.RM227.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM227.Zone Supply Air Flow" ;
+    brickframe:uuid "9a88cece-3e76-356a-ac47-aa592c7e170f" .
+
+bldg:ARC.ZONE.AHU02.RM227.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM227.Zone Supply Air Temp" ;
+    brickframe:uuid "bad3488e-31.0.2075-8612-c3966e7d37d8" .
+
+bldg:ARC.ZONE.AHU02.RM238.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM238.Zone Air Damper Command" ;
+    brickframe:uuid "4bf97ec4-86ca-3909-917c-91780dee4985" .
+
+bldg:ARC.ZONE.AHU02.RM238.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM238.Zone Air Temp" ;
+    brickframe:uuid "d3237e53-9205-3276-b273-0e81f0d6f727" .
+
+bldg:ARC.ZONE.AHU02.RM238.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM238.Zone Air Temp Setpoint" ;
+    brickframe:uuid "15e30e81-86d8-387a-81ef-54ef23a589c0" .
+
+bldg:ARC.ZONE.AHU02.RM238.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM238.Zone Reheat Valve Command" ;
+    brickframe:uuid "94ed2c3d-5eca-3e11-ae00-4af6aadbda2d" .
+
+bldg:ARC.ZONE.AHU02.RM238.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM238.Zone Supply Air Flow" ;
+    brickframe:uuid "6ae7d04a-a3cd-3f51-b07f-2d6bc3155aaf" .
+
+bldg:ARC.ZONE.AHU02.RM238.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM238.Zone Supply Air Temp" ;
+    brickframe:uuid "60b92a9d-8147-34f9-9e17-53e0007eb900" .
+
+bldg:ARC.ZONE.AHU02.RM241.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM241.Zone Air Damper Command" ;
+    brickframe:uuid "7f03b14e-62aa-375f-93f9-7921acdd3cb3" .
+
+bldg:ARC.ZONE.AHU02.RM241.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM241.Zone Air Temp" ;
+    brickframe:uuid "55e86837-b515-3453-94f8-bb9fec71124f" .
+
+bldg:ARC.ZONE.AHU02.RM241.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM241.Zone Air Temp Setpoint" ;
+    brickframe:uuid "ec56af00-32d4-3069-aa54-a3a66a9041e3" .
+
+bldg:ARC.ZONE.AHU02.RM241.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM241.Zone Reheat Valve Command" ;
+    brickframe:uuid "d98c2a98-5214-3461-b4eb-76c5ba8dc3bf" .
+
+bldg:ARC.ZONE.AHU02.RM241.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM241.Zone Supply Air Flow" ;
+    brickframe:uuid "2379da29-9821-34e4-95b9-c59a3502d9c7" .
+
+bldg:ARC.ZONE.AHU02.RM241.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM241.Zone Supply Air Temp" ;
+    brickframe:uuid "9224d84d-1add-36af-9fca-a52a9cb882d4" .
+
+bldg:ARC.ZONE.AHU02.RM252.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM252.Zone Air Damper Command" ;
+    brickframe:uuid "4fdf97ea-025f-30c8-b534-bb748e392e2d" .
+
+bldg:ARC.ZONE.AHU02.RM252.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM252.Zone Air Temp" ;
+    brickframe:uuid "92fb4e9e-561b-361c-8167-3e877bf48615" .
+
+bldg:ARC.ZONE.AHU02.RM252.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM252.Zone Air Temp Setpoint" ;
+    brickframe:uuid "6ab2003d-14b6-3978-859a-11f997e64745" .
+
+bldg:ARC.ZONE.AHU02.RM252.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM252.Zone Reheat Valve Command" ;
+    brickframe:uuid "922f3dcc-3073-33f8-874b-98d4ffe819ea" .
+
+bldg:ARC.ZONE.AHU02.RM252.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM252.Zone Supply Air Flow" ;
+    brickframe:uuid "34083099-f768-3d70-a996-389d62a6546e" .
+
+bldg:ARC.ZONE.AHU02.RM252.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU02.RM252.Zone Supply Air Temp" ;
+    brickframe:uuid "18596606-18e8-3ea2-9a63-033228426105" .
+
+bldg:ARC.ZONE.AHU05.RM203.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM203.Zone Air Damper Command" ;
+    brickframe:uuid "345d1b30-ad63-3493-9507-5289c992667d" .
+
+bldg:ARC.ZONE.AHU05.RM203.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM203.Zone Air Temp" ;
+    brickframe:uuid "9f306ae7-e032-3a02-b6cc-2cdffcd30bf6" .
+
+bldg:ARC.ZONE.AHU05.RM203.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM203.Zone Air Temp Setpoint" ;
+    brickframe:uuid "c8e763f1-3de0-3f44-9e59-763b63ef7ac4" .
+
+bldg:ARC.ZONE.AHU05.RM203.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM203.Zone Reheat Valve Command" ;
+    brickframe:uuid "13c7b4e6-7621-332a-9ba4-88e74178d31c" .
+
+bldg:ARC.ZONE.AHU05.RM203.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM203.Zone Supply Air Flow" ;
+    brickframe:uuid "dea3d1bf-33b0-39ec-873e-438be14036d8" .
+
+bldg:ARC.ZONE.AHU05.RM203.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM203.Zone Supply Air Temp" ;
+    brickframe:uuid "79fc3392-951c-3cb5-ade9-4875e3d53cd6" .
+
+bldg:ARC.ZONE.AHU05.RM207.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM207.Zone Air Damper Command" ;
+    brickframe:uuid "b97d1b7f-fec7-360b-9f83-d4d83177a91e" .
+
+bldg:ARC.ZONE.AHU05.RM207.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM207.Zone Air Temp" ;
+    brickframe:uuid "547c58ab-41b8-3647-af52-3787a42f296c" .
+
+bldg:ARC.ZONE.AHU05.RM207.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM207.Zone Air Temp Setpoint" ;
+    brickframe:uuid "24ce0444-1fe5-3168-9e2a-d2b645dda9b4" .
+
+bldg:ARC.ZONE.AHU05.RM207.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM207.Zone Reheat Valve Command" ;
+    brickframe:uuid "cdfcd3d5-c9b7-3c35-a6f4-1935d8c97213" .
+
+bldg:ARC.ZONE.AHU05.RM207.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM207.Zone Supply Air Flow" ;
+    brickframe:uuid "8b1dca8b-9684-3b31-b250-674dd834cc22" .
+
+bldg:ARC.ZONE.AHU05.RM207.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM207.Zone Supply Air Temp" ;
+    brickframe:uuid "a97c9116-48a4-3d3c-b09e-22c2186cf4b9" .
+
+bldg:ARC.ZONE.AHU05.RM212.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM212.Zone Air Damper Command" ;
+    brickframe:uuid "9cb8cf35-2a91-365f-b2de-4bebf2c59d0f" .
+
+bldg:ARC.ZONE.AHU05.RM212.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM212.Zone Air Temp" ;
+    brickframe:uuid "8fac0838-a913-3525-b605-a9cec54f4f90" .
+
+bldg:ARC.ZONE.AHU05.RM212.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM212.Zone Air Temp Setpoint" ;
+    brickframe:uuid "c64944bd-2d21-339d-a94a-27fac46179cf" .
+
+bldg:ARC.ZONE.AHU05.RM212.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM212.Zone Reheat Valve Command" ;
+    brickframe:uuid "66874bda-5860-3609-8cca-dd50ecb784fd" .
+
+bldg:ARC.ZONE.AHU05.RM212.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM212.Zone Supply Air Flow" ;
+    brickframe:uuid "f970ca33-b0ba-3e14-a63d-981b9fb4ae7f" .
+
+bldg:ARC.ZONE.AHU05.RM212.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM212.Zone Supply Air Temp" ;
+    brickframe:uuid "bc7f752d-b41f-3b87-bdea-56904ccaf3ee" .
+
+bldg:ARC.ZONE.AHU05.RM245.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM245.Zone Air Damper Command" ;
+    brickframe:uuid "fc72e0ce-5a4a-3d9e-81aa-822ae809ee8c" .
+
+bldg:ARC.ZONE.AHU05.RM245.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM245.Zone Air Temp" ;
+    brickframe:uuid "9322ed93-fb20-3931-b339-166c719f64dc" .
+
+bldg:ARC.ZONE.AHU05.RM245.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM245.Zone Air Temp Setpoint" ;
+    brickframe:uuid "3966e234-9fa0-3594-9877-be14047b85bc" .
+
+bldg:ARC.ZONE.AHU05.RM245.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM245.Zone Reheat Valve Command" ;
+    brickframe:uuid "64546a9a-9322-363a-a9b7-7f88f2c87d4f" .
+
+bldg:ARC.ZONE.AHU05.RM245.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM245.Zone Supply Air Flow" ;
+    brickframe:uuid "6776846f-6c80-3660-9f14-c03009d77d77" .
+
+bldg:ARC.ZONE.AHU05.RM245.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM245.Zone Supply Air Temp" ;
+    brickframe:uuid "06b6d83f-e379-3aaa-ba04-79be506243bf" .
+
+bldg:ARC.ZONE.AHU05.RM247.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM247.Zone Air Damper Command" ;
+    brickframe:uuid "14fd4252-2122-385f-99e5-04363a8d776d" .
+
+bldg:ARC.ZONE.AHU05.RM247.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM247.Zone Air Temp" ;
+    brickframe:uuid "2039473d-680a-347b-9ce2-647760ad02a3" .
+
+bldg:ARC.ZONE.AHU05.RM247.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM247.Zone Air Temp Setpoint" ;
+    brickframe:uuid "94bdf395-fc1a-37d6-adfc-689abe32efb5" .
+
+bldg:ARC.ZONE.AHU05.RM247.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM247.Zone Reheat Valve Command" ;
+    brickframe:uuid "a860b35f-5d31-38c7-9abf-7bdc65b179ae" .
+
+bldg:ARC.ZONE.AHU05.RM247.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM247.Zone Supply Air Flow" ;
+    brickframe:uuid "0c4aa4f2-4b08-3f36-b2d7-737e4bf0ce7c" .
+
+bldg:ARC.ZONE.AHU05.RM247.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM247.Zone Supply Air Temp" ;
+    brickframe:uuid "b2cad225-64e2-3217-ba1e-a6935a567b18" .
+
+bldg:ARC.ZONE.AHU05.RM270.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM270.Zone Air Damper Command" ;
+    brickframe:uuid "88131172-6bdc-3c2a-8ed7-379aff12a8b8" .
+
+bldg:ARC.ZONE.AHU05.RM270.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM270.Zone Air Temp" ;
+    brickframe:uuid "236b9422-b930-38db-a97a-ac5ad46d1fcc" .
+
+bldg:ARC.ZONE.AHU05.RM270.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM270.Zone Air Temp Setpoint" ;
+    brickframe:uuid "de5c8be4-c8cd-3c18-b2dd-46332597f597" .
+
+bldg:ARC.ZONE.AHU05.RM270.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM270.Zone Reheat Valve Command" ;
+    brickframe:uuid "21997742-0a2f-3a66-b6b4-d1d903a8b5c1" .
+
+bldg:ARC.ZONE.AHU05.RM270.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM270.Zone Supply Air Flow" ;
+    brickframe:uuid "c71a06a5-6a29-3c6a-b0f1-9a746b5215ae" .
+
+bldg:ARC.ZONE.AHU05.RM270.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM270.Zone Supply Air Temp" ;
+    brickframe:uuid "9fe7793a-947a-3a9a-a8a6-914462086438" .
+
+bldg:ARC.ZONE.AHU05.RM272.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM272.Zone Air Damper Command" ;
+    brickframe:uuid "753d88a4-75e8-35af-aba2-1884c3d560be" .
+
+bldg:ARC.ZONE.AHU05.RM272.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM272.Zone Air Temp" ;
+    brickframe:uuid "dd1bf8ae-c570-373c-b6c5-44bb115dea81" .
+
+bldg:ARC.ZONE.AHU05.RM272.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM272.Zone Air Temp Setpoint" ;
+    brickframe:uuid "b3742971-87dd-38b9-bcfb-24d19e3af239" .
+
+bldg:ARC.ZONE.AHU05.RM272.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM272.Zone Reheat Valve Command" ;
+    brickframe:uuid "35d330a8-6abf-364d-8acc-66d306719d38" .
+
+bldg:ARC.ZONE.AHU05.RM272.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM272.Zone Supply Air Flow" ;
+    brickframe:uuid "a86908d4-b1b1-33aa-ad31-74971c1943e3" .
+
+bldg:ARC.ZONE.AHU05.RM272.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU05.RM272.Zone Supply Air Temp" ;
+    brickframe:uuid "e998bd69-140f-3076-a919-6c1d5f686eb0" .
+
+bldg:ARC.ZONE.AHU06.RM136.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU06.RM136.Zone Air Temp" ;
+    brickframe:uuid "e36f6068-73df-3831-ad7e-0cd521076d45" .
+
+bldg:ARC.ZONE.AHU06.RM136_LAB.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU06.RM136_LAB.Zone Air Temp Setpoint" ;
+    brickframe:uuid "62866763-1728-3039-b729-1c3945734fd9" .
+
+bldg:ARC.ZONE.AHU06.RM136_LAB.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU06.RM136_LAB.Zone Reheat Valve Command" ;
+    brickframe:uuid "1f5a1247-6788-30c5-81fc-79d80b309626" .
+
+bldg:ARC.ZONE.AHU06.RM136_LAB.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU06.RM136_LAB.Zone Supply Air Temp" ;
+    brickframe:uuid "a729918c-8ba7-397e-80e8-b7ece1e4ec69" .
+
+bldg:ARC.ZONE.AHU06.RM137.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU06.RM137.Zone Air Temp" ;
+    brickframe:uuid "eb6cee24-c078-3d44-8631-35ca83cd29b5" .
+
+bldg:ARC.ZONE.AHU06.RM137_LAB.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU06.RM137_LAB.Zone Air Temp Setpoint" ;
+    brickframe:uuid "ac78508c-9776-39cf-bc71-dffae756acbd" .
+
+bldg:ARC.ZONE.AHU06.RM137_LAB.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU06.RM137_LAB.Zone Reheat Valve Command" ;
+    brickframe:uuid "0e17762d-f2d0-3682-83b7-8f1a74a5eb45" .
+
+bldg:ARC.ZONE.AHU06.RM137_LAB.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU06.RM137_LAB.Zone Supply Air Temp" ;
+    brickframe:uuid "1bb4e93d-8c4e-39e1-8ba9-3ad5b05316dd" .
+
+bldg:ARC.ZONE.AHU06.RM146.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU06.RM146.Zone Air Temp" ;
+    brickframe:uuid "5b07b64e-3cff-3b5d-b184-5fd91de0ed61" .
+
+bldg:ARC.ZONE.AHU06.RM146_LAB.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU06.RM146_LAB.Zone Air Temp Setpoint" ;
+    brickframe:uuid "1ad2a96f-5592-3d4e-be4d-2fde0c1558ff" .
+
+bldg:ARC.ZONE.AHU06.RM146_LAB.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU06.RM146_LAB.Zone Reheat Valve Command" ;
+    brickframe:uuid "7bc5cb3b-f66a-3b28-b2cc-30cd4c60afd7" .
+
+bldg:ARC.ZONE.AHU06.RM146_LAB.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU06.RM146_LAB.Zone Supply Air Temp" ;
+    brickframe:uuid "d5c58ea0-c04a-39f9-9aa1-ef781f918b37" .
+
+bldg:ARC.ZONE.AHU06.RM149.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU06.RM149.Zone Air Temp" ;
+    brickframe:uuid "8fd0321b-aea4-35e1-863c-34587d082f4b" .
+
+bldg:ARC.ZONE.AHU06.RM149_LAB.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU06.RM149_LAB.Zone Air Temp Setpoint" ;
+    brickframe:uuid "b559dc0c-b157-355f-9005-2b99e911a36c" .
+
+bldg:ARC.ZONE.AHU06.RM149_LAB.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU06.RM149_LAB.Zone Reheat Valve Command" ;
+    brickframe:uuid "c321a402-8da3-370c-8546-7e37769ba61d" .
+
+bldg:ARC.ZONE.AHU06.RM149_LAB.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU06.RM149_LAB.Zone Supply Air Temp" ;
+    brickframe:uuid "df2722db-e2d5-3da9-8407-8825442f0516" .
+
+bldg:ARC.ZONE.AHU06.RM161A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU06.RM161A.Zone Air Temp" ;
+    brickframe:uuid "3438a0cb-3141-37ff-96bf-7c16011c9eca" .
+
+bldg:ARC.ZONE.AHU06.RM161A_LAB.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU06.RM161A_LAB.Zone Air Temp Setpoint" ;
+    brickframe:uuid "bff12579-684a-382f-a534-078c1612ddd3" .
+
+bldg:ARC.ZONE.AHU06.RM161A_LAB.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU06.RM161A_LAB.Zone Reheat Valve Command" ;
+    brickframe:uuid "3725412b-707b-306d-b4e0-3c47eb1f2faf" .
+
+bldg:ARC.ZONE.AHU06.RM161A_LAB.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU06.RM161A_LAB.Zone Supply Air Temp" ;
+    brickframe:uuid "80d3ecef-8c21-36be-ba93-4dafbc910504" .
+
+bldg:ARC.ZONE.AHU06.RM161B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU06.RM161B.Zone Air Temp" ;
+    brickframe:uuid "b90a48c0-33f5-3c42-8c90-27a77fdd7e0e" .
+
+bldg:ARC.ZONE.AHU06.RM161B_LAB.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU06.RM161B_LAB.Zone Air Temp Setpoint" ;
+    brickframe:uuid "8e00aedf-b4d3-3c80-8ef7-b6ae9b62cf12" .
+
+bldg:ARC.ZONE.AHU06.RM161B_LAB.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU06.RM161B_LAB.Zone Reheat Valve Command" ;
+    brickframe:uuid "aa3c3ee2-b506-3df3-9718-5fe32fde1089" .
+
+bldg:ARC.ZONE.AHU06.RM161B_LAB.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU06.RM161B_LAB.Zone Supply Air Temp" ;
+    brickframe:uuid "ae809b82-6d1f-3c92-84dc-3cd6d03f5bb9" .
+
+bldg:ARC.ZONE.AHU07.RM126.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM126.Zone Air Damper Command" ;
+    brickframe:uuid "0a091911.0.21-3512-985a-9d0b4f5154c1" .
+
+bldg:ARC.ZONE.AHU07.RM126.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM126.Zone Air Temp" ;
+    brickframe:uuid "d05b21bc-4e9e-3d52-9951-1db3164e72d7" .
+
+bldg:ARC.ZONE.AHU07.RM126.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM126.Zone Air Temp Setpoint" ;
+    brickframe:uuid "b762524e-438c-35cc-98a9-7b0f8e052823" .
+
+bldg:ARC.ZONE.AHU07.RM126.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM126.Zone Reheat Valve Command" ;
+    brickframe:uuid "218758f6-f9e5-3e37-934d-ca3ce7b0edbe" .
+
+bldg:ARC.ZONE.AHU07.RM126.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM126.Zone Supply Air Flow" ;
+    brickframe:uuid "c5c94a9f-a559-3225-a2f6-989f1cf17fd5" .
+
+bldg:ARC.ZONE.AHU07.RM126.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM126.Zone Supply Air Temp" ;
+    brickframe:uuid "e6858a62-8885-33bd-afc0-ff9bf826db7f" .
+
+bldg:ARC.ZONE.AHU07.RM127.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM127.Zone Air Damper Command" ;
+    brickframe:uuid "fa42629e-ff0f-33d9-b36e-ef94cb6a89af" .
+
+bldg:ARC.ZONE.AHU07.RM127.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM127.Zone Air Temp" ;
+    brickframe:uuid "0d5b9486-ddda-3370-b341-321501ba56e4" .
+
+bldg:ARC.ZONE.AHU07.RM127.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM127.Zone Air Temp Setpoint" ;
+    brickframe:uuid "f50ae8ab-3c0d-35cb-afee-f12a93351207" .
+
+bldg:ARC.ZONE.AHU07.RM127.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM127.Zone Reheat Valve Command" ;
+    brickframe:uuid "f0e6908a-fee4-36b2-a14f-c216c0c850d0" .
+
+bldg:ARC.ZONE.AHU07.RM127.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM127.Zone Supply Air Flow" ;
+    brickframe:uuid "31eb6dfe-777a-325c-b5e3-58031c2f32a4" .
+
+bldg:ARC.ZONE.AHU07.RM127.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM127.Zone Supply Air Temp" ;
+    brickframe:uuid "b776a619-248c-3319-be76-17700c5cc950" .
+
+bldg:ARC.ZONE.AHU07.RM129.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM129.Zone Air Damper Command" ;
+    brickframe:uuid "cfac3f94-0aeb-3d4e-9fc9-da8a91027ae6" .
+
+bldg:ARC.ZONE.AHU07.RM129.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM129.Zone Air Temp" ;
+    brickframe:uuid "41b37006-c4a4-3c91-8141-f06937e00f01" .
+
+bldg:ARC.ZONE.AHU07.RM129.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM129.Zone Air Temp Setpoint" ;
+    brickframe:uuid "1ab584db-ee84-3c25-9491-22ffb9033eaa" .
+
+bldg:ARC.ZONE.AHU07.RM129.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM129.Zone Reheat Valve Command" ;
+    brickframe:uuid "f439de3f-a37f-3fe1-b8b1-d1c8743bd238" .
+
+bldg:ARC.ZONE.AHU07.RM129.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM129.Zone Supply Air Flow" ;
+    brickframe:uuid "0f035778-10a2-308f-81d2-226bdd48f6fa" .
+
+bldg:ARC.ZONE.AHU07.RM129.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM129.Zone Supply Air Temp" ;
+    brickframe:uuid "a45dfada-1c39-348b-9b34-fd10e90d88a3" .
+
+bldg:ARC.ZONE.AHU07.RM159.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM159.Zone Air Damper Command" ;
+    brickframe:uuid "78fe1730-f999-3d42-94bc-6998d5ec8425" .
+
+bldg:ARC.ZONE.AHU07.RM159.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM159.Zone Air Temp" ;
+    brickframe:uuid "3a2ef9c8-ef25-38ff-aedc-3ac477d19897" .
+
+bldg:ARC.ZONE.AHU07.RM159.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM159.Zone Air Temp Setpoint" ;
+    brickframe:uuid "19cfa4ea-fa33-3aba-862c-df17b0cced71" .
+
+bldg:ARC.ZONE.AHU07.RM159.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM159.Zone Reheat Valve Command" ;
+    brickframe:uuid "2e2c9e92-b62d-3abe-97aa-f81670576bfb" .
+
+bldg:ARC.ZONE.AHU07.RM159.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM159.Zone Supply Air Flow" ;
+    brickframe:uuid "c065fbd5-071d-37b6-8622-ca8d7c4e3f74" .
+
+bldg:ARC.ZONE.AHU07.RM159.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM159.Zone Supply Air Temp" ;
+    brickframe:uuid "ad4ed832-41b1-38d4-b41b-c1c15aca59e1" .
+
+bldg:ARC.ZONE.AHU07.RM160.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM160.Zone Air Damper Command" ;
+    brickframe:uuid "cc148d94-6d42-39c9-9774-7c3337029ae5" .
+
+bldg:ARC.ZONE.AHU07.RM160.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM160.Zone Air Temp" ;
+    brickframe:uuid "594ca8e3-9b6e-3aef-a92f-ad9d7dc0f3de" .
+
+bldg:ARC.ZONE.AHU07.RM160.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM160.Zone Air Temp Setpoint" ;
+    brickframe:uuid "73e8d672-7cbc-394a-8672-9e73d8b94da2" .
+
+bldg:ARC.ZONE.AHU07.RM160.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM160.Zone Reheat Valve Command" ;
+    brickframe:uuid "a8818adf-469d-3377-b6c2-6e7fe81eab67" .
+
+bldg:ARC.ZONE.AHU07.RM160.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM160.Zone Supply Air Flow" ;
+    brickframe:uuid "f25f57ce-c562-316a-b8c9-a9400b688b7b" .
+
+bldg:ARC.ZONE.AHU07.RM160.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM160.Zone Supply Air Temp" ;
+    brickframe:uuid "9dfefabb-0daf-3fa4-beef-126a74b83f33" .
+
+bldg:ARC.ZONE.AHU07.RM163.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM163.Zone Air Damper Command" ;
+    brickframe:uuid "179b664b-c1ab-3b8a-a001-faf9977e8db9" .
+
+bldg:ARC.ZONE.AHU07.RM163.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM163.Zone Air Temp" ;
+    brickframe:uuid "db0dde4a-6b80-3475-930c-5eee937bc2c4" .
+
+bldg:ARC.ZONE.AHU07.RM163.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM163.Zone Air Temp Setpoint" ;
+    brickframe:uuid "749f7949-771c-325d-8e6b-cf81ff800b16" .
+
+bldg:ARC.ZONE.AHU07.RM163.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM163.Zone Reheat Valve Command" ;
+    brickframe:uuid "19cedb9e-46c5-301e-a4d5-b150f4ba08b7" .
+
+bldg:ARC.ZONE.AHU07.RM163.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM163.Zone Supply Air Flow" ;
+    brickframe:uuid "047c6e26-4398-3147-8f16-7104a66fe97b" .
+
+bldg:ARC.ZONE.AHU07.RM163.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM163.Zone Supply Air Temp" ;
+    brickframe:uuid "8e25ed92-e0b8-3dc7-9956-8490fa2598f3" .
+
+bldg:ARC.ZONE.AHU07.RM164.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM164.Zone Air Damper Command" ;
+    brickframe:uuid "46d9c6c7-8601-3d11-a565-2353820a82fc" .
+
+bldg:ARC.ZONE.AHU07.RM164.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM164.Zone Air Temp" ;
+    brickframe:uuid "6b76c41e-0833-3110-abae-734211a103f7" .
+
+bldg:ARC.ZONE.AHU07.RM164.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM164.Zone Air Temp Setpoint" ;
+    brickframe:uuid "bb4fcbad-34b6-3a4f-a56c-26a384651f77" .
+
+bldg:ARC.ZONE.AHU07.RM164.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM164.Zone Reheat Valve Command" ;
+    brickframe:uuid "d5763761-f6cc-3ead-8596-38c9c201e04c" .
+
+bldg:ARC.ZONE.AHU07.RM164.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM164.Zone Supply Air Flow" ;
+    brickframe:uuid "2edf0e4f-665b-32b1-a815-e642dd9c2472" .
+
+bldg:ARC.ZONE.AHU07.RM164.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM164.Zone Supply Air Temp" ;
+    brickframe:uuid "3b6db527-8897-353c-b143-20d8635f5848" .
+
+bldg:ARC.ZONE.AHU07.RM165.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM165.Zone Air Damper Command" ;
+    brickframe:uuid "84b3ae48-00e3-35b8-ab1b-fea777408262" .
+
+bldg:ARC.ZONE.AHU07.RM165.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM165.Zone Air Temp" ;
+    brickframe:uuid "a1b5a34f-20c0-3fbb-a5f9-54b9fca711c9" .
+
+bldg:ARC.ZONE.AHU07.RM165.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM165.Zone Air Temp Setpoint" ;
+    brickframe:uuid "11c76d5e-1755-312f-b036-9dc70f15d381" .
+
+bldg:ARC.ZONE.AHU07.RM165.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM165.Zone Reheat Valve Command" ;
+    brickframe:uuid "db467c3f-4e67-3ff2-a2a7-4224ca75a62a" .
+
+bldg:ARC.ZONE.AHU07.RM165.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM165.Zone Supply Air Flow" ;
+    brickframe:uuid "4e4374d8-f1bd-37b6-aff9-215cf114bc86" .
+
+bldg:ARC.ZONE.AHU07.RM165.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM165.Zone Supply Air Temp" ;
+    brickframe:uuid "e55ba787-d80e-3ce8-8f1c-35800340aa36" .
+
+bldg:ARC.ZONE.AHU07.RM202.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM202.Zone Air Damper Command" ;
+    brickframe:uuid "6f76ffcc-1e23-3315-8003-b491d7c1fadf" .
+
+bldg:ARC.ZONE.AHU07.RM202.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM202.Zone Air Temp" ;
+    brickframe:uuid "19460d51-0f07-3bb0-b9a0-59e8a2f8f4e5" .
+
+bldg:ARC.ZONE.AHU07.RM202.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM202.Zone Air Temp Setpoint" ;
+    brickframe:uuid "2c43f673-f32e-387b-9b11-975265838746" .
+
+bldg:ARC.ZONE.AHU07.RM202.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM202.Zone Reheat Valve Command" ;
+    brickframe:uuid "f6555268-acc1-3d88-92f3-ef53987c1a09" .
+
+bldg:ARC.ZONE.AHU07.RM202.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM202.Zone Supply Air Flow" ;
+    brickframe:uuid "a41.0.28-fd7c-3a77-9d39-96e7e5637f2c" .
+
+bldg:ARC.ZONE.AHU07.RM202.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM202.Zone Supply Air Temp" ;
+    brickframe:uuid "35796d27-32e8-3af9-bca8-9ffe41ed48ad" .
+
+bldg:ARC.ZONE.AHU07.RM205.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM205.Zone Air Damper Command" ;
+    brickframe:uuid "14456e1d-b804-30ad-a009-94b069d4ff74" .
+
+bldg:ARC.ZONE.AHU07.RM205.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM205.Zone Air Temp" ;
+    brickframe:uuid "e03ab173-e8f8-3063-9a7f-2f82442d442b" .
+
+bldg:ARC.ZONE.AHU07.RM205.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM205.Zone Air Temp Setpoint" ;
+    brickframe:uuid "a4f6a859-899d-38ce-b3aa-1ae7668eb949" .
+
+bldg:ARC.ZONE.AHU07.RM205.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM205.Zone Reheat Valve Command" ;
+    brickframe:uuid "f527b732-aefb-3bf3-89f5-bcbcc60fd9dd" .
+
+bldg:ARC.ZONE.AHU07.RM205.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM205.Zone Supply Air Flow" ;
+    brickframe:uuid "8302c667-2138-34da-939a-f5cdca10ab6a" .
+
+bldg:ARC.ZONE.AHU07.RM205.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM205.Zone Supply Air Temp" ;
+    brickframe:uuid "5cbf8d56-310d-339d-8474-449f511af212" .
+
+bldg:ARC.ZONE.AHU07.RM210.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM210.Zone Air Damper Command" ;
+    brickframe:uuid "99b6aff4-4ba1-3a4e-a0bf-dc8fbf4a011a" .
+
+bldg:ARC.ZONE.AHU07.RM210.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM210.Zone Air Temp" ;
+    brickframe:uuid "c6912fe0-bf45-30b4-9650-95bdd32580df" .
+
+bldg:ARC.ZONE.AHU07.RM210.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM210.Zone Air Temp Setpoint" ;
+    brickframe:uuid "390a4765-c9f0-3b70-9fad-33f94ca1b10b" .
+
+bldg:ARC.ZONE.AHU07.RM210.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM210.Zone Reheat Valve Command" ;
+    brickframe:uuid "6ad93f9d-4891-34c9-935b-4f8e9cc15d65" .
+
+bldg:ARC.ZONE.AHU07.RM210.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM210.Zone Supply Air Flow" ;
+    brickframe:uuid "8a861901-b052-36f5-8374-29f610df9160" .
+
+bldg:ARC.ZONE.AHU07.RM210.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM210.Zone Supply Air Temp" ;
+    brickframe:uuid "eee81f36-ee48-3382-89f8-a3d1a578611a" .
+
+bldg:ARC.ZONE.AHU07.RM251.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM251.Zone Air Damper Command" ;
+    brickframe:uuid "bf61e2c0-2f17-36d4-a95d-b1f4c9ac9396" .
+
+bldg:ARC.ZONE.AHU07.RM251.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM251.Zone Air Temp" ;
+    brickframe:uuid "a5ad37e7-5da5-3138-82f6-ea24785a9485" .
+
+bldg:ARC.ZONE.AHU07.RM251.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM251.Zone Air Temp Setpoint" ;
+    brickframe:uuid "04213358-8ef7-3e5b-b39f-961597047055" .
+
+bldg:ARC.ZONE.AHU07.RM251.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM251.Zone Reheat Valve Command" ;
+    brickframe:uuid "0dfd72b8-ee32-3597-80ec-b8f1cfeffca0" .
+
+bldg:ARC.ZONE.AHU07.RM251.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM251.Zone Supply Air Flow" ;
+    brickframe:uuid "1137d019-e165-348a-8c35-91546c64fdc5" .
+
+bldg:ARC.ZONE.AHU07.RM251.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM251.Zone Supply Air Temp" ;
+    brickframe:uuid "f6e9bc59-55fa-3168-8b13-847d95ed97eb" .
+
+bldg:ARC.ZONE.AHU07.RM253.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM253.Zone Air Damper Command" ;
+    brickframe:uuid "f02b8308-0a69-327e-8eab-4b8074d33a1c" .
+
+bldg:ARC.ZONE.AHU07.RM253.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM253.Zone Air Temp" ;
+    brickframe:uuid "b101c3da-e23f-344b-bac6-489a678f21e3" .
+
+bldg:ARC.ZONE.AHU07.RM253.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM253.Zone Air Temp Setpoint" ;
+    brickframe:uuid "8d751c3e-9079-3e16-b3e0-543dd410cf5c" .
+
+bldg:ARC.ZONE.AHU07.RM253.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM253.Zone Reheat Valve Command" ;
+    brickframe:uuid "52b43bbe-a787-37ed-af57-07440868ec7c" .
+
+bldg:ARC.ZONE.AHU07.RM253.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM253.Zone Supply Air Flow" ;
+    brickframe:uuid "9fc4f673-e824-3517-aebb-b94741cba448" .
+
+bldg:ARC.ZONE.AHU07.RM253.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM253.Zone Supply Air Temp" ;
+    brickframe:uuid "ac37e0d6-db19-38ce-b5b7-1902b17af9ab" .
+
+bldg:ARC.ZONE.AHU07.RM258.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM258.Zone Air Damper Command" ;
+    brickframe:uuid "98cd45b8-9e76-3850-b69b-62f8a2f56fc0" .
+
+bldg:ARC.ZONE.AHU07.RM258.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM258.Zone Air Temp" ;
+    brickframe:uuid "ebbb9620-fa51-3bf8-9321-77ab57d02826" .
+
+bldg:ARC.ZONE.AHU07.RM258.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM258.Zone Air Temp Setpoint" ;
+    brickframe:uuid "daa83216-5f96-3ca5-b389-dad54099ccf0" .
+
+bldg:ARC.ZONE.AHU07.RM258.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM258.Zone Reheat Valve Command" ;
+    brickframe:uuid "d396130d-f62e-3bb3-acde-c7bbd735590b" .
+
+bldg:ARC.ZONE.AHU07.RM258.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM258.Zone Supply Air Flow" ;
+    brickframe:uuid "4d406452-3aae-3705-ac71-cbd4fb93ef1f" .
+
+bldg:ARC.ZONE.AHU07.RM258.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:ARC ;
+    brickframe:pointname "ARC.ZONE.AHU07.RM258.Zone Supply Air Temp" ;
+    brickframe:uuid "ae831417-d86d-3f25-8ca9-4f530d8d169a" .
+
+bldg:RM101 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM101_room .
+
+bldg:RM104 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM104_room .
+
+bldg:RM105 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM105_room .
+
+bldg:RM106 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM106_room .
+
+bldg:RM108 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM108_room .
+
+bldg:RM108_MIX a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM108_MIX_room .
+
+bldg:RM110E a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM110E_room .
+
+bldg:RM110W a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM110W_room .
+
+bldg:RM112 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM112_room .
+
+bldg:RM113 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM113_room .
+
+bldg:RM115 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM115_room .
+
+bldg:RM116 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM116_room .
+
+bldg:RM120 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM120_room .
+
+bldg:RM121 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM121_room .
+
+bldg:RM126 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM126_room .
+
+bldg:RM127 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM127_room .
+
+bldg:RM129 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM129_room .
+
+bldg:RM136 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM136_room .
+
+bldg:RM136_LAB a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM136_LAB_room .
+
+bldg:RM137 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM137_room .
+
+bldg:RM137_LAB a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM137_LAB_room .
+
+bldg:RM146 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM146_room .
+
+bldg:RM146_LAB a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM146_LAB_room .
+
+bldg:RM149 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM149_room .
+
+bldg:RM149_LAB a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM149_LAB_room .
+
+bldg:RM150 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM150_room .
+
+bldg:RM152 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM152_room .
+
+bldg:RM152A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM152A_room .
+
+bldg:RM154 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM154_room .
+
+bldg:RM156 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM156_room .
+
+bldg:RM158 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM158_room .
+
+bldg:RM159 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM159_room .
+
+bldg:RM160 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM160_room .
+
+bldg:RM161A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM161A_room .
+
+bldg:RM161A_LAB a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM161A_LAB_room .
+
+bldg:RM161B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM161B_room .
+
+bldg:RM161B_LAB a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM161B_LAB_room .
+
+bldg:RM163 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM163_room .
+
+bldg:RM164 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM164_room .
+
+bldg:RM165 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM165_room .
+
+bldg:RM202 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM202_room .
+
+bldg:RM203 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM203_room .
+
+bldg:RM205 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM205_room .
+
+bldg:RM207 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM207_room .
+
+bldg:RM210 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM210_room .
+
+bldg:RM212 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM212_room .
+
+bldg:RM215 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM215_room .
+
+bldg:RM220 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM220_room .
+
+bldg:RM224 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM224_room .
+
+bldg:RM227 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM227_room .
+
+bldg:RM238 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM238_room .
+
+bldg:RM241 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM241_room .
+
+bldg:RM245 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM245_room .
+
+bldg:RM247 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM247_room .
+
+bldg:RM251 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM251_room .
+
+bldg:RM252 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM252_room .
+
+bldg:RM253 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM253_room .
+
+bldg:RM258 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM258_room .
+
+bldg:RM270 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM270_room .
+
+bldg:RM272 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPart bldg:RM272_room .
+
+bldg:VAVRM108_MIX a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM108_MIX ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU01.RM108_MIX.Zone_Air_Temp .
+
+bldg:VAVRM136 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM136 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU06.RM136.Zone_Air_Temp .
+
+bldg:VAVRM136_LAB a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM136_LAB ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU06.RM136_LAB.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU06.RM136_LAB.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU06.RM136_LAB.Zone_Supply_Air_Temp .
+
+bldg:VAVRM137 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM137 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU06.RM137.Zone_Air_Temp .
+
+bldg:VAVRM137_LAB a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM137_LAB ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU06.RM137_LAB.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU06.RM137_LAB.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU06.RM137_LAB.Zone_Supply_Air_Temp .
+
+bldg:VAVRM146 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM146 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU06.RM146.Zone_Air_Temp .
+
+bldg:VAVRM146_LAB a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM146_LAB ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU06.RM146_LAB.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU06.RM146_LAB.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU06.RM146_LAB.Zone_Supply_Air_Temp .
+
+bldg:VAVRM149 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM149 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU06.RM149.Zone_Air_Temp .
+
+bldg:VAVRM149_LAB a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM149_LAB ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU06.RM149_LAB.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU06.RM149_LAB.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU06.RM149_LAB.Zone_Supply_Air_Temp .
+
+bldg:VAVRM161A a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM161A ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU06.RM161A.Zone_Air_Temp .
+
+bldg:VAVRM161A_LAB a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM161A_LAB ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU06.RM161A_LAB.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU06.RM161A_LAB.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU06.RM161A_LAB.Zone_Supply_Air_Temp .
+
+bldg:VAVRM161B a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM161B ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU06.RM161B.Zone_Air_Temp .
+
+bldg:VAVRM161B_LAB a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM161B_LAB ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU06.RM161B_LAB.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU06.RM161B_LAB.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU06.RM161B_LAB.Zone_Supply_Air_Temp .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+bldg:RM101_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM104_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM105_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM106_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM108_MIX_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM108_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM110E_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM110W_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM112_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM113_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM115_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM116_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM120_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM121_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM126_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM127_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM129_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM136_LAB_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM136_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM137_LAB_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM137_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM146_LAB_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM146_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM149_LAB_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM149_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM150_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM152A_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM152_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM154_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM156_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM158_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM159_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM160_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM161A_LAB_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM161A_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM161B_LAB_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM161B_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM163_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM164_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM165_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM202_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM203_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM205_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM207_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM210_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM212_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM215_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM220_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM224_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM227_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM238_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM241_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM245_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM247_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM251_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM252_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM253_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM258_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM270_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:RM272_room a brick1:Room ;
+    brickframe:hasSite bldg:ARC .
+
+bldg:VAVRM101 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM101 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM101.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU02.RM101.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU02.RM101.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU02.RM101.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU02.RM101.Zone_Supply_Air_Temp .
+
+bldg:VAVRM104 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM104 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM104.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU02.RM104.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU02.RM104.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU02.RM104.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU02.RM104.Zone_Supply_Air_Temp .
+
+bldg:VAVRM105 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM105 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM105.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU02.RM105.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU02.RM105.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU02.RM105.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU02.RM105.Zone_Supply_Air_Temp .
+
+bldg:VAVRM106 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM106 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM106.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU02.RM106.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU02.RM106.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU02.RM106.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU02.RM106.Zone_Supply_Air_Temp .
+
+bldg:VAVRM108 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM108 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU01.RM108.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU01.RM108.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU01.RM108.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU01.RM108.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU01.RM108.Zone_Supply_Air_Temp .
+
+bldg:VAVRM110E a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM110E ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM110E.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU02.RM110E.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU02.RM110E.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU02.RM110E.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU02.RM110E.Zone_Supply_Air_Temp .
+
+bldg:VAVRM110W a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM110W ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM110W.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU02.RM110W.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU02.RM110W.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU02.RM110W.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU02.RM110W.Zone_Supply_Air_Temp .
+
+bldg:VAVRM112 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM112 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM112.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU02.RM112.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU02.RM112.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU02.RM112.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU02.RM112.Zone_Supply_Air_Temp .
+
+bldg:VAVRM113 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM113 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM113.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU02.RM113.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU02.RM113.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU02.RM113.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU02.RM113.Zone_Supply_Air_Temp .
+
+bldg:VAVRM115 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM115 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM115.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU02.RM115.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU02.RM115.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU02.RM115.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU02.RM115.Zone_Supply_Air_Temp .
+
+bldg:VAVRM116 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM116 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM116.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU02.RM116.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU02.RM116.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU02.RM116.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU02.RM116.Zone_Supply_Air_Temp .
+
+bldg:VAVRM120 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM120 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM120.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU02.RM120.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU02.RM120.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU02.RM120.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU02.RM120.Zone_Supply_Air_Temp .
+
+bldg:VAVRM121 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM121 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM121.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU02.RM121.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU02.RM121.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU02.RM121.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU02.RM121.Zone_Supply_Air_Temp .
+
+bldg:VAVRM126 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM126 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU07.RM126.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU07.RM126.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU07.RM126.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU07.RM126.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU07.RM126.Zone_Supply_Air_Temp .
+
+bldg:VAVRM127 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM127 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU07.RM127.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU07.RM127.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU07.RM127.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU07.RM127.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU07.RM127.Zone_Supply_Air_Temp .
+
+bldg:VAVRM129 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM129 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU07.RM129.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU07.RM129.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU07.RM129.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU07.RM129.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU07.RM129.Zone_Supply_Air_Temp .
+
+bldg:VAVRM150 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM150 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM150.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU02.RM150.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU02.RM150.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU02.RM150.Zone_Supply_Air_Flow .
+
+bldg:VAVRM152 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM152 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM152.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU02.RM152.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU02.RM152.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU02.RM152.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU02.RM152.Zone_Supply_Air_Temp .
+
+bldg:VAVRM152A a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM152A ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM152A.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU02.RM152A.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU02.RM152A.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU02.RM152A.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU02.RM152A.Zone_Supply_Air_Temp .
+
+bldg:VAVRM154 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM154 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM154.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU02.RM154.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU02.RM154.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU02.RM154.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU02.RM154.Zone_Supply_Air_Temp .
+
+bldg:VAVRM156 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM156 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM156.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU02.RM156.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU02.RM156.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU02.RM156.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU02.RM156.Zone_Supply_Air_Temp .
+
+bldg:VAVRM158 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM158 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM158.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU02.RM158.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU02.RM158.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU02.RM158.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU02.RM158.Zone_Supply_Air_Temp .
+
+bldg:VAVRM159 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM159 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU07.RM159.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU07.RM159.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU07.RM159.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU07.RM159.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU07.RM159.Zone_Supply_Air_Temp .
+
+bldg:VAVRM160 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM160 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU07.RM160.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU07.RM160.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU07.RM160.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU07.RM160.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU07.RM160.Zone_Supply_Air_Temp .
+
+bldg:VAVRM163 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM163 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU07.RM163.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU07.RM163.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU07.RM163.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU07.RM163.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU07.RM163.Zone_Supply_Air_Temp .
+
+bldg:VAVRM164 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM164 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU07.RM164.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU07.RM164.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU07.RM164.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU07.RM164.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU07.RM164.Zone_Supply_Air_Temp .
+
+bldg:VAVRM165 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM165 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU07.RM165.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU07.RM165.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU07.RM165.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU07.RM165.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU07.RM165.Zone_Supply_Air_Temp .
+
+bldg:VAVRM202 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM202 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU07.RM202.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU07.RM202.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU07.RM202.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU07.RM202.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU07.RM202.Zone_Supply_Air_Temp .
+
+bldg:VAVRM203 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM203 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU05.RM203.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU05.RM203.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU05.RM203.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU05.RM203.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU05.RM203.Zone_Supply_Air_Temp .
+
+bldg:VAVRM205 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM205 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU07.RM205.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU07.RM205.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU07.RM205.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU07.RM205.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU07.RM205.Zone_Supply_Air_Temp .
+
+bldg:VAVRM207 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM207 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU05.RM207.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU05.RM207.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU05.RM207.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU05.RM207.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU05.RM207.Zone_Supply_Air_Temp .
+
+bldg:VAVRM210 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM210 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU07.RM210.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU07.RM210.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU07.RM210.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU07.RM210.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU07.RM210.Zone_Supply_Air_Temp .
+
+bldg:VAVRM212 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM212 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU05.RM212.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU05.RM212.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU05.RM212.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU05.RM212.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU05.RM212.Zone_Supply_Air_Temp .
+
+bldg:VAVRM215 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM215 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM215.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU02.RM215.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU02.RM215.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU02.RM215.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU02.RM215.Zone_Supply_Air_Temp .
+
+bldg:VAVRM220 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM220 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM220.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU02.RM220.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU02.RM220.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU02.RM220.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU02.RM220.Zone_Supply_Air_Temp .
+
+bldg:VAVRM224 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM224 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM224.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU02.RM224.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU02.RM224.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU02.RM224.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU02.RM224.Zone_Supply_Air_Temp .
+
+bldg:VAVRM227 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM227 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM227.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU02.RM227.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU02.RM227.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU02.RM227.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU02.RM227.Zone_Supply_Air_Temp .
+
+bldg:VAVRM238 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM238 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM238.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU02.RM238.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU02.RM238.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU02.RM238.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU02.RM238.Zone_Supply_Air_Temp .
+
+bldg:VAVRM241 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM241 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM241.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU02.RM241.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU02.RM241.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU02.RM241.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU02.RM241.Zone_Supply_Air_Temp .
+
+bldg:VAVRM245 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM245 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU05.RM245.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU05.RM245.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU05.RM245.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU05.RM245.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU05.RM245.Zone_Supply_Air_Temp .
+
+bldg:VAVRM247 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM247 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU05.RM247.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU05.RM247.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU05.RM247.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU05.RM247.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU05.RM247.Zone_Supply_Air_Temp .
+
+bldg:VAVRM251 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM251 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU07.RM251.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU07.RM251.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU07.RM251.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU07.RM251.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU07.RM251.Zone_Supply_Air_Temp .
+
+bldg:VAVRM252 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM252 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU02.RM252.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU02.RM252.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU02.RM252.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU02.RM252.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU02.RM252.Zone_Supply_Air_Temp .
+
+bldg:VAVRM253 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM253 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU07.RM253.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU07.RM253.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU07.RM253.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU07.RM253.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU07.RM253.Zone_Supply_Air_Temp .
+
+bldg:VAVRM258 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM258 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU07.RM258.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU07.RM258.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU07.RM258.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU07.RM258.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU07.RM258.Zone_Supply_Air_Temp .
+
+bldg:VAVRM270 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM270 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU05.RM270.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU05.RM270.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU05.RM270.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU05.RM270.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU05.RM270.Zone_Supply_Air_Temp .
+
+bldg:VAVRM272 a brick1:VAV ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:feeds bldg:RM272 ;
+    brick1:hasPoint bldg:ARC.ZONE.AHU05.RM272.Zone_Air_Temp,
+        bldg:ARC.ZONE.AHU05.RM272.Zone_Air_Temp_Setpoint,
+        bldg:ARC.ZONE.AHU05.RM272.Zone_Reheat_Valve_Command,
+        bldg:ARC.ZONE.AHU05.RM272.Zone_Supply_Air_Flow,
+        bldg:ARC.ZONE.AHU05.RM272.Zone_Supply_Air_Temp .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:ARC ;
+    brick1:hasPoint bldg:ARC.CHW.Building_Chilled_Water_Flow,
+        bldg:ARC.CHW.Building_Chilled_Water_Return_Temp,
+        bldg:ARC.CHW.Building_Chilled_Water_Supply_Temp,
+        bldg:ARC.CHW.CHWP3VFDSPEED,
+        bldg:ARC.CHW.CHWP4VFDSPEED,
+        bldg:ARC.CHW.ECONOMIZER,
+        bldg:ARC.CHW.Enable,
+        bldg:ARC.CHW.Loop_Chilled_Water_Flow,
+        bldg:ARC.CHW.Loop_Chilled_Water_Return_Temp,
+        bldg:ARC.CHW.Loop_Chilled_Water_Supply_Temp,
+        bldg:ARC.CHW.Loop_Chilled_Water_Supply_Temp_Setpoint,
+        bldg:ARC.CHW.OA_ENABLE,
+        bldg:ARC.CHW.Outside_Air_Temp,
+        bldg:ARC.CHW.Outside_Air_Temp_Virtual,
+        bldg:ARC.CHW.Pump3_SPEED,
+        <http://buildsys.org/ontologies/ARC#ARC.CHW.Pump3_Start/Stop>,
+        bldg:ARC.CHW.Pump3__DRIVE_KWH,
+        bldg:ARC.CHW.Pump3__FREQ_OUTPUT,
+        bldg:ARC.CHW.Pump3__POWER,
+        bldg:ARC.CHW.Pump3__SPEED,
+        bldg:ARC.CHW.Pump4_SPEED,
+        <http://buildsys.org/ontologies/ARC#ARC.CHW.Pump4_Start/Stop>,
+        bldg:ARC.CHW.Pump4__DRIVE_KWH,
+        bldg:ARC.CHW.Pump4__FREQ_OUTPUT,
+        bldg:ARC.CHW.Pump4__POWER,
+        bldg:ARC.CHW.Pump4__SPEED .
+
+bldg:ARC a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "154704" ;
+    brickframe:Country "US" .
+

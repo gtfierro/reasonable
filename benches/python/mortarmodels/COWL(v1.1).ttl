@@ -1,0 +1,595 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/COWL#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:AC01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:COWL ;
+    brick1:feeds bldg:VAVRM0032 .
+
+bldg:AC03 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:COWL ;
+    brick1:feeds bldg:VAVLOBBY .
+
+bldg:AC04 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:COWL ;
+    brick1:feeds bldg:VAVRM0082 .
+
+bldg:AH01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:COWL ;
+    brick1:feeds bldg:VAVRM0015A,
+        bldg:VAVRM0015B,
+        bldg:VAVRM0023,
+        bldg:VAVRM0023B,
+        bldg:VAVRM0025,
+        bldg:VAVRM_HALL .
+
+bldg:AH02 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:COWL ;
+    brick1:feeds bldg:VAVRM0031,
+        bldg:VAVRM0035,
+        bldg:VAVRM0037 .
+
+bldg:AHU02 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:COWL ;
+    brick1:feeds bldg:VAVRM0031,
+        bldg:VAVRM0035,
+        bldg:VAVRM0037 .
+
+bldg:floor0 a brick1:Floor ;
+    brickframe:hasSite bldg:COWL ;
+    brick1:hasPart bldg:RM0015A_room,
+        bldg:RM0015B_room,
+        bldg:RM0023B_room,
+        bldg:RM0023_room,
+        bldg:RM0025_room,
+        bldg:RM0031_room,
+        bldg:RM0032_room,
+        bldg:RM0035_room,
+        bldg:RM0037_room,
+        bldg:RM0082_room .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:COWL.ZONE.AC01.RM0032.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AC01.RM0032.FAN" ;
+    brickframe:uuid "d9c761d7-8c5b-36e8-9cfa-9f7bdd2f0015" .
+
+bldg:COWL.ZONE.AC03.LOBBY.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AC03.LOBBY.FAN" ;
+    brickframe:uuid "a0e06b46-b94e-35a4-9360-118b6771ea44" .
+
+bldg:COWL.ZONE.AC03.LOBBY.VLV_2_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AC03.LOBBY.VLV 2 COMD" ;
+    brickframe:uuid "2f0069d0-58e3-3bcc-bb4f-aab5c47f67bf" .
+
+bldg:COWL.ZONE.AC04.RM0082.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AC04.RM0082.FAN" ;
+    brickframe:uuid "eab9b50e-06c5-33f3-92fd-c0868de577f9" .
+
+bldg:COWL.ZONE.AH01.RM0015A.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "COWL.ZONE.AH01.RM0015A.Day Night Mode" ;
+    brickframe:uuid "13d33767-3f72-300a-b39d-926d74163d0c" .
+
+bldg:COWL.ZONE.AH01.RM0015A.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH01.RM0015A.Heating Mode" ;
+    brickframe:uuid "7d0911be-816e-3721-9438-1db69ed23e20" .
+
+bldg:COWL.ZONE.AH01.RM0015A.VLV_1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH01.RM0015A.VLV 1 COMD" ;
+    brickframe:uuid "f5d24860-bb6a-34d4-a0c9-fc273d9b5b7b" .
+
+bldg:COWL.ZONE.AH01.RM0015A.VLV_2_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH01.RM0015A.VLV 2 COMD" ;
+    brickframe:uuid "e3148bde-d614-3042-9932-ac10c3ff1310" .
+
+bldg:COWL.ZONE.AH01.RM0015A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH01.RM0015A.Zone Air Temp" ;
+    brickframe:uuid "09536236-e707-35d3-b5ef-05b2ac07d6fa" .
+
+bldg:COWL.ZONE.AH01.RM0015A.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "COWL.ZONE.AH01.RM0015A.Zone Air Temp Setpoint" ;
+    brickframe:uuid "65e689a8-0c81-39d3-a114-33d4c27877c6" .
+
+bldg:COWL.ZONE.AH01.RM0015B.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "COWL.ZONE.AH01.RM0015B.Day Night Mode" ;
+    brickframe:uuid "d27f8667-c414-3517-bd5f-f19eb23036fb" .
+
+bldg:COWL.ZONE.AH01.RM0015B.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH01.RM0015B.Heating Mode" ;
+    brickframe:uuid "cde376f1-8270-3ea0-9b99-ba08d540d6e6" .
+
+bldg:COWL.ZONE.AH01.RM0015B.VLV_1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH01.RM0015B.VLV 1 COMD" ;
+    brickframe:uuid "81a4ebcc-2625-3f6b-a155-2cc84ccc4138" .
+
+bldg:COWL.ZONE.AH01.RM0015B.VLV_2_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH01.RM0015B.VLV 2 COMD" ;
+    brickframe:uuid "76f350c5-02f8-3e69-97b5-a576a587045d" .
+
+bldg:COWL.ZONE.AH01.RM0015B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH01.RM0015B.Zone Air Temp" ;
+    brickframe:uuid "5c4245bb-1362-3ad5-938c-492e445fd463" .
+
+bldg:COWL.ZONE.AH01.RM0015B.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "COWL.ZONE.AH01.RM0015B.Zone Air Temp Setpoint" ;
+    brickframe:uuid "fe2bb061-ede4-3e15-8146-753deb6c2157" .
+
+bldg:COWL.ZONE.AH01.RM0023.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "COWL.ZONE.AH01.RM0023.Day Night Mode" ;
+    brickframe:uuid "18eb4ff7-be0b-37df-bfd0-de09e0d9d6c4" .
+
+bldg:COWL.ZONE.AH01.RM0023.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH01.RM0023.Heating Mode" ;
+    brickframe:uuid "7b2a62ff-7de6-3b1f-9691-de77d02b57f4" .
+
+bldg:COWL.ZONE.AH01.RM0023.VLV_1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH01.RM0023.VLV 1 COMD" ;
+    brickframe:uuid "555890ec-a72e-3cc7-8e92-e0c6d25b4bf3" .
+
+bldg:COWL.ZONE.AH01.RM0023.VLV_2_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH01.RM0023.VLV 2 COMD" ;
+    brickframe:uuid "c2aa6ca9-399e-35c8-b51e-8143f74e4782" .
+
+bldg:COWL.ZONE.AH01.RM0023.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH01.RM0023.Zone Air Temp" ;
+    brickframe:uuid "a4cbc904-29c9-3dc4-9d2f-a6c013bd1b2c" .
+
+bldg:COWL.ZONE.AH01.RM0023.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "COWL.ZONE.AH01.RM0023.Zone Air Temp Setpoint" ;
+    brickframe:uuid "4c1bd3a4-de7b-37dc-82f3-91553a180a0b" .
+
+bldg:COWL.ZONE.AH01.RM0023B.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "COWL.ZONE.AH01.RM0023B.Day Night Mode" ;
+    brickframe:uuid "a5f011c6-a336-3b9d-a0da-0a8a957015ab" .
+
+bldg:COWL.ZONE.AH01.RM0023B.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH01.RM0023B.Heating Mode" ;
+    brickframe:uuid "a0123da5-e242-3804-a60a-727cd5a612d1" .
+
+bldg:COWL.ZONE.AH01.RM0023B.VLV_1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH01.RM0023B.VLV 1 COMD" ;
+    brickframe:uuid "9483d01e-0a7c-3720-a408-ae1b27a52cd8" .
+
+bldg:COWL.ZONE.AH01.RM0023B.VLV_2_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH01.RM0023B.VLV 2 COMD" ;
+    brickframe:uuid "1a4569be-4b10-3b92-970d-d5f4fcd68d53" .
+
+bldg:COWL.ZONE.AH01.RM0023B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH01.RM0023B.Zone Air Temp" ;
+    brickframe:uuid "f3208cd7-f144-3af8-b674-a390bc8b39f3" .
+
+bldg:COWL.ZONE.AH01.RM0023B.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "COWL.ZONE.AH01.RM0023B.Zone Air Temp Setpoint" ;
+    brickframe:uuid "2c76a0a2-29ac-3c23-a902-f96b90876bc0" .
+
+bldg:COWL.ZONE.AH01.RM0025.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "COWL.ZONE.AH01.RM0025.Day Night Mode" ;
+    brickframe:uuid "687d61ff-3f7e-3e00-87d3-e782d03a84a6" .
+
+bldg:COWL.ZONE.AH01.RM0025.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH01.RM0025.Heating Mode" ;
+    brickframe:uuid "5db075f1-d614-3df0-8d82-0bba7c4909e2" .
+
+bldg:COWL.ZONE.AH01.RM0025.VLV_1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH01.RM0025.VLV 1 COMD" ;
+    brickframe:uuid "9fa2eef0-66d7-3ceb-bdb1-f9608fd6738a" .
+
+bldg:COWL.ZONE.AH01.RM0025.VLV_2_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH01.RM0025.VLV 2 COMD" ;
+    brickframe:uuid "20fc6a36-ab76-3418-8518-1b0461574fea" .
+
+bldg:COWL.ZONE.AH01.RM0025.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH01.RM0025.Zone Air Temp" ;
+    brickframe:uuid "b8e36480-f758-3e23-9916-ba393639d4e1" .
+
+bldg:COWL.ZONE.AH01.RM0025.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "COWL.ZONE.AH01.RM0025.Zone Air Temp Setpoint" ;
+    brickframe:uuid "c3a22b8f-36a1-3bc8-9dfb-cbaca1f53b7e" .
+
+bldg:COWL.ZONE.AH01.RM_HALL.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "COWL.ZONE.AH01.RM_HALL.Day Night Mode" ;
+    brickframe:uuid "c45b0ef4-71d5-3840-86be-2b205d316f33" .
+
+bldg:COWL.ZONE.AH01.RM_HALL.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH01.RM_HALL.Heating Mode" ;
+    brickframe:uuid "4538e96d-a4b9-350c-96d0-695b886ee7d4" .
+
+bldg:COWL.ZONE.AH01.RM_HALL.VLV_1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH01.RM_HALL.VLV 1 COMD" ;
+    brickframe:uuid "a7eb30d7-f052-3c93-87ca-710bc285c2ce" .
+
+bldg:COWL.ZONE.AH01.RM_HALL.VLV_2_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH01.RM_HALL.VLV 2 COMD" ;
+    brickframe:uuid "5e605eb9-93a4-395d-b10f-adac201f8b27" .
+
+bldg:COWL.ZONE.AH01.RM_HALL.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH01.RM_HALL.Zone Air Temp" ;
+    brickframe:uuid "bbeae4c7-d415-3374-9169-2fb2fcd48a59" .
+
+bldg:COWL.ZONE.AH01.RM_HALL.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "COWL.ZONE.AH01.RM_HALL.Zone Air Temp Setpoint" ;
+    brickframe:uuid "9a2105b3-9042-331c-bb53-b3423ebef1e4" .
+
+bldg:COWL.ZONE.AH02.RM0031.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "COWL.ZONE.AH02.RM0031.Day Night Mode" ;
+    brickframe:uuid "f7ea6c7f-bf13-3fa0-8b79-ab50f76cde54" .
+
+bldg:COWL.ZONE.AH02.RM0031.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH02.RM0031.Heating Mode" ;
+    brickframe:uuid "228a8c85-a631-34a2-9cfe-0093888412e3" .
+
+bldg:COWL.ZONE.AH02.RM0031.VLV_1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH02.RM0031.VLV 1 COMD" ;
+    brickframe:uuid "9b0dc768-33a6-3311-8ce7-1c8983176239" .
+
+bldg:COWL.ZONE.AH02.RM0031.VLV_2_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH02.RM0031.VLV 2 COMD" ;
+    brickframe:uuid "4d2e18ba-9902-36b6-b6c7-c031d2ef6740" .
+
+bldg:COWL.ZONE.AH02.RM0031.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH02.RM0031.Zone Air Temp" ;
+    brickframe:uuid "370c7616-c4bd-3ca3-8a2a-f6512dbda1dd" .
+
+bldg:COWL.ZONE.AH02.RM0031.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "COWL.ZONE.AH02.RM0031.Zone Air Temp Setpoint" ;
+    brickframe:uuid "e7352740-8828-3cb6-adba-f8ebe8b0617d" .
+
+bldg:COWL.ZONE.AH02.RM0035.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "COWL.ZONE.AH02.RM0035.Day Night Mode" ;
+    brickframe:uuid "e28aeaa0-866c-3dd0-bc7f-762dac84f075" .
+
+bldg:COWL.ZONE.AH02.RM0035.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH02.RM0035.Heating Mode" ;
+    brickframe:uuid "a5250496-d3c4-3cc4-9e49-55ec38984b9f" .
+
+bldg:COWL.ZONE.AH02.RM0035.VLV_1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH02.RM0035.VLV 1 COMD" ;
+    brickframe:uuid "eb98d961-9716-37b6-b905-c046c48924b9" .
+
+bldg:COWL.ZONE.AH02.RM0035.VLV_2_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH02.RM0035.VLV 2 COMD" ;
+    brickframe:uuid "db0e0484-0dd7-37db-ba7e-c4953b96479a" .
+
+bldg:COWL.ZONE.AH02.RM0035.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH02.RM0035.Zone Air Temp" ;
+    brickframe:uuid "911e6b35-8556-3a34-9431-78a80264d363" .
+
+bldg:COWL.ZONE.AH02.RM0035.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "COWL.ZONE.AH02.RM0035.Zone Air Temp Setpoint" ;
+    brickframe:uuid "3a075694-eb1c-3887-9504-8885f9a4a40b" .
+
+bldg:COWL.ZONE.AH02.RM0037.Day_Night_Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "COWL.ZONE.AH02.RM0037.Day Night Mode" ;
+    brickframe:uuid "b192e0d0-b3df-3038-b0d9-868f16e1d4a7" .
+
+bldg:COWL.ZONE.AH02.RM0037.Heating_Mode a brick1:Heating_Command ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH02.RM0037.Heating Mode" ;
+    brickframe:uuid "f7e78dcf-7d65-34ef-b440-52c95eeda95f" .
+
+bldg:COWL.ZONE.AH02.RM0037.VLV_1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH02.RM0037.VLV 1 COMD" ;
+    brickframe:uuid "da7c154f-dc27-3770-b6d8-cdc8d8c1627e" .
+
+bldg:COWL.ZONE.AH02.RM0037.VLV_2_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH02.RM0037.VLV 2 COMD" ;
+    brickframe:uuid "9303c023-e1a1-32c8-8b1a-19729f333bb2" .
+
+bldg:COWL.ZONE.AH02.RM0037.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AH02.RM0037.Zone Air Temp" ;
+    brickframe:uuid "a47665de-3357-3029-820d-18446f3d74f3" .
+
+bldg:COWL.ZONE.AH02.RM0037.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "COWL.ZONE.AH02.RM0037.Zone Air Temp Setpoint" ;
+    brickframe:uuid "f8e5836b-89ae-3079-b7c8-5eb99496931e" .
+
+bldg:COWL.ZONE.AHU02.RM0031.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AHU02.RM0031.FAN" ;
+    brickframe:uuid "aa8ca391-0bc5-3408-b2be-9f7a5ea71629" .
+
+bldg:COWL.ZONE.AHU02.RM0035.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AHU02.RM0035.FAN" ;
+    brickframe:uuid "e5009244-4472-3cbc-a2ed-648a6685e25f" .
+
+bldg:COWL.ZONE.AHU02.RM0037.FAN a brick1:Fan_Status ;
+    brickframe:hasSite bldg:COWL ;
+    brickframe:pointname "COWL.ZONE.AHU02.RM0037.FAN" ;
+    brickframe:uuid "bf4f352c-4903-33d2-85b9-ea7b043c41de" .
+
+bldg:LOBBY a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:COWL .
+
+bldg:RM0015A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:COWL ;
+    brick1:hasPart bldg:RM0015A_room .
+
+bldg:RM0015B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:COWL ;
+    brick1:hasPart bldg:RM0015B_room .
+
+bldg:RM0023 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:COWL ;
+    brick1:hasPart bldg:RM0023_room .
+
+bldg:RM0023B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:COWL ;
+    brick1:hasPart bldg:RM0023B_room .
+
+bldg:RM0025 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:COWL ;
+    brick1:hasPart bldg:RM0025_room .
+
+bldg:RM0031 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:COWL ;
+    brick1:hasPart bldg:RM0031_room .
+
+bldg:RM0032 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:COWL ;
+    brick1:hasPart bldg:RM0032_room .
+
+bldg:RM0035 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:COWL ;
+    brick1:hasPart bldg:RM0035_room .
+
+bldg:RM0037 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:COWL ;
+    brick1:hasPart bldg:RM0037_room .
+
+bldg:RM0082 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:COWL ;
+    brick1:hasPart bldg:RM0082_room .
+
+bldg:RM_HALL a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:COWL ;
+    brick1:hasPart bldg:RM_HALL_room .
+
+bldg:RM_HALL_room a brick1:Room ;
+    brickframe:hasSite bldg:COWL .
+
+bldg:VAVLOBBY a brick1:VAV ;
+    brickframe:hasSite bldg:COWL ;
+    brick1:feeds bldg:LOBBY ;
+    brick1:hasPoint bldg:COWL.ZONE.AC03.LOBBY.FAN,
+        bldg:COWL.ZONE.AC03.LOBBY.VLV_2_COMD .
+
+bldg:VAVRM0015A a brick1:VAV ;
+    brickframe:hasSite bldg:COWL ;
+    brick1:feeds bldg:RM0015A ;
+    brick1:hasPoint bldg:COWL.ZONE.AH01.RM0015A.Day_Night_Mode,
+        bldg:COWL.ZONE.AH01.RM0015A.Heating_Mode,
+        bldg:COWL.ZONE.AH01.RM0015A.VLV_1_COMD,
+        bldg:COWL.ZONE.AH01.RM0015A.VLV_2_COMD,
+        bldg:COWL.ZONE.AH01.RM0015A.Zone_Air_Temp,
+        bldg:COWL.ZONE.AH01.RM0015A.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM0015B a brick1:VAV ;
+    brickframe:hasSite bldg:COWL ;
+    brick1:feeds bldg:RM0015B ;
+    brick1:hasPoint bldg:COWL.ZONE.AH01.RM0015B.Day_Night_Mode,
+        bldg:COWL.ZONE.AH01.RM0015B.Heating_Mode,
+        bldg:COWL.ZONE.AH01.RM0015B.VLV_1_COMD,
+        bldg:COWL.ZONE.AH01.RM0015B.VLV_2_COMD,
+        bldg:COWL.ZONE.AH01.RM0015B.Zone_Air_Temp,
+        bldg:COWL.ZONE.AH01.RM0015B.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM0023 a brick1:VAV ;
+    brickframe:hasSite bldg:COWL ;
+    brick1:feeds bldg:RM0023 ;
+    brick1:hasPoint bldg:COWL.ZONE.AH01.RM0023.Day_Night_Mode,
+        bldg:COWL.ZONE.AH01.RM0023.Heating_Mode,
+        bldg:COWL.ZONE.AH01.RM0023.VLV_1_COMD,
+        bldg:COWL.ZONE.AH01.RM0023.VLV_2_COMD,
+        bldg:COWL.ZONE.AH01.RM0023.Zone_Air_Temp,
+        bldg:COWL.ZONE.AH01.RM0023.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM0023B a brick1:VAV ;
+    brickframe:hasSite bldg:COWL ;
+    brick1:feeds bldg:RM0023B ;
+    brick1:hasPoint bldg:COWL.ZONE.AH01.RM0023B.Day_Night_Mode,
+        bldg:COWL.ZONE.AH01.RM0023B.Heating_Mode,
+        bldg:COWL.ZONE.AH01.RM0023B.VLV_1_COMD,
+        bldg:COWL.ZONE.AH01.RM0023B.VLV_2_COMD,
+        bldg:COWL.ZONE.AH01.RM0023B.Zone_Air_Temp,
+        bldg:COWL.ZONE.AH01.RM0023B.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM0025 a brick1:VAV ;
+    brickframe:hasSite bldg:COWL ;
+    brick1:feeds bldg:RM0025 ;
+    brick1:hasPoint bldg:COWL.ZONE.AH01.RM0025.Day_Night_Mode,
+        bldg:COWL.ZONE.AH01.RM0025.Heating_Mode,
+        bldg:COWL.ZONE.AH01.RM0025.VLV_1_COMD,
+        bldg:COWL.ZONE.AH01.RM0025.VLV_2_COMD,
+        bldg:COWL.ZONE.AH01.RM0025.Zone_Air_Temp,
+        bldg:COWL.ZONE.AH01.RM0025.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM0032 a brick1:VAV ;
+    brickframe:hasSite bldg:COWL ;
+    brick1:feeds bldg:RM0032 ;
+    brick1:hasPoint bldg:COWL.ZONE.AC01.RM0032.FAN .
+
+bldg:VAVRM0082 a brick1:VAV ;
+    brickframe:hasSite bldg:COWL ;
+    brick1:feeds bldg:RM0082 ;
+    brick1:hasPoint bldg:COWL.ZONE.AC04.RM0082.FAN .
+
+bldg:VAVRM_HALL a brick1:VAV ;
+    brickframe:hasSite bldg:COWL ;
+    brick1:feeds bldg:RM_HALL ;
+    brick1:hasPoint bldg:COWL.ZONE.AH01.RM_HALL.Day_Night_Mode,
+        bldg:COWL.ZONE.AH01.RM_HALL.Heating_Mode,
+        bldg:COWL.ZONE.AH01.RM_HALL.VLV_1_COMD,
+        bldg:COWL.ZONE.AH01.RM_HALL.VLV_2_COMD,
+        bldg:COWL.ZONE.AH01.RM_HALL.Zone_Air_Temp,
+        bldg:COWL.ZONE.AH01.RM_HALL.Zone_Air_Temp_Setpoint .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+bldg:RM0015A_room a brick1:Room ;
+    brickframe:hasSite bldg:COWL .
+
+bldg:RM0015B_room a brick1:Room ;
+    brickframe:hasSite bldg:COWL .
+
+bldg:RM0023B_room a brick1:Room ;
+    brickframe:hasSite bldg:COWL .
+
+bldg:RM0023_room a brick1:Room ;
+    brickframe:hasSite bldg:COWL .
+
+bldg:RM0025_room a brick1:Room ;
+    brickframe:hasSite bldg:COWL .
+
+bldg:RM0031_room a brick1:Room ;
+    brickframe:hasSite bldg:COWL .
+
+bldg:RM0032_room a brick1:Room ;
+    brickframe:hasSite bldg:COWL .
+
+bldg:RM0035_room a brick1:Room ;
+    brickframe:hasSite bldg:COWL .
+
+bldg:RM0037_room a brick1:Room ;
+    brickframe:hasSite bldg:COWL .
+
+bldg:RM0082_room a brick1:Room ;
+    brickframe:hasSite bldg:COWL .
+
+bldg:VAVRM0031 a brick1:VAV ;
+    brickframe:hasSite bldg:COWL ;
+    brick1:feeds bldg:RM0031 ;
+    brick1:hasPoint bldg:COWL.ZONE.AH02.RM0031.Day_Night_Mode,
+        bldg:COWL.ZONE.AH02.RM0031.Heating_Mode,
+        bldg:COWL.ZONE.AH02.RM0031.VLV_1_COMD,
+        bldg:COWL.ZONE.AH02.RM0031.VLV_2_COMD,
+        bldg:COWL.ZONE.AH02.RM0031.Zone_Air_Temp,
+        bldg:COWL.ZONE.AH02.RM0031.Zone_Air_Temp_Setpoint,
+        bldg:COWL.ZONE.AHU02.RM0031.FAN .
+
+bldg:VAVRM0035 a brick1:VAV ;
+    brickframe:hasSite bldg:COWL ;
+    brick1:feeds bldg:RM0035 ;
+    brick1:hasPoint bldg:COWL.ZONE.AH02.RM0035.Day_Night_Mode,
+        bldg:COWL.ZONE.AH02.RM0035.Heating_Mode,
+        bldg:COWL.ZONE.AH02.RM0035.VLV_1_COMD,
+        bldg:COWL.ZONE.AH02.RM0035.VLV_2_COMD,
+        bldg:COWL.ZONE.AH02.RM0035.Zone_Air_Temp,
+        bldg:COWL.ZONE.AH02.RM0035.Zone_Air_Temp_Setpoint,
+        bldg:COWL.ZONE.AHU02.RM0035.FAN .
+
+bldg:VAVRM0037 a brick1:VAV ;
+    brickframe:hasSite bldg:COWL ;
+    brick1:feeds bldg:RM0037 ;
+    brick1:hasPoint bldg:COWL.ZONE.AH02.RM0037.Day_Night_Mode,
+        bldg:COWL.ZONE.AH02.RM0037.Heating_Mode,
+        bldg:COWL.ZONE.AH02.RM0037.VLV_1_COMD,
+        bldg:COWL.ZONE.AH02.RM0037.VLV_2_COMD,
+        bldg:COWL.ZONE.AH02.RM0037.Zone_Air_Temp,
+        bldg:COWL.ZONE.AH02.RM0037.Zone_Air_Temp_Setpoint,
+        bldg:COWL.ZONE.AHU02.RM0037.FAN .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:COWL a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "41112" ;
+    brickframe:Country "US" .
+

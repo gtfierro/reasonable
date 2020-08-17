@@ -1,4 +1,5 @@
 owlready2
 owlrl
 rdflib
+reasonable
 pandas

@@ -1,0 +1,2196 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/WELL#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:AHU01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:VAVRM001A,
+        bldg:VAVRM001B,
+        bldg:VAVRM002A,
+        bldg:VAVRM002B,
+        bldg:VAVRM003,
+        bldg:VAVRM005,
+        bldg:VAVRM006,
+        bldg:VAVRM007A,
+        bldg:VAVRM007B,
+        bldg:VAVRM015A,
+        bldg:VAVRM015B,
+        bldg:VAVRM019A,
+        bldg:VAVRM019B,
+        bldg:VAVRM025,
+        bldg:VAVRM026,
+        bldg:VAVRM027,
+        bldg:VAVRM101,
+        bldg:VAVRM102C,
+        bldg:VAVRM103,
+        bldg:VAVRM105,
+        bldg:VAVRM106,
+        bldg:VAVRM107,
+        bldg:VAVRM109,
+        bldg:VAVRM111,
+        bldg:VAVRM115,
+        bldg:VAVRM119,
+        bldg:VAVRM121,
+        bldg:VAVRM123,
+        bldg:VAVRM125,
+        bldg:VAVRM126,
+        bldg:VAVRM127,
+        bldg:VAVRM129,
+        bldg:VAVRM201,
+        bldg:VAVRM202,
+        bldg:VAVRM203,
+        bldg:VAVRM205,
+        bldg:VAVRM207,
+        bldg:VAVRM208,
+        bldg:VAVRM209,
+        bldg:VAVRM211,
+        bldg:VAVRM212,
+        bldg:VAVRM216,
+        bldg:VAVRM217,
+        bldg:VAVRM220,
+        bldg:VAVRM221,
+        bldg:VAVRM226,
+        bldg:VAVRM229,
+        bldg:VAVRM230,
+        bldg:VAVRM233,
+        bldg:VAVRM234,
+        bldg:VAVRM234A,
+        bldg:VAVRM235 ;
+    brick1:hasPoint bldg:WELL.AHU.AHU01.Chilled_Water_Supply_Temp,
+        bldg:WELL.AHU.AHU01.Cooling_Valve_Output,
+        bldg:WELL.AHU.AHU01.Mixed_Air_Temp,
+        bldg:WELL.AHU.AHU01.Outside_Air_Temp,
+        bldg:WELL.AHU.AHU01.Return_Air_Temp,
+        bldg:WELL.AHU.AHU01.Supply_Air_Pressure,
+        bldg:WELL.AHU.AHU01.Supply_Air_Temp,
+        bldg:WELL.AHU.AHU01.Supply_Air_Temp_Setpoint,
+        bldg:WELL.AHU.AHU01.Zone_Air_Temp .
+
+bldg:Wellman_ChilledWater_Demand_kBtu a brick_v_1_0_2:Electric_Meter ;
+    brickframe:pointname "Wellman_ChilledWater_Demand_kBtu" ;
+    brickframe:uuid "46790f73-23b2-3084-a293-7e16dc2cc574" ;
+    brick1:isPointOf bldg:chiller .
+
+bldg:Wellman_Electricity_Demand_kBtu a brick_v_1_0_2:Building_Electric_Meter ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "Wellman_Electricity_Demand_kBtu" ;
+    brickframe:uuid "037ef78d-9293-3a89-9e95-f5ce4328585a" .
+
+bldg:damperVAVRM001A a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM001A.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM001A .
+
+bldg:damperVAVRM001B a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM001B.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM001B .
+
+bldg:damperVAVRM002A a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM002A.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM002A .
+
+bldg:damperVAVRM002B a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM002B.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM002B .
+
+bldg:damperVAVRM003 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM003.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM003 .
+
+bldg:damperVAVRM005 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM005.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM005 .
+
+bldg:damperVAVRM006 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM006.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM006 .
+
+bldg:damperVAVRM007A a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM007A.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM007A .
+
+bldg:damperVAVRM007B a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM007B.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM007B .
+
+bldg:damperVAVRM015A a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM015A.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM015A .
+
+bldg:damperVAVRM015B a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM015B.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM015B .
+
+bldg:damperVAVRM019A a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM019A.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM019A .
+
+bldg:damperVAVRM019B a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM019B.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM019B .
+
+bldg:damperVAVRM025 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM025.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM025 .
+
+bldg:damperVAVRM026 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM026.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM026 .
+
+bldg:damperVAVRM027 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM027.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM027 .
+
+bldg:damperVAVRM101 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM101.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM101 .
+
+bldg:damperVAVRM102C a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM102C.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM102C .
+
+bldg:damperVAVRM103 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM103.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM103 .
+
+bldg:damperVAVRM105 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM105.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM105 .
+
+bldg:damperVAVRM106 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM106.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM106 .
+
+bldg:damperVAVRM107 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM107.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM107 .
+
+bldg:damperVAVRM109 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM109.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM109 .
+
+bldg:damperVAVRM111 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM111.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM111 .
+
+bldg:damperVAVRM115 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM115.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM115 .
+
+bldg:damperVAVRM119 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM119.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM119 .
+
+bldg:damperVAVRM121 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM121.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM121 .
+
+bldg:damperVAVRM123 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM123.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM123 .
+
+bldg:damperVAVRM125 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM125.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM125 .
+
+bldg:damperVAVRM126 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM126.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM126 .
+
+bldg:damperVAVRM127 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM127.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM127 .
+
+bldg:damperVAVRM129 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM129.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM129 .
+
+bldg:damperVAVRM201 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM201.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM201 .
+
+bldg:damperVAVRM202 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM202.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM202 .
+
+bldg:damperVAVRM203 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM203.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM203 .
+
+bldg:damperVAVRM205 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM205.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM205 .
+
+bldg:damperVAVRM207 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM207.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM207 .
+
+bldg:damperVAVRM208 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM208.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM208 .
+
+bldg:damperVAVRM209 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM209.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM209 .
+
+bldg:damperVAVRM211 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM211.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM211 .
+
+bldg:damperVAVRM212 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM212.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM212 .
+
+bldg:damperVAVRM216 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM216.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM216 .
+
+bldg:damperVAVRM220 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM220.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM220 .
+
+bldg:damperVAVRM221 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM221.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM221 .
+
+bldg:damperVAVRM226 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM226.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM226 .
+
+bldg:damperVAVRM229 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM229.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM229 .
+
+bldg:damperVAVRM230 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM230.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM230 .
+
+bldg:damperVAVRM233 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM233.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM233 .
+
+bldg:damperVAVRM234 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM234.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM234 .
+
+bldg:damperVAVRM234A a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM234A.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM234A .
+
+bldg:damperVAVRM235 a brick1:Damper ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM235.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM235 .
+
+bldg:floor0 a brick1:Floor ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM001A_room,
+        bldg:RM001B_room,
+        bldg:RM002A_room,
+        bldg:RM002B_room,
+        bldg:RM003_room,
+        bldg:RM005_room,
+        bldg:RM006_room,
+        bldg:RM007A_room,
+        bldg:RM007B_room,
+        bldg:RM015A_room,
+        bldg:RM015B_room,
+        bldg:RM019A_room,
+        bldg:RM019B_room,
+        bldg:RM025_room,
+        bldg:RM026_room,
+        bldg:RM027_room .
+
+bldg:floor1 a brick1:Floor ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM101_room,
+        bldg:RM102C_room,
+        bldg:RM103_room,
+        bldg:RM105_room,
+        bldg:RM106_room,
+        bldg:RM107_room,
+        bldg:RM109_room,
+        bldg:RM111_room,
+        bldg:RM115_room,
+        bldg:RM119_room,
+        bldg:RM121_room,
+        bldg:RM123_room,
+        bldg:RM125_room,
+        bldg:RM126_room,
+        bldg:RM127_room,
+        bldg:RM129_room .
+
+bldg:floor2 a brick1:Floor ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM201_room,
+        bldg:RM202_room,
+        bldg:RM203_room,
+        bldg:RM205_room,
+        bldg:RM207_room,
+        bldg:RM208_room,
+        bldg:RM209_room,
+        bldg:RM211_room,
+        bldg:RM212_room,
+        bldg:RM216_room,
+        bldg:RM217_room,
+        bldg:RM220_room,
+        bldg:RM221_room,
+        bldg:RM226_room,
+        bldg:RM229_room,
+        bldg:RM230_room,
+        bldg:RM233_room,
+        bldg:RM234A_room,
+        bldg:RM234_room,
+        bldg:RM235_room .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:RM001A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM001A_room .
+
+bldg:RM001B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM001B_room .
+
+bldg:RM002A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM002A_room .
+
+bldg:RM002B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM002B_room .
+
+bldg:RM003 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM003_room .
+
+bldg:RM005 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM005_room .
+
+bldg:RM006 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM006_room .
+
+bldg:RM007A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM007A_room .
+
+bldg:RM007B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM007B_room .
+
+bldg:RM015A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM015A_room .
+
+bldg:RM015B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM015B_room .
+
+bldg:RM019A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM019A_room .
+
+bldg:RM019B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM019B_room .
+
+bldg:RM025 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM025_room .
+
+bldg:RM026 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM026_room .
+
+bldg:RM027 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM027_room .
+
+bldg:RM101 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM101_room .
+
+bldg:RM102C a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM102C_room .
+
+bldg:RM103 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM103_room .
+
+bldg:RM105 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM105_room .
+
+bldg:RM106 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM106_room .
+
+bldg:RM107 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM107_room .
+
+bldg:RM109 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM109_room .
+
+bldg:RM111 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM111_room .
+
+bldg:RM115 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM115_room .
+
+bldg:RM119 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM119_room .
+
+bldg:RM121 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM121_room .
+
+bldg:RM123 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM123_room .
+
+bldg:RM125 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM125_room .
+
+bldg:RM126 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM126_room .
+
+bldg:RM127 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM127_room .
+
+bldg:RM129 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM129_room .
+
+bldg:RM201 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM201_room .
+
+bldg:RM202 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM202_room .
+
+bldg:RM203 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM203_room .
+
+bldg:RM205 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM205_room .
+
+bldg:RM207 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM207_room .
+
+bldg:RM208 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM208_room .
+
+bldg:RM209 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM209_room .
+
+bldg:RM211 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM211_room .
+
+bldg:RM212 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM212_room .
+
+bldg:RM216 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM216_room .
+
+bldg:RM217 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM217_room .
+
+bldg:RM220 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM220_room .
+
+bldg:RM221 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM221_room .
+
+bldg:RM226 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM226_room .
+
+bldg:RM229 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM229_room .
+
+bldg:RM230 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM230_room .
+
+bldg:RM233 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM233_room .
+
+bldg:RM234 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM234_room .
+
+bldg:RM234A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM234A_room .
+
+bldg:RM235 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:hasPart bldg:RM235_room .
+
+bldg:VAVRM217 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM217 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM217.Zone_Air_Temp_Setpoint .
+
+bldg:WELL.AHU.AHU01.Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.AHU.AHU01.Chilled Water Supply Temp" ;
+    brickframe:uuid "a2bedb14-6d3a-304c-a835-695235deb1de" .
+
+bldg:WELL.AHU.AHU01.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.AHU.AHU01.Cooling Valve Output" ;
+    brickframe:uuid "3db6a93d-67ed-34b7-95d7-62d879cd1076" .
+
+bldg:WELL.AHU.AHU01.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.AHU.AHU01.Mixed Air Temp" ;
+    brickframe:uuid "10def118-30a4-3391-bb82-357549c85466" .
+
+bldg:WELL.AHU.AHU01.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.AHU.AHU01.Outside Air Temp" ;
+    brickframe:uuid "4884b302-658f-3a4c-9061-6bae35202c81" .
+
+bldg:WELL.AHU.AHU01.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.AHU.AHU01.Return Air Temp" ;
+    brickframe:uuid "85a9ffc5-cc38-351f-8e49-af5632f58940" .
+
+bldg:WELL.AHU.AHU01.Supply_Air_Pressure a brick1:Supply_Air_Static_Pressure_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.AHU.AHU01.Supply Air Pressure" ;
+    brickframe:uuid "89bcfbf6-d376-30b0-8720-879ff0e324c7" .
+
+bldg:WELL.AHU.AHU01.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.AHU.AHU01.Supply Air Temp" ;
+    brickframe:uuid "51e7bb66-a658-3174-91f5-1e88852590d3" .
+
+bldg:WELL.AHU.AHU01.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.AHU.AHU01.Supply Air Temp Setpoint" ;
+    brickframe:uuid "dee52ff1-8cdb-3309-a518-0b44f99787a5" .
+
+bldg:WELL.AHU.AHU01.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.AHU.AHU01.Zone Air Temp" ;
+    brickframe:uuid "ad1ca82c-c400-3901-a533-da319d925a7b" .
+
+bldg:WELL.ZONE.AHU01.RM001A.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM001A.Zone Air Damper Command" ;
+    brickframe:uuid "d972edd5-5021-30e3-aab4-810654aa4852" .
+
+bldg:WELL.ZONE.AHU01.RM001A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM001A.Zone Air Temp" ;
+    brickframe:uuid "46c2cc3f-f602-33b4-9c96-ad69f8dc78e6" .
+
+bldg:WELL.ZONE.AHU01.RM001A.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM001A.Zone Air Temp Setpoint" ;
+    brickframe:uuid "56ab39e0-af73-30b8-bf66-34feb57e804a" .
+
+bldg:WELL.ZONE.AHU01.RM001A.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM001A.Zone Reheat Valve Command" ;
+    brickframe:uuid "6ef2108a-256c-355f-8cd8-384f2e91152d" .
+
+bldg:WELL.ZONE.AHU01.RM001B.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM001B.Zone Air Damper Command" ;
+    brickframe:uuid "e8f022e5-97c7-34fd-9bc4-a2c4834a15d6" .
+
+bldg:WELL.ZONE.AHU01.RM001B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM001B.Zone Air Temp" ;
+    brickframe:uuid "0538f957-be86-34a3-bb8c-b1129bf1a2c6" .
+
+bldg:WELL.ZONE.AHU01.RM001B.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM001B.Zone Air Temp Setpoint" ;
+    brickframe:uuid "0a6c2bbc-fdb2-3e59-982c-5581590e91fa" .
+
+bldg:WELL.ZONE.AHU01.RM001B.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM001B.Zone Reheat Valve Command" ;
+    brickframe:uuid "97c770e7-4d83-36dc-b43c-7081c7adbdfa" .
+
+bldg:WELL.ZONE.AHU01.RM002A.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM002A.Zone Air Damper Command" ;
+    brickframe:uuid "5952c0f2-6f08-325f-9eee-f2325a4766d9" .
+
+bldg:WELL.ZONE.AHU01.RM002A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM002A.Zone Air Temp" ;
+    brickframe:uuid "c7eb662b-a04f-38d9-9dbd-3b444049b388" .
+
+bldg:WELL.ZONE.AHU01.RM002A.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM002A.Zone Air Temp Setpoint" ;
+    brickframe:uuid "296e9411-5f50-3214-a7c5-54428e91d0d7" .
+
+bldg:WELL.ZONE.AHU01.RM002A.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM002A.Zone Reheat Valve Command" ;
+    brickframe:uuid "ec6b4729-39ea-3567-a1bc-aac31ad28eac" .
+
+bldg:WELL.ZONE.AHU01.RM002B.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM002B.Zone Air Damper Command" ;
+    brickframe:uuid "b15243fe-7d3d-381f-b61c-b121c8e7893c" .
+
+bldg:WELL.ZONE.AHU01.RM002B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM002B.Zone Air Temp" ;
+    brickframe:uuid "05cfd0c7-bf66-37ab-b863-ee1f90f632cc" .
+
+bldg:WELL.ZONE.AHU01.RM002B.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM002B.Zone Air Temp Setpoint" ;
+    brickframe:uuid "3ea146da-de09-386b-a381-1810f80d54bf" .
+
+bldg:WELL.ZONE.AHU01.RM002B.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM002B.Zone Reheat Valve Command" ;
+    brickframe:uuid "c7871f74-a9f0-345d-b02f-1c5e3dbfd198" .
+
+bldg:WELL.ZONE.AHU01.RM003.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM003.Zone Air Damper Command" ;
+    brickframe:uuid "9191b34a-955b-384f-8a28-bcf7938d361f" .
+
+bldg:WELL.ZONE.AHU01.RM003.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM003.Zone Air Temp" ;
+    brickframe:uuid "0166b10e-bb2e-3954-b54c-37edcbf240e4" .
+
+bldg:WELL.ZONE.AHU01.RM003.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM003.Zone Air Temp Setpoint" ;
+    brickframe:uuid "e6214c2a-9ce9-3cce-9c27-87f321f77ef5" .
+
+bldg:WELL.ZONE.AHU01.RM003.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM003.Zone Reheat Valve Command" ;
+    brickframe:uuid "0a21.0.2-7fc9-3d3c-9310-0819cdad3200" .
+
+bldg:WELL.ZONE.AHU01.RM005.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM005.Zone Air Damper Command" ;
+    brickframe:uuid "94c4d4a9-83d8-38e6-9188-001b0eadd69f" .
+
+bldg:WELL.ZONE.AHU01.RM005.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM005.Zone Air Temp" ;
+    brickframe:uuid "39893980-71e5-3ba7-bfe0-bead4341faf1" .
+
+bldg:WELL.ZONE.AHU01.RM005.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM005.Zone Air Temp Setpoint" ;
+    brickframe:uuid "6cccf0a0-0495-33ad-9242-8950c91e1390" .
+
+bldg:WELL.ZONE.AHU01.RM005.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM005.Zone Reheat Valve Command" ;
+    brickframe:uuid "59273cc7-3c80-3921-8c93-af5523224e1d" .
+
+bldg:WELL.ZONE.AHU01.RM006.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM006.Zone Air Damper Command" ;
+    brickframe:uuid "bd226b43-433b-397d-bc29-a5157f16b604" .
+
+bldg:WELL.ZONE.AHU01.RM006.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM006.Zone Air Temp" ;
+    brickframe:uuid "be78373b-58cf-370b-b0c7-c851d2c42a83" .
+
+bldg:WELL.ZONE.AHU01.RM006.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM006.Zone Air Temp Setpoint" ;
+    brickframe:uuid "887d2c80-6ca8-3d3d-b187-261b1a01ad80" .
+
+bldg:WELL.ZONE.AHU01.RM006.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM006.Zone Reheat Valve Command" ;
+    brickframe:uuid "fa1edcc6-6a6c-331f-9c48-741d7ae494d1" .
+
+bldg:WELL.ZONE.AHU01.RM007A.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM007A.Zone Air Damper Command" ;
+    brickframe:uuid "c177e883-a910-384c-9fc0-1da6a0501dd4" .
+
+bldg:WELL.ZONE.AHU01.RM007A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM007A.Zone Air Temp" ;
+    brickframe:uuid "e2dc61af-d2fa-3274-a4c1-01ff1a0a92fb" .
+
+bldg:WELL.ZONE.AHU01.RM007A.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM007A.Zone Air Temp Setpoint" ;
+    brickframe:uuid "a5eb058f-4fab-3e04-b3d1-dab6d6f40baf" .
+
+bldg:WELL.ZONE.AHU01.RM007A.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM007A.Zone Reheat Valve Command" ;
+    brickframe:uuid "77906950-577e-3f7f-95dd-34fc92f35041" .
+
+bldg:WELL.ZONE.AHU01.RM007B.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM007B.Zone Air Damper Command" ;
+    brickframe:uuid "ea3bd53c-2a89-31fd-864c-91bd984f562b" .
+
+bldg:WELL.ZONE.AHU01.RM007B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM007B.Zone Air Temp" ;
+    brickframe:uuid "5d48d0f2-2437-3e12-a395-ed2caf38d0da" .
+
+bldg:WELL.ZONE.AHU01.RM007B.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM007B.Zone Air Temp Setpoint" ;
+    brickframe:uuid "d22707cf-b4e2-325d-bdd3-82d593c8327e" .
+
+bldg:WELL.ZONE.AHU01.RM007B.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM007B.Zone Reheat Valve Command" ;
+    brickframe:uuid "3299bfa1-f674-36c1-b1.0.266a2ce8fc27" .
+
+bldg:WELL.ZONE.AHU01.RM015A.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM015A.Zone Air Damper Command" ;
+    brickframe:uuid "96934b53-c89d-3260-831a-9a0f991a9550" .
+
+bldg:WELL.ZONE.AHU01.RM015A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM015A.Zone Air Temp" ;
+    brickframe:uuid "19fbcaed-ad67-3ff9-9077-51910111561a" .
+
+bldg:WELL.ZONE.AHU01.RM015A.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM015A.Zone Air Temp Setpoint" ;
+    brickframe:uuid "cc68fe2d-b97c-3954-83c8-736757338666" .
+
+bldg:WELL.ZONE.AHU01.RM015A.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM015A.Zone Reheat Valve Command" ;
+    brickframe:uuid "b4414fd1-b488-32f8-948c-b8e65c669d77" .
+
+bldg:WELL.ZONE.AHU01.RM015B.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM015B.Zone Air Damper Command" ;
+    brickframe:uuid "c5c35f31-51e6-3946-8bb2-bb18b4e15f34" .
+
+bldg:WELL.ZONE.AHU01.RM015B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM015B.Zone Air Temp" ;
+    brickframe:uuid "e5cdbdd8-4846-3e91-b625-1140528d60cc" .
+
+bldg:WELL.ZONE.AHU01.RM015B.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM015B.Zone Air Temp Setpoint" ;
+    brickframe:uuid "86e48e6b-9cd7-33d1-9972-a48f81ff3e41" .
+
+bldg:WELL.ZONE.AHU01.RM015B.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM015B.Zone Reheat Valve Command" ;
+    brickframe:uuid "e1242923-114a-36f4-a82f-463beffe51bf" .
+
+bldg:WELL.ZONE.AHU01.RM019A.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM019A.Zone Air Damper Command" ;
+    brickframe:uuid "741bc6d2-f719-3ae9-afad-a8c3ca94f484" .
+
+bldg:WELL.ZONE.AHU01.RM019A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM019A.Zone Air Temp" ;
+    brickframe:uuid "447d9012-f44f-35f6-9622-89557b143eca" .
+
+bldg:WELL.ZONE.AHU01.RM019A.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM019A.Zone Air Temp Setpoint" ;
+    brickframe:uuid "9a30d88c-8503-3e2e-a234-7e15ad6b4894" .
+
+bldg:WELL.ZONE.AHU01.RM019A.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM019A.Zone Reheat Valve Command" ;
+    brickframe:uuid "c560c6c7-927f-3c90-9e2e-c3e9afc9e96c" .
+
+bldg:WELL.ZONE.AHU01.RM019B.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM019B.Zone Air Damper Command" ;
+    brickframe:uuid "75034bca-9c6e-300c-9af7-61afaa44a9b5" .
+
+bldg:WELL.ZONE.AHU01.RM019B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM019B.Zone Air Temp" ;
+    brickframe:uuid "96d7ad7d-0988-30f9-9e4f-53f992e21cd5" .
+
+bldg:WELL.ZONE.AHU01.RM019B.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM019B.Zone Air Temp Setpoint" ;
+    brickframe:uuid "70d046e0-221a-3ad1-a6a1-a98dedfa39be" .
+
+bldg:WELL.ZONE.AHU01.RM019B.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM019B.Zone Reheat Valve Command" ;
+    brickframe:uuid "19308c6b-1e9c-3657-83de-51d00f868e4a" .
+
+bldg:WELL.ZONE.AHU01.RM025.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM025.Zone Air Damper Command" ;
+    brickframe:uuid "7f44ec89-d0f2-3385-bad8-c1532214f8ad" .
+
+bldg:WELL.ZONE.AHU01.RM025.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM025.Zone Air Temp" ;
+    brickframe:uuid "b94eff6a-296f-3979-a36b-e85d487d7311" .
+
+bldg:WELL.ZONE.AHU01.RM025.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM025.Zone Air Temp Setpoint" ;
+    brickframe:uuid "6ba880ed-f62a-3100-a9c8-2276f64bcc99" .
+
+bldg:WELL.ZONE.AHU01.RM025.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM025.Zone Reheat Valve Command" ;
+    brickframe:uuid "9c9cee32-ab9b-39a2-a679-8cdd88372d0b" .
+
+bldg:WELL.ZONE.AHU01.RM026.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM026.Zone Air Damper Command" ;
+    brickframe:uuid "8f32668c-9e99-3db5-86ef-b91ce49783bd" .
+
+bldg:WELL.ZONE.AHU01.RM026.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM026.Zone Air Temp" ;
+    brickframe:uuid "c419662e-aac0-30b7-a739-c158ef09fac3" .
+
+bldg:WELL.ZONE.AHU01.RM026.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM026.Zone Air Temp Setpoint" ;
+    brickframe:uuid "10d61955-459b-3598-aac7-ba4d441312a0" .
+
+bldg:WELL.ZONE.AHU01.RM026.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM026.Zone Reheat Valve Command" ;
+    brickframe:uuid "e1d26572-04c9-3b51-b44c-1f7ec56093e6" .
+
+bldg:WELL.ZONE.AHU01.RM027.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM027.Zone Air Damper Command" ;
+    brickframe:uuid "422fbbc1-aa93-3425-9305-b6dcedb7be6c" .
+
+bldg:WELL.ZONE.AHU01.RM027.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM027.Zone Air Temp" ;
+    brickframe:uuid "dc9f5431-3219-33c1-8468-d238a1058a23" .
+
+bldg:WELL.ZONE.AHU01.RM027.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM027.Zone Air Temp Setpoint" ;
+    brickframe:uuid "50c88cfe-0c4b-3dc8-bd61-83632c2a164d" .
+
+bldg:WELL.ZONE.AHU01.RM027.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM027.Zone Reheat Valve Command" ;
+    brickframe:uuid "69e792ba-6fdf-3a87-b800-e53573c32403" .
+
+bldg:WELL.ZONE.AHU01.RM101.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM101.Zone Air Damper Command" ;
+    brickframe:uuid "612a51e5-076a-30f7-ada3-82985fc07f55" .
+
+bldg:WELL.ZONE.AHU01.RM101.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM101.Zone Air Temp" ;
+    brickframe:uuid "8051f66f-fc1c-35e9-8320-bb64c7b358a5" .
+
+bldg:WELL.ZONE.AHU01.RM101.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM101.Zone Air Temp Setpoint" ;
+    brickframe:uuid "72e22150-e18a-3698-af6b-7eafba1ebf82" .
+
+bldg:WELL.ZONE.AHU01.RM101.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM101.Zone Reheat Valve Command" ;
+    brickframe:uuid "b0f49ba9-4e8a-3972-be59-f3bf7a85de79" .
+
+bldg:WELL.ZONE.AHU01.RM102C.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM102C.Zone Air Damper Command" ;
+    brickframe:uuid "d357d183-a2c3-3993-9cb5-d7760168884d" .
+
+bldg:WELL.ZONE.AHU01.RM102C.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM102C.Zone Air Temp" ;
+    brickframe:uuid "9644646a-4df9-3dbb-a26b-5de5d2e44af4" .
+
+bldg:WELL.ZONE.AHU01.RM102C.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM102C.Zone Air Temp Setpoint" ;
+    brickframe:uuid "fb5742da-0691-33bb-852f-c0fff8958ad7" .
+
+bldg:WELL.ZONE.AHU01.RM102C.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM102C.Zone Reheat Valve Command" ;
+    brickframe:uuid "19254c1b-99a1-3d8d-855f-f89ea46722ab" .
+
+bldg:WELL.ZONE.AHU01.RM103.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM103.Zone Air Damper Command" ;
+    brickframe:uuid "30239ab1-a3bd-3ae6-8124-063f9919c4b7" .
+
+bldg:WELL.ZONE.AHU01.RM103.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM103.Zone Air Temp" ;
+    brickframe:uuid "f2ca72e5-b812-3255-b68d-f156360e2d7f" .
+
+bldg:WELL.ZONE.AHU01.RM103.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM103.Zone Air Temp Setpoint" ;
+    brickframe:uuid "74b2a7a0-07c8-3831-8e85-f82c8738b466" .
+
+bldg:WELL.ZONE.AHU01.RM103.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM103.Zone Reheat Valve Command" ;
+    brickframe:uuid "fbf6b561-e9df-350d-8bd4-f8da626579ce" .
+
+bldg:WELL.ZONE.AHU01.RM105.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM105.Zone Air Damper Command" ;
+    brickframe:uuid "8e16e1f9-b738-3ac3-bbe4-466cc31cd296" .
+
+bldg:WELL.ZONE.AHU01.RM105.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM105.Zone Air Temp" ;
+    brickframe:uuid "70af970b-920b-34ec-9b63-cd1530bc0897" .
+
+bldg:WELL.ZONE.AHU01.RM105.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM105.Zone Air Temp Setpoint" ;
+    brickframe:uuid "2cf5c988-0410-3d15-a79f-860c8e30b900" .
+
+bldg:WELL.ZONE.AHU01.RM105.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM105.Zone Reheat Valve Command" ;
+    brickframe:uuid "e4c29913-1285-3683-95eb-ddef5f67eae8" .
+
+bldg:WELL.ZONE.AHU01.RM106.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM106.Zone Air Damper Command" ;
+    brickframe:uuid "b2fd1e0c-eaf3-36a3-af91-7f2a932e9d8e" .
+
+bldg:WELL.ZONE.AHU01.RM106.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM106.Zone Air Temp" ;
+    brickframe:uuid "7d124537-5d3e-3328-a47b-1946addda1e0" .
+
+bldg:WELL.ZONE.AHU01.RM106.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM106.Zone Air Temp Setpoint" ;
+    brickframe:uuid "b3c71905-4f68-31e6-a575-a7f0f56f8019" .
+
+bldg:WELL.ZONE.AHU01.RM106.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM106.Zone Reheat Valve Command" ;
+    brickframe:uuid "7d7b5746-3087-3304-ac2d-4ca0a9b4ad21" .
+
+bldg:WELL.ZONE.AHU01.RM107.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM107.Zone Air Damper Command" ;
+    brickframe:uuid "89846441-8aa2-3e0d-891d-4d5e1b6b0c72" .
+
+bldg:WELL.ZONE.AHU01.RM107.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM107.Zone Air Temp" ;
+    brickframe:uuid "d212830e-34b6-30b7-88ea-a66641388c3c" .
+
+bldg:WELL.ZONE.AHU01.RM107.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM107.Zone Air Temp Setpoint" ;
+    brickframe:uuid "bee17a0b-5905-3bb3-bccf-44408df7bae9" .
+
+bldg:WELL.ZONE.AHU01.RM107.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM107.Zone Reheat Valve Command" ;
+    brickframe:uuid "fc82f27e-9de1-3345-a28a-a1ead959e442" .
+
+bldg:WELL.ZONE.AHU01.RM109.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM109.Zone Air Damper Command" ;
+    brickframe:uuid "e9f3f334-e3b3-3f36-baf5-9a101933c0a9" .
+
+bldg:WELL.ZONE.AHU01.RM109.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM109.Zone Air Temp Setpoint" ;
+    brickframe:uuid "2b74ff37-a540-3de9-895f-3e5f56209bf0" .
+
+bldg:WELL.ZONE.AHU01.RM111.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM111.Zone Air Damper Command" ;
+    brickframe:uuid "559d3a15-f767-3baf-b143-7486d59fda57" .
+
+bldg:WELL.ZONE.AHU01.RM111.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM111.Zone Air Temp" ;
+    brickframe:uuid "f1411d3a-49b2-3b23-bbf1-291ff6f7f542" .
+
+bldg:WELL.ZONE.AHU01.RM111.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM111.Zone Air Temp Setpoint" ;
+    brickframe:uuid "f0eb4c62-aed8-36bf-84a9-4970786480a2" .
+
+bldg:WELL.ZONE.AHU01.RM111.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM111.Zone Reheat Valve Command" ;
+    brickframe:uuid "398e97e6-15a5-3994-bb1c-8aa7980efa15" .
+
+bldg:WELL.ZONE.AHU01.RM115.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM115.Zone Air Damper Command" ;
+    brickframe:uuid "c20afe0b-42f1-398e-a841-154887e8b193" .
+
+bldg:WELL.ZONE.AHU01.RM115.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM115.Zone Air Temp" ;
+    brickframe:uuid "94ca1c23-b0e1-3e91-82f5-77f8c0869fad" .
+
+bldg:WELL.ZONE.AHU01.RM115.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM115.Zone Air Temp Setpoint" ;
+    brickframe:uuid "90bada8a-e41e-3313-8dac-cbb8057d5c85" .
+
+bldg:WELL.ZONE.AHU01.RM115.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM115.Zone Reheat Valve Command" ;
+    brickframe:uuid "0468b297-5f86-3331-80e3-81bbe6319c2f" .
+
+bldg:WELL.ZONE.AHU01.RM119.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM119.Zone Air Damper Command" ;
+    brickframe:uuid "cee3996b-4ccd-380f-9c00-25aae3fcf27f" .
+
+bldg:WELL.ZONE.AHU01.RM119.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM119.Zone Air Temp" ;
+    brickframe:uuid "748d2f34-5315-3c0a-92ac-d7840f44b2ec" .
+
+bldg:WELL.ZONE.AHU01.RM119.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM119.Zone Air Temp Setpoint" ;
+    brickframe:uuid "a3d45fe3-374b-3220-be3d-be447e323f49" .
+
+bldg:WELL.ZONE.AHU01.RM119.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM119.Zone Reheat Valve Command" ;
+    brickframe:uuid "3246a948-3710-3881-876d-3309284e574c" .
+
+bldg:WELL.ZONE.AHU01.RM121.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM121.Zone Air Damper Command" ;
+    brickframe:uuid "519e6094-bdde-3d67-ab6c-6fae0f1787a0" .
+
+bldg:WELL.ZONE.AHU01.RM121.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM121.Zone Air Temp" ;
+    brickframe:uuid "d243152a-3ea0-3b4a-a99c-90f79ace3edc" .
+
+bldg:WELL.ZONE.AHU01.RM121.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM121.Zone Air Temp Setpoint" ;
+    brickframe:uuid "74ec5507-4726-3ff9-bbeb-c144fdc7773a" .
+
+bldg:WELL.ZONE.AHU01.RM121.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM121.Zone Reheat Valve Command" ;
+    brickframe:uuid "53f3b2ad-707d-30a8-ad8d-5604efaa05a7" .
+
+bldg:WELL.ZONE.AHU01.RM123.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM123.Zone Air Damper Command" ;
+    brickframe:uuid "9d9c3839-f393-36da-81ee-54304270e0c8" .
+
+bldg:WELL.ZONE.AHU01.RM123.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM123.Zone Air Temp" ;
+    brickframe:uuid "3a9942d4-f3ff-3d67-8406-0fa3a0471636" .
+
+bldg:WELL.ZONE.AHU01.RM123.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM123.Zone Air Temp Setpoint" ;
+    brickframe:uuid "12eacb32-264f-3c6f-9dc8-e91d730e02a8" .
+
+bldg:WELL.ZONE.AHU01.RM123.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM123.Zone Reheat Valve Command" ;
+    brickframe:uuid "1af465c6-bc6c-3fa8-8ab9-4dde09c7fe67" .
+
+bldg:WELL.ZONE.AHU01.RM125.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM125.Zone Air Damper Command" ;
+    brickframe:uuid "af227932-a8d3-3514-80e7-fc658a59c061" .
+
+bldg:WELL.ZONE.AHU01.RM125.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM125.Zone Air Temp" ;
+    brickframe:uuid "fbedcb07-ebb3-3d14-8def-3b00eb52bdbc" .
+
+bldg:WELL.ZONE.AHU01.RM125.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM125.Zone Air Temp Setpoint" ;
+    brickframe:uuid "8a811c6a-cd72-3cf1-91ea-c8422b4a9df7" .
+
+bldg:WELL.ZONE.AHU01.RM125.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM125.Zone Reheat Valve Command" ;
+    brickframe:uuid "8a99f6b6-0d9b-389c-b986-fb78ad655939" .
+
+bldg:WELL.ZONE.AHU01.RM126.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM126.Zone Air Damper Command" ;
+    brickframe:uuid "3f8fcd60-61a2-364a-83c4-c46929a09040" .
+
+bldg:WELL.ZONE.AHU01.RM126.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM126.Zone Air Temp" ;
+    brickframe:uuid "a671767d-6bef-3bfa-8152-3d9efdced543" .
+
+bldg:WELL.ZONE.AHU01.RM126.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM126.Zone Air Temp Setpoint" ;
+    brickframe:uuid "7605a90e-16c5-365b-9f9e-2a7c7e34d76f" .
+
+bldg:WELL.ZONE.AHU01.RM126.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM126.Zone Reheat Valve Command" ;
+    brickframe:uuid "1ab61768-ee34-324c-b54e-7003077742cd" .
+
+bldg:WELL.ZONE.AHU01.RM127.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM127.Zone Air Damper Command" ;
+    brickframe:uuid "f7e71a28-306b-31ac-9beb-6408359c74fc" .
+
+bldg:WELL.ZONE.AHU01.RM127.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM127.Zone Air Temp" ;
+    brickframe:uuid "9c5091e4-97fe-345e-8516-4525b3a0a148" .
+
+bldg:WELL.ZONE.AHU01.RM127.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM127.Zone Air Temp Setpoint" ;
+    brickframe:uuid "ab2ef7d0-6346-3028-ba6b-2541e24e7ee8" .
+
+bldg:WELL.ZONE.AHU01.RM127.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM127.Zone Reheat Valve Command" ;
+    brickframe:uuid "41039680-555f-36a6-a2f7-30e7f2f5f173" .
+
+bldg:WELL.ZONE.AHU01.RM129.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM129.Zone Air Damper Command" ;
+    brickframe:uuid "ee722c4f-81af-31c6-a601-e3da88014dfd" .
+
+bldg:WELL.ZONE.AHU01.RM129.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM129.Zone Air Temp" ;
+    brickframe:uuid "efed61f8-2be5-3df9-8466-f1031d93189c" .
+
+bldg:WELL.ZONE.AHU01.RM129.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM129.Zone Air Temp Setpoint" ;
+    brickframe:uuid "838509d0-9dd2-3b2f-a48b-db323ef06d0e" .
+
+bldg:WELL.ZONE.AHU01.RM129.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM129.Zone Reheat Valve Command" ;
+    brickframe:uuid "d8e6b23d-9d0e-3a52-b737-674a76077bbc" .
+
+bldg:WELL.ZONE.AHU01.RM201.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM201.Zone Air Damper Command" ;
+    brickframe:uuid "7b86db73-69a2-31d7-9cd2-0d99f051d30c" .
+
+bldg:WELL.ZONE.AHU01.RM201.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM201.Zone Air Temp" ;
+    brickframe:uuid "34859608-9938-39e7-a3fe-629c095f2768" .
+
+bldg:WELL.ZONE.AHU01.RM201.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM201.Zone Air Temp Setpoint" ;
+    brickframe:uuid "107ad101-22f2-39f6-88b7-d1a92d0e85f8" .
+
+bldg:WELL.ZONE.AHU01.RM201.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM201.Zone Reheat Valve Command" ;
+    brickframe:uuid "5412c5da-6612-3e14-8645-b45f4b7f0712" .
+
+bldg:WELL.ZONE.AHU01.RM202.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM202.Zone Air Damper Command" ;
+    brickframe:uuid "514c7a3f-ae16-3521-83b0-bf958ed873a6" .
+
+bldg:WELL.ZONE.AHU01.RM202.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM202.Zone Air Temp" ;
+    brickframe:uuid "2bc7d8ec-3690-39df-8e1a-72939deababd" .
+
+bldg:WELL.ZONE.AHU01.RM202.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM202.Zone Air Temp Setpoint" ;
+    brickframe:uuid "04e531ff-debc-36bc-8e11-eec569996aff" .
+
+bldg:WELL.ZONE.AHU01.RM202.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM202.Zone Reheat Valve Command" ;
+    brickframe:uuid "ae69f25d-bd5c-327e-b4ef-8d30bc147c92" .
+
+bldg:WELL.ZONE.AHU01.RM203.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM203.Zone Air Damper Command" ;
+    brickframe:uuid "d9a145e6-c9ea-3e5e-9b8d-6eeac7cf904c" .
+
+bldg:WELL.ZONE.AHU01.RM203.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM203.Zone Air Temp" ;
+    brickframe:uuid "1312f0e4-4df4-3469-8177-a86f87b40796" .
+
+bldg:WELL.ZONE.AHU01.RM203.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM203.Zone Air Temp Setpoint" ;
+    brickframe:uuid "110eb5bb-f232-36d5-8ad5-7359f7340bc0" .
+
+bldg:WELL.ZONE.AHU01.RM203.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM203.Zone Reheat Valve Command" ;
+    brickframe:uuid "790b3ca4-e7fd-3145-89eb-8ad5fbb22178" .
+
+bldg:WELL.ZONE.AHU01.RM205.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM205.Zone Air Damper Command" ;
+    brickframe:uuid "69825b98-c84d-3e75-988a-66f0a05ee7ba" .
+
+bldg:WELL.ZONE.AHU01.RM205.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM205.Zone Air Temp" ;
+    brickframe:uuid "2a52c6ad-5dee-3a52-ba4c-74930e49c48a" .
+
+bldg:WELL.ZONE.AHU01.RM205.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM205.Zone Air Temp Setpoint" ;
+    brickframe:uuid "541a1b86-22dc-31b5-929a-048cd89ca8d9" .
+
+bldg:WELL.ZONE.AHU01.RM205.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM205.Zone Reheat Valve Command" ;
+    brickframe:uuid "49d2d984-e458-3ce1-8bc1-156ad9562b86" .
+
+bldg:WELL.ZONE.AHU01.RM207.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM207.Zone Air Damper Command" ;
+    brickframe:uuid "50693fb4-20ce-3efc-8630-17f9123c795b" .
+
+bldg:WELL.ZONE.AHU01.RM207.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM207.Zone Air Temp" ;
+    brickframe:uuid "c7fdc37f-1a82-30ce-87eb-701021acd39f" .
+
+bldg:WELL.ZONE.AHU01.RM207.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM207.Zone Air Temp Setpoint" ;
+    brickframe:uuid "2ed1536a-5782-3fe7-801e-8dd82bfcb9ab" .
+
+bldg:WELL.ZONE.AHU01.RM207.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM207.Zone Reheat Valve Command" ;
+    brickframe:uuid "93b88abb-000b-377a-bf0c-21abfe429797" .
+
+bldg:WELL.ZONE.AHU01.RM208.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM208.Zone Air Damper Command" ;
+    brickframe:uuid "67ef0b52-63cf-3670-b9b0-0baae009278e" .
+
+bldg:WELL.ZONE.AHU01.RM208.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM208.Zone Air Temp" ;
+    brickframe:uuid "38e9822e-a533-3a7d-a9bf-d35866080b8b" .
+
+bldg:WELL.ZONE.AHU01.RM208.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM208.Zone Air Temp Setpoint" ;
+    brickframe:uuid "307eb1d4-e710-34b0-8cb5-3bb455ca607c" .
+
+bldg:WELL.ZONE.AHU01.RM208.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM208.Zone Reheat Valve Command" ;
+    brickframe:uuid "7e432a62-7854-389c-bb31-513468678adc" .
+
+bldg:WELL.ZONE.AHU01.RM209.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM209.Zone Air Damper Command" ;
+    brickframe:uuid "93f0a79f-a7c1-3eac-9cfa-4d48e6059cd8" .
+
+bldg:WELL.ZONE.AHU01.RM209.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM209.Zone Air Temp" ;
+    brickframe:uuid "1e96ecab-6d0a-33ff-8762-e67a82e79b6c" .
+
+bldg:WELL.ZONE.AHU01.RM209.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM209.Zone Air Temp Setpoint" ;
+    brickframe:uuid "1c99ce06-3d27-3e38-8cbf-eb216d3ea9ff" .
+
+bldg:WELL.ZONE.AHU01.RM209.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM209.Zone Reheat Valve Command" ;
+    brickframe:uuid "491895f7-c26b-37cc-9b11-648a5aafad10" .
+
+bldg:WELL.ZONE.AHU01.RM211.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM211.Zone Air Damper Command" ;
+    brickframe:uuid "2a056b13-3f62-3094-9cd2-3a35ec18acff" .
+
+bldg:WELL.ZONE.AHU01.RM211.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM211.Zone Air Temp" ;
+    brickframe:uuid "7fb8c600-7a16-31c2-b61f-fba39e9ecb50" .
+
+bldg:WELL.ZONE.AHU01.RM211.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM211.Zone Air Temp Setpoint" ;
+    brickframe:uuid "d2fdf988-5402-3d9a-af12-9ce274fe551a" .
+
+bldg:WELL.ZONE.AHU01.RM211.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM211.Zone Reheat Valve Command" ;
+    brickframe:uuid "c43728b3-d721-3f55-a9cf-796cbd57fcb2" .
+
+bldg:WELL.ZONE.AHU01.RM212.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM212.Zone Air Damper Command" ;
+    brickframe:uuid "bbcc721c-7d2c-39a9-a612-30a4367bf72b" .
+
+bldg:WELL.ZONE.AHU01.RM212.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM212.Zone Air Temp" ;
+    brickframe:uuid "eb163d68-9671-3aaf-bbe4-8b46df5316c2" .
+
+bldg:WELL.ZONE.AHU01.RM212.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM212.Zone Air Temp Setpoint" ;
+    brickframe:uuid "55c82c05-5363-3b48-8c79-9acf9de4c1de" .
+
+bldg:WELL.ZONE.AHU01.RM212.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM212.Zone Reheat Valve Command" ;
+    brickframe:uuid "2f294881-6066-3bbd-a3b5-53a7e07e0f2d" .
+
+bldg:WELL.ZONE.AHU01.RM216.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM216.Zone Air Damper Command" ;
+    brickframe:uuid "c19314d9-2912-3e03-83a3-e7a85a46185e" .
+
+bldg:WELL.ZONE.AHU01.RM216.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM216.Zone Air Temp" ;
+    brickframe:uuid "1b41e9e6-ee58-3ea3-9a5c-d0d37ae47017" .
+
+bldg:WELL.ZONE.AHU01.RM216.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM216.Zone Air Temp Setpoint" ;
+    brickframe:uuid "1df86eae-28bb-35fb-a34e-41ac0bf5ff8b" .
+
+bldg:WELL.ZONE.AHU01.RM216.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM216.Zone Reheat Valve Command" ;
+    brickframe:uuid "aa0ddeb3-32b2-37ce-b62c-5065451af78b" .
+
+bldg:WELL.ZONE.AHU01.RM217.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM217.Zone Air Temp Setpoint" ;
+    brickframe:uuid "9abbeba9-f3b0-3fd7-871a-1d484c21de96" .
+
+bldg:WELL.ZONE.AHU01.RM220.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM220.Zone Air Damper Command" ;
+    brickframe:uuid "fab38619-d9e6-338a-a3d6-9d0234669cb0" .
+
+bldg:WELL.ZONE.AHU01.RM220.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM220.Zone Air Temp" ;
+    brickframe:uuid "97ed6afb-de46-3c60-b671-c4af3f0a95f4" .
+
+bldg:WELL.ZONE.AHU01.RM220.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM220.Zone Air Temp Setpoint" ;
+    brickframe:uuid "7bf6b70b-bc77-3bde-8aa1-7af6852d17e5" .
+
+bldg:WELL.ZONE.AHU01.RM220.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM220.Zone Reheat Valve Command" ;
+    brickframe:uuid "c175ff71-4194-3f03-9f9b-69d9916f35a6" .
+
+bldg:WELL.ZONE.AHU01.RM221.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM221.Zone Air Damper Command" ;
+    brickframe:uuid "0303bafc-1d84-384f-9ff6-5fefeeeecd4d" .
+
+bldg:WELL.ZONE.AHU01.RM221.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM221.Zone Air Temp" ;
+    brickframe:uuid "b6ee9d7f-0ebb-30fa-bc3e-bd7d3cd0c5e0" .
+
+bldg:WELL.ZONE.AHU01.RM221.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM221.Zone Air Temp Setpoint" ;
+    brickframe:uuid "4003c75c-4cbd-36ae-87c0-75a80c898e2f" .
+
+bldg:WELL.ZONE.AHU01.RM221.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM221.Zone Reheat Valve Command" ;
+    brickframe:uuid "f8d189ec-30e8-31e5-8aec-5f0a76bdb25c" .
+
+bldg:WELL.ZONE.AHU01.RM226.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM226.Zone Air Damper Command" ;
+    brickframe:uuid "1dfc4f33-9cf1-306c-8e45-319ecdedc8d2" .
+
+bldg:WELL.ZONE.AHU01.RM226.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM226.Zone Air Temp" ;
+    brickframe:uuid "fdbf8684-34c8-3fef-bf29-3484a52cac00" .
+
+bldg:WELL.ZONE.AHU01.RM226.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM226.Zone Air Temp Setpoint" ;
+    brickframe:uuid "ddec47f9-c252-39d0-9725-ec6a7c9283d3" .
+
+bldg:WELL.ZONE.AHU01.RM226.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM226.Zone Reheat Valve Command" ;
+    brickframe:uuid "4ead6f25-718c-3380-bfeb-df87e18158ef" .
+
+bldg:WELL.ZONE.AHU01.RM229.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM229.Zone Air Damper Command" ;
+    brickframe:uuid "b8b156bc-b909-3276-a510-82e7bb192c1b" .
+
+bldg:WELL.ZONE.AHU01.RM229.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM229.Zone Air Temp" ;
+    brickframe:uuid "5a84a135-1759-30c9-add8-f43a237ede56" .
+
+bldg:WELL.ZONE.AHU01.RM229.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM229.Zone Air Temp Setpoint" ;
+    brickframe:uuid "63bdd74b-2d07-39df-b67b-e845b8268d13" .
+
+bldg:WELL.ZONE.AHU01.RM229.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM229.Zone Reheat Valve Command" ;
+    brickframe:uuid "89c7c17c-38c7-3aa8-8088-7fc241764ce7" .
+
+bldg:WELL.ZONE.AHU01.RM230.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM230.Zone Air Damper Command" ;
+    brickframe:uuid "68fad414-ebe7-35e1-b8a4-236e9621c80f" .
+
+bldg:WELL.ZONE.AHU01.RM230.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM230.Zone Air Temp" ;
+    brickframe:uuid "0ccc9a43-31c6-338d-a88c-8d8aeb381d1d" .
+
+bldg:WELL.ZONE.AHU01.RM230.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM230.Zone Air Temp Setpoint" ;
+    brickframe:uuid "c2951767-89c1-3b51-bc77-4ad54d393269" .
+
+bldg:WELL.ZONE.AHU01.RM230.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM230.Zone Reheat Valve Command" ;
+    brickframe:uuid "b68e9494-5340-352d-93c1-7f5b15c51c14" .
+
+bldg:WELL.ZONE.AHU01.RM233.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM233.Zone Air Damper Command" ;
+    brickframe:uuid "a80ed32c-a5ae-3913-9d43-88308f10e1a5" .
+
+bldg:WELL.ZONE.AHU01.RM233.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM233.Zone Air Temp" ;
+    brickframe:uuid "9dcd39cb-2362-335c-8ca6-5afe7db18e58" .
+
+bldg:WELL.ZONE.AHU01.RM233.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM233.Zone Air Temp Setpoint" ;
+    brickframe:uuid "f11ec359-136e-3aeb-84e5-c317d15a2af9" .
+
+bldg:WELL.ZONE.AHU01.RM233.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM233.Zone Reheat Valve Command" ;
+    brickframe:uuid "250f2850-9d0b-3b21-b82f-9ac98c5c7055" .
+
+bldg:WELL.ZONE.AHU01.RM234.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM234.Zone Air Damper Command" ;
+    brickframe:uuid "44648391-87e3-3011-89aa-634b86670a41" .
+
+bldg:WELL.ZONE.AHU01.RM234.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM234.Zone Air Temp" ;
+    brickframe:uuid "e2c2ac3f-27e0-3f7d-8bf9-34a909fdbf8b" .
+
+bldg:WELL.ZONE.AHU01.RM234.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM234.Zone Air Temp Setpoint" ;
+    brickframe:uuid "31d87e85-8f4d-357e-9a01-96e2b6e31889" .
+
+bldg:WELL.ZONE.AHU01.RM234.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM234.Zone Reheat Valve Command" ;
+    brickframe:uuid "29efc45f-02a2-3b41-886b-a6136e3163fe" .
+
+bldg:WELL.ZONE.AHU01.RM234A.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM234A.Zone Air Damper Command" ;
+    brickframe:uuid "dca4587f-9c25-360d-b56b-8ed463033e66" .
+
+bldg:WELL.ZONE.AHU01.RM234A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM234A.Zone Air Temp" ;
+    brickframe:uuid "21f05695-1e30-3c97-97c8-6f72652e8b49" .
+
+bldg:WELL.ZONE.AHU01.RM234A.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM234A.Zone Air Temp Setpoint" ;
+    brickframe:uuid "a46ac446-91fa-3389-a257-04c254957026" .
+
+bldg:WELL.ZONE.AHU01.RM234A.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM234A.Zone Reheat Valve Command" ;
+    brickframe:uuid "3939e2cd-7cf0-33df-9e22-7e1c8570449a" .
+
+bldg:WELL.ZONE.AHU01.RM235.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM235.Zone Air Damper Command" ;
+    brickframe:uuid "2653ed58-10a7-3ef7-8c93-adb6dbf375a0" .
+
+bldg:WELL.ZONE.AHU01.RM235.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM235.Zone Air Temp" ;
+    brickframe:uuid "82228e7a-c429-3b95-9509-be656c2c561f" .
+
+bldg:WELL.ZONE.AHU01.RM235.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM235.Zone Air Temp Setpoint" ;
+    brickframe:uuid "958e0386-ec8e-3897-92a4-1baa348b80ea" .
+
+bldg:WELL.ZONE.AHU01.RM235.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:WELL ;
+    brickframe:pointname "WELL.ZONE.AHU01.RM235.Zone Reheat Valve Command" ;
+    brickframe:uuid "f297d345-fc77-3a98-acc4-b7cb663bbbfa" .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+bldg:RM001A_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM001B_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM002A_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM002B_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM003_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM005_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM006_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM007A_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM007B_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM015A_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM015B_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM019A_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM019B_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM025_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM026_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM027_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM101_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM102C_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM103_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM105_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM106_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM107_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM109_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM111_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM115_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM119_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM121_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM123_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM125_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM126_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM127_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM129_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM201_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM202_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM203_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM205_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM207_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM208_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM209_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM211_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM212_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM216_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM217_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM220_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM221_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM226_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM229_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM230_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM233_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM234A_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM234_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:RM235_room a brick1:Room ;
+    brickframe:hasSite bldg:WELL .
+
+bldg:VAVRM001A a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM001A ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM001A.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM001A.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM001A.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM001B a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM001B ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM001B.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM001B.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM001B.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM002A a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM002A ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM002A.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM002A.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM002A.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM002B a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM002B ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM002B.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM002B.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM002B.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM003 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM003 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM003.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM003.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM003.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM005 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM005 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM005.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM005.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM005.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM006 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM006 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM006.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM006.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM006.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM007A a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM007A ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM007A.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM007A.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM007A.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM007B a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM007B ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM007B.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM007B.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM007B.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM015A a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM015A ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM015A.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM015A.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM015A.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM015B a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM015B ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM015B.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM015B.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM015B.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM019A a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM019A ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM019A.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM019A.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM019A.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM019B a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM019B ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM019B.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM019B.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM019B.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM025 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM025 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM025.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM025.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM025.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM026 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM026 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM026.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM026.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM026.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM027 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM027 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM027.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM027.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM027.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM101 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM101 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM101.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM101.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM101.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM102C a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM102C ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM102C.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM102C.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM102C.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM103 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM103 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM103.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM103.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM103.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM105 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM105 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM105.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM105.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM105.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM106 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM106 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM106.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM106.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM106.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM107 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM107 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM107.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM107.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM107.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM109 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM109 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM109.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM111 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM111 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM111.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM111.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM111.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM115 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM115 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM115.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM115.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM115.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM119 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM119 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM119.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM119.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM119.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM121 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM121 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM121.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM121.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM121.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM123 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM123 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM123.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM123.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM123.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM125 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM125 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM125.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM125.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM125.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM126 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM126 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM126.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM126.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM126.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM127 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM127 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM127.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM127.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM127.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM129 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM129 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM129.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM129.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM129.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM201 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM201 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM201.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM201.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM201.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM202 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM202 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM202.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM202.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM202.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM203 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM203 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM203.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM203.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM203.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM205 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM205 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM205.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM205.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM205.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM207 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM207 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM207.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM207.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM207.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM208 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM208 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM208.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM208.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM208.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM209 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM209 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM209.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM209.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM209.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM211 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM211 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM211.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM211.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM211.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM212 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM212 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM212.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM212.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM212.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM216 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM216 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM216.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM216.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM216.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM220 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM220 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM220.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM220.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM220.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM221 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM221 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM221.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM221.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM221.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM226 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM226 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM226.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM226.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM226.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM229 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM229 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM229.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM229.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM229.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM230 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM230 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM230.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM230.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM230.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM233 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM233 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM233.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM233.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM233.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM234 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM234 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM234.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM234.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM234.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM234A a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM234A ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM234A.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM234A.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM234A.Zone_Reheat_Valve_Command .
+
+bldg:VAVRM235 a brick1:VAV ;
+    brickframe:hasSite bldg:WELL ;
+    brick1:feeds bldg:RM235 ;
+    brick1:hasPoint bldg:WELL.ZONE.AHU01.RM235.Zone_Air_Temp,
+        bldg:WELL.ZONE.AHU01.RM235.Zone_Air_Temp_Setpoint,
+        bldg:WELL.ZONE.AHU01.RM235.Zone_Reheat_Valve_Command .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:WELL a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "43333" ;
+    brickframe:Country "US" .
+

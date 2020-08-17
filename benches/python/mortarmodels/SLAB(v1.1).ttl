@@ -1,0 +1,4579 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/SLAB#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:AH01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPoint bldg:SLAB.AHU.AH01.Cooling_Valve_Output ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AH02 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPoint bldg:SLAB.AHU.AH02.Cooling_Valve_Output,
+        bldg:SLAB.AHU.AH02.Outside_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AH03 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPoint bldg:SLAB.AHU.AH03.Cooling_Valve_Output,
+        bldg:SLAB.AHU.AH03.Outside_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AH04 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPoint bldg:SLAB.AHU.AH04.Cooling_Valve_Output,
+        bldg:SLAB.AHU.AH04.Outside_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:VAVRM1012,
+        bldg:VAVRM1012A,
+        bldg:VAVRM1013,
+        bldg:VAVRM1017,
+        bldg:VAVRM1021,
+        bldg:VAVRM1023,
+        bldg:VAVRM1023_1,
+        bldg:VAVRM1023_3,
+        bldg:VAVRM1024,
+        bldg:VAVRM1026,
+        bldg:VAVRM1028,
+        bldg:VAVRM1030,
+        bldg:VAVRM1033A,
+        bldg:VAVRM1034,
+        bldg:VAVRM1034_2,
+        bldg:VAVRM1035,
+        bldg:VAVRM2033A,
+        bldg:VAVRM2033D,
+        bldg:VAVRM2037,
+        bldg:VAVRM2041A,
+        bldg:VAVRM2041E,
+        bldg:VAVRM2041W,
+        bldg:VAVRM3033A,
+        bldg:VAVRM3033D,
+        bldg:VAVRM3037,
+        bldg:VAVRM3041E,
+        bldg:VAVRM3041N,
+        bldg:VAVRM3041W ;
+    brick1:hasPoint bldg:SLAB.AHU.AHU01.CCV,
+        bldg:SLAB.AHU.AHU01.Heating_Valve_Output,
+        bldg:SLAB.AHU.AHU01.Mixed_Air_Temp,
+        bldg:SLAB.AHU.AHU01.Return_Air_Temp,
+        bldg:SLAB.AHU.AHU01.SUPFLOW,
+        bldg:SLAB.AHU.AHU01.Supply_Air_Temp,
+        bldg:SLAB.AHU.AHU01.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU02 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:VAVRM1007,
+        bldg:VAVRM1007_1,
+        bldg:VAVRM1007_2,
+        bldg:VAVRM1029,
+        bldg:VAVRM1031,
+        bldg:VAVRM1031A,
+        bldg:VAVRM1036,
+        bldg:VAVRM1051,
+        bldg:VAVRM1054,
+        bldg:VAVRM1055,
+        bldg:VAVRM1059,
+        bldg:VAVRM1060,
+        bldg:VAVRM1060A,
+        bldg:VAVRM1060B,
+        bldg:VAVRM1061,
+        bldg:VAVRM1064,
+        bldg:VAVRM1066,
+        bldg:VAVRM11_17A,
+        bldg:VAVRM12,
+        bldg:VAVRM17_21,
+        bldg:VAVRM18,
+        bldg:VAVRM18A,
+        bldg:VAVRM2,
+        bldg:VAVRM20,
+        bldg:VAVRM2002A,
+        bldg:VAVRM2002B,
+        bldg:VAVRM2007A,
+        bldg:VAVRM2007B,
+        bldg:VAVRM2011,
+        bldg:VAVRM2012,
+        bldg:VAVRM2015,
+        bldg:VAVRM2016,
+        bldg:VAVRM2017,
+        bldg:VAVRM2018,
+        bldg:VAVRM2020,
+        bldg:VAVRM2021,
+        bldg:VAVRM2036,
+        bldg:VAVRM2051,
+        bldg:VAVRM2054,
+        bldg:VAVRM2055,
+        bldg:VAVRM2059,
+        bldg:VAVRM2060,
+        bldg:VAVRM2061,
+        bldg:VAVRM2064,
+        bldg:VAVRM2066,
+        bldg:VAVRM2075,
+        bldg:VAVRM30,
+        bldg:VAVRM3002,
+        bldg:VAVRM3002A,
+        bldg:VAVRM3002B,
+        bldg:VAVRM3007A,
+        bldg:VAVRM3007B,
+        bldg:VAVRM3007C,
+        bldg:VAVRM3011,
+        bldg:VAVRM3012,
+        bldg:VAVRM3015,
+        bldg:VAVRM3016,
+        bldg:VAVRM3018,
+        bldg:VAVRM3019,
+        bldg:VAVRM3019A,
+        bldg:VAVRM3020C,
+        bldg:VAVRM3021,
+        bldg:VAVRM3038,
+        bldg:VAVRM3051,
+        bldg:VAVRM3054,
+        bldg:VAVRM3055,
+        bldg:VAVRM3059,
+        bldg:VAVRM3060,
+        bldg:VAVRM3061,
+        bldg:VAVRM3062,
+        bldg:VAVRM3066,
+        bldg:VAVRM3068,
+        bldg:VAVRM31,
+        bldg:VAVRM31A,
+        bldg:VAVRM31B,
+        bldg:VAVRM31C,
+        bldg:VAVRM31D,
+        bldg:VAVRM31E,
+        bldg:VAVRM31F ;
+    brick1:hasPoint bldg:SLAB.AHU.AHU02.CCV,
+        bldg:SLAB.AHU.AHU02.Heating_Valve_Output,
+        bldg:SLAB.AHU.AHU02.Supply_Air_Temp,
+        bldg:SLAB.AHU.AHU02.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU03 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:VAVRM1067,
+        bldg:VAVRM1068,
+        bldg:VAVRM1071,
+        bldg:VAVRM1072,
+        bldg:VAVRM1075,
+        bldg:VAVRM1076,
+        bldg:VAVRM2005,
+        bldg:VAVRM2008A,
+        bldg:VAVRM2008B,
+        bldg:VAVRM2008C,
+        bldg:VAVRM2067,
+        bldg:VAVRM2068,
+        bldg:VAVRM2071,
+        bldg:VAVRM2072,
+        bldg:VAVRM2076,
+        bldg:VAVRM3017,
+        bldg:VAVRM3067,
+        bldg:VAVRM3068A,
+        bldg:VAVRM3068C,
+        bldg:VAVRM3068E,
+        bldg:VAVRM3071,
+        bldg:VAVRM3072,
+        bldg:VAVRM3075,
+        bldg:VAVRM3076,
+        bldg:VAVRM3076B_C,
+        bldg:VAVRM3076D,
+        bldg:VAVRM3078 ;
+    brick1:hasPoint bldg:SLAB.AHU.AHU03.CCV,
+        bldg:SLAB.AHU.AHU03.Heating_Valve_Output,
+        bldg:SLAB.AHU.AHU03.Supply_Air_Temp,
+        bldg:SLAB.AHU.AHU03.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU04 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:VAVRM1008_1,
+        bldg:VAVRM1008_2,
+        bldg:VAVRM1008_3,
+        bldg:VAVRM1009,
+        bldg:VAVRM1079,
+        bldg:VAVRM1080,
+        bldg:VAVRM1083,
+        bldg:VAVRM1084,
+        bldg:VAVRM1087,
+        bldg:VAVRM1088,
+        bldg:VAVRM1089,
+        bldg:VAVRM1090,
+        bldg:VAVRM1093,
+        bldg:VAVRM1094,
+        bldg:VAVRM1096,
+        bldg:VAVRM1096B,
+        bldg:VAVRM1096C,
+        bldg:VAVRM2009,
+        bldg:VAVRM2078,
+        bldg:VAVRM2079,
+        bldg:VAVRM2080B,
+        bldg:VAVRM2083,
+        bldg:VAVRM2084,
+        bldg:VAVRM2087,
+        bldg:VAVRM2088,
+        bldg:VAVRM2088A1,
+        bldg:VAVRM2088A2,
+        bldg:VAVRM2088A3,
+        bldg:VAVRM2088A4,
+        bldg:VAVRM2089,
+        bldg:VAVRM2090,
+        bldg:VAVRM2094,
+        bldg:VAVRM2096,
+        bldg:VAVRM2096A,
+        bldg:VAVRM2096B,
+        bldg:VAVRM2098,
+        bldg:VAVRM3008A,
+        bldg:VAVRM3008B,
+        bldg:VAVRM3008C,
+        bldg:VAVRM3009,
+        bldg:VAVRM3079,
+        bldg:VAVRM3080,
+        bldg:VAVRM3080A_C,
+        bldg:VAVRM3080B,
+        bldg:VAVRM3080B_D,
+        bldg:VAVRM3083,
+        bldg:VAVRM3084A,
+        bldg:VAVRM3085,
+        bldg:VAVRM3088,
+        bldg:VAVRM3089,
+        bldg:VAVRM3089A,
+        bldg:VAVRM3090,
+        bldg:VAVRM3093,
+        bldg:VAVRM3094,
+        bldg:VAVRM3096A,
+        bldg:VAVRM3096B ;
+    brick1:hasPoint bldg:SLAB.AHU.AHU04.CCV,
+        bldg:SLAB.AHU.AHU04.Heating_Valve_Output,
+        bldg:SLAB.AHU.AHU04.Supply_Air_Temp,
+        bldg:SLAB.AHU.AHU04.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:SciLab_ChilledWater_Demand_kBtu a brick_v_1_0_2:Electric_Meter ;
+    brickframe:pointname "SciLab_ChilledWater_Demand_kBtu" ;
+    brickframe:uuid "519a5588-e7cc-3f2c-9cf9-b97e9182ed7b" ;
+    brick1:isPointOf bldg:chiller .
+
+bldg:SciLab_Electricity_Demand_kBtu a brick_v_1_0_2:Building_Electric_Meter ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SciLab_Electricity_Demand_kBtu" ;
+    brickframe:uuid "911fc364-124b-3885-888a-031ad0b7a7da" .
+
+bldg:damperVAVRM1012 a brick1:Damper ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM1012.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1012 .
+
+bldg:damperVAVRM1012A a brick1:Damper ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM1012A.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1012A .
+
+bldg:damperVAVRM1013 a brick1:Damper ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM1013.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1013 .
+
+bldg:damperVAVRM1017 a brick1:Damper ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM1017.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1017 .
+
+bldg:damperVAVRM1021 a brick1:Damper ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM1021.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1021 .
+
+bldg:damperVAVRM1023 a brick1:Damper ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM1023.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1023 .
+
+bldg:damperVAVRM1024 a brick1:Damper ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM1024.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1024 .
+
+bldg:damperVAVRM1026 a brick1:Damper ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM1026.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1026 .
+
+bldg:damperVAVRM1028 a brick1:Damper ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM1028.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1028 .
+
+bldg:damperVAVRM1030 a brick1:Damper ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM1030.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1030 .
+
+bldg:damperVAVRM1034 a brick1:Damper ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM1034.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1034 .
+
+bldg:damperVAVRM1035 a brick1:Damper ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM1035.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM1035 .
+
+bldg:damperVAVRM2033A a brick1:Damper ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM2033A.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2033A .
+
+bldg:damperVAVRM2033D a brick1:Damper ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM2033D.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2033D .
+
+bldg:damperVAVRM2041A a brick1:Damper ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM2041A.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2041A .
+
+bldg:damperVAVRM2041E a brick1:Damper ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM2041E.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2041E .
+
+bldg:damperVAVRM2041W a brick1:Damper ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM2041W.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM2041W .
+
+bldg:damperVAVRM3033A a brick1:Damper ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM3033A.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM3033A .
+
+bldg:damperVAVRM3033D a brick1:Damper ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM3033D.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM3033D .
+
+bldg:damperVAVRM3041W a brick1:Damper ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM3041W.Zone_Air_Damper_Command ;
+    brick1:isPartOf bldg:VAVRM3041W .
+
+bldg:floor1 a brick1:Floor ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1007_1_room,
+        bldg:RM1007_2_room,
+        bldg:RM1007_room,
+        bldg:RM1008_1_room,
+        bldg:RM1008_2_room,
+        bldg:RM1008_3_room,
+        bldg:RM1009_room,
+        bldg:RM1012A_room,
+        bldg:RM1012_room,
+        bldg:RM1013_room,
+        bldg:RM1017_room,
+        bldg:RM1021_room,
+        bldg:RM1023_1_room,
+        bldg:RM1023_3_room,
+        bldg:RM1023_room,
+        bldg:RM1024_room,
+        bldg:RM1026_room,
+        bldg:RM1028_room,
+        bldg:RM1029_room,
+        bldg:RM1030_room,
+        bldg:RM1031A_room,
+        bldg:RM1031_room,
+        bldg:RM1033A_room,
+        bldg:RM1034_2_room,
+        bldg:RM1034_room,
+        bldg:RM1035_room,
+        bldg:RM1036_room,
+        bldg:RM1051_room,
+        bldg:RM1054_room,
+        bldg:RM1055_room,
+        bldg:RM1059_room,
+        bldg:RM1060A_room,
+        bldg:RM1060B_room,
+        bldg:RM1060_room,
+        bldg:RM1061_room,
+        bldg:RM1064_room,
+        bldg:RM1066_room,
+        bldg:RM1067_room,
+        bldg:RM1068_room,
+        bldg:RM1071_room,
+        bldg:RM1072_room,
+        bldg:RM1075_room,
+        bldg:RM1076_room,
+        bldg:RM1079_room,
+        bldg:RM1080_room,
+        bldg:RM1083_room,
+        bldg:RM1084_room,
+        bldg:RM1087_room,
+        bldg:RM1088_room,
+        bldg:RM1089_room,
+        bldg:RM1090_room,
+        bldg:RM1093_room,
+        bldg:RM1094_room,
+        bldg:RM1096B_room,
+        bldg:RM1096C_room,
+        bldg:RM1096_room,
+        bldg:RM11_17A_room,
+        bldg:RM12_room,
+        bldg:RM17_21_room,
+        bldg:RM18A_room,
+        bldg:RM18_room .
+
+bldg:floor2 a brick1:Floor ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2002A_room,
+        bldg:RM2002B_room,
+        bldg:RM2005_room,
+        bldg:RM2007A_room,
+        bldg:RM2007B_room,
+        bldg:RM2008A_room,
+        bldg:RM2008B_room,
+        bldg:RM2008C_room,
+        bldg:RM2009_room,
+        bldg:RM2011_room,
+        bldg:RM2012_room,
+        bldg:RM2015_room,
+        bldg:RM2016_room,
+        bldg:RM2017_room,
+        bldg:RM2018_room,
+        bldg:RM2020_room,
+        bldg:RM2021_room,
+        bldg:RM2033A_room,
+        bldg:RM2033D_room,
+        bldg:RM2036_room,
+        bldg:RM2037_room,
+        bldg:RM2041A_room,
+        bldg:RM2041E_room,
+        bldg:RM2041W_room,
+        bldg:RM2051_room,
+        bldg:RM2054_room,
+        bldg:RM2055_room,
+        bldg:RM2059_room,
+        bldg:RM2060_room,
+        bldg:RM2061_room,
+        bldg:RM2064_room,
+        bldg:RM2066_room,
+        bldg:RM2067_room,
+        bldg:RM2068_room,
+        bldg:RM2071_room,
+        bldg:RM2072_room,
+        bldg:RM2075_room,
+        bldg:RM2076_room,
+        bldg:RM2078_room,
+        bldg:RM2079_room,
+        bldg:RM2080B_room,
+        bldg:RM2083_room,
+        bldg:RM2084_room,
+        bldg:RM2087_room,
+        bldg:RM2088A1_room,
+        bldg:RM2088A2_room,
+        bldg:RM2088A3_room,
+        bldg:RM2088A4_room,
+        bldg:RM2088_room,
+        bldg:RM2089_room,
+        bldg:RM2090_room,
+        bldg:RM2094_room,
+        bldg:RM2096A_room,
+        bldg:RM2096B_room,
+        bldg:RM2096_room,
+        bldg:RM2098_room,
+        bldg:RM20_room,
+        bldg:RM2_room .
+
+bldg:floor3 a brick1:Floor ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3002A_room,
+        bldg:RM3002B_room,
+        bldg:RM3002_room,
+        bldg:RM3007A_room,
+        bldg:RM3007B_room,
+        bldg:RM3007C_room,
+        bldg:RM3008A_room,
+        bldg:RM3008B_room,
+        bldg:RM3008C_room,
+        bldg:RM3009_room,
+        bldg:RM3011_room,
+        bldg:RM3012_room,
+        bldg:RM3015_room,
+        bldg:RM3016_room,
+        bldg:RM3017_room,
+        bldg:RM3018_room,
+        bldg:RM3019A_room,
+        bldg:RM3019_room,
+        bldg:RM3020C_room,
+        bldg:RM3021_room,
+        bldg:RM3033A_room,
+        bldg:RM3033D_room,
+        bldg:RM3037_room,
+        bldg:RM3038_room,
+        bldg:RM3041E_room,
+        bldg:RM3041N_room,
+        bldg:RM3041W_room,
+        bldg:RM3051_room,
+        bldg:RM3054_room,
+        bldg:RM3055_room,
+        bldg:RM3059_room,
+        bldg:RM3060_room,
+        bldg:RM3061_room,
+        bldg:RM3062_room,
+        bldg:RM3066_room,
+        bldg:RM3067_room,
+        bldg:RM3068A_room,
+        bldg:RM3068C_room,
+        bldg:RM3068E_room,
+        bldg:RM3068_room,
+        bldg:RM3071_room,
+        bldg:RM3072_room,
+        bldg:RM3075_room,
+        bldg:RM3076B_C_room,
+        bldg:RM3076D_room,
+        bldg:RM3076_room,
+        bldg:RM3078_room,
+        bldg:RM3079_room,
+        bldg:RM3080A_C_room,
+        bldg:RM3080B_D_room,
+        bldg:RM3080B_room,
+        bldg:RM3080_room,
+        bldg:RM3083_room,
+        bldg:RM3084A_room,
+        bldg:RM3085_room,
+        bldg:RM3088_room,
+        bldg:RM3089A_room,
+        bldg:RM3089_room,
+        bldg:RM3090_room,
+        bldg:RM3093_room,
+        bldg:RM3094_room,
+        bldg:RM3096A_room,
+        bldg:RM3096B_room,
+        bldg:RM30_room,
+        bldg:RM31A_room,
+        bldg:RM31B_room,
+        bldg:RM31C_room,
+        bldg:RM31D_room,
+        bldg:RM31E_room,
+        bldg:RM31F_room,
+        bldg:RM31_room .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:RM1007 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1007_room .
+
+bldg:RM1007_1 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1007_1_room .
+
+bldg:RM1007_2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1007_2_room .
+
+bldg:RM1008_1 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1008_1_room .
+
+bldg:RM1008_2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1008_2_room .
+
+bldg:RM1008_3 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1008_3_room .
+
+bldg:RM1009 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1009_room .
+
+bldg:RM1012 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1012_room .
+
+bldg:RM1012A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1012A_room .
+
+bldg:RM1013 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1013_room .
+
+bldg:RM1017 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1017_room .
+
+bldg:RM1021 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1021_room .
+
+bldg:RM1023 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1023_room .
+
+bldg:RM1023_1 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1023_1_room .
+
+bldg:RM1023_3 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1023_3_room .
+
+bldg:RM1024 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1024_room .
+
+bldg:RM1026 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1026_room .
+
+bldg:RM1028 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1028_room .
+
+bldg:RM1029 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1029_room .
+
+bldg:RM1030 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1030_room .
+
+bldg:RM1031 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1031_room .
+
+bldg:RM1031A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1031A_room .
+
+bldg:RM1033A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1033A_room .
+
+bldg:RM1034 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1034_room .
+
+bldg:RM1034_2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1034_2_room .
+
+bldg:RM1035 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1035_room .
+
+bldg:RM1036 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1036_room .
+
+bldg:RM1051 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1051_room .
+
+bldg:RM1054 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1054_room .
+
+bldg:RM1055 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1055_room .
+
+bldg:RM1059 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1059_room .
+
+bldg:RM1060 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1060_room .
+
+bldg:RM1060A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1060A_room .
+
+bldg:RM1060B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1060B_room .
+
+bldg:RM1061 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1061_room .
+
+bldg:RM1064 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1064_room .
+
+bldg:RM1066 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1066_room .
+
+bldg:RM1067 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1067_room .
+
+bldg:RM1068 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1068_room .
+
+bldg:RM1071 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1071_room .
+
+bldg:RM1072 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1072_room .
+
+bldg:RM1075 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1075_room .
+
+bldg:RM1076 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1076_room .
+
+bldg:RM1079 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1079_room .
+
+bldg:RM1080 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1080_room .
+
+bldg:RM1083 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1083_room .
+
+bldg:RM1084 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1084_room .
+
+bldg:RM1087 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1087_room .
+
+bldg:RM1088 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1088_room .
+
+bldg:RM1089 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1089_room .
+
+bldg:RM1090 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1090_room .
+
+bldg:RM1093 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1093_room .
+
+bldg:RM1094 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1094_room .
+
+bldg:RM1096 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1096_room .
+
+bldg:RM1096B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1096B_room .
+
+bldg:RM1096C a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM1096C_room .
+
+bldg:RM11_17A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM11_17A_room .
+
+bldg:RM12 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM12_room .
+
+bldg:RM17_21 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM17_21_room .
+
+bldg:RM18 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM18_room .
+
+bldg:RM18A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM18A_room .
+
+bldg:RM2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2_room .
+
+bldg:RM20 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM20_room .
+
+bldg:RM2002A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2002A_room .
+
+bldg:RM2002B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2002B_room .
+
+bldg:RM2005 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2005_room .
+
+bldg:RM2007A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2007A_room .
+
+bldg:RM2007B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2007B_room .
+
+bldg:RM2008A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2008A_room .
+
+bldg:RM2008B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2008B_room .
+
+bldg:RM2008C a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2008C_room .
+
+bldg:RM2009 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2009_room .
+
+bldg:RM2011 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2011_room .
+
+bldg:RM2012 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2012_room .
+
+bldg:RM2015 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2015_room .
+
+bldg:RM2016 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2016_room .
+
+bldg:RM2017 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2017_room .
+
+bldg:RM2018 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2018_room .
+
+bldg:RM2020 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2020_room .
+
+bldg:RM2021 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2021_room .
+
+bldg:RM2033A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2033A_room .
+
+bldg:RM2033D a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2033D_room .
+
+bldg:RM2036 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2036_room .
+
+bldg:RM2037 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2037_room .
+
+bldg:RM2041A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2041A_room .
+
+bldg:RM2041E a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2041E_room .
+
+bldg:RM2041W a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2041W_room .
+
+bldg:RM2051 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2051_room .
+
+bldg:RM2054 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2054_room .
+
+bldg:RM2055 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2055_room .
+
+bldg:RM2059 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2059_room .
+
+bldg:RM2060 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2060_room .
+
+bldg:RM2061 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2061_room .
+
+bldg:RM2064 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2064_room .
+
+bldg:RM2066 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2066_room .
+
+bldg:RM2067 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2067_room .
+
+bldg:RM2068 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2068_room .
+
+bldg:RM2071 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2071_room .
+
+bldg:RM2072 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2072_room .
+
+bldg:RM2075 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2075_room .
+
+bldg:RM2076 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2076_room .
+
+bldg:RM2078 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2078_room .
+
+bldg:RM2079 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2079_room .
+
+bldg:RM2080B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2080B_room .
+
+bldg:RM2083 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2083_room .
+
+bldg:RM2084 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2084_room .
+
+bldg:RM2087 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2087_room .
+
+bldg:RM2088 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2088_room .
+
+bldg:RM2088A1 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2088A1_room .
+
+bldg:RM2088A2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2088A2_room .
+
+bldg:RM2088A3 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2088A3_room .
+
+bldg:RM2088A4 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2088A4_room .
+
+bldg:RM2089 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2089_room .
+
+bldg:RM2090 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2090_room .
+
+bldg:RM2094 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2094_room .
+
+bldg:RM2096 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2096_room .
+
+bldg:RM2096A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2096A_room .
+
+bldg:RM2096B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2096B_room .
+
+bldg:RM2098 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM2098_room .
+
+bldg:RM30 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM30_room .
+
+bldg:RM3002 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3002_room .
+
+bldg:RM3002A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3002A_room .
+
+bldg:RM3002B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3002B_room .
+
+bldg:RM3007A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3007A_room .
+
+bldg:RM3007B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3007B_room .
+
+bldg:RM3007C a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3007C_room .
+
+bldg:RM3008A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3008A_room .
+
+bldg:RM3008B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3008B_room .
+
+bldg:RM3008C a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3008C_room .
+
+bldg:RM3009 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3009_room .
+
+bldg:RM3011 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3011_room .
+
+bldg:RM3012 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3012_room .
+
+bldg:RM3015 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3015_room .
+
+bldg:RM3016 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3016_room .
+
+bldg:RM3017 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3017_room .
+
+bldg:RM3018 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3018_room .
+
+bldg:RM3019 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3019_room .
+
+bldg:RM3019A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3019A_room .
+
+bldg:RM3020C a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3020C_room .
+
+bldg:RM3021 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3021_room .
+
+bldg:RM3033A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3033A_room .
+
+bldg:RM3033D a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3033D_room .
+
+bldg:RM3037 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3037_room .
+
+bldg:RM3038 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3038_room .
+
+bldg:RM3041E a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3041E_room .
+
+bldg:RM3041N a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3041N_room .
+
+bldg:RM3041W a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3041W_room .
+
+bldg:RM3051 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3051_room .
+
+bldg:RM3054 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3054_room .
+
+bldg:RM3055 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3055_room .
+
+bldg:RM3059 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3059_room .
+
+bldg:RM3060 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3060_room .
+
+bldg:RM3061 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3061_room .
+
+bldg:RM3062 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3062_room .
+
+bldg:RM3066 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3066_room .
+
+bldg:RM3067 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3067_room .
+
+bldg:RM3068 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3068_room .
+
+bldg:RM3068A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3068A_room .
+
+bldg:RM3068C a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3068C_room .
+
+bldg:RM3068E a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3068E_room .
+
+bldg:RM3071 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3071_room .
+
+bldg:RM3072 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3072_room .
+
+bldg:RM3075 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3075_room .
+
+bldg:RM3076 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3076_room .
+
+bldg:RM3076B_C a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3076B_C_room .
+
+bldg:RM3076D a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3076D_room .
+
+bldg:RM3078 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3078_room .
+
+bldg:RM3079 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3079_room .
+
+bldg:RM3080 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3080_room .
+
+bldg:RM3080A_C a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3080A_C_room .
+
+bldg:RM3080B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3080B_room .
+
+bldg:RM3080B_D a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3080B_D_room .
+
+bldg:RM3083 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3083_room .
+
+bldg:RM3084A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3084A_room .
+
+bldg:RM3085 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3085_room .
+
+bldg:RM3088 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3088_room .
+
+bldg:RM3089 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3089_room .
+
+bldg:RM3089A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3089A_room .
+
+bldg:RM3090 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3090_room .
+
+bldg:RM3093 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3093_room .
+
+bldg:RM3094 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3094_room .
+
+bldg:RM3096A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3096A_room .
+
+bldg:RM3096B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM3096B_room .
+
+bldg:RM31 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM31_room .
+
+bldg:RM31A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM31A_room .
+
+bldg:RM31B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM31B_room .
+
+bldg:RM31C a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM31C_room .
+
+bldg:RM31D a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM31D_room .
+
+bldg:RM31E a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM31E_room .
+
+bldg:RM31F a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPart bldg:RM31F_room .
+
+bldg:SLAB.AHU.AH01.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.AHU.AH01.Cooling Valve Output" ;
+    brickframe:uuid "10743a2d-216b-35a0-8566-81b7b452fc8f" .
+
+bldg:SLAB.AHU.AH02.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.AHU.AH02.Cooling Valve Output" ;
+    brickframe:uuid "9425ea27-d85e-3d56-afeb-4fd4241c49cf" .
+
+bldg:SLAB.AHU.AH02.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.AHU.AH02.Outside Air Temp" ;
+    brickframe:uuid "3db67747-8b25-317a-914a-e52ee5da2e06" .
+
+bldg:SLAB.AHU.AH03.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.AHU.AH03.Cooling Valve Output" ;
+    brickframe:uuid "ee7f8a2b-589e-3f28-8fb2-ffbae6e90521" .
+
+bldg:SLAB.AHU.AH03.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.AHU.AH03.Outside Air Temp" ;
+    brickframe:uuid "d1f7cf2b-a66a-34e5-8278-1fe33fcfb635" .
+
+bldg:SLAB.AHU.AH04.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.AHU.AH04.Cooling Valve Output" ;
+    brickframe:uuid "9d5aad0f-5a82-32de-9975-64b48ef4bf60" .
+
+bldg:SLAB.AHU.AH04.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.AHU.AH04.Outside Air Temp" ;
+    brickframe:uuid "adfc7b16-c6e5-3f35-acff-c234fed38f6f" .
+
+bldg:SLAB.AHU.AHU01.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.AHU.AHU01.CCV" ;
+    brickframe:uuid "2f200faa-6258-3683-ab51-bde4d7431eab" .
+
+bldg:SLAB.AHU.AHU01.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.AHU.AHU01.Heating Valve Output" ;
+    brickframe:uuid "16cacb11-a570-389d-b49c-6c2e18c9a72c" .
+
+bldg:SLAB.AHU.AHU01.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.AHU.AHU01.Mixed Air Temp" ;
+    brickframe:uuid "9a7bde6d-4e3b-3441-b58a-347eebb3d5aa" .
+
+bldg:SLAB.AHU.AHU01.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.AHU.AHU01.Return Air Temp" ;
+    brickframe:uuid "7ac176a6-5bda-3d4f-bdcc-43424a256e1d" .
+
+bldg:SLAB.AHU.AHU01.SUPFLOW a brick_v_1_0_2:Supply_Air_flow ;
+    brickframe:pointname "SLAB.AHU.AHU01.SUPFLOW" ;
+    brickframe:uuid "55278fac-6fed-3c09-81e6-812f379c439b" .
+
+bldg:SLAB.AHU.AHU01.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.AHU.AHU01.Supply Air Temp" ;
+    brickframe:uuid "2483affe-4d89-3395-b5d7-3b5fd579a83d" .
+
+bldg:SLAB.AHU.AHU01.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.AHU.AHU01.Supply Air Temp Setpoint" ;
+    brickframe:uuid "33eebc69-0b3b-3eab-b210-9a3238c8c12a" .
+
+bldg:SLAB.AHU.AHU02.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.AHU.AHU02.CCV" ;
+    brickframe:uuid "0d60a77c-8908-3094-b67a-17ee7d505ca8" .
+
+bldg:SLAB.AHU.AHU02.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.AHU.AHU02.Heating Valve Output" ;
+    brickframe:uuid "8bc47c86-3b20-3e5b-a2e5-02b073e185d4" .
+
+bldg:SLAB.AHU.AHU02.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.AHU.AHU02.Supply Air Temp" ;
+    brickframe:uuid "57fbe301-f75f-3c35-8dd5-195ebe602a4b" .
+
+bldg:SLAB.AHU.AHU02.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.AHU.AHU02.Supply Air Temp Setpoint" ;
+    brickframe:uuid "63acd46f-3049-3db9-8e60-1edbc925bd6c" .
+
+bldg:SLAB.AHU.AHU03.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.AHU.AHU03.CCV" ;
+    brickframe:uuid "aefc8afc-5258-37e3-987e-ea236c28b2d0" .
+
+bldg:SLAB.AHU.AHU03.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.AHU.AHU03.Heating Valve Output" ;
+    brickframe:uuid "d71c323b-197a-3475-b74f-d33e77ae477e" .
+
+bldg:SLAB.AHU.AHU03.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.AHU.AHU03.Supply Air Temp" ;
+    brickframe:uuid "f5a0f03b-1277-39e5-b21a-8a05232dc10a" .
+
+bldg:SLAB.AHU.AHU03.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.AHU.AHU03.Supply Air Temp Setpoint" ;
+    brickframe:uuid "36dc3bb5-ceb7-3c79-abc3-c1b48d7b1a6a" .
+
+bldg:SLAB.AHU.AHU04.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.AHU.AHU04.CCV" ;
+    brickframe:uuid "e6ce7a04-61cb-3fb2-ab7f-db0cd3da5a02" .
+
+bldg:SLAB.AHU.AHU04.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.AHU.AHU04.Heating Valve Output" ;
+    brickframe:uuid "14830a24-db7a-3c87-987e-c60b568dbeac" .
+
+bldg:SLAB.AHU.AHU04.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.AHU.AHU04.Supply Air Temp" ;
+    brickframe:uuid "adf3d48e-c266-3d3c-a087-04225fc0d4a5" .
+
+bldg:SLAB.AHU.AHU04.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.AHU.AHU04.Supply Air Temp Setpoint" ;
+    brickframe:uuid "420ba433-352a-33fd-bf17-41b22f345061" .
+
+bldg:SLAB.CHW.Building_Chilled_Water_Flow a brick_v_1_0_2:Chilled_Water_Flow_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.CHW.Building Chilled Water Flow" ;
+    brickframe:uuid "f4217132-d41c-36a0-90bc-cea4f7818055" .
+
+bldg:SLAB.CHW.Building_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.CHW.Building Chilled Water Return Temp" ;
+    brickframe:uuid "8f2edceb-ae57-3092-801f-82a953ea956c" .
+
+bldg:SLAB.CHW.Building_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.CHW.Building Chilled Water Supply Temp" ;
+    brickframe:uuid "396e9702-e612-3195-a467-106a6d100201" .
+
+bldg:SLAB.CHW.CHWRDIFFSP a brick1:Chilled_Water_Differential_Pressure_Setpoint ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.CHW.CHWRDIFFSP" ;
+    brickframe:uuid "d552c42a-9f8f-3a0f-8a6d-16410188deee" .
+
+bldg:SLAB.CHW.Loop_Chilled_Water_Flow a brick_v_1_0_2:Chilled_Water_Flow_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.CHW.Loop Chilled Water Flow" ;
+    brickframe:uuid "26eae8b9-6a03-338b-9644-93229058b292" .
+
+bldg:SLAB.CHW.Loop_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.CHW.Loop Chilled Water Return Temp" ;
+    brickframe:uuid "3b1aa2d5-f2de-3df1-9222-8d01570bd82e" .
+
+bldg:SLAB.CHW.Loop_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.CHW.Loop Chilled Water Supply Temp" ;
+    brickframe:uuid "1a576339-12be-3f40-8437-b9bac753b8e6" .
+
+bldg:SLAB.CHW.Loop_Chilled_Water_Supply_TempSP a brick_v_1_0_2:Chilled_Water_Supply_Temperature_Setpoint ;
+    brickframe:pointname "SLAB.CHW.Loop Chilled Water Supply TempSP" ;
+    brickframe:uuid "7bb466a6-72d4-3822-b64a-a489f782f3be" .
+
+bldg:SLAB.CHW.Pump3_SPEED a brick_v_1_0_2:Speed_Status ;
+    brickframe:pointname "SLAB.CHW.Pump3_SPEED" ;
+    brickframe:uuid "09c6bcfb-8b1c-3cb5-b1ca-d58c471de12f" .
+
+bldg:SLAB.CHW.Pump4_SPEED a brick_v_1_0_2:Speed_Status ;
+    brickframe:pointname "SLAB.CHW.Pump4_SPEED" ;
+    brickframe:uuid "54f9e60d-6596-3139-88b9-754ca2d45c1a" .
+
+bldg:SLAB.ZONE.AHU01.RM1012.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1012.Zone Air Damper Command" ;
+    brickframe:uuid "1dbd200e-238a-3fd9-ae8a-924d2924e0e9" .
+
+bldg:SLAB.ZONE.AHU01.RM1012.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1012.Zone Air Temp" ;
+    brickframe:uuid "e9a16d6d-44bc-3f32-bb0e-63c28966a079" .
+
+bldg:SLAB.ZONE.AHU01.RM1012.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1012.Zone Air Temp Setpoint" ;
+    brickframe:uuid "ef9c3fb8-756d-3ce4-9d42-de589dd00687" .
+
+bldg:SLAB.ZONE.AHU01.RM1012.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1012.Zone Reheat Valve Command" ;
+    brickframe:uuid "3258cf31-979c-33a5-80d2-b7b7207a0fd7" .
+
+bldg:SLAB.ZONE.AHU01.RM1012.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1012.Zone Supply Air Flow" ;
+    brickframe:uuid "88e816cf-13b0-32ae-a778-6bae603b3801" .
+
+bldg:SLAB.ZONE.AHU01.RM1012A.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1012A.Zone Air Damper Command" ;
+    brickframe:uuid "7765e03a-0709-3d87-8ce4-46045ce02319" .
+
+bldg:SLAB.ZONE.AHU01.RM1012A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1012A.Zone Air Temp" ;
+    brickframe:uuid "d7e58d33-444a-346e-a95a-37bef201e6cc" .
+
+bldg:SLAB.ZONE.AHU01.RM1012A.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1012A.Zone Air Temp Setpoint" ;
+    brickframe:uuid "a7b99599-2d03-3aa1-b8df-746bb64db607" .
+
+bldg:SLAB.ZONE.AHU01.RM1012A.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1012A.Zone Reheat Valve Command" ;
+    brickframe:uuid "7dc60564-1827-31bc-919e-53def0f7ece9" .
+
+bldg:SLAB.ZONE.AHU01.RM1012A.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1012A.Zone Supply Air Flow" ;
+    brickframe:uuid "ed08edbd-9c1f-3533-99ee-60cc5e61aa60" .
+
+bldg:SLAB.ZONE.AHU01.RM1013.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1013.Zone Air Damper Command" ;
+    brickframe:uuid "dd3d294f-34d1-3f27-9ee6-2bfaf3fe20ec" .
+
+bldg:SLAB.ZONE.AHU01.RM1013.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1013.Zone Air Temp" ;
+    brickframe:uuid "09596256-872d-339e-86b2-c9122474ac36" .
+
+bldg:SLAB.ZONE.AHU01.RM1013.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1013.Zone Air Temp Setpoint" ;
+    brickframe:uuid "23990744-024a-3ad8-abd1-b1cc6518ae82" .
+
+bldg:SLAB.ZONE.AHU01.RM1013.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1013.Zone Reheat Valve Command" ;
+    brickframe:uuid "6b11c243-785c-32aa-b7f0-aea969a4050d" .
+
+bldg:SLAB.ZONE.AHU01.RM1013.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1013.Zone Supply Air Flow" ;
+    brickframe:uuid "f34cebd8-e3db-3dbb-8f3e-997e0f251b5d" .
+
+bldg:SLAB.ZONE.AHU01.RM1017.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1017.Zone Air Damper Command" ;
+    brickframe:uuid "f3533739-3896-368b-97fa-68e7cf343a18" .
+
+bldg:SLAB.ZONE.AHU01.RM1017.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1017.Zone Air Temp" ;
+    brickframe:uuid "ca055d7e-03b9-3ec8-9e46-c7057c401174" .
+
+bldg:SLAB.ZONE.AHU01.RM1017.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1017.Zone Air Temp Setpoint" ;
+    brickframe:uuid "d6382b53-3a98-31c4-8b73-82a2f86d5f1e" .
+
+bldg:SLAB.ZONE.AHU01.RM1017.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1017.Zone Reheat Valve Command" ;
+    brickframe:uuid "6a96e378-adeb-3134-8055-27acb05e71c9" .
+
+bldg:SLAB.ZONE.AHU01.RM1017.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1017.Zone Supply Air Flow" ;
+    brickframe:uuid "c2a527e0-cb41-3907-9f69-62dd63495757" .
+
+bldg:SLAB.ZONE.AHU01.RM1021.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1021.Zone Air Damper Command" ;
+    brickframe:uuid "1f195718-ec24-38db-98d4-1005ce9bf416" .
+
+bldg:SLAB.ZONE.AHU01.RM1021.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1021.Zone Air Temp" ;
+    brickframe:uuid "69f04e88-3d0a-36b8-a111-3191d7f7014e" .
+
+bldg:SLAB.ZONE.AHU01.RM1021.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1021.Zone Air Temp Setpoint" ;
+    brickframe:uuid "5bc4423b-bb30-3164-b1a4-e9757c7948f6" .
+
+bldg:SLAB.ZONE.AHU01.RM1021.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1021.Zone Reheat Valve Command" ;
+    brickframe:uuid "7607d78b-f995-342e-9b79-855f0dc0fe49" .
+
+bldg:SLAB.ZONE.AHU01.RM1021.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1021.Zone Supply Air Flow" ;
+    brickframe:uuid "82d474ad-0816-3d1c-87a2-b0639d22492c" .
+
+bldg:SLAB.ZONE.AHU01.RM1023.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1023.Zone Air Damper Command" ;
+    brickframe:uuid "768f2109-4573-3bc1-8081-54b20caff7fa" .
+
+bldg:SLAB.ZONE.AHU01.RM1023.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1023.Zone Air Temp" ;
+    brickframe:uuid "c208926a-02ad-3267-ac8b-78195d7f1015" .
+
+bldg:SLAB.ZONE.AHU01.RM1023.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1023.Zone Air Temp Setpoint" ;
+    brickframe:uuid "6e55f1c2-8ff4-39ad-a988-055687cd5250" .
+
+bldg:SLAB.ZONE.AHU01.RM1023.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1023.Zone Reheat Valve Command" ;
+    brickframe:uuid "a5e13169-727e-384b-872e-0ec53053774a" .
+
+bldg:SLAB.ZONE.AHU01.RM1023.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1023.Zone Supply Air Flow" ;
+    brickframe:uuid "970643e0-8deb-318e-9be2-5dfcaa1b0757" .
+
+bldg:SLAB.ZONE.AHU01.RM1023_1.VLV_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1023_1.VLV COMD" ;
+    brickframe:uuid "f97865a3-9c89-32c6-a3bd-c8cf56390508" .
+
+bldg:SLAB.ZONE.AHU01.RM1023_1.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1023_1.Zone Air Temp" ;
+    brickframe:uuid "e7fef60e-3eee-3911-9a08-ac1ea3d077c0" .
+
+bldg:SLAB.ZONE.AHU01.RM1023_1.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1023_1.Zone Air Temp Setpoint" ;
+    brickframe:uuid "24d19778-05a5-3bba-8d02-7874781757a0" .
+
+bldg:SLAB.ZONE.AHU01.RM1023_3.VLV_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1023_3.VLV COMD" ;
+    brickframe:uuid "cae23f07-cf68-3b03-a9a0-9ef39c1228e3" .
+
+bldg:SLAB.ZONE.AHU01.RM1023_3.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1023_3.Zone Air Temp" ;
+    brickframe:uuid "67a29c40-b738-3fdd-8069-bc586797961f" .
+
+bldg:SLAB.ZONE.AHU01.RM1023_3.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1023_3.Zone Air Temp Setpoint" ;
+    brickframe:uuid "82336ab9-d3ad-3773-8f21-c1e2fcc8c032" .
+
+bldg:SLAB.ZONE.AHU01.RM1024.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1024.Zone Air Damper Command" ;
+    brickframe:uuid "5298d5d1-a269-31dd-9372-d21bed325efb" .
+
+bldg:SLAB.ZONE.AHU01.RM1024.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1024.Zone Air Temp" ;
+    brickframe:uuid "c90a2029-a00c-36af-9409-43f75e79e048" .
+
+bldg:SLAB.ZONE.AHU01.RM1024.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1024.Zone Air Temp Setpoint" ;
+    brickframe:uuid "15b170e0-1131-3f53-86fb-2289331b11d1" .
+
+bldg:SLAB.ZONE.AHU01.RM1024.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1024.Zone Reheat Valve Command" ;
+    brickframe:uuid "51f0dd9b-0694-3e64-99a6-523df1d711a8" .
+
+bldg:SLAB.ZONE.AHU01.RM1024.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1024.Zone Supply Air Flow" ;
+    brickframe:uuid "1c93f0e8-6f4f-3cfc-8a23-bfccc3a9e0be" .
+
+bldg:SLAB.ZONE.AHU01.RM1026.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1026.Zone Air Damper Command" ;
+    brickframe:uuid "d0d2e9e9-e72c-3501-853c-64bb532be659" .
+
+bldg:SLAB.ZONE.AHU01.RM1026.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1026.Zone Air Temp" ;
+    brickframe:uuid "605cb08d-f0e8-3f40-81c4-b83219167386" .
+
+bldg:SLAB.ZONE.AHU01.RM1026.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1026.Zone Air Temp Setpoint" ;
+    brickframe:uuid "0fa9d07c-ab1b-3c31-9099-16209873c829" .
+
+bldg:SLAB.ZONE.AHU01.RM1026.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1026.Zone Reheat Valve Command" ;
+    brickframe:uuid "654215db-689f-371b-9b52-626ee25841d7" .
+
+bldg:SLAB.ZONE.AHU01.RM1026.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1026.Zone Supply Air Flow" ;
+    brickframe:uuid "0125bdf6-5651-3fb1-9df6-b6bfe59edc36" .
+
+bldg:SLAB.ZONE.AHU01.RM1028.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1028.Zone Air Damper Command" ;
+    brickframe:uuid "039a88cb-f21f-37d6-abbb-6f830cb0b3b3" .
+
+bldg:SLAB.ZONE.AHU01.RM1028.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1028.Zone Air Temp" ;
+    brickframe:uuid "c2ace1a7-40b7-3028-8a98-3f77f96f93e7" .
+
+bldg:SLAB.ZONE.AHU01.RM1028.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1028.Zone Air Temp Setpoint" ;
+    brickframe:uuid "e9307e84-486e-3c39-8b51-9db031844d01" .
+
+bldg:SLAB.ZONE.AHU01.RM1028.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1028.Zone Reheat Valve Command" ;
+    brickframe:uuid "4a975640-c6cd-3c95-b8fc-dd18298909de" .
+
+bldg:SLAB.ZONE.AHU01.RM1028.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1028.Zone Supply Air Flow" ;
+    brickframe:uuid "3156c8f8-fdd1-3bfb-8ecc-cd83e765b0e6" .
+
+bldg:SLAB.ZONE.AHU01.RM1030.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1030.Zone Air Damper Command" ;
+    brickframe:uuid "59042056-308b-36ef-9717-e685f36dfee7" .
+
+bldg:SLAB.ZONE.AHU01.RM1030.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1030.Zone Air Temp" ;
+    brickframe:uuid "5adcadd2-9988-339d-aadb-88074107fb05" .
+
+bldg:SLAB.ZONE.AHU01.RM1030.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1030.Zone Air Temp Setpoint" ;
+    brickframe:uuid "bba6d2ac-446d-3767-812a-22fdacc590a0" .
+
+bldg:SLAB.ZONE.AHU01.RM1030.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1030.Zone Reheat Valve Command" ;
+    brickframe:uuid "fa777df0-a529-3d72-8110-5b4e269652ab" .
+
+bldg:SLAB.ZONE.AHU01.RM1030.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1030.Zone Supply Air Flow" ;
+    brickframe:uuid "d6f75d62-e51b-3d78-9f35-77da745b2bda" .
+
+bldg:SLAB.ZONE.AHU01.RM1033A.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1033A.VLV1 COMD" ;
+    brickframe:uuid "67ff9419-29e2-3c97-b6dd-375cb946b469" .
+
+bldg:SLAB.ZONE.AHU01.RM1033A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1033A.Zone Air Temp" ;
+    brickframe:uuid "2710ae7d-c59e-36a5-9744-614695c6ccee" .
+
+bldg:SLAB.ZONE.AHU01.RM1033A.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1033A.Zone Air Temp Setpoint" ;
+    brickframe:uuid "902c5d0f-69df-3519-9ed0-60c9e029e62a" .
+
+bldg:SLAB.ZONE.AHU01.RM1034.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1034.Zone Air Damper Command" ;
+    brickframe:uuid "3c60fd37-9e45-373c-bec3-2a5fe28d5e85" .
+
+bldg:SLAB.ZONE.AHU01.RM1034.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1034.Zone Air Temp" ;
+    brickframe:uuid "3d0cae22-73ff-3877-b894-f07ab680e4b8" .
+
+bldg:SLAB.ZONE.AHU01.RM1034.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1034.Zone Air Temp Setpoint" ;
+    brickframe:uuid "7485263b-47cc-3bc3-b27e-acd518eaa669" .
+
+bldg:SLAB.ZONE.AHU01.RM1034.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1034.Zone Reheat Valve Command" ;
+    brickframe:uuid "e8c8dda1-77c4-3c2d-94e4-74d1046587b6" .
+
+bldg:SLAB.ZONE.AHU01.RM1034.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1034.Zone Supply Air Flow" ;
+    brickframe:uuid "3a1c4e6f-8f7f-30a5-9427-1bd148dd8bf9" .
+
+bldg:SLAB.ZONE.AHU01.RM1034_2.VLV_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1034_2.VLV COMD" ;
+    brickframe:uuid "d434395d-2729-37e6-91c2-091abfc1f2e8" .
+
+bldg:SLAB.ZONE.AHU01.RM1034_2.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1034_2.Zone Air Temp" ;
+    brickframe:uuid "a79e6cd7-fd48-3f15-b782-32ff597cc7cd" .
+
+bldg:SLAB.ZONE.AHU01.RM1034_2.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1034_2.Zone Air Temp Setpoint" ;
+    brickframe:uuid "506e934d-2bab-3171-b4fd-48cc8fd1ea54" .
+
+bldg:SLAB.ZONE.AHU01.RM1035.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1035.Zone Air Damper Command" ;
+    brickframe:uuid "ede65cb8-0886-3a8b-beef-d0f9f6683718" .
+
+bldg:SLAB.ZONE.AHU01.RM1035.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1035.Zone Air Temp" ;
+    brickframe:uuid "92bff16d-7a99-3e86-9ded-3baa7725c6c5" .
+
+bldg:SLAB.ZONE.AHU01.RM1035.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1035.Zone Air Temp Setpoint" ;
+    brickframe:uuid "b1cbfedf-5fa2-3dd8-a310-47d1f9a32af2" .
+
+bldg:SLAB.ZONE.AHU01.RM1035.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1035.Zone Reheat Valve Command" ;
+    brickframe:uuid "6a477982-6f77-3b80-aa8f-4bd4580455b8" .
+
+bldg:SLAB.ZONE.AHU01.RM1035.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM1035.Zone Supply Air Flow" ;
+    brickframe:uuid "60db6c4f-91b5-3de8-b363-1d799137080e" .
+
+bldg:SLAB.ZONE.AHU01.RM2033A.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM2033A.Zone Air Damper Command" ;
+    brickframe:uuid "23e73271-50c7-3472-90e7-03a73b230d3f" .
+
+bldg:SLAB.ZONE.AHU01.RM2033A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM2033A.Zone Air Temp" ;
+    brickframe:uuid "4aa5d932-f9e1-3f58-af28-42e9684678bd" .
+
+bldg:SLAB.ZONE.AHU01.RM2033A.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM2033A.Zone Air Temp Setpoint" ;
+    brickframe:uuid "18e82765-f44d-33c0-8c25-73ab8d028ad4" .
+
+bldg:SLAB.ZONE.AHU01.RM2033A.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM2033A.Zone Reheat Valve Command" ;
+    brickframe:uuid "c373d70c-7a47-3298-b9ea-57488b26cac3" .
+
+bldg:SLAB.ZONE.AHU01.RM2033A.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM2033A.Zone Supply Air Flow" ;
+    brickframe:uuid "34f97737-f0ce-3e60-b191-88723c73ec32" .
+
+bldg:SLAB.ZONE.AHU01.RM2033D.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM2033D.Zone Air Damper Command" ;
+    brickframe:uuid "59a4cc34-6464-349f-9513-beb19aa80507" .
+
+bldg:SLAB.ZONE.AHU01.RM2033D.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM2033D.Zone Air Temp" ;
+    brickframe:uuid "b2ff5cdd-ef8b-3f47-8528-a6c9f5e013a7" .
+
+bldg:SLAB.ZONE.AHU01.RM2033D.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM2033D.Zone Air Temp Setpoint" ;
+    brickframe:uuid "b1ac18ad-490f-3501-9a0e-bab5bee3b833" .
+
+bldg:SLAB.ZONE.AHU01.RM2033D.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM2033D.Zone Reheat Valve Command" ;
+    brickframe:uuid "db746a58-9cbc-3da9-bc17-9de59b7e71fe" .
+
+bldg:SLAB.ZONE.AHU01.RM2033D.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM2033D.Zone Supply Air Flow" ;
+    brickframe:uuid "15e4c220-b2aa-3cd5-a943-7421308768e2" .
+
+bldg:SLAB.ZONE.AHU01.RM2037.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM2037.Zone Air Temp" ;
+    brickframe:uuid "8436799a-6c4e-3c95-827d-187f2fc37d73" .
+
+bldg:SLAB.ZONE.AHU01.RM2037.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM2037.Zone Air Temp Setpoint" ;
+    brickframe:uuid "3152343b-1572-3bb3-9ea6-e3a3af8a6f1c" .
+
+bldg:SLAB.ZONE.AHU01.RM2041A.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM2041A.Zone Air Damper Command" ;
+    brickframe:uuid "c6d1e23a-014d-3807-b75d-99d8bfbe86dd" .
+
+bldg:SLAB.ZONE.AHU01.RM2041A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM2041A.Zone Air Temp" ;
+    brickframe:uuid "c5c85744-44e8-3121-b6db-48191324d7f5" .
+
+bldg:SLAB.ZONE.AHU01.RM2041A.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM2041A.Zone Air Temp Setpoint" ;
+    brickframe:uuid "a0cd0d47-ae9c-32c7-a702-5da1a6154276" .
+
+bldg:SLAB.ZONE.AHU01.RM2041A.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM2041A.Zone Reheat Valve Command" ;
+    brickframe:uuid "47fd8b5c-d5c1-3b10-a7cc-d5bb97e911db" .
+
+bldg:SLAB.ZONE.AHU01.RM2041A.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM2041A.Zone Supply Air Flow" ;
+    brickframe:uuid "191bc7d0-7358-3d60-8697-987db3601f81" .
+
+bldg:SLAB.ZONE.AHU01.RM2041E.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM2041E.Zone Air Damper Command" ;
+    brickframe:uuid "7abd0501-c79b-389d-a04e-297e4f6852bd" .
+
+bldg:SLAB.ZONE.AHU01.RM2041E.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM2041E.Zone Air Temp" ;
+    brickframe:uuid "e6f37b64-92f6-3000-870e-a440d6745b1e" .
+
+bldg:SLAB.ZONE.AHU01.RM2041E.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM2041E.Zone Air Temp Setpoint" ;
+    brickframe:uuid "e83587f5-a978-3159-a23d-14dce12c621d" .
+
+bldg:SLAB.ZONE.AHU01.RM2041E.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM2041E.Zone Reheat Valve Command" ;
+    brickframe:uuid "a81daa58-fe94-38db-a97b-b8c36b43a89d" .
+
+bldg:SLAB.ZONE.AHU01.RM2041E.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM2041E.Zone Supply Air Flow" ;
+    brickframe:uuid "ed62b3df-00f6-3001-8f4d-2d9af5a525a8" .
+
+bldg:SLAB.ZONE.AHU01.RM2041W.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM2041W.Zone Air Damper Command" ;
+    brickframe:uuid "36e63436-9f15-3569-a58f-b18bb32980c4" .
+
+bldg:SLAB.ZONE.AHU01.RM2041W.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM2041W.Zone Air Temp" ;
+    brickframe:uuid "f834e6aa-278e-31fc-b2cb-364b29eb9731" .
+
+bldg:SLAB.ZONE.AHU01.RM2041W.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM2041W.Zone Air Temp Setpoint" ;
+    brickframe:uuid "ebca35a0-71fa-3c81-aad1-b082986412b8" .
+
+bldg:SLAB.ZONE.AHU01.RM2041W.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM2041W.Zone Reheat Valve Command" ;
+    brickframe:uuid "dfec5059-aed5-3ee4-b0d6-ef0992ed0ce5" .
+
+bldg:SLAB.ZONE.AHU01.RM2041W.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM2041W.Zone Supply Air Flow" ;
+    brickframe:uuid "e33fec6c-bdb2-343a-a25a-bd96b69ab141" .
+
+bldg:SLAB.ZONE.AHU01.RM3033A.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM3033A.Zone Air Damper Command" ;
+    brickframe:uuid "f7382c78-18dd-30bc-bc54-a053ab355b1e" .
+
+bldg:SLAB.ZONE.AHU01.RM3033A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM3033A.Zone Air Temp" ;
+    brickframe:uuid "2016c3d7-616b-3b43-9776-10e76f7e84e6" .
+
+bldg:SLAB.ZONE.AHU01.RM3033A.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM3033A.Zone Air Temp Setpoint" ;
+    brickframe:uuid "ad3a95cb-697c-331a-a6ae-31607d0acfe8" .
+
+bldg:SLAB.ZONE.AHU01.RM3033A.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM3033A.Zone Reheat Valve Command" ;
+    brickframe:uuid "f52bf6a3-d94b-339d-8f2d-25813d7e3c2b" .
+
+bldg:SLAB.ZONE.AHU01.RM3033A.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM3033A.Zone Supply Air Flow" ;
+    brickframe:uuid "8a5f2eab-c494-3718-b108-4c7c96f8f000" .
+
+bldg:SLAB.ZONE.AHU01.RM3033D.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM3033D.Zone Air Damper Command" ;
+    brickframe:uuid "e80b3ee7-7aab-3c31-8c56-68df56fbf1e2" .
+
+bldg:SLAB.ZONE.AHU01.RM3033D.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM3033D.Zone Air Temp" ;
+    brickframe:uuid "85830452-187d-3f0f-8d36-1bead195d515" .
+
+bldg:SLAB.ZONE.AHU01.RM3033D.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM3033D.Zone Air Temp Setpoint" ;
+    brickframe:uuid "9ed13ea5-79a4-3759-a37c-9c4823da4b89" .
+
+bldg:SLAB.ZONE.AHU01.RM3033D.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM3033D.Zone Reheat Valve Command" ;
+    brickframe:uuid "63583a8a-417e-398b-b577-99dc5831a77c" .
+
+bldg:SLAB.ZONE.AHU01.RM3033D.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM3033D.Zone Supply Air Flow" ;
+    brickframe:uuid "e8292c6c-41cd-30b8-bc22-4778a9060895" .
+
+bldg:SLAB.ZONE.AHU01.RM3037.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM3037.Zone Air Temp" ;
+    brickframe:uuid "fc91abdd-9599-3321-be56-a3e5880df7c8" .
+
+bldg:SLAB.ZONE.AHU01.RM3037.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM3037.Zone Air Temp Setpoint" ;
+    brickframe:uuid "e8334ac4-51f1-302f-a24f-97d789d8ab69" .
+
+bldg:SLAB.ZONE.AHU01.RM3041E.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM3041E.VLV1 COMD" ;
+    brickframe:uuid "95e4ae8d-d1af-38a3-8f79-40510e5d9385" .
+
+bldg:SLAB.ZONE.AHU01.RM3041E.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM3041E.Zone Air Temp" ;
+    brickframe:uuid "04617cd4-0fcf-3a8b-af39-b9efbba1365f" .
+
+bldg:SLAB.ZONE.AHU01.RM3041E.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM3041E.Zone Air Temp Setpoint" ;
+    brickframe:uuid "6249ab13-f576-37fc-9f1e-23fbb3818b4d" .
+
+bldg:SLAB.ZONE.AHU01.RM3041N.VLV1_COMD a brick1:Valve_Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM3041N.VLV1 COMD" ;
+    brickframe:uuid "26760226-d0d9-3fbb-ad00-c73544265213" .
+
+bldg:SLAB.ZONE.AHU01.RM3041N.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM3041N.Zone Air Temp" ;
+    brickframe:uuid "e49b4605-5970-3e5a-b713-ff0923ed46b4" .
+
+bldg:SLAB.ZONE.AHU01.RM3041N.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM3041N.Zone Air Temp Setpoint" ;
+    brickframe:uuid "2bea7525-bb1b-3aeb-a6ba-bf1b4a25abac" .
+
+bldg:SLAB.ZONE.AHU01.RM3041W.Zone_Air_Damper_Command a brick1:Damper_Position_Setpoint ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM3041W.Zone Air Damper Command" ;
+    brickframe:uuid "9ae45aaa-fe9e-3b97-9655-8ce6c4b8d7eb" .
+
+bldg:SLAB.ZONE.AHU01.RM3041W.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM3041W.Zone Air Temp" ;
+    brickframe:uuid "9d0838f2-97e7-3276-9acc-add09527fec2" .
+
+bldg:SLAB.ZONE.AHU01.RM3041W.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM3041W.Zone Air Temp Setpoint" ;
+    brickframe:uuid "defab447-bb7f-3891-a569-4b58554c92dd" .
+
+bldg:SLAB.ZONE.AHU01.RM3041W.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM3041W.Zone Reheat Valve Command" ;
+    brickframe:uuid "f74ab541-2c96-3d9c-9374-5caf1cb3ed2a" .
+
+bldg:SLAB.ZONE.AHU01.RM3041W.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU01.RM3041W.Zone Supply Air Flow" ;
+    brickframe:uuid "94dec692-f8a7-306d-b133-044296d248fd" .
+
+bldg:SLAB.ZONE.AHU02.RM1007.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM1007.Zone Air Temp" ;
+    brickframe:uuid "a94af5fc-1db7-32af-87c5-09d9bb864bbf" .
+
+bldg:SLAB.ZONE.AHU02.RM1007_1.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM1007_1.Zone Air Temp" ;
+    brickframe:uuid "d2f8c669-ac80-3af7-bc82-50711e13f2b7" .
+
+bldg:SLAB.ZONE.AHU02.RM1007_2.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM1007_2.Zone Air Temp" ;
+    brickframe:uuid "17cc75da-bc44-3fe8-9abe-12974e30bc95" .
+
+bldg:SLAB.ZONE.AHU02.RM1029.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM1029.Zone Air Temp" ;
+    brickframe:uuid "6ba6c9b4-f56e-3e6c-81de-c77d4b77b148" .
+
+bldg:SLAB.ZONE.AHU02.RM1031.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM1031.Zone Air Temp" ;
+    brickframe:uuid "36ccb8f7-cb86-3a63-ad9e-ccc6f4d51e91" .
+
+bldg:SLAB.ZONE.AHU02.RM1031A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM1031A.Zone Air Temp" ;
+    brickframe:uuid "5120facb-4f17-395e-ad10-b2713ae6fecc" .
+
+bldg:SLAB.ZONE.AHU02.RM1036.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM1036.Zone Air Temp" ;
+    brickframe:uuid "d9238ad6-b8ba-32da-a34d-e60d107e511f" .
+
+bldg:SLAB.ZONE.AHU02.RM1051.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM1051.Zone Air Temp" ;
+    brickframe:uuid "a4960f85-514a-3553-b571-ce3e96b7bd09" .
+
+bldg:SLAB.ZONE.AHU02.RM1054.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM1054.Zone Air Temp" ;
+    brickframe:uuid "56cbbad2-5e72-3871-b5ba-3b16e5c92dd9" .
+
+bldg:SLAB.ZONE.AHU02.RM1055.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM1055.Zone Air Temp" ;
+    brickframe:uuid "a424308b-54ce-3ffa-bafe-1432f2dd4979" .
+
+bldg:SLAB.ZONE.AHU02.RM1059.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM1059.Zone Air Temp" ;
+    brickframe:uuid "fba92a0b-ebd0-33e6-876e-8fd073420f73" .
+
+bldg:SLAB.ZONE.AHU02.RM1060.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM1060.Zone Air Temp" ;
+    brickframe:uuid "bb68e239-58b0-370e-857b-6cb47eae1af4" .
+
+bldg:SLAB.ZONE.AHU02.RM1060A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM1060A.Zone Air Temp" ;
+    brickframe:uuid "119a09f3-8a28-397d-81db-569904c1676c" .
+
+bldg:SLAB.ZONE.AHU02.RM1060B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM1060B.Zone Air Temp" ;
+    brickframe:uuid "3e10c699-7114-3eb9-83d7-5220ee70b815" .
+
+bldg:SLAB.ZONE.AHU02.RM1061.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM1061.Zone Air Temp" ;
+    brickframe:uuid "a783ce7f-906f-3579-abe8-51c0f97fc851" .
+
+bldg:SLAB.ZONE.AHU02.RM1064.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM1064.Zone Air Temp" ;
+    brickframe:uuid "b0be264d-4391-3a21-b409-3333f7395781" .
+
+bldg:SLAB.ZONE.AHU02.RM1066.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM1066.Zone Air Temp" ;
+    brickframe:uuid "7622f9f9-e8af-3a5a-b310-f0c7907b0f61" .
+
+bldg:SLAB.ZONE.AHU02.RM11_17A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM11_17A.Zone Air Temp" ;
+    brickframe:uuid "2b2988e4-9db2-33bc-a8c8-490596c57efc" .
+
+bldg:SLAB.ZONE.AHU02.RM12.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM12.Zone Air Temp" ;
+    brickframe:uuid "0e5004f9-3e1e-3c05-84bb-802c76e5ddd4" .
+
+bldg:SLAB.ZONE.AHU02.RM17_21.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM17_21.Zone Air Temp" ;
+    brickframe:uuid "b0d63703-e3a5-3c73-ba52-30647806ebe6" .
+
+bldg:SLAB.ZONE.AHU02.RM18.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM18.Zone Air Temp" ;
+    brickframe:uuid "ff1d7a9e-d0e4-3e0c-9333-823eda834c88" .
+
+bldg:SLAB.ZONE.AHU02.RM18A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM18A.Zone Air Temp" ;
+    brickframe:uuid "e3f90c8a-d663-3f86-82fe-89923c07b0eb" .
+
+bldg:SLAB.ZONE.AHU02.RM2.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM2.Zone Air Temp" ;
+    brickframe:uuid "4b8adf7c-0be7-3f62-9f5c-8ab0fe558907" .
+
+bldg:SLAB.ZONE.AHU02.RM20.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM20.Zone Air Temp" ;
+    brickframe:uuid "abab8514-4f1b-3de4-9cf9-780b27e94234" .
+
+bldg:SLAB.ZONE.AHU02.RM2002A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM2002A.Zone Air Temp" ;
+    brickframe:uuid "539c225a-fe41-3733-b789-176386bdb0d7" .
+
+bldg:SLAB.ZONE.AHU02.RM2002B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM2002B.Zone Air Temp" ;
+    brickframe:uuid "dcad37ab-fc2d-3832-8c21-25d611f0b5a8" .
+
+bldg:SLAB.ZONE.AHU02.RM2007A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM2007A.Zone Air Temp" ;
+    brickframe:uuid "205b3835-ed95-3179-80fd-9e3ff3c9ad30" .
+
+bldg:SLAB.ZONE.AHU02.RM2007B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM2007B.Zone Air Temp" ;
+    brickframe:uuid "1a2f9d82-d2cd-32dc-9b61-018c3c6d38ad" .
+
+bldg:SLAB.ZONE.AHU02.RM2011.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM2011.Zone Air Temp" ;
+    brickframe:uuid "1c3e22fd-c131-365a-9e10-ae625db3e98a" .
+
+bldg:SLAB.ZONE.AHU02.RM2012.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM2012.Zone Air Temp" ;
+    brickframe:uuid "742a7f32-e03b-3c8e-8523-0d5ad09351e7" .
+
+bldg:SLAB.ZONE.AHU02.RM2015.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM2015.Zone Air Temp" ;
+    brickframe:uuid "9afcbdd8-d702-312a-82af-c91.0.25216e" .
+
+bldg:SLAB.ZONE.AHU02.RM2016.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM2016.Zone Air Temp" ;
+    brickframe:uuid "5e538a44-c1ef-35ab-ab8b-25a6211226f5" .
+
+bldg:SLAB.ZONE.AHU02.RM2017.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM2017.Zone Air Temp" ;
+    brickframe:uuid "32d60657-e1fb-31fb-86c2-1e0c83ceb287" .
+
+bldg:SLAB.ZONE.AHU02.RM2018.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM2018.Zone Air Temp" ;
+    brickframe:uuid "23ef5f34-550e-3bb3-ae27-be6261fd3ded" .
+
+bldg:SLAB.ZONE.AHU02.RM2020.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM2020.Zone Air Temp" ;
+    brickframe:uuid "d78a6c08-bbb5-325c-b52c-95746c87fb9e" .
+
+bldg:SLAB.ZONE.AHU02.RM2021.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM2021.Zone Air Temp" ;
+    brickframe:uuid "c5757470-0633-3ef3-8193-3daff7452c8d" .
+
+bldg:SLAB.ZONE.AHU02.RM2036.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM2036.Zone Air Temp" ;
+    brickframe:uuid "e1dec0c8-60f8-3fb9-9a6e-f0d382045ffa" .
+
+bldg:SLAB.ZONE.AHU02.RM2051.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM2051.Zone Air Temp" ;
+    brickframe:uuid "4ad185af-390b-31cc-a9a6-4c9fa079c34f" .
+
+bldg:SLAB.ZONE.AHU02.RM2054.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM2054.Zone Air Temp" ;
+    brickframe:uuid "fa7651a2-e5c3-36dd-8cf5-1eb64b5c415a" .
+
+bldg:SLAB.ZONE.AHU02.RM2055.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM2055.Zone Air Temp" ;
+    brickframe:uuid "cccbd4a4-c14e-3f22-a2ea-4f27ecfe1b86" .
+
+bldg:SLAB.ZONE.AHU02.RM2059.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM2059.Zone Air Temp" ;
+    brickframe:uuid "e9a5b2f2-1cb7-34fe-aae3-775bfe7af914" .
+
+bldg:SLAB.ZONE.AHU02.RM2060.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM2060.Zone Air Temp" ;
+    brickframe:uuid "94849d2f-1965-36a0-9103-33cbc39cb7d9" .
+
+bldg:SLAB.ZONE.AHU02.RM2061.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM2061.Zone Air Temp" ;
+    brickframe:uuid "df359890-0200-3361-8777-014a74d15209" .
+
+bldg:SLAB.ZONE.AHU02.RM2064.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM2064.Zone Air Temp" ;
+    brickframe:uuid "0be45048-2c55-3093-b2c5-307d5fb31f42" .
+
+bldg:SLAB.ZONE.AHU02.RM2066.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM2066.Zone Air Temp" ;
+    brickframe:uuid "36a64c5e-ebb0-37da-8d23-70c59611dbfc" .
+
+bldg:SLAB.ZONE.AHU02.RM2075.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM2075.Zone Air Temp" ;
+    brickframe:uuid "c4649e36-d3aa-3d22-8011-2e084e45f6b5" .
+
+bldg:SLAB.ZONE.AHU02.RM30.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM30.Zone Air Temp" ;
+    brickframe:uuid "14c23d72-eea4-37f9-a241-c7ef56ae10af" .
+
+bldg:SLAB.ZONE.AHU02.RM3002.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM3002.Zone Air Temp" ;
+    brickframe:uuid "9988c3c3-3917-381a-828f-41804221e792" .
+
+bldg:SLAB.ZONE.AHU02.RM3002A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM3002A.Zone Air Temp" ;
+    brickframe:uuid "223a9b45-1e4f-3d7e-b224-fe89d6ea1cb2" .
+
+bldg:SLAB.ZONE.AHU02.RM3002B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM3002B.Zone Air Temp" ;
+    brickframe:uuid "3f3cb388-dead-3a16-8130-80d3ebeeb5a6" .
+
+bldg:SLAB.ZONE.AHU02.RM3007A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM3007A.Zone Air Temp" ;
+    brickframe:uuid "e369615e-88d4-394b-b27e-4242b69126dc" .
+
+bldg:SLAB.ZONE.AHU02.RM3007B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM3007B.Zone Air Temp" ;
+    brickframe:uuid "f27cf193-6e15-3f80-bdc5-32654eb3f3e8" .
+
+bldg:SLAB.ZONE.AHU02.RM3007C.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM3007C.Zone Air Temp" ;
+    brickframe:uuid "cd0dc833-c384-3c76-a499-0a4f277dd1f9" .
+
+bldg:SLAB.ZONE.AHU02.RM3011.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM3011.Zone Air Temp" ;
+    brickframe:uuid "44140f13-1651-3c1d-9ea9-499e8c529a8c" .
+
+bldg:SLAB.ZONE.AHU02.RM3012.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM3012.Zone Air Temp" ;
+    brickframe:uuid "1a9fa9e2-6a44-394e-b216-8fb6ef7dc5b5" .
+
+bldg:SLAB.ZONE.AHU02.RM3015.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM3015.Zone Air Temp" ;
+    brickframe:uuid "c0988270-094d-3700-b7c4-91b3226d5b4f" .
+
+bldg:SLAB.ZONE.AHU02.RM3016.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM3016.Zone Air Temp" ;
+    brickframe:uuid "55e4f5d3-8ed2-3b6f-9fec-6e396c1d450f" .
+
+bldg:SLAB.ZONE.AHU02.RM3018.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM3018.Zone Air Temp" ;
+    brickframe:uuid "54f22fca-d8fc-364a-9e18-b54252901643" .
+
+bldg:SLAB.ZONE.AHU02.RM3019.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM3019.Zone Air Temp" ;
+    brickframe:uuid "689c6147-d0ca-3820-a342-7dc81cd92931" .
+
+bldg:SLAB.ZONE.AHU02.RM3019A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM3019A.Zone Air Temp" ;
+    brickframe:uuid "915364ed-429b-3073-898d-85f74ebae1a3" .
+
+bldg:SLAB.ZONE.AHU02.RM3020C.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM3020C.Zone Air Temp" ;
+    brickframe:uuid "d4201879-4c8f-36a0-91ee-2881d8de2014" .
+
+bldg:SLAB.ZONE.AHU02.RM3021.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM3021.Zone Air Temp" ;
+    brickframe:uuid "63a7549a-ac07-3cb0-8180-7ad65e17211e" .
+
+bldg:SLAB.ZONE.AHU02.RM3038.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM3038.Zone Air Temp" ;
+    brickframe:uuid "17c2a206-05cc-3b53-8406-f476b2f9c3ec" .
+
+bldg:SLAB.ZONE.AHU02.RM3051.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM3051.Zone Air Temp" ;
+    brickframe:uuid "15a2d9f2-9f78-35a1-a848-edd9322bac86" .
+
+bldg:SLAB.ZONE.AHU02.RM3054.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM3054.Zone Air Temp" ;
+    brickframe:uuid "aee29c13-0f1e-3e1f-b011-96a83d7cdc82" .
+
+bldg:SLAB.ZONE.AHU02.RM3055.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM3055.Zone Air Temp" ;
+    brickframe:uuid "26e66a35-fe8a-38a5-8c8a-fe8a98edf1c6" .
+
+bldg:SLAB.ZONE.AHU02.RM3059.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM3059.Zone Air Temp" ;
+    brickframe:uuid "e7a1ce2b-0d13-328c-9b2f-15f953520e4c" .
+
+bldg:SLAB.ZONE.AHU02.RM3060.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM3060.Zone Air Temp" ;
+    brickframe:uuid "871b3658-64e2-3935-979b-440b4797c518" .
+
+bldg:SLAB.ZONE.AHU02.RM3061.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM3061.Zone Air Temp" ;
+    brickframe:uuid "a9c24e35-3dfd-36db-9c44-4e35757c78d5" .
+
+bldg:SLAB.ZONE.AHU02.RM3062.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM3062.Zone Air Temp" ;
+    brickframe:uuid "a081f2fc-ce11-38a8-9f03-cd3cc5371b32" .
+
+bldg:SLAB.ZONE.AHU02.RM3066.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM3066.Zone Air Temp" ;
+    brickframe:uuid "5137956e-dead-3f82-a42c-1513f21ee532" .
+
+bldg:SLAB.ZONE.AHU02.RM3068.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM3068.Zone Air Temp" ;
+    brickframe:uuid "419bdae3-2e38-3de5-9924-aa7d29946a13" .
+
+bldg:SLAB.ZONE.AHU02.RM31.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM31.Zone Air Temp" ;
+    brickframe:uuid "e0f75ed0-21ca-3812-8921-d77750bee631" .
+
+bldg:SLAB.ZONE.AHU02.RM31A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM31A.Zone Air Temp" ;
+    brickframe:uuid "a7b4473c-24e6-336f-9584-e7df1c161cc2" .
+
+bldg:SLAB.ZONE.AHU02.RM31B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM31B.Zone Air Temp" ;
+    brickframe:uuid "f2634214-8e90-3a82-aef6-ad08bc32b3a1" .
+
+bldg:SLAB.ZONE.AHU02.RM31C.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM31C.Zone Air Temp" ;
+    brickframe:uuid "33bcd787-b823-3e4f-8d32-0d23e1ce2644" .
+
+bldg:SLAB.ZONE.AHU02.RM31D.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM31D.Zone Air Temp" ;
+    brickframe:uuid "24cb6613-0ba2-37ad-9de4-e6748fe0d510" .
+
+bldg:SLAB.ZONE.AHU02.RM31E.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM31E.Zone Air Temp" ;
+    brickframe:uuid "9f3a1621-5932-3c03-9df5-d4d8b00445dc" .
+
+bldg:SLAB.ZONE.AHU02.RM31F.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU02.RM31F.Zone Air Temp" ;
+    brickframe:uuid "9d1385e6-e45e-3aa8-bd86-2721d6c122e7" .
+
+bldg:SLAB.ZONE.AHU03.RM1067.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU03.RM1067.Zone Air Temp" ;
+    brickframe:uuid "c8df391f-b730-374e-bd67-2e3f1c4082e2" .
+
+bldg:SLAB.ZONE.AHU03.RM1068.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU03.RM1068.Zone Air Temp" ;
+    brickframe:uuid "97d12fac-3ed3-39f9-bec9-cc2778f15c21" .
+
+bldg:SLAB.ZONE.AHU03.RM1071.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU03.RM1071.Zone Air Temp" ;
+    brickframe:uuid "7bcaa229-359a-37c2-8f86-313af6291771" .
+
+bldg:SLAB.ZONE.AHU03.RM1072.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU03.RM1072.Zone Air Temp" ;
+    brickframe:uuid "fd0774c7-b0b5-30fe-8cbb-1660f8701cba" .
+
+bldg:SLAB.ZONE.AHU03.RM1075.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU03.RM1075.Zone Air Temp" ;
+    brickframe:uuid "582df79c-3be2-33b3-aa42-f5ffe7ff658d" .
+
+bldg:SLAB.ZONE.AHU03.RM1076.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU03.RM1076.Zone Air Temp" ;
+    brickframe:uuid "593c8c92-d729-3ecc-a691-eea0c04133fd" .
+
+bldg:SLAB.ZONE.AHU03.RM2005.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU03.RM2005.Zone Air Temp" ;
+    brickframe:uuid "fd436426-a512-347a-8192-ed806c151e74" .
+
+bldg:SLAB.ZONE.AHU03.RM2008A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU03.RM2008A.Zone Air Temp" ;
+    brickframe:uuid "d3fcf84e-bf60-30df-9349-c5218db5697e" .
+
+bldg:SLAB.ZONE.AHU03.RM2008B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU03.RM2008B.Zone Air Temp" ;
+    brickframe:uuid "13b198ae-63ee-38a5-b100-8b7797727beb" .
+
+bldg:SLAB.ZONE.AHU03.RM2008C.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU03.RM2008C.Zone Air Temp" ;
+    brickframe:uuid "49f718d2-a3d1-3503-8803-1dc52dea77a3" .
+
+bldg:SLAB.ZONE.AHU03.RM2067.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU03.RM2067.Zone Air Temp" ;
+    brickframe:uuid "053bafd6-5ba2-3138-94c4-11f2071bfc40" .
+
+bldg:SLAB.ZONE.AHU03.RM2068.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU03.RM2068.Zone Air Temp" ;
+    brickframe:uuid "0fe22e8a-6718-3925-9357-80b8b8d62e27" .
+
+bldg:SLAB.ZONE.AHU03.RM2071.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU03.RM2071.Zone Air Temp" ;
+    brickframe:uuid "cf9926e5-f0b9-3379-b6cc-68fd019ffa22" .
+
+bldg:SLAB.ZONE.AHU03.RM2072.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU03.RM2072.Zone Air Temp" ;
+    brickframe:uuid "d549286a-6b1e-3b09-85b4-26adf4bea173" .
+
+bldg:SLAB.ZONE.AHU03.RM2076.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU03.RM2076.Zone Air Temp" ;
+    brickframe:uuid "de8af073-89a5-33fd-a1a8-c78888c68248" .
+
+bldg:SLAB.ZONE.AHU03.RM3017.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU03.RM3017.Zone Air Temp" ;
+    brickframe:uuid "97917977-6e27-3aca-a271-ee6da6b2b2f4" .
+
+bldg:SLAB.ZONE.AHU03.RM3067.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU03.RM3067.Zone Air Temp" ;
+    brickframe:uuid "b20db25e-d124-32c9-9532-0bc0ea316381" .
+
+bldg:SLAB.ZONE.AHU03.RM3068A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU03.RM3068A.Zone Air Temp" ;
+    brickframe:uuid "77595bdf-4d5b-33bc-8b95-e3d42438bc75" .
+
+bldg:SLAB.ZONE.AHU03.RM3068C.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU03.RM3068C.Zone Air Temp" ;
+    brickframe:uuid "98f3b8f2-a47d-39ce-be4b-45a5c5273569" .
+
+bldg:SLAB.ZONE.AHU03.RM3068E.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU03.RM3068E.Zone Air Temp" ;
+    brickframe:uuid "8ab3bfd9-306f-3d3f-a4d3-700f11926517" .
+
+bldg:SLAB.ZONE.AHU03.RM3071.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU03.RM3071.Zone Air Temp" ;
+    brickframe:uuid "ce29c943-32d6-33cb-a270-8f1388154cfe" .
+
+bldg:SLAB.ZONE.AHU03.RM3072.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU03.RM3072.Zone Air Temp" ;
+    brickframe:uuid "1901af75-7979-35d7-aebe-511fb1a9c1c0" .
+
+bldg:SLAB.ZONE.AHU03.RM3075.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU03.RM3075.Zone Air Temp" ;
+    brickframe:uuid "abd78fd2-0e83-3c98-b653-e5fd03955327" .
+
+bldg:SLAB.ZONE.AHU03.RM3076.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU03.RM3076.Zone Air Temp" ;
+    brickframe:uuid "31efb1ee-85b7-3a6c-b9d6-6a2cfd0fa40d" .
+
+bldg:SLAB.ZONE.AHU03.RM3076B_C.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU03.RM3076B_C.Zone Air Temp" ;
+    brickframe:uuid "06db3499-ce1a-370e-9e8e-bde90e9a5dcc" .
+
+bldg:SLAB.ZONE.AHU03.RM3076D.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU03.RM3076D.Zone Air Temp" ;
+    brickframe:uuid "88724ead-8410-3446-9266-dfb63849c37c" .
+
+bldg:SLAB.ZONE.AHU03.RM3078.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU03.RM3078.Zone Air Temp" ;
+    brickframe:uuid "af1f603b-bc1e-3357-9b2e-7b2802b54845" .
+
+bldg:SLAB.ZONE.AHU04.RM1008_1.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM1008_1.Zone Air Temp" ;
+    brickframe:uuid "68694ae4-632d-3e0c-bf2f-bb036f7df7c3" .
+
+bldg:SLAB.ZONE.AHU04.RM1008_2.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM1008_2.Zone Air Temp" ;
+    brickframe:uuid "78fec7f2-d082-39ec-bbc1-734aaae89e19" .
+
+bldg:SLAB.ZONE.AHU04.RM1008_3.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM1008_3.Zone Air Temp" ;
+    brickframe:uuid "68f4ab41-2fc1-3b68-9201-3978b0d2a8db" .
+
+bldg:SLAB.ZONE.AHU04.RM1009.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM1009.Zone Air Temp" ;
+    brickframe:uuid "3bc89fa6-ca4b-3519-9c0a-ac45ccb7f373" .
+
+bldg:SLAB.ZONE.AHU04.RM1079.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM1079.Zone Air Temp" ;
+    brickframe:uuid "ee93f132-55ba-385c-b377-1540ebed99ae" .
+
+bldg:SLAB.ZONE.AHU04.RM1080.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM1080.Zone Air Temp" ;
+    brickframe:uuid "f50ef80f-aed9-3907-a215-e07402685042" .
+
+bldg:SLAB.ZONE.AHU04.RM1083.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM1083.Zone Air Temp" ;
+    brickframe:uuid "3f7faa46-e3bd-3fe2-b496-fa8c3edfa8fb" .
+
+bldg:SLAB.ZONE.AHU04.RM1084.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM1084.Zone Air Temp" ;
+    brickframe:uuid "1397e35b-6d9b-3c70-ac87-6df28797962c" .
+
+bldg:SLAB.ZONE.AHU04.RM1087.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM1087.Zone Air Temp" ;
+    brickframe:uuid "3d824805-745a-3f73-b28f-a3b84e099c9e" .
+
+bldg:SLAB.ZONE.AHU04.RM1088.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM1088.Zone Air Temp" ;
+    brickframe:uuid "2c6be776-f1bd-3feb-b6b7-96c1dd68757c" .
+
+bldg:SLAB.ZONE.AHU04.RM1089.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM1089.Zone Air Temp" ;
+    brickframe:uuid "9235bd6b-025c-3082-a4db-b826cfe143e5" .
+
+bldg:SLAB.ZONE.AHU04.RM1090.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM1090.Zone Air Temp" ;
+    brickframe:uuid "c7d2a2d0-82bc-3dc1-b69a-d2609b8c4946" .
+
+bldg:SLAB.ZONE.AHU04.RM1093.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM1093.Zone Air Temp" ;
+    brickframe:uuid "ccd30574-0bf2-3f16-bf54-6a2e96978d73" .
+
+bldg:SLAB.ZONE.AHU04.RM1094.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM1094.Zone Air Temp" ;
+    brickframe:uuid "8978ab21-46ec-387b-8d24-4870ea133028" .
+
+bldg:SLAB.ZONE.AHU04.RM1096.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM1096.Zone Air Temp" ;
+    brickframe:uuid "11d0f03b-cd0c-3574-8669-b305b5991157" .
+
+bldg:SLAB.ZONE.AHU04.RM1096B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM1096B.Zone Air Temp" ;
+    brickframe:uuid "255e8456-b77f-3c57-a549-7e87267206c1" .
+
+bldg:SLAB.ZONE.AHU04.RM1096C.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM1096C.Zone Air Temp" ;
+    brickframe:uuid "1a49001f-0958-3ec7-a253-7bd9ed306e10" .
+
+bldg:SLAB.ZONE.AHU04.RM2009.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM2009.Zone Air Temp" ;
+    brickframe:uuid "b8691b60-a737-3431-81d6-811a5033cd3b" .
+
+bldg:SLAB.ZONE.AHU04.RM2078.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM2078.Zone Air Temp" ;
+    brickframe:uuid "d29d95e5-3b5d-3942-80fe-583c205025f8" .
+
+bldg:SLAB.ZONE.AHU04.RM2079.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM2079.Zone Air Temp" ;
+    brickframe:uuid "847c8c36-ad4c-3b23-8ec0-71dc026344ac" .
+
+bldg:SLAB.ZONE.AHU04.RM2080B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM2080B.Zone Air Temp" ;
+    brickframe:uuid "69eb4279-457c-35ba-ae5c-063b90230094" .
+
+bldg:SLAB.ZONE.AHU04.RM2083.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM2083.Zone Air Temp" ;
+    brickframe:uuid "79c87c70-b8b7-3f86-9f7b-2cc267b4cb79" .
+
+bldg:SLAB.ZONE.AHU04.RM2084.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM2084.Zone Air Temp" ;
+    brickframe:uuid "71a843bb-67ff-3a47-a015-7ab468f9a1d0" .
+
+bldg:SLAB.ZONE.AHU04.RM2087.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM2087.Zone Air Temp" ;
+    brickframe:uuid "eb6679b5-d1d1-305c-ae0c-0985d54ac407" .
+
+bldg:SLAB.ZONE.AHU04.RM2088.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM2088.Zone Air Temp" ;
+    brickframe:uuid "44031b07-2df4-3a40-9f86-17eec6ec757e" .
+
+bldg:SLAB.ZONE.AHU04.RM2088A1.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM2088A1.Zone Air Temp" ;
+    brickframe:uuid "62431676-597e-3583-914e-67c4d09b4048" .
+
+bldg:SLAB.ZONE.AHU04.RM2088A2.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM2088A2.Zone Air Temp" ;
+    brickframe:uuid "6a852166-767c-3c88-84c0-2793521f1375" .
+
+bldg:SLAB.ZONE.AHU04.RM2088A3.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM2088A3.Zone Air Temp" ;
+    brickframe:uuid "36d7e16f-68fa-3d3d-ad46-3fa844ccf3c2" .
+
+bldg:SLAB.ZONE.AHU04.RM2088A4.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM2088A4.Zone Air Temp" ;
+    brickframe:uuid "9e6f6c97-ec8e-36ad-8387-431f9ec3e801" .
+
+bldg:SLAB.ZONE.AHU04.RM2089.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM2089.Zone Air Temp" ;
+    brickframe:uuid "f892bf72-f898-3ac8-80b5-086218ac542d" .
+
+bldg:SLAB.ZONE.AHU04.RM2090.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM2090.Zone Air Temp" ;
+    brickframe:uuid "d4a781aa-9ba2-3f11-8555-33961ccf124f" .
+
+bldg:SLAB.ZONE.AHU04.RM2094.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM2094.Zone Air Temp" ;
+    brickframe:uuid "0a95e016-8993-3ec2-aa8d-17c26d498552" .
+
+bldg:SLAB.ZONE.AHU04.RM2096.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM2096.Zone Air Temp" ;
+    brickframe:uuid "348d64bc-dc96-3eea-bff9-3227873f7233" .
+
+bldg:SLAB.ZONE.AHU04.RM2096A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM2096A.Zone Air Temp" ;
+    brickframe:uuid "2c81607e-f9b1-330d-951f-af13f6280f5d" .
+
+bldg:SLAB.ZONE.AHU04.RM2096B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM2096B.Zone Air Temp" ;
+    brickframe:uuid "832ac3e5-e99f-3192-bb34-0abdb3de7751" .
+
+bldg:SLAB.ZONE.AHU04.RM2098.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM2098.Zone Air Temp" ;
+    brickframe:uuid "cb2d0883-80f1-30a2-a1b4-b7e0edb259dd" .
+
+bldg:SLAB.ZONE.AHU04.RM3008A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM3008A.Zone Air Temp" ;
+    brickframe:uuid "ae0ffecc-df7f-3007-995c-03dc84019f5d" .
+
+bldg:SLAB.ZONE.AHU04.RM3008B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM3008B.Zone Air Temp" ;
+    brickframe:uuid "2f0324d2-5223-3d84-afb1-b5b5f08f641e" .
+
+bldg:SLAB.ZONE.AHU04.RM3008C.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM3008C.Zone Air Temp" ;
+    brickframe:uuid "a6f3df8f-213d-39e2-846b-f953e76e284f" .
+
+bldg:SLAB.ZONE.AHU04.RM3009.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM3009.Zone Air Temp" ;
+    brickframe:uuid "fc0f8a13-9918-3641-9d02-fa8e96123480" .
+
+bldg:SLAB.ZONE.AHU04.RM3079.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM3079.Zone Air Temp" ;
+    brickframe:uuid "18cdcd71-e730-3ce7-9093-4b20cec84ea4" .
+
+bldg:SLAB.ZONE.AHU04.RM3080.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM3080.Zone Air Temp" ;
+    brickframe:uuid "3fcb074c-cf78-3009-a11d-e647c094b75e" .
+
+bldg:SLAB.ZONE.AHU04.RM3080A_C.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM3080A_C.Zone Air Temp" ;
+    brickframe:uuid "e0f6ac9b-72bc-3d8a-8298-4067f98a9734" .
+
+bldg:SLAB.ZONE.AHU04.RM3080B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM3080B.Zone Air Temp" ;
+    brickframe:uuid "d62cfa8a-feca-3179-8b08-e9f216576260" .
+
+bldg:SLAB.ZONE.AHU04.RM3080B_D.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM3080B_D.Zone Air Temp" ;
+    brickframe:uuid "d72c1894-6d71-3fe4-9bf6-077f480e7fe5" .
+
+bldg:SLAB.ZONE.AHU04.RM3083.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM3083.Zone Air Temp" ;
+    brickframe:uuid "bc234528-5387-38b8-9dcd-3c5b7837895b" .
+
+bldg:SLAB.ZONE.AHU04.RM3084A.ROOM_TEMP a brick1:Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM3084A.ROOM TEMP" ;
+    brickframe:uuid "b0e3b533-7f1a-3631-ba26-40970d94b4cb" .
+
+bldg:SLAB.ZONE.AHU04.RM3084A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM3084A.Zone Air Temp" ;
+    brickframe:uuid "53aa04f7-8382-32e5-b395-fc46061d7602" .
+
+bldg:SLAB.ZONE.AHU04.RM3085.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM3085.Zone Air Temp" ;
+    brickframe:uuid "2dbadd90-eccf-337f-bcf6-881cfbb5ed4e" .
+
+bldg:SLAB.ZONE.AHU04.RM3088.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM3088.Zone Air Temp" ;
+    brickframe:uuid "f3ab13ce-a821-38d9-b81c-946d988d6b54" .
+
+bldg:SLAB.ZONE.AHU04.RM3089.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM3089.Zone Air Temp" ;
+    brickframe:uuid "c23ef6a4-97b4-3b6b-acf5-ed33ff06d69f" .
+
+bldg:SLAB.ZONE.AHU04.RM3089A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM3089A.Zone Air Temp" ;
+    brickframe:uuid "85019acc-3621-3a23-a550-873c1751d98f" .
+
+bldg:SLAB.ZONE.AHU04.RM3090.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM3090.Zone Air Temp" ;
+    brickframe:uuid "20cd0fdd-059c-3d37-8798-727cf98a769b" .
+
+bldg:SLAB.ZONE.AHU04.RM3093.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM3093.Zone Air Temp" ;
+    brickframe:uuid "46d5617c-9d06-37ca-aa29-e4e55a95363b" .
+
+bldg:SLAB.ZONE.AHU04.RM3094.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM3094.Zone Air Temp" ;
+    brickframe:uuid "cd337a45-6577-362d-91ce-a6752cb3f687" .
+
+bldg:SLAB.ZONE.AHU04.RM3096A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM3096A.Zone Air Temp" ;
+    brickframe:uuid "ead647b4-a9dd-3803-a761-0ca9e0428174" .
+
+bldg:SLAB.ZONE.AHU04.RM3096B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SLAB ;
+    brickframe:pointname "SLAB.ZONE.AHU04.RM3096B.Zone Air Temp" ;
+    brickframe:uuid "16873243-f2e2-3e06-8ae9-435b08a2f90c" .
+
+bldg:VAVRM1007 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1007 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM1007.Zone_Air_Temp .
+
+bldg:VAVRM1007_1 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1007_1 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM1007_1.Zone_Air_Temp .
+
+bldg:VAVRM1007_2 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1007_2 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM1007_2.Zone_Air_Temp .
+
+bldg:VAVRM1008_1 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1008_1 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM1008_1.Zone_Air_Temp .
+
+bldg:VAVRM1008_2 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1008_2 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM1008_2.Zone_Air_Temp .
+
+bldg:VAVRM1008_3 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1008_3 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM1008_3.Zone_Air_Temp .
+
+bldg:VAVRM1009 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1009 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM1009.Zone_Air_Temp .
+
+bldg:VAVRM1023_1 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1023_1 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM1023_1.VLV_COMD,
+        bldg:SLAB.ZONE.AHU01.RM1023_1.Zone_Air_Temp,
+        bldg:SLAB.ZONE.AHU01.RM1023_1.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1023_3 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1023_3 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM1023_3.VLV_COMD,
+        bldg:SLAB.ZONE.AHU01.RM1023_3.Zone_Air_Temp,
+        bldg:SLAB.ZONE.AHU01.RM1023_3.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1029 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1029 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM1029.Zone_Air_Temp .
+
+bldg:VAVRM1031 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1031 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM1031.Zone_Air_Temp .
+
+bldg:VAVRM1031A a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1031A ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM1031A.Zone_Air_Temp .
+
+bldg:VAVRM1033A a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1033A ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM1033A.VLV1_COMD,
+        bldg:SLAB.ZONE.AHU01.RM1033A.Zone_Air_Temp,
+        bldg:SLAB.ZONE.AHU01.RM1033A.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1034_2 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1034_2 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM1034_2.VLV_COMD,
+        bldg:SLAB.ZONE.AHU01.RM1034_2.Zone_Air_Temp,
+        bldg:SLAB.ZONE.AHU01.RM1034_2.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM1036 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1036 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM1036.Zone_Air_Temp .
+
+bldg:VAVRM1051 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1051 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM1051.Zone_Air_Temp .
+
+bldg:VAVRM1054 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1054 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM1054.Zone_Air_Temp .
+
+bldg:VAVRM1055 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1055 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM1055.Zone_Air_Temp .
+
+bldg:VAVRM1059 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1059 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM1059.Zone_Air_Temp .
+
+bldg:VAVRM1060 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1060 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM1060.Zone_Air_Temp .
+
+bldg:VAVRM1060A a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1060A ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM1060A.Zone_Air_Temp .
+
+bldg:VAVRM1060B a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1060B ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM1060B.Zone_Air_Temp .
+
+bldg:VAVRM1061 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1061 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM1061.Zone_Air_Temp .
+
+bldg:VAVRM1064 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1064 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM1064.Zone_Air_Temp .
+
+bldg:VAVRM1066 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1066 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM1066.Zone_Air_Temp .
+
+bldg:VAVRM1067 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1067 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU03.RM1067.Zone_Air_Temp .
+
+bldg:VAVRM1068 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1068 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU03.RM1068.Zone_Air_Temp .
+
+bldg:VAVRM1071 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1071 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU03.RM1071.Zone_Air_Temp .
+
+bldg:VAVRM1072 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1072 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU03.RM1072.Zone_Air_Temp .
+
+bldg:VAVRM1075 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1075 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU03.RM1075.Zone_Air_Temp .
+
+bldg:VAVRM1076 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1076 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU03.RM1076.Zone_Air_Temp .
+
+bldg:VAVRM1079 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1079 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM1079.Zone_Air_Temp .
+
+bldg:VAVRM1080 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1080 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM1080.Zone_Air_Temp .
+
+bldg:VAVRM1083 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1083 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM1083.Zone_Air_Temp .
+
+bldg:VAVRM1084 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1084 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM1084.Zone_Air_Temp .
+
+bldg:VAVRM1087 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1087 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM1087.Zone_Air_Temp .
+
+bldg:VAVRM1088 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1088 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM1088.Zone_Air_Temp .
+
+bldg:VAVRM1089 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1089 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM1089.Zone_Air_Temp .
+
+bldg:VAVRM1090 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1090 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM1090.Zone_Air_Temp .
+
+bldg:VAVRM1093 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1093 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM1093.Zone_Air_Temp .
+
+bldg:VAVRM1094 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1094 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM1094.Zone_Air_Temp .
+
+bldg:VAVRM1096 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1096 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM1096.Zone_Air_Temp .
+
+bldg:VAVRM1096B a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1096B ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM1096B.Zone_Air_Temp .
+
+bldg:VAVRM1096C a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1096C ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM1096C.Zone_Air_Temp .
+
+bldg:VAVRM11_17A a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM11_17A ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM11_17A.Zone_Air_Temp .
+
+bldg:VAVRM12 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM12 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM12.Zone_Air_Temp .
+
+bldg:VAVRM17_21 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM17_21 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM17_21.Zone_Air_Temp .
+
+bldg:VAVRM18 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM18 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM18.Zone_Air_Temp .
+
+bldg:VAVRM18A a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM18A ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM18A.Zone_Air_Temp .
+
+bldg:VAVRM2 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM2.Zone_Air_Temp .
+
+bldg:VAVRM20 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM20 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM20.Zone_Air_Temp .
+
+bldg:VAVRM2002A a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2002A ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM2002A.Zone_Air_Temp .
+
+bldg:VAVRM2002B a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2002B ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM2002B.Zone_Air_Temp .
+
+bldg:VAVRM2005 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2005 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU03.RM2005.Zone_Air_Temp .
+
+bldg:VAVRM2007A a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2007A ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM2007A.Zone_Air_Temp .
+
+bldg:VAVRM2007B a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2007B ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM2007B.Zone_Air_Temp .
+
+bldg:VAVRM2008A a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2008A ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU03.RM2008A.Zone_Air_Temp .
+
+bldg:VAVRM2008B a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2008B ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU03.RM2008B.Zone_Air_Temp .
+
+bldg:VAVRM2008C a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2008C ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU03.RM2008C.Zone_Air_Temp .
+
+bldg:VAVRM2009 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2009 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM2009.Zone_Air_Temp .
+
+bldg:VAVRM2011 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2011 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM2011.Zone_Air_Temp .
+
+bldg:VAVRM2012 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2012 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM2012.Zone_Air_Temp .
+
+bldg:VAVRM2015 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2015 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM2015.Zone_Air_Temp .
+
+bldg:VAVRM2016 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2016 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM2016.Zone_Air_Temp .
+
+bldg:VAVRM2017 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2017 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM2017.Zone_Air_Temp .
+
+bldg:VAVRM2018 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2018 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM2018.Zone_Air_Temp .
+
+bldg:VAVRM2020 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2020 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM2020.Zone_Air_Temp .
+
+bldg:VAVRM2021 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2021 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM2021.Zone_Air_Temp .
+
+bldg:VAVRM2036 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2036 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM2036.Zone_Air_Temp .
+
+bldg:VAVRM2037 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2037 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM2037.Zone_Air_Temp,
+        bldg:SLAB.ZONE.AHU01.RM2037.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM2051 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2051 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM2051.Zone_Air_Temp .
+
+bldg:VAVRM2054 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2054 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM2054.Zone_Air_Temp .
+
+bldg:VAVRM2055 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2055 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM2055.Zone_Air_Temp .
+
+bldg:VAVRM2059 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2059 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM2059.Zone_Air_Temp .
+
+bldg:VAVRM2060 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2060 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM2060.Zone_Air_Temp .
+
+bldg:VAVRM2061 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2061 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM2061.Zone_Air_Temp .
+
+bldg:VAVRM2064 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2064 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM2064.Zone_Air_Temp .
+
+bldg:VAVRM2066 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2066 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM2066.Zone_Air_Temp .
+
+bldg:VAVRM2067 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2067 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU03.RM2067.Zone_Air_Temp .
+
+bldg:VAVRM2068 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2068 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU03.RM2068.Zone_Air_Temp .
+
+bldg:VAVRM2071 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2071 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU03.RM2071.Zone_Air_Temp .
+
+bldg:VAVRM2072 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2072 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU03.RM2072.Zone_Air_Temp .
+
+bldg:VAVRM2075 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2075 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM2075.Zone_Air_Temp .
+
+bldg:VAVRM2076 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2076 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU03.RM2076.Zone_Air_Temp .
+
+bldg:VAVRM2078 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2078 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM2078.Zone_Air_Temp .
+
+bldg:VAVRM2079 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2079 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM2079.Zone_Air_Temp .
+
+bldg:VAVRM2080B a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2080B ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM2080B.Zone_Air_Temp .
+
+bldg:VAVRM2083 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2083 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM2083.Zone_Air_Temp .
+
+bldg:VAVRM2084 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2084 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM2084.Zone_Air_Temp .
+
+bldg:VAVRM2087 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2087 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM2087.Zone_Air_Temp .
+
+bldg:VAVRM2088 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2088 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM2088.Zone_Air_Temp .
+
+bldg:VAVRM2088A1 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2088A1 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM2088A1.Zone_Air_Temp .
+
+bldg:VAVRM2088A2 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2088A2 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM2088A2.Zone_Air_Temp .
+
+bldg:VAVRM2088A3 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2088A3 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM2088A3.Zone_Air_Temp .
+
+bldg:VAVRM2088A4 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2088A4 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM2088A4.Zone_Air_Temp .
+
+bldg:VAVRM2089 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2089 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM2089.Zone_Air_Temp .
+
+bldg:VAVRM2090 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2090 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM2090.Zone_Air_Temp .
+
+bldg:VAVRM2094 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2094 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM2094.Zone_Air_Temp .
+
+bldg:VAVRM2096 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2096 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM2096.Zone_Air_Temp .
+
+bldg:VAVRM2096A a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2096A ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM2096A.Zone_Air_Temp .
+
+bldg:VAVRM2096B a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2096B ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM2096B.Zone_Air_Temp .
+
+bldg:VAVRM2098 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2098 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM2098.Zone_Air_Temp .
+
+bldg:VAVRM30 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM30 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM30.Zone_Air_Temp .
+
+bldg:VAVRM3002 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3002 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM3002.Zone_Air_Temp .
+
+bldg:VAVRM3002A a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3002A ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM3002A.Zone_Air_Temp .
+
+bldg:VAVRM3002B a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3002B ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM3002B.Zone_Air_Temp .
+
+bldg:VAVRM3007A a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3007A ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM3007A.Zone_Air_Temp .
+
+bldg:VAVRM3007B a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3007B ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM3007B.Zone_Air_Temp .
+
+bldg:VAVRM3007C a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3007C ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM3007C.Zone_Air_Temp .
+
+bldg:VAVRM3008A a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3008A ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM3008A.Zone_Air_Temp .
+
+bldg:VAVRM3008B a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3008B ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM3008B.Zone_Air_Temp .
+
+bldg:VAVRM3008C a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3008C ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM3008C.Zone_Air_Temp .
+
+bldg:VAVRM3009 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3009 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM3009.Zone_Air_Temp .
+
+bldg:VAVRM3011 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3011 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM3011.Zone_Air_Temp .
+
+bldg:VAVRM3012 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3012 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM3012.Zone_Air_Temp .
+
+bldg:VAVRM3015 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3015 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM3015.Zone_Air_Temp .
+
+bldg:VAVRM3016 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3016 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM3016.Zone_Air_Temp .
+
+bldg:VAVRM3017 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3017 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU03.RM3017.Zone_Air_Temp .
+
+bldg:VAVRM3018 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3018 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM3018.Zone_Air_Temp .
+
+bldg:VAVRM3019 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3019 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM3019.Zone_Air_Temp .
+
+bldg:VAVRM3019A a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3019A ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM3019A.Zone_Air_Temp .
+
+bldg:VAVRM3020C a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3020C ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM3020C.Zone_Air_Temp .
+
+bldg:VAVRM3021 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3021 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM3021.Zone_Air_Temp .
+
+bldg:VAVRM3037 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3037 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM3037.Zone_Air_Temp,
+        bldg:SLAB.ZONE.AHU01.RM3037.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM3038 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3038 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM3038.Zone_Air_Temp .
+
+bldg:VAVRM3041E a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3041E ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM3041E.VLV1_COMD,
+        bldg:SLAB.ZONE.AHU01.RM3041E.Zone_Air_Temp,
+        bldg:SLAB.ZONE.AHU01.RM3041E.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM3041N a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3041N ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM3041N.VLV1_COMD,
+        bldg:SLAB.ZONE.AHU01.RM3041N.Zone_Air_Temp,
+        bldg:SLAB.ZONE.AHU01.RM3041N.Zone_Air_Temp_Setpoint .
+
+bldg:VAVRM3051 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3051 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM3051.Zone_Air_Temp .
+
+bldg:VAVRM3054 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3054 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM3054.Zone_Air_Temp .
+
+bldg:VAVRM3055 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3055 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM3055.Zone_Air_Temp .
+
+bldg:VAVRM3059 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3059 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM3059.Zone_Air_Temp .
+
+bldg:VAVRM3060 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3060 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM3060.Zone_Air_Temp .
+
+bldg:VAVRM3061 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3061 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM3061.Zone_Air_Temp .
+
+bldg:VAVRM3062 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3062 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM3062.Zone_Air_Temp .
+
+bldg:VAVRM3066 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3066 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM3066.Zone_Air_Temp .
+
+bldg:VAVRM3067 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3067 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU03.RM3067.Zone_Air_Temp .
+
+bldg:VAVRM3068 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3068 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM3068.Zone_Air_Temp .
+
+bldg:VAVRM3068A a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3068A ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU03.RM3068A.Zone_Air_Temp .
+
+bldg:VAVRM3068C a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3068C ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU03.RM3068C.Zone_Air_Temp .
+
+bldg:VAVRM3068E a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3068E ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU03.RM3068E.Zone_Air_Temp .
+
+bldg:VAVRM3071 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3071 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU03.RM3071.Zone_Air_Temp .
+
+bldg:VAVRM3072 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3072 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU03.RM3072.Zone_Air_Temp .
+
+bldg:VAVRM3075 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3075 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU03.RM3075.Zone_Air_Temp .
+
+bldg:VAVRM3076 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3076 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU03.RM3076.Zone_Air_Temp .
+
+bldg:VAVRM3076B_C a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3076B_C ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU03.RM3076B_C.Zone_Air_Temp .
+
+bldg:VAVRM3076D a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3076D ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU03.RM3076D.Zone_Air_Temp .
+
+bldg:VAVRM3078 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3078 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU03.RM3078.Zone_Air_Temp .
+
+bldg:VAVRM3079 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3079 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM3079.Zone_Air_Temp .
+
+bldg:VAVRM3080 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3080 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM3080.Zone_Air_Temp .
+
+bldg:VAVRM3080A_C a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3080A_C ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM3080A_C.Zone_Air_Temp .
+
+bldg:VAVRM3080B a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3080B ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM3080B.Zone_Air_Temp .
+
+bldg:VAVRM3080B_D a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3080B_D ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM3080B_D.Zone_Air_Temp .
+
+bldg:VAVRM3083 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3083 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM3083.Zone_Air_Temp .
+
+bldg:VAVRM3084A a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3084A ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM3084A.ROOM_TEMP,
+        bldg:SLAB.ZONE.AHU04.RM3084A.Zone_Air_Temp .
+
+bldg:VAVRM3085 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3085 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM3085.Zone_Air_Temp .
+
+bldg:VAVRM3088 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3088 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM3088.Zone_Air_Temp .
+
+bldg:VAVRM3089 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3089 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM3089.Zone_Air_Temp .
+
+bldg:VAVRM3089A a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3089A ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM3089A.Zone_Air_Temp .
+
+bldg:VAVRM3090 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3090 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM3090.Zone_Air_Temp .
+
+bldg:VAVRM3093 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3093 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM3093.Zone_Air_Temp .
+
+bldg:VAVRM3094 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3094 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM3094.Zone_Air_Temp .
+
+bldg:VAVRM3096A a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3096A ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM3096A.Zone_Air_Temp .
+
+bldg:VAVRM3096B a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3096B ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU04.RM3096B.Zone_Air_Temp .
+
+bldg:VAVRM31 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM31 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM31.Zone_Air_Temp .
+
+bldg:VAVRM31A a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM31A ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM31A.Zone_Air_Temp .
+
+bldg:VAVRM31B a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM31B ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM31B.Zone_Air_Temp .
+
+bldg:VAVRM31C a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM31C ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM31C.Zone_Air_Temp .
+
+bldg:VAVRM31D a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM31D ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM31D.Zone_Air_Temp .
+
+bldg:VAVRM31E a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM31E ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM31E.Zone_Air_Temp .
+
+bldg:VAVRM31F a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM31F ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU02.RM31F.Zone_Air_Temp .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+bldg:RM1007_1_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1007_2_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1007_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1008_1_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1008_2_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1008_3_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1009_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1012A_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1012_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1013_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1017_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1021_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1023_1_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1023_3_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1023_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1024_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1026_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1028_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1029_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1030_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1031A_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1031_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1033A_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1034_2_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1034_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1035_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1036_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1051_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1054_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1055_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1059_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1060A_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1060B_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1060_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1061_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1064_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1066_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1067_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1068_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1071_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1072_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1075_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1076_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1079_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1080_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1083_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1084_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1087_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1088_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1089_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1090_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1093_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1094_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1096B_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1096C_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM1096_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM11_17A_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM12_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM17_21_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM18A_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM18_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2002A_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2002B_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2005_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2007A_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2007B_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2008A_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2008B_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2008C_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2009_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2011_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2012_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2015_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2016_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2017_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2018_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2020_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2021_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2033A_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2033D_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2036_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2037_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2041A_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2041E_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2041W_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2051_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2054_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2055_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2059_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2060_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2061_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2064_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2066_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2067_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2068_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2071_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2072_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2075_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2076_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2078_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2079_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2080B_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2083_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2084_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2087_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2088A1_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2088A2_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2088A3_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2088A4_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2088_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2089_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2090_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2094_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2096A_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2096B_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2096_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2098_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM20_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM2_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3002A_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3002B_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3002_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3007A_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3007B_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3007C_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3008A_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3008B_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3008C_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3009_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3011_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3012_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3015_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3016_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3017_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3018_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3019A_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3019_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3020C_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3021_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3033A_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3033D_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3037_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3038_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3041E_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3041N_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3041W_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3051_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3054_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3055_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3059_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3060_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3061_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3062_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3066_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3067_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3068A_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3068C_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3068E_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3068_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3071_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3072_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3075_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3076B_C_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3076D_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3076_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3078_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3079_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3080A_C_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3080B_D_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3080B_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3080_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3083_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3084A_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3085_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3088_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3089A_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3089_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3090_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3093_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3094_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3096A_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM3096B_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM30_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM31A_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM31B_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM31C_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM31D_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM31E_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM31F_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:RM31_room a brick1:Room ;
+    brickframe:hasSite bldg:SLAB .
+
+bldg:VAVRM1012 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1012 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM1012.Zone_Air_Temp,
+        bldg:SLAB.ZONE.AHU01.RM1012.Zone_Air_Temp_Setpoint,
+        bldg:SLAB.ZONE.AHU01.RM1012.Zone_Reheat_Valve_Command,
+        bldg:SLAB.ZONE.AHU01.RM1012.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1012A a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1012A ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM1012A.Zone_Air_Temp,
+        bldg:SLAB.ZONE.AHU01.RM1012A.Zone_Air_Temp_Setpoint,
+        bldg:SLAB.ZONE.AHU01.RM1012A.Zone_Reheat_Valve_Command,
+        bldg:SLAB.ZONE.AHU01.RM1012A.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1013 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1013 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM1013.Zone_Air_Temp,
+        bldg:SLAB.ZONE.AHU01.RM1013.Zone_Air_Temp_Setpoint,
+        bldg:SLAB.ZONE.AHU01.RM1013.Zone_Reheat_Valve_Command,
+        bldg:SLAB.ZONE.AHU01.RM1013.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1017 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1017 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM1017.Zone_Air_Temp,
+        bldg:SLAB.ZONE.AHU01.RM1017.Zone_Air_Temp_Setpoint,
+        bldg:SLAB.ZONE.AHU01.RM1017.Zone_Reheat_Valve_Command,
+        bldg:SLAB.ZONE.AHU01.RM1017.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1021 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1021 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM1021.Zone_Air_Temp,
+        bldg:SLAB.ZONE.AHU01.RM1021.Zone_Air_Temp_Setpoint,
+        bldg:SLAB.ZONE.AHU01.RM1021.Zone_Reheat_Valve_Command,
+        bldg:SLAB.ZONE.AHU01.RM1021.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1023 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1023 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM1023.Zone_Air_Temp,
+        bldg:SLAB.ZONE.AHU01.RM1023.Zone_Air_Temp_Setpoint,
+        bldg:SLAB.ZONE.AHU01.RM1023.Zone_Reheat_Valve_Command,
+        bldg:SLAB.ZONE.AHU01.RM1023.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1024 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1024 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM1024.Zone_Air_Temp,
+        bldg:SLAB.ZONE.AHU01.RM1024.Zone_Air_Temp_Setpoint,
+        bldg:SLAB.ZONE.AHU01.RM1024.Zone_Reheat_Valve_Command,
+        bldg:SLAB.ZONE.AHU01.RM1024.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1026 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1026 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM1026.Zone_Air_Temp,
+        bldg:SLAB.ZONE.AHU01.RM1026.Zone_Air_Temp_Setpoint,
+        bldg:SLAB.ZONE.AHU01.RM1026.Zone_Reheat_Valve_Command,
+        bldg:SLAB.ZONE.AHU01.RM1026.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1028 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1028 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM1028.Zone_Air_Temp,
+        bldg:SLAB.ZONE.AHU01.RM1028.Zone_Air_Temp_Setpoint,
+        bldg:SLAB.ZONE.AHU01.RM1028.Zone_Reheat_Valve_Command,
+        bldg:SLAB.ZONE.AHU01.RM1028.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1030 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1030 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM1030.Zone_Air_Temp,
+        bldg:SLAB.ZONE.AHU01.RM1030.Zone_Air_Temp_Setpoint,
+        bldg:SLAB.ZONE.AHU01.RM1030.Zone_Reheat_Valve_Command,
+        bldg:SLAB.ZONE.AHU01.RM1030.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1034 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1034 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM1034.Zone_Air_Temp,
+        bldg:SLAB.ZONE.AHU01.RM1034.Zone_Air_Temp_Setpoint,
+        bldg:SLAB.ZONE.AHU01.RM1034.Zone_Reheat_Valve_Command,
+        bldg:SLAB.ZONE.AHU01.RM1034.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1035 a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM1035 ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM1035.Zone_Air_Temp,
+        bldg:SLAB.ZONE.AHU01.RM1035.Zone_Air_Temp_Setpoint,
+        bldg:SLAB.ZONE.AHU01.RM1035.Zone_Reheat_Valve_Command,
+        bldg:SLAB.ZONE.AHU01.RM1035.Zone_Supply_Air_Flow .
+
+bldg:VAVRM2033A a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2033A ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM2033A.Zone_Air_Temp,
+        bldg:SLAB.ZONE.AHU01.RM2033A.Zone_Air_Temp_Setpoint,
+        bldg:SLAB.ZONE.AHU01.RM2033A.Zone_Reheat_Valve_Command,
+        bldg:SLAB.ZONE.AHU01.RM2033A.Zone_Supply_Air_Flow .
+
+bldg:VAVRM2033D a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2033D ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM2033D.Zone_Air_Temp,
+        bldg:SLAB.ZONE.AHU01.RM2033D.Zone_Air_Temp_Setpoint,
+        bldg:SLAB.ZONE.AHU01.RM2033D.Zone_Reheat_Valve_Command,
+        bldg:SLAB.ZONE.AHU01.RM2033D.Zone_Supply_Air_Flow .
+
+bldg:VAVRM2041A a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2041A ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM2041A.Zone_Air_Temp,
+        bldg:SLAB.ZONE.AHU01.RM2041A.Zone_Air_Temp_Setpoint,
+        bldg:SLAB.ZONE.AHU01.RM2041A.Zone_Reheat_Valve_Command,
+        bldg:SLAB.ZONE.AHU01.RM2041A.Zone_Supply_Air_Flow .
+
+bldg:VAVRM2041E a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2041E ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM2041E.Zone_Air_Temp,
+        bldg:SLAB.ZONE.AHU01.RM2041E.Zone_Air_Temp_Setpoint,
+        bldg:SLAB.ZONE.AHU01.RM2041E.Zone_Reheat_Valve_Command,
+        bldg:SLAB.ZONE.AHU01.RM2041E.Zone_Supply_Air_Flow .
+
+bldg:VAVRM2041W a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM2041W ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM2041W.Zone_Air_Temp,
+        bldg:SLAB.ZONE.AHU01.RM2041W.Zone_Air_Temp_Setpoint,
+        bldg:SLAB.ZONE.AHU01.RM2041W.Zone_Reheat_Valve_Command,
+        bldg:SLAB.ZONE.AHU01.RM2041W.Zone_Supply_Air_Flow .
+
+bldg:VAVRM3033A a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3033A ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM3033A.Zone_Air_Temp,
+        bldg:SLAB.ZONE.AHU01.RM3033A.Zone_Air_Temp_Setpoint,
+        bldg:SLAB.ZONE.AHU01.RM3033A.Zone_Reheat_Valve_Command,
+        bldg:SLAB.ZONE.AHU01.RM3033A.Zone_Supply_Air_Flow .
+
+bldg:VAVRM3033D a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3033D ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM3033D.Zone_Air_Temp,
+        bldg:SLAB.ZONE.AHU01.RM3033D.Zone_Air_Temp_Setpoint,
+        bldg:SLAB.ZONE.AHU01.RM3033D.Zone_Reheat_Valve_Command,
+        bldg:SLAB.ZONE.AHU01.RM3033D.Zone_Supply_Air_Flow .
+
+bldg:VAVRM3041W a brick1:VAV ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:feeds bldg:RM3041W ;
+    brick1:hasPoint bldg:SLAB.ZONE.AHU01.RM3041W.Zone_Air_Temp,
+        bldg:SLAB.ZONE.AHU01.RM3041W.Zone_Air_Temp_Setpoint,
+        bldg:SLAB.ZONE.AHU01.RM3041W.Zone_Reheat_Valve_Command,
+        bldg:SLAB.ZONE.AHU01.RM3041W.Zone_Supply_Air_Flow .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:SLAB ;
+    brick1:hasPoint bldg:SLAB.CHW.Building_Chilled_Water_Flow,
+        bldg:SLAB.CHW.Building_Chilled_Water_Return_Temp,
+        bldg:SLAB.CHW.Building_Chilled_Water_Supply_Temp,
+        bldg:SLAB.CHW.CHWRDIFFSP,
+        bldg:SLAB.CHW.Loop_Chilled_Water_Flow,
+        bldg:SLAB.CHW.Loop_Chilled_Water_Return_Temp,
+        bldg:SLAB.CHW.Loop_Chilled_Water_Supply_Temp,
+        bldg:SLAB.CHW.Loop_Chilled_Water_Supply_TempSP,
+        bldg:SLAB.CHW.Pump3_SPEED,
+        bldg:SLAB.CHW.Pump4_SPEED .
+
+bldg:SLAB a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "139593" ;
+    brickframe:Country "US" .
+

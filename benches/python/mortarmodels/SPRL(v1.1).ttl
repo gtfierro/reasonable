@@ -1,0 +1,116 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/SPRL#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:Sproul_ChilledWater_Demand_kBtu a brick_v_1_0_2:Electric_Meter ;
+    brickframe:pointname "Sproul_ChilledWater_Demand_kBtu" ;
+    brickframe:uuid "8289f5a2-1594-3a3b-8623-4e7d6c321fb8" ;
+    brick1:isPointOf bldg:chiller .
+
+bldg:Sproul_Electricity_Demand_kBtu a brick_v_1_0_2:Building_Electric_Meter ;
+    brickframe:hasSite bldg:SPRL ;
+    brickframe:pointname "Sproul_Electricity_Demand_kBtu" ;
+    brickframe:uuid "bb32ca9c-cbbf-3aed-87a9-4d0acc66c4dc" .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:SPRL.CHW.BCHWR a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:SPRL ;
+    brickframe:pointname "SPRL.CHW.BCHWR" ;
+    brickframe:uuid "8d64eaaf-a117-38e3-adc3-bd3a9c61991c" .
+
+bldg:SPRL.CHW.BCHWS a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:SPRL ;
+    brickframe:pointname "SPRL.CHW.BCHWS" ;
+    brickframe:uuid "1dccb25b-a5a3-3f4b-a7de-b680cd45387d" .
+
+bldg:SPRL.CHW.Building_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:SPRL ;
+    brickframe:pointname "SPRL.CHW.Building Chilled Water Return Temp" ;
+    brickframe:uuid "fc3f783b-beca-305d-a15c-420447f7c989" .
+
+bldg:SPRL.CHW.Building_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:SPRL ;
+    brickframe:pointname "SPRL.CHW.Building Chilled Water Supply Temp" ;
+    brickframe:uuid "07e00fe0-37cc-31aa-b29b-9c5251106938" .
+
+bldg:SPRL.CHW.ECONOMIZER a brick1:Damper_Position_Command ;
+    brickframe:hasSite bldg:SPRL ;
+    brickframe:pointname "SPRL.CHW.ECONOMIZER" ;
+    brickframe:uuid "821db552-4d38-35fc-80c8-ae85fb8fae7d" .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:SPRL ;
+    brick1:hasPoint bldg:SPRL.CHW.BCHWR,
+        bldg:SPRL.CHW.BCHWS,
+        bldg:SPRL.CHW.Building_Chilled_Water_Return_Temp,
+        bldg:SPRL.CHW.Building_Chilled_Water_Supply_Temp,
+        bldg:SPRL.CHW.ECONOMIZER .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:SPRL a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "53797" ;
+    brickframe:Country "US" .
+

@@ -1,0 +1,212 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/MUSIC#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:AHU04 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:MUSIC ;
+    brick1:feeds bldg:VAVRM206A,
+        bldg:VAVRM210 ;
+    brick1:hasPoint bldg:MUSIC.AHU.AHU04.CCV,
+        bldg:MUSIC.AHU.AHU04.Cooling_Valve_Output,
+        bldg:MUSIC.AHU.AHU04.Heating_Valve_Output,
+        bldg:MUSIC.AHU.AHU04.Mixed_Air_Temp,
+        bldg:MUSIC.AHU.AHU04.Outside_Air_Temp_Virtual,
+        bldg:MUSIC.AHU.AHU04.Return_Air_Temp,
+        bldg:MUSIC.AHU.AHU04.Supply_Air_Temp,
+        bldg:MUSIC.AHU.AHU04.Supply_Air_Temp_Setpoint,
+        bldg:MUSIC.AHU.AHU04.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:floor2 a brick1:Floor ;
+    brickframe:hasSite bldg:MUSIC ;
+    brick1:hasPart bldg:RM206A_room,
+        bldg:RM210_room .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:MUSIC.AHU.AHU04.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:MUSIC ;
+    brickframe:pointname "MUSIC.AHU.AHU04.CCV" ;
+    brickframe:uuid "cfc20571-4e3b-3993-83da-dad585587fcd" .
+
+bldg:MUSIC.AHU.AHU04.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:MUSIC ;
+    brickframe:pointname "MUSIC.AHU.AHU04.Cooling Valve Output" ;
+    brickframe:uuid "7c3852e4-5973-39fa-9649-90264eb58749" .
+
+bldg:MUSIC.AHU.AHU04.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:MUSIC ;
+    brickframe:pointname "MUSIC.AHU.AHU04.Heating Valve Output" ;
+    brickframe:uuid "8e118198-ebc0-3340-b706-64a5e0d07d54" .
+
+bldg:MUSIC.AHU.AHU04.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MUSIC ;
+    brickframe:pointname "MUSIC.AHU.AHU04.Mixed Air Temp" ;
+    brickframe:uuid "4e849622-d920-3de7-a1b6-2c4f102a4074" .
+
+bldg:MUSIC.AHU.AHU04.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MUSIC ;
+    brickframe:pointname "MUSIC.AHU.AHU04.Outside Air Temp Virtual" ;
+    brickframe:uuid "36f4be24-4bc6-31a2-b15f-70d046ea147a" .
+
+bldg:MUSIC.AHU.AHU04.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MUSIC ;
+    brickframe:pointname "MUSIC.AHU.AHU04.Return Air Temp" ;
+    brickframe:uuid "8be20d27-2b1f-3b99-91e0-1983b25883e7" .
+
+bldg:MUSIC.AHU.AHU04.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MUSIC ;
+    brickframe:pointname "MUSIC.AHU.AHU04.Supply Air Temp" ;
+    brickframe:uuid "45da037b-9499-3795-ba80-1aa3b50dbdb1" .
+
+bldg:MUSIC.AHU.AHU04.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:MUSIC ;
+    brickframe:pointname "MUSIC.AHU.AHU04.Supply Air Temp Setpoint" ;
+    brickframe:uuid "672c8a5e-12f9-3e0f-abb4-08d754787fea" .
+
+bldg:MUSIC.AHU.AHU04.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MUSIC ;
+    brickframe:pointname "MUSIC.AHU.AHU04.Zone Air Temp" ;
+    brickframe:uuid "77720279-b0e0-3fcb-9dd8-d86f5b0ead1d" .
+
+bldg:MUSIC.CHW.Pump1_SPEED a brick_v_1_0_2:Speed_Status ;
+    brickframe:pointname "MUSIC.CHW.Pump1_SPEED" ;
+    brickframe:uuid "15fe3deb-3cdd-3114-bf60-b5a0f26fe4ef" .
+
+<http://buildsys.org/ontologies/MUSIC#MUSIC.CHW.Pump1_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:MUSIC ;
+    brickframe:pointname "MUSIC.CHW.Pump1_Start/Stop" ;
+    brickframe:uuid "b3c9cf94-15ca-3f5c-bb92-ac1513427593" .
+
+bldg:MUSIC.ZONE.AHU04.RM206A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MUSIC ;
+    brickframe:pointname "MUSIC.ZONE.AHU04.RM206A.Zone Air Temp" ;
+    brickframe:uuid "181fa93b-f5ec-3418-b8ac-5f29b7ba9df8" .
+
+bldg:MUSIC.ZONE.AHU04.RM206A.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MUSIC ;
+    brickframe:pointname "MUSIC.ZONE.AHU04.RM206A.Zone Reheat Valve Command" ;
+    brickframe:uuid "578e4d7a-ca4c-3f4f-a217-f32763a2d863" .
+
+bldg:MUSIC.ZONE.AHU04.RM206A.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MUSIC ;
+    brickframe:pointname "MUSIC.ZONE.AHU04.RM206A.Zone Supply Air Temp" ;
+    brickframe:uuid "c1281f78-e5cf-35f3-987f-0ab5a0fc07ce" .
+
+bldg:MUSIC.ZONE.AHU04.RM210.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MUSIC ;
+    brickframe:pointname "MUSIC.ZONE.AHU04.RM210.Zone Air Temp" ;
+    brickframe:uuid "725da6b7-8d4b-3e25-a841-bab8898fd873" .
+
+bldg:MUSIC.ZONE.AHU04.RM210.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:MUSIC ;
+    brickframe:pointname "MUSIC.ZONE.AHU04.RM210.Zone Reheat Valve Command" ;
+    brickframe:uuid "6646f6f8-5342-3a44-920a-7697abba47dd" .
+
+bldg:MUSIC.ZONE.AHU04.RM210.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:MUSIC ;
+    brickframe:pointname "MUSIC.ZONE.AHU04.RM210.Zone Supply Air Temp" ;
+    brickframe:uuid "aeb07aa9-626d-38fd-be4d-3b8a6d546804" .
+
+bldg:RM206A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MUSIC ;
+    brick1:hasPart bldg:RM206A_room .
+
+bldg:RM210 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:MUSIC ;
+    brick1:hasPart bldg:RM210_room .
+
+bldg:VAVRM206A a brick1:VAV ;
+    brickframe:hasSite bldg:MUSIC ;
+    brick1:feeds bldg:RM206A ;
+    brick1:hasPoint bldg:MUSIC.ZONE.AHU04.RM206A.Zone_Air_Temp,
+        bldg:MUSIC.ZONE.AHU04.RM206A.Zone_Reheat_Valve_Command,
+        bldg:MUSIC.ZONE.AHU04.RM206A.Zone_Supply_Air_Temp .
+
+bldg:VAVRM210 a brick1:VAV ;
+    brickframe:hasSite bldg:MUSIC ;
+    brick1:feeds bldg:RM210 ;
+    brick1:hasPoint bldg:MUSIC.ZONE.AHU04.RM210.Zone_Air_Temp,
+        bldg:MUSIC.ZONE.AHU04.RM210.Zone_Reheat_Valve_Command,
+        bldg:MUSIC.ZONE.AHU04.RM210.Zone_Supply_Air_Temp .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:MUSIC ;
+    brick1:hasPoint bldg:MUSIC.CHW.Pump1_SPEED,
+        <http://buildsys.org/ontologies/MUSIC#MUSIC.CHW.Pump1_Start/Stop> .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+bldg:RM206A_room a brick1:Room ;
+    brickframe:hasSite bldg:MUSIC .
+
+bldg:RM210_room a brick1:Room ;
+    brickframe:hasSite bldg:MUSIC .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:MUSIC a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "19351" ;
+    brickframe:Country "US" .
+

@@ -1,0 +1,1705 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/TAPS#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:AHU01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:VAVRM1024,
+        bldg:VAVRM1026E,
+        bldg:VAVRM1026W ;
+    brick1:hasPoint bldg:TAPS.AHU.AHU01.CCV,
+        bldg:TAPS.AHU.AHU01.Cooling_Valve_Output,
+        bldg:TAPS.AHU.AHU01.Heating_Valve_Output,
+        bldg:TAPS.AHU.AHU01.Mixed_Air_Temp,
+        bldg:TAPS.AHU.AHU01.Outside_Air_Temp,
+        bldg:TAPS.AHU.AHU01.Return_Air_Temp,
+        bldg:TAPS.AHU.AHU01.Supply_Air_Pressure,
+        bldg:TAPS.AHU.AHU01.Supply_Air_Temp,
+        bldg:TAPS.AHU.AHU01.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU02 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:VAVRM1031,
+        bldg:VAVRM1041,
+        bldg:VAVRM1048,
+        bldg:VAVRM1051,
+        bldg:VAVRM1058,
+        bldg:VAVRM1062,
+        bldg:VAVRM1064,
+        bldg:VAVRM1075,
+        bldg:VAVRM1076,
+        bldg:VAVRM1079,
+        bldg:VAVRM1080,
+        bldg:VAVRM1080A,
+        bldg:VAVRM1080B ;
+    brick1:hasPoint bldg:TAPS.AHU.AHU02.CCV,
+        bldg:TAPS.AHU.AHU02.Cooling_Valve_Output,
+        bldg:TAPS.AHU.AHU02.Heating_Valve_Output,
+        bldg:TAPS.AHU.AHU02.Mixed_Air_Temp,
+        bldg:TAPS.AHU.AHU02.Outside_Air_Temp,
+        bldg:TAPS.AHU.AHU02.Return_Air_Temp,
+        bldg:TAPS.AHU.AHU02.Supply_Air_Pressure,
+        bldg:TAPS.AHU.AHU02.Supply_Air_Temp,
+        bldg:TAPS.AHU.AHU02.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU03 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:VAVRM1000N,
+        bldg:VAVRM1000S,
+        bldg:VAVRM1005,
+        bldg:VAVRM1011,
+        bldg:VAVRM1013,
+        bldg:VAVRM1017,
+        bldg:VAVRM1018,
+        bldg:VAVRM2002N,
+        bldg:VAVRM2002S,
+        bldg:VAVRM2003,
+        bldg:VAVRM2008,
+        bldg:VAVRM2013,
+        bldg:VAVRM2014,
+        bldg:VAVRM2018,
+        bldg:VAVRM2019,
+        bldg:VAVRM2020,
+        bldg:VAVRM2027,
+        bldg:VAVRM2028,
+        bldg:VAVRM2040,
+        bldg:VAVRM2042,
+        bldg:VAVRM2043,
+        bldg:VAVRM2047 ;
+    brick1:hasPoint bldg:TAPS.AHU.AHU03.CCV,
+        bldg:TAPS.AHU.AHU03.Cooling_Valve_Output,
+        bldg:TAPS.AHU.AHU03.Heating_Valve_Output,
+        bldg:TAPS.AHU.AHU03.Mixed_Air_Temp,
+        bldg:TAPS.AHU.AHU03.Outside_Air_Temp,
+        bldg:TAPS.AHU.AHU03.Return_Air_Temp,
+        bldg:TAPS.AHU.AHU03.Supply_Air_Pressure,
+        bldg:TAPS.AHU.AHU03.Supply_Air_Temp,
+        bldg:TAPS.AHU.AHU03.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:floor1 a brick1:Floor ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM1000N_room,
+        bldg:RM1000S_room,
+        bldg:RM1005_room,
+        bldg:RM1011_room,
+        bldg:RM1013_room,
+        bldg:RM1017_room,
+        bldg:RM1018_room,
+        bldg:RM1024_room,
+        bldg:RM1026E_room,
+        bldg:RM1026W_room,
+        bldg:RM1031_room,
+        bldg:RM1041_room,
+        bldg:RM1048_room,
+        bldg:RM1051_room,
+        bldg:RM1058_room,
+        bldg:RM1062_room,
+        bldg:RM1064_room,
+        bldg:RM1075_room,
+        bldg:RM1076_room,
+        bldg:RM1079_room,
+        bldg:RM1080A_room,
+        bldg:RM1080B_room,
+        bldg:RM1080_room .
+
+bldg:floor2 a brick1:Floor ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM2002N_room,
+        bldg:RM2002S_room,
+        bldg:RM2003_room,
+        bldg:RM2008_room,
+        bldg:RM2013_room,
+        bldg:RM2014_room,
+        bldg:RM2018_room,
+        bldg:RM2019_room,
+        bldg:RM2020_room,
+        bldg:RM2027_room,
+        bldg:RM2028_room,
+        bldg:RM2040_room,
+        bldg:RM2042_room,
+        bldg:RM2043_room,
+        bldg:RM2047_room .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:RM1000N a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM1000N_room .
+
+bldg:RM1000S a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM1000S_room .
+
+bldg:RM1005 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM1005_room .
+
+bldg:RM1011 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM1011_room .
+
+bldg:RM1013 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM1013_room .
+
+bldg:RM1017 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM1017_room .
+
+bldg:RM1018 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM1018_room .
+
+bldg:RM1024 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM1024_room .
+
+bldg:RM1026E a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM1026E_room .
+
+bldg:RM1026W a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM1026W_room .
+
+bldg:RM1031 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM1031_room .
+
+bldg:RM1041 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM1041_room .
+
+bldg:RM1048 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM1048_room .
+
+bldg:RM1051 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM1051_room .
+
+bldg:RM1058 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM1058_room .
+
+bldg:RM1062 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM1062_room .
+
+bldg:RM1064 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM1064_room .
+
+bldg:RM1075 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM1075_room .
+
+bldg:RM1076 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM1076_room .
+
+bldg:RM1079 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM1079_room .
+
+bldg:RM1080 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM1080_room .
+
+bldg:RM1080A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM1080A_room .
+
+bldg:RM1080B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM1080B_room .
+
+bldg:RM2002N a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM2002N_room .
+
+bldg:RM2002S a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM2002S_room .
+
+bldg:RM2003 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM2003_room .
+
+bldg:RM2008 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM2008_room .
+
+bldg:RM2013 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM2013_room .
+
+bldg:RM2014 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM2014_room .
+
+bldg:RM2018 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM2018_room .
+
+bldg:RM2019 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM2019_room .
+
+bldg:RM2020 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM2020_room .
+
+bldg:RM2027 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM2027_room .
+
+bldg:RM2028 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM2028_room .
+
+bldg:RM2040 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM2040_room .
+
+bldg:RM2042 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM2042_room .
+
+bldg:RM2043 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM2043_room .
+
+bldg:RM2047 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPart bldg:RM2047_room .
+
+bldg:TAPS.AHU.AHU01.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.AHU.AHU01.CCV" ;
+    brickframe:uuid "ffbe9d7c-c2bc-35c8-8c85-5558b31908ba" .
+
+bldg:TAPS.AHU.AHU01.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.AHU.AHU01.Cooling Valve Output" ;
+    brickframe:uuid "ae25d612-5ad0-3675-b364-4f9d65121a52" .
+
+bldg:TAPS.AHU.AHU01.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.AHU.AHU01.Heating Valve Output" ;
+    brickframe:uuid "e65242d1-7ac0-3f42-8de2-4269bac6467b" .
+
+bldg:TAPS.AHU.AHU01.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.AHU.AHU01.Mixed Air Temp" ;
+    brickframe:uuid "46277c57-d15c-3092-94fe-845a73a5ba14" .
+
+bldg:TAPS.AHU.AHU01.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.AHU.AHU01.Outside Air Temp" ;
+    brickframe:uuid "81b9e28b-1fbd-39a8-86e1-47bec53b5ac5" .
+
+bldg:TAPS.AHU.AHU01.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.AHU.AHU01.Return Air Temp" ;
+    brickframe:uuid "9e56ad95-dfe3-3966-9c7a-8c862d1.0.24" .
+
+bldg:TAPS.AHU.AHU01.Supply_Air_Pressure a brick1:Supply_Air_Static_Pressure_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.AHU.AHU01.Supply Air Pressure" ;
+    brickframe:uuid "1bf740ff-cc63-352c-8145-fec8c5ecf0cb" .
+
+bldg:TAPS.AHU.AHU01.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.AHU.AHU01.Supply Air Temp" ;
+    brickframe:uuid "dc1701af-3293-3ad7-afd6-024316a8fd35" .
+
+bldg:TAPS.AHU.AHU01.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.AHU.AHU01.Supply Air Temp Setpoint" ;
+    brickframe:uuid "a0c01b8b-7bef-32ac-83cd-242c7920503d" .
+
+bldg:TAPS.AHU.AHU02.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.AHU.AHU02.CCV" ;
+    brickframe:uuid "02d94659-2762-3f5b-99d3-e2d2d14b57c9" .
+
+bldg:TAPS.AHU.AHU02.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.AHU.AHU02.Cooling Valve Output" ;
+    brickframe:uuid "448ec5dc-2700-3c84-b71a-8e5a62e02294" .
+
+bldg:TAPS.AHU.AHU02.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.AHU.AHU02.Heating Valve Output" ;
+    brickframe:uuid "463d40dd-0537-3baa-96d9-5282b027ae8c" .
+
+bldg:TAPS.AHU.AHU02.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.AHU.AHU02.Mixed Air Temp" ;
+    brickframe:uuid "a99bf4be-3d27-3041-8d51-6046e677b0c3" .
+
+bldg:TAPS.AHU.AHU02.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.AHU.AHU02.Outside Air Temp" ;
+    brickframe:uuid "a9d95d40-1809-3c99-9131-2e77b2ac2785" .
+
+bldg:TAPS.AHU.AHU02.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.AHU.AHU02.Return Air Temp" ;
+    brickframe:uuid "f84d7c20-cf1c-371c-9b47-f328b62c2342" .
+
+bldg:TAPS.AHU.AHU02.Supply_Air_Pressure a brick1:Supply_Air_Static_Pressure_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.AHU.AHU02.Supply Air Pressure" ;
+    brickframe:uuid "7f02b5d4-bd2b-371b-af26-4e0c77ab544d" .
+
+bldg:TAPS.AHU.AHU02.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.AHU.AHU02.Supply Air Temp" ;
+    brickframe:uuid "7601299d-6ce3-3ec0-a17d-630220767642" .
+
+bldg:TAPS.AHU.AHU02.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.AHU.AHU02.Supply Air Temp Setpoint" ;
+    brickframe:uuid "c6d5e4bc-85ee-3e51-b20c-8bd273f242fd" .
+
+bldg:TAPS.AHU.AHU03.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.AHU.AHU03.CCV" ;
+    brickframe:uuid "08100f9b-3c62-31fa-ac4c-2b66a9a37040" .
+
+bldg:TAPS.AHU.AHU03.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.AHU.AHU03.Cooling Valve Output" ;
+    brickframe:uuid "5d2b7376-3a2f-32f7-b3f6-4e5935a33cb5" .
+
+bldg:TAPS.AHU.AHU03.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.AHU.AHU03.Heating Valve Output" ;
+    brickframe:uuid "a6691f95-b1c4-3c12-a070-dc58ac59186d" .
+
+bldg:TAPS.AHU.AHU03.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.AHU.AHU03.Mixed Air Temp" ;
+    brickframe:uuid "97b58db8-32f5-3cee-8fcd-1f0fc23652a5" .
+
+bldg:TAPS.AHU.AHU03.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.AHU.AHU03.Outside Air Temp" ;
+    brickframe:uuid "59efcab4-5fc9-34b8-a415-cb8ee660aed6" .
+
+bldg:TAPS.AHU.AHU03.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.AHU.AHU03.Return Air Temp" ;
+    brickframe:uuid "949e45c6-ccbd-3776-b090-e5a58f74620c" .
+
+bldg:TAPS.AHU.AHU03.Supply_Air_Pressure a brick1:Supply_Air_Static_Pressure_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.AHU.AHU03.Supply Air Pressure" ;
+    brickframe:uuid "d30e9e7b-2619-351c-98b1-4a003932116a" .
+
+bldg:TAPS.AHU.AHU03.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.AHU.AHU03.Supply Air Temp" ;
+    brickframe:uuid "dc1cb4b6-6564-3955-bcc5-6e15b30e9575" .
+
+bldg:TAPS.AHU.AHU03.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.AHU.AHU03.Supply Air Temp Setpoint" ;
+    brickframe:uuid "5eaac371-3836-3d4e-988f-7aef18519045" .
+
+bldg:TAPS.CHW.Building_Chilled_Water_Flow a brick_v_1_0_2:Chilled_Water_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.CHW.Building Chilled Water Flow" ;
+    brickframe:uuid "c8340698-f29e-3f92-84a4-be201e3f8f1c" .
+
+bldg:TAPS.CHW.Building_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.CHW.Building Chilled Water Return Temp" ;
+    brickframe:uuid "1b7b3fe6-67d1-311a-95c2-bfb48ec89760" .
+
+bldg:TAPS.CHW.Building_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.CHW.Building Chilled Water Supply Temp" ;
+    brickframe:uuid "4fc571d2-8f95-313e-af38-1121dd31632a" .
+
+bldg:TAPS.CHW.CHWRDIFSETPT a brick1:Chilled_Water_Differential_Pressure_Setpoint ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.CHW.CHWRDIFSETPT" ;
+    brickframe:uuid "324b890e-ece7-37ef-bb22-acd15824f2d5" .
+
+bldg:TAPS.CHW.CHWSSETPT a brick_v_1_0_2:Chilled_Water_Supply_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.CHW.CHWSSETPT" ;
+    brickframe:uuid "b1a824cb-6538-3e1e-b827-b6d5b1defb52" .
+
+bldg:TAPS.CHW.ECONOMIZER a brick1:Damper_Position_Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.CHW.ECONOMIZER" ;
+    brickframe:uuid "d2f1b770-7cce-329c-aaa7-b29c1d5314fc" .
+
+bldg:TAPS.CHW.Loop_Chilled_Water_Flow a brick_v_1_0_2:Chilled_Water_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.CHW.Loop Chilled Water Flow" ;
+    brickframe:uuid "3e46e5b4-be6b-38c7-85ae-080416857ab7" .
+
+bldg:TAPS.CHW.Loop_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.CHW.Loop Chilled Water Return Temp" ;
+    brickframe:uuid "4837a993-02b3-3e2e-9779-b9b2c6e92dce" .
+
+bldg:TAPS.CHW.Loop_Chilled_Water_Return_TempP a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.CHW.Loop Chilled Water Return TempP" ;
+    brickframe:uuid "c72d1754-7a9b-3f2a-9f41-e27307899a75" .
+
+bldg:TAPS.CHW.Loop_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.CHW.Loop Chilled Water Supply Temp" ;
+    brickframe:uuid "dfe7c8d3-703a-36d3-b640-c072e4faa0f6" .
+
+bldg:TAPS.CHW.Loop_Chilled_Water_Supply_Temp_Setpoint a brick_v_1_0_2:Chilled_Water_Supply_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.CHW.Loop Chilled Water Supply Temp Setpoint" ;
+    brickframe:uuid "e7aa83b5-bf0b-31a1-ac0f-a6ec637b9d3b" .
+
+bldg:TAPS.CHW.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.CHW.Outside Air Temp" ;
+    brickframe:uuid "114be350-033e-3568-9c0f-8547e3a3d890" .
+
+bldg:TAPS.CHW.Pump1_SPEED a brick_v_1_0_2:Speed_Status ;
+    brickframe:pointname "TAPS.CHW.Pump1_SPEED" ;
+    brickframe:uuid "a83cf243-5e3e-3881-9076-0886076a3e41" .
+
+<http://buildsys.org/ontologies/TAPS#TAPS.CHW.Pump1_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.CHW.Pump1_Start/Stop" ;
+    brickframe:uuid "2d4f313b-2efb-3660-9548-f83c6742885b" .
+
+bldg:TAPS.CHW.Pump2_SPEED a brick_v_1_0_2:Speed_Status ;
+    brickframe:pointname "TAPS.CHW.Pump2_SPEED" ;
+    brickframe:uuid "c7862677-80cd-38ce-a4c8-8f0ea037df6c" .
+
+<http://buildsys.org/ontologies/TAPS#TAPS.CHW.Pump2_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.CHW.Pump2_Start/Stop" ;
+    brickframe:uuid "bbd6a6dd-e2c8-3528-bc99-843ea825d0a2" .
+
+bldg:TAPS.ZONE.AHU01.RM1024.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU01.RM1024.Zone Air Temp" ;
+    brickframe:uuid "7feb5f4d-6357-3263-bbd9-ab37f21e84ed" .
+
+bldg:TAPS.ZONE.AHU01.RM1024.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU01.RM1024.Zone Air Temp Setpoint" ;
+    brickframe:uuid "217602f8-1ce6-3c95-b041-aa83222996c2" .
+
+bldg:TAPS.ZONE.AHU01.RM1024.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU01.RM1024.Zone Reheat Valve Command" ;
+    brickframe:uuid "548bc082-18e3-3185-ba4f-dad421a8ee15" .
+
+bldg:TAPS.ZONE.AHU01.RM1024.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU01.RM1024.Zone Supply Air Flow" ;
+    brickframe:uuid "65f1be37-4544-3cf1-9aff-d3b582f61b54" .
+
+bldg:TAPS.ZONE.AHU01.RM1026E.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU01.RM1026E.Zone Air Temp" ;
+    brickframe:uuid "468ae3dd-b1ad-3235-b14a-d11cf312e9f4" .
+
+bldg:TAPS.ZONE.AHU01.RM1026E.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU01.RM1026E.Zone Air Temp Setpoint" ;
+    brickframe:uuid "9f37aaa7-f7f2-3b85-9c45-871d4e72e8ab" .
+
+bldg:TAPS.ZONE.AHU01.RM1026E.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU01.RM1026E.Zone Reheat Valve Command" ;
+    brickframe:uuid "0884b181-302c-3c75-a0d4-738e1616296e" .
+
+bldg:TAPS.ZONE.AHU01.RM1026E.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU01.RM1026E.Zone Supply Air Flow" ;
+    brickframe:uuid "2159f9d2-94df-3d77-b48b-d817eab7dad1" .
+
+bldg:TAPS.ZONE.AHU01.RM1026W.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU01.RM1026W.Zone Air Temp" ;
+    brickframe:uuid "db8c50b2-3ef9-3694-a689-9649d808ef56" .
+
+bldg:TAPS.ZONE.AHU01.RM1026W.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU01.RM1026W.Zone Air Temp Setpoint" ;
+    brickframe:uuid "89750ee6-cce7-3d54-a9f4-f7493ec67207" .
+
+bldg:TAPS.ZONE.AHU01.RM1026W.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU01.RM1026W.Zone Reheat Valve Command" ;
+    brickframe:uuid "4b7f9ba8-8696-321d-af54-d056964c1af6" .
+
+bldg:TAPS.ZONE.AHU01.RM1026W.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU01.RM1026W.Zone Supply Air Flow" ;
+    brickframe:uuid "c942234a-a7ea-3a0f-b5bd-f2639069b7a7" .
+
+bldg:TAPS.ZONE.AHU02.RM1031.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1031.Zone Air Temp" ;
+    brickframe:uuid "a85d331c-7706-3461-853b-f0a3ef65b1e1" .
+
+bldg:TAPS.ZONE.AHU02.RM1031.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1031.Zone Air Temp Setpoint" ;
+    brickframe:uuid "32e5f0e2-c55f-30e3-aee5-1035f27e10ad" .
+
+bldg:TAPS.ZONE.AHU02.RM1031.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1031.Zone Reheat Valve Command" ;
+    brickframe:uuid "490ab529-ebf6-3ad7-b8cb-a6fb0bc15108" .
+
+bldg:TAPS.ZONE.AHU02.RM1031.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1031.Zone Supply Air Flow" ;
+    brickframe:uuid "b11f4125-af41-3029-9a1f-af341370c55d" .
+
+bldg:TAPS.ZONE.AHU02.RM1041.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1041.Zone Air Temp" ;
+    brickframe:uuid "d5deeb1f-3d31-30f9-a73a-77fd0935c0fb" .
+
+bldg:TAPS.ZONE.AHU02.RM1041.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1041.Zone Air Temp Setpoint" ;
+    brickframe:uuid "a5a27b95-2d22-37d0-b572-7c1ebdc4ab30" .
+
+bldg:TAPS.ZONE.AHU02.RM1041.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1041.Zone Reheat Valve Command" ;
+    brickframe:uuid "16bb23a1-6457-300c-9ae8-faa9930f7972" .
+
+bldg:TAPS.ZONE.AHU02.RM1041.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1041.Zone Supply Air Flow" ;
+    brickframe:uuid "b2f65142-a8c4-3c3c-8d12-90f2bd4178c5" .
+
+bldg:TAPS.ZONE.AHU02.RM1048.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1048.Zone Air Temp" ;
+    brickframe:uuid "fe7af154-1809-3df2-b03d-25f35c9b80d5" .
+
+bldg:TAPS.ZONE.AHU02.RM1048.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1048.Zone Air Temp Setpoint" ;
+    brickframe:uuid "60788dc8-89eb-3648-b702-b352d8423c18" .
+
+bldg:TAPS.ZONE.AHU02.RM1048.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1048.Zone Reheat Valve Command" ;
+    brickframe:uuid "3c04d60d-c8ca-3d49-9a17-a9ed8d72244d" .
+
+bldg:TAPS.ZONE.AHU02.RM1048.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1048.Zone Supply Air Flow" ;
+    brickframe:uuid "5c933868-e83d-3182-b25c-35b3dbfd564e" .
+
+bldg:TAPS.ZONE.AHU02.RM1051.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1051.Zone Air Temp" ;
+    brickframe:uuid "433985df-8fc3-33a6-be97-9b05b558f361" .
+
+bldg:TAPS.ZONE.AHU02.RM1051.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1051.Zone Air Temp Setpoint" ;
+    brickframe:uuid "b8a0e8ad-0f32-37bc-8c42-61981536d56b" .
+
+bldg:TAPS.ZONE.AHU02.RM1051.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1051.Zone Reheat Valve Command" ;
+    brickframe:uuid "fc3de736-4dd6-331d-be75-c0d4b41f92e0" .
+
+bldg:TAPS.ZONE.AHU02.RM1051.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1051.Zone Supply Air Flow" ;
+    brickframe:uuid "c53998aa-061c-3470-af8c-beef7baf14fe" .
+
+bldg:TAPS.ZONE.AHU02.RM1058.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1058.Zone Air Temp" ;
+    brickframe:uuid "142c6363-ef0a-346e-a135-de6c11687c4d" .
+
+bldg:TAPS.ZONE.AHU02.RM1058.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1058.Zone Air Temp Setpoint" ;
+    brickframe:uuid "3d4c0a04-3ec0-3c81-90a8-4d50b4951f01" .
+
+bldg:TAPS.ZONE.AHU02.RM1058.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1058.Zone Reheat Valve Command" ;
+    brickframe:uuid "0dc3a3a3-d15f-3418-83b8-ad0707fe68d2" .
+
+bldg:TAPS.ZONE.AHU02.RM1058.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1058.Zone Supply Air Flow" ;
+    brickframe:uuid "80c33d84-1ea5-3828-bed8-a915720bbebb" .
+
+bldg:TAPS.ZONE.AHU02.RM1062.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1062.Zone Air Temp" ;
+    brickframe:uuid "b3a83c97-8296-30e5-bab1-31781d4feb33" .
+
+bldg:TAPS.ZONE.AHU02.RM1062.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1062.Zone Air Temp Setpoint" ;
+    brickframe:uuid "dc569d34-922f-3955-8683-3798ec62de0a" .
+
+bldg:TAPS.ZONE.AHU02.RM1062.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1062.Zone Reheat Valve Command" ;
+    brickframe:uuid "f146d9ee-c024-335d-a206-59f60c3dbb04" .
+
+bldg:TAPS.ZONE.AHU02.RM1062.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1062.Zone Supply Air Flow" ;
+    brickframe:uuid "1639b6d7-d8fe-3476-9faf-cdf04b684715" .
+
+bldg:TAPS.ZONE.AHU02.RM1064.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1064.Zone Air Temp" ;
+    brickframe:uuid "0c25b305-0c14-363f-b8de-75005881d349" .
+
+bldg:TAPS.ZONE.AHU02.RM1064.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1064.Zone Air Temp Setpoint" ;
+    brickframe:uuid "98ece98a-10cb-35e0-82c3-697293077e82" .
+
+bldg:TAPS.ZONE.AHU02.RM1064.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1064.Zone Reheat Valve Command" ;
+    brickframe:uuid "653e99a5-a32e-33a5-9af8-c432548abb7f" .
+
+bldg:TAPS.ZONE.AHU02.RM1064.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1064.Zone Supply Air Flow" ;
+    brickframe:uuid "c6444215-3cd2-3634-b4ea-ac8ae93b8753" .
+
+bldg:TAPS.ZONE.AHU02.RM1075.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1075.Zone Air Temp" ;
+    brickframe:uuid "ff6c4914-326e-3fe7-a854-9f27bb459b00" .
+
+bldg:TAPS.ZONE.AHU02.RM1075.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1075.Zone Air Temp Setpoint" ;
+    brickframe:uuid "c764491b-99c9-388b-9cf2-443cf419d18b" .
+
+bldg:TAPS.ZONE.AHU02.RM1075.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1075.Zone Reheat Valve Command" ;
+    brickframe:uuid "06d434c4-9bde-3bea-9345-fb23065d1630" .
+
+bldg:TAPS.ZONE.AHU02.RM1075.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1075.Zone Supply Air Flow" ;
+    brickframe:uuid "11fb3456-f76e-319c-a5f4-5ffac3ec3344" .
+
+bldg:TAPS.ZONE.AHU02.RM1076.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1076.Zone Air Temp" ;
+    brickframe:uuid "c13c0a02-cc46-36b1-83ae-ba05bd9c95eb" .
+
+bldg:TAPS.ZONE.AHU02.RM1076.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1076.Zone Air Temp Setpoint" ;
+    brickframe:uuid "d0401d72-6001-3767-9902-201b46f0f2d2" .
+
+bldg:TAPS.ZONE.AHU02.RM1076.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1076.Zone Reheat Valve Command" ;
+    brickframe:uuid "d75275a7-6314-3a13-960d-000a9987c374" .
+
+bldg:TAPS.ZONE.AHU02.RM1076.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1076.Zone Supply Air Flow" ;
+    brickframe:uuid "9d1e1bef-d66f-336a-8ce5-4db27a828b96" .
+
+bldg:TAPS.ZONE.AHU02.RM1079.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1079.Zone Air Temp" ;
+    brickframe:uuid "83668fc9-a3af-390b-adf2-fa57cadfbc6b" .
+
+bldg:TAPS.ZONE.AHU02.RM1079.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1079.Zone Air Temp Setpoint" ;
+    brickframe:uuid "d0b8f088-65dc-3dab-b5e5-df8aa1a61f23" .
+
+bldg:TAPS.ZONE.AHU02.RM1079.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1079.Zone Reheat Valve Command" ;
+    brickframe:uuid "0bc3479d-5e0c-3729-aa2d-5a179903d9d7" .
+
+bldg:TAPS.ZONE.AHU02.RM1079.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1079.Zone Supply Air Flow" ;
+    brickframe:uuid "e5180196-2ffc-30f0-967e-bcd22f9fadae" .
+
+bldg:TAPS.ZONE.AHU02.RM1080.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1080.Zone Air Temp" ;
+    brickframe:uuid "f6d2198d-0ea4-3f3f-b769-7d0c2cd1189b" .
+
+bldg:TAPS.ZONE.AHU02.RM1080.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1080.Zone Air Temp Setpoint" ;
+    brickframe:uuid "ee125635-8109-38a1-86d8-60c5d1571f65" .
+
+bldg:TAPS.ZONE.AHU02.RM1080.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1080.Zone Reheat Valve Command" ;
+    brickframe:uuid "b836e9a3-5fda-36d3-91bd-c5f8de6d08b3" .
+
+bldg:TAPS.ZONE.AHU02.RM1080.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1080.Zone Supply Air Flow" ;
+    brickframe:uuid "e2e002db-dc48-35fd-a4b2-b4422caee1ad" .
+
+bldg:TAPS.ZONE.AHU02.RM1080A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1080A.Zone Air Temp" ;
+    brickframe:uuid "9fe29bc3-bd48-32a5-8d04-b2856d560992" .
+
+bldg:TAPS.ZONE.AHU02.RM1080A.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1080A.Zone Air Temp Setpoint" ;
+    brickframe:uuid "4a5e1085-c823-3e72-bf79-cd8dfe76e198" .
+
+bldg:TAPS.ZONE.AHU02.RM1080A.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1080A.Zone Reheat Valve Command" ;
+    brickframe:uuid "b1a6728b-3e5d-3124-9220-7fa048471413" .
+
+bldg:TAPS.ZONE.AHU02.RM1080A.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1080A.Zone Supply Air Flow" ;
+    brickframe:uuid "4f10467f-e839-3697-98aa-7ebf58b958d2" .
+
+bldg:TAPS.ZONE.AHU02.RM1080B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1080B.Zone Air Temp" ;
+    brickframe:uuid "a6ab325d-3a8c-323a-8c74-b5ebcb31bee8" .
+
+bldg:TAPS.ZONE.AHU02.RM1080B.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1080B.Zone Air Temp Setpoint" ;
+    brickframe:uuid "410f5c37-28b7-351f-9431-e023113bba88" .
+
+bldg:TAPS.ZONE.AHU02.RM1080B.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1080B.Zone Reheat Valve Command" ;
+    brickframe:uuid "46b2e70f-b963-3647-81ed-8c7df51e07bc" .
+
+bldg:TAPS.ZONE.AHU02.RM1080B.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU02.RM1080B.Zone Supply Air Flow" ;
+    brickframe:uuid "3e1b06b4-18d9-3d77-b9c9-e920ab983e59" .
+
+bldg:TAPS.ZONE.AHU03.RM1000N.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM1000N.Zone Air Temp" ;
+    brickframe:uuid "cde01ed4-0025-3cd2-890d-f87a4532cc01" .
+
+bldg:TAPS.ZONE.AHU03.RM1000N.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM1000N.Zone Air Temp Setpoint" ;
+    brickframe:uuid "7c03997b-f05c-3694-8126-f2a63c0b337a" .
+
+bldg:TAPS.ZONE.AHU03.RM1000N.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM1000N.Zone Reheat Valve Command" ;
+    brickframe:uuid "00b9ff0b-47ef-3e12-a32d-3f329c15d659" .
+
+bldg:TAPS.ZONE.AHU03.RM1000N.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM1000N.Zone Supply Air Flow" ;
+    brickframe:uuid "bdd80639-71d6-31ef-9a87-f41812f990d1" .
+
+bldg:TAPS.ZONE.AHU03.RM1000S.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM1000S.Zone Air Temp" ;
+    brickframe:uuid "53f0af43-2066-39ad-9bd9-a6e7cf144650" .
+
+bldg:TAPS.ZONE.AHU03.RM1000S.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM1000S.Zone Air Temp Setpoint" ;
+    brickframe:uuid "c03278ff-6445-3fec-9c2c-22fea05bb622" .
+
+bldg:TAPS.ZONE.AHU03.RM1000S.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM1000S.Zone Reheat Valve Command" ;
+    brickframe:uuid "520fa877-5ef5-3e1d-8031-d82d6839862e" .
+
+bldg:TAPS.ZONE.AHU03.RM1000S.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM1000S.Zone Supply Air Flow" ;
+    brickframe:uuid "b8fad767-2785-3e0f-9a75-58528f7c69ae" .
+
+bldg:TAPS.ZONE.AHU03.RM1005.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM1005.Zone Air Temp" ;
+    brickframe:uuid "484af292-f0b2-313b-b51a-76d36f26caaf" .
+
+bldg:TAPS.ZONE.AHU03.RM1005.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM1005.Zone Air Temp Setpoint" ;
+    brickframe:uuid "3fa8c362-38a2-3e9e-90e5-341942a764e9" .
+
+bldg:TAPS.ZONE.AHU03.RM1005.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM1005.Zone Reheat Valve Command" ;
+    brickframe:uuid "a149bd8a-f84c-33cd-a638-b814d71e3216" .
+
+bldg:TAPS.ZONE.AHU03.RM1005.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM1005.Zone Supply Air Flow" ;
+    brickframe:uuid "37534e7c-148b-3204-8b3d-cb0c4427824a" .
+
+bldg:TAPS.ZONE.AHU03.RM1011.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM1011.Zone Air Temp" ;
+    brickframe:uuid "9f443694-797a-37e4-bb8f-b08793023b93" .
+
+bldg:TAPS.ZONE.AHU03.RM1011.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM1011.Zone Air Temp Setpoint" ;
+    brickframe:uuid "9a09393a-d267-3deb-a175-189690b47c39" .
+
+bldg:TAPS.ZONE.AHU03.RM1011.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM1011.Zone Reheat Valve Command" ;
+    brickframe:uuid "f870dedc-1287-3b81-90f9-63fb97615f1b" .
+
+bldg:TAPS.ZONE.AHU03.RM1011.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM1011.Zone Supply Air Flow" ;
+    brickframe:uuid "12eb9506-181e-39b1-98ea-216a6243b8ec" .
+
+bldg:TAPS.ZONE.AHU03.RM1013.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM1013.Zone Air Temp" ;
+    brickframe:uuid "ced1c349-5095-38b8-8284-d5d0a0c8bbff" .
+
+bldg:TAPS.ZONE.AHU03.RM1013.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM1013.Zone Air Temp Setpoint" ;
+    brickframe:uuid "f304a3af-3529-33ef-b561-d0ff7ff3e9c8" .
+
+bldg:TAPS.ZONE.AHU03.RM1013.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM1013.Zone Reheat Valve Command" ;
+    brickframe:uuid "ca51f471-aec5-3256-9ceb-501474c82ad8" .
+
+bldg:TAPS.ZONE.AHU03.RM1013.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM1013.Zone Supply Air Flow" ;
+    brickframe:uuid "92f41a5c-cfe8-3896-bef0-d003823085c5" .
+
+bldg:TAPS.ZONE.AHU03.RM1017.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM1017.Zone Air Temp" ;
+    brickframe:uuid "87e9cb4b-d782-3bb3-aae4-32496aba8cf7" .
+
+bldg:TAPS.ZONE.AHU03.RM1017.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM1017.Zone Air Temp Setpoint" ;
+    brickframe:uuid "e2e0e326-78e2-3584-b721-e7eab5d26ef2" .
+
+bldg:TAPS.ZONE.AHU03.RM1017.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM1017.Zone Reheat Valve Command" ;
+    brickframe:uuid "967abcc0-b73a-3ff9-afdf-14696a108e35" .
+
+bldg:TAPS.ZONE.AHU03.RM1017.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM1017.Zone Supply Air Flow" ;
+    brickframe:uuid "8fd52a8b-8075-36f4-bd0d-0bbd861de74b" .
+
+bldg:TAPS.ZONE.AHU03.RM1018.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM1018.Zone Air Temp" ;
+    brickframe:uuid "e8280e31-89fb-3d14-bcd5-2b9013f9dfe1" .
+
+bldg:TAPS.ZONE.AHU03.RM1018.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM1018.Zone Air Temp Setpoint" ;
+    brickframe:uuid "abb0aabb-f68f-36db-9650-62e394769b22" .
+
+bldg:TAPS.ZONE.AHU03.RM1018.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM1018.Zone Reheat Valve Command" ;
+    brickframe:uuid "1dd76123-d565-3e97-a937-412da2029462" .
+
+bldg:TAPS.ZONE.AHU03.RM1018.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM1018.Zone Supply Air Flow" ;
+    brickframe:uuid "e540b79c-f674-353a-8a35-6f769ed445f3" .
+
+bldg:TAPS.ZONE.AHU03.RM2002N.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2002N.Zone Air Temp" ;
+    brickframe:uuid "e7baa652-bb64-3ed2-b815-20fa658e5108" .
+
+bldg:TAPS.ZONE.AHU03.RM2002N.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2002N.Zone Air Temp Setpoint" ;
+    brickframe:uuid "7b88ec3c-4787-30a0-bf8e-2c7c6d040eab" .
+
+bldg:TAPS.ZONE.AHU03.RM2002N.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2002N.Zone Reheat Valve Command" ;
+    brickframe:uuid "7ea2cefe-f1d8-34b0-a65d-7ffc7a3d8be8" .
+
+bldg:TAPS.ZONE.AHU03.RM2002N.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2002N.Zone Supply Air Flow" ;
+    brickframe:uuid "b8b56a76-8377-3afe-8f22-41ed9d466f8a" .
+
+bldg:TAPS.ZONE.AHU03.RM2002S.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2002S.Zone Air Temp" ;
+    brickframe:uuid "f41cbc96-890b-3b9b-8722-3a0b586021d7" .
+
+bldg:TAPS.ZONE.AHU03.RM2002S.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2002S.Zone Air Temp Setpoint" ;
+    brickframe:uuid "ba90e4f7-6375-3005-aa2d-36266a917d94" .
+
+bldg:TAPS.ZONE.AHU03.RM2002S.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2002S.Zone Reheat Valve Command" ;
+    brickframe:uuid "7708526c-7cf4-3f89-bee2-5a17829fcde9" .
+
+bldg:TAPS.ZONE.AHU03.RM2002S.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2002S.Zone Supply Air Flow" ;
+    brickframe:uuid "dbaf6589-691d-3322-b107-fc1bf6766b2a" .
+
+bldg:TAPS.ZONE.AHU03.RM2003.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2003.Zone Air Temp" ;
+    brickframe:uuid "e861e80f-42e0-38c1-9b95-1a6231cfe518" .
+
+bldg:TAPS.ZONE.AHU03.RM2003.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2003.Zone Air Temp Setpoint" ;
+    brickframe:uuid "c6175bde-017a-351e-a73e-e3099d15d32e" .
+
+bldg:TAPS.ZONE.AHU03.RM2003.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2003.Zone Reheat Valve Command" ;
+    brickframe:uuid "947ac4c0-fb1d-305b-b85b-277acbcdedc3" .
+
+bldg:TAPS.ZONE.AHU03.RM2003.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2003.Zone Supply Air Flow" ;
+    brickframe:uuid "f55663d1-5353-32c1-a2e5-8de2f6c40c8c" .
+
+bldg:TAPS.ZONE.AHU03.RM2008.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2008.Zone Air Temp" ;
+    brickframe:uuid "843beab2-cf6d-3ad4-bca6-8cdd80f2fba8" .
+
+bldg:TAPS.ZONE.AHU03.RM2008.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2008.Zone Air Temp Setpoint" ;
+    brickframe:uuid "c058db9d-bcf8-3d49-9390-5b45a7fda331" .
+
+bldg:TAPS.ZONE.AHU03.RM2008.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2008.Zone Reheat Valve Command" ;
+    brickframe:uuid "2e8aea9f-f7db-342d-b9c7-02c299f83055" .
+
+bldg:TAPS.ZONE.AHU03.RM2008.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2008.Zone Supply Air Flow" ;
+    brickframe:uuid "3db3eeb3-4843-35bd-813a-3e1ada061d13" .
+
+bldg:TAPS.ZONE.AHU03.RM2013.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2013.Zone Air Temp" ;
+    brickframe:uuid "8992ea98-2598-3e35-970b-d704aeffe261" .
+
+bldg:TAPS.ZONE.AHU03.RM2013.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2013.Zone Air Temp Setpoint" ;
+    brickframe:uuid "00c99e62-cba1-3f2e-be7c-abfdfbc5c253" .
+
+bldg:TAPS.ZONE.AHU03.RM2013.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2013.Zone Reheat Valve Command" ;
+    brickframe:uuid "079efa4b-fa49-3a4c-86c6-3270f4a724a6" .
+
+bldg:TAPS.ZONE.AHU03.RM2013.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2013.Zone Supply Air Flow" ;
+    brickframe:uuid "3c45016e-a16f-30ee-80cc-f663ff2d1dc1" .
+
+bldg:TAPS.ZONE.AHU03.RM2014.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2014.Zone Air Temp" ;
+    brickframe:uuid "e6bb6f95-4e88-3511-929e-87dc5fe788d1" .
+
+bldg:TAPS.ZONE.AHU03.RM2014.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2014.Zone Air Temp Setpoint" ;
+    brickframe:uuid "a3b95152-6573-3aed-ae18-62e99fd3d67c" .
+
+bldg:TAPS.ZONE.AHU03.RM2014.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2014.Zone Reheat Valve Command" ;
+    brickframe:uuid "d9349d98-484d-35b5-9b59-01cbd2d94044" .
+
+bldg:TAPS.ZONE.AHU03.RM2014.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2014.Zone Supply Air Flow" ;
+    brickframe:uuid "c6c6b72b-f724-39d1-ab35-0c02fbe3f7f5" .
+
+bldg:TAPS.ZONE.AHU03.RM2018.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2018.Zone Air Temp" ;
+    brickframe:uuid "77dacc64-760f-38c4-b423-4455774bc3c4" .
+
+bldg:TAPS.ZONE.AHU03.RM2018.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2018.Zone Air Temp Setpoint" ;
+    brickframe:uuid "204105c3-9291-34df-827c-b773060d98b6" .
+
+bldg:TAPS.ZONE.AHU03.RM2018.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2018.Zone Reheat Valve Command" ;
+    brickframe:uuid "cf62d8ab-5338-31cf-bf45-97a36655fc91" .
+
+bldg:TAPS.ZONE.AHU03.RM2018.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2018.Zone Supply Air Flow" ;
+    brickframe:uuid "67714406-549f-343b-b870-fca69b18f930" .
+
+bldg:TAPS.ZONE.AHU03.RM2019.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2019.Zone Air Temp" ;
+    brickframe:uuid "b807f992-6201-3a6f-bb8b-7efd70a8912e" .
+
+bldg:TAPS.ZONE.AHU03.RM2019.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2019.Zone Air Temp Setpoint" ;
+    brickframe:uuid "8a39aede-c255-3a8a-907c-d1b4860f4825" .
+
+bldg:TAPS.ZONE.AHU03.RM2019.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2019.Zone Reheat Valve Command" ;
+    brickframe:uuid "d7b16924-f3da-3ae9-a892-bce9916cae7e" .
+
+bldg:TAPS.ZONE.AHU03.RM2019.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2019.Zone Supply Air Flow" ;
+    brickframe:uuid "84134415-2959-39da-8f2e-a9af04d41895" .
+
+bldg:TAPS.ZONE.AHU03.RM2020.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2020.Zone Air Temp" ;
+    brickframe:uuid "1cfe3c08-ca3c-3c90-84be-fbaedaa40e07" .
+
+bldg:TAPS.ZONE.AHU03.RM2027.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2027.Zone Air Temp" ;
+    brickframe:uuid "8e7a478d-73b4-3497-8276-b6727a38cdaa" .
+
+bldg:TAPS.ZONE.AHU03.RM2027.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2027.Zone Air Temp Setpoint" ;
+    brickframe:uuid "1d2f6b67-45e5-3309-b1f8-3da79d1980fb" .
+
+bldg:TAPS.ZONE.AHU03.RM2027.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2027.Zone Reheat Valve Command" ;
+    brickframe:uuid "c6a96753-b94a-3fde-a01c-2cdd4464afc2" .
+
+bldg:TAPS.ZONE.AHU03.RM2027.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2027.Zone Supply Air Flow" ;
+    brickframe:uuid "b6e084b8-6f07-33b4-adbf-672ece74ce84" .
+
+bldg:TAPS.ZONE.AHU03.RM2028.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2028.Zone Air Temp" ;
+    brickframe:uuid "3c29c7cc-daa7-3659-bfee-2515b3f1e35c" .
+
+bldg:TAPS.ZONE.AHU03.RM2028.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2028.Zone Air Temp Setpoint" ;
+    brickframe:uuid "4f54d9a4-af74-3e8c-8f64-4e2185d01100" .
+
+bldg:TAPS.ZONE.AHU03.RM2028.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2028.Zone Reheat Valve Command" ;
+    brickframe:uuid "19e51c40-9653-311d-b854-e7dd4ca08f81" .
+
+bldg:TAPS.ZONE.AHU03.RM2028.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2028.Zone Supply Air Flow" ;
+    brickframe:uuid "cd13bb31-01e8-30d6-80b9-f0ad67855cf3" .
+
+bldg:TAPS.ZONE.AHU03.RM2040.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2040.Zone Air Temp" ;
+    brickframe:uuid "05355124-ea0c-331d-af68-0f22095d1ff2" .
+
+bldg:TAPS.ZONE.AHU03.RM2040.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2040.Zone Air Temp Setpoint" ;
+    brickframe:uuid "9370bda1-08eb-3b28-b91e-adca6d43541e" .
+
+bldg:TAPS.ZONE.AHU03.RM2040.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2040.Zone Reheat Valve Command" ;
+    brickframe:uuid "a0b95eeb-0d03-3612-9745-77b295b466f2" .
+
+bldg:TAPS.ZONE.AHU03.RM2040.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2040.Zone Supply Air Flow" ;
+    brickframe:uuid "f395fd14-30c6-3588-ba98-39408dfbf6c1" .
+
+bldg:TAPS.ZONE.AHU03.RM2042.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2042.Zone Air Temp" ;
+    brickframe:uuid "7e3af7fa-0c58-39c3-886a-1e7685c86f8a" .
+
+bldg:TAPS.ZONE.AHU03.RM2042.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2042.Zone Air Temp Setpoint" ;
+    brickframe:uuid "f0f00163-02ba-3ee1-a261-02e8c1d5d300" .
+
+bldg:TAPS.ZONE.AHU03.RM2042.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2042.Zone Reheat Valve Command" ;
+    brickframe:uuid "57bb8e4b-6e6c-35ed-92f0-bdc087411d2a" .
+
+bldg:TAPS.ZONE.AHU03.RM2042.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2042.Zone Supply Air Flow" ;
+    brickframe:uuid "3cd49632-d875-3849-968d-ddabbf013da0" .
+
+bldg:TAPS.ZONE.AHU03.RM2043.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2043.Zone Air Temp" ;
+    brickframe:uuid "ea8eb8e4-35f6-3686-bc92-33663af08e07" .
+
+bldg:TAPS.ZONE.AHU03.RM2043.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2043.Zone Air Temp Setpoint" ;
+    brickframe:uuid "e49a71f9-19f8-3d0f-9fda-639b0f7a15f5" .
+
+bldg:TAPS.ZONE.AHU03.RM2043.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2043.Zone Reheat Valve Command" ;
+    brickframe:uuid "2d53e73f-2e64-3fca-8e24-d039a40e8061" .
+
+bldg:TAPS.ZONE.AHU03.RM2043.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2043.Zone Supply Air Flow" ;
+    brickframe:uuid "67ca4ec8-ec90-3a81-ad81-50b6dae7ed57" .
+
+bldg:TAPS.ZONE.AHU03.RM2047.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2047.Zone Air Temp" ;
+    brickframe:uuid "f7b2ee8b-d66e-3d15-9e2e-d2f850d9720d" .
+
+bldg:TAPS.ZONE.AHU03.RM2047.Zone_Air_Temp_Setpoint a brick_v_1_0_2:Zone_Air_Temperature_Setpoint ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2047.Zone Air Temp Setpoint" ;
+    brickframe:uuid "bb3cb129-030c-373e-904d-b0ecf88d2af5" .
+
+bldg:TAPS.ZONE.AHU03.RM2047.Zone_Reheat_Valve_Command a brick1:Command ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2047.Zone Reheat Valve Command" ;
+    brickframe:uuid "82329128-80e1-3b1b-a280-fb32ccbe0b45" .
+
+bldg:TAPS.ZONE.AHU03.RM2047.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:TAPS ;
+    brickframe:pointname "TAPS.ZONE.AHU03.RM2047.Zone Supply Air Flow" ;
+    brickframe:uuid "632ebeb4-2751-381a-98a8-03b2b2206bc3" .
+
+bldg:VAVRM1000N a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM1000N ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU03.RM1000N.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU03.RM1000N.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU03.RM1000N.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU03.RM1000N.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1000S a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM1000S ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU03.RM1000S.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU03.RM1000S.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU03.RM1000S.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU03.RM1000S.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1005 a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM1005 ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU03.RM1005.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU03.RM1005.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU03.RM1005.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU03.RM1005.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1011 a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM1011 ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU03.RM1011.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU03.RM1011.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU03.RM1011.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU03.RM1011.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1013 a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM1013 ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU03.RM1013.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU03.RM1013.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU03.RM1013.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU03.RM1013.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1017 a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM1017 ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU03.RM1017.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU03.RM1017.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU03.RM1017.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU03.RM1017.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1018 a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM1018 ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU03.RM1018.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU03.RM1018.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU03.RM1018.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU03.RM1018.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1024 a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM1024 ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU01.RM1024.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU01.RM1024.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU01.RM1024.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU01.RM1024.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1026E a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM1026E ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU01.RM1026E.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU01.RM1026E.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU01.RM1026E.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU01.RM1026E.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1026W a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM1026W ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU01.RM1026W.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU01.RM1026W.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU01.RM1026W.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU01.RM1026W.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1031 a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM1031 ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU02.RM1031.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU02.RM1031.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU02.RM1031.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU02.RM1031.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1041 a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM1041 ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU02.RM1041.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU02.RM1041.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU02.RM1041.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU02.RM1041.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1048 a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM1048 ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU02.RM1048.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU02.RM1048.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU02.RM1048.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU02.RM1048.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1051 a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM1051 ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU02.RM1051.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU02.RM1051.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU02.RM1051.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU02.RM1051.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1058 a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM1058 ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU02.RM1058.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU02.RM1058.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU02.RM1058.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU02.RM1058.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1062 a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM1062 ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU02.RM1062.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU02.RM1062.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU02.RM1062.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU02.RM1062.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1064 a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM1064 ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU02.RM1064.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU02.RM1064.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU02.RM1064.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU02.RM1064.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1075 a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM1075 ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU02.RM1075.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU02.RM1075.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU02.RM1075.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU02.RM1075.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1076 a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM1076 ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU02.RM1076.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU02.RM1076.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU02.RM1076.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU02.RM1076.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1079 a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM1079 ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU02.RM1079.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU02.RM1079.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU02.RM1079.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU02.RM1079.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1080 a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM1080 ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU02.RM1080.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU02.RM1080.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU02.RM1080.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU02.RM1080.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1080A a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM1080A ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU02.RM1080A.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU02.RM1080A.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU02.RM1080A.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU02.RM1080A.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1080B a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM1080B ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU02.RM1080B.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU02.RM1080B.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU02.RM1080B.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU02.RM1080B.Zone_Supply_Air_Flow .
+
+bldg:VAVRM2002N a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM2002N ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU03.RM2002N.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU03.RM2002N.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU03.RM2002N.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU03.RM2002N.Zone_Supply_Air_Flow .
+
+bldg:VAVRM2002S a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM2002S ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU03.RM2002S.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU03.RM2002S.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU03.RM2002S.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU03.RM2002S.Zone_Supply_Air_Flow .
+
+bldg:VAVRM2003 a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM2003 ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU03.RM2003.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU03.RM2003.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU03.RM2003.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU03.RM2003.Zone_Supply_Air_Flow .
+
+bldg:VAVRM2008 a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM2008 ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU03.RM2008.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU03.RM2008.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU03.RM2008.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU03.RM2008.Zone_Supply_Air_Flow .
+
+bldg:VAVRM2013 a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM2013 ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU03.RM2013.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU03.RM2013.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU03.RM2013.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU03.RM2013.Zone_Supply_Air_Flow .
+
+bldg:VAVRM2014 a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM2014 ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU03.RM2014.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU03.RM2014.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU03.RM2014.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU03.RM2014.Zone_Supply_Air_Flow .
+
+bldg:VAVRM2018 a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM2018 ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU03.RM2018.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU03.RM2018.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU03.RM2018.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU03.RM2018.Zone_Supply_Air_Flow .
+
+bldg:VAVRM2019 a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM2019 ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU03.RM2019.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU03.RM2019.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU03.RM2019.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU03.RM2019.Zone_Supply_Air_Flow .
+
+bldg:VAVRM2020 a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM2020 ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU03.RM2020.Zone_Air_Temp .
+
+bldg:VAVRM2027 a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM2027 ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU03.RM2027.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU03.RM2027.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU03.RM2027.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU03.RM2027.Zone_Supply_Air_Flow .
+
+bldg:VAVRM2028 a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM2028 ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU03.RM2028.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU03.RM2028.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU03.RM2028.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU03.RM2028.Zone_Supply_Air_Flow .
+
+bldg:VAVRM2040 a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM2040 ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU03.RM2040.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU03.RM2040.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU03.RM2040.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU03.RM2040.Zone_Supply_Air_Flow .
+
+bldg:VAVRM2042 a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM2042 ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU03.RM2042.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU03.RM2042.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU03.RM2042.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU03.RM2042.Zone_Supply_Air_Flow .
+
+bldg:VAVRM2043 a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM2043 ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU03.RM2043.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU03.RM2043.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU03.RM2043.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU03.RM2043.Zone_Supply_Air_Flow .
+
+bldg:VAVRM2047 a brick1:VAV ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:feeds bldg:RM2047 ;
+    brick1:hasPoint bldg:TAPS.ZONE.AHU03.RM2047.Zone_Air_Temp,
+        bldg:TAPS.ZONE.AHU03.RM2047.Zone_Air_Temp_Setpoint,
+        bldg:TAPS.ZONE.AHU03.RM2047.Zone_Reheat_Valve_Command,
+        bldg:TAPS.ZONE.AHU03.RM2047.Zone_Supply_Air_Flow .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+bldg:RM1000N_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM1000S_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM1005_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM1011_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM1013_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM1017_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM1018_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM1024_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM1026E_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM1026W_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM1031_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM1041_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM1048_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM1051_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM1058_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM1062_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM1064_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM1075_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM1076_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM1079_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM1080A_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM1080B_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM1080_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM2002N_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM2002S_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM2003_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM2008_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM2013_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM2014_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM2018_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM2019_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM2020_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM2027_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM2028_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM2040_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM2042_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM2043_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:RM2047_room a brick1:Room ;
+    brickframe:hasSite bldg:TAPS .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:TAPS ;
+    brick1:hasPoint bldg:TAPS.CHW.Building_Chilled_Water_Flow,
+        bldg:TAPS.CHW.Building_Chilled_Water_Return_Temp,
+        bldg:TAPS.CHW.Building_Chilled_Water_Supply_Temp,
+        bldg:TAPS.CHW.CHWRDIFSETPT,
+        bldg:TAPS.CHW.CHWSSETPT,
+        bldg:TAPS.CHW.ECONOMIZER,
+        bldg:TAPS.CHW.Loop_Chilled_Water_Flow,
+        bldg:TAPS.CHW.Loop_Chilled_Water_Return_Temp,
+        bldg:TAPS.CHW.Loop_Chilled_Water_Return_TempP,
+        bldg:TAPS.CHW.Loop_Chilled_Water_Supply_Temp,
+        bldg:TAPS.CHW.Loop_Chilled_Water_Supply_Temp_Setpoint,
+        bldg:TAPS.CHW.Outside_Air_Temp,
+        bldg:TAPS.CHW.Pump1_SPEED,
+        <http://buildsys.org/ontologies/TAPS#TAPS.CHW.Pump1_Start/Stop>,
+        bldg:TAPS.CHW.Pump2_SPEED,
+        <http://buildsys.org/ontologies/TAPS#TAPS.CHW.Pump2_Start/Stop> .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:TAPS a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "22563" ;
+    brickframe:Country "US" .
+

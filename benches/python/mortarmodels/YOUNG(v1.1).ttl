@@ -1,0 +1,551 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/YOUNG#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:AC01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:YOUNG ;
+    brick1:hasPoint bldg:YOUNG.AHU.AC01.CCV,
+        bldg:YOUNG.AHU.AC01.Chilled_Water_Return_Temp,
+        bldg:YOUNG.AHU.AC01.Chilled_Water_Supply_Temp,
+        bldg:YOUNG.AHU.AC01.Cooling_Valve_Output,
+        bldg:YOUNG.AHU.AC01.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC011 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:YOUNG ;
+    brick1:hasPoint bldg:YOUNG.AHU.AC011.Heat_Cool_Mode ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC012 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:YOUNG ;
+    brick1:hasPoint bldg:YOUNG.AHU.AC012.Heat_Cool_Mode ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC1 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:YOUNG ;
+    brick1:hasPoint bldg:YOUNG.AHU.AC1.CCV,
+        bldg:YOUNG.AHU.AC1.Cooling_Valve_Output,
+        bldg:YOUNG.AHU.AC1.Heating_Valve_Output,
+        bldg:YOUNG.AHU.AC1.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC11 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:YOUNG ;
+    brick1:hasPoint bldg:YOUNG.AHU.AC11.CCV,
+        bldg:YOUNG.AHU.AC11.Cooling_Valve_Output,
+        bldg:YOUNG.AHU.AC11.Heating_Valve_Output,
+        bldg:YOUNG.AHU.AC11.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC12 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:YOUNG ;
+    brick1:hasPoint bldg:YOUNG.AHU.AC12.CCV,
+        bldg:YOUNG.AHU.AC12.Cooling_Valve_Output,
+        bldg:YOUNG.AHU.AC12.Heating_Valve_Output,
+        bldg:YOUNG.AHU.AC12.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC1A a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:YOUNG ;
+    brick1:hasPoint bldg:YOUNG.AHU.AC1A.CCV,
+        bldg:YOUNG.AHU.AC1A.Cooling_Valve_Output,
+        bldg:YOUNG.AHU.AC1A.Heating_Valve_Output,
+        bldg:YOUNG.AHU.AC1A.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC2 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:YOUNG ;
+    brick1:hasPoint bldg:YOUNG.AHU.AC2.CCV,
+        bldg:YOUNG.AHU.AC2.Cooling_Valve_Output,
+        bldg:YOUNG.AHU.AC2.Heating_Valve_Output,
+        bldg:YOUNG.AHU.AC2.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC3 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:YOUNG ;
+    brick1:hasPoint bldg:YOUNG.AHU.AC3.CCV,
+        bldg:YOUNG.AHU.AC3.Cooling_Valve_Output,
+        bldg:YOUNG.AHU.AC3.Heating_Valve_Output,
+        bldg:YOUNG.AHU.AC3.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC4 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:YOUNG ;
+    brick1:hasPoint bldg:YOUNG.AHU.AC4.CCV,
+        bldg:YOUNG.AHU.AC4.Cooling_Valve_Output,
+        bldg:YOUNG.AHU.AC4.Heating_Valve_Output,
+        bldg:YOUNG.AHU.AC4.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC5 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:YOUNG ;
+    brick1:hasPoint bldg:YOUNG.AHU.AC5.CCV,
+        bldg:YOUNG.AHU.AC5.Cooling_Valve_Output,
+        bldg:YOUNG.AHU.AC5.Heating_Valve_Output,
+        bldg:YOUNG.AHU.AC5.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AC6 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:YOUNG ;
+    brick1:hasPoint bldg:YOUNG.AHU.AC6.CCV,
+        bldg:YOUNG.AHU.AC6.Cooling_Valve_Output,
+        bldg:YOUNG.AHU.AC6.Heating_Valve_Output,
+        bldg:YOUNG.AHU.AC6.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:YOUNG ;
+    brick1:hasPoint bldg:YOUNG.AHU.AHU01.Cooling_Valve_Output,
+        bldg:YOUNG.AHU.AHU01.Heating_Valve_Output,
+        bldg:YOUNG.AHU.AHU01.Mixed_Air_Temp,
+        bldg:YOUNG.AHU.AHU01.Outside_Air_Temp,
+        bldg:YOUNG.AHU.AHU01.Return_Air_Temp,
+        bldg:YOUNG.AHU.AHU01.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:Young_ChilledWater_Demand_kBtu a brick_v_1_0_2:Electric_Meter ;
+    brickframe:pointname "Young_ChilledWater_Demand_kBtu" ;
+    brickframe:uuid "10b0b33a-9049-3e5a-90d4-d290c49143e9" ;
+    brick1:isPointOf bldg:chiller .
+
+bldg:Young_Electricity_Demand_kBtu a brick_v_1_0_2:Building_Electric_Meter ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "Young_Electricity_Demand_kBtu" ;
+    brickframe:uuid "327473fd-8735-3cca-a290-fb86dd390215" .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:YOUNG.AHU.AC01.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC01.CCV" ;
+    brickframe:uuid "4cd95740-7bdf-34c7-999f-361923381d1e" .
+
+bldg:YOUNG.AHU.AC01.Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC01.Chilled Water Return Temp" ;
+    brickframe:uuid "961f5bb7-b86d-33f8-96a6-30a6af5c1e83" .
+
+bldg:YOUNG.AHU.AC01.Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC01.Chilled Water Supply Temp" ;
+    brickframe:uuid "3e8245d3-b4ab-3200-aae5-38a831e15faf" .
+
+bldg:YOUNG.AHU.AC01.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC01.Cooling Valve Output" ;
+    brickframe:uuid "ecd6af0c-788f-3da3-a0b0-5d3bf3ea68e1" .
+
+bldg:YOUNG.AHU.AC01.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC01.Supply Air Temp" ;
+    brickframe:uuid "a96518d3-970c-3ec6-bffc-7ef76a415ab9" .
+
+bldg:YOUNG.AHU.AC011.Heat_Cool_Mode a brick1:Mode_Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC011.Heat Cool Mode" ;
+    brickframe:uuid "420d85eb-677a-3e90-b033-07a3ee507c93" .
+
+bldg:YOUNG.AHU.AC012.Heat_Cool_Mode a brick1:Mode_Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC012.Heat Cool Mode" ;
+    brickframe:uuid "751d61c2-f579-30dd-9e85-d82442ad4394" .
+
+bldg:YOUNG.AHU.AC1.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC1.CCV" ;
+    brickframe:uuid "0baa5649-1478-3eab-af7d-a7ce58ecc232" .
+
+bldg:YOUNG.AHU.AC1.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC1.Cooling Valve Output" ;
+    brickframe:uuid "e84eb51c-266b-356f-9e8a-75bb86d693b6" .
+
+bldg:YOUNG.AHU.AC1.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC1.Heating Valve Output" ;
+    brickframe:uuid "38a32d29-38bb-3425-87f1-703b5618aa0e" .
+
+bldg:YOUNG.AHU.AC1.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC1.Supply Air Temp" ;
+    brickframe:uuid "151f59d7-06bd-30db-a5a7-6957ed5103c7" .
+
+bldg:YOUNG.AHU.AC11.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC11.CCV" ;
+    brickframe:uuid "15ae178f-79f2-316f-86f8-7477086f4c1b" .
+
+bldg:YOUNG.AHU.AC11.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC11.Cooling Valve Output" ;
+    brickframe:uuid "b9cabcdf-9732-3bec-9c33-91619981717e" .
+
+bldg:YOUNG.AHU.AC11.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC11.Heating Valve Output" ;
+    brickframe:uuid "f55e4efd-9fa7-3981-a360-b389fe849724" .
+
+bldg:YOUNG.AHU.AC11.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC11.Supply Air Temp" ;
+    brickframe:uuid "261202c8-0649-3756-a026-a78a00a48780" .
+
+bldg:YOUNG.AHU.AC12.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC12.CCV" ;
+    brickframe:uuid "c8157be4-e4bd-32d5-8511-cd91c9e6eb5d" .
+
+bldg:YOUNG.AHU.AC12.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC12.Cooling Valve Output" ;
+    brickframe:uuid "3e5ae699-75f2-3935-8751-c28955e4fb82" .
+
+bldg:YOUNG.AHU.AC12.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC12.Heating Valve Output" ;
+    brickframe:uuid "4b203808-7d83-394e-ad71-e43f3ca14248" .
+
+bldg:YOUNG.AHU.AC12.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC12.Supply Air Temp" ;
+    brickframe:uuid "8709dd7f-5c88-30b8-a865-9068bbdfa3b8" .
+
+bldg:YOUNG.AHU.AC1A.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC1A.CCV" ;
+    brickframe:uuid "8605229b-c910-34bb-b66d-fbc3f09f784b" .
+
+bldg:YOUNG.AHU.AC1A.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC1A.Cooling Valve Output" ;
+    brickframe:uuid "802512eb-8774-3282-8094-38372aeafee2" .
+
+bldg:YOUNG.AHU.AC1A.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC1A.Heating Valve Output" ;
+    brickframe:uuid "cdaa291c-ea8b-326c-bc42-f8dcd40ee71f" .
+
+bldg:YOUNG.AHU.AC1A.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC1A.Supply Air Temp" ;
+    brickframe:uuid "578efefd-82d7-36a8-b143-7ecdb44e1849" .
+
+bldg:YOUNG.AHU.AC2.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC2.CCV" ;
+    brickframe:uuid "5a591754-dbec-35ad-a0b5-021172ad85c2" .
+
+bldg:YOUNG.AHU.AC2.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC2.Cooling Valve Output" ;
+    brickframe:uuid "fe453d2e-9668-3ac0-af20-9b7cc7970210" .
+
+bldg:YOUNG.AHU.AC2.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC2.Heating Valve Output" ;
+    brickframe:uuid "e3b22173-c1f7-330b-9e34-5aa604a28731" .
+
+bldg:YOUNG.AHU.AC2.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC2.Supply Air Temp" ;
+    brickframe:uuid "1e94fb24-c789-3556-a9fa-d25ba4f8a6e2" .
+
+bldg:YOUNG.AHU.AC3.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC3.CCV" ;
+    brickframe:uuid "faad37d7-d7fa-3753-bdcd-7a800b59a11d" .
+
+bldg:YOUNG.AHU.AC3.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC3.Cooling Valve Output" ;
+    brickframe:uuid "7bf393ff-073a-324f-a5a8-755583913b77" .
+
+bldg:YOUNG.AHU.AC3.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC3.Heating Valve Output" ;
+    brickframe:uuid "76e0237f-56ee-326d-8052-927aaad8e1cb" .
+
+bldg:YOUNG.AHU.AC3.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC3.Supply Air Temp" ;
+    brickframe:uuid "2b417ddd-e94c-31b7-a27f-acf69b3face9" .
+
+bldg:YOUNG.AHU.AC4.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC4.CCV" ;
+    brickframe:uuid "366b4e59-8a53-3ab5-968b-b5dd830c0d60" .
+
+bldg:YOUNG.AHU.AC4.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC4.Cooling Valve Output" ;
+    brickframe:uuid "dce65a06-d263-35b9-bc7a-e3f15c7ae376" .
+
+bldg:YOUNG.AHU.AC4.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC4.Heating Valve Output" ;
+    brickframe:uuid "b066b308-984b-3617-a103-7fbcacccd300" .
+
+bldg:YOUNG.AHU.AC4.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC4.Supply Air Temp" ;
+    brickframe:uuid "a59bbc00-a0a7-3934-9afd-00adf8357d4e" .
+
+bldg:YOUNG.AHU.AC5.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC5.CCV" ;
+    brickframe:uuid "852bbdd5-c9f6-338f-8751-b911d78f303c" .
+
+bldg:YOUNG.AHU.AC5.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC5.Cooling Valve Output" ;
+    brickframe:uuid "34306124-fdbe-3c15-81d7-e7b39b2567e7" .
+
+bldg:YOUNG.AHU.AC5.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC5.Heating Valve Output" ;
+    brickframe:uuid "613b3b41-b874-3c03-a141-11be3a6a0180" .
+
+bldg:YOUNG.AHU.AC5.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC5.Supply Air Temp" ;
+    brickframe:uuid "f905af09-f17c-35fa-9bcd-5d5bc67cdb6d" .
+
+bldg:YOUNG.AHU.AC6.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC6.CCV" ;
+    brickframe:uuid "2e0706dc-abc0-31cf-8345-3f9e627b5825" .
+
+bldg:YOUNG.AHU.AC6.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC6.Cooling Valve Output" ;
+    brickframe:uuid "b54ab8ac-6bcd-3e3b-879f-db1304736819" .
+
+bldg:YOUNG.AHU.AC6.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC6.Heating Valve Output" ;
+    brickframe:uuid "8da21152-94f8-3678-bec5-6785da46d4b7" .
+
+bldg:YOUNG.AHU.AC6.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AC6.Supply Air Temp" ;
+    brickframe:uuid "cf063b65-7245-37f1-8e95-4b879071da1b" .
+
+bldg:YOUNG.AHU.AHU01.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AHU01.Cooling Valve Output" ;
+    brickframe:uuid "3ba16bcc-c0a3-3271-b3e7-19cafd39a58c" .
+
+bldg:YOUNG.AHU.AHU01.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AHU01.Heating Valve Output" ;
+    brickframe:uuid "b9fddef8-027a-36b9-a2cd-823f65c36704" .
+
+bldg:YOUNG.AHU.AHU01.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AHU01.Mixed Air Temp" ;
+    brickframe:uuid "097bfb71-862d-3d1c-9022-b1ae6df9a15e" .
+
+bldg:YOUNG.AHU.AHU01.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AHU01.Outside Air Temp" ;
+    brickframe:uuid "d4778234-849c-335b-b56e-1f3f9b368132" .
+
+bldg:YOUNG.AHU.AHU01.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AHU01.Return Air Temp" ;
+    brickframe:uuid "cc587992-121f-312c-b04c-f0d31f10c1e7" .
+
+bldg:YOUNG.AHU.AHU01.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.AHU.AHU01.Supply Air Temp" ;
+    brickframe:uuid "e1ec23cb-0922-3361-a6e3-fcd14a1e081c" .
+
+bldg:YOUNG.CHW.Building_Chilled_Water_Flow a brick_v_1_0_2:Chilled_Water_Flow_Sensor ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.CHW.Building Chilled Water Flow" ;
+    brickframe:uuid "09566efd-a16b-3a05-862b-20ddf9f34c5f" .
+
+bldg:YOUNG.CHW.Building_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.CHW.Building Chilled Water Return Temp" ;
+    brickframe:uuid "1b31ae34-ce13-32f5-8793-1f4fc42645f1" .
+
+bldg:YOUNG.CHW.Building_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.CHW.Building Chilled Water Supply Temp" ;
+    brickframe:uuid "144241ba-ece4-32a2-98c6-ec6f99f38ca7" .
+
+bldg:YOUNG.CHW.Building_Chilled_Water_Supply_Temp_Sp a brick_v_1_0_2:Chilled_Water_Supply_Temperature_Setpoint ;
+    brickframe:pointname "YOUNG.CHW.Building Chilled Water Supply Temp Sp" ;
+    brickframe:uuid "1e98496a-32fb-378e-be4e-32f4eae364c8" .
+
+bldg:YOUNG.CHW.ECONOMIZER a brick1:Damper_Position_Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.CHW.ECONOMIZER" ;
+    brickframe:uuid "4a6d18b3-3d32-3ac9-9bb6-66cb3930ea6a" .
+
+bldg:YOUNG.CHW.ENABLE a brick1:Enable_Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.CHW.ENABLE" ;
+    brickframe:uuid "84394463-5fcc-3ef9-b3c0-62207a52d71b" .
+
+bldg:YOUNG.CHW.LOOP_DP a brick1:Chilled_Water_Differential_Pressure_Sensor ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.CHW.LOOP DP" ;
+    brickframe:uuid "88e233e7-31ba-3fb9-80e5-d5c44ee43f30" .
+
+bldg:YOUNG.CHW.Loop_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.CHW.Loop Chilled Water Return Temp" ;
+    brickframe:uuid "8139c8e7-a488-3896-8c4c-4fb98a12949f" .
+
+bldg:YOUNG.CHW.Loop_Chilled_Water_Return_Temp_Sp a brick_v_1_0_2:Chilled_Water_Return_Temperature_Setpoint ;
+    brickframe:pointname "YOUNG.CHW.Loop Chilled Water Return Temp Sp" ;
+    brickframe:uuid "95d63781-1d56-3395-b08f-01c736d42b7a" .
+
+bldg:YOUNG.CHW.Loop_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.CHW.Loop Chilled Water Supply Temp" ;
+    brickframe:uuid "08b3316a-06d5-311c-be55-df6eba7fec92" .
+
+bldg:YOUNG.CHW.Loop_Chilled_Water_Supply_Temp_Sp a brick_v_1_0_2:Chilled_Water_Supply_Temperature_Setpoint ;
+    brickframe:pointname "YOUNG.CHW.Loop Chilled Water Supply Temp Sp" ;
+    brickframe:uuid "5a362935-5895-3daa-bf8d-5fa4d79026ee" .
+
+bldg:YOUNG.CHW.OA_ENABLE a brick_v_1_0_2:Outside_Air_Damper_Command ;
+    brickframe:pointname "YOUNG.CHW.OA ENABLE" ;
+    brickframe:uuid "475d578a-b2b7-3800-893f-fa0794f43bc0" .
+
+bldg:YOUNG.CHW.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.CHW.Outside Air Temp" ;
+    brickframe:uuid "3fda46e6-444f-3f82-8d1a-2dc1247648b5" .
+
+bldg:YOUNG.CHW.Pump1_SPEED_SIG a brick1:Pump_Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.CHW.Pump1_SPEED SIG" ;
+    brickframe:uuid "4cc4a6a3-6a79-3a80-bc85-987b6af4fafc" .
+
+<http://buildsys.org/ontologies/YOUNG#YOUNG.CHW.Pump1_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.CHW.Pump1_Start/Stop" ;
+    brickframe:uuid "c1d75958-519b-3191-8de6-6deeaa73830b" .
+
+bldg:YOUNG.CHW.Pump2_SPEED_SIG a brick1:Pump_Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.CHW.Pump2_SPEED SIG" ;
+    brickframe:uuid "068a8d8f-dccd-39ed-8dd1-e6d9a0262ce9" .
+
+<http://buildsys.org/ontologies/YOUNG#YOUNG.CHW.Pump2_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:YOUNG ;
+    brickframe:pointname "YOUNG.CHW.Pump2_Start/Stop" ;
+    brickframe:uuid "32dbf50e-4cee-32f2-bfed-a0e455269826" .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:YOUNG ;
+    brick1:hasPoint bldg:YOUNG.CHW.Building_Chilled_Water_Flow,
+        bldg:YOUNG.CHW.Building_Chilled_Water_Return_Temp,
+        bldg:YOUNG.CHW.Building_Chilled_Water_Supply_Temp,
+        bldg:YOUNG.CHW.Building_Chilled_Water_Supply_Temp_Sp,
+        bldg:YOUNG.CHW.ECONOMIZER,
+        bldg:YOUNG.CHW.ENABLE,
+        bldg:YOUNG.CHW.LOOP_DP,
+        bldg:YOUNG.CHW.Loop_Chilled_Water_Return_Temp,
+        bldg:YOUNG.CHW.Loop_Chilled_Water_Return_Temp_Sp,
+        bldg:YOUNG.CHW.Loop_Chilled_Water_Supply_Temp,
+        bldg:YOUNG.CHW.Loop_Chilled_Water_Supply_Temp_Sp,
+        bldg:YOUNG.CHW.OA_ENABLE,
+        bldg:YOUNG.CHW.Outside_Air_Temp,
+        bldg:YOUNG.CHW.Pump1_SPEED_SIG,
+        <http://buildsys.org/ontologies/YOUNG#YOUNG.CHW.Pump1_Start/Stop>,
+        bldg:YOUNG.CHW.Pump2_SPEED_SIG,
+        <http://buildsys.org/ontologies/YOUNG#YOUNG.CHW.Pump2_Start/Stop> .
+
+bldg:YOUNG a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "87447" ;
+    brickframe:Country "US" .
+

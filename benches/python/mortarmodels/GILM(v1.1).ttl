@@ -1,0 +1,145 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/GILM#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:AHU01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:GILM ;
+    brick1:hasPoint bldg:GILM.AHU.AHU01.CCV,
+        bldg:GILM.AHU.AHU01.Cooling_Valve_Output,
+        bldg:GILM.AHU.AHU01.Mixed_Air_Temp,
+        bldg:GILM.AHU.AHU01.Outside_Air_Temp,
+        bldg:GILM.AHU.AHU01.Supply_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:GILM.AHU.AHU01.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:GILM ;
+    brickframe:pointname "GILM.AHU.AHU01.CCV" ;
+    brickframe:uuid "8af05fc6-caf5-3123-b292-e12b74ae975d" .
+
+bldg:GILM.AHU.AHU01.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:GILM ;
+    brickframe:pointname "GILM.AHU.AHU01.Cooling Valve Output" ;
+    brickframe:uuid "4cbd082d-987b-31a9-b8b5-32418c800ea3" .
+
+bldg:GILM.AHU.AHU01.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:GILM ;
+    brickframe:pointname "GILM.AHU.AHU01.Mixed Air Temp" ;
+    brickframe:uuid "5e17be8d-5d6d-3810-b960-3031d6bd27ef" .
+
+bldg:GILM.AHU.AHU01.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:GILM ;
+    brickframe:pointname "GILM.AHU.AHU01.Outside Air Temp" ;
+    brickframe:uuid "1cccc754-a1d8-3b59-8173-cce5c781bafa" .
+
+bldg:GILM.AHU.AHU01.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:GILM ;
+    brickframe:pointname "GILM.AHU.AHU01.Supply Air Temp" ;
+    brickframe:uuid "cde1ca9d-1860-3090-a469-15fb89a75513" .
+
+bldg:GILM.CHW.CHWSSETPOINT a brick_v_1_0_2:Chilled_Water_Supply_Temperature_Setpoint ;
+    brickframe:pointname "GILM.CHW.CHWSSETPOINT" ;
+    brickframe:uuid "c9413e60-5291-3c16-b1f7-ce39d8bf4c2c" .
+
+bldg:GILM.CHW.ECONOMIZER a brick1:Damper_Position_Command ;
+    brickframe:hasSite bldg:GILM ;
+    brickframe:pointname "GILM.CHW.ECONOMIZER" ;
+    brickframe:uuid "37d5fdcf-acc5-3e30-93a0-a38846532ed3" .
+
+bldg:GILM.CHW.Loop_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:GILM ;
+    brickframe:pointname "GILM.CHW.Loop Chilled Water Return Temp" ;
+    brickframe:uuid "a200c2ec-144a-3307-bcb2-073ee2bf24d4" .
+
+bldg:GILM.CHW.Loop_Chilled_Water_Return_Temp_Setpoint a brick_v_1_0_2:Chilled_Water_Return_Temperature_Setpoint ;
+    brickframe:pointname "GILM.CHW.Loop Chilled Water Return Temp Setpoint" ;
+    brickframe:uuid "58454e67-e9cd-3f97-a015-694ea3606706" .
+
+bldg:GILM.CHW.Loop_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:GILM ;
+    brickframe:pointname "GILM.CHW.Loop Chilled Water Supply Temp" ;
+    brickframe:uuid "d79e705d-532c-3a69-bdbe-647befad39a8" .
+
+bldg:GILM.CHW.Loop_Chilled_Water_Supply_Temp_Setpoint a brick_v_1_0_2:Chilled_Water_Supply_Temperature_Setpoint ;
+    brickframe:pointname "GILM.CHW.Loop Chilled Water Supply Temp Setpoint" ;
+    brickframe:uuid "7bd5c86c-60a0-3be9-9eba-da82f397f536" .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:GILM ;
+    brick1:hasPoint bldg:GILM.CHW.CHWSSETPOINT,
+        bldg:GILM.CHW.ECONOMIZER,
+        bldg:GILM.CHW.Loop_Chilled_Water_Return_Temp,
+        bldg:GILM.CHW.Loop_Chilled_Water_Return_Temp_Setpoint,
+        bldg:GILM.CHW.Loop_Chilled_Water_Supply_Temp,
+        bldg:GILM.CHW.Loop_Chilled_Water_Supply_Temp_Setpoint .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:GILM a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "42946" ;
+    brickframe:Country "US" .
+

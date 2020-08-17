@@ -1,0 +1,863 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://xbos.io/ontologies/south-berkeley-senior-center#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:Level_1 a brick1:Floor ;
+    rdf:label "Level 1" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:hasPart bldg:Room_101,
+        bldg:Room_102,
+        bldg:Room_103,
+        bldg:Room_104,
+        bldg:Room_105,
+        bldg:Room_106,
+        bldg:Room_107,
+        bldg:Room_108,
+        bldg:Room_109,
+        bldg:Room_109a,
+        bldg:Room_109b,
+        bldg:Room_110,
+        bldg:Room_111,
+        bldg:Room_112,
+        bldg:Room_114,
+        bldg:Room_115,
+        bldg:Room_116,
+        bldg:Room_117,
+        bldg:Room_118,
+        bldg:Room_119,
+        bldg:Room_120,
+        bldg:Room_121,
+        bldg:Room_122,
+        bldg:Room_123,
+        bldg:Room_124,
+        bldg:Room_125,
+        bldg:Room_126,
+        bldg:Room_127,
+        bldg:Room_128,
+        bldg:Room_129,
+        bldg:Room_130,
+        bldg:Room_131,
+        bldg:Room_132,
+        bldg:Room_133,
+        bldg:Room_134,
+        bldg:Room_east,
+        bldg:Room_north,
+        bldg:Room_south,
+        bldg:Room_west .
+
+bldg:Level_2 a brick1:Floor ;
+    rdf:label "Level 2" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:hasPart bldg:Room_111,
+        bldg:Room_113,
+        bldg:Room_134,
+        bldg:Room_201,
+        bldg:Room_202,
+        bldg:Room_203,
+        bldg:Room_204,
+        bldg:Room_205,
+        bldg:Room_206,
+        bldg:Room_207,
+        bldg:Room_208,
+        bldg:Room_209,
+        bldg:Room_212,
+        bldg:Room_213,
+        bldg:Room_214,
+        bldg:Room_215,
+        bldg:Room_216,
+        bldg:Room_217,
+        bldg:Room_218,
+        bldg:Room_220,
+        bldg:Room_221,
+        bldg:Room_222 .
+
+bldg:Level_3 a brick1:Floor ;
+    rdf:label "Level 3" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:hasPart bldg:Room_214,
+        bldg:Room_221 .
+
+<http://xbos.io/ontologies/south-berkeley-senior-center#green_button_meter_+rZzdX+6+6muRV0Pi0mg4E75JJs=> a brick_v_1_0_2:Green_Button_Meter ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uuid "01e7047b-d220-5686-8611-5f85911d3764" .
+
+bldg:hvac_zone_ac_2_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_129 ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uri "south-berkeley-senior-center/devices/s.pelican/AC-2/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_ac_2 ;
+    brick1:hasPoint bldg:hvac_zone_ac_2_tstat_cooling_setpoint,
+        bldg:hvac_zone_ac_2_tstat_fan,
+        bldg:hvac_zone_ac_2_tstat_heating_setpoint,
+        bldg:hvac_zone_ac_2_tstat_mode,
+        bldg:hvac_zone_ac_2_tstat_override,
+        bldg:hvac_zone_ac_2_tstat_state,
+        bldg:hvac_zone_ac_2_tstat_temperature .
+
+bldg:hvac_zone_ac_3_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_133 ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uri "south-berkeley-senior-center/devices/s.pelican/AC-3/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_ac_3 ;
+    brick1:hasPoint bldg:hvac_zone_ac_3_tstat_cooling_setpoint,
+        bldg:hvac_zone_ac_3_tstat_fan,
+        bldg:hvac_zone_ac_3_tstat_heating_setpoint,
+        bldg:hvac_zone_ac_3_tstat_mode,
+        bldg:hvac_zone_ac_3_tstat_override,
+        bldg:hvac_zone_ac_3_tstat_state,
+        bldg:hvac_zone_ac_3_tstat_temperature .
+
+bldg:hvac_zone_default a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:south-berkeley-senior-center .
+
+bldg:hvac_zone_default_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_102 ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:controls bldg:RTU_hvac_zone_default .
+
+bldg:hvac_zone_front_office_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uri "south-berkeley-senior-center/devices/s.pelican/Front_Office/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_front_office ;
+    brick1:hasPoint bldg:hvac_zone_front_office_tstat_cooling_setpoint,
+        bldg:hvac_zone_front_office_tstat_fan,
+        bldg:hvac_zone_front_office_tstat_heating_setpoint,
+        bldg:hvac_zone_front_office_tstat_mode,
+        bldg:hvac_zone_front_office_tstat_override,
+        bldg:hvac_zone_front_office_tstat_state,
+        bldg:hvac_zone_front_office_tstat_temperature .
+
+bldg:meter_0xd8d5b9000000b3f5 a brick_v_1_0_2:Building_Electric_Meter ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uri "south-berkeley-senior-center/s.eagle/0xd8d5b9000000b3f5/i.meter" ;
+    brickframe:uuid "c021be89-50c3-35fe-878c-199e1cf7d63d" .
+
+bldg:supply_damper_10 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_124 .
+
+bldg:supply_damper_11 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_123 .
+
+bldg:supply_damper_12 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_122 .
+
+bldg:supply_damper_13 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_121 .
+
+bldg:supply_damper_14 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_125 .
+
+bldg:supply_damper_15 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_126 .
+
+bldg:supply_damper_16 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_127 .
+
+bldg:supply_damper_17 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_128 .
+
+bldg:supply_damper_18 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_120 .
+
+bldg:supply_damper_19 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_119 .
+
+bldg:supply_damper_2 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_107 .
+
+bldg:supply_damper_20 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_118 .
+
+bldg:supply_damper_21 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_117 .
+
+bldg:supply_damper_22 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_116 .
+
+bldg:supply_damper_23 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_115 .
+
+bldg:supply_damper_24 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_116 .
+
+bldg:supply_damper_25 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_115 .
+
+bldg:supply_damper_26 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_102 .
+
+bldg:supply_damper_27 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_103 .
+
+bldg:supply_damper_28 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_104 .
+
+bldg:supply_damper_29 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_106 .
+
+bldg:supply_damper_3 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_108 .
+
+bldg:supply_damper_30 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_132 .
+
+bldg:supply_damper_31 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_131 .
+
+bldg:supply_damper_32 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_130 .
+
+bldg:supply_damper_33 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_129 .
+
+bldg:supply_damper_34 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_133 .
+
+bldg:supply_damper_35 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_201 .
+
+bldg:supply_damper_36 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_105 .
+
+bldg:supply_damper_37 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_203 .
+
+bldg:supply_damper_38 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_204 .
+
+bldg:supply_damper_39 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_205 .
+
+bldg:supply_damper_4 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_110 .
+
+bldg:supply_damper_40 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_220 .
+
+bldg:supply_damper_41 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_218 .
+
+bldg:supply_damper_42 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_217 .
+
+bldg:supply_damper_43 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_207 .
+
+bldg:supply_damper_44 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_206 .
+
+bldg:supply_damper_45 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_202 .
+
+bldg:supply_damper_46 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_209 .
+
+bldg:supply_damper_47 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_134 .
+
+bldg:supply_damper_48 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_213 .
+
+bldg:supply_damper_49 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_111 .
+
+bldg:supply_damper_5 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_114 .
+
+bldg:supply_damper_50 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_113 .
+
+bldg:supply_damper_51 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_208 .
+
+bldg:supply_damper_52 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_212 .
+
+bldg:supply_damper_53 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_214 .
+
+bldg:supply_damper_54 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_216 .
+
+bldg:supply_damper_55 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_215 .
+
+bldg:supply_damper_56 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_222 .
+
+bldg:supply_damper_57 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_221 .
+
+bldg:supply_damper_58 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_101 .
+
+bldg:supply_damper_6 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_112 .
+
+bldg:supply_damper_7 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_109b .
+
+bldg:supply_damper_8 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_109a .
+
+bldg:supply_damper_9 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_109 .
+
+bldg:weather_KOAK_cloud_coverage a brick_v_1_0_2:Weather_Cloud_Coverage_Sensor ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uuid "7b49f7f2-f142-38a0-b284-42b0aef95b64" .
+
+bldg:weather_KOAK_cloud_height a brick_v_1_0_2:Weather_Cloud_Height_Sensor ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uuid "f510c11b-3a04-3518-b757-7940555abb1d" .
+
+bldg:weather_KOAK_relative_humidity a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uuid "5e55525e-f799-3b7b-8520-8e42730946df" .
+
+bldg:weather_KOAK_temperature a brick_v_1_0_2:Weather_Temperature_Sensor ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uuid "a73c1b67-142f-3b45-baf8-e308619b6bbc" .
+
+bldg:weather_KOAK_wind_direction a brick1:Wind_Direction_Sensor ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uuid "4a939b52-73b5-3016-95d7-34fd1ea1d41f" .
+
+bldg:weather_KOAK_wind_speed a brick1:Wind_Speed_Sensor ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uuid "9a3d08a7-0489-3b9e-981b-2e2e916cd783" .
+
+bldg:weather_LBNL1_cloud_coverage a brick_v_1_0_2:Weather_Cloud_Coverage_Sensor ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uuid "3eaf5926-11a8-3b7c-abdb-d1b06aca2cb6" .
+
+bldg:weather_LBNL1_cloud_height a brick_v_1_0_2:Weather_Cloud_Height_Sensor ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uuid "a3beea1c-65e3-38e1-8710-9fd1d9605caa" .
+
+bldg:weather_LBNL1_relative_humidity a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uuid "5cbf1af8-60ba-3e36-9ed6-b80feb4acae2" .
+
+bldg:weather_LBNL1_temperature a brick_v_1_0_2:Weather_Temperature_Sensor ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uuid "00327584-54b2-35a8-aaed-182747a5dda7" .
+
+bldg:weather_LBNL1_wind_direction a brick1:Wind_Direction_Sensor ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uuid "98180ac6-3a45-3884-afff-0c0341a9b9f1" .
+
+bldg:weather_LBNL1_wind_speed a brick1:Wind_Speed_Sensor ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uuid "fe8d0d04-f8d2-37cc-a582-3978f3699474" .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:HVAC_Zone_ac_3 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:south-berkeley-senior-center .
+
+bldg:RTU_hvac_zone_ac_2 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:feeds bldg:hvac_zone_ac_2 .
+
+bldg:RTU_hvac_zone_ac_3 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:feeds bldg:hvac_zone_ac_3 .
+
+bldg:RTU_hvac_zone_front_office a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:feeds bldg:hvac_zone_front_office .
+
+bldg:Room_east a brick1:Room ;
+    rdf:label "East" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center .
+
+bldg:Room_north a brick1:Room ;
+    rdf:label "North" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center .
+
+bldg:Room_south a brick1:Room ;
+    rdf:label "South" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center .
+
+bldg:Room_west a brick1:Room ;
+    rdf:label "West" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center .
+
+bldg:hvac_zone_ac_2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:south-berkeley-senior-center .
+
+bldg:hvac_zone_ac_2_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uri "south-berkeley-senior-center/devices/s.pelican/AC-2/i.xbos.thermostat" ;
+    brickframe:uuid "dd481497-f8c5-32b0-856b-cde23efe6f05" .
+
+bldg:hvac_zone_ac_2_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uri "south-berkeley-senior-center/devices/s.pelican/AC-2/i.xbos.thermostat" ;
+    brickframe:uuid "5869aee3-aae3-337b-a3f1-e8da1e933bdb" .
+
+bldg:hvac_zone_ac_2_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uri "south-berkeley-senior-center/devices/s.pelican/AC-2/i.xbos.thermostat" ;
+    brickframe:uuid "ab1bd158-f687-3e46-95f5-e68efc2bec25" .
+
+bldg:hvac_zone_ac_2_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uri "south-berkeley-senior-center/devices/s.pelican/AC-2/i.xbos.thermostat" ;
+    brickframe:uuid "8a166b90-305e-300d-8fba-a0a586abae64" .
+
+bldg:hvac_zone_ac_2_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uri "south-berkeley-senior-center/devices/s.pelican/AC-2/i.xbos.thermostat" ;
+    brickframe:uuid "d63b29ef-281d-35e4-8925-bc1316b608cb" .
+
+bldg:hvac_zone_ac_2_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uri "south-berkeley-senior-center/devices/s.pelican/AC-2/i.xbos.thermostat" ;
+    brickframe:uuid "27af9c85-debf-3f98-93ac-c743dc03a725" .
+
+bldg:hvac_zone_ac_2_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uri "south-berkeley-senior-center/devices/s.pelican/AC-2/i.xbos.thermostat" ;
+    brickframe:uuid "3ca0bfe7-8449-3949-8463-c18f0bf28fb9" .
+
+bldg:hvac_zone_ac_3 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:south-berkeley-senior-center .
+
+bldg:hvac_zone_ac_3_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uri "south-berkeley-senior-center/devices/s.pelican/AC-3/i.xbos.thermostat" ;
+    brickframe:uuid "7e197305-67ef-37aa-9bc1-8b3b7132797f" .
+
+bldg:hvac_zone_ac_3_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uri "south-berkeley-senior-center/devices/s.pelican/AC-3/i.xbos.thermostat" ;
+    brickframe:uuid "20806de2-5c84-36d3-8e35-1f8dea3b7fd4" .
+
+bldg:hvac_zone_ac_3_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uri "south-berkeley-senior-center/devices/s.pelican/AC-3/i.xbos.thermostat" ;
+    brickframe:uuid "1b7bf202-ce65-31a3-84d8-5d0457889ea2" .
+
+bldg:hvac_zone_ac_3_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uri "south-berkeley-senior-center/devices/s.pelican/AC-3/i.xbos.thermostat" ;
+    brickframe:uuid "3e00e0bf-949a-3101-9b0e-ea88a1e2fd17" .
+
+bldg:hvac_zone_ac_3_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uri "south-berkeley-senior-center/devices/s.pelican/AC-3/i.xbos.thermostat" ;
+    brickframe:uuid "1172dfc6-f0fb-36b9-a091-5f67d36c6553" .
+
+bldg:hvac_zone_ac_3_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uri "south-berkeley-senior-center/devices/s.pelican/AC-3/i.xbos.thermostat" ;
+    brickframe:uuid "30e03fec-da34-3d71-a4c4-cff1e2d74a21" .
+
+bldg:hvac_zone_ac_3_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uri "south-berkeley-senior-center/devices/s.pelican/AC-3/i.xbos.thermostat" ;
+    brickframe:uuid "bc98dfc6-b310-35d5-8339-5796625ebbe6" .
+
+bldg:hvac_zone_front_office a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:south-berkeley-senior-center .
+
+bldg:hvac_zone_front_office_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uri "south-berkeley-senior-center/devices/s.pelican/Front_Office/i.xbos.thermostat" ;
+    brickframe:uuid "8e176cf5-6013-38ca-a0b4-65cca3e5ea44" .
+
+bldg:hvac_zone_front_office_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uri "south-berkeley-senior-center/devices/s.pelican/Front_Office/i.xbos.thermostat" ;
+    brickframe:uuid "da50f7c4-8d3c-3ead-a3c2-bd71731b3605" .
+
+bldg:hvac_zone_front_office_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uri "south-berkeley-senior-center/devices/s.pelican/Front_Office/i.xbos.thermostat" ;
+    brickframe:uuid "487c3d45-d8c3-358d-a340-af8cc1c2990f" .
+
+bldg:hvac_zone_front_office_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uri "south-berkeley-senior-center/devices/s.pelican/Front_Office/i.xbos.thermostat" ;
+    brickframe:uuid "ed19c073-04ff-3e7d-b77c-c0fbd43d1250" .
+
+bldg:hvac_zone_front_office_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uri "south-berkeley-senior-center/devices/s.pelican/Front_Office/i.xbos.thermostat" ;
+    brickframe:uuid "5e1b8b9d-a70a-38da-8b84-2f2412ae9343" .
+
+bldg:hvac_zone_front_office_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uri "south-berkeley-senior-center/devices/s.pelican/Front_Office/i.xbos.thermostat" ;
+    brickframe:uuid "19d97ee9-793a-352c-8222-16f416ca222d" .
+
+bldg:hvac_zone_front_office_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brickframe:uri "south-berkeley-senior-center/devices/s.pelican/Front_Office/i.xbos.thermostat" ;
+    brickframe:uuid "a73bddb4-4ec0-3b55-80d6-a8ceff454a77" .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+bldg:Room_101 a brick1:Room ;
+    rdf:label "Entry" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_103 a brick1:Room ;
+    rdf:label "Admin Ofc." ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_front_office .
+
+bldg:Room_104 a brick1:Room ;
+    rdf:label "Conf." ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_front_office .
+
+bldg:Room_105 a brick1:Room ;
+    rdf:label "Staff" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_front_office .
+
+bldg:Room_106 a brick1:Room ;
+    rdf:label "Toilet" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_front_office .
+
+bldg:Room_107 a brick1:Room ;
+    rdf:label "Reception/Lounge" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_108 a brick1:Room ;
+    rdf:label "Game Room" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_109 a brick1:Room ;
+    rdf:label "Consult./Health" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_109a a brick1:Room ;
+    rdf:label "Toilet" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_109b a brick1:Room ;
+    rdf:label "Lav." ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_110 a brick1:Room ;
+    rdf:label "Rest" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_112 a brick1:Room ;
+    rdf:label "Elev. Mech. Rm." ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_113 a brick1:Room ;
+    rdf:label "Stair B." ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_114 a brick1:Room ;
+    rdf:label "Mech./Elec. Equip. Rm." ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_117 a brick1:Room ;
+    rdf:label "Stor." ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_118 a brick1:Room ;
+    rdf:label "Jan." ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_119 a brick1:Room ;
+    rdf:label "Kitchen" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center .
+
+bldg:Room_120 a brick1:Room ;
+    rdf:label "Hall" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_121 a brick1:Room ;
+    rdf:label "Ref." ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_122 a brick1:Room ;
+    rdf:label "Freezer" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_123 a brick1:Room ;
+    rdf:label "Stor." ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_124 a brick1:Room ;
+    rdf:label "Stor." ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_125 a brick1:Room ;
+    rdf:label "Trash" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_126 a brick1:Room ;
+    rdf:label "Lkr." ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_127 a brick1:Room ;
+    rdf:label "Jan." ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_128 a brick1:Room ;
+    rdf:label "Office" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_130 a brick1:Room ;
+    rdf:label "Stor." ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_ac_2 .
+
+bldg:Room_131 a brick1:Room ;
+    rdf:label "Platform" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center .
+
+bldg:Room_132 a brick1:Room ;
+    rdf:label "Stor." ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_ac_2 .
+
+bldg:Room_201 a brick1:Room ;
+    rdf:label "Game Room" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_202 a brick1:Room ;
+    rdf:label "Stor." ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_203 a brick1:Room ;
+    rdf:label "Conf. Room B" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_204 a brick1:Room ;
+    rdf:label "Classroom A" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_205 a brick1:Room ;
+    rdf:label "Classroom B" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_206 a brick1:Room ;
+    rdf:label "Stor." ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_207 a brick1:Room ;
+    rdf:label "Stor." ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_208 a brick1:Room ;
+    rdf:label "Hallway" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_209 a brick1:Room ;
+    rdf:label "Conf. Room A" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_212 a brick1:Room ;
+    rdf:label "Stor," ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_213 a brick1:Room ;
+    rdf:label "Office C" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_215 a brick1:Room ;
+    rdf:label "Jan." ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_216 a brick1:Room ;
+    rdf:label "Women" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_217 a brick1:Room ;
+    rdf:label "Computer Lab" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_218 a brick1:Room ;
+    rdf:label "Pool Room" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_220 a brick1:Room ;
+    rdf:label "Stor," ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_222 a brick1:Room ;
+    rdf:label "Shower" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Weather_Cloud_Coverage_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Weather_Cloud_Height_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Weather_Temperature_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+bldg:HVAC_Zone_ac_2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:south-berkeley-senior-center .
+
+bldg:Room_102 a brick1:Room ;
+    rdf:label "Hallway" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_111 a brick1:Room ;
+    rdf:label "Stair A" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_115 a brick1:Room ;
+    rdf:label "Women" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_116 a brick1:Room ;
+    rdf:label "Men" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_129 a brick1:Room ;
+    rdf:label "Multipurpose Room" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_ac_2 .
+
+bldg:Room_133 a brick1:Room ;
+    rdf:label "Dining Room" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_ac_3 .
+
+bldg:Room_134 a brick1:Room ;
+    rdf:label "Elevator" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_214 a brick1:Room ;
+    rdf:label "Men" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_221 a brick1:Room ;
+    rdf:label "Shower" ;
+    brickframe:hasSite bldg:south-berkeley-senior-center ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+bldg:HVAC_Zone_front_office a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:south-berkeley-senior-center .
+
+bldg:HVAC_Zone_default a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:south-berkeley-senior-center .
+
+bldg:south-berkeley-senior-center a brick_v_1_0_2:Site ;
+    brickframe:Country "US" ;
+    brickframe:NumFloors "2" ;
+    brickframe:PrimaryFunction "Senior Center" ;
+    brickframe:Timezone "America/Los_Angeles" .
+

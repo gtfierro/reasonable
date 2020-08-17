@@ -1,0 +1,117 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/AOB4#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:AOB4 ;
+    brick1:hasPoint bldg:AOB4.CHW.Building_Chilled_Water_Return_Temp,
+        bldg:AOB4.CHW.Building_Chilled_Water_Supply_Temp,
+        bldg:AOB4.CHW.Building_Chilled_Water_Supply_Temp_Setpoint,
+        bldg:AOB4.CHW.ECONOMIZER,
+        bldg:AOB4.CHW.Loop_Chilled_Water_Supply_Temp,
+        bldg:AOB4.CHW.Outside_Air_Temp,
+        <http://buildsys.org/ontologies/AOB4#AOB4.CHW.Pump1_Start/Stop> .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:AOB4.CHW.Building_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:AOB4 ;
+    brickframe:pointname "AOB4.CHW.Building Chilled Water Return Temp" ;
+    brickframe:uuid "2b5bbaf0-d401-3715-af3e-1c7a000f0e02" .
+
+bldg:AOB4.CHW.Building_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:AOB4 ;
+    brickframe:pointname "AOB4.CHW.Building Chilled Water Supply Temp" ;
+    brickframe:uuid "5a296050-9df7-37e3-8698-eba9c2390ff8" .
+
+bldg:AOB4.CHW.Building_Chilled_Water_Supply_Temp_Setpoint a brick_v_1_0_2:Chilled_Water_Supply_Temperature_Setpoint ;
+    brickframe:pointname "AOB4.CHW.Building Chilled Water Supply Temp Setpoint" ;
+    brickframe:uuid "0b3455f5-17b5-3478-bd27-d9784c8ab278" .
+
+bldg:AOB4.CHW.ECONOMIZER a brick1:Damper_Position_Command ;
+    brickframe:hasSite bldg:AOB4 ;
+    brickframe:pointname "AOB4.CHW.ECONOMIZER" ;
+    brickframe:uuid "a02bf2df-5004-3220-9104-eebebdfd4193" .
+
+bldg:AOB4.CHW.Loop_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:AOB4 ;
+    brickframe:pointname "AOB4.CHW.Loop Chilled Water Supply Temp" ;
+    brickframe:uuid "9bece9da-dee0-3c05-90e3-858c459e159b" .
+
+bldg:AOB4.CHW.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:AOB4 ;
+    brickframe:pointname "AOB4.CHW.Outside Air Temp" ;
+    brickframe:uuid "5e1d7ea4-da7e-33b9-8f7d-2f4d4ca1d24b" .
+
+<http://buildsys.org/ontologies/AOB4#AOB4.CHW.Pump1_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:AOB4 ;
+    brickframe:pointname "AOB4.CHW.Pump1_Start/Stop" ;
+    brickframe:uuid "fcabbdb6-85d3-3ce3-8a83-5982af35b5e5" .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:AOB4 a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "29740" ;
+    brickframe:Country "US" .
+

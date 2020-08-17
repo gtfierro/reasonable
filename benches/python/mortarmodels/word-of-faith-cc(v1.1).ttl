@@ -1,0 +1,755 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://xbos.io/ontologies/word-of-faith-cc#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:Level_0 a brick1:Floor ;
+    rdf:label "Level 0" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:hasPart bldg:Room_102,
+        bldg:Room_104,
+        bldg:Room_105,
+        bldg:Room_106,
+        bldg:Room_107,
+        bldg:Room_109,
+        bldg:Room_110,
+        bldg:Room_111,
+        bldg:Room_112,
+        bldg:Room_113,
+        bldg:Room_114,
+        bldg:Room_115,
+        bldg:Room_117,
+        bldg:Room_118,
+        bldg:Room_119,
+        bldg:Room_120,
+        bldg:Room_121,
+        bldg:Room_123,
+        bldg:Room_124,
+        bldg:Room_126,
+        bldg:Room_127,
+        bldg:Room_128,
+        bldg:Room_129,
+        bldg:Room_130,
+        bldg:Room_131,
+        bldg:Room_132,
+        bldg:Room_133,
+        bldg:Room_134,
+        bldg:Room_135,
+        bldg:Room_137,
+        bldg:Room_138,
+        bldg:Room_140,
+        bldg:Room_141 .
+
+bldg:Level_1 a brick1:Floor ;
+    rdf:label "Level 1" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:hasPart bldg:Room_138 .
+
+<http://xbos.io/ontologies/word-of-faith-cc#green_button_meter_0XfHpJNnrzpXwZIB+wYCnP6XemE=> a brick_v_1_0_2:Green_Button_Meter ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uuid "345e2329-3582-5f19-904c-7855c1b57399" .
+
+<http://xbos.io/ontologies/word-of-faith-cc#green_button_meter_gcVi3cIiz+bCju4keBa5QrLSBBo=> a brick_v_1_0_2:Green_Button_Meter ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uuid "345e2329-3582-5f19-904c-7855c1b57399" .
+
+bldg:hvac_zone_fellowship_hall_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_109 ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Fellowship_Room/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_fellowship_hall ;
+    brick1:hasPoint bldg:hvac_zone_fellowship_hall_tstat_cooling_setpoint,
+        bldg:hvac_zone_fellowship_hall_tstat_fan,
+        bldg:hvac_zone_fellowship_hall_tstat_heating_setpoint,
+        bldg:hvac_zone_fellowship_hall_tstat_mode,
+        bldg:hvac_zone_fellowship_hall_tstat_override,
+        bldg:hvac_zone_fellowship_hall_tstat_state,
+        bldg:hvac_zone_fellowship_hall_tstat_temperature .
+
+bldg:hvac_zone_hospitality_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_141 ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Hospitality/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_hospitality ;
+    brick1:hasPoint bldg:hvac_zone_hospitality_tstat_cooling_setpoint,
+        bldg:hvac_zone_hospitality_tstat_fan,
+        bldg:hvac_zone_hospitality_tstat_heating_setpoint,
+        bldg:hvac_zone_hospitality_tstat_mode,
+        bldg:hvac_zone_hospitality_tstat_override,
+        bldg:hvac_zone_hospitality_tstat_state,
+        bldg:hvac_zone_hospitality_tstat_temperature .
+
+bldg:hvac_zone_lobby_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_140 ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Lobby/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_lobby ;
+    brick1:hasPoint bldg:hvac_zone_lobby_tstat_cooling_setpoint,
+        bldg:hvac_zone_lobby_tstat_fan,
+        bldg:hvac_zone_lobby_tstat_heating_setpoint,
+        bldg:hvac_zone_lobby_tstat_mode,
+        bldg:hvac_zone_lobby_tstat_override,
+        bldg:hvac_zone_lobby_tstat_state,
+        bldg:hvac_zone_lobby_tstat_temperature .
+
+bldg:hvac_zone_pre_k_classroom_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_111 ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Pre_K_Classroom/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_pre_k_classroom ;
+    brick1:hasPoint bldg:hvac_zone_pre_k_classroom_tstat_cooling_setpoint,
+        bldg:hvac_zone_pre_k_classroom_tstat_fan,
+        bldg:hvac_zone_pre_k_classroom_tstat_heating_setpoint,
+        bldg:hvac_zone_pre_k_classroom_tstat_mode,
+        bldg:hvac_zone_pre_k_classroom_tstat_override,
+        bldg:hvac_zone_pre_k_classroom_tstat_state,
+        bldg:hvac_zone_pre_k_classroom_tstat_temperature .
+
+bldg:hvac_zone_sanctuary_lb_2_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_127 ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Sanctuary_LB-2/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_sanctuary_lb_2 ;
+    brick1:hasPoint bldg:hvac_zone_sanctuary_lb_2_tstat_cooling_setpoint,
+        bldg:hvac_zone_sanctuary_lb_2_tstat_fan,
+        bldg:hvac_zone_sanctuary_lb_2_tstat_heating_setpoint,
+        bldg:hvac_zone_sanctuary_lb_2_tstat_mode,
+        bldg:hvac_zone_sanctuary_lb_2_tstat_override,
+        bldg:hvac_zone_sanctuary_lb_2_tstat_state,
+        bldg:hvac_zone_sanctuary_lb_2_tstat_temperature .
+
+bldg:hvac_zone_sanctuary_rb_2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:word-of-faith-cc .
+
+bldg:hvac_zone_sanctuary_rb_2_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_127 ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:controls bldg:RTU_hvac_zone_sanctuary_rb_2 .
+
+bldg:hvac_zone_sanctuary_rf_2_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_127 ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Sanctuary_RB-2/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_sanctuary_rf_2 ;
+    brick1:hasPoint bldg:hvac_zone_sanctuary_rf_2_tstat_cooling_setpoint,
+        bldg:hvac_zone_sanctuary_rf_2_tstat_fan,
+        bldg:hvac_zone_sanctuary_rf_2_tstat_heating_setpoint,
+        bldg:hvac_zone_sanctuary_rf_2_tstat_mode,
+        bldg:hvac_zone_sanctuary_rf_2_tstat_override,
+        bldg:hvac_zone_sanctuary_rf_2_tstat_state,
+        bldg:hvac_zone_sanctuary_rf_2_tstat_temperature .
+
+bldg:hvac_zone_school_age_rm_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_123 ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/S.A._Rm_-_P3_Acad/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_school_age_rm ;
+    brick1:hasPoint bldg:hvac_zone_school_age_rm_tstat_cooling_setpoint,
+        bldg:hvac_zone_school_age_rm_tstat_fan,
+        bldg:hvac_zone_school_age_rm_tstat_heating_setpoint,
+        bldg:hvac_zone_school_age_rm_tstat_mode,
+        bldg:hvac_zone_school_age_rm_tstat_override,
+        bldg:hvac_zone_school_age_rm_tstat_state,
+        bldg:hvac_zone_school_age_rm_tstat_temperature .
+
+bldg:meter_0xd8d5b9000000b40e a brick_v_1_0_2:Building_Electric_Meter ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/s.eagle/0xd8d5b9000000b40e/i.meter" ;
+    brickframe:uuid "69378511-0dff-32e0-8538-1abdef929f86" .
+
+bldg:meter_0xd8d5b9000000b416 a brick_v_1_0_2:Building_Electric_Meter ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/s.eagle/0xd8d5b9000000b416/i.meter" ;
+    brickframe:uuid "ce818f9f-e982-30e9-8528-b55f8ac58cf8" .
+
+bldg:weather_KSUU_cloud_coverage a brick_v_1_0_2:Weather_Cloud_Coverage_Sensor ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uuid "56e7bf7a-25d6-37c8-b76a-b0ab72eb34d5" .
+
+bldg:weather_KSUU_cloud_height a brick_v_1_0_2:Weather_Cloud_Height_Sensor ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uuid "8953afe5-b551-374f-8921-bfc85d9c1a45" .
+
+bldg:weather_KSUU_relative_humidity a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uuid "b62ae6a6-d5ed-3d9f-8b32-e34762dc7967" .
+
+bldg:weather_KSUU_temperature a brick_v_1_0_2:Weather_Temperature_Sensor ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uuid "fa8f400e-766d-30a2-999f-6121eaf0d117" .
+
+bldg:weather_KSUU_wind_direction a brick1:Wind_Direction_Sensor ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uuid "28f371d8-cce4-3692-9974-316a0e6a9df2" .
+
+bldg:weather_KSUU_wind_speed a brick1:Wind_Speed_Sensor ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uuid "2138fa41-9763-3557-81e8-23829383d87e" .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:HVAC_Zone_sanctuary_rb_2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:word-of-faith-cc .
+
+bldg:HVAC_Zone_sanctuary_rf_2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:word-of-faith-cc .
+
+bldg:RTU_hvac_zone_fellowship_hall a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:feeds bldg:hvac_zone_fellowship_hall .
+
+bldg:RTU_hvac_zone_hospitality a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:feeds bldg:hvac_zone_hospitality .
+
+bldg:RTU_hvac_zone_lobby a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:feeds bldg:hvac_zone_lobby .
+
+bldg:RTU_hvac_zone_pre_k_classroom a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:feeds bldg:hvac_zone_pre_k_classroom .
+
+bldg:RTU_hvac_zone_sanctuary_lb_2 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:feeds bldg:hvac_zone_sanctuary_lb_2 .
+
+bldg:RTU_hvac_zone_sanctuary_rf_2 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:feeds bldg:hvac_zone_sanctuary_rf_2 .
+
+bldg:RTU_hvac_zone_school_age_rm a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:feeds bldg:hvac_zone_school_age_rm .
+
+bldg:Room_102 a brick1:Room ;
+    rdf:label "Kitchen" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_fellowship_hall .
+
+bldg:Room_104 a brick1:Room ;
+    rdf:label "Restroom" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_fellowship_hall .
+
+bldg:Room_105 a brick1:Room ;
+    rdf:label "Restroom" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_fellowship_hall .
+
+bldg:Room_106 a brick1:Room ;
+    rdf:label "Book Store" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_fellowship_hall .
+
+bldg:Room_107 a brick1:Room ;
+    rdf:label "Office" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_fellowship_hall .
+
+bldg:Room_110 a brick1:Room ;
+    rdf:label "Entry Hall" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_pre_k_classroom .
+
+bldg:Room_112 a brick1:Room ;
+    rdf:label "Classroom A" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_school_age_rm .
+
+bldg:Room_113 a brick1:Room ;
+    rdf:label "Classroom B" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_school_age_rm .
+
+bldg:Room_114 a brick1:Room ;
+    rdf:label "Office / Break Room" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_school_age_rm .
+
+bldg:Room_115 a brick1:Room ;
+    rdf:label "Main" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_school_age_rm .
+
+bldg:Room_117 a brick1:Room ;
+    rdf:label "Break Room" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_school_age_rm .
+
+bldg:Room_118 a brick1:Room ;
+    rdf:label "Entry" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_school_age_rm .
+
+bldg:Room_119 a brick1:Room ;
+    rdf:label "Office" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_school_age_rm .
+
+bldg:Room_120 a brick1:Room ;
+    rdf:label "Men's Restroom" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_school_age_rm .
+
+bldg:Room_121 a brick1:Room ;
+    rdf:label "Women's Restroom" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_school_age_rm .
+
+bldg:Room_124 a brick1:Room ;
+    rdf:label "Nursery/Day Care" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_lobby .
+
+bldg:Room_126 a brick1:Room ;
+    rdf:label "Study" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_sanctuary_lb_2 .
+
+bldg:Room_128 a brick1:Room ;
+    rdf:label "Sound Booth" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_sanctuary_lb_2 .
+
+bldg:Room_129 a brick1:Room ;
+    rdf:label "Hospitality Room" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_hospitality .
+
+bldg:Room_130 a brick1:Room ;
+    rdf:label "Hall" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_hospitality .
+
+bldg:Room_131 a brick1:Room ;
+    rdf:label "Office" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_lobby .
+
+bldg:Room_132 a brick1:Room ;
+    rdf:label "Women's Restroom" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_hospitality .
+
+bldg:Room_133 a brick1:Room ;
+    rdf:label "Men's Restroom" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_hospitality .
+
+bldg:Room_134 a brick1:Room ;
+    rdf:label "Utility" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_hospitality .
+
+bldg:Room_135 a brick1:Room ;
+    rdf:label "Staff Room" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_hospitality .
+
+bldg:Room_137 a brick1:Room ;
+    rdf:label "Tape Ministry" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_lobby .
+
+bldg:hvac_zone_fellowship_hall a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:word-of-faith-cc .
+
+bldg:hvac_zone_fellowship_hall_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Fellowship_Room/i.xbos.thermostat" ;
+    brickframe:uuid "ff042feb-4270-341e-9fc0-367dabe224db" .
+
+bldg:hvac_zone_fellowship_hall_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Fellowship_Room/i.xbos.thermostat" ;
+    brickframe:uuid "9d5cdd94-620b-3a78-bc78-510335f55ba6" .
+
+bldg:hvac_zone_fellowship_hall_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Fellowship_Room/i.xbos.thermostat" ;
+    brickframe:uuid "ec0c242b-beb7-31b9-9619-27322900c888" .
+
+bldg:hvac_zone_fellowship_hall_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Fellowship_Room/i.xbos.thermostat" ;
+    brickframe:uuid "b17099f9-195f-31fa-9fcf-9b29f0293b39" .
+
+bldg:hvac_zone_fellowship_hall_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Fellowship_Room/i.xbos.thermostat" ;
+    brickframe:uuid "e1f25c3f-679c-380c-9b26-4ba06c334509" .
+
+bldg:hvac_zone_fellowship_hall_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Fellowship_Room/i.xbos.thermostat" ;
+    brickframe:uuid "57ef28e0-26ee-3ccf-9ca4-5097028d429c" .
+
+bldg:hvac_zone_fellowship_hall_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Fellowship_Room/i.xbos.thermostat" ;
+    brickframe:uuid "91de8c90-7931-3971-acaf-da3b35be7eea" .
+
+bldg:hvac_zone_hospitality a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:word-of-faith-cc .
+
+bldg:hvac_zone_hospitality_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Hospitality/i.xbos.thermostat" ;
+    brickframe:uuid "2d1b647b-3372-37b5-861d-8e7e0e5fef7e" .
+
+bldg:hvac_zone_hospitality_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Hospitality/i.xbos.thermostat" ;
+    brickframe:uuid "55e2ef48-6942-3ff0-b6b2-22e975cab12b" .
+
+bldg:hvac_zone_hospitality_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Hospitality/i.xbos.thermostat" ;
+    brickframe:uuid "e9b9b422-cc48-3240-b0c7-925c7be01aeb" .
+
+bldg:hvac_zone_hospitality_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Hospitality/i.xbos.thermostat" ;
+    brickframe:uuid "8b3cc514-803a-3400-91c3-e510ce84c07c" .
+
+bldg:hvac_zone_hospitality_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Hospitality/i.xbos.thermostat" ;
+    brickframe:uuid "7748562e-777c-348f-be69-3626bbfcad64" .
+
+bldg:hvac_zone_hospitality_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Hospitality/i.xbos.thermostat" ;
+    brickframe:uuid "b88c6c0c-e963-3c89-9964-6b4cb6abea2b" .
+
+bldg:hvac_zone_hospitality_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Hospitality/i.xbos.thermostat" ;
+    brickframe:uuid "6412b7c7-cb3d-36b3-ab3b-06d88d121753" .
+
+bldg:hvac_zone_lobby a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:word-of-faith-cc .
+
+bldg:hvac_zone_lobby_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Lobby/i.xbos.thermostat" ;
+    brickframe:uuid "9faf13bc-72f5-3580-8145-4e90c3e9826b" .
+
+bldg:hvac_zone_lobby_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Lobby/i.xbos.thermostat" ;
+    brickframe:uuid "cc0df7df-83e9-3f84-ace8-11d6409d41e2" .
+
+bldg:hvac_zone_lobby_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Lobby/i.xbos.thermostat" ;
+    brickframe:uuid "63c8f7e1-d548-3ed7-ba3d-6cc004a3d174" .
+
+bldg:hvac_zone_lobby_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Lobby/i.xbos.thermostat" ;
+    brickframe:uuid "4f4492fd-39a0-3a04-9112-df338b7f64d5" .
+
+bldg:hvac_zone_lobby_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Lobby/i.xbos.thermostat" ;
+    brickframe:uuid "16ff7922-e3ca-34e0-98af-5ff369a3c6a4" .
+
+bldg:hvac_zone_lobby_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Lobby/i.xbos.thermostat" ;
+    brickframe:uuid "6507cdc4-2232-389f-b1df-380d99166dc3" .
+
+bldg:hvac_zone_lobby_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Lobby/i.xbos.thermostat" ;
+    brickframe:uuid "7414ad33-dbe9-3116-a877-28b0487e6eb5" .
+
+bldg:hvac_zone_pre_k_classroom a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:word-of-faith-cc .
+
+bldg:hvac_zone_pre_k_classroom_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Pre_K_Classroom/i.xbos.thermostat" ;
+    brickframe:uuid "4fbca3f5-d471-3d0b-a8d0-df787138becb" .
+
+bldg:hvac_zone_pre_k_classroom_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Pre_K_Classroom/i.xbos.thermostat" ;
+    brickframe:uuid "bb20290e-189d-34fe-93b4-01ab529c5731" .
+
+bldg:hvac_zone_pre_k_classroom_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Pre_K_Classroom/i.xbos.thermostat" ;
+    brickframe:uuid "afdf03c1-8894-3a07-8fdc-915ff054528b" .
+
+bldg:hvac_zone_pre_k_classroom_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Pre_K_Classroom/i.xbos.thermostat" ;
+    brickframe:uuid "b82fffcf-f18d-3afc-a40d-58a6bc0cfeca" .
+
+bldg:hvac_zone_pre_k_classroom_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Pre_K_Classroom/i.xbos.thermostat" ;
+    brickframe:uuid "8d5596ee-af92-3cf9-aa9e-01a62bd75935" .
+
+bldg:hvac_zone_pre_k_classroom_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Pre_K_Classroom/i.xbos.thermostat" ;
+    brickframe:uuid "52cc027e-059a-3076-989e-a43682ac7924" .
+
+bldg:hvac_zone_pre_k_classroom_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Pre_K_Classroom/i.xbos.thermostat" ;
+    brickframe:uuid "ca9e1550-5b8d-3536-9fd5-5b20cce4776e" .
+
+bldg:hvac_zone_sanctuary_lb_2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:word-of-faith-cc .
+
+bldg:hvac_zone_sanctuary_lb_2_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Sanctuary_LB-2/i.xbos.thermostat" ;
+    brickframe:uuid "316dc203-841b-3777-9cf4-2c11cb5d05cd" .
+
+bldg:hvac_zone_sanctuary_lb_2_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Sanctuary_LB-2/i.xbos.thermostat" ;
+    brickframe:uuid "2bf64b4f-98d4-30a0-9f1d-43d39b5104f0" .
+
+bldg:hvac_zone_sanctuary_lb_2_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Sanctuary_LB-2/i.xbos.thermostat" ;
+    brickframe:uuid "d8a5e318-ecbb-366b-9ae0-99fbb7cac207" .
+
+bldg:hvac_zone_sanctuary_lb_2_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Sanctuary_LB-2/i.xbos.thermostat" ;
+    brickframe:uuid "6711b225-c691-3387-bccc-4d66e440d953" .
+
+bldg:hvac_zone_sanctuary_lb_2_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Sanctuary_LB-2/i.xbos.thermostat" ;
+    brickframe:uuid "25f876ba-9ae4-3071-b884-434c3384924c" .
+
+bldg:hvac_zone_sanctuary_lb_2_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Sanctuary_LB-2/i.xbos.thermostat" ;
+    brickframe:uuid "7c49336f-3640-329e-9d57-2f808a63202a" .
+
+bldg:hvac_zone_sanctuary_lb_2_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Sanctuary_LB-2/i.xbos.thermostat" ;
+    brickframe:uuid "93bc0d58-bdd9-3eaf-8b98-e639d8a8059a" .
+
+bldg:hvac_zone_sanctuary_rf_2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:word-of-faith-cc .
+
+bldg:hvac_zone_sanctuary_rf_2_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Sanctuary_RB-2/i.xbos.thermostat" ;
+    brickframe:uuid "35334f8b-6f45-308e-bbed-8a759e2abf75" .
+
+bldg:hvac_zone_sanctuary_rf_2_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Sanctuary_RB-2/i.xbos.thermostat" ;
+    brickframe:uuid "af1709a4-a882-3801-8cb4-6a32c8f71a20" .
+
+bldg:hvac_zone_sanctuary_rf_2_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Sanctuary_RB-2/i.xbos.thermostat" ;
+    brickframe:uuid "7cca9aad-7e15-3574-883e-d4e9f8f19e9f" .
+
+bldg:hvac_zone_sanctuary_rf_2_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Sanctuary_RB-2/i.xbos.thermostat" ;
+    brickframe:uuid "d502bebe-75f8-3c93-b9eb-12380dc510fa" .
+
+bldg:hvac_zone_sanctuary_rf_2_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Sanctuary_RB-2/i.xbos.thermostat" ;
+    brickframe:uuid "75bcfb96-1c9c-32da-813f-9df37a21ed76" .
+
+bldg:hvac_zone_sanctuary_rf_2_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Sanctuary_RB-2/i.xbos.thermostat" ;
+    brickframe:uuid "03afff67-c014-37a1-8dab-b79d79e0cd3f" .
+
+bldg:hvac_zone_sanctuary_rf_2_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/Sanctuary_RB-2/i.xbos.thermostat" ;
+    brickframe:uuid "50b4dda1-29dc-36a8-91aa-0b55c93274a1" .
+
+bldg:hvac_zone_school_age_rm a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:word-of-faith-cc .
+
+bldg:hvac_zone_school_age_rm_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/S.A._Rm_-_P3_Acad/i.xbos.thermostat" ;
+    brickframe:uuid "e4031691-be31-3e57-8c64-475dbf31f9c1" .
+
+bldg:hvac_zone_school_age_rm_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/S.A._Rm_-_P3_Acad/i.xbos.thermostat" ;
+    brickframe:uuid "7b7de76c-68d8-3467-b305-563e079455e0" .
+
+bldg:hvac_zone_school_age_rm_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/S.A._Rm_-_P3_Acad/i.xbos.thermostat" ;
+    brickframe:uuid "992224cd-b3ef-3d5d-b9d1-a04a80dcb8ca" .
+
+bldg:hvac_zone_school_age_rm_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/S.A._Rm_-_P3_Acad/i.xbos.thermostat" ;
+    brickframe:uuid "33dcfbe7-acc2-3da6-90df-9ff627f8a661" .
+
+bldg:hvac_zone_school_age_rm_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/S.A._Rm_-_P3_Acad/i.xbos.thermostat" ;
+    brickframe:uuid "383872a1-b252-3063-8e82-b05c351db31a" .
+
+bldg:hvac_zone_school_age_rm_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/S.A._Rm_-_P3_Acad/i.xbos.thermostat" ;
+    brickframe:uuid "1e638e18-a938-38f4-a056-3580ad3d0c0e" .
+
+bldg:hvac_zone_school_age_rm_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brickframe:uri "word-of-faith-cc/devices/s.pelican/S.A._Rm_-_P3_Acad/i.xbos.thermostat" ;
+    brickframe:uuid "ca519de1-9a15-39b0-984a-afed5b237818" .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brick_v_1_0_2:Weather_Cloud_Coverage_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Weather_Cloud_Height_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Weather_Temperature_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+bldg:HVAC_Zone_pre_k_classroom a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:word-of-faith-cc .
+
+bldg:Room_109 a brick1:Room ;
+    rdf:label "Book Store" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_fellowship_hall .
+
+bldg:Room_111 a brick1:Room ;
+    rdf:label "Caraway Reading Room" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_pre_k_classroom .
+
+bldg:Room_123 a brick1:Room ;
+    rdf:label "Youth Chapel" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_school_age_rm .
+
+bldg:Room_138 a brick1:Room ;
+    rdf:label "Stairs" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_lobby .
+
+bldg:Room_140 a brick1:Room ;
+    rdf:label "Lobby / North Exit" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_lobby .
+
+bldg:Room_141 a brick1:Room ;
+    rdf:label "Hall" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_hospitality .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+bldg:HVAC_Zone_sanctuary_lb_2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:word-of-faith-cc .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:Room_127 a brick1:Room ;
+    rdf:label "Sanctuary" ;
+    brickframe:hasSite bldg:word-of-faith-cc ;
+    brick1:isPartOf bldg:HVAC_Zone_sanctuary_lb_2,
+        bldg:HVAC_Zone_sanctuary_rb_2,
+        bldg:HVAC_Zone_sanctuary_rf_2 .
+
+bldg:HVAC_Zone_lobby a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:word-of-faith-cc .
+
+bldg:HVAC_Zone_fellowship_hall a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:word-of-faith-cc .
+
+bldg:HVAC_Zone_hospitality a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:word-of-faith-cc .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+bldg:HVAC_Zone_school_age_rm a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:word-of-faith-cc .
+
+bldg:word-of-faith-cc a brick_v_1_0_2:Site ;
+    brickframe:Country "US" ;
+    brickframe:NumFloors "1" ;
+    brickframe:PrimaryFunction "Church" ;
+    brickframe:Timezone "America/Los_Angeles" .
+

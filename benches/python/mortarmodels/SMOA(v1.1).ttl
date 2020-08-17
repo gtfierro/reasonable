@@ -1,0 +1,1552 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/SMOA#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:AH01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:VAVRM1001,
+        bldg:VAVRM1100N,
+        bldg:VAVRM1100W,
+        bldg:VAVRM1101EX,
+        bldg:VAVRM1101_1,
+        bldg:VAVRM1101_2,
+        bldg:VAVRM1102_1,
+        bldg:VAVRM1102_2,
+        bldg:VAVRM1103,
+        bldg:VAVRM1104,
+        bldg:VAVRM1105,
+        bldg:VAVRM1106,
+        bldg:VAVRM1111,
+        bldg:VAVRM1111A,
+        bldg:VAVRM1111B .
+
+bldg:AH02 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:VAVRM1000_1,
+        bldg:VAVRM1000_2,
+        bldg:VAVRM1000_3,
+        bldg:VAVRM1000_4,
+        bldg:VAVRM1008,
+        bldg:VAVRM1010,
+        bldg:VAVRM1015,
+        bldg:VAVRM1207,
+        bldg:VAVRM1221,
+        bldg:VAVRM1223,
+        bldg:VAVRM1225,
+        bldg:VAVRM1227,
+        bldg:VAVRM1230,
+        bldg:VAVRM1301_1,
+        bldg:VAVRM1301_2,
+        bldg:VAVRM1303 .
+
+bldg:AHU01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:VAVZONE ;
+    brick1:hasPoint bldg:SMOA.AHU.AHU01.CCV,
+        bldg:SMOA.AHU.AHU01.Cooling_Valve_Output,
+        bldg:SMOA.AHU.AHU01.Heating_Valve_Output,
+        bldg:SMOA.AHU.AHU01.Mixed_Air_Temp,
+        bldg:SMOA.AHU.AHU01.Outside_Air_Temp,
+        bldg:SMOA.AHU.AHU01.Return_Air_Temp,
+        bldg:SMOA.AHU.AHU01.Supply_Air_Pressure,
+        bldg:SMOA.AHU.AHU01.Supply_Air_Temp,
+        bldg:SMOA.AHU.AHU01.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU02 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:VAVHLWY_1,
+        bldg:VAVHLWY_2,
+        bldg:VAVZONE ;
+    brick1:hasPoint bldg:SMOA.AHU.AHU02.CCV,
+        bldg:SMOA.AHU.AHU02.Cooling_Valve_Output,
+        bldg:SMOA.AHU.AHU02.Heating_Valve_Output,
+        bldg:SMOA.AHU.AHU02.Mixed_Air_Temp,
+        bldg:SMOA.AHU.AHU02.Outside_Air_Temp,
+        bldg:SMOA.AHU.AHU02.Return_Air_Temp,
+        bldg:SMOA.AHU.AHU02.Supply_Air_Pressure,
+        bldg:SMOA.AHU.AHU02.Supply_Air_Temp,
+        bldg:SMOA.AHU.AHU02.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:floor1 a brick1:Floor ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1000_1_room,
+        bldg:RM1000_2_room,
+        bldg:RM1000_3_room,
+        bldg:RM1000_4_room,
+        bldg:RM1001_room,
+        bldg:RM1008_room,
+        bldg:RM1010_room,
+        bldg:RM1015_room,
+        bldg:RM1100N_room,
+        bldg:RM1100W_room,
+        bldg:RM1101EX_room,
+        bldg:RM1101_1_room,
+        bldg:RM1101_2_room,
+        bldg:RM1102_1_room,
+        bldg:RM1102_2_room,
+        bldg:RM1103_room,
+        bldg:RM1104_room,
+        bldg:RM1105_room,
+        bldg:RM1106_room,
+        bldg:RM1111A_room,
+        bldg:RM1111B_room,
+        bldg:RM1111_room,
+        bldg:RM1207_room,
+        bldg:RM1221_room,
+        bldg:RM1223_room,
+        bldg:RM1225_room,
+        bldg:RM1227_room,
+        bldg:RM1230_room,
+        bldg:RM1301_1_room,
+        bldg:RM1301_2_room,
+        bldg:RM1303_room .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:HLWY_1 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:HLWY_2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1000_1 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1000_1_room .
+
+bldg:RM1000_2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1000_2_room .
+
+bldg:RM1000_3 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1000_3_room .
+
+bldg:RM1000_4 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1000_4_room .
+
+bldg:RM1001 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1001_room .
+
+bldg:RM1008 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1008_room .
+
+bldg:RM1010 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1010_room .
+
+bldg:RM1015 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1015_room .
+
+bldg:RM1100N a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1100N_room .
+
+bldg:RM1100W a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1100W_room .
+
+bldg:RM1101EX a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1101EX_room .
+
+bldg:RM1101_1 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1101_1_room .
+
+bldg:RM1101_2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1101_2_room .
+
+bldg:RM1102_1 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1102_1_room .
+
+bldg:RM1102_2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1102_2_room .
+
+bldg:RM1103 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1103_room .
+
+bldg:RM1104 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1104_room .
+
+bldg:RM1105 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1105_room .
+
+bldg:RM1106 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1106_room .
+
+bldg:RM1111 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1111_room .
+
+bldg:RM1111A a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1111A_room .
+
+bldg:RM1111B a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1111B_room .
+
+bldg:RM1207 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1207_room .
+
+bldg:RM1221 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1221_room .
+
+bldg:RM1223 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1223_room .
+
+bldg:RM1225 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1225_room .
+
+bldg:RM1227 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1227_room .
+
+bldg:RM1230 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1230_room .
+
+bldg:RM1301_1 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1301_1_room .
+
+bldg:RM1301_2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1301_2_room .
+
+bldg:RM1303 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPart bldg:RM1303_room .
+
+bldg:SMOA.AHU.AHU01.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.AHU.AHU01.CCV" ;
+    brickframe:uuid "c82f5985-a3af-3e2a-8e56-486fcc3d0b56" .
+
+bldg:SMOA.AHU.AHU01.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.AHU.AHU01.Cooling Valve Output" ;
+    brickframe:uuid "0874c832-7cc4-37e6-90a4-e18af96b7896" .
+
+bldg:SMOA.AHU.AHU01.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.AHU.AHU01.Heating Valve Output" ;
+    brickframe:uuid "e5550c05-ca78-384e-86ba-4a0195faeaa9" .
+
+bldg:SMOA.AHU.AHU01.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.AHU.AHU01.Mixed Air Temp" ;
+    brickframe:uuid "c3514150-68df-3930-b836-25d2769262d6" .
+
+bldg:SMOA.AHU.AHU01.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.AHU.AHU01.Outside Air Temp" ;
+    brickframe:uuid "bc778218-607c-3ab1-85e7-71bc57be675c" .
+
+bldg:SMOA.AHU.AHU01.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.AHU.AHU01.Return Air Temp" ;
+    brickframe:uuid "836b3c10-e73a-31b2-af59-1f050e95224a" .
+
+bldg:SMOA.AHU.AHU01.Supply_Air_Pressure a brick1:Supply_Air_Static_Pressure_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.AHU.AHU01.Supply Air Pressure" ;
+    brickframe:uuid "cc508a11-bd51-3413-80c0-5ce483631f8b" .
+
+bldg:SMOA.AHU.AHU01.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.AHU.AHU01.Supply Air Temp" ;
+    brickframe:uuid "b6577f83-c77a-3fd3-8c11-deade3acbee5" .
+
+bldg:SMOA.AHU.AHU01.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.AHU.AHU01.Supply Air Temp Setpoint" ;
+    brickframe:uuid "4b8e561f-c722-340a-94b3-6be399e11cd8" .
+
+bldg:SMOA.AHU.AHU02.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.AHU.AHU02.CCV" ;
+    brickframe:uuid "0fdb3bc0-781a-3d2a-b7de-fb4465c539e6" .
+
+bldg:SMOA.AHU.AHU02.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.AHU.AHU02.Cooling Valve Output" ;
+    brickframe:uuid "caa563c0-0662-3f65-95a3-070c9d92eca5" .
+
+bldg:SMOA.AHU.AHU02.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.AHU.AHU02.Heating Valve Output" ;
+    brickframe:uuid "16d49b91-566c-39ab-9537-2627da4551ba" .
+
+bldg:SMOA.AHU.AHU02.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.AHU.AHU02.Mixed Air Temp" ;
+    brickframe:uuid "291595b1-6daa-3356-8783-1f96254c2dee" .
+
+bldg:SMOA.AHU.AHU02.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.AHU.AHU02.Outside Air Temp" ;
+    brickframe:uuid "4c3eb73d-3f6a-3799-a260-0fc5ae553206" .
+
+bldg:SMOA.AHU.AHU02.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.AHU.AHU02.Return Air Temp" ;
+    brickframe:uuid "e189eb90-7df4-3d6a-80ab-672c74628652" .
+
+bldg:SMOA.AHU.AHU02.Supply_Air_Pressure a brick1:Supply_Air_Static_Pressure_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.AHU.AHU02.Supply Air Pressure" ;
+    brickframe:uuid "7c33a8db-d4a5-3cf1-b184-e617393a3f5c" .
+
+bldg:SMOA.AHU.AHU02.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.AHU.AHU02.Supply Air Temp" ;
+    brickframe:uuid "4150ffec-9d52-33f3-85d8-2768f1da7458" .
+
+bldg:SMOA.AHU.AHU02.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.AHU.AHU02.Supply Air Temp Setpoint" ;
+    brickframe:uuid "61dfb5e3-c3fe-3a3c-a458-4edd1068043e" .
+
+bldg:SMOA.CHW.BYPVALVE a brick_v_1_0_2:Chilled_Water_Bypass_Valve ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.CHW.BYPVALVE" ;
+    brickframe:uuid "d574dc55-0d5b-3cab-8ae9-afc72b8d3b0d" .
+
+bldg:SMOA.CHW.Building_Chilled_Water_Flow a brick_v_1_0_2:Chilled_Water_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.CHW.Building Chilled Water Flow" ;
+    brickframe:uuid "84153d51-c79f-38c2-b607-f1e195d18096" .
+
+bldg:SMOA.CHW.Building_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.CHW.Building Chilled Water Return Temp" ;
+    brickframe:uuid "69221212-7d3b-3489-8f0a-97ba020c4595" .
+
+bldg:SMOA.CHW.Building_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.CHW.Building Chilled Water Supply Temp" ;
+    brickframe:uuid "0666df8c-2d20-3d34-87e4-248a0eb610ce" .
+
+bldg:SMOA.CHW.CH1DP a brick1:Chilled_Water_Differential_Pressure_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.CHW.CH1DP" ;
+    brickframe:uuid "981a99db-94cb-33b7-9977-81078350d348" .
+
+bldg:SMOA.CHW.CH1_ACTIVE_MODE a brick1:On_Off_Status ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.CHW.CH1_ACTIVE MODE" ;
+    brickframe:uuid "bf052b37-3b4f-36a4-a7d7-5faa93fcced7" .
+
+bldg:SMOA.CHW.CH1_CHW_RET_TEMP a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.CHW.CH1_CHW RET TEMP" ;
+    brickframe:uuid "1d7b308f-dd6b-397b-b4c9-16ba4cb21535" .
+
+bldg:SMOA.CHW.CH1_CHW_SUP_TEMP a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.CHW.CH1_CHW SUP TEMP" ;
+    brickframe:uuid "72367d2a-a73c-36dd-b988-d0a05d684f4d" .
+
+bldg:SMOA.CHW.CH1_UNIT_STATUS a brick1:On_Off_Status ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.CHW.CH1_UNIT STATUS" ;
+    brickframe:uuid "22a3e3c4-b463-38b7-a491-e949e1f17726" .
+
+bldg:SMOA.CHW.CH2DP a brick1:Chilled_Water_Differential_Pressure_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.CHW.CH2DP" ;
+    brickframe:uuid "955dab1f-239b-3d6d-9a09-94ddb4c8feb2" .
+
+bldg:SMOA.CHW.CH2_CHW_RET_TEMP a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.CHW.CH2_CHW RET TEMP" ;
+    brickframe:uuid "c47dac12-2f38-3a0b-b8e8-71.0.20386bf" .
+
+bldg:SMOA.CHW.CH2_CHW_SUP_TEMP a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.CHW.CH2_CHW SUP TEMP" ;
+    brickframe:uuid "4de33b65-3bd3-3675-9a7f-fd81537e743d" .
+
+bldg:SMOA.CHW.CH2_UNIT_STATUS a brick1:On_Off_Status ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.CHW.CH2_UNIT STATUS" ;
+    brickframe:uuid "e949c17c-7fdb-3233-8164-5f28f3b58d4b" .
+
+bldg:SMOA.CHW.CHWP1VFD_DRIVE_MWH a brick1:Energy_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.CHW.CHWP1VFD_DRIVE MWH" ;
+    brickframe:uuid "43dba85c-6eb3-30ed-8978-6ef9474a2df4" .
+
+bldg:SMOA.CHW.CHWP1VFD_POWER a brick_v_1_0_2:Power_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.CHW.CHWP1VFD_POWER" ;
+    brickframe:uuid "63dccdf7-ae4b-39fc-9602-20b23fa9ec9a" .
+
+bldg:SMOA.CHW.CHWP2VFD_DRIVE_MWH a brick1:Energy_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.CHW.CHWP2VFD_DRIVE MWH" ;
+    brickframe:uuid "08426905-2987-369a-a511-22578633816b" .
+
+bldg:SMOA.CHW.CHWP2VFD_POWER a brick_v_1_0_2:Power_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.CHW.CHWP2VFD_POWER" ;
+    brickframe:uuid "fbf0a73c-9b65-39e5-8f4d-4debec27852c" .
+
+bldg:SMOA.CHW.Loop_Chilled_Water_Supply_Temp_Setpoint a brick_v_1_0_2:Chilled_Water_Supply_Temperature_Setpoint ;
+    brickframe:pointname "SMOA.CHW.Loop Chilled Water Supply Temp Setpoint" ;
+    brickframe:uuid "af49c1ef-727b-3d7c-8dc6-018739d21765" .
+
+bldg:SMOA.CHW.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.CHW.Outside Air Temp" ;
+    brickframe:uuid "6d282c24-0df6-32e6-a69d-a8718eb9e351" .
+
+bldg:SMOA.CHW.Pump1_ALARM a brick1:Alarm ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.CHW.Pump1_ALARM" ;
+    brickframe:uuid "d056931c-c68f-3d5c-83f8-f14a28066fbc" .
+
+bldg:SMOA.CHW.Pump1_SPEED a brick_v_1_0_2:Speed_Status ;
+    brickframe:pointname "SMOA.CHW.Pump1_SPEED" ;
+    brickframe:uuid "866e1798-1ff8-3049-98f3-c90174131873" .
+
+<http://buildsys.org/ontologies/SMOA#SMOA.CHW.Pump1_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.CHW.Pump1_Start/Stop" ;
+    brickframe:uuid "bda64cb9-63fa-385c-a967-78920fd49a38" .
+
+bldg:SMOA.CHW.Pump1_VFD_DRIVE_KWH a brick1:Energy_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.CHW.Pump1_VFD_DRIVE KWH" ;
+    brickframe:uuid "07427405-fdc3-386c-a7a9-2367d10363dc" .
+
+bldg:SMOA.CHW.Pump2_ALARM a brick1:Alarm ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.CHW.Pump2_ALARM" ;
+    brickframe:uuid "d12771f4-cf11-321b-bc4a-df43bb97e4f9" .
+
+bldg:SMOA.CHW.Pump2_SPEED a brick_v_1_0_2:Speed_Status ;
+    brickframe:pointname "SMOA.CHW.Pump2_SPEED" ;
+    brickframe:uuid "1196f704-3314-36a7-9220-f74458094acf" .
+
+<http://buildsys.org/ontologies/SMOA#SMOA.CHW.Pump2_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.CHW.Pump2_Start/Stop" ;
+    brickframe:uuid "64449f4f-1740-3e24-89ee-6c1783a9f987" .
+
+bldg:SMOA.CHW.Pump2_VFD_DRIVE_KWH a brick1:Energy_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.CHW.Pump2_VFD_DRIVE KWH" ;
+    brickframe:uuid "3c20b64f-b25c-3d37-b705-61502a7699a1" .
+
+bldg:SMOA.ZONE.AH01.RM1001.CO2 a brick1:CO2_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1001.CO2" ;
+    brickframe:uuid "67fbd075-2fbc-3ae4-8ef8-7207f7be8171" .
+
+bldg:SMOA.ZONE.AH01.RM1001.GEX_AIR_VOL a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1001.GEX AIR VOL" ;
+    brickframe:uuid "87a0579d-5364-3bda-9f38-0974335cd9f5" .
+
+bldg:SMOA.ZONE.AH01.RM1001.HUMIDITY a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1001.HUMIDITY" ;
+    brickframe:uuid "ef8dd894-c942-3ee6-a9a0-8ba7f7b11286" .
+
+bldg:SMOA.ZONE.AH01.RM1001.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1001.Zone Air Temp" ;
+    brickframe:uuid "9b99a423-2dfb-3a36-b89f-5812d99dced7" .
+
+bldg:SMOA.ZONE.AH01.RM1001.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1001.Zone Supply Air Flow" ;
+    brickframe:uuid "a72c323a-147e-3dd1-8616-19e7e829bb97" .
+
+bldg:SMOA.ZONE.AH01.RM1001.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1001.Zone Supply Air Temp" ;
+    brickframe:uuid "9ba81bf2-5187-33ac-983d-1f4183e0d6fc" .
+
+bldg:SMOA.ZONE.AH01.RM1100N.CO2 a brick1:CO2_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1100N.CO2" ;
+    brickframe:uuid "be76e346-a7a0-3a45-af8b-b15041e34f01" .
+
+bldg:SMOA.ZONE.AH01.RM1100N.GEX_AIR_VOL a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1100N.GEX AIR VOL" ;
+    brickframe:uuid "4898e7d2-7ef2-37bd-9791-d7a031.0.265" .
+
+bldg:SMOA.ZONE.AH01.RM1100N.HUMIDITY a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1100N.HUMIDITY" ;
+    brickframe:uuid "15f6c49e-18d2-31bc-9ed0-c1e9c28d4dba" .
+
+bldg:SMOA.ZONE.AH01.RM1100N.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1100N.Zone Air Temp" ;
+    brickframe:uuid "6cc0285f-23c8-31d8-a687-acbe995450d6" .
+
+bldg:SMOA.ZONE.AH01.RM1100N.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1100N.Zone Supply Air Flow" ;
+    brickframe:uuid "113fcdf6-af1f-3400-8ccf-6c39cc717994" .
+
+bldg:SMOA.ZONE.AH01.RM1100N.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1100N.Zone Supply Air Temp" ;
+    brickframe:uuid "7de4be0a-8568-3941-a238-be9d4b8c71fa" .
+
+bldg:SMOA.ZONE.AH01.RM1100W.CO2 a brick1:CO2_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1100W.CO2" ;
+    brickframe:uuid "754c9eba-32c0-3060-9259-fc7363bc8827" .
+
+bldg:SMOA.ZONE.AH01.RM1100W.HUMIDITY a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1100W.HUMIDITY" ;
+    brickframe:uuid "338d64db-6312-3d6c-90f5-c17ecfb8191b" .
+
+bldg:SMOA.ZONE.AH01.RM1100W.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1100W.Zone Air Temp" ;
+    brickframe:uuid "00ceb05e-0890-36a7-bd16-b0b78fa2802b" .
+
+bldg:SMOA.ZONE.AH01.RM1100W.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1100W.Zone Supply Air Flow" ;
+    brickframe:uuid "f21a28e9-f80c-3545-b59a-7d22f574b6a1" .
+
+bldg:SMOA.ZONE.AH01.RM1100W.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1100W.Zone Supply Air Temp" ;
+    brickframe:uuid "48225ead-793e-39d1-ab6e-5d002a6ebf9f" .
+
+bldg:SMOA.ZONE.AH01.RM1101EX.GEX_AIR_VOL a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1101EX.GEX AIR VOL" ;
+    brickframe:uuid "eef60285-9fb1-30ca-84c0-26e5bc5fd5db" .
+
+bldg:SMOA.ZONE.AH01.RM1101EX.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1101EX.Zone Supply Air Flow" ;
+    brickframe:uuid "f936981f-e40b-36a5-8c0c-73a33308b848" .
+
+bldg:SMOA.ZONE.AH01.RM1101EX.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1101EX.Zone Supply Air Temp" ;
+    brickframe:uuid "6cb557cd-2e7e-3f3e-92f9-1636aa2321e3" .
+
+bldg:SMOA.ZONE.AH01.RM1101_1.CO2 a brick1:CO2_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1101_1.CO2" ;
+    brickframe:uuid "c05ec263-21cc-36fe-8d29-1b2ff13d39d4" .
+
+bldg:SMOA.ZONE.AH01.RM1101_1.GEX_AIR_VOL a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1101_1.GEX AIR VOL" ;
+    brickframe:uuid "7fa66f2a-698a-3fd7-8842-5e2d663f0df5" .
+
+bldg:SMOA.ZONE.AH01.RM1101_1.HUMIDITY a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1101_1.HUMIDITY" ;
+    brickframe:uuid "714483f0-08c7-3c31-8c67-c4fbe78e0574" .
+
+bldg:SMOA.ZONE.AH01.RM1101_1.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1101_1.Zone Air Temp" ;
+    brickframe:uuid "4163b6a3-58f1-3ce5-bc60-4dd139780fc5" .
+
+bldg:SMOA.ZONE.AH01.RM1101_1.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1101_1.Zone Supply Air Flow" ;
+    brickframe:uuid "01db2be8-3dfb-3aee-bf74-e3887acf132b" .
+
+bldg:SMOA.ZONE.AH01.RM1101_1.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1101_1.Zone Supply Air Temp" ;
+    brickframe:uuid "13d1fc60-628f-350a-bcae-8f9df1e8da70" .
+
+bldg:SMOA.ZONE.AH01.RM1101_2.CO2 a brick1:CO2_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1101_2.CO2" ;
+    brickframe:uuid "96ccd7d9-2122-3212-b842-7b4f8c133c41" .
+
+bldg:SMOA.ZONE.AH01.RM1101_2.HUMIDITY a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1101_2.HUMIDITY" ;
+    brickframe:uuid "1afcc20c-8488-3b45-b04b-a1dde530eeae" .
+
+bldg:SMOA.ZONE.AH01.RM1101_2.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1101_2.Zone Air Temp" ;
+    brickframe:uuid "052a60a7-8f49-308e-a744-6fd62c6e9019" .
+
+bldg:SMOA.ZONE.AH01.RM1101_2.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1101_2.Zone Supply Air Flow" ;
+    brickframe:uuid "49028ed2-345c-35ea-a7d1-80f55a0c1a54" .
+
+bldg:SMOA.ZONE.AH01.RM1101_2.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1101_2.Zone Supply Air Temp" ;
+    brickframe:uuid "3074b651-731f-33e4-8ac2-9d7134a6786d" .
+
+bldg:SMOA.ZONE.AH01.RM1102_1.CO2 a brick1:CO2_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1102_1.CO2" ;
+    brickframe:uuid "84dcca2b-f673-3d05-b657-930240b4cc58" .
+
+bldg:SMOA.ZONE.AH01.RM1102_1.GEX_AIR_VOL a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1102_1.GEX AIR VOL" ;
+    brickframe:uuid "e81057dd-b218-384e-8708-3a7037b8b3ba" .
+
+bldg:SMOA.ZONE.AH01.RM1102_1.HUMIDITY a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1102_1.HUMIDITY" ;
+    brickframe:uuid "a3a21d35-2636-3ab2-9f73-11f761c02628" .
+
+bldg:SMOA.ZONE.AH01.RM1102_1.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1102_1.Zone Air Temp" ;
+    brickframe:uuid "50d24a33-48f0-3600-b3ec-691572e245b6" .
+
+bldg:SMOA.ZONE.AH01.RM1102_1.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1102_1.Zone Supply Air Flow" ;
+    brickframe:uuid "4cde9975-37a8-3125-bb84-75bb21d3ef20" .
+
+bldg:SMOA.ZONE.AH01.RM1102_1.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1102_1.Zone Supply Air Temp" ;
+    brickframe:uuid "45334e29-01.0.2493-bee2-27e5c3aa2571" .
+
+bldg:SMOA.ZONE.AH01.RM1102_2.CO2 a brick1:CO2_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1102_2.CO2" ;
+    brickframe:uuid "8ecef5b5-ecd7-3650-9404-039f59b60ea6" .
+
+bldg:SMOA.ZONE.AH01.RM1102_2.GEX_AIR_VOL a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1102_2.GEX AIR VOL" ;
+    brickframe:uuid "eb4eff82-81fe-3416-bb5a-93e60671a931" .
+
+bldg:SMOA.ZONE.AH01.RM1102_2.HUMIDITY a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1102_2.HUMIDITY" ;
+    brickframe:uuid "fc218bf7-9dff-37e3-8d82-8ab8921e03a8" .
+
+bldg:SMOA.ZONE.AH01.RM1102_2.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1102_2.Zone Air Temp" ;
+    brickframe:uuid "c856bc93-6b0d-3959-bd02-bccb515a45c7" .
+
+bldg:SMOA.ZONE.AH01.RM1102_2.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1102_2.Zone Supply Air Flow" ;
+    brickframe:uuid "53981c4d-6ad2-387e-8104-f9676fafbb4c" .
+
+bldg:SMOA.ZONE.AH01.RM1102_2.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1102_2.Zone Supply Air Temp" ;
+    brickframe:uuid "1916ca4c-16b8-382d-abd4-80bc40e8996a" .
+
+bldg:SMOA.ZONE.AH01.RM1103.CO2 a brick1:CO2_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1103.CO2" ;
+    brickframe:uuid "f3c904ed-3a20-33a6-919f-1231ef297314" .
+
+bldg:SMOA.ZONE.AH01.RM1103.HUMIDITY a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1103.HUMIDITY" ;
+    brickframe:uuid "29845619-abe8-336c-a0cf-2db976865271" .
+
+bldg:SMOA.ZONE.AH01.RM1103.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1103.Zone Air Temp" ;
+    brickframe:uuid "5a20a591-36b3-3a88-896f-a8f19e370621" .
+
+bldg:SMOA.ZONE.AH01.RM1103.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1103.Zone Supply Air Flow" ;
+    brickframe:uuid "31531110-c584-3ec2-837b-5e4f6bd7ca01" .
+
+bldg:SMOA.ZONE.AH01.RM1103.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1103.Zone Supply Air Temp" ;
+    brickframe:uuid "fccabb09-660a-3049-be15-e14f20c543cc" .
+
+bldg:SMOA.ZONE.AH01.RM1104.CO2 a brick1:CO2_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1104.CO2" ;
+    brickframe:uuid "49f78f20-78b2-34ed-8c9c-a0c8b583e830" .
+
+bldg:SMOA.ZONE.AH01.RM1104.GEX_AIR_VOL a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1104.GEX AIR VOL" ;
+    brickframe:uuid "4e59f1fd-1f8f-3247-bd00-f66ff276f2c1" .
+
+bldg:SMOA.ZONE.AH01.RM1104.HUMIDITY a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1104.HUMIDITY" ;
+    brickframe:uuid "d521ae52-7b27-3865-ac10-dc92c5554bb8" .
+
+bldg:SMOA.ZONE.AH01.RM1104.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1104.Zone Air Temp" ;
+    brickframe:uuid "3f78ab41-4df9-33ca-bcfa-9e9f53dc2053" .
+
+bldg:SMOA.ZONE.AH01.RM1104.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1104.Zone Supply Air Flow" ;
+    brickframe:uuid "290732b6-923e-3d3b-9235-30f687f3aec8" .
+
+bldg:SMOA.ZONE.AH01.RM1104.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1104.Zone Supply Air Temp" ;
+    brickframe:uuid "aa00b494-7c79-35c4-89ce-9a3db422d39d" .
+
+bldg:SMOA.ZONE.AH01.RM1105.CO2 a brick1:CO2_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1105.CO2" ;
+    brickframe:uuid "5333888f-b104-36ed-822d-8c55aef59c5d" .
+
+bldg:SMOA.ZONE.AH01.RM1105.HUMIDITY a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1105.HUMIDITY" ;
+    brickframe:uuid "64d7c31c-7853-3cdb-a5d6-32d631fb631a" .
+
+bldg:SMOA.ZONE.AH01.RM1105.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1105.Zone Air Temp" ;
+    brickframe:uuid "c1f9fee1-4683-3afb-a29a-d438fdf646c4" .
+
+bldg:SMOA.ZONE.AH01.RM1105.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1105.Zone Supply Air Flow" ;
+    brickframe:uuid "c897d727-f389-3e56-a1ee-71b771b488cb" .
+
+bldg:SMOA.ZONE.AH01.RM1105.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1105.Zone Supply Air Temp" ;
+    brickframe:uuid "f3508ede-cd29-3b1f-a154-ab612dd0ab28" .
+
+bldg:SMOA.ZONE.AH01.RM1106.CO2 a brick1:CO2_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1106.CO2" ;
+    brickframe:uuid "20521a93-eab1-3082-b161-a8d922712cf0" .
+
+bldg:SMOA.ZONE.AH01.RM1106.HUMIDITY a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1106.HUMIDITY" ;
+    brickframe:uuid "eba6c443-3627-37f7-9ad9-ecf13c71ec45" .
+
+bldg:SMOA.ZONE.AH01.RM1106.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1106.Zone Air Temp" ;
+    brickframe:uuid "1b071203-c269-3519-8aa9-85d8e07f7d76" .
+
+bldg:SMOA.ZONE.AH01.RM1106.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1106.Zone Supply Air Flow" ;
+    brickframe:uuid "de878c67-89a1-3e6e-9d36-9733de5b1726" .
+
+bldg:SMOA.ZONE.AH01.RM1106.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1106.Zone Supply Air Temp" ;
+    brickframe:uuid "7eac83c5-c88d-3854-97f4-d0436592b666" .
+
+bldg:SMOA.ZONE.AH01.RM1111.CO2 a brick1:CO2_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1111.CO2" ;
+    brickframe:uuid "6a62968c-948b-390a-b267-f9696645e1e9" .
+
+bldg:SMOA.ZONE.AH01.RM1111.HUMIDITY a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1111.HUMIDITY" ;
+    brickframe:uuid "0e9eb86a-c9be-3110-bdcf-d313b271bc4c" .
+
+bldg:SMOA.ZONE.AH01.RM1111.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1111.Zone Air Temp" ;
+    brickframe:uuid "732d7d2a-3137-3a6a-8b1d-f421e5452dfb" .
+
+bldg:SMOA.ZONE.AH01.RM1111.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1111.Zone Supply Air Flow" ;
+    brickframe:uuid "57cf9978-b446-39c1-ba78-13c60de13e88" .
+
+bldg:SMOA.ZONE.AH01.RM1111.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1111.Zone Supply Air Temp" ;
+    brickframe:uuid "ae5f392e-6fae-32d7-a54f-4c85672944e7" .
+
+bldg:SMOA.ZONE.AH01.RM1111A.CO2 a brick1:CO2_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1111A.CO2" ;
+    brickframe:uuid "ce5f2e82-37ae-3f06-aecc-3c553743a0c0" .
+
+bldg:SMOA.ZONE.AH01.RM1111A.GEX_AIR_VOL a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1111A.GEX AIR VOL" ;
+    brickframe:uuid "fc567673-9af5-3a99-abbb-e4dce97bb932" .
+
+bldg:SMOA.ZONE.AH01.RM1111A.HUMIDITY a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1111A.HUMIDITY" ;
+    brickframe:uuid "4cfc45e1-44c1-39e8-b606-3f174f9e06d4" .
+
+bldg:SMOA.ZONE.AH01.RM1111A.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1111A.Zone Air Temp" ;
+    brickframe:uuid "0b3ad665-fa3a-3cca-9eb7-0c5c02463ef8" .
+
+bldg:SMOA.ZONE.AH01.RM1111A.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1111A.Zone Supply Air Flow" ;
+    brickframe:uuid "c931b952-7592-3d5f-a5b4-012467a5cdf2" .
+
+bldg:SMOA.ZONE.AH01.RM1111A.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1111A.Zone Supply Air Temp" ;
+    brickframe:uuid "c85ddf6b-0f19-3ffa-a872-4d28b2389f19" .
+
+bldg:SMOA.ZONE.AH01.RM1111B.CO2 a brick1:CO2_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1111B.CO2" ;
+    brickframe:uuid "90a23195-d904-337d-b2c0-75a9b94ef1d0" .
+
+bldg:SMOA.ZONE.AH01.RM1111B.GEX_AIR_VOL a brick1:Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1111B.GEX AIR VOL" ;
+    brickframe:uuid "7b18f8b8-ef66-39fb-a0d6-0a8442a74d58" .
+
+bldg:SMOA.ZONE.AH01.RM1111B.HUMIDITY a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1111B.HUMIDITY" ;
+    brickframe:uuid "e01717e6-a124-3c26-b662-cf2030717422" .
+
+bldg:SMOA.ZONE.AH01.RM1111B.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1111B.Zone Air Temp" ;
+    brickframe:uuid "3af00336-8f24-3678-ae93-2a9bc2019b73" .
+
+bldg:SMOA.ZONE.AH01.RM1111B.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1111B.Zone Supply Air Flow" ;
+    brickframe:uuid "d77ea3e5-6261-35f7-b8eb-1f3810425a97" .
+
+bldg:SMOA.ZONE.AH01.RM1111B.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH01.RM1111B.Zone Supply Air Temp" ;
+    brickframe:uuid "1f0fe985-8d78-3db1-933e-ee67a2e4a680" .
+
+bldg:SMOA.ZONE.AH02.RM1000_1.CO2 a brick1:CO2_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1000_1.CO2" ;
+    brickframe:uuid "992a5bb3-4c15-309e-b853-d98378f40a5c" .
+
+bldg:SMOA.ZONE.AH02.RM1000_1.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1000_1.Zone Supply Air Flow" ;
+    brickframe:uuid "675de079-e6df-32b8-850f-298a429b1325" .
+
+bldg:SMOA.ZONE.AH02.RM1000_1.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1000_1.Zone Supply Air Temp" ;
+    brickframe:uuid "f0cf079c-35a9-3183-992a-434a6d3d8bf4" .
+
+bldg:SMOA.ZONE.AH02.RM1000_2.CO2 a brick1:CO2_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1000_2.CO2" ;
+    brickframe:uuid "b0cd6164-02dd-3222-9339-f980a85df9fb" .
+
+bldg:SMOA.ZONE.AH02.RM1000_2.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1000_2.Zone Air Temp" ;
+    brickframe:uuid "7f773a7c-3afc-3250-b34a-165052aa1154" .
+
+bldg:SMOA.ZONE.AH02.RM1000_2.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1000_2.Zone Supply Air Flow" ;
+    brickframe:uuid "eca3b209-7f20-3e83-884f-eaebf02a600d" .
+
+bldg:SMOA.ZONE.AH02.RM1000_2.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1000_2.Zone Supply Air Temp" ;
+    brickframe:uuid "e181238e-fe81-3e04-9d2f-a80ed3afc591" .
+
+bldg:SMOA.ZONE.AH02.RM1000_3.CO2 a brick1:CO2_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1000_3.CO2" ;
+    brickframe:uuid "4e8be0e7-0233-36f5-af28-9dbbe70c71f5" .
+
+bldg:SMOA.ZONE.AH02.RM1000_3.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1000_3.Zone Air Temp" ;
+    brickframe:uuid "0bec1d5e-6bb0-3d09-bea0-a3a2e7c0ff60" .
+
+bldg:SMOA.ZONE.AH02.RM1000_3.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1000_3.Zone Supply Air Flow" ;
+    brickframe:uuid "7b3bd0bd-5371-3d8a-b2ac-13facf15d074" .
+
+bldg:SMOA.ZONE.AH02.RM1000_3.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1000_3.Zone Supply Air Temp" ;
+    brickframe:uuid "a75e06cc-b7e1-303a-833d-237cbd966940" .
+
+bldg:SMOA.ZONE.AH02.RM1000_4.CO2 a brick1:CO2_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1000_4.CO2" ;
+    brickframe:uuid "4103bbdb-79de-31b9-8993-887d52e9f540" .
+
+bldg:SMOA.ZONE.AH02.RM1000_4.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1000_4.Zone Supply Air Flow" ;
+    brickframe:uuid "3065c02e-7861-3604-b952-80eac5fed245" .
+
+bldg:SMOA.ZONE.AH02.RM1008.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1008.Zone Supply Air Flow" ;
+    brickframe:uuid "0c3b4852-cba9-3454-9366-dc8d4c3ae7d3" .
+
+bldg:SMOA.ZONE.AH02.RM1008.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1008.Zone Supply Air Temp" ;
+    brickframe:uuid "17c02e79-49d9-3de0-af14-7b9ad48f095d" .
+
+bldg:SMOA.ZONE.AH02.RM1010.CO2 a brick1:CO2_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1010.CO2" ;
+    brickframe:uuid "05e48a8f-8761-3bc5-819e-209960ed099c" .
+
+bldg:SMOA.ZONE.AH02.RM1010.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1010.Zone Supply Air Flow" ;
+    brickframe:uuid "a8344288-8bf7-3e63-bf41-b0bfdce8affa" .
+
+bldg:SMOA.ZONE.AH02.RM1010.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1010.Zone Supply Air Temp" ;
+    brickframe:uuid "37b355a7-04f4-3ddc-9493-c682729d0d9a" .
+
+bldg:SMOA.ZONE.AH02.RM1015.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1015.Zone Supply Air Flow" ;
+    brickframe:uuid "50c99c49-36c9-3454-83cf-3399df78a8f2" .
+
+bldg:SMOA.ZONE.AH02.RM1015.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1015.Zone Supply Air Temp" ;
+    brickframe:uuid "eb0eb229-035c-34a6-b3e3-fa1adc8ae67f" .
+
+bldg:SMOA.ZONE.AH02.RM1207.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1207.Zone Supply Air Flow" ;
+    brickframe:uuid "a3229663-c7fb-35f2-896c-6831d3cea973" .
+
+bldg:SMOA.ZONE.AH02.RM1207.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1207.Zone Supply Air Temp" ;
+    brickframe:uuid "d133771f-e31d-3ab5-b4e3-e49ac71cba83" .
+
+bldg:SMOA.ZONE.AH02.RM1221.CO2 a brick1:CO2_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1221.CO2" ;
+    brickframe:uuid "0c8746d6-432a-36d5-a143-b7a17b3dd136" .
+
+bldg:SMOA.ZONE.AH02.RM1221.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1221.Zone Supply Air Flow" ;
+    brickframe:uuid "12466476-ede5-3f7d-9b26-28046cb0725a" .
+
+bldg:SMOA.ZONE.AH02.RM1221.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1221.Zone Supply Air Temp" ;
+    brickframe:uuid "8eb16502-f165-34e8-9619-3165c1c604ac" .
+
+bldg:SMOA.ZONE.AH02.RM1223.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1223.Zone Supply Air Flow" ;
+    brickframe:uuid "0dc807ae-8e69-30c8-bb78-f213f6aa51fd" .
+
+bldg:SMOA.ZONE.AH02.RM1223.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1223.Zone Supply Air Temp" ;
+    brickframe:uuid "df0a9722-0a44-3d70-93c5-e265113ff0a8" .
+
+bldg:SMOA.ZONE.AH02.RM1225.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1225.Zone Supply Air Flow" ;
+    brickframe:uuid "25a918f5-5c93-3b0e-a6de-d4fcb66fb68f" .
+
+bldg:SMOA.ZONE.AH02.RM1225.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1225.Zone Supply Air Temp" ;
+    brickframe:uuid "7ede33ae-5380-3975-8d90-71421c5ffce4" .
+
+bldg:SMOA.ZONE.AH02.RM1227.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1227.Zone Supply Air Flow" ;
+    brickframe:uuid "801cf7b3-72b3-3f60-a58e-35f1fb82c93b" .
+
+bldg:SMOA.ZONE.AH02.RM1227.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1227.Zone Supply Air Temp" ;
+    brickframe:uuid "ec0c08ef-d43c-3ae2-bf45-844ec10f5543" .
+
+bldg:SMOA.ZONE.AH02.RM1230.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1230.Zone Supply Air Flow" ;
+    brickframe:uuid "fbe05c5c-4575-3fda-aac1-8451e59eb36f" .
+
+bldg:SMOA.ZONE.AH02.RM1230.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1230.Zone Supply Air Temp" ;
+    brickframe:uuid "44c57b95-7ac4-3947-93a4-d117646c1c71" .
+
+bldg:SMOA.ZONE.AH02.RM1301_1.CO2 a brick1:CO2_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1301_1.CO2" ;
+    brickframe:uuid "2729fe90-d5bd-32f9-acb6-62ac0c6816e4" .
+
+bldg:SMOA.ZONE.AH02.RM1301_1.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1301_1.Zone Supply Air Flow" ;
+    brickframe:uuid "c6cd9b11-6bd8-3ee5-aa60-d37ac9a3ce79" .
+
+bldg:SMOA.ZONE.AH02.RM1301_1.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1301_1.Zone Supply Air Temp" ;
+    brickframe:uuid "b751f5bb-e57b-3120-a3e2-ab7046e7fdd0" .
+
+bldg:SMOA.ZONE.AH02.RM1301_2.CO2 a brick1:CO2_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1301_2.CO2" ;
+    brickframe:uuid "fc076e76-9235-3299-8541-90862094a94e" .
+
+bldg:SMOA.ZONE.AH02.RM1301_2.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1301_2.Zone Supply Air Flow" ;
+    brickframe:uuid "ec3f21.0.2ccf-3e8f-bd75-05b2a3e2803b" .
+
+bldg:SMOA.ZONE.AH02.RM1301_2.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1301_2.Zone Supply Air Temp" ;
+    brickframe:uuid "0c9fec28-709d-326e-8e8d-90a59aa44236" .
+
+bldg:SMOA.ZONE.AH02.RM1303.CO2 a brick1:CO2_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1303.CO2" ;
+    brickframe:uuid "6cc9c521-6bea-30f6-8411-e67c42eb21aa" .
+
+bldg:SMOA.ZONE.AH02.RM1303.Zone_Supply_Air_Flow a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1303.Zone Supply Air Flow" ;
+    brickframe:uuid "2603a65b-4a0e-368b-9ad2-e97c803b094f" .
+
+bldg:SMOA.ZONE.AH02.RM1303.Zone_Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AH02.RM1303.Zone Supply Air Temp" ;
+    brickframe:uuid "95dab875-3d1d-3b15-b735-abada051108a" .
+
+bldg:SMOA.ZONE.AHU01.ZONE.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "SMOA.ZONE.AHU01.ZONE.Mode" ;
+    brickframe:uuid "fd1f84b4-8545-3d0f-9675-3eda7b6b845b" .
+
+bldg:SMOA.ZONE.AHU02.HLWY_1.CO2 a brick1:CO2_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AHU02.HLWY_1.CO2" ;
+    brickframe:uuid "1bf2a9df-0293-319d-ba19-9ced2dc66516" .
+
+bldg:SMOA.ZONE.AHU02.HLWY_2.CO2 a brick1:CO2_Sensor ;
+    brickframe:hasSite bldg:SMOA ;
+    brickframe:pointname "SMOA.ZONE.AHU02.HLWY_2.CO2" ;
+    brickframe:uuid "2e9b596c-09af-3155-89da-a41d2a195278" .
+
+bldg:SMOA.ZONE.AHU02.ZONE.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "SMOA.ZONE.AHU02.ZONE.Mode" ;
+    brickframe:uuid "6334a5b4-adca-3873-a8fd-2f84069e0e44" .
+
+bldg:VAVHLWY_1 a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:HLWY_1 ;
+    brick1:hasPoint bldg:SMOA.ZONE.AHU02.HLWY_1.CO2 .
+
+bldg:VAVHLWY_2 a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:HLWY_2 ;
+    brick1:hasPoint bldg:SMOA.ZONE.AHU02.HLWY_2.CO2 .
+
+bldg:VAVRM1000_1 a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1000_1 ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH02.RM1000_1.CO2,
+        bldg:SMOA.ZONE.AH02.RM1000_1.Zone_Supply_Air_Flow,
+        bldg:SMOA.ZONE.AH02.RM1000_1.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1000_2 a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1000_2 ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH02.RM1000_2.CO2,
+        bldg:SMOA.ZONE.AH02.RM1000_2.Zone_Air_Temp,
+        bldg:SMOA.ZONE.AH02.RM1000_2.Zone_Supply_Air_Flow,
+        bldg:SMOA.ZONE.AH02.RM1000_2.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1000_3 a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1000_3 ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH02.RM1000_3.CO2,
+        bldg:SMOA.ZONE.AH02.RM1000_3.Zone_Air_Temp,
+        bldg:SMOA.ZONE.AH02.RM1000_3.Zone_Supply_Air_Flow,
+        bldg:SMOA.ZONE.AH02.RM1000_3.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1000_4 a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1000_4 ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH02.RM1000_4.CO2,
+        bldg:SMOA.ZONE.AH02.RM1000_4.Zone_Supply_Air_Flow .
+
+bldg:VAVRM1001 a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1001 ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH01.RM1001.CO2,
+        bldg:SMOA.ZONE.AH01.RM1001.GEX_AIR_VOL,
+        bldg:SMOA.ZONE.AH01.RM1001.HUMIDITY,
+        bldg:SMOA.ZONE.AH01.RM1001.Zone_Air_Temp,
+        bldg:SMOA.ZONE.AH01.RM1001.Zone_Supply_Air_Flow,
+        bldg:SMOA.ZONE.AH01.RM1001.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1008 a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1008 ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH02.RM1008.Zone_Supply_Air_Flow,
+        bldg:SMOA.ZONE.AH02.RM1008.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1010 a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1010 ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH02.RM1010.CO2,
+        bldg:SMOA.ZONE.AH02.RM1010.Zone_Supply_Air_Flow,
+        bldg:SMOA.ZONE.AH02.RM1010.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1015 a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1015 ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH02.RM1015.Zone_Supply_Air_Flow,
+        bldg:SMOA.ZONE.AH02.RM1015.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1100N a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1100N ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH01.RM1100N.CO2,
+        bldg:SMOA.ZONE.AH01.RM1100N.GEX_AIR_VOL,
+        bldg:SMOA.ZONE.AH01.RM1100N.HUMIDITY,
+        bldg:SMOA.ZONE.AH01.RM1100N.Zone_Air_Temp,
+        bldg:SMOA.ZONE.AH01.RM1100N.Zone_Supply_Air_Flow,
+        bldg:SMOA.ZONE.AH01.RM1100N.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1100W a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1100W ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH01.RM1100W.CO2,
+        bldg:SMOA.ZONE.AH01.RM1100W.HUMIDITY,
+        bldg:SMOA.ZONE.AH01.RM1100W.Zone_Air_Temp,
+        bldg:SMOA.ZONE.AH01.RM1100W.Zone_Supply_Air_Flow,
+        bldg:SMOA.ZONE.AH01.RM1100W.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1101EX a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1101EX ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH01.RM1101EX.GEX_AIR_VOL,
+        bldg:SMOA.ZONE.AH01.RM1101EX.Zone_Supply_Air_Flow,
+        bldg:SMOA.ZONE.AH01.RM1101EX.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1101_1 a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1101_1 ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH01.RM1101_1.CO2,
+        bldg:SMOA.ZONE.AH01.RM1101_1.GEX_AIR_VOL,
+        bldg:SMOA.ZONE.AH01.RM1101_1.HUMIDITY,
+        bldg:SMOA.ZONE.AH01.RM1101_1.Zone_Air_Temp,
+        bldg:SMOA.ZONE.AH01.RM1101_1.Zone_Supply_Air_Flow,
+        bldg:SMOA.ZONE.AH01.RM1101_1.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1101_2 a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1101_2 ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH01.RM1101_2.CO2,
+        bldg:SMOA.ZONE.AH01.RM1101_2.HUMIDITY,
+        bldg:SMOA.ZONE.AH01.RM1101_2.Zone_Air_Temp,
+        bldg:SMOA.ZONE.AH01.RM1101_2.Zone_Supply_Air_Flow,
+        bldg:SMOA.ZONE.AH01.RM1101_2.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1102_1 a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1102_1 ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH01.RM1102_1.CO2,
+        bldg:SMOA.ZONE.AH01.RM1102_1.GEX_AIR_VOL,
+        bldg:SMOA.ZONE.AH01.RM1102_1.HUMIDITY,
+        bldg:SMOA.ZONE.AH01.RM1102_1.Zone_Air_Temp,
+        bldg:SMOA.ZONE.AH01.RM1102_1.Zone_Supply_Air_Flow,
+        bldg:SMOA.ZONE.AH01.RM1102_1.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1102_2 a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1102_2 ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH01.RM1102_2.CO2,
+        bldg:SMOA.ZONE.AH01.RM1102_2.GEX_AIR_VOL,
+        bldg:SMOA.ZONE.AH01.RM1102_2.HUMIDITY,
+        bldg:SMOA.ZONE.AH01.RM1102_2.Zone_Air_Temp,
+        bldg:SMOA.ZONE.AH01.RM1102_2.Zone_Supply_Air_Flow,
+        bldg:SMOA.ZONE.AH01.RM1102_2.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1103 a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1103 ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH01.RM1103.CO2,
+        bldg:SMOA.ZONE.AH01.RM1103.HUMIDITY,
+        bldg:SMOA.ZONE.AH01.RM1103.Zone_Air_Temp,
+        bldg:SMOA.ZONE.AH01.RM1103.Zone_Supply_Air_Flow,
+        bldg:SMOA.ZONE.AH01.RM1103.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1104 a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1104 ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH01.RM1104.CO2,
+        bldg:SMOA.ZONE.AH01.RM1104.GEX_AIR_VOL,
+        bldg:SMOA.ZONE.AH01.RM1104.HUMIDITY,
+        bldg:SMOA.ZONE.AH01.RM1104.Zone_Air_Temp,
+        bldg:SMOA.ZONE.AH01.RM1104.Zone_Supply_Air_Flow,
+        bldg:SMOA.ZONE.AH01.RM1104.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1105 a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1105 ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH01.RM1105.CO2,
+        bldg:SMOA.ZONE.AH01.RM1105.HUMIDITY,
+        bldg:SMOA.ZONE.AH01.RM1105.Zone_Air_Temp,
+        bldg:SMOA.ZONE.AH01.RM1105.Zone_Supply_Air_Flow,
+        bldg:SMOA.ZONE.AH01.RM1105.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1106 a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1106 ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH01.RM1106.CO2,
+        bldg:SMOA.ZONE.AH01.RM1106.HUMIDITY,
+        bldg:SMOA.ZONE.AH01.RM1106.Zone_Air_Temp,
+        bldg:SMOA.ZONE.AH01.RM1106.Zone_Supply_Air_Flow,
+        bldg:SMOA.ZONE.AH01.RM1106.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1111 a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1111 ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH01.RM1111.CO2,
+        bldg:SMOA.ZONE.AH01.RM1111.HUMIDITY,
+        bldg:SMOA.ZONE.AH01.RM1111.Zone_Air_Temp,
+        bldg:SMOA.ZONE.AH01.RM1111.Zone_Supply_Air_Flow,
+        bldg:SMOA.ZONE.AH01.RM1111.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1111A a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1111A ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH01.RM1111A.CO2,
+        bldg:SMOA.ZONE.AH01.RM1111A.GEX_AIR_VOL,
+        bldg:SMOA.ZONE.AH01.RM1111A.HUMIDITY,
+        bldg:SMOA.ZONE.AH01.RM1111A.Zone_Air_Temp,
+        bldg:SMOA.ZONE.AH01.RM1111A.Zone_Supply_Air_Flow,
+        bldg:SMOA.ZONE.AH01.RM1111A.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1111B a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1111B ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH01.RM1111B.CO2,
+        bldg:SMOA.ZONE.AH01.RM1111B.GEX_AIR_VOL,
+        bldg:SMOA.ZONE.AH01.RM1111B.HUMIDITY,
+        bldg:SMOA.ZONE.AH01.RM1111B.Zone_Air_Temp,
+        bldg:SMOA.ZONE.AH01.RM1111B.Zone_Supply_Air_Flow,
+        bldg:SMOA.ZONE.AH01.RM1111B.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1207 a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1207 ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH02.RM1207.Zone_Supply_Air_Flow,
+        bldg:SMOA.ZONE.AH02.RM1207.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1221 a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1221 ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH02.RM1221.CO2,
+        bldg:SMOA.ZONE.AH02.RM1221.Zone_Supply_Air_Flow,
+        bldg:SMOA.ZONE.AH02.RM1221.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1223 a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1223 ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH02.RM1223.Zone_Supply_Air_Flow,
+        bldg:SMOA.ZONE.AH02.RM1223.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1225 a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1225 ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH02.RM1225.Zone_Supply_Air_Flow,
+        bldg:SMOA.ZONE.AH02.RM1225.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1227 a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1227 ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH02.RM1227.Zone_Supply_Air_Flow,
+        bldg:SMOA.ZONE.AH02.RM1227.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1230 a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1230 ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH02.RM1230.Zone_Supply_Air_Flow,
+        bldg:SMOA.ZONE.AH02.RM1230.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1301_1 a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1301_1 ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH02.RM1301_1.CO2,
+        bldg:SMOA.ZONE.AH02.RM1301_1.Zone_Supply_Air_Flow,
+        bldg:SMOA.ZONE.AH02.RM1301_1.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1301_2 a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1301_2 ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH02.RM1301_2.CO2,
+        bldg:SMOA.ZONE.AH02.RM1301_2.Zone_Supply_Air_Flow,
+        bldg:SMOA.ZONE.AH02.RM1301_2.Zone_Supply_Air_Temp .
+
+bldg:VAVRM1303 a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:RM1303 ;
+    brick1:hasPoint bldg:SMOA.ZONE.AH02.RM1303.CO2,
+        bldg:SMOA.ZONE.AH02.RM1303.Zone_Supply_Air_Flow,
+        bldg:SMOA.ZONE.AH02.RM1303.Zone_Supply_Air_Temp .
+
+bldg:ZONE a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:SMOA .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+bldg:RM1000_1_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1000_2_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1000_3_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1000_4_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1001_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1008_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1010_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1015_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1100N_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1100W_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1101EX_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1101_1_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1101_2_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1102_1_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1102_2_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1103_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1104_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1105_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1106_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1111A_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1111B_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1111_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1207_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1221_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1223_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1225_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1227_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1230_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1301_1_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1301_2_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:RM1303_room a brick1:Room ;
+    brickframe:hasSite bldg:SMOA .
+
+bldg:VAVZONE a brick1:VAV ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:feeds bldg:ZONE ;
+    brick1:hasPoint bldg:SMOA.ZONE.AHU01.ZONE.Mode,
+        bldg:SMOA.ZONE.AHU02.ZONE.Mode .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:SMOA ;
+    brick1:hasPoint bldg:SMOA.CHW.BYPVALVE,
+        bldg:SMOA.CHW.Building_Chilled_Water_Flow,
+        bldg:SMOA.CHW.Building_Chilled_Water_Return_Temp,
+        bldg:SMOA.CHW.Building_Chilled_Water_Supply_Temp,
+        bldg:SMOA.CHW.CH1DP,
+        bldg:SMOA.CHW.CH1_ACTIVE_MODE,
+        bldg:SMOA.CHW.CH1_CHW_RET_TEMP,
+        bldg:SMOA.CHW.CH1_CHW_SUP_TEMP,
+        bldg:SMOA.CHW.CH1_UNIT_STATUS,
+        bldg:SMOA.CHW.CH2DP,
+        bldg:SMOA.CHW.CH2_CHW_RET_TEMP,
+        bldg:SMOA.CHW.CH2_CHW_SUP_TEMP,
+        bldg:SMOA.CHW.CH2_UNIT_STATUS,
+        bldg:SMOA.CHW.CHWP1VFD_DRIVE_MWH,
+        bldg:SMOA.CHW.CHWP1VFD_POWER,
+        bldg:SMOA.CHW.CHWP2VFD_DRIVE_MWH,
+        bldg:SMOA.CHW.CHWP2VFD_POWER,
+        bldg:SMOA.CHW.Loop_Chilled_Water_Supply_Temp_Setpoint,
+        bldg:SMOA.CHW.Outside_Air_Temp,
+        bldg:SMOA.CHW.Pump1_ALARM,
+        bldg:SMOA.CHW.Pump1_SPEED,
+        <http://buildsys.org/ontologies/SMOA#SMOA.CHW.Pump1_Start/Stop>,
+        bldg:SMOA.CHW.Pump1_VFD_DRIVE_KWH,
+        bldg:SMOA.CHW.Pump2_ALARM,
+        bldg:SMOA.CHW.Pump2_SPEED,
+        <http://buildsys.org/ontologies/SMOA#SMOA.CHW.Pump2_Start/Stop>,
+        bldg:SMOA.CHW.Pump2_VFD_DRIVE_KWH .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:SMOA a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "33270" ;
+    brickframe:Country "US" .
+

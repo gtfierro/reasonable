@@ -1,0 +1,307 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://xbos.io/ontologies/garber#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://xbos.io/ontologies/garber#green_button_meter_7LE3FB357qqzfroTOZSJN62BfdM=> a brick_v_1_0_2:Green_Button_Meter ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uri "xbos/sharemydata/s.sharemydata/927011/8896420496/Wh/i.sharemydata" ;
+    brickframe:uuid "2135d6c0-4244-3ea1-98c5-f376d3af1819" .
+
+bldg:hvac_zone_diningroom_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uri "garber/devices/venstar/s.venstar/DiningRoom/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_diningroom ;
+    brick1:hasPoint bldg:hvac_zone_diningroom_tstat_cooling_setpoint,
+        bldg:hvac_zone_diningroom_tstat_fan,
+        bldg:hvac_zone_diningroom_tstat_heating_setpoint,
+        bldg:hvac_zone_diningroom_tstat_mode,
+        bldg:hvac_zone_diningroom_tstat_override,
+        bldg:hvac_zone_diningroom_tstat_state,
+        bldg:hvac_zone_diningroom_tstat_temperature .
+
+bldg:hvac_zone_floor1guest_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uri "garber/devices/venstar/s.venstar/Floor1Guest/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_floor1guest ;
+    brick1:hasPoint bldg:hvac_zone_floor1guest_tstat_cooling_setpoint,
+        bldg:hvac_zone_floor1guest_tstat_fan,
+        bldg:hvac_zone_floor1guest_tstat_heating_setpoint,
+        bldg:hvac_zone_floor1guest_tstat_mode,
+        bldg:hvac_zone_floor1guest_tstat_override,
+        bldg:hvac_zone_floor1guest_tstat_state,
+        bldg:hvac_zone_floor1guest_tstat_temperature .
+
+bldg:hvac_zone_livingroom_tstat a brick1:Thermostat ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uri "garber/devices/venstar/s.venstar/LivingRoom/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_livingroom ;
+    brick1:hasPoint bldg:hvac_zone_livingroom_tstat_cooling_setpoint,
+        bldg:hvac_zone_livingroom_tstat_fan,
+        bldg:hvac_zone_livingroom_tstat_heating_setpoint,
+        bldg:hvac_zone_livingroom_tstat_mode,
+        bldg:hvac_zone_livingroom_tstat_override,
+        bldg:hvac_zone_livingroom_tstat_state,
+        bldg:hvac_zone_livingroom_tstat_temperature .
+
+bldg:meter_MTU2 a brick_v_1_0_2:Building_Electric_Meter ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uri "garber/devices/tedmain/s.ted/MTU2/i.xbos.meter" ;
+    brickframe:uuid "13f5b1b2-3d28-3422-9464-49ec0f9bb2f9" .
+
+bldg:weather_KOAK_cloud_coverage a brick_v_1_0_2:Weather_Cloud_Coverage_Sensor ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uuid "7b49f7f2-f142-38a0-b284-42b0aef95b64" .
+
+bldg:weather_KOAK_cloud_height a brick_v_1_0_2:Weather_Cloud_Height_Sensor ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uuid "f510c11b-3a04-3518-b757-7940555abb1d" .
+
+bldg:weather_KOAK_relative_humidity a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uuid "5e55525e-f799-3b7b-8520-8e42730946df" .
+
+bldg:weather_KOAK_temperature a brick_v_1_0_2:Weather_Temperature_Sensor ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uuid "a73c1b67-142f-3b45-baf8-e308619b6bbc" .
+
+bldg:weather_KOAK_wind_direction a brick1:Wind_Direction_Sensor ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uuid "4a939b52-73b5-3016-95d7-34fd1ea1d41f" .
+
+bldg:weather_KOAK_wind_speed a brick1:Wind_Speed_Sensor ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uuid "9a3d08a7-0489-3b9e-981b-2e2e916cd783" .
+
+bldg:weather_LBNL1_cloud_coverage a brick_v_1_0_2:Weather_Cloud_Coverage_Sensor ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uuid "3eaf5926-11a8-3b7c-abdb-d1b06aca2cb6" .
+
+bldg:weather_LBNL1_cloud_height a brick_v_1_0_2:Weather_Cloud_Height_Sensor ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uuid "a3beea1c-65e3-38e1-8710-9fd1d9605caa" .
+
+bldg:weather_LBNL1_relative_humidity a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uuid "5cbf1af8-60ba-3e36-9ed6-b80feb4acae2" .
+
+bldg:weather_LBNL1_temperature a brick_v_1_0_2:Weather_Temperature_Sensor ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uuid "00327584-54b2-35a8-aaed-182747a5dda7" .
+
+bldg:weather_LBNL1_wind_direction a brick1:Wind_Direction_Sensor ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uuid "98180ac6-3a45-3884-afff-0c0341a9b9f1" .
+
+bldg:weather_LBNL1_wind_speed a brick1:Wind_Speed_Sensor ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uuid "fe8d0d04-f8d2-37cc-a582-3978f3699474" .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:RTU_hvac_zone_diningroom a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:garber ;
+    brick1:feeds bldg:hvac_zone_diningroom .
+
+bldg:RTU_hvac_zone_floor1guest a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:garber ;
+    brick1:feeds bldg:hvac_zone_floor1guest .
+
+bldg:RTU_hvac_zone_livingroom a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:garber ;
+    brick1:feeds bldg:hvac_zone_livingroom .
+
+bldg:hvac_zone_diningroom a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:garber .
+
+bldg:hvac_zone_diningroom_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uri "garber/devices/venstar/s.venstar/DiningRoom/i.xbos.thermostat" ;
+    brickframe:uuid "42b9eaf1-a612-34ea-9e2d-291316c793c7" .
+
+bldg:hvac_zone_diningroom_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uri "garber/devices/venstar/s.venstar/DiningRoom/i.xbos.thermostat" ;
+    brickframe:uuid "347e8ed0-da38-3bf2-bcbe-01b84d99a525" .
+
+bldg:hvac_zone_diningroom_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uri "garber/devices/venstar/s.venstar/DiningRoom/i.xbos.thermostat" ;
+    brickframe:uuid "c3c2e3cd-0028-3885-9e9d-506e42c23d58" .
+
+bldg:hvac_zone_diningroom_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uri "garber/devices/venstar/s.venstar/DiningRoom/i.xbos.thermostat" ;
+    brickframe:uuid "ee28a7eb-38df-302b-983a-5ef930745bc7" .
+
+bldg:hvac_zone_diningroom_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uri "garber/devices/venstar/s.venstar/DiningRoom/i.xbos.thermostat" ;
+    brickframe:uuid "41ebf92a-cf76-30df-9a2f-e2741f988660" .
+
+bldg:hvac_zone_diningroom_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uri "garber/devices/venstar/s.venstar/DiningRoom/i.xbos.thermostat" ;
+    brickframe:uuid "4f5c14c1-1fc0-35d8-bcdd-7e7ccf2e96e1" .
+
+bldg:hvac_zone_diningroom_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uri "garber/devices/venstar/s.venstar/DiningRoom/i.xbos.thermostat" ;
+    brickframe:uuid "fe378fd5-52c4-3d0d-b4e5-634570834e2f" .
+
+bldg:hvac_zone_floor1guest a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:garber .
+
+bldg:hvac_zone_floor1guest_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uri "garber/devices/venstar/s.venstar/Floor1Guest/i.xbos.thermostat" ;
+    brickframe:uuid "ca2fe1a4-dbeb-3560-af9e-4b25d6a53f92" .
+
+bldg:hvac_zone_floor1guest_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uri "garber/devices/venstar/s.venstar/Floor1Guest/i.xbos.thermostat" ;
+    brickframe:uuid "a96995a6-cf11-32c3-b7e1-0cad4a354de5" .
+
+bldg:hvac_zone_floor1guest_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uri "garber/devices/venstar/s.venstar/Floor1Guest/i.xbos.thermostat" ;
+    brickframe:uuid "488f1461-6741-3fba-b43e-a7d448929819" .
+
+bldg:hvac_zone_floor1guest_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uri "garber/devices/venstar/s.venstar/Floor1Guest/i.xbos.thermostat" ;
+    brickframe:uuid "c8204f40-95e8-3dbb-9673-bb329e2d1c42" .
+
+bldg:hvac_zone_floor1guest_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uri "garber/devices/venstar/s.venstar/Floor1Guest/i.xbos.thermostat" ;
+    brickframe:uuid "c994016a-db75-3cd9-bb93-7c48369e79f0" .
+
+bldg:hvac_zone_floor1guest_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uri "garber/devices/venstar/s.venstar/Floor1Guest/i.xbos.thermostat" ;
+    brickframe:uuid "5bb53576-e662-3dcd-87d4-76e1370233e2" .
+
+bldg:hvac_zone_floor1guest_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uri "garber/devices/venstar/s.venstar/Floor1Guest/i.xbos.thermostat" ;
+    brickframe:uuid "ec669648-9c80-3ee9-bd29-395d20a3152c" .
+
+bldg:hvac_zone_livingroom a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:garber .
+
+bldg:hvac_zone_livingroom_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uri "garber/devices/venstar/s.venstar/LivingRoom/i.xbos.thermostat" ;
+    brickframe:uuid "c3b0388f-d9f4-3145-89bd-327c8f97628f" .
+
+bldg:hvac_zone_livingroom_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uri "garber/devices/venstar/s.venstar/LivingRoom/i.xbos.thermostat" ;
+    brickframe:uuid "a0338c89-fd9d-3ecc-8234-75bb769b0d40" .
+
+bldg:hvac_zone_livingroom_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uri "garber/devices/venstar/s.venstar/LivingRoom/i.xbos.thermostat" ;
+    brickframe:uuid "65fd3739-300b-3712-becc-9111ab725e0f" .
+
+bldg:hvac_zone_livingroom_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uri "garber/devices/venstar/s.venstar/LivingRoom/i.xbos.thermostat" ;
+    brickframe:uuid "5a73b2fc-70f6-3f76-849e-17e687ddb944" .
+
+bldg:hvac_zone_livingroom_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uri "garber/devices/venstar/s.venstar/LivingRoom/i.xbos.thermostat" ;
+    brickframe:uuid "9adf2634-d964-30a3-a61b-51ada884b2d5" .
+
+bldg:hvac_zone_livingroom_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uri "garber/devices/venstar/s.venstar/LivingRoom/i.xbos.thermostat" ;
+    brickframe:uuid "472c76aa-f025-3efe-87b2-63c5979645b0" .
+
+bldg:hvac_zone_livingroom_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:garber ;
+    brickframe:uri "garber/devices/venstar/s.venstar/LivingRoom/i.xbos.thermostat" ;
+    brickframe:uuid "f3166aa7-0377-325a-936f-21aa42e6ac23" .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Weather_Cloud_Coverage_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Weather_Cloud_Height_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Weather_Temperature_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+bldg:garber a brick_v_1_0_2:Site ;
+    brickframe:Country "US" ;
+    brickframe:NumFloors "4" ;
+    brickframe:PrimaryFunction "Residential" ;
+    brickframe:Timezone "America/Los_Angeles" .
+

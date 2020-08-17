@@ -1,0 +1,445 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/LFH#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:S1 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:LFH ;
+    brick1:hasPoint bldg:LFH.AHU.S1.CCV,
+        bldg:LFH.AHU.S1.Cooling_Valve_Output,
+        bldg:LFH.AHU.S1.Heating_Valve_Output,
+        bldg:LFH.AHU.S1.Mixed_Air_Temp,
+        bldg:LFH.AHU.S1.Mode,
+        bldg:LFH.AHU.S1.Outside_Air_Temp,
+        bldg:LFH.AHU.S1.Return_Air_Temp,
+        bldg:LFH.AHU.S1.Supply_Air_Temp,
+        bldg:LFH.AHU.S1.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:S2 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:LFH ;
+    brick1:hasPoint bldg:LFH.AHU.S2.CCV,
+        bldg:LFH.AHU.S2.Cooling_Valve_Output,
+        bldg:LFH.AHU.S2.Heating_Valve_Output,
+        bldg:LFH.AHU.S2.Mixed_Air_Temp,
+        bldg:LFH.AHU.S2.Mode,
+        bldg:LFH.AHU.S2.Outside_Air_Temp,
+        bldg:LFH.AHU.S2.Return_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:S3 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:LFH ;
+    brick1:hasPoint bldg:LFH.AHU.S3.CCV,
+        bldg:LFH.AHU.S3.Cooling_Valve_Output,
+        bldg:LFH.AHU.S3.Heating_Valve_Output,
+        bldg:LFH.AHU.S3.Mode,
+        bldg:LFH.AHU.S3.Outside_Air_Temp,
+        bldg:LFH.AHU.S3.Return_Air_Temp,
+        bldg:LFH.AHU.S3.Supply_Air_Temp,
+        bldg:LFH.AHU.S3.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:S4 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:LFH ;
+    brick1:hasPoint bldg:LFH.AHU.S4.CCV,
+        bldg:LFH.AHU.S4.Cooling_Valve_Output,
+        bldg:LFH.AHU.S4.Heating_Valve_Output,
+        bldg:LFH.AHU.S4.Mode,
+        bldg:LFH.AHU.S4.Outside_Air_Temp,
+        bldg:LFH.AHU.S4.Return_Air_Temp,
+        bldg:LFH.AHU.S4.Supply_Air_Temp,
+        bldg:LFH.AHU.S4.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:S6 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:LFH ;
+    brick1:hasPoint bldg:LFH.AHU.S6.CCV,
+        bldg:LFH.AHU.S6.Cooling_Valve_Output,
+        bldg:LFH.AHU.S6.Heating_Valve_Output,
+        bldg:LFH.AHU.S6.Mixed_Air_Temp,
+        bldg:LFH.AHU.S6.Mode,
+        bldg:LFH.AHU.S6.Outside_Air_Temp,
+        bldg:LFH.AHU.S6.Outside_Air_Temp_Virtual,
+        bldg:LFH.AHU.S6.Return_Air_Temp,
+        bldg:LFH.AHU.S6.Supply_Air_Temp,
+        bldg:LFH.AHU.S6.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:LFH.AHU.S1.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S1.CCV" ;
+    brickframe:uuid "b9997521-eece-3636-9530-45e3a49972da" .
+
+bldg:LFH.AHU.S1.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S1.Cooling Valve Output" ;
+    brickframe:uuid "67e7f230-ed14-3d41-9925-a637d97d73fa" .
+
+bldg:LFH.AHU.S1.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S1.Heating Valve Output" ;
+    brickframe:uuid "62ac54a0-fe4b-3fa9-bb2b-4b72193f32b1" .
+
+bldg:LFH.AHU.S1.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S1.Mixed Air Temp" ;
+    brickframe:uuid "be8fcbce-e76f-33f6-9d54-d7c36a82b605" .
+
+bldg:LFH.AHU.S1.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "LFH.AHU.S1.Mode" ;
+    brickframe:uuid "37ae95ad-7ffe-34c9-a63f-bb4cad7861f2" .
+
+bldg:LFH.AHU.S1.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S1.Outside Air Temp" ;
+    brickframe:uuid "69677c7f-e6f9-381b-aa10-3184dd5ddfc6" .
+
+bldg:LFH.AHU.S1.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S1.Return Air Temp" ;
+    brickframe:uuid "87b1039c-ead4-3744-8d95-86c3173039b2" .
+
+bldg:LFH.AHU.S1.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S1.Supply Air Temp" ;
+    brickframe:uuid "02e13b63-3eef-3fd3-911e-bd9a1b41d8d0" .
+
+bldg:LFH.AHU.S1.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S1.Supply Air Temp Setpoint" ;
+    brickframe:uuid "b067ba31-210a-34b2-b4f9-08187e949956" .
+
+bldg:LFH.AHU.S2.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S2.CCV" ;
+    brickframe:uuid "f307220c-5cb1-342c-9d7b-932f95a1a30d" .
+
+bldg:LFH.AHU.S2.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S2.Cooling Valve Output" ;
+    brickframe:uuid "37fc0856-84e6-3b73-b335-be314772140a" .
+
+bldg:LFH.AHU.S2.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S2.Heating Valve Output" ;
+    brickframe:uuid "b265e4eb-a046-3ca3-bf52-405763e238c6" .
+
+bldg:LFH.AHU.S2.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S2.Mixed Air Temp" ;
+    brickframe:uuid "b91855f3-0b22-33fe-9626-711395e3d219" .
+
+bldg:LFH.AHU.S2.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "LFH.AHU.S2.Mode" ;
+    brickframe:uuid "b3cb7173-fbc6-3de8-8385-94e30146bf9d" .
+
+bldg:LFH.AHU.S2.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S2.Outside Air Temp" ;
+    brickframe:uuid "f6d5961e-b292-3338-b8a5-5621a1e53acf" .
+
+bldg:LFH.AHU.S2.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S2.Return Air Temp" ;
+    brickframe:uuid "7227880f-2ef3-33af-b1c1-b100e1edb73d" .
+
+bldg:LFH.AHU.S3.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S3.CCV" ;
+    brickframe:uuid "251aac3a-e0f2-3f0c-b541-523caf5c63e1" .
+
+bldg:LFH.AHU.S3.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S3.Cooling Valve Output" ;
+    brickframe:uuid "00123223-d83f-3f08-9b31-597bf8698403" .
+
+bldg:LFH.AHU.S3.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S3.Heating Valve Output" ;
+    brickframe:uuid "88c1c74f-3784-325b-bbbb-6ca52396711d" .
+
+bldg:LFH.AHU.S3.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "LFH.AHU.S3.Mode" ;
+    brickframe:uuid "2f45c974-9f20-360b-89bb-e29e2c448ba6" .
+
+bldg:LFH.AHU.S3.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S3.Outside Air Temp" ;
+    brickframe:uuid "25ed3bf5-388f-3ff4-a516-e4511ee14647" .
+
+bldg:LFH.AHU.S3.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S3.Return Air Temp" ;
+    brickframe:uuid "2ff4ffc2-5423-3fc6-b518-ecd2b34d294b" .
+
+bldg:LFH.AHU.S3.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S3.Supply Air Temp" ;
+    brickframe:uuid "512ac9cb-685c-3cf2-9427-6ccbd6cfed93" .
+
+bldg:LFH.AHU.S3.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S3.Supply Air Temp Setpoint" ;
+    brickframe:uuid "2380e0ad-bed5-355f-8a5c-b88a532be16f" .
+
+bldg:LFH.AHU.S4.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S4.CCV" ;
+    brickframe:uuid "96f54293-de7a-3e01-9ae9-e9930e58e3c8" .
+
+bldg:LFH.AHU.S4.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S4.Cooling Valve Output" ;
+    brickframe:uuid "dc735c39-af1d-3d9b-9ff6-0268cd9708a6" .
+
+bldg:LFH.AHU.S4.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S4.Heating Valve Output" ;
+    brickframe:uuid "1cf1ffbe-74ff-3020-8a01-3338d30b4234" .
+
+bldg:LFH.AHU.S4.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "LFH.AHU.S4.Mode" ;
+    brickframe:uuid "9c23a0c2-4409-38f4-9419-ec1ce090be11" .
+
+bldg:LFH.AHU.S4.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S4.Outside Air Temp" ;
+    brickframe:uuid "68dce697-7f3c-3ad3-91f7-962edf1f84cc" .
+
+bldg:LFH.AHU.S4.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S4.Return Air Temp" ;
+    brickframe:uuid "8f71fdf1-60bc-35ba-8f94-5bd655a22f03" .
+
+bldg:LFH.AHU.S4.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S4.Supply Air Temp" ;
+    brickframe:uuid "ccfff391-7c58-3d47-b45f-4315c769486b" .
+
+bldg:LFH.AHU.S4.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S4.Supply Air Temp Setpoint" ;
+    brickframe:uuid "59ea24c9-09df-38cf-b1e2-bc037056a732" .
+
+bldg:LFH.AHU.S6.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S6.CCV" ;
+    brickframe:uuid "6382fe63-99f3-30cd-b309-5086cd8eaf78" .
+
+bldg:LFH.AHU.S6.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S6.Cooling Valve Output" ;
+    brickframe:uuid "4a600453-348a-3504-a0a4-39445ae52545" .
+
+bldg:LFH.AHU.S6.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S6.Heating Valve Output" ;
+    brickframe:uuid "9e44a037-a5b2-3b60-86e6-c6bc85606166" .
+
+bldg:LFH.AHU.S6.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S6.Mixed Air Temp" ;
+    brickframe:uuid "0df46354-df93-349f-9a1a-98ce3221f4de" .
+
+bldg:LFH.AHU.S6.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "LFH.AHU.S6.Mode" ;
+    brickframe:uuid "63653aab-ad4a-3785-8b22-8b6cb9769620" .
+
+bldg:LFH.AHU.S6.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S6.Outside Air Temp" ;
+    brickframe:uuid "81c6b809-a2b7-32c1-8ca4-f7a931f154f5" .
+
+bldg:LFH.AHU.S6.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S6.Outside Air Temp Virtual" ;
+    brickframe:uuid "6931acdc-8c89-3951-a6bf-2e6e314dce25" .
+
+bldg:LFH.AHU.S6.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S6.Return Air Temp" ;
+    brickframe:uuid "027a18d0-b2ba-3a36-a4db-5241adc44fcd" .
+
+bldg:LFH.AHU.S6.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S6.Supply Air Temp" ;
+    brickframe:uuid "dabdc709-f67b-38bb-93f5-72b8b7d59000" .
+
+bldg:LFH.AHU.S6.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.AHU.S6.Supply Air Temp Setpoint" ;
+    brickframe:uuid "f1d1dfdb-02c4-371c-b6ee-24d0ae94fe1b" .
+
+bldg:LFH.CHW.Building_Chilled_Water_Flow a brick_v_1_0_2:Chilled_Water_Flow_Sensor ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.CHW.Building Chilled Water Flow" ;
+    brickframe:uuid "ffd7af57-7d0c-392e-b5c3-542efce5f011" .
+
+bldg:LFH.CHW.Building_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.CHW.Building Chilled Water Return Temp" ;
+    brickframe:uuid "0d798841-caac-3734-b700-bfcdfe546ca6" .
+
+bldg:LFH.CHW.Building_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.CHW.Building Chilled Water Supply Temp" ;
+    brickframe:uuid "6fc9a172-5edd-3a16-8783-e4bb3e2f208c" .
+
+bldg:LFH.CHW.Building_Chilled_Water_Supply_Temp_Setpoint a brick_v_1_0_2:Chilled_Water_Supply_Temperature_Setpoint ;
+    brickframe:pointname "LFH.CHW.Building Chilled Water Supply Temp Setpoint" ;
+    brickframe:uuid "dfa1845e-7bf0-3a5e-93f1-3ac7fe361bdb" .
+
+bldg:LFH.CHW.Enable a brick1:Enable_Command ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.CHW.Enable" ;
+    brickframe:uuid "5faf9c83-5716-3611-acb6-1455b3896b0c" .
+
+bldg:LFH.CHW.LOOP_DP a brick1:Chilled_Water_Differential_Pressure_Sensor ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.CHW.LOOP DP" ;
+    brickframe:uuid "c7ce5b1a-65db-323e-b379-2305a8054e53" .
+
+bldg:LFH.CHW.Loop_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.CHW.Loop Chilled Water Return Temp" ;
+    brickframe:uuid "047eedb1-35a1-3895-afcf-dc9fec0f4161" .
+
+bldg:LFH.CHW.Loop_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.CHW.Loop Chilled Water Supply Temp" ;
+    brickframe:uuid "fb6b77f8-c551-3000-8e80-60b31.0.285a" .
+
+bldg:LFH.CHW.OA_ENABLE a brick_v_1_0_2:Outside_Air_Damper_Command ;
+    brickframe:pointname "LFH.CHW.OA ENABLE" ;
+    brickframe:uuid "562da95b-ab0d-3a7d-8ed9-710e6f03da8b" .
+
+bldg:LFH.CHW.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.CHW.Outside Air Temp" ;
+    brickframe:uuid "42c610a2-b8df-3a8b-a4a3-87a188cfa67b" .
+
+bldg:LFH.CHW.Pump1_VFD_Power a brick_v_1_0_2:Power_Sensor ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.CHW.Pump1_VFD Power" ;
+    brickframe:uuid "10fd414b-4b2d-3f1b-bd72-2d54e57cbe3c" .
+
+bldg:LFH.CHW.Pump2_VFD_Power a brick_v_1_0_2:Power_Sensor ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.CHW.Pump2_VFD Power" ;
+    brickframe:uuid "94511a67-0b0f-37c2-a079-193902606362" .
+
+bldg:LFH.CHW.Pump3_SPEED a brick_v_1_0_2:Speed_Status ;
+    brickframe:pointname "LFH.CHW.Pump3_SPEED" ;
+    brickframe:uuid "1fa254c7-fc91-31c3-a8ed-dda189098d5e" .
+
+<http://buildsys.org/ontologies/LFH#LFH.CHW.Pump3_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.CHW.Pump3_Start/Stop" ;
+    brickframe:uuid "380af79f-5485-3441-a151-4d41a72a2dd7" .
+
+bldg:LFH.CHW.Pump4_SPEED a brick_v_1_0_2:Speed_Status ;
+    brickframe:pointname "LFH.CHW.Pump4_SPEED" ;
+    brickframe:uuid "9ab2305b-4886-3f41-bbe4-b6fb73b98fb6" .
+
+<http://buildsys.org/ontologies/LFH#LFH.CHW.Pump4_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:LFH ;
+    brickframe:pointname "LFH.CHW.Pump4_Start/Stop" ;
+    brickframe:uuid "03d543a5-6c5a-346d-9707-87af26a8f10c" .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:LFH ;
+    brick1:hasPoint bldg:LFH.CHW.Building_Chilled_Water_Flow,
+        bldg:LFH.CHW.Building_Chilled_Water_Return_Temp,
+        bldg:LFH.CHW.Building_Chilled_Water_Supply_Temp,
+        bldg:LFH.CHW.Building_Chilled_Water_Supply_Temp_Setpoint,
+        bldg:LFH.CHW.Enable,
+        bldg:LFH.CHW.LOOP_DP,
+        bldg:LFH.CHW.Loop_Chilled_Water_Return_Temp,
+        bldg:LFH.CHW.Loop_Chilled_Water_Supply_Temp,
+        bldg:LFH.CHW.OA_ENABLE,
+        bldg:LFH.CHW.Outside_Air_Temp,
+        bldg:LFH.CHW.Pump1_VFD_Power,
+        bldg:LFH.CHW.Pump2_VFD_Power,
+        bldg:LFH.CHW.Pump3_SPEED,
+        <http://buildsys.org/ontologies/LFH#LFH.CHW.Pump3_Start/Stop>,
+        bldg:LFH.CHW.Pump4_SPEED,
+        <http://buildsys.org/ontologies/LFH#LFH.CHW.Pump4_Start/Stop> .
+
+bldg:LFH a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "52560" ;
+    brickframe:Country "US" .
+

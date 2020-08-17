@@ -1,0 +1,482 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://xbos.io/ontologies/hayward-station-8#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:Level_1 a brick1:Floor ;
+    rdf:label "Level 1" ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brick1:hasPart bldg:Room_101,
+        bldg:Room_102,
+        bldg:Room_103,
+        bldg:Room_104,
+        bldg:Room_106,
+        bldg:Room_107,
+        bldg:Room_108,
+        bldg:Room_109,
+        bldg:Room_110,
+        bldg:Room_111,
+        bldg:Room_115,
+        bldg:Room_117,
+        bldg:Room_120,
+        bldg:Room_122,
+        bldg:Room_123,
+        bldg:Room_124,
+        bldg:Room_125,
+        bldg:Room_127,
+        bldg:Room_128,
+        bldg:Room_129,
+        bldg:Room_130,
+        bldg:Room_east,
+        bldg:Room_south .
+
+<http://xbos.io/ontologies/hayward-station-8#green_button_meter_VqXtYaFsidwwH8EZCI7KxVH9xbQ=> a brick_v_1_0_2:Green_Button_Meter ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uuid "6a3bdea5-30f1-5dcb-9d72-2dc9e74b0592" .
+
+bldg:hvac_zone_f_1_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_103 ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uri "hayward-station-8/devices/s.pelican/F-1/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_f_1 ;
+    brick1:hasPoint bldg:hvac_zone_f_1_tstat_cooling_setpoint,
+        bldg:hvac_zone_f_1_tstat_fan,
+        bldg:hvac_zone_f_1_tstat_heating_setpoint,
+        bldg:hvac_zone_f_1_tstat_mode,
+        bldg:hvac_zone_f_1_tstat_override,
+        bldg:hvac_zone_f_1_tstat_state,
+        bldg:hvac_zone_f_1_tstat_temperature .
+
+bldg:hvac_zone_f_2_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_108 ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uri "hayward-station-8/devices/s.pelican/F-2/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_f_2 ;
+    brick1:hasPoint bldg:hvac_zone_f_2_tstat_cooling_setpoint,
+        bldg:hvac_zone_f_2_tstat_fan,
+        bldg:hvac_zone_f_2_tstat_heating_setpoint,
+        bldg:hvac_zone_f_2_tstat_mode,
+        bldg:hvac_zone_f_2_tstat_override,
+        bldg:hvac_zone_f_2_tstat_state,
+        bldg:hvac_zone_f_2_tstat_temperature .
+
+bldg:hvac_zone_f_3_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_120 ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uri "hayward-station-8/devices/s.pelican/F-3/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_f_3 ;
+    brick1:hasPoint bldg:hvac_zone_f_3_tstat_cooling_setpoint,
+        bldg:hvac_zone_f_3_tstat_fan,
+        bldg:hvac_zone_f_3_tstat_heating_setpoint,
+        bldg:hvac_zone_f_3_tstat_mode,
+        bldg:hvac_zone_f_3_tstat_override,
+        bldg:hvac_zone_f_3_tstat_state,
+        bldg:hvac_zone_f_3_tstat_temperature .
+
+bldg:hvac_zone_uh_1 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:hayward-station-8 .
+
+bldg:hvac_zone_uh_1_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_130 ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brick1:controls bldg:RTU_hvac_zone_uh_1 .
+
+bldg:hvac_zone_uh_2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:hayward-station-8 .
+
+bldg:hvac_zone_uh_2_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_129 ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brick1:controls bldg:RTU_hvac_zone_uh_2 .
+
+bldg:meter_0xd8d5b9000000b3da a brick_v_1_0_2:Building_Electric_Meter ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uri "hayward-station-8/s.eagle/0xd8d5b9000000b3da/i.meter" ;
+    brickframe:uuid "502f6d99-3daa-37d1-97a0-2661b9174682" .
+
+bldg:weather_KHWD_cloud_coverage a brick_v_1_0_2:Weather_Cloud_Coverage_Sensor ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uuid "9f555561-c6b8-3ea4-a8fb-a3487cf3062e" .
+
+bldg:weather_KHWD_cloud_height a brick_v_1_0_2:Weather_Cloud_Height_Sensor ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uuid "fcad9421-1206-3eca-a5cc-cf9f23498946" .
+
+bldg:weather_KHWD_relative_humidity a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uuid "51758551-4f88-3448-86ce-3eb30f213a05" .
+
+bldg:weather_KHWD_temperature a brick_v_1_0_2:Weather_Temperature_Sensor ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uuid "683bf516-1519-359c-92a2-7289d5ce66dc" .
+
+bldg:weather_KHWD_wind_direction a brick1:Wind_Direction_Sensor ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uuid "92f4cbab-a43b-38ac-b8c1-054b97c1b20b" .
+
+bldg:weather_KHWD_wind_speed a brick1:Wind_Speed_Sensor ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uuid "0e561e6f-880d-3af1-b724-7a089f9130f0" .
+
+bldg:weather_KOAK_cloud_coverage a brick_v_1_0_2:Weather_Cloud_Coverage_Sensor ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uuid "7b49f7f2-f142-38a0-b284-42b0aef95b64" .
+
+bldg:weather_KOAK_cloud_height a brick_v_1_0_2:Weather_Cloud_Height_Sensor ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uuid "f510c11b-3a04-3518-b757-7940555abb1d" .
+
+bldg:weather_KOAK_relative_humidity a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uuid "5e55525e-f799-3b7b-8520-8e42730946df" .
+
+bldg:weather_KOAK_temperature a brick_v_1_0_2:Weather_Temperature_Sensor ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uuid "a73c1b67-142f-3b45-baf8-e308619b6bbc" .
+
+bldg:weather_KOAK_wind_direction a brick1:Wind_Direction_Sensor ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uuid "4a939b52-73b5-3016-95d7-34fd1ea1d41f" .
+
+bldg:weather_KOAK_wind_speed a brick1:Wind_Speed_Sensor ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uuid "9a3d08a7-0489-3b9e-981b-2e2e916cd783" .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:HVAC_Zone_uh_1 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:hayward-station-8 .
+
+bldg:HVAC_Zone_uh_2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:hayward-station-8 .
+
+bldg:RTU_hvac_zone_f_1 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brick1:feeds bldg:hvac_zone_f_1 .
+
+bldg:RTU_hvac_zone_f_2 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brick1:feeds bldg:hvac_zone_f_2 .
+
+bldg:RTU_hvac_zone_f_3 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brick1:feeds bldg:hvac_zone_f_3 .
+
+bldg:Room_101 a brick1:Room ;
+    rdf:label "Lobby" ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brick1:isPartOf bldg:HVAC_Zone_f_1 .
+
+bldg:Room_102 a brick1:Room ;
+    rdf:label "District Office" ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brick1:isPartOf bldg:HVAC_Zone_f_1 .
+
+bldg:Room_104 a brick1:Room ;
+    rdf:label "Storage" ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brick1:isPartOf bldg:HVAC_Zone_f_1 .
+
+bldg:Room_106 a brick1:Room ;
+    rdf:label "Men's Bathroom" ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brick1:isPartOf bldg:HVAC_Zone_f_2 .
+
+bldg:Room_107 a brick1:Room ;
+    rdf:label "Shower/Drying" ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brick1:isPartOf bldg:HVAC_Zone_f_2 .
+
+bldg:Room_109 a brick1:Room ;
+    rdf:label "Dorm 1" ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brick1:isPartOf bldg:HVAC_Zone_f_2 .
+
+bldg:Room_110 a brick1:Room ;
+    rdf:label "Dorm 2" ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brick1:isPartOf bldg:HVAC_Zone_f_2 .
+
+bldg:Room_111 a brick1:Room ;
+    rdf:label "Dorm 3" ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brick1:isPartOf bldg:HVAC_Zone_f_2 .
+
+bldg:Room_115 a brick1:Room ;
+    rdf:label "Workshop" ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brick1:isPartOf bldg:HVAC_Zone_f_3 .
+
+bldg:Room_117 a brick1:Room ;
+    rdf:label "Women's Bath / Shower" ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brick1:isPartOf bldg:HVAC_Zone_f_3 .
+
+bldg:Room_122 a brick1:Room ;
+    rdf:label "Captain's Office" ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brick1:isPartOf bldg:HVAC_Zone_f_3 .
+
+bldg:Room_123 a brick1:Room ;
+    rdf:label "Public Restroom" ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brick1:isPartOf bldg:HVAC_Zone_f_1 .
+
+bldg:Room_124 a brick1:Room ;
+    rdf:label "Decon Shower" ;
+    brickframe:hasSite bldg:hayward-station-8 .
+
+bldg:Room_125 a brick1:Room ;
+    rdf:label "Medical Supply / EMS / Decon. Storage" ;
+    brickframe:hasSite bldg:hayward-station-8 .
+
+bldg:Room_127 a brick1:Room ;
+    rdf:label "Turnout / Decon. Room" ;
+    brickframe:hasSite bldg:hayward-station-8 .
+
+bldg:Room_128 a brick1:Room ;
+    rdf:label "Exercise Room" ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brick1:isPartOf bldg:HVAC_Zone_f_3 .
+
+bldg:Room_east a brick1:Room ;
+    rdf:label "East" ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brick1:isPartOf bldg:HVAC_Zone_outside .
+
+bldg:Room_south a brick1:Room ;
+    rdf:label "South" ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brick1:isPartOf bldg:HVAC_Zone_outside .
+
+bldg:hvac_zone_f_1 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:hayward-station-8 .
+
+bldg:hvac_zone_f_1_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uri "hayward-station-8/devices/s.pelican/F-1/i.xbos.thermostat" ;
+    brickframe:uuid "feb6365c-6321-3423-82f4-da090988c4e1" .
+
+bldg:hvac_zone_f_1_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uri "hayward-station-8/devices/s.pelican/F-1/i.xbos.thermostat" ;
+    brickframe:uuid "9d663e36-5fd2-39b5-9828-6447d0bd4894" .
+
+bldg:hvac_zone_f_1_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uri "hayward-station-8/devices/s.pelican/F-1/i.xbos.thermostat" ;
+    brickframe:uuid "0bad6603-53c2-3c9a-aeee-329894fd5134" .
+
+bldg:hvac_zone_f_1_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uri "hayward-station-8/devices/s.pelican/F-1/i.xbos.thermostat" ;
+    brickframe:uuid "f6a6064e-96ed-3485-9e32-19d4c352684d" .
+
+bldg:hvac_zone_f_1_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uri "hayward-station-8/devices/s.pelican/F-1/i.xbos.thermostat" ;
+    brickframe:uuid "c2c25b9f-922b-3390-b0c1-7ddfefdfdf0f" .
+
+bldg:hvac_zone_f_1_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uri "hayward-station-8/devices/s.pelican/F-1/i.xbos.thermostat" ;
+    brickframe:uuid "b5ccea9a-7dfa-388c-9060-3adb55001f6e" .
+
+bldg:hvac_zone_f_1_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uri "hayward-station-8/devices/s.pelican/F-1/i.xbos.thermostat" ;
+    brickframe:uuid "24b31af2-36ce-3ac2-920f-47eb772e1415" .
+
+bldg:hvac_zone_f_2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:hayward-station-8 .
+
+bldg:hvac_zone_f_2_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uri "hayward-station-8/devices/s.pelican/F-2/i.xbos.thermostat" ;
+    brickframe:uuid "d39f35e9-09b8-3f26-aa01-3d470718a6ba" .
+
+bldg:hvac_zone_f_2_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uri "hayward-station-8/devices/s.pelican/F-2/i.xbos.thermostat" ;
+    brickframe:uuid "e779a57c-9baf-3e7a-98ed-ca955cbf93ef" .
+
+bldg:hvac_zone_f_2_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uri "hayward-station-8/devices/s.pelican/F-2/i.xbos.thermostat" ;
+    brickframe:uuid "09b2ab33-df8f-3185-8cf6-359ea783f3f7" .
+
+bldg:hvac_zone_f_2_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uri "hayward-station-8/devices/s.pelican/F-2/i.xbos.thermostat" ;
+    brickframe:uuid "68c915c2-3451-3ac4-8333-da2c4115034f" .
+
+bldg:hvac_zone_f_2_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uri "hayward-station-8/devices/s.pelican/F-2/i.xbos.thermostat" ;
+    brickframe:uuid "6573084c-0991-38db-b2b3-43143d67788e" .
+
+bldg:hvac_zone_f_2_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uri "hayward-station-8/devices/s.pelican/F-2/i.xbos.thermostat" ;
+    brickframe:uuid "f060ea37-e109-3365-b50a-85ea1af9f162" .
+
+bldg:hvac_zone_f_2_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uri "hayward-station-8/devices/s.pelican/F-2/i.xbos.thermostat" ;
+    brickframe:uuid "bb133a93-0164-35fd-be5c-90fb8cdb81ed" .
+
+bldg:hvac_zone_f_3 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:hayward-station-8 .
+
+bldg:hvac_zone_f_3_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uri "hayward-station-8/devices/s.pelican/F-3/i.xbos.thermostat" ;
+    brickframe:uuid "28b1b139-e6c9-346c-af91-93152151887f" .
+
+bldg:hvac_zone_f_3_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uri "hayward-station-8/devices/s.pelican/F-3/i.xbos.thermostat" ;
+    brickframe:uuid "5691e0a9-2178-305f-9272-31d9714479d6" .
+
+bldg:hvac_zone_f_3_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uri "hayward-station-8/devices/s.pelican/F-3/i.xbos.thermostat" ;
+    brickframe:uuid "81a6f7f7-a82d-3da0-9367-d455da5c08ce" .
+
+bldg:hvac_zone_f_3_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uri "hayward-station-8/devices/s.pelican/F-3/i.xbos.thermostat" ;
+    brickframe:uuid "d0c65e34-1081-3cb2-bc4a-8de1384b059c" .
+
+bldg:hvac_zone_f_3_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uri "hayward-station-8/devices/s.pelican/F-3/i.xbos.thermostat" ;
+    brickframe:uuid "c9cece81-7d53-378e-80cc-42c7e05453ee" .
+
+bldg:hvac_zone_f_3_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uri "hayward-station-8/devices/s.pelican/F-3/i.xbos.thermostat" ;
+    brickframe:uuid "4f424687-2a63-3057-8f52-657bb5ef1933" .
+
+bldg:hvac_zone_f_3_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brickframe:uri "hayward-station-8/devices/s.pelican/F-3/i.xbos.thermostat" ;
+    brickframe:uuid "c41b240d-95fb-329d-a5ea-1a32084e8b80" .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+bldg:HVAC_Zone_outside a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:hayward-station-8 .
+
+bldg:Room_103 a brick1:Room ;
+    rdf:label "Training/Meeting Room" ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brick1:isPartOf bldg:HVAC_Zone_f_1 .
+
+bldg:Room_108 a brick1:Room ;
+    rdf:label "Hall" ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brick1:isPartOf bldg:HVAC_Zone_f_2 .
+
+bldg:Room_120 a brick1:Room ;
+    rdf:label "Dining" ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brick1:isPartOf bldg:HVAC_Zone_f_3 .
+
+bldg:Room_129 a brick1:Room ;
+    rdf:label "Apparatus Bay" ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brick1:isPartOf bldg:HVAC_Zone_uh_2 .
+
+bldg:Room_130 a brick1:Room ;
+    rdf:label "Apparatus Bay" ;
+    brickframe:hasSite bldg:hayward-station-8 ;
+    brick1:isPartOf bldg:HVAC_Zone_uh_1 .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Weather_Cloud_Coverage_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Weather_Cloud_Height_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Weather_Temperature_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+bldg:HVAC_Zone_f_1 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:hayward-station-8 .
+
+bldg:HVAC_Zone_f_3 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:hayward-station-8 .
+
+bldg:HVAC_Zone_f_2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:hayward-station-8 .
+
+bldg:hayward-station-8 a brick_v_1_0_2:Site ;
+    brickframe:Country "US" ;
+    brickframe:NumFloors "1" ;
+    brickframe:PrimaryFunction "Fire Station" ;
+    brickframe:Timezone "America/Los_Angeles" .
+

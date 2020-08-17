@@ -1,0 +1,111 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/VMTHC#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:MULTI a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:VMTHC ;
+    brick1:hasPoint bldg:VMTHC.AHU.MULTI.Cooling_Valve_Output ;
+    brick1:isFedBy bldg:chiller .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:VMTHC.AHU.MULTI.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:VMTHC ;
+    brickframe:pointname "VMTHC.AHU.MULTI.Cooling Valve Output" ;
+    brickframe:uuid "bbff1f89-477c-3dc8-8c70-d6e8a1524f02" .
+
+bldg:VMTHC.CHW.Building_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTHC ;
+    brickframe:pointname "VMTHC.CHW.Building Chilled Water Return Temp" ;
+    brickframe:uuid "4da28631-219e-3855-acd7-2692bf10fce8" .
+
+bldg:VMTHC.CHW.Building_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTHC ;
+    brickframe:pointname "VMTHC.CHW.Building Chilled Water Supply Temp" ;
+    brickframe:uuid "0a14cbcf-811f-34ca-9cfd-6f25cccb5547" .
+
+bldg:VMTHC.CHW.Loop_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMTHC ;
+    brickframe:pointname "VMTHC.CHW.Loop Chilled Water Supply Temp" ;
+    brickframe:uuid "e6d38af0-03eb-3bb9-bc98-eb7c11016198" .
+
+<http://buildsys.org/ontologies/VMTHC#VMTHC.CHW.Pump1_Start/Stop> a brick1:Start_Stop_Command ;
+    brickframe:hasSite bldg:VMTHC ;
+    brickframe:pointname "VMTHC.CHW.Pump1_Start/Stop" ;
+    brickframe:uuid "8ed94b3e-0064-338e-a844-c626524511a0" .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:VMTHC ;
+    brick1:hasPoint bldg:VMTHC.CHW.Building_Chilled_Water_Return_Temp,
+        bldg:VMTHC.CHW.Building_Chilled_Water_Supply_Temp,
+        bldg:VMTHC.CHW.Loop_Chilled_Water_Supply_Temp,
+        <http://buildsys.org/ontologies/VMTHC#VMTHC.CHW.Pump1_Start/Stop> .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:VMTHC a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "9999" ;
+    brickframe:Country "US" .
+

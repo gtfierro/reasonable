@@ -1,0 +1,644 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://xbos.io/ontologies/avenal-veterans-hall#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:Level_1 a brick1:Floor ;
+    rdf:label "Level 1" ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brick1:hasPart bldg:Room_1,
+        bldg:Room_10,
+        bldg:Room_11,
+        bldg:Room_2,
+        bldg:Room_4,
+        bldg:Room_4A,
+        bldg:Room_4B,
+        bldg:Room_5,
+        bldg:Room_5B,
+        bldg:Room_6,
+        bldg:Room_7,
+        bldg:Room_8,
+        bldg:Room_east,
+        bldg:Room_north,
+        bldg:Room_south,
+        bldg:Room_west .
+
+<http://xbos.io/ontologies/avenal-veterans-hall#green_button_meter_35Kp3cMt4xyG5dLII/tDS+V7+lc=> a brick_v_1_0_2:Green_Button_Meter ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uuid "6e8df0fd-9e9e-573f-aa8c-e3cac9940b53" .
+
+bldg:hvac_zone_ac_1_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_4 ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-1/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_ac_1 ;
+    brick1:hasPoint bldg:hvac_zone_ac_1_tstat_cooling_setpoint,
+        bldg:hvac_zone_ac_1_tstat_fan,
+        bldg:hvac_zone_ac_1_tstat_heating_setpoint,
+        bldg:hvac_zone_ac_1_tstat_mode,
+        bldg:hvac_zone_ac_1_tstat_override,
+        bldg:hvac_zone_ac_1_tstat_state,
+        bldg:hvac_zone_ac_1_tstat_temperature .
+
+bldg:hvac_zone_ac_2_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_5 ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-2/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_ac_2 ;
+    brick1:hasPoint bldg:hvac_zone_ac_2_tstat_cooling_setpoint,
+        bldg:hvac_zone_ac_2_tstat_fan,
+        bldg:hvac_zone_ac_2_tstat_heating_setpoint,
+        bldg:hvac_zone_ac_2_tstat_mode,
+        bldg:hvac_zone_ac_2_tstat_override,
+        bldg:hvac_zone_ac_2_tstat_state,
+        bldg:hvac_zone_ac_2_tstat_temperature .
+
+bldg:hvac_zone_ac_3_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_2 ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-3/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_ac_3 ;
+    brick1:hasPoint bldg:hvac_zone_ac_3_tstat_cooling_setpoint,
+        bldg:hvac_zone_ac_3_tstat_fan,
+        bldg:hvac_zone_ac_3_tstat_heating_setpoint,
+        bldg:hvac_zone_ac_3_tstat_mode,
+        bldg:hvac_zone_ac_3_tstat_override,
+        bldg:hvac_zone_ac_3_tstat_state,
+        bldg:hvac_zone_ac_3_tstat_temperature .
+
+bldg:hvac_zone_ac_4_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_2 ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-4/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_ac_4 ;
+    brick1:hasPoint bldg:hvac_zone_ac_4_tstat_cooling_setpoint,
+        bldg:hvac_zone_ac_4_tstat_fan,
+        bldg:hvac_zone_ac_4_tstat_heating_setpoint,
+        bldg:hvac_zone_ac_4_tstat_mode,
+        bldg:hvac_zone_ac_4_tstat_override,
+        bldg:hvac_zone_ac_4_tstat_state,
+        bldg:hvac_zone_ac_4_tstat_temperature .
+
+bldg:hvac_zone_ac_5_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_2 ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-5/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_ac_5 ;
+    brick1:hasPoint bldg:hvac_zone_ac_5_tstat_cooling_setpoint,
+        bldg:hvac_zone_ac_5_tstat_fan,
+        bldg:hvac_zone_ac_5_tstat_heating_setpoint,
+        bldg:hvac_zone_ac_5_tstat_mode,
+        bldg:hvac_zone_ac_5_tstat_override,
+        bldg:hvac_zone_ac_5_tstat_state,
+        bldg:hvac_zone_ac_5_tstat_temperature .
+
+bldg:hvac_zone_ac_6_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_2 ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-6/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_ac_6 ;
+    brick1:hasPoint bldg:hvac_zone_ac_6_tstat_cooling_setpoint,
+        bldg:hvac_zone_ac_6_tstat_fan,
+        bldg:hvac_zone_ac_6_tstat_heating_setpoint,
+        bldg:hvac_zone_ac_6_tstat_mode,
+        bldg:hvac_zone_ac_6_tstat_override,
+        bldg:hvac_zone_ac_6_tstat_state,
+        bldg:hvac_zone_ac_6_tstat_temperature .
+
+bldg:meter_0xd8d5b9000000a17b a brick_v_1_0_2:Building_Electric_Meter ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/s.eagle/0xd8d5b9000000a17b/i.meter" ;
+    brickframe:uuid "ff7b8a25-d4be-38c6-a840-93fe7d0d4aad" .
+
+bldg:return_damper_10 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brick1:isFedBy bldg:Room_2 .
+
+bldg:return_damper_11 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brick1:isFedBy bldg:Room_2 .
+
+bldg:return_damper_12 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brick1:isFedBy bldg:Room_2 .
+
+bldg:return_damper_13 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brick1:isFedBy bldg:Room_2 .
+
+bldg:return_damper_8 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brick1:isFedBy bldg:Room_4 .
+
+bldg:return_damper_9 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brick1:isFedBy bldg:Room_5 .
+
+bldg:supply_damper_1 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_4 .
+
+bldg:supply_damper_2 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_5 .
+
+bldg:supply_damper_3 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_2 .
+
+bldg:supply_damper_4 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_2 .
+
+bldg:supply_damper_5 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_2 .
+
+bldg:supply_damper_6 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_2 .
+
+bldg:weather_AT565_cloud_coverage a brick_v_1_0_2:Weather_Cloud_Coverage_Sensor ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uuid "f243903f-16cd-3362-9506-8a32a5efa4ee" .
+
+bldg:weather_AT565_cloud_height a brick_v_1_0_2:Weather_Cloud_Height_Sensor ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uuid "d3c6ce62-3295-312c-ab8e-0debe171621d" .
+
+bldg:weather_AT565_relative_humidity a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uuid "003a1759-e1.0.2514-a6d5-981e9b7924d6" .
+
+bldg:weather_AT565_temperature a brick_v_1_0_2:Weather_Temperature_Sensor ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uuid "a6e9f305-d76b-3e1a-8b11-e3d312134f02" .
+
+bldg:weather_AT565_wind_direction a brick1:Wind_Direction_Sensor ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uuid "f458cf4d-d109-3a3b-ae40-939da6841510" .
+
+bldg:weather_AT565_wind_speed a brick1:Wind_Speed_Sensor ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uuid "6410f70b-a594-39bb-94ac-1eb9682a70e7" .
+
+bldg:weather_KTLC1_cloud_coverage a brick_v_1_0_2:Weather_Cloud_Coverage_Sensor ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uuid "72950f10-3614-30da-8803-2755cb4731ea" .
+
+bldg:weather_KTLC1_cloud_height a brick_v_1_0_2:Weather_Cloud_Height_Sensor ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uuid "2ac5ed07-4f55-31c3-8641-0165462d4f44" .
+
+bldg:weather_KTLC1_relative_humidity a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uuid "10ef6a49-4a43-37fd-befc-524eb2b2f104" .
+
+bldg:weather_KTLC1_temperature a brick_v_1_0_2:Weather_Temperature_Sensor ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uuid "c3d0f042-2cb7-387c-8867-4190fef4fd2c" .
+
+bldg:weather_KTLC1_wind_direction a brick1:Wind_Direction_Sensor ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uuid "f933cb33-1bcb-34e9-8e73-1bae9a023715" .
+
+bldg:weather_KTLC1_wind_speed a brick1:Wind_Speed_Sensor ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uuid "6f4e2261-7cc3-3369-a367-01ef3828a7c7" .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:HVAC_Zone_ac_2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-veterans-hall .
+
+bldg:HVAC_Zone_ac_3 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-veterans-hall .
+
+bldg:HVAC_Zone_ac_5 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-veterans-hall .
+
+bldg:RTU_hvac_zone_ac_1 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brick1:feeds bldg:hvac_zone_ac_1 .
+
+bldg:RTU_hvac_zone_ac_2 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brick1:feeds bldg:hvac_zone_ac_2 .
+
+bldg:RTU_hvac_zone_ac_3 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brick1:feeds bldg:hvac_zone_ac_3 .
+
+bldg:RTU_hvac_zone_ac_4 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brick1:feeds bldg:hvac_zone_ac_4 .
+
+bldg:RTU_hvac_zone_ac_5 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brick1:feeds bldg:hvac_zone_ac_5 .
+
+bldg:RTU_hvac_zone_ac_6 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brick1:feeds bldg:hvac_zone_ac_6 .
+
+bldg:Room_1 a brick1:Room ;
+    rdf:label "Jan. Clst" ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_10 a brick1:Room ;
+    rdf:label "Storage/Laundry" ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_11 a brick1:Room ;
+    rdf:label "Stage Utility" ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_4A a brick1:Room ;
+    rdf:label "Passage" ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brick1:isPartOf bldg:HVAC_Zone_ac_1 .
+
+bldg:Room_4B a brick1:Room ;
+    rdf:label "Storage" ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_5B a brick1:Room ;
+    rdf:label "Storage" ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brick1:isPartOf bldg:HVAC_Zone_default .
+
+bldg:Room_6 a brick1:Room ;
+    rdf:label "Kitchen" ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brick1:isPartOf bldg:HVAC_Zone_ac_4 .
+
+bldg:Room_7 a brick1:Room ;
+    rdf:label "Women's" ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brick1:isPartOf bldg:HVAC_Zone_ac_6 .
+
+bldg:Room_8 a brick1:Room ;
+    rdf:label "Men's" ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brick1:isPartOf bldg:HVAC_Zone_ac_6 .
+
+bldg:Room_east a brick1:Room ;
+    rdf:label "East" ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brick1:isPartOf bldg:HVAC_Zone_outside .
+
+bldg:Room_north a brick1:Room ;
+    rdf:label "North" ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brick1:isPartOf bldg:HVAC_Zone_outside .
+
+bldg:Room_south a brick1:Room ;
+    rdf:label "South" ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brick1:isPartOf bldg:HVAC_Zone_outside .
+
+bldg:Room_west a brick1:Room ;
+    rdf:label "West" ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brick1:isPartOf bldg:HVAC_Zone_outside .
+
+bldg:hvac_zone_ac_1 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-veterans-hall .
+
+bldg:hvac_zone_ac_1_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-1/i.xbos.thermostat" ;
+    brickframe:uuid "96f5272e-1a5d-31a5-9311-5c5f7b68b324" .
+
+bldg:hvac_zone_ac_1_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-1/i.xbos.thermostat" ;
+    brickframe:uuid "44c982ea-420b-3a30-ab67-dd3caa364d86" .
+
+bldg:hvac_zone_ac_1_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-1/i.xbos.thermostat" ;
+    brickframe:uuid "64894e69-0f99-3613-8826-9bde96f736d9" .
+
+bldg:hvac_zone_ac_1_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-1/i.xbos.thermostat" ;
+    brickframe:uuid "a39abf5a-808b-3f61-a6d4-1ac71dcb29bb" .
+
+bldg:hvac_zone_ac_1_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-1/i.xbos.thermostat" ;
+    brickframe:uuid "68b09931-758d-333a-a87c-1cbf12f1da2f" .
+
+bldg:hvac_zone_ac_1_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-1/i.xbos.thermostat" ;
+    brickframe:uuid "05cb8076-4c29-3cf8-99ef-4a6ea591e11f" .
+
+bldg:hvac_zone_ac_1_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-1/i.xbos.thermostat" ;
+    brickframe:uuid "5a8e0bc4-1b15-3bbc-95df-0cbe3b8b6e57" .
+
+bldg:hvac_zone_ac_2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-veterans-hall .
+
+bldg:hvac_zone_ac_2_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-2/i.xbos.thermostat" ;
+    brickframe:uuid "634cc3ea-41cc-334c-91bd-48f948195be9" .
+
+bldg:hvac_zone_ac_2_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-2/i.xbos.thermostat" ;
+    brickframe:uuid "8d43c578-2dc8-3001-8833-6c1a2c87ef83" .
+
+bldg:hvac_zone_ac_2_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-2/i.xbos.thermostat" ;
+    brickframe:uuid "65a6a984-6b39-30bc-b950-58335d641cb7" .
+
+bldg:hvac_zone_ac_2_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-2/i.xbos.thermostat" ;
+    brickframe:uuid "8879c9e8-bc29-3497-be9f-e0f00c9dafcc" .
+
+bldg:hvac_zone_ac_2_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-2/i.xbos.thermostat" ;
+    brickframe:uuid "b77bcde5-7943-3755-bafd-2dd68acca843" .
+
+bldg:hvac_zone_ac_2_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-2/i.xbos.thermostat" ;
+    brickframe:uuid "72f8b6c1-86a8-3926-928c-6042943db4b4" .
+
+bldg:hvac_zone_ac_2_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-2/i.xbos.thermostat" ;
+    brickframe:uuid "0ff3e3b5-87b1-36ba-98d3-864492c143fe" .
+
+bldg:hvac_zone_ac_3 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-veterans-hall .
+
+bldg:hvac_zone_ac_3_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-3/i.xbos.thermostat" ;
+    brickframe:uuid "41e30489-4158-3f0e-b780-fe4c421ac689" .
+
+bldg:hvac_zone_ac_3_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-3/i.xbos.thermostat" ;
+    brickframe:uuid "8f69aecd-c5cb-3ef3-80d1-a936094c1444" .
+
+bldg:hvac_zone_ac_3_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-3/i.xbos.thermostat" ;
+    brickframe:uuid "d2caae42-cbdd-3d27-ad29-07448eb0e5ed" .
+
+bldg:hvac_zone_ac_3_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-3/i.xbos.thermostat" ;
+    brickframe:uuid "f8eff330-46ea-30f6-afd8-3b3ea6f92fc2" .
+
+bldg:hvac_zone_ac_3_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-3/i.xbos.thermostat" ;
+    brickframe:uuid "d20e8090-ff78-3bd2-b599-f5a1f3481865" .
+
+bldg:hvac_zone_ac_3_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-3/i.xbos.thermostat" ;
+    brickframe:uuid "b7d126f9-df52-333d-885f-81b445ab858c" .
+
+bldg:hvac_zone_ac_3_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-3/i.xbos.thermostat" ;
+    brickframe:uuid "c0a92c77-ef82-374b-8a22-b9f7e8a05114" .
+
+bldg:hvac_zone_ac_4 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-veterans-hall .
+
+bldg:hvac_zone_ac_4_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-4/i.xbos.thermostat" ;
+    brickframe:uuid "c0f441c2-6d6b-3f11-99a9-51bdda1a5c04" .
+
+bldg:hvac_zone_ac_4_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-4/i.xbos.thermostat" ;
+    brickframe:uuid "28ff44b4-b14d-3d58-9b72-deff9849539c" .
+
+bldg:hvac_zone_ac_4_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-4/i.xbos.thermostat" ;
+    brickframe:uuid "840297b2-630b-3386-8efc-2cfd49e6b2eb" .
+
+bldg:hvac_zone_ac_4_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-4/i.xbos.thermostat" ;
+    brickframe:uuid "4d112358-39c4-38de-b9b0-97263ccab8ce" .
+
+bldg:hvac_zone_ac_4_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-4/i.xbos.thermostat" ;
+    brickframe:uuid "d0692a8d-f5f5-3450-8b6c-bf6972f1470f" .
+
+bldg:hvac_zone_ac_4_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-4/i.xbos.thermostat" ;
+    brickframe:uuid "8e2a3ebb-d971-3cb0-8aa5-22efaab1c60e" .
+
+bldg:hvac_zone_ac_4_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-4/i.xbos.thermostat" ;
+    brickframe:uuid "ce2d8d91-a833-344f-a674-724a7c3ae181" .
+
+bldg:hvac_zone_ac_5 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-veterans-hall .
+
+bldg:hvac_zone_ac_5_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-5/i.xbos.thermostat" ;
+    brickframe:uuid "a555507f-70a0-3278-bb0a-3665f3bae663" .
+
+bldg:hvac_zone_ac_5_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-5/i.xbos.thermostat" ;
+    brickframe:uuid "77c2410e-5357-3ad7-bd35-7777971c96ee" .
+
+bldg:hvac_zone_ac_5_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-5/i.xbos.thermostat" ;
+    brickframe:uuid "af4b2424-7428-3949-ba6b-61b8d819e2d4" .
+
+bldg:hvac_zone_ac_5_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-5/i.xbos.thermostat" ;
+    brickframe:uuid "01a33b84-7e9f-35aa-858a-76b38a228c9a" .
+
+bldg:hvac_zone_ac_5_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-5/i.xbos.thermostat" ;
+    brickframe:uuid "8fe96455-0bae-30f4-9c9e-dbdd22af95f4" .
+
+bldg:hvac_zone_ac_5_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-5/i.xbos.thermostat" ;
+    brickframe:uuid "3af96156-546e-3298-89e7-4336b1ab81f6" .
+
+bldg:hvac_zone_ac_5_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-5/i.xbos.thermostat" ;
+    brickframe:uuid "bc938016-67ab-3c88-908a-e4d3ab19d00c" .
+
+bldg:hvac_zone_ac_6 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-veterans-hall .
+
+bldg:hvac_zone_ac_6_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-6/i.xbos.thermostat" ;
+    brickframe:uuid "5b3fd240-7a0d-325a-b348-f69c17c0d401" .
+
+bldg:hvac_zone_ac_6_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-6/i.xbos.thermostat" ;
+    brickframe:uuid "15b6450e-9f18-3f43-8dbe-dca97c08903c" .
+
+bldg:hvac_zone_ac_6_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-6/i.xbos.thermostat" ;
+    brickframe:uuid "c54b0c67-951d-327a-84ed-96339bdd4014" .
+
+bldg:hvac_zone_ac_6_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-6/i.xbos.thermostat" ;
+    brickframe:uuid "05ad5888-7171-399c-900b-f40a9ccd7eb4" .
+
+bldg:hvac_zone_ac_6_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-6/i.xbos.thermostat" ;
+    brickframe:uuid "bdf11c7a-30bf-331e-99aa-a9cf5fb76651" .
+
+bldg:hvac_zone_ac_6_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-6/i.xbos.thermostat" ;
+    brickframe:uuid "ea372f23-20ab-3a42-b8c5-19b841002c91" .
+
+bldg:hvac_zone_ac_6_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brickframe:uri "avenal-veterans-hall/devices/s.pelican/AC-6/i.xbos.thermostat" ;
+    brickframe:uuid "cb7806ed-7820-3469-8dba-d634541c907c" .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+bldg:HVAC_Zone_ac_1 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-veterans-hall .
+
+bldg:HVAC_Zone_ac_4 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-veterans-hall .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Weather_Cloud_Coverage_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Weather_Cloud_Height_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Weather_Temperature_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+bldg:HVAC_Zone_ac_6 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-veterans-hall .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:HVAC_Zone_outside a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-veterans-hall .
+
+bldg:Room_4 a brick1:Room ;
+    rdf:label "Gym/Exercise" ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brick1:isPartOf bldg:HVAC_Zone_ac_1 .
+
+bldg:Room_5 a brick1:Room ;
+    rdf:label "Storage/Supplies" ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brick1:isPartOf bldg:HVAC_Zone_ac_2 .
+
+bldg:HVAC_Zone_default a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-veterans-hall .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+bldg:Room_2 a brick1:Room ;
+    rdf:label "Main Room" ;
+    brickframe:hasSite bldg:avenal-veterans-hall ;
+    brick1:isPartOf bldg:HVAC_Zone_ac_3,
+        bldg:HVAC_Zone_ac_4,
+        bldg:HVAC_Zone_ac_5,
+        bldg:HVAC_Zone_ac_6 .
+
+bldg:avenal-veterans-hall a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "8683" ;
+    brickframe:Country "US" ;
+    brickframe:NumFloors "1" ;
+    brickframe:PrimaryFunction "Veterans hall" ;
+    brickframe:Timezone "America/Los_Angeles" .
+

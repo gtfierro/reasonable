@@ -1,0 +1,931 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://xbos.io/ontologies/avenal-movie-theatre#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:Level_1 a brick1:Floor ;
+    rdf:label "Level 1" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:hasPart bldg:Room_100,
+        bldg:Room_101,
+        bldg:Room_102,
+        bldg:Room_103,
+        bldg:Room_103a,
+        bldg:Room_104,
+        bldg:Room_105,
+        bldg:Room_106,
+        bldg:Room_107,
+        bldg:Room_108,
+        bldg:Room_108a,
+        bldg:Room_108b,
+        bldg:Room_109,
+        bldg:Room_110,
+        bldg:Room_111,
+        bldg:Room_112,
+        bldg:Room_113,
+        bldg:Room_114,
+        bldg:Room_115,
+        bldg:Room_116,
+        bldg:Room_117,
+        bldg:Room_118,
+        bldg:Room_120,
+        bldg:Room_120a,
+        bldg:Room_123,
+        bldg:Room_124,
+        bldg:Room_125,
+        bldg:Room_126_A,
+        bldg:Room_126_D,
+        bldg:Room_127,
+        bldg:Room_128,
+        bldg:Room_north,
+        bldg:Room_west .
+
+<http://xbos.io/ontologies/avenal-movie-theatre#green_button_meter_ekhaL7K1ZWy7yOfRpEIBOcC3v8Y=> a brick_v_1_0_2:Green_Button_Meter ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uuid "9a0a296d-5a32-568d-adbe-4b7fb38da81f" .
+
+bldg:hvac_zone_back_hallway_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_125 ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Back_Hallway/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_back_hallway ;
+    brick1:hasPoint bldg:hvac_zone_back_hallway_tstat_cooling_setpoint,
+        bldg:hvac_zone_back_hallway_tstat_fan,
+        bldg:hvac_zone_back_hallway_tstat_heating_setpoint,
+        bldg:hvac_zone_back_hallway_tstat_mode,
+        bldg:hvac_zone_back_hallway_tstat_override,
+        bldg:hvac_zone_back_hallway_tstat_state,
+        bldg:hvac_zone_back_hallway_tstat_temperature .
+
+bldg:hvac_zone_lobby_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_103 ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Lobby/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_lobby ;
+    brick1:hasPoint bldg:hvac_zone_lobby_tstat_cooling_setpoint,
+        bldg:hvac_zone_lobby_tstat_fan,
+        bldg:hvac_zone_lobby_tstat_heating_setpoint,
+        bldg:hvac_zone_lobby_tstat_mode,
+        bldg:hvac_zone_lobby_tstat_override,
+        bldg:hvac_zone_lobby_tstat_state,
+        bldg:hvac_zone_lobby_tstat_temperature .
+
+bldg:hvac_zone_main_hallway_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_115 ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Main_Hallway/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_main_hallway ;
+    brick1:hasPoint bldg:hvac_zone_main_hallway_tstat_cooling_setpoint,
+        bldg:hvac_zone_main_hallway_tstat_fan,
+        bldg:hvac_zone_main_hallway_tstat_heating_setpoint,
+        bldg:hvac_zone_main_hallway_tstat_mode,
+        bldg:hvac_zone_main_hallway_tstat_override,
+        bldg:hvac_zone_main_hallway_tstat_state,
+        bldg:hvac_zone_main_hallway_tstat_temperature .
+
+bldg:hvac_zone_pegasus_hall_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_120 ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Pegasus_Hall/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_pegasus_hall ;
+    brick1:hasPoint bldg:hvac_zone_pegasus_hall_tstat_cooling_setpoint,
+        bldg:hvac_zone_pegasus_hall_tstat_fan,
+        bldg:hvac_zone_pegasus_hall_tstat_heating_setpoint,
+        bldg:hvac_zone_pegasus_hall_tstat_mode,
+        bldg:hvac_zone_pegasus_hall_tstat_override,
+        bldg:hvac_zone_pegasus_hall_tstat_state,
+        bldg:hvac_zone_pegasus_hall_tstat_temperature .
+
+bldg:hvac_zone_room_a_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_126_A ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Room_A/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_room_a ;
+    brick1:hasPoint bldg:hvac_zone_room_a_tstat_cooling_setpoint,
+        bldg:hvac_zone_room_a_tstat_fan,
+        bldg:hvac_zone_room_a_tstat_heating_setpoint,
+        bldg:hvac_zone_room_a_tstat_mode,
+        bldg:hvac_zone_room_a_tstat_override,
+        bldg:hvac_zone_room_a_tstat_state,
+        bldg:hvac_zone_room_a_tstat_temperature .
+
+bldg:hvac_zone_room_d_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_126_D ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Room_D/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_room_d ;
+    brick1:hasPoint bldg:hvac_zone_room_d_tstat_cooling_setpoint,
+        bldg:hvac_zone_room_d_tstat_fan,
+        bldg:hvac_zone_room_d_tstat_heating_setpoint,
+        bldg:hvac_zone_room_d_tstat_mode,
+        bldg:hvac_zone_room_d_tstat_override,
+        bldg:hvac_zone_room_d_tstat_state,
+        bldg:hvac_zone_room_d_tstat_temperature .
+
+bldg:hvac_zone_theater_1_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_117 ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Theater_1/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_theater_1 ;
+    brick1:hasPoint bldg:hvac_zone_theater_1_tstat_cooling_setpoint,
+        bldg:hvac_zone_theater_1_tstat_fan,
+        bldg:hvac_zone_theater_1_tstat_heating_setpoint,
+        bldg:hvac_zone_theater_1_tstat_mode,
+        bldg:hvac_zone_theater_1_tstat_override,
+        bldg:hvac_zone_theater_1_tstat_state,
+        bldg:hvac_zone_theater_1_tstat_temperature .
+
+bldg:hvac_zone_theater_2_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_118 ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Theater_2/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_theater_2 ;
+    brick1:hasPoint bldg:hvac_zone_theater_2_tstat_cooling_setpoint,
+        bldg:hvac_zone_theater_2_tstat_fan,
+        bldg:hvac_zone_theater_2_tstat_heating_setpoint,
+        bldg:hvac_zone_theater_2_tstat_mode,
+        bldg:hvac_zone_theater_2_tstat_override,
+        bldg:hvac_zone_theater_2_tstat_state,
+        bldg:hvac_zone_theater_2_tstat_temperature .
+
+bldg:meter_0xd8d5b9000000b405 a brick_v_1_0_2:Building_Electric_Meter ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/s.eagle/0xd8d5b9000000b405/i.meter" ;
+    brickframe:uuid "ea827a42-e6b9-3e0a-970f-c3a96f0ebea3" .
+
+bldg:return_damper_1 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isFedBy bldg:Room_120 .
+
+bldg:return_damper_2 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isFedBy bldg:Room_120 .
+
+bldg:return_damper_3 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isFedBy bldg:Room_118 .
+
+bldg:return_damper_4 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isFedBy bldg:Room_117 .
+
+bldg:return_damper_5 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isFedBy bldg:Room_115 .
+
+bldg:return_damper_6 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isFedBy bldg:Room_127 .
+
+bldg:return_damper_7 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isFedBy bldg:Room_nan .
+
+bldg:return_damper_8 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isFedBy bldg:Room_128 .
+
+bldg:return_damper_9 a brick_v_1_0_2:Return_Air_Damper ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isFedBy bldg:Room_102 .
+
+bldg:supply_damper_10 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_120 .
+
+bldg:supply_damper_11 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_120 .
+
+bldg:supply_damper_12 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_118 .
+
+bldg:supply_damper_13 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_117 .
+
+bldg:supply_damper_14 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_102 .
+
+bldg:supply_damper_15 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_115 .
+
+bldg:supply_damper_16 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_127 .
+
+bldg:supply_damper_17 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_nan .
+
+bldg:supply_damper_18 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_128 .
+
+bldg:supply_damper_19 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_125 .
+
+bldg:supply_damper_20 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_113 .
+
+bldg:supply_damper_21 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_114 .
+
+bldg:supply_damper_22 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_112 .
+
+bldg:supply_damper_23 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_124 .
+
+bldg:supply_damper_24 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_111 .
+
+bldg:supply_damper_25 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_110 .
+
+bldg:supply_damper_26 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_109 .
+
+bldg:supply_damper_27 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_108 .
+
+bldg:supply_damper_28 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_106 .
+
+bldg:supply_damper_29 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_107 .
+
+bldg:supply_damper_30 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_108b .
+
+bldg:supply_damper_31 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_104 .
+
+bldg:supply_damper_32 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_105 .
+
+bldg:supply_damper_33 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_103a .
+
+bldg:supply_damper_34 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_101 .
+
+bldg:supply_damper_35 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_123 .
+
+bldg:supply_damper_36 a brick_v_1_0_2:Supply_Air_Damper ;
+    brick1:feeds bldg:Room_120a .
+
+bldg:weather_AT565_cloud_coverage a brick_v_1_0_2:Weather_Cloud_Coverage_Sensor ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uuid "f243903f-16cd-3362-9506-8a32a5efa4ee" .
+
+bldg:weather_AT565_cloud_height a brick_v_1_0_2:Weather_Cloud_Height_Sensor ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uuid "d3c6ce62-3295-312c-ab8e-0debe171621d" .
+
+bldg:weather_AT565_relative_humidity a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uuid "003a1759-e1.0.2514-a6d5-981e9b7924d6" .
+
+bldg:weather_AT565_temperature a brick_v_1_0_2:Weather_Temperature_Sensor ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uuid "a6e9f305-d76b-3e1a-8b11-e3d312134f02" .
+
+bldg:weather_AT565_wind_direction a brick1:Wind_Direction_Sensor ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uuid "f458cf4d-d109-3a3b-ae40-939da6841510" .
+
+bldg:weather_AT565_wind_speed a brick1:Wind_Speed_Sensor ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uuid "6410f70b-a594-39bb-94ac-1eb9682a70e7" .
+
+bldg:weather_KTLC1_cloud_coverage a brick_v_1_0_2:Weather_Cloud_Coverage_Sensor ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uuid "72950f10-3614-30da-8803-2755cb4731ea" .
+
+bldg:weather_KTLC1_cloud_height a brick_v_1_0_2:Weather_Cloud_Height_Sensor ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uuid "2ac5ed07-4f55-31c3-8641-0165462d4f44" .
+
+bldg:weather_KTLC1_relative_humidity a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uuid "10ef6a49-4a43-37fd-befc-524eb2b2f104" .
+
+bldg:weather_KTLC1_temperature a brick_v_1_0_2:Weather_Temperature_Sensor ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uuid "c3d0f042-2cb7-387c-8867-4190fef4fd2c" .
+
+bldg:weather_KTLC1_wind_direction a brick1:Wind_Direction_Sensor ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uuid "f933cb33-1bcb-34e9-8e73-1bae9a023715" .
+
+bldg:weather_KTLC1_wind_speed a brick1:Wind_Speed_Sensor ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uuid "6f4e2261-7cc3-3369-a367-01ef3828a7c7" .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:HVAC_Zone_back_hallway a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-movie-theatre .
+
+bldg:HVAC_Zone_room_a a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-movie-theatre .
+
+bldg:HVAC_Zone_theater_1 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-movie-theatre .
+
+bldg:HVAC_Zone_theater_2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-movie-theatre .
+
+bldg:RTU_hvac_zone_back_hallway a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:feeds bldg:hvac_zone_back_hallway .
+
+bldg:RTU_hvac_zone_lobby a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:feeds bldg:hvac_zone_lobby .
+
+bldg:RTU_hvac_zone_main_hallway a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:feeds bldg:hvac_zone_main_hallway .
+
+bldg:RTU_hvac_zone_pegasus_hall a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:feeds bldg:hvac_zone_pegasus_hall .
+
+bldg:RTU_hvac_zone_room_a a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:feeds bldg:hvac_zone_room_a .
+
+bldg:RTU_hvac_zone_room_d a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:feeds bldg:hvac_zone_room_d .
+
+bldg:RTU_hvac_zone_theater_1 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:feeds bldg:hvac_zone_theater_1 .
+
+bldg:RTU_hvac_zone_theater_2 a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:feeds bldg:hvac_zone_theater_2 .
+
+bldg:Room_100 a brick1:Room ;
+    rdf:label "Foyer" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_outside .
+
+bldg:Room_108a a brick1:Room ;
+    rdf:label "Stairs" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_main_hallway .
+
+bldg:Room_116 a brick1:Room ;
+    rdf:label "Ramp" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_main_hallway .
+
+bldg:Room_north a brick1:Room ;
+    rdf:label "North" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_outside .
+
+bldg:Room_west a brick1:Room ;
+    rdf:label "West" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_outside .
+
+bldg:hvac_zone_back_hallway a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-movie-theatre .
+
+bldg:hvac_zone_back_hallway_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Back_Hallway/i.xbos.thermostat" ;
+    brickframe:uuid "e607347d-763a-36ba-a2a6-e53640b113f1" .
+
+bldg:hvac_zone_back_hallway_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Back_Hallway/i.xbos.thermostat" ;
+    brickframe:uuid "786e92ae-4876-3fe1-b018-50b5abaa99ba" .
+
+bldg:hvac_zone_back_hallway_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Back_Hallway/i.xbos.thermostat" ;
+    brickframe:uuid "77f88ab1-ecbc-317a-a6e8-6bab3bb916b7" .
+
+bldg:hvac_zone_back_hallway_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Back_Hallway/i.xbos.thermostat" ;
+    brickframe:uuid "8959cab1-1436-3168-8b37-482073eb629c" .
+
+bldg:hvac_zone_back_hallway_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Back_Hallway/i.xbos.thermostat" ;
+    brickframe:uuid "23665b81-2b24-3974-9555-1a0c2fb9b810" .
+
+bldg:hvac_zone_back_hallway_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Back_Hallway/i.xbos.thermostat" ;
+    brickframe:uuid "8285a29c-dcc5-305a-bb9d-8a2653173e75" .
+
+bldg:hvac_zone_back_hallway_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Back_Hallway/i.xbos.thermostat" ;
+    brickframe:uuid "c448e5ee-ee60-3266-b025-62bb0960576f" .
+
+bldg:hvac_zone_lobby a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-movie-theatre .
+
+bldg:hvac_zone_lobby_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Lobby/i.xbos.thermostat" ;
+    brickframe:uuid "900384da-21d1-3090-886d-275fa28539e0" .
+
+bldg:hvac_zone_lobby_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Lobby/i.xbos.thermostat" ;
+    brickframe:uuid "7c8eb049-5643-34cf-adfe-e2e780cbdd72" .
+
+bldg:hvac_zone_lobby_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Lobby/i.xbos.thermostat" ;
+    brickframe:uuid "7755dfa4-d2f2-3bd6-a93d-9d6dd4a06b09" .
+
+bldg:hvac_zone_lobby_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Lobby/i.xbos.thermostat" ;
+    brickframe:uuid "2d799b18-d576-346b-9d67-3b463e740128" .
+
+bldg:hvac_zone_lobby_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Lobby/i.xbos.thermostat" ;
+    brickframe:uuid "f2df7a81-9b35-3717-91a9-1.0.2272be0d" .
+
+bldg:hvac_zone_lobby_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Lobby/i.xbos.thermostat" ;
+    brickframe:uuid "812903c9-624e-32e8-a7e1-bbf207c5eba0" .
+
+bldg:hvac_zone_lobby_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Lobby/i.xbos.thermostat" ;
+    brickframe:uuid "2820e37e-0a45-3a38-818b-9aa4e7d29570" .
+
+bldg:hvac_zone_main_hallway a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-movie-theatre .
+
+bldg:hvac_zone_main_hallway_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Main_Hallway/i.xbos.thermostat" ;
+    brickframe:uuid "8001efdc-ac6f-3ffe-a14d-bfd2d341986c" .
+
+bldg:hvac_zone_main_hallway_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Main_Hallway/i.xbos.thermostat" ;
+    brickframe:uuid "457d1df3-a8b5-3cef-97f4-be9355452e11" .
+
+bldg:hvac_zone_main_hallway_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Main_Hallway/i.xbos.thermostat" ;
+    brickframe:uuid "87397bbf-5452-39bd-927b-ba8e37f65e70" .
+
+bldg:hvac_zone_main_hallway_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Main_Hallway/i.xbos.thermostat" ;
+    brickframe:uuid "e7e7b95a-fb22-3d87-89c6-ffa9f6df94a5" .
+
+bldg:hvac_zone_main_hallway_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Main_Hallway/i.xbos.thermostat" ;
+    brickframe:uuid "0ee74e3b-f41e-3537-881b-56af42f9be66" .
+
+bldg:hvac_zone_main_hallway_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Main_Hallway/i.xbos.thermostat" ;
+    brickframe:uuid "c876fc25-2499-3357-9b94-387d5227b4a4" .
+
+bldg:hvac_zone_main_hallway_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Main_Hallway/i.xbos.thermostat" ;
+    brickframe:uuid "7fe8d720-a5c4-3ec2-95f5-21a5a3b949da" .
+
+bldg:hvac_zone_pegasus_hall a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-movie-theatre .
+
+bldg:hvac_zone_pegasus_hall_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Pegasus_Hall/i.xbos.thermostat" ;
+    brickframe:uuid "a37a8153-bacf-3d94-980f-07e8baead130" .
+
+bldg:hvac_zone_pegasus_hall_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Pegasus_Hall/i.xbos.thermostat" ;
+    brickframe:uuid "4622298f-ebf1-3add-9ef7-34f07e2e6060" .
+
+bldg:hvac_zone_pegasus_hall_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Pegasus_Hall/i.xbos.thermostat" ;
+    brickframe:uuid "4862299f-3879-3379-96b1-a9920758a6aa" .
+
+bldg:hvac_zone_pegasus_hall_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Pegasus_Hall/i.xbos.thermostat" ;
+    brickframe:uuid "128c62df-7a1f-39a8-82ed-10886d26ad8d" .
+
+bldg:hvac_zone_pegasus_hall_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Pegasus_Hall/i.xbos.thermostat" ;
+    brickframe:uuid "28c57c0f-c982-3ec0-ba98-86a85be3ab92" .
+
+bldg:hvac_zone_pegasus_hall_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Pegasus_Hall/i.xbos.thermostat" ;
+    brickframe:uuid "8c252f6f-accf-3a28-ac71-18cd9e745272" .
+
+bldg:hvac_zone_pegasus_hall_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Pegasus_Hall/i.xbos.thermostat" ;
+    brickframe:uuid "5a779d00-58bc-3158-a31a-49ad24e635ca" .
+
+bldg:hvac_zone_room_a a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-movie-theatre .
+
+bldg:hvac_zone_room_a_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Room_A/i.xbos.thermostat" ;
+    brickframe:uuid "df4f91f1-6834-3525-bf78-02368220f3e2" .
+
+bldg:hvac_zone_room_a_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Room_A/i.xbos.thermostat" ;
+    brickframe:uuid "9e175efd-288b-3f8f-af33-3202b08f6177" .
+
+bldg:hvac_zone_room_a_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Room_A/i.xbos.thermostat" ;
+    brickframe:uuid "26bf341e-c2a5-3a1e-ac88-aa87f92de61e" .
+
+bldg:hvac_zone_room_a_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Room_A/i.xbos.thermostat" ;
+    brickframe:uuid "ca6fd780-4f84-3b90-89ba-ed9b9ea645de" .
+
+bldg:hvac_zone_room_a_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Room_A/i.xbos.thermostat" ;
+    brickframe:uuid "acc32862-27a5-3745-8e0c-3acb1a1422d4" .
+
+bldg:hvac_zone_room_a_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Room_A/i.xbos.thermostat" ;
+    brickframe:uuid "c9404f38-e36f-303d-a878-90209307bf28" .
+
+bldg:hvac_zone_room_a_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Room_A/i.xbos.thermostat" ;
+    brickframe:uuid "c0537318-3dd6-3b06-832f-23c413eb54d3" .
+
+bldg:hvac_zone_room_d a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-movie-theatre .
+
+bldg:hvac_zone_room_d_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Room_D/i.xbos.thermostat" ;
+    brickframe:uuid "60152a50-c7e5-3047-b9fd-0692f20e10cc" .
+
+bldg:hvac_zone_room_d_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Room_D/i.xbos.thermostat" ;
+    brickframe:uuid "58f3c84f-2d1d-386d-bf83-ea96ab5078fd" .
+
+bldg:hvac_zone_room_d_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Room_D/i.xbos.thermostat" ;
+    brickframe:uuid "36ad6c82-63b7-36df-8f7e-77a3b7ba410a" .
+
+bldg:hvac_zone_room_d_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Room_D/i.xbos.thermostat" ;
+    brickframe:uuid "f06fa08d-92e3-34e6-8d24-8b38306827a6" .
+
+bldg:hvac_zone_room_d_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Room_D/i.xbos.thermostat" ;
+    brickframe:uuid "e6e09480-076b-3fc0-a875-4d8c02a8695e" .
+
+bldg:hvac_zone_room_d_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Room_D/i.xbos.thermostat" ;
+    brickframe:uuid "1bbcfb99-98e3-3a40-a34e-94e41eb35c57" .
+
+bldg:hvac_zone_room_d_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Room_D/i.xbos.thermostat" ;
+    brickframe:uuid "e4f9b810-5591-3da2-8bb4-8f80b52af951" .
+
+bldg:hvac_zone_theater_1 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-movie-theatre .
+
+bldg:hvac_zone_theater_1_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Theater_1/i.xbos.thermostat" ;
+    brickframe:uuid "13934c2c-f68d-309f-ab73-2f00ef4853d9" .
+
+bldg:hvac_zone_theater_1_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Theater_1/i.xbos.thermostat" ;
+    brickframe:uuid "195bc0dd-a037-3742-9baa-9e7cf52fd3eb" .
+
+bldg:hvac_zone_theater_1_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Theater_1/i.xbos.thermostat" ;
+    brickframe:uuid "10ddf567-3b39-3707-b022-d374ade74b16" .
+
+bldg:hvac_zone_theater_1_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Theater_1/i.xbos.thermostat" ;
+    brickframe:uuid "515e5873-539c-3d21-a972-63d04e69cf81" .
+
+bldg:hvac_zone_theater_1_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Theater_1/i.xbos.thermostat" ;
+    brickframe:uuid "3b26077e-d0b6-32e6-916a-802f26a36de7" .
+
+bldg:hvac_zone_theater_1_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Theater_1/i.xbos.thermostat" ;
+    brickframe:uuid "6c8f111e-cc88-336a-8309-09d0c8b355b0" .
+
+bldg:hvac_zone_theater_1_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Theater_1/i.xbos.thermostat" ;
+    brickframe:uuid "6cd711ab-045a-300b-90ea-ed6ec3038fa6" .
+
+bldg:hvac_zone_theater_2 a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-movie-theatre .
+
+bldg:hvac_zone_theater_2_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Theater_2/i.xbos.thermostat" ;
+    brickframe:uuid "d91076a3-a0ff-3e06-92ca-59b69d807e07" .
+
+bldg:hvac_zone_theater_2_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Theater_2/i.xbos.thermostat" ;
+    brickframe:uuid "03e0b44c-e878-3ede-839d-81bd2f0c82aa" .
+
+bldg:hvac_zone_theater_2_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Theater_2/i.xbos.thermostat" ;
+    brickframe:uuid "a09ea40b-8817-3d4c-bc05-9c1b6acb1df1" .
+
+bldg:hvac_zone_theater_2_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Theater_2/i.xbos.thermostat" ;
+    brickframe:uuid "2515e225-9ec4-3725-a5c0-5af4ee3a064a" .
+
+bldg:hvac_zone_theater_2_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Theater_2/i.xbos.thermostat" ;
+    brickframe:uuid "75a2b078-da6e-3c96-9e75-49245b311562" .
+
+bldg:hvac_zone_theater_2_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Theater_2/i.xbos.thermostat" ;
+    brickframe:uuid "c085e817-5116-3c6f-ba9a-6882796ffa5f" .
+
+bldg:hvac_zone_theater_2_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brickframe:uri "avenal-movie-theatre/devices/s.pelican/Theater_2/i.xbos.thermostat" ;
+    brickframe:uuid "0becacb2-c9e7-36b8-8778-6437176f99b6" .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+bldg:HVAC_Zone_room_d a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-movie-theatre .
+
+bldg:Room_101 a brick1:Room ;
+    rdf:label "Vestibule" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_lobby .
+
+bldg:Room_103 a brick1:Room ;
+    rdf:label "Candy" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_lobby .
+
+bldg:Room_103a a brick1:Room ;
+    rdf:label "Candy Stor." ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_lobby .
+
+bldg:Room_104 a brick1:Room ;
+    rdf:label "Ladies" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_lobby .
+
+bldg:Room_105 a brick1:Room ;
+    rdf:label "Powder" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_lobby .
+
+bldg:Room_106 a brick1:Room ;
+    rdf:label "Gents" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_lobby .
+
+bldg:Room_107 a brick1:Room ;
+    rdf:label "FACP" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_lobby .
+
+bldg:Room_108 a brick1:Room ;
+    rdf:label "Office" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_main_hallway .
+
+bldg:Room_108b a brick1:Room ;
+    rdf:label "Storage" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_main_hallway .
+
+bldg:Room_109 a brick1:Room ;
+    rdf:label "Bath" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_main_hallway .
+
+bldg:Room_110 a brick1:Room ;
+    rdf:label "Telephone" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_main_hallway .
+
+bldg:Room_111 a brick1:Room ;
+    rdf:label "Bath" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_main_hallway .
+
+bldg:Room_112 a brick1:Room ;
+    rdf:label "Electrical" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_main_hallway .
+
+bldg:Room_113 a brick1:Room ;
+    rdf:label "Storage" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_outside .
+
+bldg:Room_114 a brick1:Room ;
+    rdf:label "Trash" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_outside .
+
+bldg:Room_120a a brick1:Room ;
+    rdf:label "Exit" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_pegasus_hall .
+
+bldg:Room_123 a brick1:Room ;
+    rdf:label "Lift Room" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_pegasus_hall .
+
+bldg:Room_124 a brick1:Room ;
+    rdf:label "Vestibule" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_main_hallway .
+
+bldg:Room_126_A a brick1:Room ;
+    rdf:label "Mtg. Room A" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_room_a .
+
+bldg:Room_126_D a brick1:Room ;
+    rdf:label "Mtg. Room D" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_room_d .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Weather_Cloud_Coverage_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Weather_Cloud_Height_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Weather_Temperature_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+bldg:HVAC_Zone_pegasus_hall a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-movie-theatre .
+
+bldg:Room_102 a brick1:Room ;
+    rdf:label "Lobby" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_lobby .
+
+bldg:Room_125 a brick1:Room ;
+    rdf:label "Hallway" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_back_hallway .
+
+bldg:Room_127 a brick1:Room ;
+    rdf:label "Kitchen" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_room_d .
+
+bldg:Room_128 a brick1:Room ;
+    rdf:label "Garden" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_outside .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:Room_115 a brick1:Room ;
+    rdf:label "Upper Lobby" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_main_hallway .
+
+bldg:Room_117 a brick1:Room ;
+    rdf:label "Movie A" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_theater_1 .
+
+bldg:Room_118 a brick1:Room ;
+    rdf:label "Movie B" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_theater_2 .
+
+bldg:HVAC_Zone_outside a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-movie-theatre .
+
+bldg:Room_120 a brick1:Room ;
+    rdf:label "Multipurpose" ;
+    brickframe:hasSite bldg:avenal-movie-theatre ;
+    brick1:isPartOf bldg:HVAC_Zone_pegasus_hall .
+
+bldg:HVAC_Zone_lobby a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-movie-theatre .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+bldg:HVAC_Zone_main_hallway a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:avenal-movie-theatre .
+
+bldg:avenal-movie-theatre a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "15820" ;
+    brickframe:Country "US" ;
+    brickframe:NumFloors "1" ;
+    brickframe:PrimaryFunction "Movie Theatre" ;
+    brickframe:Timezone "America/Los_Angeles" .
+

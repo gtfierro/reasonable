@@ -1,0 +1,251 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://xbos.io/ontologies/local-butcher-shop#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:Level_1 a brick1:Floor ;
+    rdf:label "Level 1" ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brick1:hasPart bldg:Room_2,
+        bldg:Room_3,
+        bldg:Room_4,
+        bldg:Room_6,
+        bldg:Room_east,
+        bldg:Room_north,
+        bldg:Room_west .
+
+<http://xbos.io/ontologies/local-butcher-shop#green_button_meter_TS02FFBWGaqLpDASblO/orizGMg=> a brick_v_1_0_2:Green_Button_Meter ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brickframe:uuid "b421bddb-9f10-5791-8674-17a6db44916d" .
+
+bldg:hvac_zone_retail_space_tstat a brick1:Thermostat ;
+    brickframe:hasLocation bldg:Room_2 ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brickframe:uri "local-butcher-shop/devices/s.pelican/Retail_Space/i.xbos.thermostat" ;
+    brick1:controls bldg:RTU_hvac_zone_retail_space ;
+    brick1:hasPoint bldg:hvac_zone_retail_space_tstat_cooling_setpoint,
+        bldg:hvac_zone_retail_space_tstat_fan,
+        bldg:hvac_zone_retail_space_tstat_heating_setpoint,
+        bldg:hvac_zone_retail_space_tstat_mode,
+        bldg:hvac_zone_retail_space_tstat_override,
+        bldg:hvac_zone_retail_space_tstat_state,
+        bldg:hvac_zone_retail_space_tstat_temperature .
+
+bldg:meter_0xd8d5b9000000b41d a brick_v_1_0_2:Building_Electric_Meter ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brickframe:uri "local-butcher-shop/s.eagle/0xd8d5b9000000b41d/i.meter" ;
+    brickframe:uuid "e8ee760e-e0a9-34e1-a797-179c20bbadc7" .
+
+bldg:weather_KOAK_cloud_coverage a brick_v_1_0_2:Weather_Cloud_Coverage_Sensor ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brickframe:uuid "7b49f7f2-f142-38a0-b284-42b0aef95b64" .
+
+bldg:weather_KOAK_cloud_height a brick_v_1_0_2:Weather_Cloud_Height_Sensor ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brickframe:uuid "f510c11b-3a04-3518-b757-7940555abb1d" .
+
+bldg:weather_KOAK_relative_humidity a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brickframe:uuid "5e55525e-f799-3b7b-8520-8e42730946df" .
+
+bldg:weather_KOAK_temperature a brick_v_1_0_2:Weather_Temperature_Sensor ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brickframe:uuid "a73c1b67-142f-3b45-baf8-e308619b6bbc" .
+
+bldg:weather_KOAK_wind_direction a brick1:Wind_Direction_Sensor ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brickframe:uuid "4a939b52-73b5-3016-95d7-34fd1ea1d41f" .
+
+bldg:weather_KOAK_wind_speed a brick1:Wind_Speed_Sensor ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brickframe:uuid "9a3d08a7-0489-3b9e-981b-2e2e916cd783" .
+
+bldg:weather_LBNL1_cloud_coverage a brick_v_1_0_2:Weather_Cloud_Coverage_Sensor ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brickframe:uuid "3eaf5926-11a8-3b7c-abdb-d1b06aca2cb6" .
+
+bldg:weather_LBNL1_cloud_height a brick_v_1_0_2:Weather_Cloud_Height_Sensor ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brickframe:uuid "a3beea1c-65e3-38e1-8710-9fd1d9605caa" .
+
+bldg:weather_LBNL1_relative_humidity a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brickframe:uuid "5cbf1af8-60ba-3e36-9ed6-b80feb4acae2" .
+
+bldg:weather_LBNL1_temperature a brick_v_1_0_2:Weather_Temperature_Sensor ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brickframe:uuid "00327584-54b2-35a8-aaed-182747a5dda7" .
+
+bldg:weather_LBNL1_wind_direction a brick1:Wind_Direction_Sensor ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brickframe:uuid "98180ac6-3a45-3884-afff-0c0341a9b9f1" .
+
+bldg:weather_LBNL1_wind_speed a brick1:Wind_Speed_Sensor ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brickframe:uuid "fe8d0d04-f8d2-37cc-a582-3978f3699474" .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:RTU_hvac_zone_retail_space a brick_v_1_0_2:RTU ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brick1:feeds bldg:hvac_zone_retail_space .
+
+bldg:Room_3 a brick1:Room ;
+    rdf:label "Hallway" ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brick1:isPartOf bldg:HVAC_Zone_retail_space .
+
+bldg:Room_4 a brick1:Room ;
+    rdf:label "Walk-in Freezer" ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brick1:isPartOf bldg:HVAC_Zone_retail_space .
+
+bldg:Room_6 a brick1:Room ;
+    rdf:label "Office" ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brick1:isPartOf bldg:HVAC_Zone_retail_space .
+
+bldg:Room_east a brick1:Room ;
+    rdf:label "East" ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brick1:isPartOf bldg:HVAC_Zone_outside .
+
+bldg:Room_north a brick1:Room ;
+    rdf:label "North" ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brick1:isPartOf bldg:HVAC_Zone_outside .
+
+bldg:Room_west a brick1:Room ;
+    rdf:label "West" ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brick1:isPartOf bldg:HVAC_Zone_outside .
+
+bldg:hvac_zone_retail_space a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:local-butcher-shop .
+
+bldg:hvac_zone_retail_space_tstat_cooling_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Cooling_Setpoint ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brickframe:uri "local-butcher-shop/devices/s.pelican/Retail_Space/i.xbos.thermostat" ;
+    brickframe:uuid "ac4462a4-7775-3d8b-bb2a-176c7e434f22" .
+
+bldg:hvac_zone_retail_space_tstat_fan a brick_v_1_0_2:Fan_Command ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brickframe:uri "local-butcher-shop/devices/s.pelican/Retail_Space/i.xbos.thermostat" ;
+    brickframe:uuid "930f5a15-bd84-3c89-8ef8-761953cadbfb" .
+
+bldg:hvac_zone_retail_space_tstat_heating_setpoint a brick_v_1_0_2:Supply_Air_Temperature_Heating_Setpoint ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brickframe:uri "local-butcher-shop/devices/s.pelican/Retail_Space/i.xbos.thermostat" ;
+    brickframe:uuid "e429753f-ca1c-31a3-a437-3438766d9b45" .
+
+bldg:hvac_zone_retail_space_tstat_mode a brick_v_1_0_2:Thermostat_Mode_Command ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brickframe:uri "local-butcher-shop/devices/s.pelican/Retail_Space/i.xbos.thermostat" ;
+    brickframe:uuid "10709649-f296-30d7-b7b9-786140b887b1" .
+
+bldg:hvac_zone_retail_space_tstat_override a brick1:Override_Command ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brickframe:uri "local-butcher-shop/devices/s.pelican/Retail_Space/i.xbos.thermostat" ;
+    brickframe:uuid "1903d474-f9fc-385e-be42-2826782b4e59" .
+
+bldg:hvac_zone_retail_space_tstat_state a brick_v_1_0_2:Thermostat_Status ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brickframe:uri "local-butcher-shop/devices/s.pelican/Retail_Space/i.xbos.thermostat" ;
+    brickframe:uuid "a4fce62e-1982-3140-ba96-d6b124c3ca07" .
+
+bldg:hvac_zone_retail_space_tstat_temperature a brick1:Temperature_Sensor ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brickframe:uri "local-butcher-shop/devices/s.pelican/Retail_Space/i.xbos.thermostat" ;
+    brickframe:uuid "3e32ae3f-65db-366c-99db-c9c0853acaa7" .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+bldg:Room_2 a brick1:Room ;
+    rdf:label "Prep Area" ;
+    brickframe:hasSite bldg:local-butcher-shop ;
+    brick1:isPartOf bldg:HVAC_Zone_retail_space .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Weather_Cloud_Coverage_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Weather_Cloud_Height_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Weather_Temperature_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+bldg:HVAC_Zone_outside a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:local-butcher-shop .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:HVAC_Zone_retail_space a brick1:HVAC_Zone ;
+    brickframe:hasSite bldg:local-butcher-shop .
+
+bldg:local-butcher-shop a brick_v_1_0_2:Site ;
+    brickframe:Country "US" ;
+    brickframe:NumFloors "2" ;
+    brickframe:PrimaryFunction "Commercial" ;
+    brickframe:Timezone "America/Los_Angeles" .
+

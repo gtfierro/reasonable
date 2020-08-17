@@ -1,0 +1,303 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://buildsys.org/ontologies/VMLF#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg:AHU01 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:VMLF ;
+    brick1:hasPoint bldg:VMLF.AHU.AHU01.CCV,
+        bldg:VMLF.AHU.AHU01.Cooling_Valve_Output,
+        bldg:VMLF.AHU.AHU01.Heating_Valve_Output,
+        bldg:VMLF.AHU.AHU01.Mixed_Air_Temp,
+        bldg:VMLF.AHU.AHU01.Mode,
+        bldg:VMLF.AHU.AHU01.Outside_Air_Temp,
+        bldg:VMLF.AHU.AHU01.Outside_Air_Temp_Virtual,
+        bldg:VMLF.AHU.AHU01.Return_Air_Temp,
+        bldg:VMLF.AHU.AHU01.Supply_Air_Pressure,
+        bldg:VMLF.AHU.AHU01.Supply_Air_Temp,
+        bldg:VMLF.AHU.AHU01.Supply_Air_Temp_Setpoint,
+        bldg:VMLF.AHU.AHU01.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU02 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:VMLF ;
+    brick1:hasPoint bldg:VMLF.AHU.AHU02.CCV,
+        bldg:VMLF.AHU.AHU02.Cooling_Valve_Output,
+        bldg:VMLF.AHU.AHU02.Heating_Valve_Output,
+        bldg:VMLF.AHU.AHU02.Supply_Air_Pressure,
+        bldg:VMLF.AHU.AHU02.Supply_Air_Temp,
+        bldg:VMLF.AHU.AHU02.Supply_Air_Temp_Setpoint ;
+    brick1:isFedBy bldg:chiller .
+
+bldg:AHU03 a brick1:Air_Handler_Unit ;
+    brickframe:hasSite bldg:VMLF ;
+    brick1:hasPoint bldg:VMLF.AHU.AHU03.Supply_Air_Pressure,
+        bldg:VMLF.AHU.AHU03.Supply_Air_Temp,
+        bldg:VMLF.AHU.AHU03.Supply_Air_Temp_Setpoint,
+        bldg:VMLF.AHU.AHU03.Zone_Air_Temp ;
+    brick1:isFedBy bldg:chiller .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:VMLF.AHU.AHU01.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.AHU.AHU01.CCV" ;
+    brickframe:uuid "226d7bf2-8f7c-3334-a530-64df9ae801b1" .
+
+bldg:VMLF.AHU.AHU01.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.AHU.AHU01.Cooling Valve Output" ;
+    brickframe:uuid "9a44f5cc-2f37-353b-b90b-d347766f1329" .
+
+bldg:VMLF.AHU.AHU01.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.AHU.AHU01.Heating Valve Output" ;
+    brickframe:uuid "d921d209-d384-3872-9469-c380c711bbe1" .
+
+bldg:VMLF.AHU.AHU01.Mixed_Air_Temp a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.AHU.AHU01.Mixed Air Temp" ;
+    brickframe:uuid "56b960c7-fae4-3c7a-8a11-daf7039e8ecb" .
+
+bldg:VMLF.AHU.AHU01.Mode a brick_v_1_0_2:Mode ;
+    brickframe:pointname "VMLF.AHU.AHU01.Mode" ;
+    brickframe:uuid "f00180c4-6bcd-3c70-9164-6aa68cba8451" .
+
+bldg:VMLF.AHU.AHU01.Outside_Air_Temp a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.AHU.AHU01.Outside Air Temp" ;
+    brickframe:uuid "7b04dd04-548b-3e29-b4df-3fa71187b60c" .
+
+bldg:VMLF.AHU.AHU01.Outside_Air_Temp_Virtual a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.AHU.AHU01.Outside Air Temp Virtual" ;
+    brickframe:uuid "2652ff27-bac3-3ba8-a0b0-e919c447d4fc" .
+
+bldg:VMLF.AHU.AHU01.Return_Air_Temp a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.AHU.AHU01.Return Air Temp" ;
+    brickframe:uuid "9771d84c-cc06-3a6c-a932-d0fae1dfb604" .
+
+bldg:VMLF.AHU.AHU01.Supply_Air_Pressure a brick1:Supply_Air_Static_Pressure_Sensor ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.AHU.AHU01.Supply Air Pressure" ;
+    brickframe:uuid "d5b1101d-cab6-3d52-87cb-854742f5ff86" .
+
+bldg:VMLF.AHU.AHU01.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.AHU.AHU01.Supply Air Temp" ;
+    brickframe:uuid "1f73c35e-cc5c-330e-ad50-42b75765cd95" .
+
+bldg:VMLF.AHU.AHU01.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.AHU.AHU01.Supply Air Temp Setpoint" ;
+    brickframe:uuid "affc99d8-5bcb-31ae-8011-3949e886e7cd" .
+
+bldg:VMLF.AHU.AHU01.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.AHU.AHU01.Zone Air Temp" ;
+    brickframe:uuid "2d111c3e-99e3-3d3d-8a82-b2fd7ac29753" .
+
+bldg:VMLF.AHU.AHU02.CCV a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.AHU.AHU02.CCV" ;
+    brickframe:uuid "2df6c13c-0c5e-3f43-82e0-ce167d5eade4" .
+
+bldg:VMLF.AHU.AHU02.Cooling_Valve_Output a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.AHU.AHU02.Cooling Valve Output" ;
+    brickframe:uuid "79effb26-b144-3cdf-9f83-70c2e42aad7f" .
+
+bldg:VMLF.AHU.AHU02.Heating_Valve_Output a brick1:Command ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.AHU.AHU02.Heating Valve Output" ;
+    brickframe:uuid "dfeed1dc-64d6-3b66-bdab-22b8a9f38611" .
+
+bldg:VMLF.AHU.AHU02.Supply_Air_Pressure a brick1:Supply_Air_Static_Pressure_Sensor ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.AHU.AHU02.Supply Air Pressure" ;
+    brickframe:uuid "9a162327-e6af-309f-b187-63fca0a820ae" .
+
+bldg:VMLF.AHU.AHU02.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.AHU.AHU02.Supply Air Temp" ;
+    brickframe:uuid "a910629c-9ecc-3f04-8ec3-ad6bc958f705" .
+
+bldg:VMLF.AHU.AHU02.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.AHU.AHU02.Supply Air Temp Setpoint" ;
+    brickframe:uuid "b7353dbe-c822-3e4b-a9ba-8444c7289719" .
+
+bldg:VMLF.AHU.AHU03.Supply_Air_Pressure a brick1:Supply_Air_Static_Pressure_Sensor ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.AHU.AHU03.Supply Air Pressure" ;
+    brickframe:uuid "75a9d942-fc43-3cdc-9134-f71c29c5c01b" .
+
+bldg:VMLF.AHU.AHU03.Supply_Air_Temp a brick1:Supply_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.AHU.AHU03.Supply Air Temp" ;
+    brickframe:uuid "c9f849fe-bff4-3d54-8924-42fe63edd6da" .
+
+bldg:VMLF.AHU.AHU03.Supply_Air_Temp_Setpoint a brick_v_1_0_2:Supply_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.AHU.AHU03.Supply Air Temp Setpoint" ;
+    brickframe:uuid "a52a25ef-4855-3fe0-b30a-53cc65172f4a" .
+
+bldg:VMLF.AHU.AHU03.Zone_Air_Temp a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.AHU.AHU03.Zone Air Temp" ;
+    brickframe:uuid "c8e467bf-f9a7-341d-ad42-98d63fc7cacf" .
+
+bldg:VMLF.CHW.Building_Chilled_Water_Flow a brick_v_1_0_2:Chilled_Water_Flow_Sensor ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.CHW.Building Chilled Water Flow" ;
+    brickframe:uuid "8a6e6e05-1e7c-3e9b-b28e-0aeb2ecbad91" .
+
+bldg:VMLF.CHW.Building_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.CHW.Building Chilled Water Return Temp" ;
+    brickframe:uuid "c18d3733-d1de-3358-b08d-f144f99bc68e" .
+
+bldg:VMLF.CHW.Building_Chilled_Water_Return_Temp_Setpoint a brick_v_1_0_2:Chilled_Water_Return_Temperature_Setpoint ;
+    brickframe:pointname "VMLF.CHW.Building Chilled Water Return Temp Setpoint" ;
+    brickframe:uuid "ab552771-ecda-3745-a5ee-560d7548c00e" .
+
+bldg:VMLF.CHW.Building_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.CHW.Building Chilled Water Supply Temp" ;
+    brickframe:uuid "dc9a593e-04bf-359e-8e5e-f09c2e3399ba" .
+
+bldg:VMLF.CHW.Building_Chilled_Water_Supply_Temp_Setpoint a brick_v_1_0_2:Chilled_Water_Supply_Temperature_Setpoint ;
+    brickframe:pointname "VMLF.CHW.Building Chilled Water Supply Temp Setpoint" ;
+    brickframe:uuid "7d8a092b-8dea-3b1d-bb20-cb888c8eb960" .
+
+bldg:VMLF.CHW.CHWRDIFSP a brick1:Chilled_Water_Differential_Pressure_Setpoint ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.CHW.CHWRDIFSP" ;
+    brickframe:uuid "a4c8ab27-e21f-3bd4-adaf-89c251704d49" .
+
+bldg:VMLF.CHW.ENABLE a brick1:Enable_Command ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.CHW.ENABLE" ;
+    brickframe:uuid "09d1197a-7b7a-3603-b185-d769d0a2c1ed" .
+
+bldg:VMLF.CHW.Loop_Chilled_Water_Flow a brick_v_1_0_2:Chilled_Water_Flow_Sensor ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.CHW.Loop Chilled Water Flow" ;
+    brickframe:uuid "353a3edf-3292-3b6e-b476-36847c207185" .
+
+bldg:VMLF.CHW.Loop_Chilled_Water_Return_Pressure a brick_v_1_0_2:Chilled_Water_Return_Pressure ;
+    brickframe:pointname "VMLF.CHW.Loop Chilled Water Return Pressure" ;
+    brickframe:uuid "1aad5963-023f-3b28-9cfc-3afd03ec4355" .
+
+bldg:VMLF.CHW.Loop_Chilled_Water_Return_Temp a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.CHW.Loop Chilled Water Return Temp" ;
+    brickframe:uuid "637c5c19-2ce5-3bb6-95c3-09d4e0db09b5" .
+
+bldg:VMLF.CHW.Loop_Chilled_Water_Supply_Pressure a brick_v_1_0_2:Chilled_Water_Supply_Pressure ;
+    brickframe:pointname "VMLF.CHW.Loop Chilled Water Supply Pressure" ;
+    brickframe:uuid "a7d59e83-8eb2-3d88-ac9e-bd34dcdba21a" .
+
+bldg:VMLF.CHW.Loop_Chilled_Water_Supply_Temp a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.CHW.Loop Chilled Water Supply Temp" ;
+    brickframe:uuid "9931d478-92b5-3954-8939-9f18f5be9df7" .
+
+bldg:VMLF.CHW.Outside_Air_Temp_VirtHI a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.CHW.Outside Air Temp VirtHI" ;
+    brickframe:uuid "c2a7d949-3ccd-3a5c-91e8-86a011dfb4d9" .
+
+bldg:VMLF.CHW.Outside_Air_Temp_VirtLO a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:VMLF ;
+    brickframe:pointname "VMLF.CHW.Outside Air Temp VirtLO" ;
+    brickframe:uuid "0ac82e72-83b5-361c-81e7-647b408e5c53" .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+bldg:chiller a brick1:Chiller ;
+    brickframe:hasSite bldg:VMLF ;
+    brick1:hasPoint bldg:VMLF.CHW.Building_Chilled_Water_Flow,
+        bldg:VMLF.CHW.Building_Chilled_Water_Return_Temp,
+        bldg:VMLF.CHW.Building_Chilled_Water_Return_Temp_Setpoint,
+        bldg:VMLF.CHW.Building_Chilled_Water_Supply_Temp,
+        bldg:VMLF.CHW.Building_Chilled_Water_Supply_Temp_Setpoint,
+        bldg:VMLF.CHW.CHWRDIFSP,
+        bldg:VMLF.CHW.ENABLE,
+        bldg:VMLF.CHW.Loop_Chilled_Water_Flow,
+        bldg:VMLF.CHW.Loop_Chilled_Water_Return_Pressure,
+        bldg:VMLF.CHW.Loop_Chilled_Water_Return_Temp,
+        bldg:VMLF.CHW.Loop_Chilled_Water_Supply_Pressure,
+        bldg:VMLF.CHW.Loop_Chilled_Water_Supply_Temp,
+        bldg:VMLF.CHW.Outside_Air_Temp_VirtHI,
+        bldg:VMLF.CHW.Outside_Air_Temp_VirtLO .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:VMLF a brick_v_1_0_2:Site ;
+    brickframe:AreaSquareFeet "3439" ;
+    brickframe:Country "US" .
+

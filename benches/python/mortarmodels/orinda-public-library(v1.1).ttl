@@ -1,0 +1,2442 @@
+@prefix bf: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix bldg: <http://xbos.io/ontologies/orinda-public-library#> .
+@prefix brick: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brick1: <https://brickschema.org/schema/1.1/Brick#> .
+@prefix brick_v_1_0_2: <https://brickschema.org/schema/1.0.2/Brick#> .
+@prefix brickframe: <https://brickschema.org/schema/1.0.2/BrickFrame#> .
+@prefix btag: <https://brickschema.org/schema/1.0.2/BrickTag#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tag: <https://brickschema.org/schema/1.1/BrickTag#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg: a brick1:Chilled_Water_System_Enable_Command ;
+    brickframe:hasSite bldg:orinda-public-library .
+
+bldg:AHU-1 a brick1:AHU ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPart bldg:AHU-1.DPR,
+        bldg:AHU-1.EF-,
+        bldg:AHU-1.EF2-,
+        bldg:AHU-1.EF4-,
+        bldg:AHU-1.RF-,
+        bldg:AHU-1.SF- ;
+    brick1:hasPoint bldg:AHU-1.CHWV-O,
+        bldg:AHU-1.DA-T,
+        bldg:AHU-1.DAT-WSP,
+        bldg:AHU-1.FLTR-S,
+        bldg:AHU-1.HWV-O,
+        bldg:AHU-1.MA-T,
+        bldg:AHU-1.OA-T,
+        bldg:AHU-1.OCC-C,
+        bldg:AHU-1.RA-T,
+        bldg:AHU-1.VVTZN-T .
+
+bldg:AHU-2 a brick1:AHU ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPart bldg:AHU-2.OAD,
+        bldg:AHU-2.RF,
+        bldg:AHU-2.RF-,
+        bldg:AHU-2.SF,
+        bldg:AHU-2.SF- ;
+    brick1:hasPoint bldg:AHU-2.BLDG-P,
+        bldg:AHU-2.BLDGP-SP,
+        bldg:AHU-2.CHWV-O,
+        bldg:AHU-2.DA-P,
+        bldg:AHU-2.DA-T,
+        bldg:AHU-2.DAP-SP,
+        bldg:AHU-2.DAT-WSP,
+        bldg:AHU-2.FLTR-S,
+        bldg:AHU-2.HWV-O,
+        bldg:AHU-2.MA-T,
+        bldg:AHU-2.OA-T,
+        bldg:AHU-2.OCC-C,
+        bldg:AHU-2.RA-T,
+        bldg:AHU-2.VAV-CLG .
+
+bldg:AHU-3 a brick1:AHU ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPart bldg:AHU-3.DPR,
+        bldg:AHU-3.ECON,
+        bldg:AHU-3.SF- ;
+    brick1:hasPoint bldg:AHU-3.FLTR-S,
+        bldg:AHU-3.MA-T,
+        bldg:AHU-3.MALL,
+        bldg:AHU-3.MAT-SP,
+        bldg:AHU-3.MINPOSSP,
+        bldg:AHU-3.OA-T,
+        bldg:AHU-3.OCC-S,
+        bldg:AHU-3.RA-T,
+        bldg:AHU-3.SDWN-C,
+        bldg:AHU-3.ZN-T,
+        bldg:AHU-3.ZNT-SP .
+
+bldg:CentralPlant a brick1:Chilled_Water_System_Enable_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPart bldg:CentralPlant.BLR,
+        bldg:CentralPlant.CHWP,
+        bldg:CentralPlant.HWP ;
+    brick1:hasPoint bldg:CentralPlant.CH-C,
+        bldg:CentralPlant.CH-S,
+        bldg:CentralPlant.CHP3-RST,
+        bldg:CentralPlant.CHP4-RST,
+        bldg:CentralPlant.CHW-C,
+        bldg:CentralPlant.CHW-SP,
+        bldg:CentralPlant.CHW-VLV,
+        bldg:CentralPlant.CHWR-T,
+        bldg:CentralPlant.CHWS-T,
+        bldg:CentralPlant.HTW-C,
+        bldg:CentralPlant.HWR-T,
+        bldg:CentralPlant.HWS-T,
+        bldg:CentralPlant.OA-T,
+        bldg:CentralPlant.OCC-C,
+        bldg:CentralPlant.PLANT-LEAD .
+
+bldg:Garage a brick1:Chilled_Water_System_Enable_Command ;
+    brickframe:hasSite bldg:orinda-public-library .
+
+bldg:Override-Alarm a brick1:Chilled_Water_System_Enable_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:Override-Alarm.GEN-ALM .
+
+bldg:VAV1-1 a brick1:VAV ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPart bldg:VAV1-1.DPR ;
+    brick1:hasPoint bldg:VAV1-1.BOXHTG,
+        bldg:VAV1-1.BOXMODE,
+        bldg:VAV1-1.CMAXFLO,
+        bldg:VAV1-1.COMMONSP,
+        bldg:VAV1-1.CPIDPV,
+        bldg:VAV1-1.DA-T,
+        bldg:VAV1-1.OCCHTGFL,
+        bldg:VAV1-1.S-VP,
+        bldg:VAV1-1.SUPFLOSP,
+        bldg:VAV1-1.SUPFLOW,
+        bldg:VAV1-1.W-C-ADJ,
+        bldg:VAV1-1.ZN-T .
+
+bldg:VAV1-2 a brick1:VAV ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPart bldg:VAV1-2.DPR ;
+    brick1:hasPoint bldg:VAV1-2.BOXHTG,
+        bldg:VAV1-2.BOXMODE,
+        bldg:VAV1-2.CMAXFLO,
+        bldg:VAV1-2.COMMONSP,
+        bldg:VAV1-2.CPIDPV,
+        bldg:VAV1-2.DA-T,
+        bldg:VAV1-2.OCCHTGFL,
+        bldg:VAV1-2.S-VP,
+        bldg:VAV1-2.SUPFLOSP,
+        bldg:VAV1-2.SUPFLOW,
+        bldg:VAV1-2.W-C-ADJ,
+        bldg:VAV1-2.ZN-T .
+
+bldg:VAV1-3 a brick1:VAV ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPart bldg:VAV1-3.DPR ;
+    brick1:hasPoint bldg:VAV1-3.BOXHTG,
+        bldg:VAV1-3.BOXMODE,
+        bldg:VAV1-3.CMAXFLO,
+        bldg:VAV1-3.COMMONSP,
+        bldg:VAV1-3.CPIDPV,
+        bldg:VAV1-3.DA-T,
+        bldg:VAV1-3.OCCHTGFL,
+        bldg:VAV1-3.S-VP,
+        bldg:VAV1-3.SUPFLOSP,
+        bldg:VAV1-3.SUPFLOW,
+        bldg:VAV1-3.W-C-ADJ,
+        bldg:VAV1-3.ZN-T .
+
+bldg:VAV1-4 a brick1:VAV ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPart bldg:VAV1-4.DPR ;
+    brick1:hasPoint bldg:VAV1-4.BOXHTG,
+        bldg:VAV1-4.BOXMODE,
+        bldg:VAV1-4.CMAXFLO,
+        bldg:VAV1-4.COMMONSP,
+        bldg:VAV1-4.CPIDPV,
+        bldg:VAV1-4.DA-T,
+        bldg:VAV1-4.OCCHTGFL,
+        bldg:VAV1-4.S-VP,
+        bldg:VAV1-4.SUPFLOSP,
+        bldg:VAV1-4.SUPFLOW,
+        bldg:VAV1-4.W-C-ADJ,
+        bldg:VAV1-4.ZN-T .
+
+bldg:VAV1-5 a brick1:VAV ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPart bldg:VAV1-5.DPR ;
+    brick1:hasPoint bldg:VAV1-5.BOXHTG,
+        bldg:VAV1-5.BOXMODE,
+        bldg:VAV1-5.CMAXFLO,
+        bldg:VAV1-5.COMMONSP,
+        bldg:VAV1-5.CPIDPV,
+        bldg:VAV1-5.DA-T,
+        bldg:VAV1-5.OCCHTGFL,
+        bldg:VAV1-5.S-VP,
+        bldg:VAV1-5.SUPFLOSP,
+        bldg:VAV1-5.SUPFLOW,
+        bldg:VAV1-5.W-C-ADJ,
+        bldg:VAV1-5.ZN-T .
+
+bldg:VAV2-1 a brick1:VAV ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPart bldg:VAV2-1.DPR ;
+    brick1:hasPoint bldg:VAV2-1.BOXHTG,
+        bldg:VAV2-1.BOXMODE,
+        bldg:VAV2-1.CMAXFLO,
+        bldg:VAV2-1.COMMONSP,
+        bldg:VAV2-1.CPIDPV,
+        bldg:VAV2-1.DA-T,
+        bldg:VAV2-1.OCCHTGFL,
+        bldg:VAV2-1.S-VP,
+        bldg:VAV2-1.SUPFLOSP,
+        bldg:VAV2-1.SUPFLOW,
+        bldg:VAV2-1.W-C-ADJ,
+        bldg:VAV2-1.ZN-T .
+
+bldg:VAV2-10 a brick1:VAV ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPart bldg:VAV2-10.DPR ;
+    brick1:hasPoint bldg:VAV2-10.BOXHTG,
+        bldg:VAV2-10.BOXMODE,
+        bldg:VAV2-10.CMAXFLO,
+        bldg:VAV2-10.COMMONSP,
+        bldg:VAV2-10.CPIDPV,
+        bldg:VAV2-10.DA-T,
+        bldg:VAV2-10.OCCHTGFL,
+        bldg:VAV2-10.S-VP,
+        bldg:VAV2-10.SUPFLOSP,
+        bldg:VAV2-10.SUPFLOW,
+        bldg:VAV2-10.W-C-ADJ,
+        bldg:VAV2-10.ZN-T .
+
+bldg:VAV2-11 a brick1:VAV ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPart bldg:VAV2-11.DPR ;
+    brick1:hasPoint bldg:VAV2-11.BOXHTG,
+        bldg:VAV2-11.BOXMODE,
+        bldg:VAV2-11.CMAXFLO,
+        bldg:VAV2-11.COMMONSP,
+        bldg:VAV2-11.CPIDPV,
+        bldg:VAV2-11.DA-T,
+        bldg:VAV2-11.OCCHTGFL,
+        bldg:VAV2-11.S-VP,
+        bldg:VAV2-11.SUPFLOSP,
+        bldg:VAV2-11.SUPFLOW,
+        bldg:VAV2-11.W-C-ADJ,
+        bldg:VAV2-11.ZN-T .
+
+bldg:VAV2-12 a brick1:VAV ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPart bldg:VAV2-12.DPR ;
+    brick1:hasPoint bldg:VAV2-12.BOXHTG,
+        bldg:VAV2-12.BOXMODE,
+        bldg:VAV2-12.CMAXFLO,
+        bldg:VAV2-12.COMMONSP,
+        bldg:VAV2-12.CPIDPV,
+        bldg:VAV2-12.DA-T,
+        bldg:VAV2-12.OCCHTGFL,
+        bldg:VAV2-12.S-VP,
+        bldg:VAV2-12.SUPFLOSP,
+        bldg:VAV2-12.SUPFLOW,
+        bldg:VAV2-12.W-C-ADJ,
+        bldg:VAV2-12.ZN-T .
+
+bldg:VAV2-2 a brick1:VAV ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPart bldg:VAV2-2.DPR ;
+    brick1:hasPoint bldg:VAV2-2.BOXHTG,
+        bldg:VAV2-2.BOXMODE,
+        bldg:VAV2-2.CMAXFLO,
+        bldg:VAV2-2.COMMONSP,
+        bldg:VAV2-2.CPIDPV,
+        bldg:VAV2-2.DA-T,
+        bldg:VAV2-2.OCCHTGFL,
+        bldg:VAV2-2.S-VP,
+        bldg:VAV2-2.SUPFLOSP,
+        bldg:VAV2-2.SUPFLOW,
+        bldg:VAV2-2.W-C-ADJ,
+        bldg:VAV2-2.ZN-T .
+
+bldg:VAV2-3 a brick1:VAV ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPart bldg:VAV2-3.DPR ;
+    brick1:hasPoint bldg:VAV2-3.BOXHTG,
+        bldg:VAV2-3.BOXMODE,
+        bldg:VAV2-3.CMAXFLO,
+        bldg:VAV2-3.COMMONSP,
+        bldg:VAV2-3.CPIDPV,
+        bldg:VAV2-3.DA-T,
+        bldg:VAV2-3.OCCHTGFL,
+        bldg:VAV2-3.S-VP,
+        bldg:VAV2-3.SUPFLOSP,
+        bldg:VAV2-3.SUPFLOW,
+        bldg:VAV2-3.W-C-ADJ,
+        bldg:VAV2-3.ZN-T .
+
+bldg:VAV2-4 a brick1:VAV ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPart bldg:VAV2-4.DPR ;
+    brick1:hasPoint bldg:VAV2-4.BOXHTG,
+        bldg:VAV2-4.BOXMODE,
+        bldg:VAV2-4.CMAXFLO,
+        bldg:VAV2-4.COMMONSP,
+        bldg:VAV2-4.CPIDPV,
+        bldg:VAV2-4.DA-T,
+        bldg:VAV2-4.OCCHTGFL,
+        bldg:VAV2-4.S-VP,
+        bldg:VAV2-4.SUPFLOSP,
+        bldg:VAV2-4.SUPFLOW,
+        bldg:VAV2-4.W-C-ADJ,
+        bldg:VAV2-4.ZN-T .
+
+bldg:VAV2-5 a brick1:VAV ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPart bldg:VAV2-5.DPR ;
+    brick1:hasPoint bldg:VAV2-5.BOXHTG,
+        bldg:VAV2-5.BOXMODE,
+        bldg:VAV2-5.CMAXFLO,
+        bldg:VAV2-5.COMMONSP,
+        bldg:VAV2-5.CPIDPV,
+        bldg:VAV2-5.DA-T,
+        bldg:VAV2-5.OCCHTGFL,
+        bldg:VAV2-5.S-VP,
+        bldg:VAV2-5.SUPFLOSP,
+        bldg:VAV2-5.SUPFLOW,
+        bldg:VAV2-5.W-C-ADJ,
+        bldg:VAV2-5.ZN-T .
+
+bldg:VAV2-6 a brick1:VAV ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPart bldg:VAV2-6.DPR ;
+    brick1:hasPoint bldg:VAV2-6.BOXHTG,
+        bldg:VAV2-6.BOXMODE,
+        bldg:VAV2-6.CMAXFLO,
+        bldg:VAV2-6.COMMONSP,
+        bldg:VAV2-6.CPIDPV,
+        bldg:VAV2-6.DA-T,
+        bldg:VAV2-6.OCCHTGFL,
+        bldg:VAV2-6.S-VP,
+        bldg:VAV2-6.SUPFLOSP,
+        bldg:VAV2-6.SUPFLOW,
+        bldg:VAV2-6.W-C-ADJ,
+        bldg:VAV2-6.ZN-T .
+
+bldg:VAV2-7 a brick1:VAV ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPart bldg:VAV2-7.DPR ;
+    brick1:hasPoint bldg:VAV2-7.BOXHTG,
+        bldg:VAV2-7.BOXMODE,
+        bldg:VAV2-7.CMAXFLO,
+        bldg:VAV2-7.COMMONSP,
+        bldg:VAV2-7.CPIDPV,
+        bldg:VAV2-7.DA-T,
+        bldg:VAV2-7.OCCHTGFL,
+        bldg:VAV2-7.S-VP,
+        bldg:VAV2-7.SUPFLOSP,
+        bldg:VAV2-7.SUPFLOW,
+        bldg:VAV2-7.W-C-ADJ,
+        bldg:VAV2-7.ZN-T .
+
+bldg:VAV2-8 a brick1:VAV ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPart bldg:VAV2-8.DPR ;
+    brick1:hasPoint bldg:VAV2-8.BOXHTG,
+        bldg:VAV2-8.BOXMODE,
+        bldg:VAV2-8.CMAXFLO,
+        bldg:VAV2-8.COMMONSP,
+        bldg:VAV2-8.CPIDPV,
+        bldg:VAV2-8.DA-T,
+        bldg:VAV2-8.OCCHTGFL,
+        bldg:VAV2-8.S-VP,
+        bldg:VAV2-8.SUPFLOSP,
+        bldg:VAV2-8.SUPFLOW,
+        bldg:VAV2-8.W-C-ADJ,
+        bldg:VAV2-8.ZN-T .
+
+bldg:VAV2-9 a brick1:VAV ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPart bldg:VAV2-9.DPR ;
+    brick1:hasPoint bldg:VAV2-9.BOXHTG,
+        bldg:VAV2-9.BOXMODE,
+        bldg:VAV2-9.CMAXFLO,
+        bldg:VAV2-9.COMMONSP,
+        bldg:VAV2-9.CPIDPV,
+        bldg:VAV2-9.DA-T,
+        bldg:VAV2-9.OCCHTGFL,
+        bldg:VAV2-9.S-VP,
+        bldg:VAV2-9.SUPFLOSP,
+        bldg:VAV2-9.SUPFLOW,
+        bldg:VAV2-9.W-C-ADJ,
+        bldg:VAV2-9.ZN-T .
+
+bldg:VVT-1 a brick_v_1_0_2:VVT ;
+    brick1:hasPart bldg:VVT-1.DPR ;
+    brick1:hasPoint bldg:VVT-1.DA-T,
+        bldg:VVT-1.MAXDMP,
+        bldg:VVT-1.MINDMP,
+        bldg:VVT-1.OCC-SPT,
+        bldg:VVT-1.OCCCMD,
+        bldg:VVT-1.OCCDB,
+        bldg:VVT-1.OCCSTS,
+        bldg:VVT-1.UNOCDB,
+        bldg:VVT-1.UNOSETP,
+        bldg:VVT-1.W-C-ADJ,
+        bldg:VVT-1.ZN-T,
+        bldg:VVT-1.ZONEDMD .
+
+bldg:VVT-2 a brick_v_1_0_2:VVT ;
+    brick1:hasPart bldg:VVT-2.DPR ;
+    brick1:hasPoint bldg:VVT-2.DA-T,
+        bldg:VVT-2.MAXDMP,
+        bldg:VVT-2.MINDMP,
+        bldg:VVT-2.OCC-SPT,
+        bldg:VVT-2.OCCCMD,
+        bldg:VVT-2.OCCDB,
+        bldg:VVT-2.OCCSTS,
+        bldg:VVT-2.UNOCDB,
+        bldg:VVT-2.UNOSETP,
+        bldg:VVT-2.W-C-ADJ,
+        bldg:VVT-2.ZN-T,
+        bldg:VVT-2.ZONEDMD .
+
+bldg:VVT-3 a brick_v_1_0_2:VVT ;
+    brick1:hasPart bldg:VVT-3.DPR ;
+    brick1:hasPoint bldg:VVT-3.DA-T,
+        bldg:VVT-3.MAXDMP,
+        bldg:VVT-3.MINDMP,
+        bldg:VVT-3.OCC-SPT,
+        bldg:VVT-3.OCCCMD,
+        bldg:VVT-3.OCCDB,
+        bldg:VVT-3.OCCSTS,
+        bldg:VVT-3.UNOCDB,
+        bldg:VVT-3.UNOSETP,
+        bldg:VVT-3.W-C-ADJ,
+        bldg:VVT-3.ZN-T,
+        bldg:VVT-3.ZONEDMD .
+
+bldg:VVT-4 a brick_v_1_0_2:VVT ;
+    brick1:hasPart bldg:VVT-4.DPR ;
+    brick1:hasPoint bldg:VVT-4.DA-T,
+        bldg:VVT-4.MAXDMP,
+        bldg:VVT-4.MINDMP,
+        bldg:VVT-4.OCC-SPT,
+        bldg:VVT-4.OCCCMD,
+        bldg:VVT-4.OCCDB,
+        bldg:VVT-4.OCCSTS,
+        bldg:VVT-4.UNOCDB,
+        bldg:VVT-4.UNOSETP,
+        bldg:VVT-4.W-C-ADJ,
+        bldg:VVT-4.ZN-T,
+        bldg:VVT-4.ZONEDMD .
+
+bldg:VVT-5 a brick_v_1_0_2:VVT ;
+    brick1:hasPart bldg:VVT-5.DPR ;
+    brick1:hasPoint bldg:VVT-5.DA-T,
+        bldg:VVT-5.MAXDMP,
+        bldg:VVT-5.MINDMP,
+        bldg:VVT-5.OCC-SPT,
+        bldg:VVT-5.OCCCMD,
+        bldg:VVT-5.OCCDB,
+        bldg:VVT-5.OCCSTS,
+        bldg:VVT-5.UNOCDB,
+        bldg:VVT-5.UNOSETP,
+        bldg:VVT-5.W-C-ADJ,
+        bldg:VVT-5.ZN-T,
+        bldg:VVT-5.ZONEDMD .
+
+bldg:VVT-6 a brick_v_1_0_2:VVT ;
+    brick1:hasPart bldg:VVT-6.DPR ;
+    brick1:hasPoint bldg:VVT-6.DA-T,
+        bldg:VVT-6.MAXDMP,
+        bldg:VVT-6.MINDMP,
+        bldg:VVT-6.OCC-SPT,
+        bldg:VVT-6.OCCCMD,
+        bldg:VVT-6.OCCDB,
+        bldg:VVT-6.OCCSTS,
+        bldg:VVT-6.UNOCDB,
+        bldg:VVT-6.UNOSETP,
+        bldg:VVT-6.W-C-ADJ,
+        bldg:VVT-6.ZN-T,
+        bldg:VVT-6.ZONEDMD .
+
+bldg:VVT-7 a brick_v_1_0_2:VVT ;
+    brick1:hasPart bldg:VVT-7.DPR,
+        bldg:VVT-7.EF5- ;
+    brick1:hasPoint bldg:VVT-7.DA-T,
+        bldg:VVT-7.MAXDMP,
+        bldg:VVT-7.MINDMP,
+        bldg:VVT-7.OCC-SPT,
+        bldg:VVT-7.OCCCMD,
+        bldg:VVT-7.OCCDB,
+        bldg:VVT-7.OCCSTS,
+        bldg:VVT-7.UNOCDB,
+        bldg:VVT-7.UNOSETP,
+        bldg:VVT-7.W-C-ADJ,
+        bldg:VVT-7.ZN-T,
+        bldg:VVT-7.ZONEDMD .
+
+<http://xbos.io/ontologies/orinda-public-library#green_button_meter_O8YEOgRQ9JYLncyaQhZcJCMTeOc=> a brick_v_1_0_2:Green_Button_Meter ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:uuid "d8166d3d-ed3b-54e5-8d4e-a52db48c1450" .
+
+bldg:meter_0xd8d5b9000000b3d4 a brick_v_1_0_2:Building_Electric_Meter ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:uri "orinda-public-library/s.eagle/0xd8d5b9000000b3d4/i.meter" ;
+    brickframe:uuid "b6dee463-dc92-37eb-aac2-671198375c85" .
+
+bldg:weather_D3835_cloud_coverage a brick_v_1_0_2:Weather_Cloud_Coverage_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:uuid "a4ab589e-abb8-3a59-89e2-4199e24275bf" .
+
+bldg:weather_D3835_cloud_height a brick_v_1_0_2:Weather_Cloud_Height_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:uuid "f0467090-675c-3f38-ae4b-378faf96bd52" .
+
+bldg:weather_D3835_relative_humidity a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:uuid "83d57496-5496-36b2-bca5-0bef068254b1" .
+
+bldg:weather_D3835_temperature a brick_v_1_0_2:Weather_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:uuid "fd7bbbf6-5f28-321a-99db-def8e84bd4af" .
+
+bldg:weather_D3835_wind_direction a brick1:Wind_Direction_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:uuid "7b273833-03a0-3aa2-89ad-950335c08966" .
+
+bldg:weather_D3835_wind_speed a brick1:Wind_Speed_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:uuid "6f4b8e27-1efc-3210-92f9-cc77bad2af7e" .
+
+bldg:weather_LTRC1_cloud_coverage a brick_v_1_0_2:Weather_Cloud_Coverage_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:uuid "7476b973-9943-30b3-b7d4-3efbd475f0c2" .
+
+bldg:weather_LTRC1_cloud_height a brick_v_1_0_2:Weather_Cloud_Height_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:uuid "e49fc62d-b8c7-332d-a1e9-005dd8e6c551" .
+
+bldg:weather_LTRC1_relative_humidity a brick1:Relative_Humidity_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:uuid "ed004826-1c9d-379f-9829-8f8e6b72a216" .
+
+bldg:weather_LTRC1_temperature a brick_v_1_0_2:Weather_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:uuid "6a0c663b-7083-3a66-838b-866110f26402" .
+
+bldg:weather_LTRC1_wind_direction a brick1:Wind_Direction_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:uuid "a382a6d4-9636-3213-8eab-27180fde9ab7" .
+
+bldg:weather_LTRC1_wind_speed a brick1:Wind_Speed_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:uuid "5bcc561a-d493-31d2-9eca-70a9f489cbbe" .
+
+brick_v_1_0_2:Ambient_Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Illumination_Sensor .
+
+brick_v_1_0_2:PlugStrip a owl:Class ;
+    rdfs:subClassOf brick1:Equipment .
+
+brick_v_1_0_2:RTU a owl:Class ;
+    rdfs:subClassOf brick1:AHU .
+
+brick_v_1_0_2:Thermostat_Mode_Command a owl:Class ;
+    rdfs:subClassOf brick1:Command .
+
+brick_v_1_0_2:Thermostat_Status a owl:Class ;
+    rdfs:subClassOf brick1:Status .
+
+brickframe:areaSquareFeet a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:areaSquareMeters a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:humanName a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:isSiteOf a owl:ObjectProperty ;
+    rdfs:domain brick_v_1_0_2:Site ;
+    owl:inverseOf brickframe:hasSite .
+
+brickframe:numFloors a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:primaryFunction a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:timezone a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+brickframe:zipCode a owl:ObjectProperty ;
+    rdfs:range brickframe:Label .
+
+bldg:AHU-1.CHWV-O a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-1.CHWV-O" .
+
+bldg:AHU-1.DA-T a brick1:Discharge_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-1.DA-T" .
+
+bldg:AHU-1.DAT-WSP a brick1:Discharge_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-1.DAT-WSP" .
+
+bldg:AHU-1.DPR a brick1:Damper ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:AHU-1.DPR.DPR-O .
+
+bldg:AHU-1.DPR.DPR-O a brick_v_1_0_2:Damper_Position_Command ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-1.DMPR-O" .
+
+bldg:AHU-1.EF- a brick1:Exhaust_Fan ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:AHU-1.EF-.EF-RESET .
+
+bldg:AHU-1.EF-.EF-RESET a brick_v_1_0_2:Fan_Reset_Command ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-1.EF-RESET" .
+
+bldg:AHU-1.EF2- a brick1:Exhaust_Fan ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:AHU-1.EF2-.EF2-A,
+        bldg:AHU-1.EF2-.EF2-C,
+        bldg:AHU-1.EF2-.EF2-S .
+
+bldg:AHU-1.EF2-.EF2-A a brick1:Overload_Alarm ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-1.EF2-A.Alarm1" .
+
+bldg:AHU-1.EF2-.EF2-C a brick1:On_Off_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-1.EF2-C" .
+
+bldg:AHU-1.EF2-.EF2-S a brick1:Fan_Status ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-1.EF2-S" .
+
+bldg:AHU-1.EF4- a brick1:Exhaust_Fan ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:AHU-1.EF4-.EF4-A,
+        bldg:AHU-1.EF4-.EF4-C,
+        bldg:AHU-1.EF4-.EF4-S .
+
+bldg:AHU-1.EF4-.EF4-A a brick1:Overload_Alarm ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-1.EF4-A.Alarm1" .
+
+bldg:AHU-1.EF4-.EF4-C a brick1:On_Off_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-1.EF4-C" .
+
+bldg:AHU-1.EF4-.EF4-S a brick1:Fan_Status ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-1.EF4-S" .
+
+bldg:AHU-1.FLTR-S a brick1:Filter_Status ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-1.FLTR-S.Alarm1" .
+
+bldg:AHU-1.HWV-O a brick1:Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-1.HWV-O" .
+
+bldg:AHU-1.MA-T a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-1.MA-T" .
+
+bldg:AHU-1.OA-T a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-1.OA-T" .
+
+bldg:AHU-1.OCC-C a brick1:Occupancy_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-1.OCC-C" .
+
+bldg:AHU-1.RA-T a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-1.RA-T" .
+
+bldg:AHU-1.RF- a brick1:Return_Fan ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:AHU-1.RF-.RF-A,
+        bldg:AHU-1.RF-.RF-C,
+        bldg:AHU-1.RF-.RF-RESET,
+        bldg:AHU-1.RF-.RF-S .
+
+bldg:AHU-1.RF-.RF-A a brick1:Overload_Alarm ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-1.RF-A.Alarm1" .
+
+bldg:AHU-1.RF-.RF-C a brick1:On_Off_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-1.RF-C" .
+
+bldg:AHU-1.RF-.RF-RESET a brick_v_1_0_2:Fan_Reset_Command ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-1.RF-RESET" .
+
+bldg:AHU-1.RF-.RF-S a brick1:Fan_Status ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-1.RF-S" .
+
+bldg:AHU-1.SF- a brick1:Supply_Fan ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:AHU-1.SF-.SF-A,
+        bldg:AHU-1.SF-.SF-C,
+        bldg:AHU-1.SF-.SF-RESET,
+        bldg:AHU-1.SF-.SF-S .
+
+bldg:AHU-1.SF-.SF-A a brick1:Overload_Alarm ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-1.SF-A.Alarm1" .
+
+bldg:AHU-1.SF-.SF-C a brick1:On_Off_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-1.SF-C" .
+
+bldg:AHU-1.SF-.SF-RESET a brick_v_1_0_2:Fan_Reset_Command ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-1.SF-RESET" .
+
+bldg:AHU-1.SF-.SF-S a brick1:Fan_Status ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-1.SF-S" .
+
+bldg:AHU-1.VVTZN-T a brick_v_1_0_2:VVT,
+        brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-1.VVTZN-T" .
+
+bldg:AHU-2.BLDG-P a brick1:Building_Air_Static_Pressure_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-2.BLDG-P" .
+
+bldg:AHU-2.BLDGP-SP a brick1:Building_Air_Static_Pressure_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-2.BLDGP-SP" .
+
+bldg:AHU-2.CHWV-O a brick1:Cooling_Command,
+        brick1:Valve_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-2.CHWV-O" .
+
+bldg:AHU-2.DA-P a brick1:Discharge_Air_Static_Pressure_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-2.DA-P" .
+
+bldg:AHU-2.DA-T a brick1:Discharge_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-2.DA-T" .
+
+bldg:AHU-2.DAP-SP a brick1:Discharge_Air_Static_Pressure_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-2.DAP-SP" .
+
+bldg:AHU-2.DAT-WSP a brick1:Discharge_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-2.DAT-WSP" .
+
+bldg:AHU-2.FLTR-S a brick1:Filter_Status ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-2.FLTR-S.Alarm1" .
+
+bldg:AHU-2.HWV-O a brick1:Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-2.HWV-O" .
+
+bldg:AHU-2.MA-T a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-2.MA-T" .
+
+bldg:AHU-2.OA-T a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-2.OA-T" .
+
+bldg:AHU-2.OAD a brick_v_1_0_2:Outside_Air_Damper ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:AHU-2.OAD.OAD-O .
+
+bldg:AHU-2.OAD.OAD-O a brick_v_1_0_2:Damper_Position_Command ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-2.OAD-O" .
+
+bldg:AHU-2.OCC-C a brick1:Occupancy_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-2.OCC-C" .
+
+bldg:AHU-2.RA-T a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-2.RA-T" .
+
+bldg:AHU-2.RF a brick1:Return_Fan ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:AHU-2.RF.RFVFD-A .
+
+bldg:AHU-2.RF- a brick1:Return_Fan ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:AHU-2.RF-.RF-C,
+        bldg:AHU-2.RF-.RF-O .
+
+bldg:AHU-2.RF-.RF-C a brick1:On_Off_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-2.RF-C" .
+
+bldg:AHU-2.RF-.RF-O a brick1:Speed_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-2.RF-O" .
+
+bldg:AHU-2.RF.RFVFD-A a brick1:Alarm ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-2.RFVFD-A.Alarm1" .
+
+bldg:AHU-2.SF a brick1:Supply_Fan ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:AHU-2.SF.SFVFD-A .
+
+bldg:AHU-2.SF- a brick1:Supply_Fan ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:AHU-2.SF-.SF-C,
+        bldg:AHU-2.SF-.SF-O .
+
+bldg:AHU-2.SF-.SF-C a brick1:On_Off_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-2.SF-C" .
+
+bldg:AHU-2.SF-.SF-O a brick1:Speed_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-2.SF-O" .
+
+bldg:AHU-2.SF.SFVFD-A a brick1:Alarm ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-2.SFVFD-A.Alarm1" .
+
+bldg:AHU-2.VAV-CLG a brick_v_1_0_2:Cooling_Demand,
+        brick1:VAV ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-2.VAV-CLG" .
+
+bldg:AHU-3.DPR a brick1:Damper ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:AHU-3.DPR.DPR-O .
+
+bldg:AHU-3.DPR.DPR-O a brick_v_1_0_2:Damper_Position_Command ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-3.DPR-O" .
+
+bldg:AHU-3.ECON a brick1:Economizer ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:AHU-3.ECON.ECONDIF .
+
+bldg:AHU-3.ECON.ECONDIF a brick1:Differential_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-3.ECONDIF" .
+
+bldg:AHU-3.FLTR-S a brick1:Filter_Status ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-3.FLTR-S.Alarm1" .
+
+bldg:AHU-3.MA-T a brick1:Mixed_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-3.MA-T" .
+
+bldg:AHU-3.MALL a brick_v_1_0_2:Mixed_Air_Temperature_Low_Limit_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-3.MALL" .
+
+bldg:AHU-3.MAT-SP a brick1:Mixed_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-3.MAT-SP" .
+
+bldg:AHU-3.MINPOSSP a brick_v_1_0_2:Supply_Air_Damper_Min_Position_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-3.MINPOSSP" .
+
+bldg:AHU-3.OA-T a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-3.OA-T" .
+
+bldg:AHU-3.OCC-S a brick1:Occupied_Mode_Status ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-3.OCC-S" .
+
+bldg:AHU-3.RA-T a brick1:Return_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-3.RA-T" .
+
+bldg:AHU-3.SDWN-C a brick1:Shutdown_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-3.SDWN-C" .
+
+bldg:AHU-3.SF- a brick1:Supply_Fan ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:AHU-3.SF-.SF-A,
+        bldg:AHU-3.SF-.SF-C,
+        bldg:AHU-3.SF-.SF-S .
+
+bldg:AHU-3.SF-.SF-A a brick1:Overload_Alarm ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-3.SF-A.Alarm1" .
+
+bldg:AHU-3.SF-.SF-C a brick1:On_Off_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-3.SF-C" .
+
+bldg:AHU-3.SF-.SF-S a brick1:Fan_Status ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-3.SF-S" .
+
+bldg:AHU-3.ZN-T a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-3.ZN-T" .
+
+bldg:AHU-3.ZNT-SP a brick1:Zone_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.AHU-3.ZNT-SP" .
+
+bldg:CentralPlant.BLR a brick1:Boiler ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:CentralPlant.BLR.BLR-A,
+        bldg:CentralPlant.BLR.BLR-C .
+
+bldg:CentralPlant.BLR.BLR-A a brick1:Alarm ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.BLR-A.Alarm1" .
+
+bldg:CentralPlant.BLR.BLR-C a brick1:On_Off_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.BLR-C" .
+
+bldg:CentralPlant.CH-C a brick1:On_Off_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.CH-C" .
+
+bldg:CentralPlant.CH-S a brick1:On_Off_Status ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.CH-S" .
+
+bldg:CentralPlant.CHP3-RST a brick1:Reset_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.CHP3-RST" .
+
+bldg:CentralPlant.CHP4-RST a brick1:Reset_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.CHP4-RST" .
+
+bldg:CentralPlant.CHW-C a brick1:Chilled_Water_System_Enable_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.CHW-C" .
+
+bldg:CentralPlant.CHW-SP a brick_v_1_0_2:Chilled_Water_Temperature_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.CHW-SP" .
+
+bldg:CentralPlant.CHW-VLV a brick1:Chilled_Water_Valve ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.CHW-VLV" .
+
+bldg:CentralPlant.CHWP a brick1:Chilled_Water_Pump ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:CentralPlant.CHWP.CHWP3-A,
+        bldg:CentralPlant.CHWP.CHWP3-C,
+        bldg:CentralPlant.CHWP.CHWP3-S,
+        bldg:CentralPlant.CHWP.CHWP4-A,
+        bldg:CentralPlant.CHWP.CHWP4-C,
+        bldg:CentralPlant.CHWP.CHWP4-S .
+
+bldg:CentralPlant.CHWP.CHWP3-A a brick1:Alarm ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.CHWP3-A.Alarm1" .
+
+bldg:CentralPlant.CHWP.CHWP3-C a brick1:Pump_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.CHWP3-C" .
+
+bldg:CentralPlant.CHWP.CHWP3-S a brick1:Status ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.CHWP3-S" .
+
+bldg:CentralPlant.CHWP.CHWP4-A a brick1:Alarm ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.CHWP4-A.Alarm1" .
+
+bldg:CentralPlant.CHWP.CHWP4-C a brick1:Pump_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.CHWP4-C" .
+
+bldg:CentralPlant.CHWP.CHWP4-S a brick1:Status ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.CHWP4-S" .
+
+bldg:CentralPlant.CHWR-T a brick1:Chilled_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.CHWR-T" .
+
+bldg:CentralPlant.CHWS-T a brick1:Chilled_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.CHWS-T" .
+
+bldg:CentralPlant.HTW-C a brick1:Hot_Water_System_Enable_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.HTW-C" .
+
+bldg:CentralPlant.HWP a brick1:Hot_Water_Pump ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:CentralPlant.HWP.HWP1-A,
+        bldg:CentralPlant.HWP.HWP1-C,
+        bldg:CentralPlant.HWP.HWP1-RST,
+        bldg:CentralPlant.HWP.HWP1-S,
+        bldg:CentralPlant.HWP.HWP2-A,
+        bldg:CentralPlant.HWP.HWP2-C,
+        bldg:CentralPlant.HWP.HWP2-RST,
+        bldg:CentralPlant.HWP.HWP2-S .
+
+bldg:CentralPlant.HWP.HWP1-A a brick1:Alarm ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.HWP1-A.Alarm1" .
+
+bldg:CentralPlant.HWP.HWP1-C a brick1:Pump_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.HWP1-C" .
+
+bldg:CentralPlant.HWP.HWP1-RST a brick1:Reset_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.HWP1-RST" .
+
+bldg:CentralPlant.HWP.HWP1-S a brick1:Status ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.HWP1-S" .
+
+bldg:CentralPlant.HWP.HWP2-A a brick1:Alarm ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.HWP2-A.Alarm1" .
+
+bldg:CentralPlant.HWP.HWP2-C a brick1:Pump_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.HWP2-C" .
+
+bldg:CentralPlant.HWP.HWP2-RST a brick1:Reset_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.HWP2-RST" .
+
+bldg:CentralPlant.HWP.HWP2-S a brick1:Status ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.HWP2-S" .
+
+bldg:CentralPlant.HWR-T a brick1:Hot_Water_Return_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.HWR-T" .
+
+bldg:CentralPlant.HWS-T a brick1:Hot_Water_Supply_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.HWS-T" .
+
+bldg:CentralPlant.OA-T a brick1:Outside_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.OA-T" .
+
+bldg:CentralPlant.OCC-C a brick1:Occupancy_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.OCC-C" .
+
+bldg:CentralPlant.PLANT-LEAD a brick_v_1_0_2:Lead_Lag ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.CentralPlant.PLANT-LEAD" .
+
+bldg:Override-Alarm.GEN-ALM a brick1:Alarm ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.Override-Alarm.GEN-ALM" .
+
+bldg:VAV1-1.BOXHTG a brick_v_1_0_2:Heating_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-1.BOXHTG" .
+
+bldg:VAV1-1.BOXMODE a brick1:Box_Mode_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-1.BOXMODE" .
+
+bldg:VAV1-1.CMAXFLO a brick1:Max_Cooling_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-1.CMAXFLO" .
+
+bldg:VAV1-1.COMMONSP a brick1:Zone_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-1.COMMONSP" .
+
+bldg:VAV1-1.CPIDPV a brick_v_1_0_2:Cooling_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-1.CPIDPV" .
+
+bldg:VAV1-1.DA-T a brick1:Discharge_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-1.DA-T" .
+
+bldg:VAV1-1.DPR a brick1:Damper ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:VAV1-1.DPR.DPR-C,
+        bldg:VAV1-1.DPR.DPRPOS .
+
+bldg:VAV1-1.DPR.DPR-C a brick_v_1_0_2:Damper_Position_Command ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-1.DPR-C" .
+
+bldg:VAV1-1.DPR.DPRPOS a brick1:Damper_Position_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-1.DMPRPOS" .
+
+bldg:VAV1-1.OCCHTGFL a brick1:Min_Occupied_Heating_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-1.OCCHTGFL" .
+
+bldg:VAV1-1.S-VP a brick1:Supply_Air_Velocity_Pressure_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-1.S-VP" .
+
+bldg:VAV1-1.SUPFLOSP a brick1:Supply_Air_Flow_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-1.SUPFLOSP" .
+
+bldg:VAV1-1.SUPFLOW a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-1.SUPFLOW" .
+
+bldg:VAV1-1.W-C-ADJ a brick_v_1_0_2:Thermostat_Adjust_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-1.W-C-ADJ" .
+
+bldg:VAV1-1.ZN-T a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-1.ZN-T" .
+
+bldg:VAV1-2.BOXHTG a brick_v_1_0_2:Heating_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-2.BOXHTG" .
+
+bldg:VAV1-2.BOXMODE a brick1:Box_Mode_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-2.BOXMODE" .
+
+bldg:VAV1-2.CMAXFLO a brick1:Max_Cooling_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-2.CMAXFLO" .
+
+bldg:VAV1-2.COMMONSP a brick1:Zone_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-2.COMMONSP" .
+
+bldg:VAV1-2.CPIDPV a brick_v_1_0_2:Cooling_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-2.CPIDPV" .
+
+bldg:VAV1-2.DA-T a brick1:Discharge_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-2.DA-T" .
+
+bldg:VAV1-2.DPR a brick1:Damper ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:VAV1-2.DPR.DPR-C,
+        bldg:VAV1-2.DPR.DPRPOS .
+
+bldg:VAV1-2.DPR.DPR-C a brick_v_1_0_2:Damper_Position_Command ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-2.DPR-C" .
+
+bldg:VAV1-2.DPR.DPRPOS a brick1:Damper_Position_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-2.DMPRPOS" .
+
+bldg:VAV1-2.OCCHTGFL a brick1:Min_Occupied_Heating_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-2.OCCHTGFL" .
+
+bldg:VAV1-2.S-VP a brick1:Supply_Air_Velocity_Pressure_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-2.S-VP" .
+
+bldg:VAV1-2.SUPFLOSP a brick1:Supply_Air_Flow_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-2.SUPFLOSP" .
+
+bldg:VAV1-2.SUPFLOW a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-2.SUPFLOW" .
+
+bldg:VAV1-2.W-C-ADJ a brick_v_1_0_2:Thermostat_Adjust_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-2.W-C-ADJ" .
+
+bldg:VAV1-2.ZN-T a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-2.ZN-T" .
+
+bldg:VAV1-3.BOXHTG a brick_v_1_0_2:Heating_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-3.BOXHTG" .
+
+bldg:VAV1-3.BOXMODE a brick1:Box_Mode_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-3.BOXMODE" .
+
+bldg:VAV1-3.CMAXFLO a brick1:Max_Cooling_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-3.CMAXFLO" .
+
+bldg:VAV1-3.COMMONSP a brick1:Zone_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-3.COMMONSP" .
+
+bldg:VAV1-3.CPIDPV a brick_v_1_0_2:Cooling_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-3.CPIDPV" .
+
+bldg:VAV1-3.DA-T a brick1:Discharge_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-3.DA-T" .
+
+bldg:VAV1-3.DPR a brick1:Damper ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:VAV1-3.DPR.DPR-C,
+        bldg:VAV1-3.DPR.DPRPOS .
+
+bldg:VAV1-3.DPR.DPR-C a brick_v_1_0_2:Damper_Position_Command ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-3.DPR-C" .
+
+bldg:VAV1-3.DPR.DPRPOS a brick1:Damper_Position_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-3.DMPRPOS" .
+
+bldg:VAV1-3.OCCHTGFL a brick1:Min_Occupied_Heating_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-3.OCCHTGFL" .
+
+bldg:VAV1-3.S-VP a brick1:Supply_Air_Velocity_Pressure_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-3.S-VP" .
+
+bldg:VAV1-3.SUPFLOSP a brick1:Supply_Air_Flow_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-3.SUPFLOSP" .
+
+bldg:VAV1-3.SUPFLOW a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-3.SUPFLOW" .
+
+bldg:VAV1-3.W-C-ADJ a brick_v_1_0_2:Thermostat_Adjust_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-3.W-C-ADJ" .
+
+bldg:VAV1-3.ZN-T a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-3.ZN-T" .
+
+bldg:VAV1-4.BOXHTG a brick_v_1_0_2:Heating_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-4.BOXHTG" .
+
+bldg:VAV1-4.BOXMODE a brick1:Box_Mode_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-4.BOXMODE" .
+
+bldg:VAV1-4.CMAXFLO a brick1:Max_Cooling_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-4.CMAXFLO" .
+
+bldg:VAV1-4.COMMONSP a brick1:Zone_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-4.COMMONSP" .
+
+bldg:VAV1-4.CPIDPV a brick_v_1_0_2:Cooling_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-4.CPIDPV" .
+
+bldg:VAV1-4.DA-T a brick1:Discharge_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-4.DA-T" .
+
+bldg:VAV1-4.DPR a brick1:Damper ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:VAV1-4.DPR.DPR-C,
+        bldg:VAV1-4.DPR.DPRPOS .
+
+bldg:VAV1-4.DPR.DPR-C a brick_v_1_0_2:Damper_Position_Command ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-4.DPR-C" .
+
+bldg:VAV1-4.DPR.DPRPOS a brick1:Damper_Position_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-4.DMPRPOS" .
+
+bldg:VAV1-4.OCCHTGFL a brick1:Min_Occupied_Heating_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-4.OCCHTGFL" .
+
+bldg:VAV1-4.S-VP a brick1:Supply_Air_Velocity_Pressure_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-4.S-VP" .
+
+bldg:VAV1-4.SUPFLOSP a brick1:Supply_Air_Flow_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-4.SUPFLOSP" .
+
+bldg:VAV1-4.SUPFLOW a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-4.SUPFLOW" .
+
+bldg:VAV1-4.W-C-ADJ a brick_v_1_0_2:Thermostat_Adjust_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-4.W-C-ADJ" .
+
+bldg:VAV1-4.ZN-T a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-4.ZN-T" .
+
+bldg:VAV1-5.BOXHTG a brick_v_1_0_2:Heating_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-5.BOXHTG" .
+
+bldg:VAV1-5.BOXMODE a brick1:Box_Mode_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-5.BOXMODE" .
+
+bldg:VAV1-5.CMAXFLO a brick1:Max_Cooling_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-5.CMAXFLO" .
+
+bldg:VAV1-5.COMMONSP a brick1:Zone_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-5.COMMONSP" .
+
+bldg:VAV1-5.CPIDPV a brick_v_1_0_2:Cooling_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-5.CPIDPV" .
+
+bldg:VAV1-5.DA-T a brick1:Discharge_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-5.DA-T" .
+
+bldg:VAV1-5.DPR a brick1:Damper ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:VAV1-5.DPR.DPR-C,
+        bldg:VAV1-5.DPR.DPRPOS .
+
+bldg:VAV1-5.DPR.DPR-C a brick_v_1_0_2:Damper_Position_Command ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-5.DPR-C" .
+
+bldg:VAV1-5.DPR.DPRPOS a brick1:Damper_Position_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-5.DMPRPOS" .
+
+bldg:VAV1-5.OCCHTGFL a brick1:Min_Occupied_Heating_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-5.OCCHTGFL" .
+
+bldg:VAV1-5.S-VP a brick1:Supply_Air_Velocity_Pressure_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-5.S-VP" .
+
+bldg:VAV1-5.SUPFLOSP a brick1:Supply_Air_Flow_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-5.SUPFLOSP" .
+
+bldg:VAV1-5.SUPFLOW a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-5.SUPFLOW" .
+
+bldg:VAV1-5.W-C-ADJ a brick_v_1_0_2:Thermostat_Adjust_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-5.W-C-ADJ" .
+
+bldg:VAV1-5.ZN-T a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV1-5.ZN-T" .
+
+bldg:VAV2-1.BOXHTG a brick_v_1_0_2:Heating_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-1.BOXHTG" .
+
+bldg:VAV2-1.BOXMODE a brick1:Box_Mode_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-1.BOXMODE" .
+
+bldg:VAV2-1.CMAXFLO a brick1:Max_Cooling_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-1.CMAXFLO" .
+
+bldg:VAV2-1.COMMONSP a brick1:Zone_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-1.COMMONSP" .
+
+bldg:VAV2-1.CPIDPV a brick_v_1_0_2:Cooling_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-1.CPIDPV" .
+
+bldg:VAV2-1.DA-T a brick1:Discharge_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-1.DA-T" .
+
+bldg:VAV2-1.DPR a brick1:Damper ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:VAV2-1.DPR.DPR-C,
+        bldg:VAV2-1.DPR.DPRPOS .
+
+bldg:VAV2-1.DPR.DPR-C a brick_v_1_0_2:Damper_Position_Command ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-1.DPR-C" .
+
+bldg:VAV2-1.DPR.DPRPOS a brick1:Damper_Position_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-1.DMPRPOS" .
+
+bldg:VAV2-1.OCCHTGFL a brick1:Min_Occupied_Heating_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-1.OCCHTGFL" .
+
+bldg:VAV2-1.S-VP a brick1:Supply_Air_Velocity_Pressure_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-1.S-VP" .
+
+bldg:VAV2-1.SUPFLOSP a brick1:Supply_Air_Flow_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-1.SUPFLOSP" .
+
+bldg:VAV2-1.SUPFLOW a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-1.SUPFLOW" .
+
+bldg:VAV2-1.W-C-ADJ a brick_v_1_0_2:Thermostat_Adjust_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-1.W-C-ADJ" .
+
+bldg:VAV2-1.ZN-T a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-1.ZN-T" .
+
+bldg:VAV2-10.BOXHTG a brick_v_1_0_2:Heating_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-10.BOXHTG" .
+
+bldg:VAV2-10.BOXMODE a brick1:Box_Mode_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-10.BOXMODE" .
+
+bldg:VAV2-10.CMAXFLO a brick1:Max_Cooling_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-10.CMAXFLO" .
+
+bldg:VAV2-10.COMMONSP a brick1:Zone_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-10.COMMONSP" .
+
+bldg:VAV2-10.CPIDPV a brick_v_1_0_2:Cooling_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-10.CPIDPV" .
+
+bldg:VAV2-10.DA-T a brick1:Discharge_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-10.DA-T" .
+
+bldg:VAV2-10.DPR a brick1:Damper ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:VAV2-10.DPR.DPR-C,
+        bldg:VAV2-10.DPR.DPRPOS .
+
+bldg:VAV2-10.DPR.DPR-C a brick_v_1_0_2:Damper_Position_Command ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-10.DPR-C" .
+
+bldg:VAV2-10.DPR.DPRPOS a brick1:Damper_Position_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-10.DMPRPOS" .
+
+bldg:VAV2-10.OCCHTGFL a brick1:Min_Occupied_Heating_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-10.OCCHTGFL" .
+
+bldg:VAV2-10.S-VP a brick1:Supply_Air_Velocity_Pressure_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-10.S-VP" .
+
+bldg:VAV2-10.SUPFLOSP a brick1:Supply_Air_Flow_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-10.SUPFLOSP" .
+
+bldg:VAV2-10.SUPFLOW a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-10.SUPFLOW" .
+
+bldg:VAV2-10.W-C-ADJ a brick_v_1_0_2:Thermostat_Adjust_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-10.W-C-ADJ" .
+
+bldg:VAV2-10.ZN-T a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-10.ZN-T" .
+
+bldg:VAV2-11.BOXHTG a brick_v_1_0_2:Heating_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-11.BOXHTG" .
+
+bldg:VAV2-11.BOXMODE a brick1:Box_Mode_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-11.BOXMODE" .
+
+bldg:VAV2-11.CMAXFLO a brick1:Max_Cooling_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-11.CMAXFLO" .
+
+bldg:VAV2-11.COMMONSP a brick1:Zone_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-11.COMMONSP" .
+
+bldg:VAV2-11.CPIDPV a brick_v_1_0_2:Cooling_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-11.CPIDPV" .
+
+bldg:VAV2-11.DA-T a brick1:Discharge_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-11.DA-T" .
+
+bldg:VAV2-11.DPR a brick1:Damper ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:VAV2-11.DPR.DPR-C,
+        bldg:VAV2-11.DPR.DPRPOS .
+
+bldg:VAV2-11.DPR.DPR-C a brick_v_1_0_2:Damper_Position_Command ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-11.DPR-C" .
+
+bldg:VAV2-11.DPR.DPRPOS a brick1:Damper_Position_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-11.DMPRPOS" .
+
+bldg:VAV2-11.OCCHTGFL a brick1:Min_Occupied_Heating_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-11.OCCHTGFL" .
+
+bldg:VAV2-11.S-VP a brick1:Supply_Air_Velocity_Pressure_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-11.S-VP" .
+
+bldg:VAV2-11.SUPFLOSP a brick1:Supply_Air_Flow_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-11.SUPFLOSP" .
+
+bldg:VAV2-11.SUPFLOW a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-11.SUPFLOW" .
+
+bldg:VAV2-11.W-C-ADJ a brick_v_1_0_2:Thermostat_Adjust_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-11.W-C-ADJ" .
+
+bldg:VAV2-11.ZN-T a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-11.ZN-T" .
+
+bldg:VAV2-12.BOXHTG a brick_v_1_0_2:Heating_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-12.BOXHTG" .
+
+bldg:VAV2-12.BOXMODE a brick1:Box_Mode_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-12.BOXMODE" .
+
+bldg:VAV2-12.CMAXFLO a brick1:Max_Cooling_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-12.CMAXFLO" .
+
+bldg:VAV2-12.COMMONSP a brick1:Zone_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-12.COMMONSP" .
+
+bldg:VAV2-12.CPIDPV a brick_v_1_0_2:Cooling_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-12.CPIDPV" .
+
+bldg:VAV2-12.DA-T a brick1:Discharge_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-12.DA-T" .
+
+bldg:VAV2-12.DPR a brick1:Damper ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:VAV2-12.DPR.DPR-C,
+        bldg:VAV2-12.DPR.DPRPOS .
+
+bldg:VAV2-12.DPR.DPR-C a brick_v_1_0_2:Damper_Position_Command ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-12.DPR-C" .
+
+bldg:VAV2-12.DPR.DPRPOS a brick1:Damper_Position_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-12.DMPRPOS" .
+
+bldg:VAV2-12.OCCHTGFL a brick1:Min_Occupied_Heating_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-12.OCCHTGFL" .
+
+bldg:VAV2-12.S-VP a brick1:Supply_Air_Velocity_Pressure_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-12.S-VP" .
+
+bldg:VAV2-12.SUPFLOSP a brick1:Supply_Air_Flow_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-12.SUPFLOSP" .
+
+bldg:VAV2-12.SUPFLOW a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-12.SUPFLOW" .
+
+bldg:VAV2-12.W-C-ADJ a brick_v_1_0_2:Thermostat_Adjust_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-12.W-C-ADJ" .
+
+bldg:VAV2-12.ZN-T a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-12.ZN-T" .
+
+bldg:VAV2-2.BOXHTG a brick_v_1_0_2:Heating_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-2.BOXHTG" .
+
+bldg:VAV2-2.BOXMODE a brick1:Box_Mode_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-2.BOXMODE" .
+
+bldg:VAV2-2.CMAXFLO a brick1:Max_Cooling_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-2.CMAXFLO" .
+
+bldg:VAV2-2.COMMONSP a brick1:Zone_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-2.COMMONSP" .
+
+bldg:VAV2-2.CPIDPV a brick_v_1_0_2:Cooling_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-2.CPIDPV" .
+
+bldg:VAV2-2.DA-T a brick1:Discharge_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-2.DA-T" .
+
+bldg:VAV2-2.DPR a brick1:Damper ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:VAV2-2.DPR.DPR-C,
+        bldg:VAV2-2.DPR.DPRPOS .
+
+bldg:VAV2-2.DPR.DPR-C a brick_v_1_0_2:Damper_Position_Command ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-2.DPR-C" .
+
+bldg:VAV2-2.DPR.DPRPOS a brick1:Damper_Position_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-2.DMPRPOS" .
+
+bldg:VAV2-2.OCCHTGFL a brick1:Min_Occupied_Heating_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-2.OCCHTGFL" .
+
+bldg:VAV2-2.S-VP a brick1:Supply_Air_Velocity_Pressure_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-2.S-VP" .
+
+bldg:VAV2-2.SUPFLOSP a brick1:Supply_Air_Flow_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-2.SUPFLOSP" .
+
+bldg:VAV2-2.SUPFLOW a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-2.SUPFLOW" .
+
+bldg:VAV2-2.W-C-ADJ a brick_v_1_0_2:Thermostat_Adjust_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-2.W-C-ADJ" .
+
+bldg:VAV2-2.ZN-T a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-2.ZN-T" .
+
+bldg:VAV2-3.BOXHTG a brick_v_1_0_2:Heating_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-3.BOXHTG" .
+
+bldg:VAV2-3.BOXMODE a brick1:Box_Mode_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-3.BOXMODE" .
+
+bldg:VAV2-3.CMAXFLO a brick1:Max_Cooling_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-3.CMAXFLO" .
+
+bldg:VAV2-3.COMMONSP a brick1:Zone_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-3.COMMONSP" .
+
+bldg:VAV2-3.CPIDPV a brick_v_1_0_2:Cooling_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-3.CPIDPV" .
+
+bldg:VAV2-3.DA-T a brick1:Discharge_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-3.DA-T" .
+
+bldg:VAV2-3.DPR a brick1:Damper ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:VAV2-3.DPR.DPR-C,
+        bldg:VAV2-3.DPR.DPRPOS .
+
+bldg:VAV2-3.DPR.DPR-C a brick_v_1_0_2:Damper_Position_Command ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-3.DPR-C" .
+
+bldg:VAV2-3.DPR.DPRPOS a brick1:Damper_Position_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-3.DMPRPOS" .
+
+bldg:VAV2-3.OCCHTGFL a brick1:Min_Occupied_Heating_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-3.OCCHTGFL" .
+
+bldg:VAV2-3.S-VP a brick1:Supply_Air_Velocity_Pressure_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-3.S-VP" .
+
+bldg:VAV2-3.SUPFLOSP a brick1:Supply_Air_Flow_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-3.SUPFLOSP" .
+
+bldg:VAV2-3.SUPFLOW a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-3.SUPFLOW" .
+
+bldg:VAV2-3.W-C-ADJ a brick_v_1_0_2:Thermostat_Adjust_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-3.W-C-ADJ" .
+
+bldg:VAV2-3.ZN-T a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-3.ZN-T" .
+
+bldg:VAV2-4.BOXHTG a brick_v_1_0_2:Heating_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-4.BOXHTG" .
+
+bldg:VAV2-4.BOXMODE a brick1:Box_Mode_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-4.BOXMODE" .
+
+bldg:VAV2-4.CMAXFLO a brick1:Max_Cooling_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-4.CMAXFLO" .
+
+bldg:VAV2-4.COMMONSP a brick1:Zone_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-4.COMMONSP" .
+
+bldg:VAV2-4.CPIDPV a brick_v_1_0_2:Cooling_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-4.CPIDPV" .
+
+bldg:VAV2-4.DA-T a brick1:Discharge_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-4.DA-T" .
+
+bldg:VAV2-4.DPR a brick1:Damper ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:VAV2-4.DPR.DPR-C,
+        bldg:VAV2-4.DPR.DPRPOS .
+
+bldg:VAV2-4.DPR.DPR-C a brick_v_1_0_2:Damper_Position_Command ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-4.DPR-C" .
+
+bldg:VAV2-4.DPR.DPRPOS a brick1:Damper_Position_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-4.DMPRPOS" .
+
+bldg:VAV2-4.OCCHTGFL a brick1:Min_Occupied_Heating_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-4.OCCHTGFL" .
+
+bldg:VAV2-4.S-VP a brick1:Supply_Air_Velocity_Pressure_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-4.S-VP" .
+
+bldg:VAV2-4.SUPFLOSP a brick1:Supply_Air_Flow_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-4.SUPFLOSP" .
+
+bldg:VAV2-4.SUPFLOW a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-4.SUPFLOW" .
+
+bldg:VAV2-4.W-C-ADJ a brick_v_1_0_2:Thermostat_Adjust_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-4.W-C-ADJ" .
+
+bldg:VAV2-4.ZN-T a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-4.ZN-T" .
+
+bldg:VAV2-5.BOXHTG a brick_v_1_0_2:Heating_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-5.BOXHTG" .
+
+bldg:VAV2-5.BOXMODE a brick1:Box_Mode_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-5.BOXMODE" .
+
+bldg:VAV2-5.CMAXFLO a brick1:Max_Cooling_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-5.CMAXFLO" .
+
+bldg:VAV2-5.COMMONSP a brick1:Zone_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-5.COMMONSP" .
+
+bldg:VAV2-5.CPIDPV a brick_v_1_0_2:Cooling_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-5.CPIDPV" .
+
+bldg:VAV2-5.DA-T a brick1:Discharge_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-5.DA-T" .
+
+bldg:VAV2-5.DPR a brick1:Damper ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:VAV2-5.DPR.DPR-C,
+        bldg:VAV2-5.DPR.DPRPOS .
+
+bldg:VAV2-5.DPR.DPR-C a brick_v_1_0_2:Damper_Position_Command ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-5.DPR-C" .
+
+bldg:VAV2-5.DPR.DPRPOS a brick1:Damper_Position_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-5.DMPRPOS" .
+
+bldg:VAV2-5.OCCHTGFL a brick1:Min_Occupied_Heating_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-5.OCCHTGFL" .
+
+bldg:VAV2-5.S-VP a brick1:Supply_Air_Velocity_Pressure_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-5.S-VP" .
+
+bldg:VAV2-5.SUPFLOSP a brick1:Supply_Air_Flow_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-5.SUPFLOSP" .
+
+bldg:VAV2-5.SUPFLOW a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-5.SUPFLOW" .
+
+bldg:VAV2-5.W-C-ADJ a brick_v_1_0_2:Thermostat_Adjust_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-5.W-C-ADJ" .
+
+bldg:VAV2-5.ZN-T a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-5.ZN-T" .
+
+bldg:VAV2-6.BOXHTG a brick_v_1_0_2:Heating_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-6.BOXHTG" .
+
+bldg:VAV2-6.BOXMODE a brick1:Box_Mode_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-6.BOXMODE" .
+
+bldg:VAV2-6.CMAXFLO a brick1:Max_Cooling_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-6.CMAXFLO" .
+
+bldg:VAV2-6.COMMONSP a brick1:Zone_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-6.COMMONSP" .
+
+bldg:VAV2-6.CPIDPV a brick_v_1_0_2:Cooling_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-6.CPIDPV" .
+
+bldg:VAV2-6.DA-T a brick1:Discharge_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-6.DA-T" .
+
+bldg:VAV2-6.DPR a brick1:Damper ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:VAV2-6.DPR.DPR-C,
+        bldg:VAV2-6.DPR.DPRPOS .
+
+bldg:VAV2-6.DPR.DPR-C a brick_v_1_0_2:Damper_Position_Command ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-6.DPR-C" .
+
+bldg:VAV2-6.DPR.DPRPOS a brick1:Damper_Position_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-6.DMPRPOS" .
+
+bldg:VAV2-6.OCCHTGFL a brick1:Min_Occupied_Heating_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-6.OCCHTGFL" .
+
+bldg:VAV2-6.S-VP a brick1:Supply_Air_Velocity_Pressure_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-6.S-VP" .
+
+bldg:VAV2-6.SUPFLOSP a brick1:Supply_Air_Flow_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-6.SUPFLOSP" .
+
+bldg:VAV2-6.SUPFLOW a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-6.SUPFLOW" .
+
+bldg:VAV2-6.W-C-ADJ a brick_v_1_0_2:Thermostat_Adjust_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-6.W-C-ADJ" .
+
+bldg:VAV2-6.ZN-T a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-6.ZN-T" .
+
+bldg:VAV2-7.BOXHTG a brick_v_1_0_2:Heating_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-7.BOXHTG" .
+
+bldg:VAV2-7.BOXMODE a brick1:Box_Mode_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-7.BOXMODE" .
+
+bldg:VAV2-7.CMAXFLO a brick1:Max_Cooling_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-7.CMAXFLO" .
+
+bldg:VAV2-7.COMMONSP a brick1:Zone_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-7.COMMONSP" .
+
+bldg:VAV2-7.CPIDPV a brick_v_1_0_2:Cooling_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-7.CPIDPV" .
+
+bldg:VAV2-7.DA-T a brick1:Discharge_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-7.DA-T" .
+
+bldg:VAV2-7.DPR a brick1:Damper ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:VAV2-7.DPR.DPR-C,
+        bldg:VAV2-7.DPR.DPRPOS .
+
+bldg:VAV2-7.DPR.DPR-C a brick_v_1_0_2:Damper_Position_Command ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-7.DPR-C" .
+
+bldg:VAV2-7.DPR.DPRPOS a brick1:Damper_Position_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-7.DMPRPOS" .
+
+bldg:VAV2-7.OCCHTGFL a brick1:Min_Occupied_Heating_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-7.OCCHTGFL" .
+
+bldg:VAV2-7.S-VP a brick1:Supply_Air_Velocity_Pressure_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-7.S-VP" .
+
+bldg:VAV2-7.SUPFLOSP a brick1:Supply_Air_Flow_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-7.SUPFLOSP" .
+
+bldg:VAV2-7.SUPFLOW a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-7.SUPFLOW" .
+
+bldg:VAV2-7.W-C-ADJ a brick_v_1_0_2:Thermostat_Adjust_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-7.W-C-ADJ" .
+
+bldg:VAV2-7.ZN-T a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-7.ZN-T" .
+
+bldg:VAV2-8.BOXHTG a brick_v_1_0_2:Heating_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-8.BOXHTG" .
+
+bldg:VAV2-8.BOXMODE a brick1:Box_Mode_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-8.BOXMODE" .
+
+bldg:VAV2-8.CMAXFLO a brick1:Max_Cooling_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-8.CMAXFLO" .
+
+bldg:VAV2-8.COMMONSP a brick1:Zone_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-8.COMMONSP" .
+
+bldg:VAV2-8.CPIDPV a brick_v_1_0_2:Cooling_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-8.CPIDPV" .
+
+bldg:VAV2-8.DA-T a brick1:Discharge_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-8.DA-T" .
+
+bldg:VAV2-8.DPR a brick1:Damper ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:VAV2-8.DPR.DPR-C,
+        bldg:VAV2-8.DPR.DPRPOS .
+
+bldg:VAV2-8.DPR.DPR-C a brick_v_1_0_2:Damper_Position_Command ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-8.DPR-C" .
+
+bldg:VAV2-8.DPR.DPRPOS a brick1:Damper_Position_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-8.DMPRPOS" .
+
+bldg:VAV2-8.OCCHTGFL a brick1:Min_Occupied_Heating_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-8.OCCHTGFL" .
+
+bldg:VAV2-8.S-VP a brick1:Supply_Air_Velocity_Pressure_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-8.S-VP" .
+
+bldg:VAV2-8.SUPFLOSP a brick1:Supply_Air_Flow_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-8.SUPFLOSP" .
+
+bldg:VAV2-8.SUPFLOW a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-8.SUPFLOW" .
+
+bldg:VAV2-8.W-C-ADJ a brick_v_1_0_2:Thermostat_Adjust_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-8.W-C-ADJ" .
+
+bldg:VAV2-8.ZN-T a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-8.ZN-T" .
+
+bldg:VAV2-9.BOXHTG a brick_v_1_0_2:Heating_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-9.BOXHTG" .
+
+bldg:VAV2-9.BOXMODE a brick1:Box_Mode_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-9.BOXMODE" .
+
+bldg:VAV2-9.CMAXFLO a brick1:Max_Cooling_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-9.CMAXFLO" .
+
+bldg:VAV2-9.COMMONSP a brick1:Zone_Air_Temperature_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-9.COMMONSP" .
+
+bldg:VAV2-9.CPIDPV a brick_v_1_0_2:Cooling_Demand ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-9.CPIDPV" .
+
+bldg:VAV2-9.DA-T a brick1:Discharge_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-9.DA-T" .
+
+bldg:VAV2-9.DPR a brick1:Damper ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:VAV2-9.DPR.DPR-C,
+        bldg:VAV2-9.DPR.DPRPOS .
+
+bldg:VAV2-9.DPR.DPR-C a brick_v_1_0_2:Damper_Position_Command ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-9.DPR-C" .
+
+bldg:VAV2-9.DPR.DPRPOS a brick1:Damper_Position_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-9.DMPRPOS" .
+
+bldg:VAV2-9.OCCHTGFL a brick1:Min_Occupied_Heating_Supply_Air_Flow_Setpoint_Limit ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-9.OCCHTGFL" .
+
+bldg:VAV2-9.S-VP a brick1:Supply_Air_Velocity_Pressure_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-9.S-VP" .
+
+bldg:VAV2-9.SUPFLOSP a brick1:Supply_Air_Flow_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-9.SUPFLOSP" .
+
+bldg:VAV2-9.SUPFLOW a brick1:Supply_Air_Flow_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-9.SUPFLOW" .
+
+bldg:VAV2-9.W-C-ADJ a brick_v_1_0_2:Thermostat_Adjust_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-9.W-C-ADJ" .
+
+bldg:VAV2-9.ZN-T a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VAV2-9.ZN-T" .
+
+bldg:VVT-1.DA-T a brick1:Discharge_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-1.DA-T" .
+
+bldg:VVT-1.DPR a brick1:Damper ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:VVT-1.DPR.DPR-C .
+
+bldg:VVT-1.DPR.DPR-C a brick_v_1_0_2:Damper_Position_Command ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-1.DPR-C" .
+
+bldg:VVT-1.MAXDMP a brick_v_1_0_2:Supply_Air_Damper_Max_Position_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-1.MAXDMP" .
+
+bldg:VVT-1.MINDMP a brick_v_1_0_2:Supply_Air_Damper_Min_Position_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-1.MINDMP" .
+
+bldg:VVT-1.OCC-SPT a brick_v_1_0_2:Occupied_Temperature_Setpoint,
+        brick1:Occupied_Mode_Status ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-1.OCC-SPT" .
+
+bldg:VVT-1.OCCCMD a brick1:Occupancy_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-1.OCCCMD" .
+
+bldg:VVT-1.OCCDB a brick_v_1_0_2:Occupied_Dead_Band ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-1.OCCDB" .
+
+bldg:VVT-1.OCCSTS a brick1:Occupied_Mode_Status ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-1.OCCSTS" .
+
+bldg:VVT-1.UNOCDB a brick_v_1_0_2:Unoccupied_Dead_Band ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-1.UNOCDB" .
+
+bldg:VVT-1.UNOSETP a brick_v_1_0_2:Unoccupied_Temperature_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-1.UNOSETP" .
+
+bldg:VVT-1.W-C-ADJ a brick_v_1_0_2:Thermostat_Adjust_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-1.W-C-ADJ" .
+
+bldg:VVT-1.ZN-T a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-1.ZN-T" .
+
+bldg:VVT-1.ZONEDMD a brick_v_1_0_2:Zone_Demand ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-1.ZONEDMD" .
+
+bldg:VVT-2.DA-T a brick1:Discharge_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-2.DA-T" .
+
+bldg:VVT-2.DPR a brick1:Damper ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:VVT-2.DPR.DPR-C .
+
+bldg:VVT-2.DPR.DPR-C a brick_v_1_0_2:Damper_Position_Command ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-2.DPR-C" .
+
+bldg:VVT-2.MAXDMP a brick_v_1_0_2:Supply_Air_Damper_Max_Position_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-2.MAXDMP" .
+
+bldg:VVT-2.MINDMP a brick_v_1_0_2:Supply_Air_Damper_Min_Position_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-2.MINDMP" .
+
+bldg:VVT-2.OCC-SPT a brick_v_1_0_2:Occupied_Temperature_Setpoint,
+        brick1:Occupied_Mode_Status ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-2.OCC-SPT" .
+
+bldg:VVT-2.OCCCMD a brick1:Occupancy_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-2.OCCCMD" .
+
+bldg:VVT-2.OCCDB a brick_v_1_0_2:Occupied_Dead_Band ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-2.OCCDB" .
+
+bldg:VVT-2.OCCSTS a brick1:Occupied_Mode_Status ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-2.OCCSTS" .
+
+bldg:VVT-2.UNOCDB a brick_v_1_0_2:Unoccupied_Dead_Band ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-2.UNOCDB" .
+
+bldg:VVT-2.UNOSETP a brick_v_1_0_2:Unoccupied_Temperature_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-2.UNOSETP" .
+
+bldg:VVT-2.W-C-ADJ a brick_v_1_0_2:Thermostat_Adjust_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-2.W-C-ADJ" .
+
+bldg:VVT-2.ZN-T a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-2.ZN-T" .
+
+bldg:VVT-2.ZONEDMD a brick_v_1_0_2:Zone_Demand ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-2.ZONEDMD" .
+
+bldg:VVT-3.DA-T a brick1:Discharge_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-3.DA-T" .
+
+bldg:VVT-3.DPR a brick1:Damper ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:VVT-3.DPR.DPR-C .
+
+bldg:VVT-3.DPR.DPR-C a brick_v_1_0_2:Damper_Position_Command ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-3.DPR-C" .
+
+bldg:VVT-3.MAXDMP a brick_v_1_0_2:Supply_Air_Damper_Max_Position_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-3.MAXDMP" .
+
+bldg:VVT-3.MINDMP a brick_v_1_0_2:Supply_Air_Damper_Min_Position_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-3.MINDMP" .
+
+bldg:VVT-3.OCC-SPT a brick_v_1_0_2:Occupied_Temperature_Setpoint,
+        brick1:Occupied_Mode_Status ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-3.OCC-SPT" .
+
+bldg:VVT-3.OCCCMD a brick1:Occupancy_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-3.OCCCMD" .
+
+bldg:VVT-3.OCCDB a brick_v_1_0_2:Occupied_Dead_Band ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-3.OCCDB" .
+
+bldg:VVT-3.OCCSTS a brick1:Occupied_Mode_Status ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-3.OCCSTS" .
+
+bldg:VVT-3.UNOCDB a brick_v_1_0_2:Unoccupied_Dead_Band ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-3.UNOCDB" .
+
+bldg:VVT-3.UNOSETP a brick_v_1_0_2:Unoccupied_Temperature_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-3.UNOSETP" .
+
+bldg:VVT-3.W-C-ADJ a brick_v_1_0_2:Thermostat_Adjust_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-3.W-C-ADJ" .
+
+bldg:VVT-3.ZN-T a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-3.ZN-T" .
+
+bldg:VVT-3.ZONEDMD a brick_v_1_0_2:Zone_Demand ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-3.ZONEDMD" .
+
+bldg:VVT-4.DA-T a brick1:Discharge_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-4.DA-T" .
+
+bldg:VVT-4.DPR a brick1:Damper ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:VVT-4.DPR.DPR-C .
+
+bldg:VVT-4.DPR.DPR-C a brick_v_1_0_2:Damper_Position_Command ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-4.DPR-C" .
+
+bldg:VVT-4.MAXDMP a brick_v_1_0_2:Supply_Air_Damper_Max_Position_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-4.MAXDMP" .
+
+bldg:VVT-4.MINDMP a brick_v_1_0_2:Supply_Air_Damper_Min_Position_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-4.MINDMP" .
+
+bldg:VVT-4.OCC-SPT a brick_v_1_0_2:Occupied_Temperature_Setpoint,
+        brick1:Occupied_Mode_Status ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-4.OCC-SPT" .
+
+bldg:VVT-4.OCCCMD a brick1:Occupancy_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-4.OCCCMD" .
+
+bldg:VVT-4.OCCDB a brick_v_1_0_2:Occupied_Dead_Band ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-4.OCCDB" .
+
+bldg:VVT-4.OCCSTS a brick1:Occupied_Mode_Status ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-4.OCCSTS" .
+
+bldg:VVT-4.UNOCDB a brick_v_1_0_2:Unoccupied_Dead_Band ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-4.UNOCDB" .
+
+bldg:VVT-4.UNOSETP a brick_v_1_0_2:Unoccupied_Temperature_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-4.UNOSETP" .
+
+bldg:VVT-4.W-C-ADJ a brick_v_1_0_2:Thermostat_Adjust_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-4.W-C-ADJ" .
+
+bldg:VVT-4.ZN-T a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-4.ZN-T" .
+
+bldg:VVT-4.ZONEDMD a brick_v_1_0_2:Zone_Demand ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-4.ZONEDMD" .
+
+bldg:VVT-5.DA-T a brick1:Discharge_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-5.DA-T" .
+
+bldg:VVT-5.DPR a brick1:Damper ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:VVT-5.DPR.DPR-C .
+
+bldg:VVT-5.DPR.DPR-C a brick_v_1_0_2:Damper_Position_Command ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-5.DPR-C" .
+
+bldg:VVT-5.MAXDMP a brick_v_1_0_2:Supply_Air_Damper_Max_Position_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-5.MAXDMP" .
+
+bldg:VVT-5.MINDMP a brick_v_1_0_2:Supply_Air_Damper_Min_Position_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-5.MINDMP" .
+
+bldg:VVT-5.OCC-SPT a brick_v_1_0_2:Occupied_Temperature_Setpoint,
+        brick1:Occupied_Mode_Status ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-5.OCC-SPT" .
+
+bldg:VVT-5.OCCCMD a brick1:Occupancy_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-5.OCCCMD" .
+
+bldg:VVT-5.OCCDB a brick_v_1_0_2:Occupied_Dead_Band ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-5.OCCDB" .
+
+bldg:VVT-5.OCCSTS a brick1:Occupied_Mode_Status ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-5.OCCSTS" .
+
+bldg:VVT-5.UNOCDB a brick_v_1_0_2:Unoccupied_Dead_Band ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-5.UNOCDB" .
+
+bldg:VVT-5.UNOSETP a brick_v_1_0_2:Unoccupied_Temperature_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-5.UNOSETP" .
+
+bldg:VVT-5.W-C-ADJ a brick_v_1_0_2:Thermostat_Adjust_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-5.W-C-ADJ" .
+
+bldg:VVT-5.ZN-T a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-5.ZN-T" .
+
+bldg:VVT-5.ZONEDMD a brick_v_1_0_2:Zone_Demand ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-5.ZONEDMD" .
+
+bldg:VVT-6.DA-T a brick1:Discharge_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-6.DA-T" .
+
+bldg:VVT-6.DPR a brick1:Damper ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:VVT-6.DPR.DPR-C .
+
+bldg:VVT-6.DPR.DPR-C a brick_v_1_0_2:Damper_Position_Command ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-6.DPR-C" .
+
+bldg:VVT-6.MAXDMP a brick_v_1_0_2:Supply_Air_Damper_Max_Position_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-6.MAXDMP" .
+
+bldg:VVT-6.MINDMP a brick_v_1_0_2:Supply_Air_Damper_Min_Position_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-6.MINDMP" .
+
+bldg:VVT-6.OCC-SPT a brick_v_1_0_2:Occupied_Temperature_Setpoint,
+        brick1:Occupied_Mode_Status ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-6.OCC-SPT" .
+
+bldg:VVT-6.OCCCMD a brick1:Occupancy_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-6.OCCCMD" .
+
+bldg:VVT-6.OCCDB a brick_v_1_0_2:Occupied_Dead_Band ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-6.OCCDB" .
+
+bldg:VVT-6.OCCSTS a brick1:Occupied_Mode_Status ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-6.OCCSTS" .
+
+bldg:VVT-6.UNOCDB a brick_v_1_0_2:Unoccupied_Dead_Band ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-6.UNOCDB" .
+
+bldg:VVT-6.UNOSETP a brick_v_1_0_2:Unoccupied_Temperature_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-6.UNOSETP" .
+
+bldg:VVT-6.W-C-ADJ a brick_v_1_0_2:Thermostat_Adjust_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-6.W-C-ADJ" .
+
+bldg:VVT-6.ZN-T a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-6.ZN-T" .
+
+bldg:VVT-6.ZONEDMD a brick_v_1_0_2:Zone_Demand ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-6.ZONEDMD" .
+
+bldg:VVT-7.DA-T a brick1:Discharge_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-7.DA-T" .
+
+bldg:VVT-7.DPR a brick1:Damper ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:VVT-7.DPR.DPR-C .
+
+bldg:VVT-7.DPR.DPR-C a brick_v_1_0_2:Damper_Position_Command ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-7.DPR-C" .
+
+bldg:VVT-7.EF5- a brick1:Exhaust_Fan ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brick1:hasPoint bldg:VVT-7.EF5-.EF5-C .
+
+bldg:VVT-7.EF5-.EF5-C a brick1:On_Off_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-7.EF5-C" .
+
+bldg:VVT-7.MAXDMP a brick_v_1_0_2:Supply_Air_Damper_Max_Position_Setpoint ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-7.MAXDMP" .
+
+bldg:VVT-7.MINDMP a brick_v_1_0_2:Supply_Air_Damper_Min_Position_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-7.MINDMP" .
+
+bldg:VVT-7.OCC-SPT a brick_v_1_0_2:Occupied_Temperature_Setpoint,
+        brick1:Occupied_Mode_Status ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-7.OCC-SPT" .
+
+bldg:VVT-7.OCCCMD a brick1:Occupancy_Command ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-7.OCCCMD" .
+
+bldg:VVT-7.OCCDB a brick_v_1_0_2:Occupied_Dead_Band ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-7.OCCDB" .
+
+bldg:VVT-7.OCCSTS a brick1:Occupied_Mode_Status ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-7.OCCSTS" .
+
+bldg:VVT-7.UNOCDB a brick_v_1_0_2:Unoccupied_Dead_Band ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-7.UNOCDB" .
+
+bldg:VVT-7.UNOSETP a brick_v_1_0_2:Unoccupied_Temperature_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-7.UNOSETP" .
+
+bldg:VVT-7.W-C-ADJ a brick_v_1_0_2:Thermostat_Adjust_Setpoint ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-7.W-C-ADJ" .
+
+bldg:VVT-7.ZN-T a brick1:Zone_Air_Temperature_Sensor ;
+    brickframe:hasSite bldg:orinda-public-library ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-7.ZN-T" .
+
+bldg:VVT-7.ZONEDMD a brick_v_1_0_2:Zone_Demand ;
+    brickframe:pointname "NAE35-OrindaLib/N2 Trunk.VVT-7.ZONEDMD" .
+
+brick_v_1_0_2:Green_Button_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Building_Electric_Meter .
+
+brick_v_1_0_2:Illumination_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor .
+
+brickframe:hasSite a owl:ObjectProperty ;
+    rdfs:range brick_v_1_0_2:Site .
+
+brick_v_1_0_2:Building_Electric_Meter a owl:Class ;
+    rdfs:subClassOf brick_v_1_0_2:Electric_Meter .
+
+brick_v_1_0_2:Weather_Cloud_Coverage_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Weather_Cloud_Height_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Weather_Temperature_Sensor a owl:Class ;
+    rdfs:subClassOf brick1:Sensor,
+        brick1:Weather .
+
+brick_v_1_0_2:Site a owl:Class ;
+    rdfs:subClassOf brick1:Location .
+
+bldg:orinda-public-library a brick_v_1_0_2:Site ;
+    brickframe:Country "US" ;
+    brickframe:NumFloors "3" ;
+    brickframe:PrimaryFunction "Library" ;
+    brickframe:Timezone "America/Los_Angeles" .
+
