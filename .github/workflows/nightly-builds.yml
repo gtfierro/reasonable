@@ -30,11 +30,10 @@ jobs:
           command: test
 
       - uses: meeDamian/github-release@2.0
-        name: deploy release
         with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        name: Nightly Build
-        body: >
-          This is an automatically generated release
-        files: >
-          target/release/reasonable
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: Nightly Build
+          body: >
+            This is an automatically generated release
+          files: >
+            target/release/reasonable
