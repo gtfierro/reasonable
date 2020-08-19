@@ -42,3 +42,4 @@ jobs:
             This is an automatically generated release
           files: >
             target/release/reasonable
+          gzip: false
