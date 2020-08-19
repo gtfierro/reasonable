@@ -20,42 +20,42 @@ ontology_files = [
 #     "../../example_models/small1.n3",
 #     "../../example_models/soda_hall.n3",
 # ]
-data_files = glob.glob("mortarmodels/*.ttl")
+data_files = glob.glob("buildings/*.ttl")
 data_sizes = {}
 for f in data_files:
     g = rdflib.Graph()
     g.parse(f, format='ttl')
     data_sizes[f] = len(g)
 
-N = 10
+N = 1
 
 all_samples = {
     'owlrl': {},
     'allegro': {},
-    # 'owlready2': {},
+    'owlready2': {},
     'reasonable': {},
 }
 
 
-# # owlready2
-# import owlready2
-# for data_file in data_files:
-#     print(f"Benching owlready2 on {data_file}")
-#     all_samples['owlready2'][data_file] = []
-#     for i in range(N):
-#         g = rdflib.Graph()
-#         load_file(g, data_file)
-#         for ont_file in ontology_files:
-#             load_file(g, ont_file)
-#         g.serialize("_owlready2_input.ttl", format="ttl")
-#         world = owlready2.World()
-#         onto = world.get_ontology(f"file://./_owlready2_input.ttl").load()
-#         t0 = time.time()
-#         owlready2.sync_reasoner(world, infer_property_values =True)
-#         G = world.as_rdflib_graph()
-#         t1 = time.time()
-#         print(f"    owlready2: {data_file} took {t1-t0}")
-#         all_samples['owlready2'][data_file].append({'duration': t1-t0, 'triples': len(G)})
+# owlready2
+import owlready2
+for data_file in data_files:
+    print(f"Benching owlready2 on {data_file}")
+    all_samples['owlready2'][data_file] = []
+    for i in range(N):
+        g = rdflib.Graph()
+        load_file(g, data_file)
+        for ont_file in ontology_files:
+            load_file(g, ont_file)
+        g.serialize("_owlready2_input.ttl", format="ttl")
+        world = owlready2.World()
+        onto = world.get_ontology(f"file://./_owlready2_input.ttl").load()
+        t0 = time.time()
+        owlready2.sync_reasoner(world, infer_property_values =True)
+        G = world.as_rdflib_graph()
+        t1 = time.time()
+        print(f"    owlready2: {data_file} took {t1-t0}")
+        all_samples['owlready2'][data_file].append({'duration': t1-t0, 'triples': len(G)})
 
 
 # OWLRL
