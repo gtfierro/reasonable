@@ -53,7 +53,8 @@ def get_triples(graph):
     /// definitions in order to use them. Returns a list of triples
     pub fn reason(&mut self) -> PyResult<Vec<(String, String, String)>> {
         self.reasoner.reason();
-        Ok(self.reasoner.get_triples())
+        // TODO: replace String with Node
+        Ok(self.reasoner.get_triples_string())
     }
 }
 

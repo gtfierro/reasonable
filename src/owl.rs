@@ -197,27 +197,24 @@ impl Reasoner {
         for i in self.get_triples() {
             let (s, p, o) = i;
 
-            // skip these because they put Literals as the subject of a triple and some parsers
-            // complain about this
-            if p == RDF_TYPE && o == RDFS_LITERAL {
-                continue
-            }
-            if p == RDF_TYPE && o == RDFS_RESOURCE {
-                continue
-            }
-            if p ==  "http://www.w3.org/2000/01/rdf-schema#seeAlso" {
-                continue
-            }
-            if p ==  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" {
-                continue
-            }
+            // // skip these because they put Literals as the subject of a triple and some parsers
+            // // complain about this
+            // if p == RDF_TYPE && o == RDFS_LITERAL {
+            //     continue
+            // }
+            // if p == RDF_TYPE && o == RDFS_RESOURCE {
+            //     continue
+            // }
+            // if p ==  "http://www.w3.org/2000/01/rdf-schema#seeAlso" {
+            //     continue
+            // }
+            // if p ==  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" {
+            //     continue
+            // }
 
-            let subject = add_node_to_graph(&graph, s, false);
-            let predicate = add_node_to_graph(&graph, p, false);
-            let object = add_node_to_graph(&graph, o, true);
 
-            info!("OUTPUT: {:?} {:?} {:?}", subject, predicate, object);
-            let t = triple::Triple::new(&subject, &predicate, &object);
+            info!("OUTPUT: {:?} {:?} {:?}", node_to_string(&s), node_to_string(&p), node_to_string(&o));
+            let t = triple::Triple::new(&s, &p, &o);
             graph.add_triple(&t);
         }
 
@@ -1126,7 +1123,25 @@ impl Reasoner {
 
 
     /// Returns the vec of triples currently contained in the Reasoner
-    pub fn get_triples(&mut self) -> Vec<(String, String, String)> {
+    pub fn get_triples(&mut self) -> Vec<(Node, Node, Node)> {
+        let instances = self.spo.clone().complete();
+
+        self.rebuild_with(instances.clone());
+
+        instances.iter().filter(|inst| {
+            let (_s, (_p, _o)) = inst;
+             *_s > 0 && *_p > 0 && *_o > 0
+        }).map(|inst| {
+            let (_s, (_p, _o)) = inst;
+            let s = self.index.get(*_s).unwrap().clone();
+            let p = self.index.get(*_p).unwrap().clone();
+            let o = self.index.get(*_o).unwrap().clone();
+            (s, p, o)
+        }).collect()
+    }
+
+    /// Returns the vec of triples currently contained in the Reasoner
+    pub fn get_triples_string(&mut self) -> Vec<(String, String, String)> {
         let instances = self.spo.clone().complete();
 
         self.rebuild_with(instances.clone());
@@ -1139,7 +1154,7 @@ impl Reasoner {
             let s = self.index.get(*_s).unwrap();
             let p = self.index.get(*_p).unwrap();
             let o = self.index.get(*_o).unwrap();
-            (node_to_string(s), node_to_string(p), node_to_string(o))
+            (node_to_string(&s), node_to_string(&p), node_to_string(&o))
         }).collect()
     }
 }
@@ -1150,29 +1165,6 @@ fn node_to_string(n: &Node) -> String {
         Node::LiteralNode{literal, data_type: _, language: _} => format!("\"{}\"", literal.to_string()),
         Node::BlankNode{id} => format!("_:{}", id.to_string())
     }
-}
-
-fn add_node_to_graph(graph: &Graph, s: String, is_object: bool) -> Node {
-    if s.starts_with("_:") {
-        graph.create_blank_node_with_id(s.replacen("_:", "", 1))
-    } else if is_object && (s.contains(" ") || suggests_literal(&s)) {
-        graph.create_literal_node(escape_literal(&s))
-    } else {
-        graph.create_uri_node(&Uri::new(s))
-    }
-}
-
-fn suggests_literal(pred: &String) -> bool {
-    *pred == "http://www.w3.org/2000/01/rdf-schema#label".to_string() ||
-    *pred == "http://www.w3.org/2000/01/rdf-schema#comment".to_string() ||
-    *pred == "http://schema.org#email".to_string() ||
-    *pred == "http://schema.org#name".to_string() ||
-    *pred == "http://www.w3.org/2004/02/skos/core#definition".to_string() ||
-    *pred == "http://purl.org/dc/elements/1.1/title"
-}
-
-fn escape_literal(literal: &str) -> String {
-    literal.to_string().replace("\n", "\\n")
 }
 
 #[cfg(test)]
@@ -1206,7 +1198,7 @@ mod tests {
         ];
         r.load_triples_str(trips);
         r.reason();
-        let res = r.get_triples();
+        let res = r.get_triples_string();
         assert!(res.contains(&("a".to_string(), OWL_SAMEAS.to_string(), "a".to_string())));
         assert!(res.contains(&("b".to_string(), OWL_SAMEAS.to_string(), "b".to_string())));
         assert!(res.contains(&("c".to_string(), OWL_SAMEAS.to_string(), "c".to_string())));
@@ -1221,7 +1213,7 @@ mod tests {
         ];
         r.load_triples_str(trips);
         r.reason();
-        let res = r.get_triples();
+        let res = r.get_triples_string();
         assert!(res.contains(&("y".to_string(), OWL_SAMEAS.to_string(), "x".to_string())));
         Ok(())
     }
@@ -1235,7 +1227,7 @@ mod tests {
         ];
         r.load_triples_str(trips);
         r.reason();
-        let res = r.get_triples();
+        let res = r.get_triples_string();
         assert!(res.contains(&("x".to_string(), OWL_SAMEAS.to_string(), "z".to_string())));
         Ok(())
     }
@@ -1249,7 +1241,7 @@ mod tests {
         ];
         r.load_triples_str(trips);
         r.reason();
-        let res = r.get_triples();
+        let res = r.get_triples_string();
         assert!(res.contains(&("s2".to_string(), "p".to_string(), "o".to_string())));
         Ok(())
     }
@@ -1263,7 +1255,7 @@ mod tests {
         ];
         r.load_triples_str(trips);
         r.reason();
-        let res = r.get_triples();
+        let res = r.get_triples_string();
         assert!(res.contains(&("s".to_string(), "p2".to_string(), "o".to_string())));
         Ok(())
     }
@@ -1277,7 +1269,7 @@ mod tests {
         ];
         r.load_triples_str(trips);
         r.reason();
-        let res = r.get_triples();
+        let res = r.get_triples_string();
         assert!(res.contains(&("s".to_string(), "p".to_string(), "o2".to_string())));
         Ok(())
     }
@@ -1291,7 +1283,7 @@ mod tests {
         ];
         r.load_triples_str(trips);
         r.reason();
-        let res = r.get_triples();
+        let res = r.get_triples_string();
         assert!(res.contains(&("a".to_string(), RDF_TYPE.to_string(), "Class1".to_string())));
         Ok(())
     }
@@ -1305,7 +1297,7 @@ mod tests {
         ];
         r.load_triples_str(trips);
         r.reason();
-        let res = r.get_triples();
+        let res = r.get_triples_string();
         assert!(res.contains(&("a".to_string(), RDF_TYPE.to_string(), "Class2".to_string())));
         Ok(())
     }
@@ -1319,7 +1311,7 @@ mod tests {
         ];
         r.load_triples_str(trips);
         r.reason();
-        let res = r.get_triples();
+        let res = r.get_triples_string();
         assert!(res.contains(&("a".to_string(), RDF_TYPE.to_string(), "Class1".to_string())));
         Ok(())
     }
@@ -1337,7 +1329,7 @@ mod tests {
         ];
         r.load_triples_str(trips);
         r.reason();
-        let res = r.get_triples();
+        let res = r.get_triples_string();
         assert!(res.contains(&("a".to_string(), RDF_TYPE.to_string(), "Class2".to_string())));
         assert!(res.contains(&("a".to_string(), RDF_TYPE.to_string(), "Class3".to_string())));
         assert!(res.contains(&("a".to_string(), RDF_TYPE.to_string(), "Class4".to_string())));
@@ -1359,7 +1351,7 @@ mod tests {
         ];
         r.load_triples_str(trips);
         r.reason();
-        let res = r.get_triples();
+        let res = r.get_triples_string();
         assert!(res.contains(&("a".to_string(), RDF_TYPE.to_string(), "Class1".to_string())));
         assert!(res.contains(&("a".to_string(), RDF_TYPE.to_string(), "Class2".to_string())));
         assert!(res.contains(&("a".to_string(), RDF_TYPE.to_string(), "Class3".to_string())));
@@ -1379,7 +1371,7 @@ mod tests {
         ];
         r.load_triples_str(trips);
         r.reason();
-        let res = r.get_triples();
+        let res = r.get_triples_string();
         for i in res.iter() {
             let (s, p, o) = i;
             println!("{} {} {}", s, p, o);
@@ -1398,7 +1390,7 @@ mod tests {
         ];
         r.load_triples_str(trips);
         r.reason();
-        let res = r.get_triples();
+        let res = r.get_triples_string();
         for i in res.iter() {
             let (s, p, o) = i;
             println!("{} {} {}", s, p, o);
@@ -1416,7 +1408,7 @@ mod tests {
         ];
         r.load_triples_str(trips);
         r.reason();
-        let res = r.get_triples();
+        let res = r.get_triples_string();
         for i in res.iter() {
             let (s, p, o) = i;
             println!("{} {} {}", s, p, o);
@@ -1434,7 +1426,7 @@ mod tests {
         ];
         r.load_triples_str(trips);
         r.reason();
-        let res = r.get_triples();
+        let res = r.get_triples_string();
         for i in res.iter() {
             let (s, p, o) = i;
             println!("{} {} {}", s, p, o);
@@ -1452,7 +1444,7 @@ mod tests {
         ];
         r.load_triples_str(trips);
         r.reason();
-        let res = r.get_triples();
+        let res = r.get_triples_string();
         for i in res.iter() {
             let (s, p, o) = i;
             println!("{} {} {}", s, p, o);
@@ -1471,7 +1463,7 @@ mod tests {
         ];
         r.load_triples_str(trips);
         r.reason();
-        let res = r.get_triples();
+        let res = r.get_triples_string();
         for i in res.iter() {
             let (s, p, o) = i;
             println!("{} {} {}", s, p, o);
@@ -1489,7 +1481,7 @@ mod tests {
         ];
         r.load_triples_str(trips);
         r.reason();
-        let res = r.get_triples();
+        let res = r.get_triples_string();
         for i in res.iter() {
             let (s, p, o) = i;
             println!("{} {} {}", s, p, o);
@@ -1502,7 +1494,7 @@ mod tests {
     fn test_cls_thing_nothing() -> Result<(), String> {
         let mut r = Reasoner::new();
         r.reason();
-        let res = r.get_triples();
+        let res = r.get_triples_string();
         for i in res.iter() {
             let (s, p, o) = i;
             println!("{} {} {}", s, p, o);
@@ -1522,7 +1514,7 @@ mod tests {
         ];
         r.load_triples_str(trips);
         r.reason();
-        let res = r.get_triples();
+        let res = r.get_triples_string();
         for i in res.iter() {
             let (s, p, o) = i;
             println!("{} {} {}", s, p, o);
@@ -1541,7 +1533,7 @@ mod tests {
         ];
         r.load_triples_str(trips);
         r.reason();
-        let res = r.get_triples();
+        let res = r.get_triples_string();
         for i in res.iter() {
             let (s, p, o) = i;
             println!("{} {} {}", s, p, o);
@@ -1561,7 +1553,7 @@ mod tests {
         ];
         r.load_triples_str(trips);
         r.reason();
-        let res = r.get_triples();
+        let res = r.get_triples_string();
         for i in res.iter() {
             let (s, p, o) = i;
             println!("{} {} {}", s, p, o);
@@ -1581,7 +1573,7 @@ mod tests {
         ];
         r.load_triples_str(trips);
         r.reason();
-        let res = r.get_triples();
+        let res = r.get_triples_string();
         for i in res.iter() {
             let (s, p, o) = i;
             println!("{} {} {}", s, p, o);
@@ -1600,7 +1592,7 @@ mod tests {
         ];
         r.load_triples_str(trips);
         r.reason();
-        let res = r.get_triples();
+        let res = r.get_triples_string();
         for i in res.iter() {
             let (s, p, o) = i;
             println!("{} {} {}", s, p, o);
@@ -1626,7 +1618,7 @@ mod tests {
         ];
         r.load_triples_str(trips);
         r.reason();
-        let res = r.get_triples();
+        let res = r.get_triples_string();
         for i in res.iter() {
             let (s, p, o) = i;
             println!("{} {} {}", s, p, o);
@@ -1650,7 +1642,7 @@ mod tests {
         ];
         r.load_triples_str(trips);
         r.reason();
-        let res = r.get_triples();
+        let res = r.get_triples_string();
         for i in res.iter() {
             let (s, p, o) = i;
             println!("{} {} {}", s, p, o);
@@ -1687,7 +1679,7 @@ mod tests {
         ];
         r.load_triples_str(trips);
         r.reason();
-        let res = r.get_triples();
+        let res = r.get_triples_string();
         for i in res.iter() {
             let (s, p, o) = i;
             println!("{} {} {}", s, p, o);
@@ -1722,7 +1714,7 @@ mod tests {
         ];
         r.load_triples_str(trips);
         r.reason();
-        let res = r.get_triples();
+        let res = r.get_triples_string();
         for i in res.iter() {
             let (s, p, o) = i;
             println!("{} {} {}", s, p, o);
@@ -1750,7 +1742,7 @@ mod tests {
         ];
         r.load_triples_str(trips);
         r.reason();
-        let res = r.get_triples();
+        let res = r.get_triples_string();
         for i in res.iter() {
             let (s, p, o) = i;
             println!("{} {} {}", s, p, o);
@@ -1773,7 +1765,7 @@ mod tests {
         ];
         r.load_triples_str(trips);
         r.reason();
-        let res = r.get_triples();
+        let res = r.get_triples_string();
         for i in res.iter() {
             let (s, p, o) = i;
             println!("{} {} {}", s, p, o);
