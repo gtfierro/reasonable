@@ -1,4 +1,5 @@
 use crate::owl;
+use rdf::node::Node;
 use pyo3::prelude::*;
 use pyo3::exceptions;
 
@@ -51,10 +52,52 @@ def get_triples(graph):
     /// Perform OWL 2 RL reasoning on the triples loaded into the PyReasoner object. This makes no
     /// assumptions about which ontologies are pre-loaded, so you need to load in OWL, RDFS, etc
     /// definitions in order to use them. Returns a list of triples
-    pub fn reason(&mut self) -> PyResult<Vec<(String, String, String)>> {
+    pub fn reason(&mut self) -> PyResult<Vec<(Py<PyAny>, Py<PyAny>, Py<PyAny>)>> {
+        let gil = Python::acquire_gil();
+        let py = gil.python();
+        let rdflib = py.import("rdflib")?;
+
         self.reasoner.reason();
+        let mut res = Vec::new();
+        //self.reasoner.get_triples().iter().map(|t| {
+        //    let s = match &t.0 {
+        //        Node::UriNode{ref uri} => rdflib.call1("URIRef", (uri.to_string(),))?,
+        //        Node::LiteralNode{ref literal, data_type: _, language: _} => rdflib.call1("Literal", (literal.to_string(),))?,
+        //        Node::BlankNode{ref id} => rdflib.call1("BNode", (id.to_string(),))?
+        //    };
+        //    let p = match &t.1 {
+        //        Node::UriNode{ref uri} => rdflib.call1("URIRef", (uri.to_string(),))?,
+        //        Node::LiteralNode{ref literal, data_type: _, language: _} => rdflib.call1("Literal", (literal.to_string(),))?,
+        //        Node::BlankNode{ref id} => rdflib.call1("BNode", (id.to_string(),))?
+        //    };
+        //    let o = match &t.2 {
+        //        Node::UriNode{ref uri} => rdflib.call1("URIRef", (uri.to_string(),))?,
+        //        Node::LiteralNode{ref literal, data_type: _, language: _} => rdflib.call1("Literal", (literal.to_string(),))?,
+        //        Node::BlankNode{ref id} => rdflib.call1("BNode", (id.to_string(),))?
+        //    };
+        //    (s, p, o)
+        //}).collect()
+        for t in self.reasoner.get_triples() {
+            let s = match &t.0 {
+                Node::UriNode{ref uri} => rdflib.call1("URIRef", (uri.to_string(),))?,
+                Node::LiteralNode{ref literal, data_type: _, language: _} => rdflib.call1("Literal", (literal.to_string(),))?,
+                Node::BlankNode{ref id} => rdflib.call1("BNode", (id.to_string(),))?
+            }.into();
+            let p = match &t.1 {
+                Node::UriNode{ref uri} => rdflib.call1("URIRef", (uri.to_string(),))?,
+                Node::LiteralNode{ref literal, data_type: _, language: _} => rdflib.call1("Literal", (literal.to_string(),))?,
+                Node::BlankNode{ref id} => rdflib.call1("BNode", (id.to_string(),))?
+            }.into();
+            let o = match &t.2 {
+                Node::UriNode{ref uri} => rdflib.call1("URIRef", (uri.to_string(),))?,
+                Node::LiteralNode{ref literal, data_type: _, language: _} => rdflib.call1("Literal", (literal.to_string(),))?,
+                Node::BlankNode{ref id} => rdflib.call1("BNode", (id.to_string(),))?
+            }.into();
+            res.push((s, p, o));
+        }
         // TODO: replace String with Node
-        Ok(self.reasoner.get_triples_string())
+        // Ok(self.reasoner.get_triples_string())
+        Ok(res)
     }
 }
 
@@ -63,3 +106,11 @@ fn reasonable(_py: Python, m: &PyModule) -> PyResult<()> {
     m.add_class::<PyReasoner>()?;
     Ok(())
 }
+
+// fn node_to_py(n: &Node) -> PyResult<PyAny> {
+//     match n {
+//         Node::UriNode{ref uri} => rdflib.call1("URIRef", (uri.to_string(),))?,
+//         Node::LiteralNode{ref literal, data_type: _, language: _} => rdflib.call1("Literal", (literal.to_string(),))?,
+//         Node::BlankNode{ref id} => rdflib.call1("BNode", (id.to_string(),))?
+//     }
+// }

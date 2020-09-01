@@ -18,7 +18,7 @@ test:
 
 test-python:
 	cargo build --lib --release --features "python-library"
-	cp ./target/release/libreasonable.so reasonable.so
+	cp ./target/release/libreasonable.so reasonable/reasonable.so
 	python test.py
 
 install-python-versions:
