@@ -4,10 +4,12 @@
 //! Profile](https://www.w3.org/TR/owl2-profiles/#Reasoning_in_OWL_2_RL_and_RDF_Graphs_using_Rules)
 //! website.
 
+#[allow(dead_code)]
 mod index;
 pub mod owl;
 mod disjoint_sets;
 #[allow(dead_code)]
+#[allow(unused_macros)]
 mod common;
 
 #[cfg(feature="python-library")]

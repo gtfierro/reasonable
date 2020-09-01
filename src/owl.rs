@@ -15,15 +15,19 @@ use rdf::reader::turtle_parser::TurtleParser;
 use rdf::reader::n_triples_parser::NTriplesParser;
 use rdf::reader::rdf_parser::RdfParser;
 use rdf::node::Node;
+use rdf::uri::Uri;
 use rdf::namespace::Namespace;
 use rdf::graph::Graph;
 use rdf::triple;
-use rdf::uri::Uri;
 use rdf::writer::turtle_writer::TurtleWriter;
 use rdf::writer::rdf_writer::RdfWriter;
 // use rdf::writer::n_triples_writer::NTriplesWriter;
 #[allow(dead_code)]
 use crate::common::*;
+
+macro_rules! uri {
+    ($ns:expr, $t:expr) => (Node::UriNode{uri: Uri::new(format!($ns, $t))});
+}
 
 /// Returns the full URI of the concept in the OWL namespace
 /// ```
@@ -31,7 +35,7 @@ use crate::common::*;
 /// println!(uri);
 /// ```
 macro_rules! owl {
-    ($t:expr) => (format!("http://www.w3.org/2002/07/owl#{}", $t));
+    ($t:expr) => (uri!("http://www.w3.org/2002/07/owl#{}", $t));
 }
 
 /// Returns the full URI of the concept in the RDF namespace
@@ -40,7 +44,7 @@ macro_rules! owl {
 /// println!(uri);
 /// ```
 macro_rules! rdf {
-    ($t:expr) => (format!("http://www.w3.org/1999/02/22-rdf-syntax-ns#{}", $t));
+    ($t:expr) => (uri!("http://www.w3.org/1999/02/22-rdf-syntax-ns#{}", $t));
 }
 
 /// Returns the full URI of the concept in the RDFS namespace
@@ -49,7 +53,7 @@ macro_rules! rdf {
 /// println!(uri);
 /// ```
 macro_rules! rdfs {
-    ($t:expr) => (format!("http://www.w3.org/2000/01/rdf-schema#{}", $t));
+    ($t:expr) => (uri!("http://www.w3.org/2000/01/rdf-schema#{}", $t));
 }
 
 /// Creates a DataFrog variable with the given URI as the only member
@@ -164,8 +168,10 @@ impl Reasoner {
     #[allow(dead_code)]
     pub fn load_triples(&mut self, triples: Vec<(String, String, String)>) {
         let trips: Vec<(URI, (URI, URI))> = triples.iter().map(|trip| {
-            let trip = trip.clone();
-            (self.index.put(trip.0), (self.index.put(trip.1), self.index.put(trip.2)))
+            let s = Node::UriNode{uri: Uri::new(trip.0.to_string())};
+            let p = Node::UriNode{uri: Uri::new(trip.1.to_string())};
+            let o = Node::UriNode{uri: Uri::new(trip.2.to_string())};
+            (self.index.put(s), (self.index.put(p), self.index.put(o)))
         }).collect();
         self.input.extend(trips);
         // self.all_triples_input.insert(trips.into());
@@ -249,13 +255,8 @@ impl Reasoner {
         info!("Loaded {} triples from file {}", graph.count(), filename);
         let triples : Vec<(URI, (URI, URI))> = graph.triples_iter().map(|_triple| {
             let triple = _triple;
-            let subject = node_to_string(triple.subject());
-            let predicate = node_to_string(triple.predicate());
-            let object = node_to_string(triple.object());
-
-            let (s, (p, o)) = (self.index.put(subject.to_string()), (self.index.put(predicate.to_string()), self.index.put(object.to_string())));
-
-
+            let (s, (p, o)) = (self.index.put(triple.subject().clone()),
+                               (self.index.put(triple.predicate().clone()), self.index.put(triple.object().clone())));
             (s, (p,o))
 
         }).collect();
@@ -866,22 +867,22 @@ impl Reasoner {
                     let listname = *_listname;
                     let intersection_class = *_intersection_class;
                     if let Some(values) = ds.get_list_values(listname) {
-                        let value_uris: Vec<&String> = values.iter().map(|v| self.index.get(*v).unwrap()).collect();
-                        debug!("{} {} (len {}) {} {:?}", listname, self.index.get(intersection_class).unwrap(), values.len(), self.index.get(listname).unwrap(), value_uris);
+                        let value_uris: Vec<String> = values.iter().map(|v| node_to_string(self.index.get(*v).unwrap())).collect();
+                        // debug!("{} {} (len {}) {} {:?}", listname, self.index.get(intersection_class).unwrap(), values.len(), self.index.get(listname).unwrap(), value_uris);
                         let mut class_counter: HashMap<URI, usize> = HashMap::new();
                         for (_inst, _list_class) in instances.iter() {
                             let inst = *_inst;
                             let list_class = *_list_class;
-                            debug!("inst {} values len {}, list class {}", self.index.get(inst).unwrap(), values.len(), list_class);
+                            // debug!("inst {} values len {}, list class {}", self.index.get(inst).unwrap(), values.len(), list_class);
                             if values.contains(&list_class) {
-                                debug!("{} is a {}", inst, list_class);
+                                // debug!("{} is a {}", inst, list_class);
                                 let count = class_counter.entry(inst).or_insert(0);
                                 *count += 1;
                             }
                         }
                         for (inst, num_implemented) in class_counter.iter() {
                             if *num_implemented == values.len() {
-                                debug!("inferred that {} is a {}", inst, intersection_class);
+                                // debug!("inferred that {} is a {}", inst, intersection_class);
                                 new_cls_int1_instances.push((*inst, (rdftype_node, intersection_class)));
                             }
                         }
@@ -909,13 +910,13 @@ impl Reasoner {
                     let listname = *_listname;
                     let union_class = *_union_class;
                     if let Some(values) = ds.get_list_values(listname) {
-                        let value_uris: Vec<&String> = values.iter().map(|v| self.index.get(*v).unwrap()).collect();
-                        debug!("{} {} (len {}) {} {:?}", listname, self.index.get(union_class).unwrap(), values.len(), self.index.get(listname).unwrap(), value_uris);
+                        let value_uris: Vec<String> = values.iter().map(|v| node_to_string(self.index.get(*v).unwrap())).collect();
+                        // debug!("{} {} (len {}) {} {:?}", listname, self.index.get(union_class).unwrap(), values.len(), self.index.get(listname).unwrap(), value_uris);
                         let mut class_counter: HashMap<URI, usize> = HashMap::new();
                         for (_inst, _list_class) in instances.iter() {
                             let inst = *_inst;
                             let list_class = *_list_class;
-                            debug!("inst {} values len {}, list class {}", self.index.get(inst).unwrap(), values.len(), list_class);
+                            // debug!("inst {} values len {}, list class {}", self.index.get(inst).unwrap(), values.len(), list_class);
                             if values.contains(&list_class) {
                                 debug!("{} is a {}", inst, list_class);
                                 let count = class_counter.entry(inst).or_insert(0);
@@ -924,7 +925,7 @@ impl Reasoner {
                         }
                         for (inst, num_implemented) in class_counter.iter() {
                             if *num_implemented > 0 { // union instead of union
-                                debug!("inferred that {} is a {}", inst, union_class);
+                                // debug!("inferred that {} is a {}", inst, union_class);
                                 new_cls_uni_instances.push((*inst, (rdftype_node, union_class)));
                             }
                         }
@@ -1119,8 +1120,8 @@ impl Reasoner {
         }
     }
 
-    fn to_u(&self, u: URI) -> &str {
-        self.index.get(u).unwrap()
+    fn to_u(&self, u: URI) -> String {
+        node_to_string(self.index.get(u).unwrap())
     }
 
 
@@ -1138,7 +1139,7 @@ impl Reasoner {
             let s = self.index.get(*_s).unwrap();
             let p = self.index.get(*_p).unwrap();
             let o = self.index.get(*_o).unwrap();
-            (s.clone(), p.clone(), o.clone())
+            (node_to_string(s), node_to_string(p), node_to_string(o))
         }).collect()
     }
 }
@@ -1146,7 +1147,7 @@ impl Reasoner {
 fn node_to_string(n: &Node) -> String {
     match n {
         Node::UriNode{uri} => uri.to_string().clone(),
-        Node::LiteralNode{literal, data_type: _, language: _} => literal.to_string(),
+        Node::LiteralNode{literal, data_type: _, language: _} => format!("\"{}\"", literal.to_string()),
         Node::BlankNode{id} => format!("_:{}", id.to_string())
     }
 }

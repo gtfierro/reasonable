@@ -1,3 +1,6 @@
+use rdf::node::Node;
+use rdf::uri::Uri;
+
 pub const RDFS_SUBCLASSOF: &str = "http://www.w3.org/2000/01/rdf-schema#subClassOf";
 pub const RDFS_DOMAIN: &str = "http://www.w3.org/2000/01/rdf-schema#domain";
 pub const RDFS_RANGE: &str = "http://www.w3.org/2000/01/rdf-schema#range";
@@ -31,3 +34,39 @@ pub const OWL_ASYMMETRICPROP: &str = "http://www.w3.org/2002/07/owl#AsymmetricPr
 
 pub type URI = u32;
 pub type Triple = (URI, (URI, URI));
+
+#[macro_use]
+macro_rules! uri {
+    ($ns:expr, $t:expr) => (Node::UriNode{uri: Uri::new(format!($ns, $t))});
+}
+
+/// Returns the full URI of the concept in the OWL namespace
+/// ```
+/// let uri = owl!("Thing");
+/// println!(uri);
+/// ```
+#[macro_use]
+macro_rules! owl {
+    ($t:expr) => (uri!("http://www.w3.org/2002/07/owl#{}", $t));
+}
+
+/// Returns the full URI of the concept in the RDF namespace
+/// ```
+/// let uri = rdf!("type");
+/// println!(uri);
+/// ```
+#[macro_use]
+macro_rules! rdf {
+    ($t:expr) => (uri!("http://www.w3.org/1999/02/22-rdf-syntax-ns#{}", $t));
+}
+
+/// Returns the full URI of the concept in the RDFS namespace
+/// ```
+/// let uri = rdfs!("type");
+/// println!(uri);
+/// ```
+#[macro_use]
+macro_rules! rdfs {
+    ($t:expr) => (uri!("http://www.w3.org/2000/01/rdf-schema#{}", $t));
+}
+
