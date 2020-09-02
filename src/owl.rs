@@ -161,20 +161,16 @@ impl Reasoner {
             (self.index.put_str(trip.0), (self.index.put_str(trip.1), self.index.put_str(trip.2)))
         }).collect();
         self.input.extend(trips);
-        // self.all_triples_input.insert(trips.into());
     }
 
     /// Load in a vector of triples
     #[allow(dead_code)]
-    pub fn load_triples(&mut self, triples: Vec<(String, String, String)>) {
+    pub fn load_triples(&mut self, triples: Vec<(Node, Node, Node)>) {
         let trips: Vec<(URI, (URI, URI))> = triples.iter().map(|trip| {
-            let s = Node::UriNode{uri: Uri::new(trip.0.to_string())};
-            let p = Node::UriNode{uri: Uri::new(trip.1.to_string())};
-            let o = Node::UriNode{uri: Uri::new(trip.2.to_string())};
+            let (s, p, o) = trip.clone();
             (self.index.put(s), (self.index.put(p), self.index.put(o)))
         }).collect();
         self.input.extend(trips);
-        // self.all_triples_input.insert(trips.into());
     }
 
     fn add_error(&mut self, rule: String, message: String) {
@@ -196,23 +192,6 @@ impl Reasoner {
         graph.add_namespace(&Namespace::new("tag".to_string(), Uri::new("https://brickschema.org/schema/1.1.0/BrickTag#".to_string())));
         for i in self.get_triples() {
             let (s, p, o) = i;
-
-            // // skip these because they put Literals as the subject of a triple and some parsers
-            // // complain about this
-            // if p == RDF_TYPE && o == RDFS_LITERAL {
-            //     continue
-            // }
-            // if p == RDF_TYPE && o == RDFS_RESOURCE {
-            //     continue
-            // }
-            // if p ==  "http://www.w3.org/2000/01/rdf-schema#seeAlso" {
-            //     continue
-            // }
-            // if p ==  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" {
-            //     continue
-            // }
-
-
             info!("OUTPUT: {:?} {:?} {:?}", node_to_string(&s), node_to_string(&p), node_to_string(&o));
             let t = triple::Triple::new(&s, &p, &o);
             graph.add_triple(&t);
