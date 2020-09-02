@@ -192,6 +192,10 @@ impl Reasoner {
         graph.add_namespace(&Namespace::new("tag".to_string(), Uri::new("https://brickschema.org/schema/1.1.0/BrickTag#".to_string())));
         for i in self.get_triples() {
             let (s, p, o) = i;
+            // skip nodes with literal subject
+            if let Node::LiteralNode{literal: _, data_type: _, language: _} = s {
+                continue;
+            }
             info!("OUTPUT: {:?} {:?} {:?}", node_to_string(&s), node_to_string(&p), node_to_string(&o));
             let t = triple::Triple::new(&s, &p, &o);
             graph.add_triple(&t);
