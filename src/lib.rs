@@ -14,3 +14,6 @@ mod common;
 
 #[cfg(feature="python-library")]
 mod python;
+
+#[cfg(test)]
+mod tests;
