@@ -113,7 +113,11 @@ fn test_cax_sco() -> Result<(), String> {
     ];
     r.load_triples_str(trips);
     r.reason();
-    let res = r.get_triples_string();
+    let _res = r.get_triples();
+    let res: Vec<(String, String, String)> = _res.iter().map(|t| {
+        (node_to_string(&t.0), node_to_string(&t.1), node_to_string(&t.2))
+    }).collect();
+    // let res = r.get_triples_string();
     assert!(res.contains(&("a".to_string(), RDF_TYPE.to_string(), "Class1".to_string())));
     Ok(())
 }

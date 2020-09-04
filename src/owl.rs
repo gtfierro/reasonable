@@ -188,8 +188,8 @@ impl Reasoner {
         graph.add_namespace(&Namespace::new("owl".to_string(), Uri::new("http://www.w3.org/2002/07/owl#".to_string())));
         graph.add_namespace(&Namespace::new("rdf".to_string(), Uri::new("http://www.w3.org/1999/02/22-rdf-syntax-ns#".to_string())));
         graph.add_namespace(&Namespace::new("rdfs".to_string(), Uri::new("http://www.w3.org/2000/01/rdf-schema#".to_string())));
-        graph.add_namespace(&Namespace::new("brick".to_string(), Uri::new("https://brickschema.org/schema/1.1.0/Brick#".to_string())));
-        graph.add_namespace(&Namespace::new("tag".to_string(), Uri::new("https://brickschema.org/schema/1.1.0/BrickTag#".to_string())));
+        graph.add_namespace(&Namespace::new("brick".to_string(), Uri::new("https://brickschema.org/schema/1.1/Brick#".to_string())));
+        graph.add_namespace(&Namespace::new("tag".to_string(), Uri::new("https://brickschema.org/schema/1.1/BrickTag#".to_string())));
         for i in self.get_triples() {
             let (s, p, o) = i;
             // skip nodes with literal subject
@@ -890,7 +890,7 @@ impl Reasoner {
                     let listname = *_listname;
                     let union_class = *_union_class;
                     if let Some(values) = ds.get_list_values(listname) {
-                        let value_uris: Vec<String> = values.iter().map(|v| node_to_string(self.index.get(*v).unwrap())).collect();
+                        // let value_uris: Vec<String> = values.iter().map(|v| node_to_string(self.index.get(*v).unwrap())).collect();
                         // debug!("{} {} (len {}) {} {:?}", listname, self.index.get(union_class).unwrap(), values.len(), self.index.get(listname).unwrap(), value_uris);
                         let mut class_counter: HashMap<URI, usize> = HashMap::new();
                         for (_inst, _list_class) in instances.iter() {
@@ -1142,7 +1142,7 @@ impl Reasoner {
     }
 }
 
-fn node_to_string(n: &Node) -> String {
+pub fn node_to_string(n: &Node) -> String {
     match n {
         Node::UriNode{uri} => uri.to_string().clone(),
         Node::LiteralNode{literal, data_type: _, language: _} => format!("\"{}\"", literal.to_string()),
