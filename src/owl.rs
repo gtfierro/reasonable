@@ -742,7 +742,11 @@ impl Reasoner {
                 cax_sco_1.from_join(&pso, &rdfs_subclass_relation, |&_, &(c1, c2), &()| (c1, c2));
                 // ?c1, ?x, rdf:type
                 cax_sco_2.from_map(&rdf_type, |&(inst, class)| (class, inst));
-                self.all_triples_input.from_join(&cax_sco_1, &cax_sco_2, |&class, &parent, &inst| (inst, (rdftype_node, parent)));
+
+                self.all_triples_input.from_join(&cax_sco_1, &cax_sco_2, |&class, &parent, &inst| {
+                    //println!("instance: {:?} {:?} {:?}", self.to_u(inst), self.to_u(parent), self.to_u(class));
+                    (inst, (rdftype_node, parent))
+                });
 
                 // cax-eqc1, cax-eqc2
                 // find instances of classes that are equivalent
@@ -847,7 +851,7 @@ impl Reasoner {
                     let listname = *_listname;
                     let intersection_class = *_intersection_class;
                     if let Some(values) = ds.get_list_values(listname) {
-                        let value_uris: Vec<String> = values.iter().map(|v| node_to_string(self.index.get(*v).unwrap())).collect();
+                        // let value_uris: Vec<String> = values.iter().map(|v| node_to_string(self.index.get(*v).unwrap())).collect();
                         // debug!("{} {} (len {}) {} {:?}", listname, self.index.get(intersection_class).unwrap(), values.len(), self.index.get(listname).unwrap(), value_uris);
                         let mut class_counter: HashMap<URI, usize> = HashMap::new();
                         for (_inst, _list_class) in instances.iter() {
@@ -855,14 +859,15 @@ impl Reasoner {
                             let list_class = *_list_class;
                             // debug!("inst {} values len {}, list class {}", self.index.get(inst).unwrap(), values.len(), list_class);
                             if values.contains(&list_class) {
-                                // debug!("{} is a {}", inst, list_class);
+                                // debug!("{:?} is a {:?}", inst, list_class);
                                 let count = class_counter.entry(inst).or_insert(0);
                                 *count += 1;
                             }
                         }
                         for (inst, num_implemented) in class_counter.iter() {
                             if *num_implemented == values.len() {
-                                // debug!("inferred that {} is a {}", inst, intersection_class);
+                                // debug!("inferred that {:?} is a {:?}", inst, intersection_class);
+                                // println!("inferred {:?} is a {:?}", self.to_u(*inst), self.to_u(intersection_class));
                                 new_cls_int1_instances.push((*inst, (rdftype_node, intersection_class)));
                             }
                         }
