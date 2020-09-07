@@ -45,10 +45,7 @@ fn main() {
 
     ctx.with_object("s1".to_string(), "p1".to_string(), &brick!("AHU"));
     ctx.with_predicate("s1".to_string(), &brick!("feeds"), "o2".to_string());
-    println!("{}", ctx.join(0, 1));
-
-    //let a = ctx.with_subject(&brick!("VAV")).with_object(&owl!("Thing"));
-    // println!("Output: {}", *a.content().unwrap());
+    println!("{}", ctx.resolve().unwrap());
 
     r.dump_file("output.ttl").unwrap();
 }

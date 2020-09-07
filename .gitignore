@@ -24,3 +24,7 @@ output.ttl
 
 # python files
 *.pyc
+
+# extra dev stuff
+query/
+benches/

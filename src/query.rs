@@ -57,7 +57,7 @@ impl<'a> Relation<'a> {
     //        Relation {header: None, rows: Vec::new() }
     //}
 
-    fn join(first: &'a Relation, other: &'a Relation) -> Self {
+    fn join(first: Relation<'a>, other: Relation<'a>) -> Self {
             let mut new: Vec<Vec<&Node>> = Vec::new();
             let mut indices: Vec<(usize, usize)> = Vec::new();
             let mut new_indices: Vec<JoinHeader> = Vec::new();
@@ -108,7 +108,7 @@ impl<'a> Relation<'a> {
 
 impl<'a> fmt::Display for Relation<'a> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "{:?}", self.header)?;
+        write!(f, "{:?}\n", self.header)?;
         for t in self.rows.iter() {
             write!(f, "[")?;
             for node in t.iter() {
@@ -165,47 +165,20 @@ impl<'a> Context<'a> {
         self.relations.push(triples);
     }
 
-    pub fn join(&self, r1: usize, r2: usize ) -> Relation {
-        let r1 = self.relations.get(r1).unwrap();
-        let r2 = self.relations.get(r2).unwrap();
-        Relation::join(r1, r2)
-    }
-
-    pub fn joinall(&self) -> Relation {
-        let r1 = self.relations.get(0).unwrap();
-        let r2 = self.relations.get(1).unwrap();
+    pub fn joinall(mut self) -> Relation<'a> {
+        let r1 = self.relations.remove(0);
+        let r2 = self.relations.remove(0);
         let acc = Relation::join(r1, r2);
-        self.relations.iter().skip(2).fold(acc, |a, b| {
-            Relation::join(&a, b)
+        self.relations.into_iter().skip(2).fold(acc, |a, b| {
+            Relation::join(a, b)
         })
-        //for rel in self.relations.iter().skip(2) {
-        //    let a = Relation::join(&acc, rel);
-        //    acc = a;
-        //}
-        //acc
     }
 
-    pub fn resolve(&self) -> Option<&Relation> {
+    pub fn resolve(mut self) -> Option<Relation<'a>> {
         match self.relations.len() {
             0 => None,
-            1 => self.relations.get(0),
-            _ => Some(&self.joinall())
+            1 => Some(self.relations.remove(0)),
+            _ => Some(self.joinall())
         }
     }
-
-    //fn handle(&self, triples: Vec<&'a Triple>) -> Self {
-    //    let triples = Relation::from(triples);
-    //    let new = match &self.relation {
-    //        Some(rel) => Relation::join(&rel.clone(), &triples, &|t1, t2| t1[0] == t2[0] ),
-    //        None => triples,
-    //    };
-    //    Context{graph: self.graph, relation: Some(Rc::new(new))}
-    //}
-
-    //pub fn content(&self) -> Option<Rc<Relation>> {
-    //    match &self.relation {
-    //        Some(rel) => Some(rel.clone()),
-    //        None => None
-    //    }
-    //}
 }

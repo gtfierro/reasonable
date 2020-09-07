@@ -1,15 +1,15 @@
 <http://buildsys.org/ontologies/building_example#vav_1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://brickschema.org/schema/1.1/Brick#VAV> .
-<http://buildsys.org/ontologies/building_example#floor_1> <https://brickschema.org/schema/1.1/BrickFrame#isPartOf> <http://buildsys.org/ontologies/building_example#building_1> .
+<http://buildsys.org/ontologies/building_example#floor_1> <https://brickschema.org/schema/1.1/Brick#isPartOf> <http://buildsys.org/ontologies/building_example#building_1> .
 <http://buildsys.org/ontologies/building_example#ahu_1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://brickschema.org/schema/1.1/Brick#AHU> .
 <http://buildsys.org/ontologies/building_example#hvaczone_1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://brickschema.org/schema/1.1/Brick#HVAC_Zone> .
-<http://buildsys.org/ontologies/building_example#ztemp_1> <https://brickschema.org/schema/1.1/BrickFrame#isPointOf> <http://buildsys.org/ontologies/building_example#vav_1> .
+<http://buildsys.org/ontologies/building_example#ztemp_1> <https://brickschema.org/schema/1.1/Brick#isPointOf> <http://buildsys.org/ontologies/building_example#vav_1> .
 <http://buildsys.org/ontologies/building_example#ztemp_1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://brickschema.org/schema/1.1/Brick#Air_Temperature_Sensor> .
-<http://buildsys.org/ontologies/building_example#room_1> <https://brickschema.org/schema/1.1/BrickFrame#isPartOf> <http://buildsys.org/ontologies/building_example#floor_1> .
+<http://buildsys.org/ontologies/building_example#room_1> <https://brickschema.org/schema/1.1/Brick#isPartOf> <http://buildsys.org/ontologies/building_example#floor_1> .
 <http://buildsys.org/ontologies/building_example#room_1> <http://www.w3.org/2000/01/rdf-schema#label> "Room 1" .
-<http://buildsys.org/ontologies/building_example#room_1> <https://brickschema.org/schema/1.1/BrickFrame#isPartOf> <http://buildsys.org/ontologies/building_example#hvaczone_1> .
-<http://buildsys.org/ontologies/building_example#vav_1> <https://brickschema.org/schema/1.1/BrickFrame#feeds> <http://buildsys.org/ontologies/building_example#hvaczone_1> .
+<http://buildsys.org/ontologies/building_example#room_1> <https://brickschema.org/schema/1.1/Brick#isPartOf> <http://buildsys.org/ontologies/building_example#hvaczone_1> .
+<http://buildsys.org/ontologies/building_example#vav_1> <https://brickschema.org/schema/1.1/Brick#feeds> <http://buildsys.org/ontologies/building_example#hvaczone_1> .
 <http://buildsys.org/ontologies/building_example#floor_1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://brickschema.org/schema/1.1/Brick#Floor> .
 <http://buildsys.org/ontologies/building_example#room_1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://brickschema.org/schema/1.1/Brick#Room> .
-<http://buildsys.org/ontologies/building_example#ztemp_1> <https://brickschema.org/schema/1.1/BrickFrame#isPartOf> <http://buildsys.org/ontologies/building_example#vav_1> .
-<http://buildsys.org/ontologies/building_example#ahu_1> <https://brickschema.org/schema/1.1/BrickFrame#feeds> <http://buildsys.org/ontologies/building_example#vav_1> .
+<http://buildsys.org/ontologies/building_example#ztemp_1> <https://brickschema.org/schema/1.1/Brick#isPartOf> <http://buildsys.org/ontologies/building_example#vav_1> .
+<http://buildsys.org/ontologies/building_example#ahu_1> <https://brickschema.org/schema/1.1/Brick#feeds> <http://buildsys.org/ontologies/building_example#vav_1> .
 
