@@ -43,8 +43,9 @@ fn main() {
     let mut ctx = query::Context::new(&g);
     // ctx.query(r#"(println "hello")"#.to_string());
 
-    ctx.with_object("s1".to_string(), "p1".to_string(), &brick!("AHU"));
-    ctx.with_predicate("s1".to_string(), &brick!("feeds"), "o2".to_string());
+    ctx.with_predicate_object("ahu".to_string(), &rdf!("type"), &brick!("AHU"));
+    ctx.with_predicate("ahu".to_string(), &rdf!("type"), "type".to_string());
+    ctx.with_predicate("ahu".to_string(), &brick!("feeds"), "equip".to_string());
     println!("{}", ctx.resolve().unwrap());
 
     r.dump_file("output.ttl").unwrap();
