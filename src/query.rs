@@ -1,4 +1,5 @@
 use crate::owl::node_to_string;
+use regex::Regex;
 use rdf::graph;
 use rdf::node::Node;
 use rdf::uri::Uri;
@@ -37,7 +38,7 @@ enum Atom {
 
 #[derive(Serialize, Deserialize, Debug)]
 struct Query {
-    prefixes: Vec<Prefix>,
+    prefixes: Vec<[String; 2]>,
     select: Vec<String>,
     clauses: Vec<[String; 3]>
 }
@@ -48,11 +49,11 @@ impl Query {
             Atom::Var(s.to_string())
         } else {
             for pfx in &self.prefixes {
-                let npfx = format!("{}:", pfx.ns);
+                let npfx = format!("{}:", pfx[0]);
                 if s.starts_with(&npfx) {
                     let v: &str = s.split(":").skip(1).next().unwrap();
                     println!("replace {:?} {:?} {:?}", pfx, s, v);
-                    return Atom::Node(uri!(pfx.uri, v));
+                    return Atom::Node(uri!(pfx[1], v));
                 }
             }
             return Atom::Node(uri!("", s));
@@ -96,6 +97,9 @@ impl From<Vec<(Node, Node, Node)>> for Graph {
 
 impl Graph {
     pub fn query(&self, q: String) -> Option<Relation> {
+        let re = Regex::new(r"([\t\n\r]+)|(  +)").unwrap();
+        let q = re.replace_all(&q, "");
+        println!("parse {}", q);
         let query = from_str::<Query>(&q).unwrap();
         let mut ctx = Context::new(self);
         let clauses = query.parse();
@@ -131,19 +135,6 @@ impl<'a> Relation<'a> {
             rows: rows,
         }
     }
-
-    //fn joinf(first: &Relation, other: &Relation, dojoin: &dyn Fn(&Vec<&Node>, &Vec<&Node>) -> bool) -> Self {
-    //        let new: Vec<Vec<Node>> = Vec::new();
-    //        for t1 in first.rows.iter() {
-    //            for t2 in other.rows.iter() {
-    //                if dojoin(t1, t2) {
-
-    //                    println!("JOIN {:?} {:?}", t1, t2);
-    //                }
-    //            }
-    //        }
-    //        Relation {header: None, rows: Vec::new() }
-    //}
 
     fn join(first: Relation<'a>, other: Relation<'a>) -> Self {
             let mut new: Vec<Vec<&Node>> = Vec::new();

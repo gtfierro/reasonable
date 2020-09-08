@@ -24,6 +24,8 @@ use log::info;
 // macro_rules! ex {
 //     ($t:expr) => (uri!("http://buildsys.org/ontologies/building_example#{}", $t));
 // }
+//
+// TODO: use datafrog to compute transitive closure of predicates for queries (e.g. ?, +, *)
 
 fn main() {
     env_logger::init();
@@ -41,9 +43,19 @@ fn main() {
 
     let g = query::Graph::from(triples);
 
+    let q = "(
+        (prefixes (
+         (brick https://brickschema.org/schema/1.1/Brick#) 
+         (rdf http://www.w3.org/1999/02/22-rdf-syntax-ns#))) 
+        (select (?ahu)) 
+        (clauses (
+            (?ahu rdf:type brick:AHU) 
+            (?ahu brick:feeds ?equip)))
+        )
+    ".to_string();
 
     let query_start = Instant::now();
-    let res = g.query("((prefixes (((ns brick) (uri https://brickschema.org/schema/1.1/Brick#)) ((ns rdf) (uri http://www.w3.org/1999/02/22-rdf-syntax-ns#)))) (select (?ahu)) (clauses ((?ahu rdf:type brick:AHU) (?ahu brick:feeds ?equip))))".to_string()).unwrap();
+    let res = g.query(q).unwrap();
     info!("Query completed in {:.02}sec", query_start.elapsed().as_secs_f64());
     println!("{}", res);
 
