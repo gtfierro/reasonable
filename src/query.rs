@@ -1,12 +1,78 @@
 use crate::owl::node_to_string;
 use rdf::graph;
 use rdf::node::Node;
+use rdf::uri::Uri;
 use rdf::triple::Triple;
-use std::ops::Fn;
-use std::rc::Rc;
+//use std::ops::Fn;
+//use std::rc::Rc;
 use std::fmt;
+use serde::{Serialize, Deserialize};
+use serde_sexpr::{from_str, to_string, Error};
+
+macro_rules! uri {
+    ($ns:expr, $t:expr) => (Node::UriNode{uri: Uri::new(format!("{}{}", $ns, $t))});
+}
 
 //use ketos::{Error, Interpreter, Value};
+//
+// idea: s-expr parse into a struct that has the prefix list, select, where clauses?
+#[derive(Serialize, Deserialize, Debug)]
+struct Prefix {
+    ns: String,
+    uri: String
+}
+
+impl fmt::Display for Prefix {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "@prefix {}={}", self.ns, self.uri)
+    }
+}
+
+#[derive(Debug)]
+enum Atom {
+    Var(String),
+    Node(Node)
+}
+
+
+#[derive(Serialize, Deserialize, Debug)]
+struct Query {
+    prefixes: Vec<Prefix>,
+    select: Vec<String>,
+    clauses: Vec<[String; 3]>
+}
+
+impl Query {
+    fn to_atom(&self, s: &str) -> Atom {
+        if s.starts_with("?") {
+            Atom::Var(s.to_string())
+        } else {
+            for pfx in &self.prefixes {
+                let npfx = format!("{}:", pfx.ns);
+                if s.starts_with(&npfx) {
+                    let v: &str = s.split(":").skip(1).next().unwrap();
+                    println!("replace {:?} {:?} {:?}", pfx, s, v);
+                    return Atom::Node(uri!(pfx.uri, v));
+                }
+            }
+            return Atom::Node(uri!("", s));
+        }
+    }
+    fn parse(&self) -> Vec<[Atom; 3]> {
+        let mut parsed: Vec<[Atom; 3]> = Vec::new();
+        for clause in &self.clauses {
+            let pattern: [Atom; 3] = [
+                self.to_atom(&clause[0]),
+                self.to_atom(&clause[1]),
+                self.to_atom(&clause[2]),
+            ];
+            parsed.push(pattern);
+        }
+        parsed
+    }
+}
+
+
 
 enum JoinHeader {
     Left(usize),
@@ -25,6 +91,28 @@ impl From<Vec<(Node, Node, Node)>> for Graph {
         }).collect();
         graph.add_triples(&triples);
         Graph{graph: graph}
+    }
+}
+
+impl Graph {
+    pub fn query(&self, q: String) -> Option<Relation> {
+        let query = from_str::<Query>(&q).unwrap();
+        let mut ctx = Context::new(self);
+        let clauses = query.parse();
+        for clause in clauses {
+            println!("{:?}", clause);
+            match clause {
+                [Atom::Var(s), Atom::Node(p), Atom::Node(o)] => ctx.with_predicate_object(s, &p, &o),
+                [Atom::Node(s), Atom::Var(p), Atom::Node(o)] => ctx.with_subject_object(&s, p, &o),
+                [Atom::Node(s), Atom::Node(p), Atom::Var(o)] => ctx.with_subject_predicate(&s, &p, o),
+                [Atom::Node(s), Atom::Var(p), Atom::Var(o)] => ctx.with_subject(&s, p, o),
+                [Atom::Var(s), Atom::Node(p), Atom::Var(o)] => ctx.with_predicate(s, &p, o),
+                [Atom::Var(s), Atom::Var(p), Atom::Node(o)] => ctx.with_object(s, p, &o),
+                [Atom::Var(_), Atom::Var(_), Atom::Var(_)] => panic!("not covered"),
+                [Atom::Node(_), Atom::Node(_), Atom::Node(_)] => panic!("not covered")
+            };
+        }
+        ctx.resolve()
     }
 }
 
@@ -80,7 +168,6 @@ impl<'a> Relation<'a> {
                     if v1 == v2 {
                         indices.push((i1, i2));
                     } else if !new_header.contains(v2) {
-                        println!("add {} to {:?}", v2, new_header);
                         new_indices.push(JoinHeader::Right(i2));
                         new_header.push(v2.to_string());
                     }
@@ -130,11 +217,6 @@ impl<'a> Context<'a> {
         Context{graph: graph, relations: Vec::new()}
     }
 
-    pub fn query(&self, query: String) {
-        //let interp = Interpreter::new();
-        //interp.run_code(&query, None).unwrap();
-    }
-
     pub fn with_subject(&mut self, s: &Node, p: String, o: String){
         let triples = Relation::from(self.graph.graph.get_triples_with_subject(s), vec!["_".to_string(), p, o]);
         self.relations.push(triples);
@@ -182,3 +264,4 @@ impl<'a> Context<'a> {
         }
     }
 }
+
