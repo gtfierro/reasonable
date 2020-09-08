@@ -47,10 +47,11 @@ fn main() {
         (prefixes (
          (brick https://brickschema.org/schema/1.1/Brick#) 
          (rdf http://www.w3.org/1999/02/22-rdf-syntax-ns#))) 
-        (select (?ahu)) 
+        (select (?down ?ahu ?equip)) 
         (clauses (
             (?ahu rdf:type brick:AHU) 
-            (?ahu brick:feeds ?equip)))
+            (?ahu brick:feeds ?equip) 
+            (?equip brick:feeds ?down)))
         )
     ".to_string();
 
@@ -59,5 +60,5 @@ fn main() {
     info!("Query completed in {:.02}sec", query_start.elapsed().as_secs_f64());
     println!("{}", res);
 
-    r.dump_file("output.ttl").unwrap();
+    // r.dump_file("output.ttl").unwrap();
 }

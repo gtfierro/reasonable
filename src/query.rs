@@ -7,11 +7,23 @@ use rdf::triple::Triple;
 //use std::ops::Fn;
 //use std::rc::Rc;
 use std::fmt;
+use std::collections::HashMap;
 use serde::{Serialize, Deserialize};
 use serde_sexpr::{from_str, to_string, Error};
 
 macro_rules! uri {
     ($ns:expr, $t:expr) => (Node::UriNode{uri: Uri::new(format!("{}{}", $ns, $t))});
+}
+
+macro_rules! skip_none {
+    ($res:expr) => {
+        match $res {
+            Some(val) => val,
+            None => {
+                continue;
+            }
+        }
+    };
 }
 
 //use ketos::{Error, Interpreter, Value};
@@ -52,7 +64,6 @@ impl Query {
                 let npfx = format!("{}:", pfx[0]);
                 if s.starts_with(&npfx) {
                     let v: &str = s.split(":").skip(1).next().unwrap();
-                    println!("replace {:?} {:?} {:?}", pfx, s, v);
                     return Atom::Node(uri!(pfx[1], v));
                 }
             }
@@ -116,7 +127,10 @@ impl Graph {
                 [Atom::Node(_), Atom::Node(_), Atom::Node(_)] => panic!("not covered")
             };
         }
-        ctx.resolve()
+        match ctx.resolve() {
+            Some(result) => Some(result.project(&query.select)),
+            None => None
+        }
     }
 }
 
@@ -182,6 +196,39 @@ impl<'a> Relation<'a> {
             }
             Relation {header: new_header, rows: new }
     }
+
+    fn project(mut self, vars: &Vec<String>) -> Self {
+        let mut var2idx: HashMap<String, usize> = self.header.iter().enumerate()
+                                                        .map(|(i, s)| (s.to_string(), i)).collect();
+
+        let mut swaps: Vec<(usize, usize)> = Vec::new();
+        for (idx, var) in vars.iter().enumerate() {
+            let sidx = *skip_none!(var2idx.get(var));
+
+            // if var is already in place, continue
+            if idx == sidx {
+                continue;
+            }
+            // else, swap var into that location
+            swaps.push((idx, sidx));
+            let displaced_var = skip_none!(self.header.get(idx)).to_string();
+            var2idx.insert(var.to_string(), idx);
+            var2idx.insert(displaced_var.clone(), sidx);
+            self.header[idx] = var.to_string();
+            self.header[sidx] = displaced_var;
+        }
+
+        println!("projection {:?} {:?}", self.header, swaps);
+        for row in self.rows.iter_mut() {
+            for (i1, i2) in swaps.iter() {
+                row.swap(*i1, *i2);
+            }
+            row.truncate(vars.len());
+        }
+
+        Relation {header: vars.to_vec(), rows: self.rows}
+    }
+
 }
 
 impl<'a> fmt::Display for Relation<'a> {
@@ -239,10 +286,8 @@ impl<'a> Context<'a> {
     }
 
     pub fn joinall(mut self) -> Relation<'a> {
-        let r1 = self.relations.remove(0);
-        let r2 = self.relations.remove(0);
-        let acc = Relation::join(r1, r2);
-        self.relations.into_iter().skip(2).fold(acc, |a, b| {
+        let acc = self.relations.remove(0);
+        self.relations.into_iter().fold(acc, |a, b| {
             Relation::join(a, b)
         })
     }
