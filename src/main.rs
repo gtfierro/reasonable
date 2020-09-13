@@ -5,6 +5,11 @@ use ::reasonable::query;
 use std::env;
 use std::time::Instant;
 use log::info;
+//use serde::{Serialize, Deserialize};
+//use serde_sexpr::from_str;
+
+use std::collections::HashMap;
+use lexpr::{Value, parse::Error};
 
 // macro_rules! uri {
 //     ($ns:expr, $t:expr) => (Node::UriNode{uri: Uri::new(format!($ns, $t))});
@@ -27,7 +32,91 @@ use log::info;
 //
 // TODO: use datafrog to compute transitive closure of predicates for queries (e.g. ?, +, *)
 
+
+// what might queries look like?
+// (prefixes (
+//      (brick https://brickschema.org/schema/1.1/Brick#) 
+//      (rdf http://www.w3.org/1999/02/22-rdf-syntax-ns#))
+// (select (?ahu ?ds))
+// (where (
+//      (?ahu rdf:type brick:AHU)
+//      (union 
+//          ((?ahu brick:feeds+ ?ds))
+//          ((?ahu brick:hasPart+ ?ds)))
+//      ))
+//
+// (prefixes (
+//      (brick https://brickschema.org/schema/1.1/Brick#) 
+//      (rdf http://www.w3.org/1999/02/22-rdf-syntax-ns#))
+// (select (?ahu ?ds))
+// (where (
+//      (?ahu rdf:type brick:AHU)
+//      (?ahu brick:feeds+ ?ds)
+//      (optional ((?ahu rdf:type brick:RTU)))
+//   ))
+
+enum Atom {
+    Var(String),
+    Node(String)
+}
+
+struct TriplePattern(Atom, Atom, Atom);
+
+struct Query {
+    prefixes: HashMap<String, String>,
+    select: Vec<String>,
+    patterns: Vec<Pattern>,
+}
+
+enum Pattern {
+    Triple(TriplePattern),
+    Optional(TriplePattern),
+    Union(Box<Pattern>, Box<Pattern>)
+}
+
+
+fn dump(v: &Value) {
+    if let Value::Cons(pfxs) = &v["prefixes"] {
+        let pfxs: HashMap<String, String> = pfxs.list_iter().filter_map(|v| {
+            if let Value::Cons(p) = v {
+                match p.as_pair() {
+                    (Value::String(pfx), Value::String(uri)) => Some((pfx.to_string(), uri.to_string())),
+                    (Value::Symbol(pfx), Value::Symbol(uri)) => Some((pfx.to_string(), uri.to_string())),
+                    (_, _) => None
+                }
+            } else {
+                None
+            }
+        }).collect();
+        println!("{:?}", pfxs);
+    }
+
+    if let Value::Cons(select) = &v["select"] {
+        if let Value::Vector(v) = select.car() {
+            let vars: Vec<String> = v.iter().map(|var| var.to_string()).collect();
+            println!("select {:?}", vars);
+        }
+    }
+
+    if let Value::Cons(wher) = &v["where"] {
+        let patterns: Vec<Pattern> = wher.list_iter().filter_map(|v| {
+            None
+        }).collect();
+    }
+
+}
+
 fn main() {
+    let q1 = r#"(
+        (prefixes (brick . https://brick) (rdf . http://rdf))
+        (select #(?ahu ?ds))
+        (where #(?ahu rdf:type brick:AHU)
+               #(?ahu brick:feeds+ ?ds))
+    )"#;
+    let v1 = lexpr::from_str(q1).unwrap();
+    dump(&v1);
+
+
     env_logger::init();
     let mut r = Reasoner::new();
     env::args().skip(1).map(|filename| {

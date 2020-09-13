@@ -4,6 +4,8 @@ use rdf::graph;
 use rdf::node::Node;
 use rdf::uri::Uri;
 use rdf::triple::Triple;
+use fasthash::city;
+use datafrog::Iteration;
 //use std::ops::Fn;
 //use std::rc::Rc;
 use std::fmt;
@@ -101,6 +103,9 @@ impl From<Vec<(Node, Node, Node)>> for Graph {
         let triples: Vec<Triple> = triples.iter().map(|t| {
             Triple::new(&t.0, &t.1, &t.2)
         }).collect();
+
+        // TODO: use the Iteration to compute transitive closure for properties
+
         graph.add_triples(&triples);
         Graph{graph: graph}
     }
@@ -132,6 +137,7 @@ impl Graph {
             None => None
         }
     }
+
 }
 
 pub struct Relation<'a> {
@@ -270,6 +276,11 @@ impl<'a> Context<'a> {
         self.relations.push(triples);
     }
 
+    pub fn with_predicate_plus(&mut self, s:String, p: &Node, o: String){
+        self.transitive_closure(s, p, o);
+    }
+
+
     pub fn with_subject_object(&mut self, s: &Node, p: String, o: &Node){
         let triples = Relation::from(self.graph.graph.get_triples_with_subject_and_object(s, o), vec!["_".to_string(), p, "_".to_string()]);
         self.relations.push(triples);
@@ -283,6 +294,46 @@ impl<'a> Context<'a> {
     pub fn with_predicate_object(&mut self, s: String, p: &Node, o: &Node){
         let triples = Relation::from(self.graph.graph.get_triples_with_predicate_and_object(p, o), vec![s, "_".to_string(), "_".to_string()]);
         self.relations.push(triples);
+    }
+
+
+    // TODO: not pub
+    pub fn transitive_closure(&mut self, s: String, p: &Node, o: String) {
+        let mut iter = Iteration::new();
+
+        let mut lookup: HashMap<u32, &Node> = HashMap::new();
+        let triples: Vec<(u32, u32)> = self.graph.graph.get_triples_with_predicate(p).iter().map(|t| {
+            let o_ = t.object();
+            let o_hash = city::hash32(node_to_string(o_)) as u32;
+            lookup.insert(o_hash, o_);
+
+            let s_ = t.subject();
+            let s_hash = city::hash32(node_to_string(s_)) as u32;
+            lookup.insert(s_hash, s_);
+            (s_hash, o_hash)
+        }).collect();
+
+        // transitive closure evalutes:
+        // reachable(X, Z) :- reachable(X, Y), edge(Y, Z) .
+        let reachable = iter.variable::<(u32, u32)>("reachable");
+        let edge = iter.variable::<(u32, u32)>("edge");
+
+        //// key is (O, S)
+        edge.extend(triples.clone());
+        reachable.extend(triples);
+        while iter.changed() {
+            reachable.from_join(&reachable, &edge, |_b, a, c| (c.clone(), a.clone()));
+        }
+
+        let rows: Vec<Vec<&Node>> = reachable.complete().iter().map(|(a, b)| {
+            vec![*lookup.get(a).unwrap(), *lookup.get(b).unwrap()]
+        }).collect();
+
+        let rel = Relation {
+            header: vec![s, "_".to_string(), o],
+            rows: rows,
+        };
+        self.relations.push(rel);
     }
 
     pub fn joinall(mut self) -> Relation<'a> {
