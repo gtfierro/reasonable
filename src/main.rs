@@ -1,5 +1,6 @@
 use ::reasonable::owl::Reasoner;
 use ::reasonable::query;
+use ::reasonable::algebra;
 //use rdf::node::Node;
 //use rdf::uri::Uri;
 use std::env;
@@ -54,19 +55,31 @@ use lexpr::{Value, parse::Error};
 //      (?ahu brick:feeds+ ?ds)
 //      (optional ((?ahu rdf:type brick:RTU)))
 //   ))
+//
+//
+//
+//    (
+//        (prefixes (
+//         (brick https://brickschema.org/schema/1.1/Brick#) 
+//         (rdf http://www.w3.org/1999/02/22-rdf-syntax-ns#))) 
+//        (select (?down ?ahu ?equip)) 
+//        (clauses (
+//            (pat ?ahu rdf:type brick:AHU) 
+//            (pat* ?ahu brick:feeds ?equip)   -- does 'feeds*'
+//            (pat ?equip brick:feeds ?down)))
+//    )
 
 enum Atom {
     Var(String),
     Node(String)
 }
 
-struct TriplePattern(Atom, Atom, Atom);
-
-struct Query {
-    prefixes: HashMap<String, String>,
-    select: Vec<String>,
-    patterns: Vec<Pattern>,
+enum VarOrPropertyPath {
+    Var(String)
+    // PropertyPath(PropertyPath)
 }
+
+struct TriplePattern(Atom, Atom, Atom);
 
 enum Pattern {
     Triple(TriplePattern),
@@ -74,6 +87,11 @@ enum Pattern {
     Union(Box<Pattern>, Box<Pattern>)
 }
 
+struct Query {
+    prefixes: HashMap<String, String>,
+    select: Vec<String>,
+    patterns: Vec<Pattern>,
+}
 
 fn dump(v: &Value) {
     if let Value::Cons(pfxs) = &v["prefixes"] {
@@ -107,6 +125,8 @@ fn dump(v: &Value) {
 }
 
 fn main() {
+    algebra::try_it();
+
     let q1 = r#"(
         (prefixes (brick . https://brick) (rdf . http://rdf))
         (select #(?ahu ?ds))

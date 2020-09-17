@@ -9,6 +9,7 @@
 mod index;
 pub mod owl;
 pub mod query;
+pub mod algebra;
 
 mod disjoint_sets;
 #[allow(dead_code)]
