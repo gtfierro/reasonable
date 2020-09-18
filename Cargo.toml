@@ -18,6 +18,7 @@ python-library = ["pyo3"]
 
 [dependencies]
 rdf = "0.1.4"
+oxigraph = "0.1.1"
 fasthash = "0.4.0"
 datafrog = "2.0.1"
 roaring = "0.5.2"
