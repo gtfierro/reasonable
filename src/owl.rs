@@ -227,11 +227,6 @@ impl Reasoner {
             }
         };
 
-        //} else if filename.ends_with(".n3") {
-        //    NTriplesParser::from_string(data)
-        //}
-        //let graph = Box::new(reader.decode().expect("bad reader"));
-        //if let Ok(graph) = reader.decode() {
         info!("Loaded {} triples from file {}", graph.count(), filename);
         let triples : Vec<(URI, (URI, URI))> = graph.triples_iter().map(|_triple| {
             let triple = _triple;

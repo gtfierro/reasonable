@@ -19,6 +19,7 @@ python-library = ["pyo3"]
 [dependencies]
 rdf = "0.1.4"
 oxigraph = "0.1.1"
+# ketos = "0.11"
 fasthash = "0.4.0"
 datafrog = "2.0.1"
 roaring = "0.5.2"
@@ -26,6 +27,13 @@ itertools = "0.8"
 disjoint-sets = "0.4.2"
 log = "0.4"
 env_logger = "0.7.1"
+# rustyline = "6.2.0"
+lexpr = "0.2.5"
+regex = "1.3.9"
+serde = { version = "1.0", features = ["derive"] }
+serde_sexpr = "0.1.0"
+serde-lexpr = "0.1.0"
+serde_derive = "1.0.116"
 
 [dependencies.pyo3]
 version = "0.9.0-alpha.1"
