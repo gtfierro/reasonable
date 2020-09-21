@@ -1,3 +1,11 @@
+#![feature(proc_macro_hygiene, decl_macro)]
+#[macro_use] extern crate rocket;
+#[macro_use] extern crate serde_derive;
+use std::sync::Mutex;
+use std::thread;
+use rocket::{Rocket, State, response::Debug};
+use rocket_contrib::json::Json;
+
 use std::fmt;
 use std::rc::Rc;
 use std::cell::RefCell;
@@ -177,12 +185,43 @@ impl SQLiteManager {
     }
 }
 
+#[derive(Deserialize, Serialize)]
+struct TableResponse {
+    rows: Vec<Vec<String>>
+}
+
+#[derive(Deserialize, Serialize)]
+struct MakeView {
+    name: String,
+    query: String,
+}
 
 
-fn main() {
-    env_logger::init();
+type JsonTriple = (String, String, String);
 
-    let mut mgr = SQLiteManager::new("test.db").unwrap();
+#[get("/")]
+fn hello(conn: State<Mutex<Connection>>) -> Json<TableResponse>  {
+    let mut rows: Vec<Vec<String>> = Vec::new();
+    conn.lock()
+        .expect("db connection lock")
+        .prepare("SELECT * FROM test1;")
+        .expect("bad query")
+        .query_map(NO_PARAMS, |row| {
+            rows.push(vec![row.get(0).unwrap(), row.get(1).unwrap()]);
+            Ok(())
+        }).unwrap().count();
+    println!("rows {}", rows.len());
+    Json(TableResponse{rows: rows})
+}
+
+#[post("/make", data = "<data>")]
+fn makeview(conn: State<Mutex<Connection>>, data: Json<MakeView>) -> Json<()>  {
+    Json(())
+}
+
+
+fn rocket(filename: &str) {
+    let mut mgr = SQLiteManager::new(filename).unwrap();
 
     mgr.load_file("example_models/ontologies/Brick.n3").unwrap();
     mgr.load_file("example_models/soda_hall.n3").unwrap();
@@ -196,19 +235,24 @@ fn main() {
     mgr.update().unwrap();
     mgr.add_view("test1".to_string(), "SELECT ?x ?y WHERE { ?x rdf:type brick:Sensor . ?x brick:isPointOf ?y }").unwrap();
 
-    //for i in 1..10 {
-    //    mgr.update().unwrap();
-    //}
-    mgr.update().unwrap();
     mgr.update().unwrap();
 
-    let mut s = mgr.conn.prepare("SELECT * FROM test1").unwrap();
-    s.query_map(NO_PARAMS, |row| {
-        let x: (String, String) = (row.get(0).unwrap(), row.get(1).unwrap());
-        println!("{:?}", x);
-        Ok(())
-    }).unwrap().count();
+    let conn = Connection::open(filename);
+    thread::spawn(move || {
+        rocket::ignite()
+            .manage(Mutex::new(conn))
+            .mount("/", routes![hello])
+            .launch();
+    });
 
-    //mgr.update_loop();
+    loop {
+        mgr.update().unwrap();
+    }
+
+}
+
+fn main() {
+    env_logger::init();
+    rocket("test.db");
 }
 
