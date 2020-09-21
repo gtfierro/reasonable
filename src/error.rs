@@ -1,5 +1,7 @@
 use oxigraph::sparql;
+use rusqlite;
 use std::io;
+use std::sync::mpsc::RecvError;
 
 #[derive(Debug)]
 pub enum ReasonableError {
@@ -7,6 +9,8 @@ pub enum ReasonableError {
     IO(io::Error),
     Parse(sparql::ParseError),
     Eval(sparql::EvaluationError),
+    SQLite(rusqlite::Error),
+    ChannelRecv(RecvError),
 }
 
 
@@ -25,6 +29,18 @@ impl From<sparql::ParseError> for ReasonableError {
 impl From<sparql::EvaluationError> for ReasonableError {
     fn from(err: sparql::EvaluationError) -> ReasonableError {
         ReasonableError::Eval(err)
+    }
+}
+
+impl From<rusqlite::Error> for ReasonableError {
+    fn from(err: rusqlite::Error) -> ReasonableError {
+        ReasonableError::SQLite(err)
+    }
+}
+
+impl From<RecvError> for ReasonableError {
+    fn from(err: RecvError) -> ReasonableError {
+        ReasonableError::ChannelRecv(err)
     }
 }
 
