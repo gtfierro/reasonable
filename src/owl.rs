@@ -22,7 +22,6 @@ use rdf::triple;
 use rdf::writer::turtle_writer::TurtleWriter;
 use rdf::writer::rdf_writer::RdfWriter;
 // use rdf::writer::n_triples_writer::NTriplesWriter;
-#[allow(dead_code)]
 use crate::common::*;
 
 macro_rules! uri {
