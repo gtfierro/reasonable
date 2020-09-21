@@ -37,7 +37,7 @@ macro_rules! literal {
 }
 
 #[allow(non_upper_case_globals)]
-const qfmt: &'static str = "PREFIX brick: <https://brickschema.org/schema/1.1/Brick#>
+const qfmt: &str = "PREFIX brick: <https://brickschema.org/schema/1.1/Brick#>
     PREFIX tag: <https://brickschema.org/schema/1.1/BrickTag#>
     PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -126,7 +126,7 @@ impl ViewMetadata {
 
     pub fn get_insert_sql(&self) -> String {
         let cols: String = self.columns().to_vec().iter().map(|c| {
-            format!("{}", c)
+            c.to_string()
         }).collect::<Vec<String>>().join(", ");
         let inps: String = (0..self.columns().len()).map(|_| "?".to_string()).collect::<Vec<String>>().join(", ");
         format!("INSERT INTO {}({}) VALUES ({});", self.table_name, cols, inps)
@@ -166,14 +166,14 @@ impl Manager {
             let s: Node = {
                 if let Ok(named) = NamedNode::new(s_.clone()) {
                     uri!(named.into_string())
-                } else if let Ok(bnode) = BlankNode::new(s_.clone()) {
+                } else if let Ok(bnode) = BlankNode::new(s_) {
                     bnode!(bnode.into_string())
                 } else {
                     return None
                 }
             };
 
-            let p: Node = uri!(p_.clone());
+            let p: Node = uri!(p_);
 
             let o: Node = {
                 if let Ok(named) = NamedNode::new(o_.clone()) {
@@ -181,7 +181,7 @@ impl Manager {
                 } else if let Ok(bnode) = BlankNode::new(o_.clone()) {
                     bnode!(bnode.into_string())
                 } else {
-                    literal!(o_.clone(), None, None)
+                    literal!(o_, None, None)
                 }
             };
 

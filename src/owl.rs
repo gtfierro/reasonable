@@ -136,19 +136,19 @@ impl Reasoner {
         input.push((u_owl_nothing, (u_rdf_type, u_owl_class)));
 
         Reasoner {
-            iter1: iter1,
-            index: index,
-            input: input,
+            iter1,
+            index,
+            input,
             errors: Vec::new(),
-            spo: spo,
-            all_triples_input: all_triples_input,
+            spo,
+            all_triples_input,
         }
     }
 
     fn rebuild_with(&mut self, input: Relation<Triple>) {
         // TODO: pull in the existing triples
         self.iter1 = Iteration::new();
-        self.input = input.clone().iter().map(|&(x, (y, z))| (x, (y, z))).collect();
+        self.input = input.iter().map(|&(x, (y, z))| (x, (y, z))).collect();
         self.all_triples_input = self.iter1.variable::<(URI, (URI, URI))>("all_triples_input");
         self.spo = self.iter1.variable::<(URI, (URI, URI))>("spo");
     }
@@ -674,7 +674,7 @@ impl Reasoner {
                 prp_irp_1.from_join(&owl_irreflexive, &pso, |&p, &(), &(s, o)| {
                     if s == o && s > 0 && o > 0 {
                         let msg = format!("property {} of {} is irreflexive", self.to_u(p), self.to_u(s));
-                        self.add_error("prp-irp".to_string(), msg.to_string());
+                        self.add_error("prp-irp".to_string(), msg);
                     }
                     (p, s)
                 });
@@ -688,7 +688,7 @@ impl Reasoner {
                 prp_asyp_3.from_join(&prp_asyp_1, &prp_asyp_2, |&(x, y, p), &(), &()| {
                     if x > 0 && y > 0 && p > 0 {
                         let msg = format!("property {} of {} and {} is asymmetric", self.to_u(p), self.to_u(x), self.to_u(y));
-                        self.add_error("prp-asyp".to_string(), msg.to_string());
+                        self.add_error("prp-asyp".to_string(), msg);
                     }
                     ((x, y, p), ())
                 });
@@ -755,7 +755,7 @@ impl Reasoner {
                 cax_dw_2.from_join(&cax_dw_1, &rdf_type_inv, |&c2, &(c1, inst1), &inst2| {
                     if inst1 == inst2 && inst1 > 0 && inst2 > 0 {
                         let msg = format!("inst {} is both {} and {} (disjoint classes)", self.to_u(inst1), self.to_u(c1), self.to_u(c2));
-                        self.add_error("cax-dw".to_string(), msg.to_string());
+                        self.add_error("cax-dw".to_string(), msg);
                     }
                     (c2, inst1)
                 });
@@ -772,7 +772,7 @@ impl Reasoner {
                 prp_pdw_3.from_join(&prp_pdw_1, &prp_pdw_2, |&(x, y, p2), &p1, &_p1| {
                     if x > 0 && y > 0 && p2 > 0 && p1 > 0 {
                         let msg = format!("property {} is disjoint with {} for pair ({} {} {})", self.to_u(p1), self.to_u(p2), self.to_u(x), self.to_u(p1), self.to_u(y));
-                        self.add_error("prp-pdw".to_string(), msg.to_string());
+                        self.add_error("prp-pdw".to_string(), msg);
                     }
                     ((x, y, p2), p1)
                 });
@@ -815,7 +815,7 @@ impl Reasoner {
                 cls_nothing2.from_join(&rdf_type_inv, &owl_nothing, |&_nothing, &x, &()| {
                     if x > 0 {
                         let msg = format!("Instance {} is owl:Nothing (suggests unsatisfiability)", self.to_u(x));
-                        self.add_error("cls-nothing2".to_string(), msg.to_string());
+                        self.add_error("cls-nothing2".to_string(), msg);
                     }
                     (x, ())
                 });
@@ -921,7 +921,7 @@ impl Reasoner {
                 cls_com_2.from_join(&rdf_type_inv, &cls_com_1, |&c2, &x_exists, &(x_bad, c1)| {
                     if x_exists == x_bad && x_exists > 0 && x_bad > 0 {
                         let msg = format!("Individual {} has type {} and {} which are complements", self.to_u(x_exists), self.to_u(c2), self.to_u(c1));
-                        self.add_error("cls-com".to_string(), msg.to_string());
+                        self.add_error("cls-com".to_string(), msg);
                     }
                     (x_bad, c1)
                 });
@@ -1091,7 +1091,7 @@ impl Reasoner {
                     }
 
                 }).collect();
-                if not_c1_instances.len() > 0 {
+                if !not_c1_instances.is_empty() {
                     new_complementary_instances.extend(not_c1_instances);
                     changed = true;
                 }

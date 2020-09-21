@@ -10,7 +10,7 @@ use log::info;
 //use serde::{Serialize, Deserialize};
 //use serde_sexpr::from_str;
 
-use std::collections::HashMap;
+
 //use lexpr::{Value, parse::Error};
 
 // macro_rules! uri {
@@ -131,7 +131,7 @@ fn main() {
     mgr.load_file("example_models/ontologies/Brick.n3").unwrap();
     mgr.load_file("example_models/small1.n3").unwrap();
 
-    let vr1 = mgr.add_view("test1".to_string(), "SELECT ?x WHERE { ?x rdf:type brick:Sensor }").unwrap();
+    let _vr1 = mgr.add_view("test1".to_string(), "SELECT ?x WHERE { ?x rdf:type brick:Sensor }").unwrap();
 
     //let q1 = r#"(
     //    (prefixes (brick . https://brick) (rdf . http://rdf))

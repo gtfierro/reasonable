@@ -1,4 +1,4 @@
-use criterion::{black_box, criterion_group, criterion_main, Criterion, PlotConfiguration};
+use criterion::{criterion_group, criterion_main, Criterion, PlotConfiguration};
 use reasonable::owl::Reasoner;
 
 // setup_reasoner!("ontologies/Brick.n3", "small1.n3");

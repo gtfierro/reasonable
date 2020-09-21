@@ -1,5 +1,5 @@
 use oxigraph::sparql;
-use rusqlite;
+
 use std::io;
 use std::sync::mpsc::RecvError;
 

@@ -56,11 +56,11 @@ impl DisjointSets {
         while list_iter.changed() {
             rdf_firsts.from_join(&list_triples, &rdffirst, |&_, &(key, value), &_| { 
                 values.insert(key, value);        
-                ()
+                
             });
             rdf_rests.from_join(&list_triples, &rdfrest, |&_, &(head, tail), &_| { 
                 if tail == rdfnil_node {
-                    return ()
+                    return 
                 }
                 let hn = uri2idx.get(&head).unwrap();
                 let tn = uri2idx.get(&tail).unwrap();
@@ -84,10 +84,10 @@ impl DisjointSets {
         // }).count();
         // println!("Disjoint sets: {:?}", ds.to_vec());
         DisjointSets{
-            lists: lists,
-            uri2idx: uri2idx,
-            idx2uri: idx2uri,
-            ds: ds,
+            lists,
+            uri2idx,
+            idx2uri,
+            ds,
         }
     }
 
@@ -95,7 +95,7 @@ impl DisjointSets {
         if let Some(idx) = self.uri2idx.get(&head) {
             let realhead = self.idx2uri[self.ds.find(*idx)];
             if let Some(v) = self.lists.get(&realhead) {
-                return Some(v.iter().cloned().collect());
+                return Some(v.to_vec());
             }
         }
         None
