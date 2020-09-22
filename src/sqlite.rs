@@ -11,11 +11,7 @@ use std::rc::Rc;
 use std::cell::RefCell;
 use std::str;
 use regex::Regex;
-use std::sync::mpsc::{
-    channel,
-    Sender,
-    Receiver
-};
+use std::sync::mpsc;
 use ::reasonable::owl::{
     Reasoner,
     node_to_string,
@@ -44,7 +40,10 @@ use rusqlite::{
     NO_PARAMS,
     Action,
     params,
+    functions::FunctionFlags,
 };
+
+type BoxError = Box<dyn std::error::Error + Send + Sync + 'static>;
 
 macro_rules! uri {
     ($t:expr) => (Node::UriNode{uri: Uri::new($t)});
@@ -63,17 +62,22 @@ macro_rules! literal {
 struct SQLiteManager {
     mgr: Manager,
     conn: Connection,
-    recv: Receiver<i64>,
+    recv: mpsc::Receiver<()>,
+    viewrecv: mpsc::Receiver<MakeView>,
+    viewsend: mpsc::SyncSender<MakeView>,
     views: Vec<ViewMetadata>,
 }
 
 impl SQLiteManager {
     fn new(filename: &str) -> Result<Self> {
-        let (sender, receiver) = channel();
+        let (sender, receiver) = mpsc::channel();
+        let (viewsend, viewrecv) = mpsc::sync_channel(1);
         let mgr = SQLiteManager{
             mgr: Manager::new(),
             conn: Connection::open(filename)?,
             recv: receiver,
+            viewsend: viewsend,
+            viewrecv: viewrecv,
             views: Vec::new(),
         };
 
@@ -90,6 +94,10 @@ impl SQLiteManager {
         Ok(mgr)
     }
 
+    fn get_view_channel(&self) -> mpsc::SyncSender<MakeView> {
+        self.viewsend.clone()
+    }
+
     fn add_view(&mut self, name: String, query: &str) -> Result<()> {
         let view = self.mgr.add_view2(name, query)?;
 
@@ -101,7 +109,7 @@ impl SQLiteManager {
         Ok(())
     }
 
-    fn get_update_hook(&self, sender: Sender<i64>) -> Box<dyn FnMut(Action, &str, &str, i64) + Send> {
+    fn get_update_hook(&self, sender: mpsc::Sender<i64>) -> Box<dyn FnMut(Action, &str, &str, i64) + Send> {
         Box::new(move |act, db_name, table_name, rowid| {
             if table_name == "triples" {
                 // println!("got {:?} {} {} {}", act, db_name, table_name, rowid);
@@ -111,9 +119,9 @@ impl SQLiteManager {
         //|act: Action, db_name: &str, table_name: &str, rowid: i64) {
     }
 
-    fn get_commit_hook(&self, sender: Sender<i64>) -> Box<dyn FnMut() -> bool + Send> {
+    fn get_commit_hook(&self, sender: mpsc::Sender<()>) -> Box<dyn FnMut() -> bool + Send> {
         Box::new(move || {
-            sender.send(0).unwrap();
+            sender.send(()).unwrap();
             false
         })
     }
@@ -156,6 +164,8 @@ impl SQLiteManager {
     }
 
     fn update(&mut self) -> Result<()> {
+        // try to see if there are any new views
+
         self.mgr.load_triples(self.get_triples()?)?;
         let tx = self.conn.transaction()?;
         for view in self.views.iter() {
@@ -177,6 +187,14 @@ impl SQLiteManager {
 
     fn update_loop(&mut self) -> Result<()> {
         loop {
+            let res = self.viewrecv.try_recv();
+            match res {
+                Ok(vdef) => self.add_view(vdef.name, &vdef.query)?,
+                Err(e) => match e {
+                    mpsc::TryRecvError::Empty => println!("no view yet"),
+                    mpsc::TryRecvError::Disconnected => return Err(ReasonableError::ManagerError("bad".to_string())),
+                }
+            };
             self.recv.recv()?;
             if let Err(e) = self.update() {
                 return Err(e);
@@ -190,7 +208,7 @@ struct TableResponse {
     rows: Vec<Vec<String>>
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, Clone, Debug)]
 struct MakeView {
     name: String,
     query: String,
@@ -198,24 +216,29 @@ struct MakeView {
 
 
 type JsonTriple = (String, String, String);
+struct ViewChannel(mpsc::SyncSender<MakeView>);
+type DbConn = Mutex<Connection>;
 
-#[get("/")]
-fn hello(conn: State<Mutex<Connection>>) -> Json<TableResponse>  {
+#[get("/view/<name>", format = "json")]
+fn hello(name: String, conn: State<DbConn>, tx: State<ViewChannel>) -> Json<TableResponse>  {
     let mut rows: Vec<Vec<String>> = Vec::new();
+    println!("in here");
     conn.lock()
         .expect("db connection lock")
-        .prepare("SELECT * FROM test1;")
+        .prepare(&format!("SELECT * FROM {};", name))
         .expect("bad query")
         .query_map(NO_PARAMS, |row| {
-            rows.push(vec![row.get(0).unwrap(), row.get(1).unwrap()]);
+            let rowvec: Vec<String> = (0..(row.column_count())).map(|i| row.get(i).unwrap()).collect();
+            rows.push(rowvec);
             Ok(())
         }).unwrap().count();
     println!("rows {}", rows.len());
     Json(TableResponse{rows: rows})
 }
 
-#[post("/make", data = "<data>")]
-fn makeview(conn: State<Mutex<Connection>>, data: Json<MakeView>) -> Json<()>  {
+#[post("/make", data = "<data>", format = "json")]
+fn makeview(data: Json<MakeView>, conn: State<DbConn>, tx: State<ViewChannel>) -> Json<()>  {
+    tx.0.try_send(data.0).expect("send view def");
     Json(())
 }
 
@@ -225,29 +248,24 @@ fn rocket(filename: &str) {
 
     mgr.load_file("example_models/ontologies/Brick.n3").unwrap();
     mgr.load_file("example_models/soda_hall.n3").unwrap();
-    mgr.conn.execute(
-        "INSERT INTO triples(subject, predicate, object) VALUES (?1, ?2, ?3)",
-        params!["x", "y", "z"]
-    ).unwrap();
 
     mgr.conn.execute("DROP TABLE IF EXISTS test1;", NO_PARAMS).unwrap();
-    //mgr.conn.execute("CREATE VIRTUAL TABLE test1 USING reasonable('SELECT ?x ?y WHERE { ?x rdf:type brick:Sensor . ?x brick:isPointOf ?y }')", NO_PARAMS).unwrap();
     mgr.update().unwrap();
     mgr.add_view("test1".to_string(), "SELECT ?x ?y WHERE { ?x rdf:type brick:Sensor . ?x brick:isPointOf ?y }").unwrap();
 
     mgr.update().unwrap();
 
-    let conn = Connection::open(filename);
+    let conn = Connection::open(filename).unwrap();
+    let tx = mgr.get_view_channel();
     thread::spawn(move || {
         rocket::ignite()
             .manage(Mutex::new(conn))
-            .mount("/", routes![hello])
+            .manage(ViewChannel(tx))
+            .mount("/", routes![hello, makeview])
             .launch();
     });
 
-    loop {
-        mgr.update().unwrap();
-    }
+    mgr.update_loop().unwrap();
 
 }
 
@@ -255,4 +273,3 @@ fn main() {
     env_logger::init();
     rocket("test.db");
 }
-
