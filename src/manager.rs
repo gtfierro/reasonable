@@ -136,7 +136,7 @@ impl ViewMetadata {
         let cols: String = self.columns().to_vec().iter().map(|c| {
             format!("{} TEXT", c)
         }).collect::<Vec<String>>().join(", ");
-        format!("CREATE TABLE {}({});", self.table_name, cols)
+        format!("CREATE TABLE IF NOT EXISTS {}({});", self.table_name, cols)
     }
 }
 

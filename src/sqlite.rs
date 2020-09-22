@@ -55,29 +55,22 @@ macro_rules! literal {
     ($t:expr, $d:expr, $l:expr) => (Node::LiteralNode{literal: $t, data_type: $d, language: $l});
 }
 
-// TODO: "sqlite3 manager" which closes over the manager + sqlite connection
-// and does the necessary queries when the table is updated.
-// TODO: for every row? every commit? need to do some tests
-
 struct SQLiteManager {
     mgr: Manager,
     conn: Connection,
-    recv: mpsc::Receiver<()>,
-    viewrecv: mpsc::Receiver<MakeView>,
-    viewsend: mpsc::SyncSender<MakeView>,
+    recv: mpsc::Receiver<ChannelMessage>,
+    send: mpsc::SyncSender<ChannelMessage>,
     views: Vec<ViewMetadata>,
 }
 
 impl SQLiteManager {
     fn new(filename: &str) -> Result<Self> {
-        let (sender, receiver) = mpsc::channel();
-        let (viewsend, viewrecv) = mpsc::sync_channel(1);
+        let (send, recv) = mpsc::sync_channel(5);
         let mgr = SQLiteManager{
             mgr: Manager::new(),
             conn: Connection::open(filename)?,
-            recv: receiver,
-            viewsend: viewsend,
-            viewrecv: viewrecv,
+            recv: recv,
+            send: send,
             views: Vec::new(),
         };
 
@@ -89,13 +82,14 @@ impl SQLiteManager {
             object TEXT NOT NULL
         )", NO_PARAMS)?;
 
-        //mgr.conn.update_hook(Some(mgr.get_update_hook(sender)));
-        mgr.conn.commit_hook(Some(mgr.get_commit_hook(sender)));
+        let sendc = mgr.get_view_channel();
+        //mgr.conn.commit_hook(Some(mgr.get_commit_hook(sendc)));
+        mgr.conn.update_hook(Some(mgr.get_update_hook(sendc)));
         Ok(mgr)
     }
 
-    fn get_view_channel(&self) -> mpsc::SyncSender<MakeView> {
-        self.viewsend.clone()
+    fn get_view_channel(&self) -> mpsc::SyncSender<ChannelMessage> {
+        self.send.clone()
     }
 
     fn add_view(&mut self, name: String, query: &str) -> Result<()> {
@@ -105,23 +99,29 @@ impl SQLiteManager {
         let table_def = view.get_create_tab();
         self.conn.execute(&table_def, NO_PARAMS)?;
 
+        //TODO do not add view def more than once
         self.views.push(view);
-        Ok(())
+        self.update()
     }
 
-    fn get_update_hook(&self, sender: mpsc::Sender<i64>) -> Box<dyn FnMut(Action, &str, &str, i64) + Send> {
+    fn get_update_hook(&self, sender: mpsc::SyncSender<ChannelMessage>) -> Box<dyn FnMut(Action, &str, &str, i64) + Send> {
         Box::new(move |act, db_name, table_name, rowid| {
             if table_name == "triples" {
                 // println!("got {:?} {} {} {}", act, db_name, table_name, rowid);
-                sender.send(rowid).unwrap();
+                match sender.try_send(ChannelMessage::Refresh) {
+                    Ok(_) =>  return,
+                    Err(mpsc::TrySendError::Full(e)) => return,
+                    Err(mpsc::TrySendError::Disconnected(e)) => panic!(e)
+                };
+               // sender.send(rowid).unwrap();
             }
         })
         //|act: Action, db_name: &str, table_name: &str, rowid: i64) {
     }
 
-    fn get_commit_hook(&self, sender: mpsc::Sender<()>) -> Box<dyn FnMut() -> bool + Send> {
+    fn get_commit_hook(&self, sender: mpsc::SyncSender<ChannelMessage>) -> Box<dyn FnMut() -> bool + Send> {
         Box::new(move || {
-            sender.send(()).unwrap();
+            sender.try_send(ChannelMessage::Refresh).unwrap();
             false
         })
     }
@@ -187,18 +187,27 @@ impl SQLiteManager {
 
     fn update_loop(&mut self) -> Result<()> {
         loop {
-            let res = self.viewrecv.try_recv();
+            let res = self.recv.recv();
+            println!("got trigger {:?}", res);
             match res {
-                Ok(vdef) => self.add_view(vdef.name, &vdef.query)?,
-                Err(e) => match e {
-                    mpsc::TryRecvError::Empty => println!("no view yet"),
-                    mpsc::TryRecvError::Disconnected => return Err(ReasonableError::ManagerError("bad".to_string())),
-                }
+                Ok(msg) => match msg {
+                            ChannelMessage::ViewDef(vdef) => self.add_view(vdef.name, &vdef.query)?,
+                            ChannelMessage::Refresh => self.update()?,
+                           },
+                Err(e) => return Err(ReasonableError::ChannelRecv(e)),
             };
-            self.recv.recv()?;
-            if let Err(e) = self.update() {
-                return Err(e);
-            }
+            //let res = self.recv.try_recv();
+            //match res {
+            //    Ok(_) => self.update()?,
+            //    Err(e) => match e {
+            //        mpsc::TryRecvError::Empty => continue,
+            //        mpsc::TryRecvError::Disconnected => return Err(ReasonableError::ManagerError("bad".to_string())),
+            //    }
+            //};
+            //self.recv.recv()?;
+            //if let Err(e) = self.update() {
+            //    return Err(e);
+            //}
         }
     }
 }
@@ -206,6 +215,12 @@ impl SQLiteManager {
 #[derive(Deserialize, Serialize)]
 struct TableResponse {
     rows: Vec<Vec<String>>
+}
+
+#[derive(Debug)]
+enum ChannelMessage {
+    ViewDef(MakeView),
+    Refresh,
 }
 
 #[derive(Deserialize, Serialize, Clone, Debug)]
@@ -216,7 +231,7 @@ struct MakeView {
 
 
 type JsonTriple = (String, String, String);
-struct ViewChannel(mpsc::SyncSender<MakeView>);
+struct ViewChannel(mpsc::SyncSender<ChannelMessage>);
 type DbConn = Mutex<Connection>;
 
 #[get("/view/<name>", format = "json")]
@@ -238,7 +253,7 @@ fn hello(name: String, conn: State<DbConn>, tx: State<ViewChannel>) -> Json<Tabl
 
 #[post("/make", data = "<data>", format = "json")]
 fn makeview(data: Json<MakeView>, conn: State<DbConn>, tx: State<ViewChannel>) -> Json<()>  {
-    tx.0.try_send(data.0).expect("send view def");
+    tx.0.try_send(ChannelMessage::ViewDef(data.0)).expect("send view def");
     Json(())
 }
 
