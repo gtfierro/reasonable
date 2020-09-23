@@ -287,8 +287,9 @@ fn rocket(filename: &str) {
     mgr.load_file("example_models/ontologies/Brick.n3").unwrap();
     //mgr.load_file("example_models/soda_hall.n3").unwrap();
 
-    mgr.conn.execute("DROP TABLE IF EXISTS test1;", NO_PARAMS).unwrap();
     mgr.update().unwrap();
+
+    mgr.conn.execute("DROP TABLE IF EXISTS test1;", NO_PARAMS).unwrap();
     mgr.add_view("test1".to_string(), "SELECT ?x ?y WHERE { ?x rdf:type brick:Sensor . ?x brick:isPointOf ?y }").unwrap();
 
     mgr.update().unwrap();

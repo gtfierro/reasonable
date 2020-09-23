@@ -1,4 +1,4 @@
-use crate::owl::*;
+use crate::reasoner::*;
 use crate::common::*;
 
 #[test]

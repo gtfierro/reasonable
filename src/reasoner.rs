@@ -92,7 +92,7 @@ impl fmt::Display for ReasoningError {
 /// required to do reasoning.
 ///
 /// ```
-/// use reasonable::owl::Reasoner;
+/// use reasonable::reasoner::Reasoner;
 /// let mut r = Reasoner::new();
 /// // load in an ontology file
 /// r.load_file("example_models/ontologies/Brick.n3").unwrap();
