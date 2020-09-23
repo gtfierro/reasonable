@@ -6,14 +6,16 @@ use std::thread;
 use rocket::{Rocket, State, response::Debug};
 use rocket_contrib::json::Json;
 
-use std::fmt;
-use std::rc::Rc;
-use std::cell::RefCell;
+use rdf::{
+    node::Node,
+    uri::Uri,
+};
+use oxigraph::model::*;
+
 use std::str;
-use regex::Regex;
+
 use std::sync::mpsc;
 use ::reasonable::reasoner::{
-    Reasoner,
     node_to_string,
 };
 use ::reasonable::error::{
@@ -22,25 +24,16 @@ use ::reasonable::error::{
 };
 use ::reasonable::manager::{
     Manager,
-    ViewRef,
     ViewMetadata,
     parse_file,
 };
-use rdf::{
-    node::Node,
-    uri::Uri,
-};
-use oxigraph::model::{
-    NamedNode,
-    BlankNode,
-    NamedOrBlankNode,
-};
+
+
 use rusqlite::{
     Connection,
     NO_PARAMS,
     Action,
     params,
-    functions::FunctionFlags,
 };
 
 type BoxError = Box<dyn std::error::Error + Send + Sync + 'static>;
@@ -69,8 +62,8 @@ impl SQLiteManager {
         let mgr = SQLiteManager{
             mgr: Manager::new(),
             conn: Connection::open(filename)?,
-            recv: recv,
-            send: send,
+            recv,
+            send,
             views: Vec::new(),
         };
 
@@ -104,13 +97,52 @@ impl SQLiteManager {
         self.update()
     }
 
+    fn add_triples(&mut self, triples: Vec<(String, String, String)>) -> Result<()> {
+        let load_triples: Vec<(Node, Node, Node)> = triples.into_iter().filter_map(|(s_, p_, o_)| {
+            let s: Node = {
+                if let Ok(named) = NamedNode::new(s_.clone()) {
+                    uri!(named.into_string())
+                } else if let Ok(bnode) = BlankNode::new(s_) {
+                    bnode!(bnode.into_string())
+                } else {
+                    return None
+                }
+            };
+
+            let p: Node = uri!(p_);
+
+            let o: Node = {
+                if let Ok(named) = NamedNode::new(o_.clone()) {
+                    uri!(named.into_string())
+                } else if let Ok(bnode) = BlankNode::new(o_.clone()) {
+                    bnode!(bnode.into_string())
+                } else {
+                    literal!(o_, None, None)
+                }
+            };
+
+            Some((s, p, o))
+        }).collect();
+        let tx = self.conn.transaction()?;
+        for trip in load_triples {
+            tx.execute(
+                "INSERT INTO triples(subject, predicate, object) VALUES (?1, ?2, ?3)",
+                params![node_to_string(&trip.0), node_to_string(&trip.1), node_to_string(&trip.2)]
+            )?;
+        }
+        match tx.commit() {
+            Err(e) => Err(ReasonableError::SQLite(e)),
+            Ok(_) => Ok(())
+        }
+    }
+
     fn get_update_hook(&self, sender: mpsc::SyncSender<ChannelMessage>) -> Box<dyn FnMut(Action, &str, &str, i64) + Send> {
-        Box::new(move |act, db_name, table_name, rowid| {
+        Box::new(move |_act, _db_name, table_name, _rowid| {
             if table_name == "triples" {
                 // println!("got {:?} {} {} {}", act, db_name, table_name, rowid);
                 match sender.try_send(ChannelMessage::Refresh) {
                     Ok(_) =>  return,
-                    Err(mpsc::TrySendError::Full(e)) => return,
+                    Err(mpsc::TrySendError::Full(_e)) => return,
                     Err(mpsc::TrySendError::Disconnected(e)) => panic!(e)
                 };
                // sender.send(rowid).unwrap();
@@ -140,7 +172,7 @@ impl SQLiteManager {
         })?.filter_map(|tres| {
             match tres {
                 Ok(t) => Some(t),
-                Err(e) => None
+                Err(_e) => None
             }
         }).collect();
 
@@ -188,12 +220,11 @@ impl SQLiteManager {
     fn update_loop(&mut self) -> Result<()> {
         loop {
             let res = self.recv.recv();
-            println!("got trigger {:?}", res);
             match res {
                 Ok(msg) => match msg {
                             ChannelMessage::ViewDef(vdef) => self.add_view(vdef.name, &vdef.query)?,
                             ChannelMessage::TripleAdd(trips) => {
-                                self.mgr.load_triples(trips)?;
+                                self.add_triples(trips)?;
                                 self.update()?
                             },
                             ChannelMessage::Refresh => self.update()?,
@@ -240,7 +271,7 @@ struct ViewChannel(mpsc::SyncSender<ChannelMessage>);
 type DbConn = Mutex<Connection>;
 
 #[get("/view/<name>", format = "json")]
-fn hello(name: String, conn: State<DbConn>, tx: State<ViewChannel>) -> Json<TableResponse>  {
+fn hello(name: String, conn: State<DbConn>, _tx: State<ViewChannel>) -> Json<TableResponse>  {
     let mut rows: Vec<Vec<String>> = Vec::new();
     conn.lock()
         .expect("db connection lock")
@@ -252,17 +283,17 @@ fn hello(name: String, conn: State<DbConn>, tx: State<ViewChannel>) -> Json<Tabl
             Ok(())
         }).unwrap().count();
     println!("rows {}", rows.len());
-    Json(TableResponse{rows: rows})
+    Json(TableResponse{rows})
 }
 
 #[post("/make", data = "<data>", format = "json")]
-fn makeview(data: Json<MakeView>, conn: State<DbConn>, tx: State<ViewChannel>) -> Json<()>  {
+fn makeview(data: Json<MakeView>, _conn: State<DbConn>, tx: State<ViewChannel>) -> Json<()>  {
     tx.0.try_send(ChannelMessage::ViewDef(data.0)).expect("send view def");
     Json(())
 }
 
 #[post("/add", data = "<data>", format = "json")]
-fn addtriples(data: Json<Vec<JsonTriple>>, conn: State<DbConn>, tx: State<ViewChannel>) -> Json<()>  {
+fn addtriples(data: Json<Vec<JsonTriple>>, _conn: State<DbConn>, tx: State<ViewChannel>) -> Json<()>  {
     tx.0.try_send(ChannelMessage::TripleAdd(data.0)).expect("add triples");
     Json(())
 }

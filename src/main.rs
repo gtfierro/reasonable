@@ -1,5 +1,5 @@
 use ::reasonable::reasoner::Reasoner;
-use ::reasonable::manager;
+
 use std::env;
 use std::time::Instant;
 use log::info;
