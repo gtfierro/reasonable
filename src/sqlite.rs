@@ -12,7 +12,7 @@ use std::cell::RefCell;
 use std::str;
 use regex::Regex;
 use std::sync::mpsc;
-use ::reasonable::owl::{
+use ::reasonable::reasoner::{
     Reasoner,
     node_to_string,
 };
@@ -192,6 +192,10 @@ impl SQLiteManager {
             match res {
                 Ok(msg) => match msg {
                             ChannelMessage::ViewDef(vdef) => self.add_view(vdef.name, &vdef.query)?,
+                            ChannelMessage::TripleAdd(trips) => {
+                                self.mgr.load_triples(trips)?;
+                                self.update()?
+                            },
                             ChannelMessage::Refresh => self.update()?,
                            },
                 Err(e) => return Err(ReasonableError::ChannelRecv(e)),
@@ -220,6 +224,7 @@ struct TableResponse {
 #[derive(Debug)]
 enum ChannelMessage {
     ViewDef(MakeView),
+    TripleAdd(Vec<JsonTriple>),
     Refresh,
 }
 
@@ -237,7 +242,6 @@ type DbConn = Mutex<Connection>;
 #[get("/view/<name>", format = "json")]
 fn hello(name: String, conn: State<DbConn>, tx: State<ViewChannel>) -> Json<TableResponse>  {
     let mut rows: Vec<Vec<String>> = Vec::new();
-    println!("in here");
     conn.lock()
         .expect("db connection lock")
         .prepare(&format!("SELECT * FROM {};", name))
@@ -257,12 +261,17 @@ fn makeview(data: Json<MakeView>, conn: State<DbConn>, tx: State<ViewChannel>) -
     Json(())
 }
 
+#[post("/add", data = "<data>", format = "json")]
+fn addtriples(data: Json<Vec<JsonTriple>>, conn: State<DbConn>, tx: State<ViewChannel>) -> Json<()>  {
+    tx.0.try_send(ChannelMessage::TripleAdd(data.0)).expect("add triples");
+    Json(())
+}
 
 fn rocket(filename: &str) {
     let mut mgr = SQLiteManager::new(filename).unwrap();
 
     mgr.load_file("example_models/ontologies/Brick.n3").unwrap();
-    mgr.load_file("example_models/soda_hall.n3").unwrap();
+    //mgr.load_file("example_models/soda_hall.n3").unwrap();
 
     mgr.conn.execute("DROP TABLE IF EXISTS test1;", NO_PARAMS).unwrap();
     mgr.update().unwrap();
@@ -276,7 +285,7 @@ fn rocket(filename: &str) {
         rocket::ignite()
             .manage(Mutex::new(conn))
             .manage(ViewChannel(tx))
-            .mount("/", routes![hello, makeview])
+            .mount("/", routes![hello, makeview, addtriples])
             .launch();
     });
 

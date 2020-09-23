@@ -8,7 +8,7 @@
 #[allow(dead_code)]
 mod index;
 #[allow(dead_code)]
-pub mod owl;
+pub mod reasoner;
 //#[allow(dead_code)]
 //pub mod query;
 //#[allow(dead_code)]

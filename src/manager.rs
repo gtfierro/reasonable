@@ -1,4 +1,4 @@
-use crate::owl::Reasoner;
+use crate::reasoner::Reasoner;
 use crate::error::{ReasonableError, Result};
 use log::info;
 use std::fmt;
