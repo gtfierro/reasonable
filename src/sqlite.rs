@@ -5,15 +5,12 @@ use std::sync::Mutex;
 use std::thread;
 use rocket::{Rocket, State, response::Debug};
 use rocket_contrib::json::Json;
-
 use rdf::{
     node::Node,
     uri::Uri,
 };
 use oxigraph::model::*;
-
 use std::str;
-
 use std::sync::mpsc;
 use ::reasonable::reasoner::{
     node_to_string,
@@ -27,14 +24,8 @@ use ::reasonable::manager::{
     ViewMetadata,
     parse_file,
 };
-
-
-use rusqlite::{
-    Connection,
-    NO_PARAMS,
-    Action,
-    params,
-};
+use rusqlite::NO_PARAMS;
+use rusqlite::params;
 
 type BoxError = Box<dyn std::error::Error + Send + Sync + 'static>;
 
@@ -50,7 +41,7 @@ macro_rules! literal {
 
 struct SQLiteManager {
     mgr: Manager,
-    conn: Connection,
+    conn: rusqlite::Connection,
     recv: mpsc::Receiver<ChannelMessage>,
     send: mpsc::SyncSender<ChannelMessage>,
     views: Vec<ViewMetadata>,
@@ -61,7 +52,7 @@ impl SQLiteManager {
         let (send, recv) = mpsc::sync_channel(5);
         let mgr = SQLiteManager{
             mgr: Manager::new(),
-            conn: Connection::open(filename)?,
+            conn: rusqlite::Connection::open(filename)?,
             recv,
             send,
             views: Vec::new(),
@@ -136,7 +127,7 @@ impl SQLiteManager {
         }
     }
 
-    fn get_update_hook(&self, sender: mpsc::SyncSender<ChannelMessage>) -> Box<dyn FnMut(Action, &str, &str, i64) + Send> {
+    fn get_update_hook(&self, sender: mpsc::SyncSender<ChannelMessage>) -> Box<dyn FnMut(rusqlite::Action, &str, &str, i64) + Send> {
         Box::new(move |_act, _db_name, table_name, _rowid| {
             if table_name == "triples" {
                 // println!("got {:?} {} {} {}", act, db_name, table_name, rowid);
@@ -251,7 +242,7 @@ struct MakeView {
 
 type JsonTriple = (String, String, String);
 struct ViewChannel(mpsc::SyncSender<ChannelMessage>);
-type DbConn = Mutex<Connection>;
+type DbConn = Mutex<rusqlite::Connection>;
 
 #[get("/view/<name>", format = "json")]
 fn hello(name: String, conn: State<DbConn>, _tx: State<ViewChannel>) -> Json<TableResponse>  {
@@ -294,7 +285,7 @@ fn rocket(filename: &str) {
 
     mgr.update().unwrap();
 
-    let conn = Connection::open(filename).unwrap();
+    let conn = rusqlite::Connection::open(filename).unwrap();
     let tx = mgr.get_view_channel();
     thread::spawn(move || {
         rocket::ignite()
