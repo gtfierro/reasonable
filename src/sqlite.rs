@@ -221,28 +221,11 @@ impl SQLiteManager {
         loop {
             let res = self.recv.recv();
             match res {
-                Ok(msg) => match msg {
-                            ChannelMessage::ViewDef(vdef) => self.add_view(vdef.name, &vdef.query)?,
-                            ChannelMessage::TripleAdd(trips) => {
-                                self.add_triples(trips)?;
-                                self.update()?
-                            },
-                            ChannelMessage::Refresh => self.update()?,
-                           },
+                Ok(ChannelMessage::ViewDef(vdef)) => self.add_view(vdef.name, &vdef.query)?,
+                Ok(ChannelMessage::TripleAdd(trips)) => { self.add_triples(trips)?; self.update()? },
+                Ok(ChannelMessage::Refresh) => self.update()?,
                 Err(e) => return Err(ReasonableError::ChannelRecv(e)),
             };
-            //let res = self.recv.try_recv();
-            //match res {
-            //    Ok(_) => self.update()?,
-            //    Err(e) => match e {
-            //        mpsc::TryRecvError::Empty => continue,
-            //        mpsc::TryRecvError::Disconnected => return Err(ReasonableError::ManagerError("bad".to_string())),
-            //    }
-            //};
-            //self.recv.recv()?;
-            //if let Err(e) = self.update() {
-            //    return Err(e);
-            //}
         }
     }
 }
