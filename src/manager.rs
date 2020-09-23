@@ -129,14 +129,18 @@ impl ViewMetadata {
             c.to_string()
         }).collect::<Vec<String>>().join(", ");
         let inps: String = (0..self.columns().len()).map(|_| "?".to_string()).collect::<Vec<String>>().join(", ");
-        format!("INSERT INTO {}({}) VALUES ({});", self.table_name, cols, inps)
+        format!("INSERT INTO view_{}({}) VALUES ({});", self.table_name, cols, inps)
     }
 
     pub fn get_create_tab(&self) -> String {
         let cols: String = self.columns().to_vec().iter().map(|c| {
             format!("{} TEXT", c)
         }).collect::<Vec<String>>().join(", ");
-        format!("CREATE TABLE IF NOT EXISTS {}({});", self.table_name, cols)
+        format!("CREATE TABLE IF NOT EXISTS view_{}({});", self.table_name, cols)
+    }
+
+    pub fn get_delete_tab(&self) -> String {
+        format!("DELETE FROM view_{};", self.table_name)
     }
 }
 
@@ -159,6 +163,10 @@ impl Manager {
             triple_store: MemoryStore::new(),
             views: HashMap::new(),
         }
+    }
+
+    pub fn size(&self) -> usize {
+        self.triple_store.len()
     }
 
     pub fn load_triples(&mut self, triples: Vec<(String, String, String)>) -> Result<()> {

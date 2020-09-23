@@ -3,7 +3,7 @@
 #[macro_use] extern crate serde_derive;
 use std::sync::Mutex;
 use std::thread;
-use rocket::{Rocket, State, response::Debug};
+use rocket::State;
 use rocket_contrib::json::Json;
 use rdf::{
     node::Node,
@@ -45,17 +45,19 @@ struct SQLiteManager {
     recv: mpsc::Receiver<ChannelMessage>,
     send: mpsc::SyncSender<ChannelMessage>,
     views: Vec<ViewMetadata>,
+    changed: bool,
 }
 
 impl SQLiteManager {
     fn new(filename: &str) -> Result<Self> {
-        let (send, recv) = mpsc::sync_channel(5);
-        let mgr = SQLiteManager{
+        let (send, recv) = mpsc::sync_channel(10);
+        let mut mgr = SQLiteManager{
             mgr: Manager::new(),
             conn: rusqlite::Connection::open(filename)?,
             recv,
             send,
             views: Vec::new(),
+            changed: true,
         };
 
         // mgr.conn.create_module("reasonable", &read_only_module::<ReasonableTable>(), None)?;
@@ -63,12 +65,14 @@ impl SQLiteManager {
         mgr.conn.execute("CREATE TABLE IF NOT EXISTS triples (
             subject TEXT NOT NULL,
             predicate TEXT NOT NULL,
-            object TEXT NOT NULL
+            object TEXT NOT NULL,
+            UNIQUE(subject, predicate, object)
         )", NO_PARAMS)?;
 
         let sendc = mgr.get_view_channel();
         //mgr.conn.commit_hook(Some(mgr.get_commit_hook(sendc)));
         mgr.conn.update_hook(Some(mgr.get_update_hook(sendc)));
+        mgr.add_view(String::from("reasoned"), "SELECT ?s ?p ?o WHERE { ?s ?p ?o }")?;
         Ok(mgr)
     }
 
@@ -77,14 +81,18 @@ impl SQLiteManager {
     }
 
     fn add_view(&mut self, name: String, query: &str) -> Result<()> {
-        let view = self.mgr.add_view2(name, query)?;
+        // remove old table if exists
+        self.conn.execute(&format!("DROP TABLE IF EXISTS view_{}", &name), NO_PARAMS)?;
+        self.views.retain(|view| view.name() != name);
 
-        // create table
+        // create table and add view
+        let view = self.mgr.add_view2(name, query)?;
         let table_def = view.get_create_tab();
         self.conn.execute(&table_def, NO_PARAMS)?;
 
         //TODO do not add view def more than once
         self.views.push(view);
+        self.changed = true;
         self.update()
     }
 
@@ -117,13 +125,16 @@ impl SQLiteManager {
         let tx = self.conn.transaction()?;
         for trip in load_triples {
             tx.execute(
-                "INSERT INTO triples(subject, predicate, object) VALUES (?1, ?2, ?3)",
+                "INSERT OR IGNORE INTO triples(subject, predicate, object) VALUES (?1, ?2, ?3)",
                 params![node_to_string(&trip.0), node_to_string(&trip.1), node_to_string(&trip.2)]
             )?;
         }
         match tx.commit() {
             Err(e) => Err(ReasonableError::SQLite(e)),
-            Ok(_) => Ok(())
+            Ok(_) => {
+                self.changed = true;
+                Ok(())
+            }
         }
     }
 
@@ -175,7 +186,7 @@ impl SQLiteManager {
         let triples = parse_file(filename)?;
         for trip in triples {
             tx.execute(
-                "INSERT INTO triples(subject, predicate, object) VALUES (?1, ?2, ?3)",
+                "INSERT OR IGNORE INTO triples(subject, predicate, object) VALUES (?1, ?2, ?3)",
                 params![node_to_string(&trip.0), node_to_string(&trip.1), node_to_string(&trip.2)]
             )?;
         }
@@ -188,11 +199,17 @@ impl SQLiteManager {
 
     fn update(&mut self) -> Result<()> {
         // try to see if there are any new views
+        if !self.changed {
+            return Ok(());
+        } else {
+            println!("changing row");
+        }
 
         self.mgr.load_triples(self.get_triples()?)?;
         let tx = self.conn.transaction()?;
         for view in self.views.iter() {
-            tx.execute(format!("DELETE FROM {};", view.name()).as_str(), NO_PARAMS)?;
+            tx.execute(&view.get_delete_tab(), NO_PARAMS)?;
+            //tx.execute(format!("DELETE FROM view_{};", view.name()).as_str(), NO_PARAMS)?;
             println!("insert: {}", view.get_insert_sql());
             let mut stmt = tx.prepare(&view.get_insert_sql())?;
             let tuples: Vec<Vec<String>> = view.contents_string()?;
@@ -204,7 +221,10 @@ impl SQLiteManager {
         // loop through views and update
         match tx.commit() {
             Err(e) => Err(ReasonableError::SQLite(e)),
-            Ok(_) => Ok(())
+            Ok(_) => {
+                self.changed = false;
+                Ok(())
+            }
         }
     }
 
@@ -223,6 +243,7 @@ impl SQLiteManager {
 
 #[derive(Deserialize, Serialize)]
 struct TableResponse {
+    header: Vec<String>,
     rows: Vec<Vec<String>>
 }
 
@@ -247,22 +268,24 @@ type DbConn = Mutex<rusqlite::Connection>;
 #[get("/view/<name>", format = "json")]
 fn hello(name: String, conn: State<DbConn>, _tx: State<ViewChannel>) -> Json<TableResponse>  {
     let mut rows: Vec<Vec<String>> = Vec::new();
+    let mut header: Vec<String> = Vec::new();
     conn.lock()
         .expect("db connection lock")
-        .prepare(&format!("SELECT * FROM {};", name))
+        .prepare(&format!("SELECT * FROM view_{};", name))
         .expect("bad query")
         .query_map(NO_PARAMS, |row| {
             let rowvec: Vec<String> = (0..(row.column_count())).map(|i| row.get(i).unwrap()).collect();
             rows.push(rowvec);
+            header = row.column_names().iter().map(|s| s.to_string()).collect();
             Ok(())
         }).unwrap().count();
     println!("rows {}", rows.len());
-    Json(TableResponse{rows})
+    Json(TableResponse{header, rows})
 }
 
 #[post("/make", data = "<data>", format = "json")]
 fn makeview(data: Json<MakeView>, _conn: State<DbConn>, tx: State<ViewChannel>) -> Json<()>  {
-    tx.0.try_send(ChannelMessage::ViewDef(data.0)).expect("send view def");
+    tx.0.send(ChannelMessage::ViewDef(data.0)).expect("make view");
     Json(())
 }
 
@@ -278,10 +301,10 @@ fn rocket(filename: &str) {
     mgr.load_file("example_models/ontologies/Brick.n3").unwrap();
     //mgr.load_file("example_models/soda_hall.n3").unwrap();
 
-    mgr.update().unwrap();
+    //mgr.update().unwrap();
 
-    mgr.conn.execute("DROP TABLE IF EXISTS test1;", NO_PARAMS).unwrap();
-    mgr.add_view("test1".to_string(), "SELECT ?x ?y WHERE { ?x rdf:type brick:Sensor . ?x brick:isPointOf ?y }").unwrap();
+    //mgr.conn.execute("DROP TABLE IF EXISTS test1;", NO_PARAMS).unwrap();
+    //mgr.add_view("test1".to_string(), "SELECT ?x ?y WHERE { ?x rdf:type brick:Sensor . ?x brick:isPointOf ?y }").unwrap();
 
     mgr.update().unwrap();
 
