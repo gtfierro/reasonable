@@ -10,6 +10,8 @@ use rdf::{
     uri::Uri,
 };
 use oxigraph::model::*;
+use oxigraph::store::MemoryStore;
+use oxigraph::sparql::{QueryOptions, QueryResults};
 use std::str;
 use std::sync::mpsc;
 use ::reasonable::reasoner::{
@@ -28,6 +30,15 @@ use rusqlite::NO_PARAMS;
 use rusqlite::params;
 
 type BoxError = Box<dyn std::error::Error + Send + Sync + 'static>;
+
+#[allow(non_upper_case_globals)]
+const qfmt: &str = "PREFIX brick: <https://brickschema.org/schema/1.1/Brick#>
+    PREFIX tag: <https://brickschema.org/schema/1.1/BrickTag#>
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX owl: <http://www.w3.org/2002/07/owl#>
+    PREFIX qudt: <http://qudt.org/schema/qudt/>
+    ";
 
 macro_rules! uri {
     ($t:expr) => (Node::UriNode{uri: Uri::new($t)});
@@ -264,9 +275,10 @@ struct MakeView {
 type JsonTriple = (String, String, String);
 struct ViewChannel(mpsc::SyncSender<ChannelMessage>);
 type DbConn = Mutex<rusqlite::Connection>;
+type RdfConn = Mutex<MemoryStore>;
 
 #[get("/view/<name>", format = "json")]
-fn hello(name: String, conn: State<DbConn>, _tx: State<ViewChannel>) -> Json<TableResponse>  {
+fn hello(name: String, conn: State<DbConn>, _store: State<RdfConn>, _tx: State<ViewChannel>) -> Json<TableResponse>  {
     let mut rows: Vec<Vec<String>> = Vec::new();
     let mut header: Vec<String> = Vec::new();
     conn.lock()
@@ -284,15 +296,43 @@ fn hello(name: String, conn: State<DbConn>, _tx: State<ViewChannel>) -> Json<Tab
 }
 
 #[post("/make", data = "<data>", format = "json")]
-fn makeview(data: Json<MakeView>, _conn: State<DbConn>, tx: State<ViewChannel>) -> Json<()>  {
+fn makeview(data: Json<MakeView>, _conn: State<DbConn>, store: State<RdfConn>, tx: State<ViewChannel>) -> Json<()>  {
     tx.0.send(ChannelMessage::ViewDef(data.0)).expect("make view");
     Json(())
 }
 
 #[post("/add", data = "<data>", format = "json")]
-fn addtriples(data: Json<Vec<JsonTriple>>, _conn: State<DbConn>, tx: State<ViewChannel>) -> Json<()>  {
-    tx.0.try_send(ChannelMessage::TripleAdd(data.0)).expect("add triples");
+fn addtriples(data: Json<Vec<JsonTriple>>, _conn: State<DbConn>, store: State<RdfConn>, tx: State<ViewChannel>) -> Json<()>  {
+    tx.0.send(ChannelMessage::TripleAdd(data.0)).expect("add triples");
     Json(())
+}
+
+#[post("/query", data = "<data>", format = "json")]
+fn doquery(data: Json<String>, _conn: State<DbConn>, store: State<RdfConn>, tx: State<ViewChannel>) -> Result<Json<Vec<Vec<String>>>>  {
+    let sparql = format!("{}{}", qfmt, data.0);
+    println!("do query {}", sparql);
+    let q = store.lock().expect("rdf lock").prepare_query(&sparql, QueryOptions::default())?;
+    let res = q.exec()?;
+    let mut rows: Vec<Vec<String>> = Vec::new();
+    match res {
+        QueryResults::Solutions(solutions) => {
+            let vars: Vec<String> = solutions.variables().to_vec().iter().map(|t| t.to_string()).collect();
+            for soln in solutions {
+                let vals = soln?;
+                let mut row: Vec<String> = Vec::new();
+                for col in &vars {
+                    row.push(vals.get(col.as_str()).unwrap().clone().to_string());
+                }
+                println!("row {:?}", row);
+                rows.push(row);
+            }
+        },
+        QueryResults::Boolean(b) => {
+            rows.push(vec![format!("{}", b)])
+        }
+        _ => {}
+    };
+    Ok(Json(rows))
 }
 
 fn rocket(filename: &str) {
@@ -309,12 +349,14 @@ fn rocket(filename: &str) {
     mgr.update().unwrap();
 
     let conn = rusqlite::Connection::open(filename).unwrap();
+    let store = mgr.mgr.store();
     let tx = mgr.get_view_channel();
     thread::spawn(move || {
         rocket::ignite()
             .manage(Mutex::new(conn))
+            .manage(Mutex::new(store))
             .manage(ViewChannel(tx))
-            .mount("/", routes![hello, makeview, addtriples])
+            .mount("/", routes![hello, makeview, addtriples, doquery])
             .launch();
     });
 

@@ -169,6 +169,10 @@ impl Manager {
         self.triple_store.len()
     }
 
+    pub fn store(&self) -> MemoryStore {
+        self.triple_store.clone()
+    }
+
     pub fn load_triples(&mut self, triples: Vec<(String, String, String)>) -> Result<()> {
         let load_triples: Vec<(Node, Node, Node)> = triples.into_iter().filter_map(|(s_, p_, o_)| {
             let s: Node = {
