@@ -265,7 +265,7 @@ enum ChannelMessage {
     Refresh,
 }
 
-#[derive(Deserialize, Serialize, Clone, Debug)]
+#[derive(Deserialize, Serialize, Debug)]
 struct MakeView {
     name: String,
     query: String,

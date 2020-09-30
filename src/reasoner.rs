@@ -110,6 +110,7 @@ pub struct Reasoner {
     index: URIIndex,
     input: Vec<Triple>,
     errors: Vec<ReasoningError>,
+    output: Vec<(Node, Node, Node)>,
 
     spo: Variable<Triple>,
     all_triples_input: Variable<Triple>,
@@ -140,15 +141,16 @@ impl Reasoner {
             index,
             input,
             errors: Vec::new(),
+            output: Vec::new(),
             spo,
             all_triples_input,
         }
     }
 
-    fn rebuild_with(&mut self, input: Relation<Triple>) {
+    fn rebuild(&mut self) {
         // TODO: pull in the existing triples
         self.iter1 = Iteration::new();
-        self.input = input.iter().map(|&(x, (y, z))| (x, (y, z))).collect();
+        self.input = self.spo.clone().complete().iter().map(|&(x, (y, z))| (x, (y, z))).collect();
         self.all_triples_input = self.iter1.variable::<(URI, (URI, URI))>("all_triples_input");
         self.spo = self.iter1.variable::<(URI, (URI, URI))>("spo");
     }
@@ -1097,6 +1099,22 @@ impl Reasoner {
                 }
             }
         }
+
+        self.output = self.spo.clone()
+                              .complete().iter()
+                              .filter(|inst| {
+                                let (_s, (_p, _o)) = inst;
+                                *_s > 0 && *_p > 0 && *_o > 0
+                                })
+                              .map(|inst| {
+                                let (_s, (_p, _o)) = inst;
+                                let s = self.index.get(*_s).unwrap().clone();
+                                let p = self.index.get(*_p).unwrap().clone();
+                                let o = self.index.get(*_o).unwrap().clone();
+                                (s, p, o)
+                                })
+                              .collect();
+        self.rebuild();
     }
 
     fn to_u(&self, u: URI) -> String {
@@ -1105,37 +1123,19 @@ impl Reasoner {
 
 
     /// Returns the vec of triples currently contained in the Reasoner
-    pub fn get_triples(&mut self) -> Vec<(Node, Node, Node)> {
-        let instances = self.spo.clone().complete();
+    pub fn get_triples(&self) -> Vec<(Node, Node, Node)> {
+        self.output.clone()
+    }
 
-        self.rebuild_with(instances.clone());
-
-        instances.iter().filter(|inst| {
-            let (_s, (_p, _o)) = inst;
-             *_s > 0 && *_p > 0 && *_o > 0
-        }).map(|inst| {
-            let (_s, (_p, _o)) = inst;
-            let s = self.index.get(*_s).unwrap().clone();
-            let p = self.index.get(*_p).unwrap().clone();
-            let o = self.index.get(*_o).unwrap().clone();
-            (s, p, o)
-        }).collect()
+    /// Returns the vec of triples currently contained in the Reasoner
+    pub fn view_output(&self) -> &[(Node, Node, Node)] {
+        &self.output
     }
 
     /// Returns the vec of triples currently contained in the Reasoner
     pub fn get_triples_string(&mut self) -> Vec<(String, String, String)> {
-        let instances = self.spo.clone().complete();
-
-        self.rebuild_with(instances.clone());
-
-        instances.iter().filter(|inst| {
-            let (_s, (_p, _o)) = inst;
-             *_s > 0 && *_p > 0 && *_o > 0
-        }).map(|inst| {
-            let (_s, (_p, _o)) = inst;
-            let s = self.index.get(*_s).unwrap();
-            let p = self.index.get(*_p).unwrap();
-            let o = self.index.get(*_o).unwrap();
+        self.view_output().iter().map(|inst| {
+            let (s, p, o) = inst;
             (node_to_string(&s), node_to_string(&p), node_to_string(&o))
         }).collect()
     }
