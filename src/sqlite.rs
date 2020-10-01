@@ -144,6 +144,7 @@ impl SQLiteManager {
             Err(e) => Err(ReasonableError::SQLite(e)),
             Ok(_) => {
                 self.changed = true;
+                self.update()?;
                 Ok(())
             }
         }
@@ -203,7 +204,11 @@ impl SQLiteManager {
         }
         match tx.commit() {
             Err(e) => Err(ReasonableError::SQLite(e)),
-            Ok(_) => Ok(())
+            Ok(_) => {
+                self.changed = true;
+                self.update()?;
+                Ok(())
+            }
         }
 
     }
@@ -211,6 +216,7 @@ impl SQLiteManager {
     fn update(&mut self) -> Result<()> {
         // try to see if there are any new views
         if !self.changed {
+            println!("triggered but no change");
             return Ok(());
         } else {
             println!("changing row");
@@ -245,7 +251,7 @@ impl SQLiteManager {
             let res = self.recv.recv();
             match res {
                 Ok(ChannelMessage::ViewDef(vdef, tx)) => { self.add_view(vdef.name, &vdef.query)?; tx.send(()).unwrap(); },
-                Ok(ChannelMessage::TripleAdd(trips, tx)) => { self.add_triples(trips)?; self.update()?; tx.send(()).unwrap(); },
+                Ok(ChannelMessage::TripleAdd(trips, tx)) => { self.add_triples(trips)?; tx.send(()).unwrap(); },
                 Ok(ChannelMessage::Refresh) => self.update()?,
                 Err(e) => return Err(ReasonableError::ChannelRecv(e)),
             };

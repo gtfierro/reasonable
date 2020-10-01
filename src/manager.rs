@@ -216,17 +216,17 @@ impl Manager {
         self.reasoner.reason();
 
         // add reasoned triples to an in-memory store
-        for t in self.reasoner.get_triples() {
-            let s = match t.0 {
+        for t in self.reasoner.view_output().iter() {
+            let s = match &t.0 {
                 Node::UriNode{uri} => NamedOrBlankNode::NamedNode(NamedNode::new_unchecked(uri.to_string())),
                 Node::BlankNode{id} => NamedOrBlankNode::BlankNode(BlankNode::new_unchecked(id.to_string())),
                 _ => panic!("no subject literals"),
             };
-            let p = match t.1 {
+            let p = match &t.1 {
                 Node::UriNode{uri} => NamedNode::new_unchecked(uri.to_string()),
                 _ => panic!("no must be named node"),
             };
-            let o = match t.2 {
+            let o = match &t.2 {
                 Node::UriNode{uri} => Term::NamedNode(NamedNode::new_unchecked(uri.to_string())),
                 Node::BlankNode{id} => Term::BlankNode(BlankNode::new_unchecked(id.to_string())),
                 Node::LiteralNode{literal, data_type: _, language: _} => Term::Literal(Literal::new_simple_literal(literal)),
@@ -266,11 +266,6 @@ impl Manager {
                                   .collect(),
             };
             self.views.insert(name_key, md);
-
-            for soln in solutions {
-                let soln = soln.unwrap();
-                println!("{:?} {:?}", soln.get("x"), soln.get("y"));
-            }
 
             return Ok(ViewRef{
                 md: self.views.get(&view_key).unwrap(),
