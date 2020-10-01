@@ -1,6 +1,6 @@
 use crate::reasoner::Reasoner;
 use crate::error::{ReasonableError, Result};
-use log::info;
+use log::{info, debug};
 use std::fmt;
 use std::string::String;
 use std::fs;
@@ -252,7 +252,7 @@ impl Manager {
 
         let q = self.triple_store.prepare_query(&sparql, QueryOptions::default())?;
 
-        println!("query: {}", sparql);
+        debug!("query: {}", sparql);
         let res = q.exec()?;
         if let QueryResults::Solutions(solutions) = res {
             let name_key = name.clone();
@@ -282,7 +282,7 @@ impl Manager {
 
         let q = self.triple_store.prepare_query(&sparql, QueryOptions::default())?;
 
-        println!("query: {}", sparql);
+        debug!("query: {}", sparql);
         let res = q.exec()?;
         if let QueryResults::Solutions(solutions) = res {
             return Ok(ViewMetadata{
@@ -325,7 +325,7 @@ pub fn parse_file(filename: &str) -> Result<Vec<(Node, Node, Node)>> {
             GraphFormat::RdfXml
         };
         let data = fs::read_to_string(filename)?;
-        println!("format: {:?} for {}", gfmt, filename);
+        debug!("format: {:?} for {}", gfmt, filename);
         let parser = GraphParser::from_format(gfmt);
         let triples: Vec<std::result::Result<Triple, std::io::Error>> = parser.read_triples(Cursor::new(data))?.collect();//.collect::<Result<Triple>>();
         Ok(triples.into_iter().filter_map(|tres| {
