@@ -61,7 +61,7 @@ struct SQLiteManager {
 
 impl SQLiteManager {
     fn new(filename: &str) -> Result<Self> {
-        let (send, recv) = mpsc::sync_channel(10);
+        let (send, recv) = mpsc::sync_channel(1);
         let mut mgr = SQLiteManager{
             mgr: Manager::new(),
             conn: rusqlite::Connection::open(filename)?,
@@ -243,8 +243,8 @@ impl SQLiteManager {
         loop {
             let res = self.recv.recv();
             match res {
-                Ok(ChannelMessage::ViewDef(vdef)) => self.add_view(vdef.name, &vdef.query)?,
-                Ok(ChannelMessage::TripleAdd(trips)) => { self.add_triples(trips)?; self.update()? },
+                Ok(ChannelMessage::ViewDef(vdef, tx)) => { self.add_view(vdef.name, &vdef.query)?; tx.send(()).unwrap(); },
+                Ok(ChannelMessage::TripleAdd(trips, tx)) => { self.add_triples(trips)?; self.update()?; tx.send(()).unwrap(); },
                 Ok(ChannelMessage::Refresh) => self.update()?,
                 Err(e) => return Err(ReasonableError::ChannelRecv(e)),
             };
@@ -260,13 +260,13 @@ struct TableResponse {
 
 #[derive(Debug)]
 enum ChannelMessage {
-    ViewDef(MakeView),
-    TripleAdd(Vec<JsonTriple>),
+    ViewDef(ViewDef, mpsc::Sender<()>),
+    TripleAdd(Vec<JsonTriple>, mpsc::Sender<()>),
     Refresh,
 }
 
 #[derive(Deserialize, Serialize, Debug)]
-struct MakeView {
+struct ViewDef {
     name: String,
     query: String,
 }
@@ -277,8 +277,9 @@ struct ViewChannel(mpsc::SyncSender<ChannelMessage>);
 type DbConn = Mutex<rusqlite::Connection>;
 type RdfConn = Mutex<MemoryStore>;
 
+
 #[get("/view/<name>", format = "json")]
-fn hello(name: String, conn: State<DbConn>, _store: State<RdfConn>, _tx: State<ViewChannel>) -> Json<TableResponse>  {
+fn getview(name: String, conn: State<DbConn>, _store: State<RdfConn>, _tx: State<ViewChannel>) -> Json<TableResponse>  {
     let mut rows: Vec<Vec<String>> = Vec::new();
     let mut header: Vec<String> = Vec::new();
     conn.lock()
@@ -296,14 +297,18 @@ fn hello(name: String, conn: State<DbConn>, _store: State<RdfConn>, _tx: State<V
 }
 
 #[post("/make", data = "<data>", format = "json")]
-fn makeview(data: Json<MakeView>, _conn: State<DbConn>, store: State<RdfConn>, tx: State<ViewChannel>) -> Json<()>  {
-    tx.0.send(ChannelMessage::ViewDef(data.0)).expect("make view");
+fn makeview(data: Json<ViewDef>, _conn: State<DbConn>, store: State<RdfConn>, tx: State<ViewChannel>) -> Json<()>  {
+    let (send, recv) = mpsc::channel();
+    tx.0.send(ChannelMessage::ViewDef(data.0, send)).expect("make view");
+    recv.recv().unwrap();
     Json(())
 }
 
 #[post("/add", data = "<data>", format = "json")]
 fn addtriples(data: Json<Vec<JsonTriple>>, _conn: State<DbConn>, store: State<RdfConn>, tx: State<ViewChannel>) -> Json<()>  {
-    tx.0.send(ChannelMessage::TripleAdd(data.0)).expect("add triples");
+    let (send, recv) = mpsc::channel();
+    tx.0.send(ChannelMessage::TripleAdd(data.0, send)).expect("add triples");
+    recv.recv().unwrap();
     Json(())
 }
 
@@ -356,7 +361,7 @@ fn rocket(filename: &str) {
             .manage(Mutex::new(conn))
             .manage(Mutex::new(store))
             .manage(ViewChannel(tx))
-            .mount("/", routes![hello, makeview, addtriples, doquery])
+            .mount("/", routes![getview, makeview, addtriples, doquery])
             .launch();
     });
 

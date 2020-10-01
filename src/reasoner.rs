@@ -1,7 +1,7 @@
 //! The `owl` module implements the rules necessary for OWL 2 RL reasoning
 
 extern crate datafrog;
-use datafrog::{Iteration, Variable, Relation};
+use datafrog::{Iteration, Variable};
 
 use crate::index::URIIndex;
 use crate::disjoint_sets::DisjointSets;
