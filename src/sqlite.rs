@@ -216,6 +216,7 @@ impl SQLiteManager {
             println!("changing row");
         }
 
+        // TODO: return true if the input changed
         self.mgr.load_triples(self.get_triples()?)?;
         let tx = self.conn.transaction()?;
         for view in self.views.iter() {

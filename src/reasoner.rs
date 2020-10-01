@@ -147,10 +147,10 @@ impl Reasoner {
         }
     }
 
-    fn rebuild(&mut self) {
+    fn rebuild(&mut self, output: Vec<Triple>) {
         // TODO: pull in the existing triples
-        self.iter1 = Iteration::new();
-        self.input = self.spo.clone().complete().iter().map(|&(x, (y, z))| (x, (y, z))).collect();
+        //self.iter1 = Iteration::new();
+        self.input = output; //self.spo.clone().complete().iter().map(|&(x, (y, z))| (x, (y, z))).collect();
         self.all_triples_input = self.iter1.variable::<(URI, (URI, URI))>("all_triples_input");
         self.spo = self.iter1.variable::<(URI, (URI, URI))>("spo");
     }
@@ -158,19 +158,23 @@ impl Reasoner {
     /// Load in a vector of triples
     #[allow(dead_code)]
     pub fn load_triples_str(&mut self, triples: Vec<(&'static str, &'static str, &'static str)>) {
-        let trips: Vec<(URI, (URI, URI))> = triples.iter().map(|trip| {
+        let mut trips: Vec<(URI, (URI, URI))> = triples.iter().map(|trip| {
             (self.index.put_str(trip.0), (self.index.put_str(trip.1), self.index.put_str(trip.2)))
         }).collect();
+        trips.sort();
+        get_unique(&self.input, &mut trips);
         self.input.extend(trips);
     }
 
     /// Load in a vector of triples
-    #[allow(dead_code)]
-    pub fn load_triples(&mut self, triples: Vec<(Node, Node, Node)>) {
-        let trips: Vec<(URI, (URI, URI))> = triples.iter().map(|trip| {
+    pub fn load_triples(&mut self, mut triples: Vec<(Node, Node, Node)>) {
+        self.input.sort();
+        let mut trips: Vec<(URI, (URI, URI))> = triples.iter().map(|trip| {
             let (s, p, o) = trip.clone();
             (self.index.put(s), (self.index.put(p), self.index.put(o)))
         }).collect();
+        trips.sort();
+        get_unique(&self.input, &mut trips);
         self.input.extend(trips);
     }
 
@@ -229,13 +233,16 @@ impl Reasoner {
         };
 
         info!("Loaded {} triples from file {}", graph.count(), filename);
-        let triples : Vec<(URI, (URI, URI))> = graph.triples_iter().map(|_triple| {
+        let mut triples : Vec<(URI, (URI, URI))> = graph.triples_iter().map(|_triple| {
             let triple = _triple;
             let (s, (p, o)) = (self.index.put(triple.subject().clone()),
                                (self.index.put(triple.predicate().clone()), self.index.put(triple.object().clone())));
             (s, (p,o))
 
         }).collect();
+
+        triples.sort();
+        get_unique(&self.input, &mut triples);
 
         //self.all_triples_input.insert(triples.into());
         self.input.extend(triples);
@@ -247,6 +254,7 @@ impl Reasoner {
     pub fn reason(&mut self) {
         // TODO: put these URIs inside the index initialization and give easy ways of referring to
         // them
+
 
         // RDF nodes
         let rdftype_node = self.index.put(rdf!("type"));
@@ -283,6 +291,8 @@ impl Reasoner {
         let owlcomplementof_node = self.index.put(owl!("complementOf"));
         let owl_pdw = self.index.put(owl!("propertyDisjointWith"));
 
+        //TODO: need to keep the variables persistent in the reasoner so they last between changes
+        //to the input
 
         let rdf_type_relation = node_relation!(self, rdf!("type"));
         let rdf_type = self.iter1.variable::<(URI, URI)>("rdf_type");
@@ -1100,13 +1110,11 @@ impl Reasoner {
             }
         }
 
-        self.output = self.spo.clone()
-                              .complete().iter()
-                              .filter(|inst| {
-                                let (_s, (_p, _o)) = inst;
-                                *_s > 0 && *_p > 0 && *_o > 0
-                                })
-                              .map(|inst| {
+        let output: Vec<Triple> = self.spo.clone().complete().iter().filter(|inst| {
+                                        let (_s, (_p, _o)) = inst;
+                                        *_s > 0 && *_p > 0 && *_o > 0
+                                    }).cloned().collect();
+        self.output = output.iter().map(|inst| {
                                 let (_s, (_p, _o)) = inst;
                                 let s = self.index.get(*_s).unwrap().clone();
                                 let p = self.index.get(*_p).unwrap().clone();
@@ -1114,7 +1122,7 @@ impl Reasoner {
                                 (s, p, o)
                                 })
                               .collect();
-        self.rebuild();
+        self.rebuild(output);
     }
 
     fn to_u(&self, u: URI) -> String {
@@ -1149,3 +1157,7 @@ pub fn node_to_string(n: &Node) -> String {
     }
 }
 
+/// removes from rv the triples that are in src. src is sorted
+pub fn get_unique(src: &Vec<Triple>, rv: &mut Vec<Triple>) {
+    rv.retain(|t| !src.contains(&t))
+}
