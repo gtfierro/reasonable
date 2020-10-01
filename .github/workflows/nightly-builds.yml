@@ -11,6 +11,8 @@ jobs:
       matrix:
         rust:
           - stable
+          - nightly
+        os: [ubuntu-latest, macos-latest, windows-latest]
     steps:
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
@@ -42,5 +44,6 @@ jobs:
             This is an automatically generated release
           files: >
             target/release/reasonable
+            target/release/bricksql
           gzip: false
           allow_override: true

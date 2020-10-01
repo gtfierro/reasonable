@@ -3,10 +3,20 @@
 //! OWL2
 //! Profile](https://www.w3.org/TR/owl2-profiles/#Reasoning_in_OWL_2_RL_and_RDF_Graphs_using_Rules)
 //! website.
+// #[macro_use] extern crate ketos;
 
 #[allow(dead_code)]
 mod index;
-pub mod owl;
+#[allow(dead_code)]
+pub mod reasoner;
+//#[allow(dead_code)]
+//pub mod query;
+//#[allow(dead_code)]
+//pub mod algebra;
+#[allow(dead_code)]
+pub mod manager;
+pub mod error;
+
 mod disjoint_sets;
 #[allow(dead_code)]
 #[allow(unused_macros)]
@@ -17,3 +27,5 @@ mod python;
 
 #[cfg(test)]
 mod tests;
+
+

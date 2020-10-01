@@ -1,8 +1,8 @@
-use ::reasonable::owl::Reasoner;
+use ::reasonable::reasoner::Reasoner;
+
 use std::env;
 use std::time::Instant;
 use log::info;
-
 fn main() {
     env_logger::init();
     let mut r = Reasoner::new();
@@ -14,5 +14,4 @@ fn main() {
     info!("Starting reasoning");
     r.reason();
     info!("Reasoning completed in {:.02}sec", reasoning_start.elapsed().as_secs_f64());
-    r.dump_file("output.ttl").unwrap();
 }

@@ -1,5 +1,5 @@
-use rdf::node::Node;
-use rdf::uri::Uri;
+
+
 
 pub const RDFS_SUBCLASSOF: &str = "http://www.w3.org/2000/01/rdf-schema#subClassOf";
 pub const RDFS_DOMAIN: &str = "http://www.w3.org/2000/01/rdf-schema#domain";

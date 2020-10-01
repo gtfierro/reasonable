@@ -1,7 +1,7 @@
 //! The `owl` module implements the rules necessary for OWL 2 RL reasoning
 
 extern crate datafrog;
-use datafrog::{Iteration, Variable, Relation};
+use datafrog::{Iteration, Variable};
 
 use crate::index::URIIndex;
 use crate::disjoint_sets::DisjointSets;
@@ -22,7 +22,6 @@ use rdf::triple;
 use rdf::writer::turtle_writer::TurtleWriter;
 use rdf::writer::rdf_writer::RdfWriter;
 // use rdf::writer::n_triples_writer::NTriplesWriter;
-#[allow(dead_code)]
 use crate::common::*;
 
 macro_rules! uri {
@@ -93,7 +92,7 @@ impl fmt::Display for ReasoningError {
 /// required to do reasoning.
 ///
 /// ```
-/// use reasonable::owl::Reasoner;
+/// use reasonable::reasoner::Reasoner;
 /// let mut r = Reasoner::new();
 /// // load in an ontology file
 /// r.load_file("example_models/ontologies/Brick.n3").unwrap();
@@ -111,6 +110,7 @@ pub struct Reasoner {
     index: URIIndex,
     input: Vec<Triple>,
     errors: Vec<ReasoningError>,
+    output: Vec<(Node, Node, Node)>,
 
     spo: Variable<Triple>,
     all_triples_input: Variable<Triple>,
@@ -137,19 +137,20 @@ impl Reasoner {
         input.push((u_owl_nothing, (u_rdf_type, u_owl_class)));
 
         Reasoner {
-            iter1: iter1,
-            index: index,
-            input: input,
+            iter1,
+            index,
+            input,
             errors: Vec::new(),
-            spo: spo,
-            all_triples_input: all_triples_input,
+            output: Vec::new(),
+            spo,
+            all_triples_input,
         }
     }
 
-    fn rebuild_with(&mut self, input: Relation<Triple>) {
+    fn rebuild(&mut self, output: Vec<Triple>) {
         // TODO: pull in the existing triples
-        self.iter1 = Iteration::new();
-        self.input = input.clone().iter().map(|&(x, (y, z))| (x, (y, z))).collect();
+        //self.iter1 = Iteration::new();
+        self.input = output; //self.spo.clone().complete().iter().map(|&(x, (y, z))| (x, (y, z))).collect();
         self.all_triples_input = self.iter1.variable::<(URI, (URI, URI))>("all_triples_input");
         self.spo = self.iter1.variable::<(URI, (URI, URI))>("spo");
     }
@@ -157,19 +158,23 @@ impl Reasoner {
     /// Load in a vector of triples
     #[allow(dead_code)]
     pub fn load_triples_str(&mut self, triples: Vec<(&'static str, &'static str, &'static str)>) {
-        let trips: Vec<(URI, (URI, URI))> = triples.iter().map(|trip| {
+        let mut trips: Vec<(URI, (URI, URI))> = triples.iter().map(|trip| {
             (self.index.put_str(trip.0), (self.index.put_str(trip.1), self.index.put_str(trip.2)))
         }).collect();
+        trips.sort();
+        get_unique(&self.input, &mut trips);
         self.input.extend(trips);
     }
 
     /// Load in a vector of triples
-    #[allow(dead_code)]
-    pub fn load_triples(&mut self, triples: Vec<(Node, Node, Node)>) {
-        let trips: Vec<(URI, (URI, URI))> = triples.iter().map(|trip| {
+    pub fn load_triples(&mut self, mut triples: Vec<(Node, Node, Node)>) {
+        self.input.sort();
+        let mut trips: Vec<(URI, (URI, URI))> = triples.iter().map(|trip| {
             let (s, p, o) = trip.clone();
             (self.index.put(s), (self.index.put(p), self.index.put(o)))
         }).collect();
+        trips.sort();
+        get_unique(&self.input, &mut trips);
         self.input.extend(trips);
     }
 
@@ -227,19 +232,17 @@ impl Reasoner {
             }
         };
 
-        //} else if filename.ends_with(".n3") {
-        //    NTriplesParser::from_string(data)
-        //}
-        //let graph = Box::new(reader.decode().expect("bad reader"));
-        //if let Ok(graph) = reader.decode() {
         info!("Loaded {} triples from file {}", graph.count(), filename);
-        let triples : Vec<(URI, (URI, URI))> = graph.triples_iter().map(|_triple| {
+        let mut triples : Vec<(URI, (URI, URI))> = graph.triples_iter().map(|_triple| {
             let triple = _triple;
             let (s, (p, o)) = (self.index.put(triple.subject().clone()),
                                (self.index.put(triple.predicate().clone()), self.index.put(triple.object().clone())));
             (s, (p,o))
 
         }).collect();
+
+        triples.sort();
+        get_unique(&self.input, &mut triples);
 
         //self.all_triples_input.insert(triples.into());
         self.input.extend(triples);
@@ -251,6 +254,7 @@ impl Reasoner {
     pub fn reason(&mut self) {
         // TODO: put these URIs inside the index initialization and give easy ways of referring to
         // them
+
 
         // RDF nodes
         let rdftype_node = self.index.put(rdf!("type"));
@@ -287,6 +291,8 @@ impl Reasoner {
         let owlcomplementof_node = self.index.put(owl!("complementOf"));
         let owl_pdw = self.index.put(owl!("propertyDisjointWith"));
 
+        //TODO: need to keep the variables persistent in the reasoner so they last between changes
+        //to the input
 
         let rdf_type_relation = node_relation!(self, rdf!("type"));
         let rdf_type = self.iter1.variable::<(URI, URI)>("rdf_type");
@@ -680,7 +686,7 @@ impl Reasoner {
                 prp_irp_1.from_join(&owl_irreflexive, &pso, |&p, &(), &(s, o)| {
                     if s == o && s > 0 && o > 0 {
                         let msg = format!("property {} of {} is irreflexive", self.to_u(p), self.to_u(s));
-                        self.add_error("prp-irp".to_string(), msg.to_string());
+                        self.add_error("prp-irp".to_string(), msg);
                     }
                     (p, s)
                 });
@@ -694,7 +700,7 @@ impl Reasoner {
                 prp_asyp_3.from_join(&prp_asyp_1, &prp_asyp_2, |&(x, y, p), &(), &()| {
                     if x > 0 && y > 0 && p > 0 {
                         let msg = format!("property {} of {} and {} is asymmetric", self.to_u(p), self.to_u(x), self.to_u(y));
-                        self.add_error("prp-asyp".to_string(), msg.to_string());
+                        self.add_error("prp-asyp".to_string(), msg);
                     }
                     ((x, y, p), ())
                 });
@@ -761,7 +767,7 @@ impl Reasoner {
                 cax_dw_2.from_join(&cax_dw_1, &rdf_type_inv, |&c2, &(c1, inst1), &inst2| {
                     if inst1 == inst2 && inst1 > 0 && inst2 > 0 {
                         let msg = format!("inst {} is both {} and {} (disjoint classes)", self.to_u(inst1), self.to_u(c1), self.to_u(c2));
-                        self.add_error("cax-dw".to_string(), msg.to_string());
+                        self.add_error("cax-dw".to_string(), msg);
                     }
                     (c2, inst1)
                 });
@@ -778,7 +784,7 @@ impl Reasoner {
                 prp_pdw_3.from_join(&prp_pdw_1, &prp_pdw_2, |&(x, y, p2), &p1, &_p1| {
                     if x > 0 && y > 0 && p2 > 0 && p1 > 0 {
                         let msg = format!("property {} is disjoint with {} for pair ({} {} {})", self.to_u(p1), self.to_u(p2), self.to_u(x), self.to_u(p1), self.to_u(y));
-                        self.add_error("prp-pdw".to_string(), msg.to_string());
+                        self.add_error("prp-pdw".to_string(), msg);
                     }
                     ((x, y, p2), p1)
                 });
@@ -821,7 +827,7 @@ impl Reasoner {
                 cls_nothing2.from_join(&rdf_type_inv, &owl_nothing, |&_nothing, &x, &()| {
                     if x > 0 {
                         let msg = format!("Instance {} is owl:Nothing (suggests unsatisfiability)", self.to_u(x));
-                        self.add_error("cls-nothing2".to_string(), msg.to_string());
+                        self.add_error("cls-nothing2".to_string(), msg);
                     }
                     (x, ())
                 });
@@ -927,7 +933,7 @@ impl Reasoner {
                 cls_com_2.from_join(&rdf_type_inv, &cls_com_1, |&c2, &x_exists, &(x_bad, c1)| {
                     if x_exists == x_bad && x_exists > 0 && x_bad > 0 {
                         let msg = format!("Individual {} has type {} and {} which are complements", self.to_u(x_exists), self.to_u(c2), self.to_u(c1));
-                        self.add_error("cls-com".to_string(), msg.to_string());
+                        self.add_error("cls-com".to_string(), msg);
                     }
                     (x_bad, c1)
                 });
@@ -1097,12 +1103,26 @@ impl Reasoner {
                     }
 
                 }).collect();
-                if not_c1_instances.len() > 0 {
+                if !not_c1_instances.is_empty() {
                     new_complementary_instances.extend(not_c1_instances);
                     changed = true;
                 }
             }
         }
+
+        let output: Vec<Triple> = self.spo.clone().complete().iter().filter(|inst| {
+                                        let (_s, (_p, _o)) = inst;
+                                        *_s > 0 && *_p > 0 && *_o > 0
+                                    }).cloned().collect();
+        self.output = output.iter().map(|inst| {
+                                let (_s, (_p, _o)) = inst;
+                                let s = self.index.get(*_s).unwrap().clone();
+                                let p = self.index.get(*_p).unwrap().clone();
+                                let o = self.index.get(*_o).unwrap().clone();
+                                (s, p, o)
+                                })
+                              .collect();
+        self.rebuild(output);
     }
 
     fn to_u(&self, u: URI) -> String {
@@ -1111,37 +1131,19 @@ impl Reasoner {
 
 
     /// Returns the vec of triples currently contained in the Reasoner
-    pub fn get_triples(&mut self) -> Vec<(Node, Node, Node)> {
-        let instances = self.spo.clone().complete();
+    pub fn get_triples(&self) -> Vec<(Node, Node, Node)> {
+        self.output.clone()
+    }
 
-        self.rebuild_with(instances.clone());
-
-        instances.iter().filter(|inst| {
-            let (_s, (_p, _o)) = inst;
-             *_s > 0 && *_p > 0 && *_o > 0
-        }).map(|inst| {
-            let (_s, (_p, _o)) = inst;
-            let s = self.index.get(*_s).unwrap().clone();
-            let p = self.index.get(*_p).unwrap().clone();
-            let o = self.index.get(*_o).unwrap().clone();
-            (s, p, o)
-        }).collect()
+    /// Returns the vec of triples currently contained in the Reasoner
+    pub fn view_output(&self) -> &[(Node, Node, Node)] {
+        &self.output
     }
 
     /// Returns the vec of triples currently contained in the Reasoner
     pub fn get_triples_string(&mut self) -> Vec<(String, String, String)> {
-        let instances = self.spo.clone().complete();
-
-        self.rebuild_with(instances.clone());
-
-        instances.iter().filter(|inst| {
-            let (_s, (_p, _o)) = inst;
-             *_s > 0 && *_p > 0 && *_o > 0
-        }).map(|inst| {
-            let (_s, (_p, _o)) = inst;
-            let s = self.index.get(*_s).unwrap();
-            let p = self.index.get(*_p).unwrap();
-            let o = self.index.get(*_o).unwrap();
+        self.view_output().iter().map(|inst| {
+            let (s, p, o) = inst;
             (node_to_string(&s), node_to_string(&p), node_to_string(&o))
         }).collect()
     }
@@ -1155,3 +1157,7 @@ pub fn node_to_string(n: &Node) -> String {
     }
 }
 
+/// removes from rv the triples that are in src. src is sorted
+pub fn get_unique(src: &Vec<Triple>, rv: &mut Vec<Triple>) {
+    rv.retain(|t| !src.contains(&t))
+}
