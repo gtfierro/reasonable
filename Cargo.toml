@@ -14,7 +14,7 @@ name = "reasonable"
 crate-type = ["cdylib", "lib"]
 
 [[bin]]
-name = "sqlite"
+name = "bricksql"
 path = "src/sqlite.rs"
 
 [features]
