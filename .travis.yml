@@ -1,12 +1,11 @@
 language: rust
 rust:
   - stable
-  - beta
   - nightly
 script:
   - cargo build --verbose
   - cargo test --verbose
 jobs:
   allow_failures:
-    - rust: [stable, beta]
+    - rust: stable
   fast_finish: true
