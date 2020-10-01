@@ -8,5 +8,5 @@ script:
   - cargo test --verbose
 jobs:
   allow_failures:
-    - rust: nightly
+    - rust: [stable, beta]
   fast_finish: true
