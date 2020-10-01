@@ -91,8 +91,9 @@ impl<'a> ViewRef<'a> {
 }
 
 pub struct ViewMetadata {
+    pub query_string: String,
+    pub table_name: String,
     query: MemoryPreparedQuery,
-    table_name: String,
     columns: Vec<String>,
 }
 
@@ -258,6 +259,7 @@ impl Manager {
             let view_key = name.clone();
             let md = ViewMetadata{
                 query: q,
+                query_string: query.to_string(),
                 table_name: name,
                 columns: solutions.variables()
                                   .to_vec()
@@ -285,6 +287,7 @@ impl Manager {
         if let QueryResults::Solutions(solutions) = res {
             return Ok(ViewMetadata{
                 query: q,
+                query_string: query.to_string(),
                 table_name: name,
                 columns: solutions.variables()
                                   .to_vec()

@@ -92,6 +92,11 @@ impl SQLiteManager {
     }
 
     fn add_view(&mut self, name: String, query: &str) -> Result<()> {
+        for view in &self.views {
+            if view.table_name == name && view.query_string == query {
+                return Ok(());
+            }
+        }
         // remove old table if exists
         self.conn.execute(&format!("DROP TABLE IF EXISTS view_{}", &name), NO_PARAMS)?;
         self.views.retain(|view| view.name() != name);
@@ -304,7 +309,7 @@ fn getview(name: String, conn: State<DbConn>, _store: State<RdfConn>, _tx: State
 }
 
 #[post("/make", data = "<data>", format = "json")]
-fn makeview(data: Json<ViewDef>, _conn: State<DbConn>, store: State<RdfConn>, tx: State<ViewChannel>) -> Json<()>  {
+fn makeview(data: Json<ViewDef>, _conn: State<DbConn>, _store: State<RdfConn>, tx: State<ViewChannel>) -> Json<()>  {
     let (send, recv) = mpsc::channel();
     tx.0.send(ChannelMessage::ViewDef(data.0, send)).expect("make view");
     recv.recv().unwrap();
@@ -312,7 +317,7 @@ fn makeview(data: Json<ViewDef>, _conn: State<DbConn>, store: State<RdfConn>, tx
 }
 
 #[post("/add", data = "<data>", format = "json")]
-fn addtriples(data: Json<Vec<JsonTriple>>, _conn: State<DbConn>, store: State<RdfConn>, tx: State<ViewChannel>) -> Json<()>  {
+fn addtriples(data: Json<Vec<JsonTriple>>, _conn: State<DbConn>, _store: State<RdfConn>, tx: State<ViewChannel>) -> Json<()>  {
     let (send, recv) = mpsc::channel();
     tx.0.send(ChannelMessage::TripleAdd(data.0, send)).expect("add triples");
     recv.recv().unwrap();
@@ -320,7 +325,7 @@ fn addtriples(data: Json<Vec<JsonTriple>>, _conn: State<DbConn>, store: State<Rd
 }
 
 #[post("/query", data = "<data>", format = "json")]
-fn doquery(data: Json<String>, _conn: State<DbConn>, store: State<RdfConn>, tx: State<ViewChannel>) -> Result<Json<Vec<Vec<String>>>>  {
+fn doquery(data: Json<String>, _conn: State<DbConn>, store: State<RdfConn>, _tx: State<ViewChannel>) -> Result<Json<Vec<Vec<String>>>>  {
     let sparql = format!("{}{}", qfmt, data.0);
     println!("do query {}", sparql);
     let q = store.lock().expect("rdf lock").prepare_query(&sparql, QueryOptions::default())?;
