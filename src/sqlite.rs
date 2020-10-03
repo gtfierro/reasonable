@@ -363,7 +363,7 @@ fn doquery(data: Json<String>, _conn: State<DbConn>, store: State<RdfConn>, _tx:
 fn rocket(filename: &str) {
     let mut mgr = SQLiteManager::new(filename).unwrap();
 
-    mgr.load_file("example_models/ontologies/Brick.n3").unwrap();
+    mgr.load_file("Brick.n3").unwrap();
     //mgr.load_file("example_models/soda_hall.n3").unwrap();
 
     //mgr.update().unwrap();
