@@ -13,6 +13,9 @@ PY38_BIN=$(PY38_PATH)/bin/python
 build:
 	cargo build --release
 
+build-tiny:
+	RUSTFLAGS='-C link-arg=-s' cargo build --release
+
 test:
 	cargo test
 
