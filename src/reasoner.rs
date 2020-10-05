@@ -73,6 +73,8 @@ pub struct Reasoner {
     output: Vec<(Node, Node, Node)>,
 
     spo: Variable<Triple>,
+    pso: Variable<Triple>,
+    osp: Variable<Triple>,
     all_triples_input: Variable<Triple>,
     rdf_type_inv: Rc<RefCell<Variable<(URI, URI)>>>,
 }
@@ -86,6 +88,8 @@ impl Reasoner {
 
         // variables within the iteration
         let spo = iter1.variable::<(URI, (URI, URI))>("spo");
+        let pso = iter1.variable::<(URI, (URI, URI))>("pso");
+        let osp = iter1.variable::<(URI, (URI, URI))>("pso");
         let all_triples_input = iter1.variable::<(URI, (URI, URI))>("all_triples_input");
 
         // cls-thing, cls-nothing1
@@ -105,6 +109,8 @@ impl Reasoner {
             errors: Vec::new(),
             output: Vec::new(),
             spo,
+            pso,
+            osp,
             all_triples_input,
             rdf_type_inv,
         }
@@ -306,9 +312,6 @@ impl Reasoner {
         let rdf_type = self.iter1.variable::<(URI, URI)>("rdf_type");
         //let rdf_type_inv = self.iter1.variable::<(URI, URI)>("rdf_type_inv");
 
-        let prp_fp_isfuncprop = self.iter1.variable::<Triple>("a");
-        let prp_fp_hasprop1 = self.iter1.variable::<Triple>("b");
-
         let rdfs_subclass_relation = node_relation!(self, rdfs!("subClassOf"));
         let owl_inter_relation = node_relation!(self, owl!("intersectionOf"));
         let owl_intersection_of = self.iter1.variable::<(URI, URI)>("owl_intersection_of");
@@ -320,8 +323,8 @@ impl Reasoner {
         let mut complements: HashMap<URI, URI> = HashMap::new();
 
         // in-memory indexes
-        let pso = self.iter1.variable::<Triple>("pso");
-        let osp = self.iter1.variable::<Triple>("osp");
+        //let pso = self.iter1.variable::<Triple>("pso");
+        //let osp = self.iter1.variable::<Triple>("osp");
 
         // prp-dom
         let prp_dom = self.iter1.variable::<(URI, URI)>("prp_dom");
@@ -586,14 +589,14 @@ impl Reasoner {
                     .from_map(&self.all_triples_input, |&(sub, (pred, obj))| {
                         (sub, (pred, obj))
                     });
-                pso.from_map(&self.all_triples_input, |&(sub, (pred, obj))| {
+                self.pso.from_map(&self.all_triples_input, |&(sub, (pred, obj))| {
                     (pred, (sub, obj))
                 });
-                osp.from_map(&self.all_triples_input, |&(sub, (pred, obj))| {
+                self.osp.from_map(&self.all_triples_input, |&(sub, (pred, obj))| {
                     (obj, (sub, pred))
                 });
 
-                rdf_type.from_join(&pso, &rdf_type_relation, |&_, &tup, &()| {
+                rdf_type.from_join(&self.pso, &rdf_type_relation, |&_, &tup, &()| {
                     instances.insert(tup);
                     tup
                 });
@@ -601,35 +604,35 @@ impl Reasoner {
 
                 // prp-dom
                 prp_dom.from_join(
-                    &pso,
+                    &self.pso,
                     &rdfs_domain_relation,
                     |&_, &(pred, domain_class), &()| (pred, domain_class),
                 );
                 self.all_triples_input
-                    .from_join(&prp_dom, &pso, |&tpred, &class, &(sub, obj)| {
+                    .from_join(&prp_dom, &self.pso, |&tpred, &class, &(sub, obj)| {
                         (sub, (rdftype_node, class))
                     });
 
                 // prp-rng
                 prp_rng.from_join(
-                    &pso,
+                    &self.pso,
                     &rdfs_range_relation,
                     |&_, &(pred, domain_class), &()| (pred, domain_class),
                 );
                 self.all_triples_input
-                    .from_join(&prp_rng, &pso, |&tpred, &class, &(sub, obj)| {
+                    .from_join(&prp_rng, &self.pso, |&tpred, &class, &(sub, obj)| {
                         (obj, (rdftype_node, class))
                     });
 
-                owl_inverse_of.from_join(&pso, &owl_inv_relation, |&_, &(p1, p2), &()| (p1, p2));
+                owl_inverse_of.from_join(&self.pso, &owl_inv_relation, |&_, &(p1, p2), &()| (p1, p2));
                 owl_inverse_of2.from_map(&owl_inverse_of, |&(p1, p2)| (p2, p1));
 
-                owl_intersection_of.from_join(&pso, &owl_inter_relation, |&_, &(a, b), &()| {
+                owl_intersection_of.from_join(&self.pso, &owl_inter_relation, |&_, &(a, b), &()| {
                     intersections.insert(a, b);
                     (a, b)
                 });
 
-                owl_union_of.from_join(&pso, &owl_union_relation, |&_, &(a, b), &()| {
+                owl_union_of.from_join(&self.pso, &owl_union_relation, |&_, &(a, b), &()| {
                     unions.insert(a, b);
                     (a, b)
                 });
@@ -643,32 +646,32 @@ impl Reasoner {
                     (inst, ())
                 });
                 owl_propertydisjointwith.from_join(
-                    &pso,
+                    &self.pso,
                     &owl_propdisjoint_relation,
                     |&_, &(p1, p2), &()| (p1, p2),
                 );
                 owl_propertydisjointwith2.from_map(&owl_propertydisjointwith, |&(p1, p2)| (p2, p1));
 
-                owl_has_value.from_join(&pso, &owl_hasvalue_relation, |&_, &tup, &()| tup);
-                owl_on_property.from_join(&pso, &owl_onprop_relation, |&_, &tup, &()| tup);
-                owl_all_values_from.from_join(&pso, &owl_allvalues_relation, |&_, &tup, &()| tup);
-                owl_some_values_from.from_join(&pso, &owl_somevalues_relation, |&_, &tup, &()| tup);
-                owl_disjoint_with.from_join(&pso, &owl_disjointwith_relation, |&_, &tup, &()| tup);
-                owl_same_as.from_join(&pso, &owl_sameas_relation, |&_, &tup, &()| tup);
-                owl_complement_of.from_join(&pso, &owl_complement_relation, |&_, &(a, b), &()| {
+                owl_has_value.from_join(&self.pso, &owl_hasvalue_relation, |&_, &tup, &()| tup);
+                owl_on_property.from_join(&self.pso, &owl_onprop_relation, |&_, &tup, &()| tup);
+                owl_all_values_from.from_join(&self.pso, &owl_allvalues_relation, |&_, &tup, &()| tup);
+                owl_some_values_from.from_join(&self.pso, &owl_somevalues_relation, |&_, &tup, &()| tup);
+                owl_disjoint_with.from_join(&self.pso, &owl_disjointwith_relation, |&_, &tup, &()| tup);
+                owl_same_as.from_join(&self.pso, &owl_sameas_relation, |&_, &tup, &()| tup);
+                owl_complement_of.from_join(&self.pso, &owl_complement_relation, |&_, &(a, b), &()| {
                     complements.insert(a, b);
                     complements.insert(b, a);
                     (a, b)
                 });
                 owl_complement_of
-                    .from_join(&pso, &owl_complement_relation, |&_, &(a, b), &()| (b, a));
+                    .from_join(&self.pso, &owl_complement_relation, |&_, &(a, b), &()| (b, a));
                 owl_equivalent_class.from_join(
-                    &pso,
+                    &self.pso,
                     &owl_equivalent_relation,
                     |&_, &(c1, c2), &()| (c1, c2),
                 );
                 owl_equivalent_class.from_join(
-                    &pso,
+                    &self.pso,
                     &owl_equivalent_relation,
                     |&_, &(c1, c2), &()| (c2, c1),
                 );
@@ -683,12 +686,12 @@ impl Reasoner {
                     |&_, &inst, &()| (inst, ()),
                 );
                 equivalent_properties.from_join(
-                    &pso,
+                    &self.pso,
                     &owl_equivprop_relation,
                     |&_, &(p1, p2), &()| (p1, p2),
                 );
                 equivalent_properties_2.from_join(
-                    &pso,
+                    &self.pso,
                     &owl_equivprop_relation,
                     |&_, &(p1, p2), &()| (p2, p1),
                 );
@@ -720,10 +723,10 @@ impl Reasoner {
                     .from_join(&self.spo, &owl_same_as, |&s1, &(p, o), &s2| (s2, (p, o)));
                 // eq-rep-p
                 self.all_triples_input
-                    .from_join(&pso, &owl_same_as, |&p1, &(s, o), &p2| (s, (p2, o)));
+                    .from_join(&self.pso, &owl_same_as, |&p1, &(s, o), &p2| (s, (p2, o)));
                 // eq-rep-o
                 self.all_triples_input
-                    .from_join(&osp, &owl_same_as, |&o1, &(s, p), &o2| (s, (p, o2)));
+                    .from_join(&self.osp, &owl_same_as, |&o1, &(s, p), &o2| (s, (p, o2)));
 
                 // eq-trans
                 // T(?x, owl:sameAs, ?y)
@@ -737,15 +740,15 @@ impl Reasoner {
                 // prp-irp
                 // T(?p, rdf:type, owl:IrreflexiveProperty)
                 // T(?x, ?p, ?x) => false
-                prp_irp_1.from_join(&owl_irreflexive, &pso, |&p, &(), &(s, o)| {
-                    if s == o && s > 0 && o > 0 {
-                        let msg = format!(
-                            "property {} of {} is irreflexive",
-                            self.to_u(p),
-                            self.to_u(s)
-                        );
-                        self.add_error("prp-irp".to_string(), msg);
-                    }
+                prp_irp_1.from_join(&owl_irreflexive, &self.pso, |&p, &(), &(s, o)| {
+                    //if s == o && s > 0 && o > 0 {
+                    //    let msg = format!(
+                    //        "property {} of {} is irreflexive",
+                    //        self.to_u(p),
+                    //        self.to_u(s)
+                    //    );
+                    //    self.add_error("prp-irp".to_string(), msg);
+                    //}
                     (p, s)
                 });
 
@@ -753,8 +756,8 @@ impl Reasoner {
                 //  T(?p, rdf:type, owl:AsymmetricProperty)
                 //  T(?x, ?p, ?y)
                 //  T(?y, ?p, ?x) => false
-                prp_asyp_1.from_join(&owl_asymmetric, &pso, |&p, &(), &(x, y)| ((x, y, p), ()));
-                prp_asyp_2.from_join(&owl_asymmetric, &pso, |&p, &(), &(x, y)| ((y, x, p), ()));
+                prp_asyp_1.from_join(&owl_asymmetric, &self.pso, |&p, &(), &(x, y)| ((x, y, p), ()));
+                prp_asyp_2.from_join(&owl_asymmetric, &self.pso, |&p, &(), &(x, y)| ((y, x, p), ()));
                 prp_asyp_3.from_join(&prp_asyp_1, &prp_asyp_2, |&(x, y, p), &(), &()| {
                     if x > 0 && y > 0 && p > 0 {
                         let msg = format!(
@@ -770,9 +773,9 @@ impl Reasoner {
 
                 // prp-fp
                 prp_fp_1.from_join(&self.rdf_type_inv.borrow(), &owl_funcprop_relation, |&_, &p, &()| (p, ()));
-                prp_fp_2.from_join(&prp_fp_1, &pso, |&p, &(), &(x, y1)| (p, (x, y1)));
+                prp_fp_2.from_join(&prp_fp_1, &self.pso, |&p, &(), &(x, y1)| (p, (x, y1)));
                 self.all_triples_input
-                    .from_join(&prp_fp_2, &pso, |&p, &(x1, y1), &(x2, y2)| {
+                    .from_join(&prp_fp_2, &self.pso, |&p, &(x1, y1), &(x2, y2)| {
                         // if x1 and x2 are the same, then emit y1 and y2 are the same
                         match x1 {
                             x2 => (y1, (owlsameas_node, y2)),
@@ -784,9 +787,9 @@ impl Reasoner {
                 prp_ifp_1.from_join(&self.rdf_type_inv.borrow(), &owl_invfuncprop_relation, |&_, &p, &()| {
                     (p, ())
                 });
-                prp_ifp_2.from_join(&prp_ifp_1, &pso, |&p, &(), &(x, y1)| (p, (x, y1)));
+                prp_ifp_2.from_join(&prp_ifp_1, &self.pso, |&p, &(), &(x, y1)| (p, (x, y1)));
                 self.all_triples_input
-                    .from_join(&prp_ifp_2, &pso, |&p, &(x1, y1), &(x2, y2)| {
+                    .from_join(&prp_ifp_2, &self.pso, |&p, &(x1, y1), &(x2, y2)| {
                         // if y1 and y2 are the same, then emit x1 and x2 are the same
                         match y1 {
                             y2 => (x1, (owlsameas_node, x2)),
@@ -795,24 +798,24 @@ impl Reasoner {
                     });
 
                 // prp-spo1
-                prp_spo1_1.from_join(&pso, &rdfs_subprop_relation, |&_, &(p1, p2), &()| (p1, p2));
+                prp_spo1_1.from_join(&self.pso, &rdfs_subprop_relation, |&_, &(p1, p2), &()| (p1, p2));
                 self.all_triples_input
-                    .from_join(&prp_spo1_1, &pso, |&p1, &p2, &(x, y)| (x, (p2, y)));
+                    .from_join(&prp_spo1_1, &self.pso, |&p1, &p2, &(x, y)| (x, (p2, y)));
 
                 // prp-inv1
                 // T(?p1, owl:inverseOf, ?p2)
                 // T(?x, ?p1, ?y) => T(?y, ?p2, ?x)
                 self.all_triples_input
-                    .from_join(&owl_inverse_of, &pso, |&p1, &p2, &(x, y)| (y, (p2, x)));
+                    .from_join(&owl_inverse_of, &self.pso, |&p1, &p2, &(x, y)| (y, (p2, x)));
 
                 // prp-inv2
                 // T(?p1, owl:inverseOf, ?p2)
                 // T(?x, ?p2, ?y) => T(?y, ?p1, ?x)
                 self.all_triples_input
-                    .from_join(&owl_inverse_of2, &pso, |&p2, &p1, &(x, y)| (x, (p2, y)));
+                    .from_join(&owl_inverse_of2, &self.pso, |&p2, &p1, &(x, y)| (x, (p2, y)));
 
                 // cax-sco
-                cax_sco_1.from_join(&pso, &rdfs_subclass_relation, |&_, &(c1, c2), &()| (c1, c2));
+                cax_sco_1.from_join(&self.pso, &rdfs_subclass_relation, |&_, &(c1, c2), &()| (c1, c2));
                 // ?c1, ?x, rdf:type
                 cax_sco_2.from_map(&rdf_type, |&(inst, class)| (class, inst));
 
@@ -855,11 +858,11 @@ impl Reasoner {
                 // T(?x, ?p1, ?y)
                 // T(?x, ?p2, ?y) => false
                 // returns pairs of (x,y) that should NOT exist for p2 because they exist for p1
-                prp_pdw_1.from_join(&owl_propertydisjointwith, &pso, |&p1, &p2, &(x, y)| {
+                prp_pdw_1.from_join(&owl_propertydisjointwith, &self.pso, |&p1, &p2, &(x, y)| {
                     ((x, y, p2), p1)
                 });
                 // returns pairs of (x,y) that do have p2
-                prp_pdw_2.from_join(&owl_propertydisjointwith2, &pso, |&p2, &p1, &(x, y)| {
+                prp_pdw_2.from_join(&owl_propertydisjointwith2, &self.pso, |&p2, &p1, &(x, y)| {
                     ((x, y, p2), p1)
                 });
                 // join on (x,y) to find pairs in violation
@@ -884,7 +887,7 @@ impl Reasoner {
                 //  => T(?y, ?p, ?x)
                 self.all_triples_input.from_join(
                     &symmetric_properties,
-                    &pso,
+                    &self.pso,
                     |&prop, &(), &(x, y)| (y, (prop, x)),
                 );
 
@@ -892,8 +895,8 @@ impl Reasoner {
                 // T(?p, rdf:type, owl:TransitiveProperty)
                 // T(?x, ?p, ?y)
                 // T(?y, ?p, ?z) =>  T(?x, ?p, ?z)
-                prp_trp_1.from_join(&pso, &transitive_properties, |&p, &(x, y), &()| ((y, p), x));
-                prp_trp_2.from_join(&pso, &transitive_properties, |&p, &(y, z), &()| ((y, p), z));
+                prp_trp_1.from_join(&self.pso, &transitive_properties, |&p, &(x, y), &()| ((y, p), x));
+                prp_trp_2.from_join(&self.pso, &transitive_properties, |&p, &(y, z), &()| ((y, p), z));
                 self.all_triples_input
                     .from_join(&prp_trp_1, &prp_trp_2, |&(y, p), &x, &z| (x, (p, z)));
 
@@ -903,7 +906,7 @@ impl Reasoner {
                 // => T(?x, ?p2, ?y)
                 self.all_triples_input.from_join(
                     &equivalent_properties,
-                    &pso,
+                    &self.pso,
                     |&p1, &p2, &(x, y)| (x, (p2, y)),
                 );
                 // prp-eqp2
@@ -912,7 +915,7 @@ impl Reasoner {
                 // => T(?x, ?p1, ?y)
                 self.all_triples_input.from_join(
                     &equivalent_properties_2,
-                    &pso,
+                    &self.pso,
                     |&p1, &p2, &(x, y)| (x, (p2, y)),
                 );
 
@@ -1129,7 +1132,7 @@ impl Reasoner {
                 });
                 self.all_triples_input.from_join(
                     &cls_hv2_1,
-                    &pso,
+                    &self.pso,
                     |&prop, &(value, anonclass), &(sub, obj)| {
                         // if value is correct, then emit the rdf_type
                         if value == obj {
@@ -1169,7 +1172,7 @@ impl Reasoner {
                 cls_svf1_1.from_join(&owl_some_values_from, &owl_on_property, |&x, &y, &p| {
                     (p, (x, y))
                 });
-                cls_svf1_2.from_join(&cls_svf1_1, &pso, |&p, &(x, y), &(u, v)| (v, (x, y, u)));
+                cls_svf1_2.from_join(&cls_svf1_1, &self.pso, |&p, &(x, y), &(u, v)| (v, (x, y, u)));
                 self.all_triples_input.from_join(
                     &cls_svf1_2,
                     &rdf_type,
@@ -1187,7 +1190,7 @@ impl Reasoner {
                 //  T(?x, owl:onProperty, ?p)
                 //  T(?u, ?p, ?v) =>  T(?u, rdf:type, ?x)
                 self.all_triples_input
-                    .from_join(&cls_svf1_1, &pso, |&p, &(x, y), &(u, v)| {
+                    .from_join(&cls_svf1_1, &self.pso, |&p, &(x, y), &(u, v)| {
                         if y == owlthing_node {
                             (u, (rdftype_node, x))
                         } else {
