@@ -12,10 +12,17 @@ edition = "2018"
 [lib]
 name = "reasonable"
 crate-type = ["cdylib", "lib"]
+bench = false
+
+[[bin]]
+name = "reasonable"
+path = "src/main.rs"
+bench = false
 
 [[bin]]
 name = "bricksql"
 path = "src/sqlite.rs"
+bench = false
 
 [features]
 python-library = ["pyo3"]
