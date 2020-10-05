@@ -20,6 +20,8 @@ use rdf::writer::turtle_writer::TurtleWriter;
 use std::collections::{HashMap, HashSet};
 use std::fmt;
 use std::fs;
+use std::rc::Rc;
+use std::cell::RefCell;
 use std::io::{Error, Write};
 // use rdf::writer::n_triples_writer::NTriplesWriter;
 use crate::common::*;
@@ -72,6 +74,7 @@ pub struct Reasoner {
 
     spo: Variable<Triple>,
     all_triples_input: Variable<Triple>,
+    rdf_type_inv: Rc<RefCell<Variable<(URI, URI)>>>,
 }
 
 #[allow(unused)]
@@ -94,6 +97,7 @@ impl Reasoner {
         input.push((u_owl_thing, (u_rdf_type, u_owl_class)));
         input.push((u_owl_nothing, (u_rdf_type, u_owl_class)));
 
+        let rdf_type_inv = Rc::new(RefCell::new(iter1.variable("rdf_type_inv")));
         Reasoner {
             iter1,
             index,
@@ -102,6 +106,7 @@ impl Reasoner {
             output: Vec::new(),
             spo,
             all_triples_input,
+            rdf_type_inv,
         }
     }
 
@@ -299,7 +304,7 @@ impl Reasoner {
 
         let rdf_type_relation = node_relation!(self, rdf!("type"));
         let rdf_type = self.iter1.variable::<(URI, URI)>("rdf_type");
-        let rdf_type_inv = self.iter1.variable::<(URI, URI)>("rdf_type_inv");
+        //let rdf_type_inv = self.iter1.variable::<(URI, URI)>("rdf_type_inv");
 
         let prp_fp_isfuncprop = self.iter1.variable::<Triple>("a");
         let prp_fp_hasprop1 = self.iter1.variable::<Triple>("b");
@@ -592,7 +597,7 @@ impl Reasoner {
                     instances.insert(tup);
                     tup
                 });
-                rdf_type_inv.from_map(&rdf_type, |&(inst, class)| (class, inst));
+                self.rdf_type_inv.borrow_mut().from_map(&rdf_type, |&(inst, class)| (class, inst));
 
                 // prp-dom
                 prp_dom.from_join(
@@ -630,11 +635,11 @@ impl Reasoner {
                 });
 
                 owl_irreflexive.from_join(
-                    &rdf_type_inv,
+                    &self.rdf_type_inv.borrow(),
                     &owl_irreflex_relation,
                     |&_, &inst, &()| (inst, ()),
                 );
-                owl_asymmetric.from_join(&rdf_type_inv, &owl_asymm_relation, |&_, &inst, &()| {
+                owl_asymmetric.from_join(&self.rdf_type_inv.borrow(), &owl_asymm_relation, |&_, &inst, &()| {
                     (inst, ())
                 });
                 owl_propertydisjointwith.from_join(
@@ -668,12 +673,12 @@ impl Reasoner {
                     |&_, &(c1, c2), &()| (c2, c1),
                 );
                 symmetric_properties.from_join(
-                    &rdf_type_inv,
+                    &self.rdf_type_inv.borrow(),
                     &owl_symprop_relation,
                     |&_, &inst, &()| (inst, ()),
                 );
                 transitive_properties.from_join(
-                    &rdf_type_inv,
+                    &self.rdf_type_inv.borrow(),
                     &owl_transitive_relation,
                     |&_, &inst, &()| (inst, ()),
                 );
@@ -764,7 +769,7 @@ impl Reasoner {
                 });
 
                 // prp-fp
-                prp_fp_1.from_join(&rdf_type_inv, &owl_funcprop_relation, |&_, &p, &()| (p, ()));
+                prp_fp_1.from_join(&self.rdf_type_inv.borrow(), &owl_funcprop_relation, |&_, &p, &()| (p, ()));
                 prp_fp_2.from_join(&prp_fp_1, &pso, |&p, &(), &(x, y1)| (p, (x, y1)));
                 self.all_triples_input
                     .from_join(&prp_fp_2, &pso, |&p, &(x1, y1), &(x2, y2)| {
@@ -776,7 +781,7 @@ impl Reasoner {
                     });
 
                 // prp-ifp
-                prp_ifp_1.from_join(&rdf_type_inv, &owl_invfuncprop_relation, |&_, &p, &()| {
+                prp_ifp_1.from_join(&self.rdf_type_inv.borrow(), &owl_invfuncprop_relation, |&_, &p, &()| {
                     (p, ())
                 });
                 prp_ifp_2.from_join(&prp_ifp_1, &pso, |&p, &(), &(x, y1)| (p, (x, y1)));
@@ -823,25 +828,25 @@ impl Reasoner {
                 // cax-eqc1, cax-eqc2
                 // find instances of classes that are equivalent
                 self.all_triples_input.from_join(
+                    &self.rdf_type_inv.borrow(),
                     &owl_equivalent_class,
-                    &rdf_type_inv,
-                    |&c1, &c2, &inst| (inst, (rdftype_node, c2)),
+                    |&c1, &inst, &c2| (inst, (rdftype_node, c2)),
                 );
 
                 // cax-dw
-                cax_dw_1.from_join(&owl_disjoint_with, &rdf_type_inv, |&c1, &c2, &inst| {
+                cax_dw_1.from_join(&self.rdf_type_inv.borrow(), &owl_disjoint_with, |&c1, &inst, &c2| {
                     (c2, (c1, inst))
                 });
-                cax_dw_2.from_join(&cax_dw_1, &rdf_type_inv, |&c2, &(c1, inst1), &inst2| {
-                    if inst1 == inst2 && inst1 > 0 && inst2 > 0 {
-                        let msg = format!(
-                            "inst {} is both {} and {} (disjoint classes)",
-                            self.to_u(inst1),
-                            self.to_u(c1),
-                            self.to_u(c2)
-                        );
-                        self.add_error("cax-dw".to_string(), msg);
-                    }
+                cax_dw_2.from_join(&self.rdf_type_inv.borrow(), &cax_dw_1, |&c2, &inst2, &(c1, inst1)| {
+                    //if inst1 == inst2 && inst1 > 0 && inst2 > 0 {
+                    //    let msg = format!(
+                    //        "inst {} is both {} and {} (disjoint classes)",
+                    //        self.to_u(inst1),
+                    //        self.to_u(c1),
+                    //        self.to_u(c2)
+                    //    );
+                    //    self.add_error("cax-dw".to_string(), msg);
+                    //}
                     (c2, inst1)
                 });
 
@@ -913,14 +918,14 @@ impl Reasoner {
 
                 // cls-nothing2
                 //  T(?x, rdf:type, owl:Nothing) => false
-                cls_nothing2.from_join(&rdf_type_inv, &owl_nothing, |&_nothing, &x, &()| {
-                    if x > 0 {
-                        let msg = format!(
-                            "Instance {} is owl:Nothing (suggests unsatisfiability)",
-                            self.to_u(x)
-                        );
-                        self.add_error("cls-nothing2".to_string(), msg);
-                    }
+                cls_nothing2.from_join(&self.rdf_type_inv.borrow(), &owl_nothing, |&_nothing, &x, &()| {
+                    //if x > 0 {
+                    //    let msg = format!(
+                    //        "Instance {} is owl:Nothing (suggests unsatisfiability)",
+                    //        self.to_u(x)
+                    //    );
+                    //    self.add_error("cls-nothing2".to_string(), msg);
+                    //}
                     (x, ())
                 });
 
@@ -976,9 +981,9 @@ impl Reasoner {
                 // cls-int2
                 let mut new_cls_int2_instances = Vec::new();
                 cls_int_2_1.from_join(
+                    &self.rdf_type_inv.borrow(),
                     &owl_intersection_of,
-                    &rdf_type_inv,
-                    |&intersection_class, &listname, &inst| {
+                    |&intersection_class, &inst, &listname| {
                         if let Some(values) = ds.get_list_values(listname) {
                             for list_class in values {
                                 new_cls_int2_instances.push((inst, (rdftype_node, list_class)));
@@ -1026,19 +1031,19 @@ impl Reasoner {
                 // T(?x, rdf:type, ?c1)
                 // T(?x, rdf:type, ?c2)  => false
                 // TODO: how do we infer instances of classes from owl:complementOf?
-                cls_com_1.from_join(&owl_complement_of, &rdf_type_inv, |&c1, &c2, &x| {
+                cls_com_1.from_join(&self.rdf_type_inv.borrow(), &owl_complement_of, |&c1, &x, &c2| {
                     (c2, (x, c1))
                 });
-                cls_com_2.from_join(&rdf_type_inv, &cls_com_1, |&c2, &x_exists, &(x_bad, c1)| {
-                    if x_exists == x_bad && x_exists > 0 && x_bad > 0 {
-                        let msg = format!(
-                            "Individual {} has type {} and {} which are complements",
-                            self.to_u(x_exists),
-                            self.to_u(c2),
-                            self.to_u(c1)
-                        );
-                        self.add_error("cls-com".to_string(), msg);
-                    }
+                cls_com_2.from_join(&self.rdf_type_inv.borrow(), &cls_com_1, |&c2, &x_exists, &(x_bad, c1)| {
+                    //if x_exists == x_bad && x_exists > 0 && x_bad > 0 {
+                    //    let msg = format!(
+                    //        "Individual {} has type {} and {} which are complements",
+                    //        self.to_u(x_exists),
+                    //        self.to_u(c2),
+                    //        self.to_u(c1)
+                    //    );
+                    //    self.add_error("cls-com".to_string(), msg);
+                    //}
                     (x_bad, c1)
                 });
 
@@ -1109,9 +1114,9 @@ impl Reasoner {
                 // T(?u, rdf:type, ?x) =>  T(?u, ?p, ?y)
                 cls_hv1_1.from_join(&owl_has_value, &owl_on_property, |&x, &y, &p| (x, (p, y)));
                 self.all_triples_input.from_join(
+                    &self.rdf_type_inv.borrow(),
                     &cls_hv1_1,
-                    &rdf_type_inv,
-                    |&x, &(prop, value), &inst| (inst, (prop, value)),
+                    |&x, &inst, &(prop, value)| (inst, (prop, value)),
                 );
 
                 // cls-hv2:
@@ -1143,7 +1148,7 @@ impl Reasoner {
                 cls_avf_1.from_join(&owl_all_values_from, &owl_on_property, |&x, &y, &p| {
                     (x, (y, p))
                 });
-                cls_avf_2.from_join(&cls_avf_1, &rdf_type_inv, |&x, &(y, p), &u| (u, (p, y)));
+                cls_avf_2.from_join(&self.rdf_type_inv.borrow(), &cls_avf_1, |&x, &u, &(y, p)| (u, (p, y)));
                 self.all_triples_input.from_join(
                     &cls_avf_2,
                     &self.spo,
