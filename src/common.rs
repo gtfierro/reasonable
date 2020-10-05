@@ -43,8 +43,10 @@ macro_rules! uri {
 
 /// Returns the full URI of the concept in the OWL namespace
 /// ```
+/// # #[macro_use] extern crate reasonable; extern crate rdf; use rdf::{node::Node, uri::Uri}; fn main() {
 /// let uri = owl!("Thing");
-/// println!(uri);
+/// assert_eq!(uri, Node::UriNode { uri: Uri::new("http://www.w3.org/2002/07/owl#Thing".to_string()) } );
+/// # }
 /// ```
 #[macro_export]
 macro_rules! owl {
@@ -55,8 +57,10 @@ macro_rules! owl {
 
 /// Returns the full URI of the concept in the RDF namespace
 /// ```
+/// # #[macro_use] extern crate reasonable; extern crate rdf; use rdf::{node::Node, uri::Uri}; fn main() {
 /// let uri = rdf!("type");
-/// println!(uri);
+/// assert_eq!(uri, Node::UriNode { uri: Uri::new("http://www.w3.org/1999/02/22-rdf-syntax-ns#type".to_string()) } );
+/// # }
 /// ```
 #[macro_export]
 macro_rules! rdf {
@@ -67,8 +71,10 @@ macro_rules! rdf {
 
 /// Returns the full URI of the concept in the RDFS namespace
 /// ```
-/// let uri = rdfs!("type");
-/// println!(uri);
+/// # #[macro_use] extern crate reasonable; extern crate rdf; use rdf::{node::Node, uri::Uri}; fn main() {
+/// let uri = rdfs!("subClassOf");
+/// assert_eq!(uri, Node::UriNode { uri: Uri::new("http://www.w3.org/2000/01/rdf-schema#subClassOf".to_string()) } );
+/// # }
 /// ```
 #[macro_export]
 macro_rules! rdfs {
