@@ -3,6 +3,7 @@ use ::reasonable::reasoner::Reasoner;
 use std::env;
 use std::time::Instant;
 use log::info;
+
 fn main() {
     env_logger::init();
     let mut r = Reasoner::new();

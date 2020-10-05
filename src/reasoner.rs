@@ -23,49 +23,8 @@ use rdf::writer::turtle_writer::TurtleWriter;
 use rdf::writer::rdf_writer::RdfWriter;
 // use rdf::writer::n_triples_writer::NTriplesWriter;
 use crate::common::*;
+use crate::{owl, node_relation};
 
-macro_rules! uri {
-    ($ns:expr, $t:expr) => (Node::UriNode{uri: Uri::new(format!($ns, $t))});
-}
-
-/// Returns the full URI of the concept in the OWL namespace
-/// ```
-/// let uri = owl!("Thing");
-/// println!(uri);
-/// ```
-macro_rules! owl {
-    ($t:expr) => (uri!("http://www.w3.org/2002/07/owl#{}", $t));
-}
-
-/// Returns the full URI of the concept in the RDF namespace
-/// ```
-/// let uri = rdf!("type");
-/// println!(uri);
-/// ```
-macro_rules! rdf {
-    ($t:expr) => (uri!("http://www.w3.org/1999/02/22-rdf-syntax-ns#{}", $t));
-}
-
-/// Returns the full URI of the concept in the RDFS namespace
-/// ```
-/// let uri = rdfs!("type");
-/// println!(uri);
-/// ```
-macro_rules! rdfs {
-    ($t:expr) => (uri!("http://www.w3.org/2000/01/rdf-schema#{}", $t));
-}
-
-/// Creates a DataFrog variable with the given URI as the only member
-macro_rules! node_relation {
-    ($self:expr, $uri:expr) => {
-        {
-            let x = $self.iter1.variable::<(URI, ())>("tmp");
-            let v = vec![($self.index.put($uri), ())];
-            x.extend(v.iter());
-            x
-        }
-    };
-}
 
 /// Structured errors that occur during reasoning
 pub struct ReasoningError {

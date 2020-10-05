@@ -1,6 +1,3 @@
-
-
-
 pub const RDFS_SUBCLASSOF: &str = "http://www.w3.org/2000/01/rdf-schema#subClassOf";
 pub const RDFS_DOMAIN: &str = "http://www.w3.org/2000/01/rdf-schema#domain";
 pub const RDFS_RANGE: &str = "http://www.w3.org/2000/01/rdf-schema#range";
@@ -35,7 +32,7 @@ pub const OWL_ASYMMETRICPROP: &str = "http://www.w3.org/2002/07/owl#AsymmetricPr
 pub type URI = u32;
 pub type Triple = (URI, (URI, URI));
 
-#[macro_use]
+#[macro_export]
 macro_rules! uri {
     ($ns:expr, $t:expr) => (Node::UriNode{uri: Uri::new(format!($ns, $t))});
 }
@@ -45,7 +42,7 @@ macro_rules! uri {
 /// let uri = owl!("Thing");
 /// println!(uri);
 /// ```
-#[macro_use]
+#[macro_export]
 macro_rules! owl {
     ($t:expr) => (uri!("http://www.w3.org/2002/07/owl#{}", $t));
 }
@@ -55,7 +52,7 @@ macro_rules! owl {
 /// let uri = rdf!("type");
 /// println!(uri);
 /// ```
-#[macro_use]
+#[macro_export]
 macro_rules! rdf {
     ($t:expr) => (uri!("http://www.w3.org/1999/02/22-rdf-syntax-ns#{}", $t));
 }
@@ -65,8 +62,20 @@ macro_rules! rdf {
 /// let uri = rdfs!("type");
 /// println!(uri);
 /// ```
-#[macro_use]
+#[macro_export]
 macro_rules! rdfs {
     ($t:expr) => (uri!("http://www.w3.org/2000/01/rdf-schema#{}", $t));
 }
 
+/// Creates a DataFrog variable with the given URI as the only member
+#[macro_export]
+macro_rules! node_relation {
+    ($self:expr, $uri:expr) => {
+        {
+            let x = $self.iter1.variable::<(URI, ())>("tmp");
+            let v = vec![($self.index.put($uri), ())];
+            x.extend(v.iter());
+            x
+        }
+    };
+}

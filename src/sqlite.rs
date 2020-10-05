@@ -1,7 +1,7 @@
 #![feature(proc_macro_hygiene, decl_macro)]
 #[macro_use] extern crate rocket;
 #[macro_use] extern crate serde_derive;
-use log::{info, debug, error};
+use log::{info, debug};
 use std::sync::Mutex;
 use std::thread;
 use rocket::State;
@@ -15,9 +15,7 @@ use oxigraph::store::MemoryStore;
 use oxigraph::sparql::{QueryOptions, QueryResults};
 use std::str;
 use std::sync::mpsc;
-use ::reasonable::reasoner::{
-    node_to_string,
-};
+use ::reasonable::reasoner::node_to_string;
 use ::reasonable::error::{
     Result,
     ReasonableError,
@@ -164,16 +162,7 @@ impl SQLiteManager {
                     Err(mpsc::TrySendError::Full(_e)) => return,
                     Err(mpsc::TrySendError::Disconnected(e)) => panic!(e)
                 };
-               // sender.send(rowid).unwrap();
             }
-        })
-        //|act: Action, db_name: &str, table_name: &str, rowid: i64) {
-    }
-
-    fn get_commit_hook(&self, sender: mpsc::SyncSender<ChannelMessage>) -> Box<dyn FnMut() -> bool + Send> {
-        Box::new(move || {
-            sender.try_send(ChannelMessage::Refresh).unwrap();
-            false
         })
     }
 
@@ -364,13 +353,6 @@ fn rocket(filename: &str) {
     let mut mgr = SQLiteManager::new(filename).unwrap();
 
     mgr.load_file("Brick.n3").unwrap();
-    //mgr.load_file("example_models/soda_hall.n3").unwrap();
-
-    //mgr.update().unwrap();
-
-    //mgr.conn.execute("DROP TABLE IF EXISTS test1;", NO_PARAMS).unwrap();
-    //mgr.add_view("test1".to_string(), "SELECT ?x ?y WHERE { ?x rdf:type brick:Sensor . ?x brick:isPointOf ?y }").unwrap();
-
     mgr.update().unwrap();
 
     let conn = rusqlite::Connection::open(filename).unwrap();
