@@ -13,7 +13,6 @@ pub enum ReasonableError {
     ChannelRecv(RecvError),
 }
 
-
 impl From<io::Error> for ReasonableError {
     fn from(err: io::Error) -> ReasonableError {
         ReasonableError::IO(err)

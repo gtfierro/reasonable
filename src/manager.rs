@@ -1,39 +1,39 @@
-use crate::reasoner::Reasoner;
 use crate::error::{ReasonableError, Result};
-use log::{info, debug};
-use std::fmt;
-use std::string::String;
-use std::fs;
-use std::time::Instant;
-use std::io::Cursor;
-use rdf::{
-    node::Node,
-    uri::Uri,
-};
-use std::collections::HashMap;
+use crate::reasoner::Reasoner;
+use log::{debug, info};
 use oxigraph::{
-    MemoryStore,
-    store::memory::MemoryPreparedQuery,
-    sparql::{
-        QueryOptions,
-        QueryResults
-    },
+    io::{GraphFormat, GraphParser},
     model::*,
-    io::{
-        GraphFormat,
-        GraphParser,
-    }
-
+    sparql::{QueryOptions, QueryResults},
+    store::memory::MemoryPreparedQuery,
+    MemoryStore,
 };
+use rdf::{node::Node, uri::Uri};
+use std::collections::HashMap;
+use std::fmt;
+use std::fs;
+use std::io::Cursor;
+use std::string::String;
+use std::time::Instant;
 
 macro_rules! uri {
-    ($t:expr) => (Node::UriNode{uri: Uri::new($t)});
+    ($t:expr) => {
+        Node::UriNode { uri: Uri::new($t) }
+    };
 }
 macro_rules! bnode {
-    ($t:expr) => (Node::BlankNode{id: $t});
+    ($t:expr) => {
+        Node::BlankNode { id: $t }
+    };
 }
 macro_rules! literal {
-    ($t:expr, $d:expr, $l:expr) => (Node::LiteralNode{literal: $t, data_type: $d, language: $l});
+    ($t:expr, $d:expr, $l:expr) => {
+        Node::LiteralNode {
+            literal: $t,
+            data_type: $d,
+            language: $l,
+        }
+    };
 }
 
 #[allow(non_upper_case_globals)]
@@ -51,7 +51,7 @@ pub struct ViewRef<'a> {
 }
 
 impl<'a> ViewRef<'a> {
-    pub fn columns(&self) -> &'a[String] {
+    pub fn columns(&self) -> &'a [String] {
         &self.md.columns
     }
     pub fn name(&self) -> &str {
@@ -126,18 +126,35 @@ impl ViewMetadata {
     }
 
     pub fn get_insert_sql(&self) -> String {
-        let cols: String = self.columns().to_vec().iter().map(|c| {
-            c.to_string()
-        }).collect::<Vec<String>>().join(", ");
-        let inps: String = (0..self.columns().len()).map(|_| "?".to_string()).collect::<Vec<String>>().join(", ");
-        format!("INSERT INTO view_{}({}) VALUES ({});", self.table_name, cols, inps)
+        let cols: String = self
+            .columns()
+            .to_vec()
+            .iter()
+            .map(|c| c.to_string())
+            .collect::<Vec<String>>()
+            .join(", ");
+        let inps: String = (0..self.columns().len())
+            .map(|_| "?".to_string())
+            .collect::<Vec<String>>()
+            .join(", ");
+        format!(
+            "INSERT INTO view_{}({}) VALUES ({});",
+            self.table_name, cols, inps
+        )
     }
 
     pub fn get_create_tab(&self) -> String {
-        let cols: String = self.columns().to_vec().iter().map(|c| {
-            format!("{} TEXT", c)
-        }).collect::<Vec<String>>().join(", ");
-        format!("CREATE TABLE IF NOT EXISTS view_{}({});", self.table_name, cols)
+        let cols: String = self
+            .columns()
+            .to_vec()
+            .iter()
+            .map(|c| format!("{} TEXT", c))
+            .collect::<Vec<String>>()
+            .join(", ");
+        format!(
+            "CREATE TABLE IF NOT EXISTS view_{}({});",
+            self.table_name, cols
+        )
     }
 
     pub fn get_delete_tab(&self) -> String {
@@ -175,31 +192,34 @@ impl Manager {
     }
 
     pub fn load_triples(&mut self, triples: Vec<(String, String, String)>) -> Result<()> {
-        let load_triples: Vec<(Node, Node, Node)> = triples.into_iter().filter_map(|(s_, p_, o_)| {
-            let s: Node = {
-                if let Ok(named) = NamedNode::new(s_.clone()) {
-                    uri!(named.into_string())
-                } else if let Ok(bnode) = BlankNode::new(s_) {
-                    bnode!(bnode.into_string())
-                } else {
-                    return None
-                }
-            };
+        let load_triples: Vec<(Node, Node, Node)> = triples
+            .into_iter()
+            .filter_map(|(s_, p_, o_)| {
+                let s: Node = {
+                    if let Ok(named) = NamedNode::new(s_.clone()) {
+                        uri!(named.into_string())
+                    } else if let Ok(bnode) = BlankNode::new(s_) {
+                        bnode!(bnode.into_string())
+                    } else {
+                        return None;
+                    }
+                };
 
-            let p: Node = uri!(p_);
+                let p: Node = uri!(p_);
 
-            let o: Node = {
-                if let Ok(named) = NamedNode::new(o_.clone()) {
-                    uri!(named.into_string())
-                } else if let Ok(bnode) = BlankNode::new(o_.clone()) {
-                    bnode!(bnode.into_string())
-                } else {
-                    literal!(o_, None, None)
-                }
-            };
+                let o: Node = {
+                    if let Ok(named) = NamedNode::new(o_.clone()) {
+                        uri!(named.into_string())
+                    } else if let Ok(bnode) = BlankNode::new(o_.clone()) {
+                        bnode!(bnode.into_string())
+                    } else {
+                        literal!(o_, None, None)
+                    }
+                };
 
-            Some((s, p, o))
-        }).collect();
+                Some((s, p, o))
+            })
+            .collect();
         self.reasoner.load_triples(load_triples);
         self.refresh();
         Ok(())
@@ -219,23 +239,35 @@ impl Manager {
         // add reasoned triples to an in-memory store
         for t in self.reasoner.view_output().iter() {
             let s = match &t.0 {
-                Node::UriNode{uri} => NamedOrBlankNode::NamedNode(NamedNode::new_unchecked(uri.to_string())),
-                Node::BlankNode{id} => NamedOrBlankNode::BlankNode(BlankNode::new_unchecked(id.to_string())),
+                Node::UriNode { uri } => {
+                    NamedOrBlankNode::NamedNode(NamedNode::new_unchecked(uri.to_string()))
+                }
+                Node::BlankNode { id } => {
+                    NamedOrBlankNode::BlankNode(BlankNode::new_unchecked(id.to_string()))
+                }
                 _ => panic!("no subject literals"),
             };
             let p = match &t.1 {
-                Node::UriNode{uri} => NamedNode::new_unchecked(uri.to_string()),
+                Node::UriNode { uri } => NamedNode::new_unchecked(uri.to_string()),
                 _ => panic!("no must be named node"),
             };
             let o = match &t.2 {
-                Node::UriNode{uri} => Term::NamedNode(NamedNode::new_unchecked(uri.to_string())),
-                Node::BlankNode{id} => Term::BlankNode(BlankNode::new_unchecked(id.to_string())),
-                Node::LiteralNode{literal, data_type: _, language: _} => Term::Literal(Literal::new_simple_literal(literal)),
+                Node::UriNode { uri } => Term::NamedNode(NamedNode::new_unchecked(uri.to_string())),
+                Node::BlankNode { id } => Term::BlankNode(BlankNode::new_unchecked(id.to_string())),
+                Node::LiteralNode {
+                    literal,
+                    data_type: _,
+                    language: _,
+                } => Term::Literal(Literal::new_simple_literal(literal)),
             };
-            self.triple_store.insert(Quad::new(s, p, o, GraphName::DefaultGraph));
+            self.triple_store
+                .insert(Quad::new(s, p, o, GraphName::DefaultGraph));
         }
         info!("now have {} triples", self.triple_store.len());
-        info!("refresh completed in {:.02}sec", refresh_start.elapsed().as_secs_f64());
+        info!(
+            "refresh completed in {:.02}sec",
+            refresh_start.elapsed().as_secs_f64()
+        );
     }
 
     /// Adds the provided triples to the reasoner and re-executes the reasoner
@@ -250,50 +282,55 @@ impl Manager {
         // execute query to get the schema?
         let sparql = format!("{}{}", qfmt, query);
 
-        let q = self.triple_store.prepare_query(&sparql, QueryOptions::default())?;
+        let q = self
+            .triple_store
+            .prepare_query(&sparql, QueryOptions::default())?;
 
         debug!("query: {}", sparql);
         let res = q.exec()?;
         if let QueryResults::Solutions(solutions) = res {
             let name_key = name.clone();
             let view_key = name.clone();
-            let md = ViewMetadata{
+            let md = ViewMetadata {
                 query: q,
                 query_string: query.to_string(),
                 table_name: name,
-                columns: solutions.variables()
-                                  .to_vec()
-                                  .into_iter()
-                                  .map(|t| t.into_string())
-                                  .collect(),
+                columns: solutions
+                    .variables()
+                    .to_vec()
+                    .into_iter()
+                    .map(|t| t.into_string())
+                    .collect(),
             };
             self.views.insert(name_key, md);
 
-            return Ok(ViewRef{
+            return Ok(ViewRef {
                 md: self.views.get(&view_key).unwrap(),
-            })
-
+            });
         };
         Err(ReasonableError::ManagerError("no solutions".to_string()))
     }
 
-    pub fn add_view2(&self, name:String, query: &str) -> Result<ViewMetadata> {
+    pub fn add_view2(&self, name: String, query: &str) -> Result<ViewMetadata> {
         let sparql = format!("{}{}", qfmt, query);
 
-        let q = self.triple_store.prepare_query(&sparql, QueryOptions::default())?;
+        let q = self
+            .triple_store
+            .prepare_query(&sparql, QueryOptions::default())?;
 
         debug!("query: {}", sparql);
         let res = q.exec()?;
         if let QueryResults::Solutions(solutions) = res {
-            return Ok(ViewMetadata{
+            return Ok(ViewMetadata {
                 query: q,
                 query_string: query.to_string(),
                 table_name: name,
-                columns: solutions.variables()
-                                  .to_vec()
-                                  .into_iter()
-                                  .map(|t| t.into_string())
-                                  .collect(),
+                columns: solutions
+                    .variables()
+                    .to_vec()
+                    .into_iter()
+                    .map(|t| t.into_string())
+                    .collect(),
             });
         }
         Err(ReasonableError::ManagerError("no solutions".to_string()))
@@ -317,38 +354,42 @@ impl Manager {
 }
 
 pub fn parse_file(filename: &str) -> Result<Vec<(Node, Node, Node)>> {
-        let gfmt: GraphFormat = if filename.ends_with(".ttl") {
-            GraphFormat::Turtle
-        } else if filename.ends_with(".n3") || filename.ends_with(".ntriples") {
-            GraphFormat::NTriples
-        } else {
-            GraphFormat::RdfXml
-        };
-        let data = fs::read_to_string(filename)?;
-        debug!("format: {:?} for {}", gfmt, filename);
-        let parser = GraphParser::from_format(gfmt);
-        let triples: Vec<std::result::Result<Triple, std::io::Error>> = parser.read_triples(Cursor::new(data))?.collect();//.collect::<Result<Triple>>();
-        Ok(triples.into_iter().filter_map(|tres| {
-            match tres {
-                Err(_) => None,
-                Ok(t) => {
-                    let s = match t.subject {
-                        NamedOrBlankNode::NamedNode(node) => uri!(node.into_string()),
-                        NamedOrBlankNode::BlankNode(id) => bnode!(id.into_string()),
-                    };
-                    let p = uri!(t.predicate.into_string());
-                    let o = match t.object {
-                        Term::NamedNode(node) => uri!(node.into_string()),
-                        Term::BlankNode(id) => bnode!(id.into_string()),
-                        Term::Literal(lit) => literal!(lit.value().to_string(),
-                                                       Some(Uri::new(lit.datatype().to_string())),
-                                                       match lit.language() {
-                                                           Some(l) => Some(l.to_string()),
-                                                           None => None
-                                                       })
-                    };
-                    Some((s, p, o))
-                }
+    let gfmt: GraphFormat = if filename.ends_with(".ttl") {
+        GraphFormat::Turtle
+    } else if filename.ends_with(".n3") || filename.ends_with(".ntriples") {
+        GraphFormat::NTriples
+    } else {
+        GraphFormat::RdfXml
+    };
+    let data = fs::read_to_string(filename)?;
+    debug!("format: {:?} for {}", gfmt, filename);
+    let parser = GraphParser::from_format(gfmt);
+    let triples: Vec<std::result::Result<Triple, std::io::Error>> =
+        parser.read_triples(Cursor::new(data))?.collect(); //.collect::<Result<Triple>>();
+    Ok(triples
+        .into_iter()
+        .filter_map(|tres| match tres {
+            Err(_) => None,
+            Ok(t) => {
+                let s = match t.subject {
+                    NamedOrBlankNode::NamedNode(node) => uri!(node.into_string()),
+                    NamedOrBlankNode::BlankNode(id) => bnode!(id.into_string()),
+                };
+                let p = uri!(t.predicate.into_string());
+                let o = match t.object {
+                    Term::NamedNode(node) => uri!(node.into_string()),
+                    Term::BlankNode(id) => bnode!(id.into_string()),
+                    Term::Literal(lit) => literal!(
+                        lit.value().to_string(),
+                        Some(Uri::new(lit.datatype().to_string())),
+                        match lit.language() {
+                            Some(l) => Some(l.to_string()),
+                            None => None,
+                        }
+                    ),
+                };
+                Some((s, p, o))
             }
-        }).collect())
+        })
+        .collect())
 }

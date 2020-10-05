@@ -1,5 +1,5 @@
-use crate::reasoner::*;
 use crate::common::*;
+use crate::reasoner::*;
 
 #[test]
 fn test_make_reasoner() -> Result<(), String> {
@@ -23,9 +23,7 @@ fn test_load_file_n3() -> Result<(), String> {
 #[ignore]
 fn test_eq_ref() -> Result<(), String> {
     let mut r = Reasoner::new();
-    let trips = vec![
-        ("a", "b", "c")
-    ];
+    let trips = vec![("a", "b", "c")];
     r.load_triples_str(trips);
     r.reason();
     let res = r.get_triples_string();
@@ -38,9 +36,7 @@ fn test_eq_ref() -> Result<(), String> {
 #[test]
 fn test_eq_sym() -> Result<(), String> {
     let mut r = Reasoner::new();
-    let trips = vec![
-        ("x", OWL_SAMEAS, "y")
-    ];
+    let trips = vec![("x", OWL_SAMEAS, "y")];
     r.load_triples_str(trips);
     r.reason();
     let res = r.get_triples_string();
@@ -51,10 +47,7 @@ fn test_eq_sym() -> Result<(), String> {
 #[test]
 fn test_eq_trans() -> Result<(), String> {
     let mut r = Reasoner::new();
-    let trips = vec![
-        ("x", OWL_SAMEAS, "y"),
-        ("y", OWL_SAMEAS, "z"),
-    ];
+    let trips = vec![("x", OWL_SAMEAS, "y"), ("y", OWL_SAMEAS, "z")];
     r.load_triples_str(trips);
     r.reason();
     let res = r.get_triples_string();
@@ -65,10 +58,7 @@ fn test_eq_trans() -> Result<(), String> {
 #[test]
 fn test_eq_rep_s() -> Result<(), String> {
     let mut r = Reasoner::new();
-    let trips = vec![
-        ("s1", OWL_SAMEAS, "s2"),
-        ("s1", "p", "o"),
-    ];
+    let trips = vec![("s1", OWL_SAMEAS, "s2"), ("s1", "p", "o")];
     r.load_triples_str(trips);
     r.reason();
     let res = r.get_triples_string();
@@ -79,10 +69,7 @@ fn test_eq_rep_s() -> Result<(), String> {
 #[test]
 fn test_eq_rep_p() -> Result<(), String> {
     let mut r = Reasoner::new();
-    let trips = vec![
-        ("p1", OWL_SAMEAS, "p2"),
-        ("s", "p1", "o"),
-    ];
+    let trips = vec![("p1", OWL_SAMEAS, "p2"), ("s", "p1", "o")];
     r.load_triples_str(trips);
     r.reason();
     let res = r.get_triples_string();
@@ -93,10 +80,7 @@ fn test_eq_rep_p() -> Result<(), String> {
 #[test]
 fn test_eq_rep_o() -> Result<(), String> {
     let mut r = Reasoner::new();
-    let trips = vec![
-        ("o1", OWL_SAMEAS, "o2"),
-        ("s", "p", "o1"),
-    ];
+    let trips = vec![("o1", OWL_SAMEAS, "o2"), ("s", "p", "o1")];
     r.load_triples_str(trips);
     r.reason();
     let res = r.get_triples_string();
@@ -109,14 +93,21 @@ fn test_cax_sco() -> Result<(), String> {
     let mut r = Reasoner::new();
     let trips = vec![
         ("Class2", RDFS_SUBCLASSOF, "Class1"),
-        ("a", RDF_TYPE, "Class2")
+        ("a", RDF_TYPE, "Class2"),
     ];
     r.load_triples_str(trips);
     r.reason();
     let _res = r.get_triples();
-    let res: Vec<(String, String, String)> = _res.iter().map(|t| {
-        (node_to_string(&t.0), node_to_string(&t.1), node_to_string(&t.2))
-    }).collect();
+    let res: Vec<(String, String, String)> = _res
+        .iter()
+        .map(|t| {
+            (
+                node_to_string(&t.0),
+                node_to_string(&t.1),
+                node_to_string(&t.2),
+            )
+        })
+        .collect();
     // let res = r.get_triples_string();
     assert!(res.contains(&("a".to_string(), RDF_TYPE.to_string(), "Class1".to_string())));
     Ok(())
@@ -127,7 +118,7 @@ fn test_cax_eqc1() -> Result<(), String> {
     let mut r = Reasoner::new();
     let trips = vec![
         ("Class1", OWL_EQUIVALENTCLASS, "Class2"),
-        ("a", RDF_TYPE, "Class1")
+        ("a", RDF_TYPE, "Class1"),
     ];
     r.load_triples_str(trips);
     r.reason();
@@ -141,7 +132,7 @@ fn test_cax_eqc2() -> Result<(), String> {
     let mut r = Reasoner::new();
     let trips = vec![
         ("Class1", OWL_EQUIVALENTCLASS, "Class2"),
-        ("a", RDF_TYPE, "Class2")
+        ("a", RDF_TYPE, "Class2"),
     ];
     r.load_triples_str(trips);
     r.reason();
@@ -159,7 +150,7 @@ fn test_cax_eqc_chain_1() -> Result<(), String> {
         ("Class3", OWL_EQUIVALENTCLASS, "Class4"),
         ("Class4", OWL_EQUIVALENTCLASS, "Class5"),
         ("Class5", OWL_EQUIVALENTCLASS, "Class6"),
-        ("a", RDF_TYPE, "Class1")
+        ("a", RDF_TYPE, "Class1"),
     ];
     r.load_triples_str(trips);
     r.reason();
@@ -181,7 +172,7 @@ fn test_cax_eqc_chain_2() -> Result<(), String> {
         ("Class3", OWL_EQUIVALENTCLASS, "Class4"),
         ("Class4", OWL_EQUIVALENTCLASS, "Class5"),
         ("Class5", OWL_EQUIVALENTCLASS, "Class6"),
-        ("a", RDF_TYPE, "Class6")
+        ("a", RDF_TYPE, "Class6"),
     ];
     r.load_triples_str(trips);
     r.reason();
@@ -193,7 +184,6 @@ fn test_cax_eqc_chain_2() -> Result<(), String> {
     assert!(res.contains(&("a".to_string(), RDF_TYPE.to_string(), "Class5".to_string())));
     Ok(())
 }
-
 
 #[test]
 fn test_prp_fp() -> Result<(), String> {
@@ -210,7 +200,11 @@ fn test_prp_fp() -> Result<(), String> {
         let (s, p, o) = i;
         println!("{} {} {}", s, p, o);
     }
-    assert!(res.contains(&("OBJECT_1".to_string(), OWL_SAMEAS.to_string(), "OBJECT_2".to_string())));
+    assert!(res.contains(&(
+        "OBJECT_1".to_string(),
+        OWL_SAMEAS.to_string(),
+        "OBJECT_2".to_string()
+    )));
     Ok(())
 }
 
@@ -229,17 +223,18 @@ fn test_prp_ifp() -> Result<(), String> {
         let (s, p, o) = i;
         println!("{} {} {}", s, p, o);
     }
-    assert!(res.contains(&("SUB_1".to_string(), OWL_SAMEAS.to_string(), "SUB_2".to_string())));
+    assert!(res.contains(&(
+        "SUB_1".to_string(),
+        OWL_SAMEAS.to_string(),
+        "SUB_2".to_string()
+    )));
     Ok(())
 }
 
 #[test]
 fn test_spo1() -> Result<(), String> {
     let mut r = Reasoner::new();
-    let trips = vec![
-        ("p1", RDFS_SUBPROP, "p2"),
-        ("x", "p1", "y"),
-    ];
+    let trips = vec![("p1", RDFS_SUBPROP, "p2"), ("x", "p1", "y")];
     r.load_triples_str(trips);
     r.reason();
     let res = r.get_triples_string();
@@ -254,10 +249,7 @@ fn test_spo1() -> Result<(), String> {
 #[test]
 fn test_prp_inv1() -> Result<(), String> {
     let mut r = Reasoner::new();
-    let trips = vec![
-        ("p1", OWL_INVERSEOF, "p2"),
-        ("x", "p1", "y"),
-    ];
+    let trips = vec![("p1", OWL_INVERSEOF, "p2"), ("x", "p1", "y")];
     r.load_triples_str(trips);
     r.reason();
     let res = r.get_triples_string();
@@ -272,10 +264,7 @@ fn test_prp_inv1() -> Result<(), String> {
 #[test]
 fn test_prp_symp() -> Result<(), String> {
     let mut r = Reasoner::new();
-    let trips = vec![
-        ("p", RDF_TYPE, OWL_SYMMETRICPROP),
-        ("x", "p", "y"),
-    ];
+    let trips = vec![("p", RDF_TYPE, OWL_SYMMETRICPROP), ("x", "p", "y")];
     r.load_triples_str(trips);
     r.reason();
     let res = r.get_triples_string();
@@ -309,10 +298,7 @@ fn test_prp_trp() -> Result<(), String> {
 #[test]
 fn test_prp_eqp1() -> Result<(), String> {
     let mut r = Reasoner::new();
-    let trips = vec![
-        ("p1", OWL_EQUIVPROP, "p2"),
-        ("x", "p1", "y"),
-    ];
+    let trips = vec![("p1", OWL_EQUIVPROP, "p2"), ("x", "p1", "y")];
     r.load_triples_str(trips);
     r.reason();
     let res = r.get_triples_string();
@@ -333,8 +319,16 @@ fn test_cls_thing_nothing() -> Result<(), String> {
         let (s, p, o) = i;
         println!("{} {} {}", s, p, o);
     }
-    assert!(res.contains(&(OWL_THING.to_string(), RDF_TYPE.to_string(), OWL_CLASS.to_string())));
-    assert!(res.contains(&(OWL_NOTHING.to_string(), RDF_TYPE.to_string(), OWL_CLASS.to_string())));
+    assert!(res.contains(&(
+        OWL_THING.to_string(),
+        RDF_TYPE.to_string(),
+        OWL_CLASS.to_string()
+    )));
+    assert!(res.contains(&(
+        OWL_NOTHING.to_string(),
+        RDF_TYPE.to_string(),
+        OWL_CLASS.to_string()
+    )));
     Ok(())
 }
 
@@ -499,9 +493,7 @@ fn test_cls_int2_withequivalent() -> Result<(), String> {
         ("z3", RDF_FIRST, "c3"),
         ("z3", RDF_REST, RDF_NIL),
         ("y", RDF_TYPE, "c"),
-
         ("c", OWL_EQUIVALENTCLASS, "C"),
-
         ("C", OWL_INTERSECTION, "X"),
         ("X", RDF_FIRST, "C1"),
         ("X", RDF_REST, "Z2"),
@@ -509,7 +501,6 @@ fn test_cls_int2_withequivalent() -> Result<(), String> {
         ("Z2", RDF_REST, "Z3"),
         ("Z3", RDF_FIRST, "C3"),
         ("Z3", RDF_REST, RDF_NIL),
-
     ];
     r.load_triples_str(trips);
     r.reason();
@@ -536,15 +527,12 @@ fn test_cls_int1_withhasvalue() -> Result<(), String> {
         ("x", RDF_REST, "z2"),
         ("z2", RDF_FIRST, "c2"),
         ("z2", RDF_REST, RDF_NIL),
-
         ("c1", OWL_HASVALUE, "c1p_value"),
         ("c1", OWL_ONPROPERTY, "c1p"),
         ("c2", OWL_HASVALUE, "c2p_value"),
         ("c2", OWL_ONPROPERTY, "c2p"),
-
         ("inst", "c1p", "c1p_value"),
         ("inst", "c2p", "c2p_value"),
-
     ];
     r.load_triples_str(trips);
     r.reason();
@@ -555,7 +543,11 @@ fn test_cls_int1_withhasvalue() -> Result<(), String> {
     }
     assert!(res.contains(&("inst".to_string(), RDF_TYPE.to_string(), "c1".to_string())));
     assert!(res.contains(&("inst".to_string(), RDF_TYPE.to_string(), "c2".to_string())));
-    assert!(res.contains(&("inst".to_string(), RDF_TYPE.to_string(), "intersection_class".to_string())));
+    assert!(res.contains(&(
+        "inst".to_string(),
+        RDF_TYPE.to_string(),
+        "intersection_class".to_string()
+    )));
     Ok(())
 }
 
@@ -581,7 +573,11 @@ fn test_complementof() -> Result<(), String> {
         let (s, p, o) = i;
         println!("{} {} {}", s, p, o);
     }
-    assert!(res.contains(&("inst1".to_string(), RDF_TYPE.to_string(), OWL_THING.to_string())));
+    assert!(res.contains(&(
+        "inst1".to_string(),
+        RDF_TYPE.to_string(),
+        OWL_THING.to_string()
+    )));
     assert!(res.contains(&("inst1".to_string(), RDF_TYPE.to_string(), "x".to_string())));
     assert!(!res.contains(&("inst1".to_string(), RDF_TYPE.to_string(), "c".to_string())));
     assert!(!res.contains(&("inst1".to_string(), RDF_TYPE.to_string(), "c2".to_string())));
