@@ -88,6 +88,13 @@ pub struct Reasoner {
     owl_inv1: Variable<(URI, URI)>,
     owl_inv2: Variable<(URI, URI)>,
     owl_same_as: Variable<(URI, URI)>,
+
+    // list stuff
+    established_complementary_instances: Rc<RefCell<HashSet<Triple>>>,
+    intersections: Rc<RefCell<HashMap<URI, URI>>>,
+    unions: Rc<RefCell<HashMap<URI, URI>>>,
+    instances: Rc<RefCell<HashSet<(URI, URI)>>>,
+    complements: Rc<RefCell<HashMap<URI, URI>>>,
 }
 
 #[allow(unused)]
@@ -146,6 +153,11 @@ impl Reasoner {
             owl_inv1,
             owl_inv2,
             owl_same_as,
+            established_complementary_instances: Rc::new(RefCell::new(HashSet::new())),
+            intersections: Rc::new(RefCell::new(HashMap::new())),
+            unions: Rc::new(RefCell::new(HashMap::new())),
+            instances: Rc::new(RefCell::new(HashSet::new())),
+            complements: Rc::new(RefCell::new(HashMap::new())),
         }
     }
 
@@ -350,10 +362,10 @@ impl Reasoner {
         //let owl_intersection_of = self.iter1.variable::<(URI, URI)>("owl_intersection_of");
         let owl_union_relation = node_relation!(self, owl!("unionOf"));
         let owl_union_of = self.iter1.variable::<(URI, URI)>("owl_union_of");
-        let mut intersections: HashMap<URI, URI> = HashMap::new();
-        let mut unions: HashMap<URI, URI> = HashMap::new();
-        let mut instances: HashSet<(URI, URI)> = HashSet::new();
-        let mut complements: HashMap<URI, URI> = HashMap::new();
+        //let mut intersections: HashMap<URI, URI> = HashMap::new();
+        //let mut unions: HashMap<URI, URI> = HashMap::new();
+        //let mut instances: HashSet<(URI, URI)> = HashSet::new();
+        //let mut complements: HashMap<URI, URI> = HashMap::new();
 
         // in-memory indexes
         //let pso = self.iter1.variable::<Triple>("pso");
@@ -595,7 +607,7 @@ impl Reasoner {
 
         self.all_triples_input.extend(self.input.iter().cloned());
         let mut changed = true;
-        let mut established_complementary_instances: HashSet<Triple> = HashSet::new();
+        //let mut established_complementary_instances: HashSet<Triple> = HashSet::new();
         let mut new_complementary_instances: HashSet<Triple> = HashSet::new();
         while changed {
             self.all_triples_input
@@ -620,7 +632,7 @@ impl Reasoner {
                 });
 
                 rdf_type.from_join(&self.pso, &rdf_type_relation, |&_, &tup, &()| {
-                    instances.insert(tup);
+                    self.instances.borrow_mut().insert(tup);
                     tup
                 });
                 self.rdf_type_inv.borrow_mut().from_map(&rdf_type, |&(inst, class)| (class, inst));
@@ -651,12 +663,12 @@ impl Reasoner {
                 self.owl_inv2.from_map(&self.owl_inv1, |&(p1, p2)| (p2, p1));
 
                 self.owl_intersection_of.from_join(&self.pso, &owl_inter_relation, |&_, &(a, b), &()| {
-                    intersections.insert(a, b);
+                    self.intersections.borrow_mut().insert(a, b);
                     (a, b)
                 });
 
                 owl_union_of.from_join(&self.pso, &owl_union_relation, |&_, &(a, b), &()| {
-                    unions.insert(a, b);
+                    self.unions.borrow_mut().insert(a, b);
                     (a, b)
                 });
 
@@ -682,8 +694,8 @@ impl Reasoner {
                 owl_disjoint_with.from_join(&self.pso, &owl_disjointwith_relation, |&_, &tup, &()| tup);
                 self.owl_same_as.from_join(&self.pso, &owl_sameas_relation, |&_, &tup, &()| tup);
                 owl_complement_of.from_join(&self.pso, &owl_complement_relation, |&_, &(a, b), &()| {
-                    complements.insert(a, b);
-                    complements.insert(b, a);
+                    self.complements.borrow_mut().insert(a, b);
+                    self.complements.borrow_mut().insert(b, a);
                     (a, b)
                 });
                 owl_complement_of
@@ -975,14 +987,14 @@ impl Reasoner {
                 // are instances of *each* of those classes (union). This could be a N-way join (where
                 // N is the number of classes in the list)
                 let mut new_cls_int1_instances = Vec::new();
-                for (_intersection_class, _listname) in intersections.iter() {
+                for (_intersection_class, _listname) in self.intersections.borrow().iter() {
                     let listname = *_listname;
                     let intersection_class = *_intersection_class;
                     if let Some(values) = ds.get_list_values(listname) {
                         // let value_uris: Vec<String> = values.iter().map(|v| node_to_string(self.index.get(*v).unwrap())).collect();
                         // debug!("{} {} (len {}) {} {:?}", listname, self.index.get(intersection_class).unwrap(), values.len(), self.index.get(listname).unwrap(), value_uris);
                         let mut class_counter: HashMap<URI, usize> = HashMap::new();
-                        for (_inst, _list_class) in instances.iter() {
+                        for (_inst, _list_class) in self.instances.borrow().iter() {
                             let inst = *_inst;
                             let list_class = *_list_class;
                             // debug!("inst {} values len {}, list class {}", self.index.get(inst).unwrap(), values.len(), list_class);
@@ -1024,14 +1036,14 @@ impl Reasoner {
                 // LIST[?x, ?c1, ..., ?cn]
                 // T(?y, rdf:type, ?ci) (for any i in 1-n) =>  T(?y, rdf:type, ?c)
                 let mut new_cls_uni_instances = Vec::new();
-                for (_union_class, _listname) in unions.iter() {
+                for (_union_class, _listname) in self.unions.borrow().iter() {
                     let listname = *_listname;
                     let union_class = *_union_class;
                     if let Some(values) = ds.get_list_values(listname) {
                         // let value_uris: Vec<String> = values.iter().map(|v| node_to_string(self.index.get(*v).unwrap())).collect();
                         // debug!("{} {} (len {}) {} {:?}", listname, self.index.get(union_class).unwrap(), values.len(), self.index.get(listname).unwrap(), value_uris);
                         let mut class_counter: HashMap<URI, usize> = HashMap::new();
-                        for (_inst, _list_class) in instances.iter() {
+                        for (_inst, _list_class) in self.instances.borrow().iter() {
                             let inst = *_inst;
                             let list_class = *_list_class;
                             // debug!("inst {} values len {}, list class {}", self.index.get(inst).unwrap(), values.len(), list_class);
@@ -1225,19 +1237,22 @@ impl Reasoner {
             // Now that the inference stage has finished, we will compute the sets of instances for
             // complementary classes
             changed = false;
-            for (c1, c2) in complements.iter() {
+            let mut est = self.established_complementary_instances.borrow_mut();
+            for (c1, c2) in self.complements.borrow().iter() {
                 // get all instances of NOT c1
-                let c1_instances: HashSet<URI> = instances
+                let c1_instances: HashSet<URI> = self.instances
+                    .borrow()
                     .iter()
                     .filter_map(|(inst, class)| if class == c1 { Some(*inst) } else { None })
                     .collect();
-                let not_c1_instances: Vec<Triple> = instances
+                let not_c1_instances: Vec<Triple> = self.instances
+                    .borrow()
                     .iter()
                     .filter_map(|(inst, class)| {
                         let triple = (*inst, (rdftype_node, *c2));
                         if c1_instances.contains(&inst) {
                             None
-                        } else if established_complementary_instances.insert(triple) {
+                        } else if est.insert(triple) {
                             Some(triple)
                         } else {
                             None

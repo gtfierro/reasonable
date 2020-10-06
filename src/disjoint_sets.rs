@@ -87,10 +87,6 @@ impl DisjointSets {
                 list.push(value);
             })
             .count();
-        // lists.iter().map(|(k, v)| {
-        //     println!("Set {} has {:?}", k, v);
-        // }).count();
-        // println!("Disjoint sets: {:?}", ds.to_vec());
         DisjointSets {
             lists,
             uri2idx,
