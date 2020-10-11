@@ -19,6 +19,9 @@ build-tiny:
 test:
 	cargo test
 
+# for macos, do
+# cp target/release/libreasonable.dylib reasonable/reasonable.so
+# this test is missing brick_inference_test.n3 so it doens't work 
 test-python:
 	cargo build --lib --release --features "python-library"
 	cp ./target/release/libreasonable.so reasonable/reasonable.so

@@ -1,4 +1,4 @@
-use crate::owl;
+use crate::reasoner;
 use pyo3::exceptions;
 use pyo3::prelude::*;
 use pyo3::types::{PyList, PyTuple};
@@ -9,7 +9,7 @@ use rdf::uri::Uri;
 /// `PyReasoner` implements a reasoner for the OWL 2 RL profile (see
 /// https://www.w3.org/TR/owl2-profiles/#OWL_2_RL for details).
 struct PyReasoner {
-    reasoner: owl::Reasoner,
+    reasoner: reasoner::Reasoner,
 }
 
 #[pymethods]
@@ -18,7 +18,7 @@ impl PyReasoner {
     /// Creates a new PyReasoner object
     fn new() -> Self {
         PyReasoner {
-            reasoner: owl::Reasoner::new(),
+            reasoner: reasoner::Reasoner::new(),
         }
     }
 
