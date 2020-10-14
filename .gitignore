@@ -28,3 +28,5 @@ output.ttl
 # extra dev stuff
 query/
 benches/
+dist/
+reasonable.egg-info
