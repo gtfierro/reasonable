@@ -1,6 +1,6 @@
 [package]
 name = "reasonable"
-version = "0.1.8"
+version = "0.1.9"
 authors = ["Gabe Fierro <gtfierro@cs.berkeley.edu>"]
 repository = "https://github.com/gtfierro/reasonable"
 homepage = "https://brickschema.org/"
@@ -65,4 +65,4 @@ name = "my_benchmark"
 harness = false
 
 [profile.release]
-debug = true
+debug = false

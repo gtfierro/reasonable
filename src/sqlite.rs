@@ -16,6 +16,7 @@ use rocket_contrib::json::Json;
 use rusqlite::params;
 use rusqlite::NO_PARAMS;
 use std::str;
+use std::env;
 use std::sync::mpsc;
 use std::sync::Mutex;
 use std::thread;
@@ -430,5 +431,6 @@ fn rocket(filename: &str) {
 
 fn main() {
     env_logger::init();
-    rocket("test.db");
+    let args: Vec<String> = env::args().collect();
+    rocket(&args[1]);
 }
