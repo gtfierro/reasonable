@@ -22,10 +22,12 @@ bench = false
 [[bin]]
 name = "bricksql"
 path = "src/sqlite.rs"
+required-features = ["sqlite"]
 bench = false
 
 [features]
 python-library = ["pyo3"]
+sqlite = ["rusqlite"]
 
 [dependencies]
 rdf = "0.1.4"
@@ -50,6 +52,7 @@ features = ["json"]
 
 [dependencies.rusqlite]
 version = "0.24"
+optional = true
 features = ["hooks", "functions"]
 
 [dependencies.pyo3]

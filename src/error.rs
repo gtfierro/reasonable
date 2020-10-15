@@ -3,6 +3,7 @@ use oxigraph::sparql;
 use std::io;
 use std::sync::mpsc::RecvError;
 
+#[cfg(feature = "sqlite")]
 #[derive(Debug)]
 pub enum ReasonableError {
     ManagerError(String),
@@ -10,6 +11,16 @@ pub enum ReasonableError {
     Parse(sparql::ParseError),
     Eval(sparql::EvaluationError),
     SQLite(rusqlite::Error),
+    ChannelRecv(RecvError),
+}
+
+#[cfg(not(feature = "sqlite"))]
+#[derive(Debug)]
+pub enum ReasonableError {
+    ManagerError(String),
+    IO(io::Error),
+    Parse(sparql::ParseError),
+    Eval(sparql::EvaluationError),
     ChannelRecv(RecvError),
 }
 
@@ -31,6 +42,7 @@ impl From<sparql::EvaluationError> for ReasonableError {
     }
 }
 
+#[cfg(feature = "sqlite")]
 impl From<rusqlite::Error> for ReasonableError {
     fn from(err: rusqlite::Error) -> ReasonableError {
         ReasonableError::SQLite(err)
