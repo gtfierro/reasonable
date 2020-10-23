@@ -5,9 +5,13 @@ use oxigraph::{
     io::{GraphFormat, GraphParser},
     model::*,
     sparql::{QueryOptions, QueryResults},
-    store::memory::MemoryPreparedQuery,
-    MemoryStore,
+    //store::memory::MemoryPreparedQuery,
+    //MemoryStore
+    store::sled::SledPreparedQuery,
+    SledStore,
 };
+use oxigraph::store::sled::SledConflictableTransactionError;
+use std::convert::Infallible;
 use rdf::{node::Node, uri::Uri};
 use std::collections::HashMap;
 use std::fmt;
@@ -93,7 +97,7 @@ impl<'a> ViewRef<'a> {
 pub struct ViewMetadata {
     pub query_string: String,
     pub table_name: String,
-    query: MemoryPreparedQuery,
+    query: SledPreparedQuery,
     columns: Vec<String>,
 }
 
@@ -170,7 +174,7 @@ impl fmt::Display for ViewMetadata {
 
 pub struct Manager {
     reasoner: Reasoner,
-    triple_store: MemoryStore,
+    triple_store: SledStore,
     views: HashMap<String, ViewMetadata>,
 }
 
@@ -178,7 +182,7 @@ impl Manager {
     pub fn new() -> Self {
         Manager {
             reasoner: Reasoner::new(),
-            triple_store: MemoryStore::new(),
+            triple_store: SledStore::open("graph.db").unwrap(),
             views: HashMap::new(),
         }
     }
@@ -187,7 +191,7 @@ impl Manager {
         self.triple_store.len()
     }
 
-    pub fn store(&self) -> MemoryStore {
+    pub fn store(&self) -> SledStore {
         self.triple_store.clone()
     }
 
@@ -237,32 +241,36 @@ impl Manager {
         self.reasoner.reason();
 
         // add reasoned triples to an in-memory store
-        for t in self.reasoner.view_output().iter() {
-            let s = match &t.0 {
-                Node::UriNode { uri } => {
-                    NamedOrBlankNode::NamedNode(NamedNode::new_unchecked(uri.to_string()))
-                }
-                Node::BlankNode { id } => {
-                    NamedOrBlankNode::BlankNode(BlankNode::new_unchecked(id.to_string()))
-                }
-                _ => panic!("no subject literals"),
-            };
-            let p = match &t.1 {
-                Node::UriNode { uri } => NamedNode::new_unchecked(uri.to_string()),
-                _ => panic!("no must be named node"),
-            };
-            let o = match &t.2 {
-                Node::UriNode { uri } => Term::NamedNode(NamedNode::new_unchecked(uri.to_string())),
-                Node::BlankNode { id } => Term::BlankNode(BlankNode::new_unchecked(id.to_string())),
-                Node::LiteralNode {
-                    literal,
-                    data_type: _,
-                    language: _,
-                } => Term::Literal(Literal::new_simple_literal(literal)),
-            };
-            self.triple_store
-                .insert(Quad::new(s, p, o, GraphName::DefaultGraph));
-        }
+        self.triple_store.transaction(|txn| {
+            for t in self.reasoner.view_output().iter() {
+                let s = match &t.0 {
+                    Node::UriNode { uri } => {
+                        NamedOrBlankNodeRef::NamedNode(NamedNodeRef::new_unchecked(uri.to_string()))
+                    }
+                    Node::BlankNode { id } => {
+                        NamedOrBlankNodeRef::BlankNode(BlankNodeRef::new_unchecked(id))
+                    }
+                    _ => panic!("no subject literals"),
+                };
+                let p = match &t.1 {
+                    Node::UriNode { uri } => NamedNodeRef::new_unchecked(uri.to_string()),
+                    _ => panic!("no must be named node"),
+                };
+                let o = match &t.2 {
+                    Node::UriNode { uri } => TermRef::NamedNode(NamedNodeRef::new_unchecked(uri.to_string())),
+                    Node::BlankNode { id } => TermRef::BlankNode(BlankNodeRef::new_unchecked(id)),
+                    Node::LiteralNode {
+                        literal,
+                        data_type: _,
+                        language: _,
+                    } => TermRef::Literal(LiteralRef::new_simple_literal(literal)),
+                };
+                    txn.insert(QuadRef::new(s, p, o, GraphNameRef::DefaultGraph))?;
+                //self.triple_store
+                //    .insert(QuadRef::new(s, p, o, GraphNameRef::DefaultGraph)).unwrap();
+            }
+            Ok(()) as std::result::Result<(),SledConflictableTransactionError<Infallible>>
+        }).unwrap();
         info!("now have {} triples", self.triple_store.len());
         info!(
             "refresh completed in {:.02}sec",

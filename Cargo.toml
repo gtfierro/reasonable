@@ -31,7 +31,7 @@ sqlite = ["rusqlite", "rocket", "rocket_contrib"]
 
 [dependencies]
 rdf = "0.1.4"
-oxigraph = "0.1.1"
+oxigraph = { version = "0.1.1", features = ["sled"] }
 fasthash = "0.4.0"
 datafrog = "2.0.1"
 roaring = "0.5.2"
