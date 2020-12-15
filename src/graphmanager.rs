@@ -1,22 +1,15 @@
-use crate::error::{ReasonableError, Result};
+use log::info;
 use crate::reasoner::Reasoner;
-use log::{debug, info};
 use oxigraph::{
-    io::{GraphFormat, GraphParser},
     model::*,
-    sparql::{QueryOptions, QueryResults},
     //store::memory::MemoryPreparedQuery,
     //MemoryStore
-    store::sled::SledPreparedQuery,
     SledStore,
 };
+use rdf::node::Node;
 use oxigraph::store::sled::SledConflictableTransactionError;
 use std::convert::Infallible;
-use rdf::{node::Node, uri::Uri};
 use std::collections::HashMap;
-use std::fmt;
-use std::fs;
-use std::io::Cursor;
 use std::string::String;
 use std::time::Instant;
 
@@ -26,6 +19,13 @@ pub struct GraphManager {
 }
 
 impl GraphManager {
+    pub fn new() -> Self {
+        GraphManager {
+            reasoners: HashMap::new(),
+            triple_store: SledStore::open("graph.db").unwrap(),
+        }
+    }
+
     pub fn add_triples(&mut self,  graph: Option<String>, triples: Vec<(Node, Node, Node)>) {
         let graphname = match graph {
             Some(g) => g,
