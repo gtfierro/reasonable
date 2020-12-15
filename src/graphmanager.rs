@@ -1,4 +1,3 @@
-use log::info;
 use crate::reasoner::Reasoner;
 use oxigraph::{
     model::*,
@@ -43,7 +42,10 @@ impl GraphManager {
         for (graphname, reasoner) in self.reasoners.iter_mut() {
             reasoner.reason();
 
-            info!("Inserting triples into {}", BlankNodeRef::new(graphname).unwrap());
+            let graphurn = format!("urn:{}", graphname);
+            let graph = GraphNameRef::NamedNode(NamedNodeRef::new(&graphurn).unwrap());
+            println!("Inserting triples into {}", graph);
+
 
             // add reasoned triples to an in-memory store
             self.triple_store.transaction(|txn| {
@@ -70,13 +72,13 @@ impl GraphManager {
                             language: _,
                         } => TermRef::Literal(LiteralRef::new_simple_literal(literal)),
                     };
-                        txn.insert(QuadRef::new(s, p, o, GraphNameRef::BlankNode(BlankNodeRef::new(graphname).unwrap())))?;
+                    txn.insert(QuadRef::new(s, p, o, graph))?;
                 }
                 Ok(()) as std::result::Result<(),SledConflictableTransactionError<Infallible>>
             }).unwrap();
         }
-        info!("now have {} triples", self.triple_store.len());
-        info!(
+        println!("now have {} triples", self.triple_store.len());
+        println!(
             "refresh completed in {:.02}sec",
             refresh_start.elapsed().as_secs_f64()
         );
