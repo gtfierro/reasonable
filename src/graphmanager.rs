@@ -43,6 +43,8 @@ impl GraphManager {
         for (graphname, reasoner) in self.reasoners.iter_mut() {
             reasoner.reason();
 
+            info!("Inserting triples into {}", BlankNodeRef::new(graphname).unwrap());
+
             // add reasoned triples to an in-memory store
             self.triple_store.transaction(|txn| {
                 for t in reasoner.view_output().iter() {
@@ -68,7 +70,7 @@ impl GraphManager {
                             language: _,
                         } => TermRef::Literal(LiteralRef::new_simple_literal(literal)),
                     };
-                        txn.insert(QuadRef::new(s, p, o, GraphNameRef::NamedNode(NamedNodeRef::new(graphname).unwrap())))?;
+                        txn.insert(QuadRef::new(s, p, o, GraphNameRef::BlankNode(BlankNodeRef::new(graphname).unwrap())))?;
                 }
                 Ok(()) as std::result::Result<(),SledConflictableTransactionError<Infallible>>
             }).unwrap();
