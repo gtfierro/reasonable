@@ -61,30 +61,30 @@ def get_triples(graph):
             };
             let p: Node = match _p.get_type().name().as_ref() {
                 "URIRef" => Node::UriNode {
-                    uri: Uri::new(_s.to_string()),
+                    uri: Uri::new(_p.to_string()),
                 },
                 "Litreal" => Node::LiteralNode {
-                    literal: _s.to_string(),
+                    literal: _p.to_string(),
                     data_type: None,
                     language: None,
                 },
-                "BNode" => Node::BlankNode { id: _s.to_string() },
+                "BNode" => Node::BlankNode { id: _p.to_string() },
                 _ => Node::UriNode {
-                    uri: Uri::new(_s.to_string()),
+                    uri: Uri::new(_p.to_string()),
                 },
             };
             let o: Node = match _o.get_type().name().as_ref() {
                 "URIRef" => Node::UriNode {
-                    uri: Uri::new(_s.to_string()),
+                    uri: Uri::new(_o.to_string()),
                 },
                 "Litreal" => Node::LiteralNode {
-                    literal: _s.to_string(),
+                    literal: _o.to_string(),
                     data_type: None,
                     language: None,
                 },
-                "BNode" => Node::BlankNode { id: _s.to_string() },
+                "BNode" => Node::BlankNode { id: _o.to_string() },
                 _ => Node::UriNode {
-                    uri: Uri::new(_s.to_string()),
+                    uri: Uri::new(_o.to_string()),
                 },
             };
             triples.push((s, p, o));
