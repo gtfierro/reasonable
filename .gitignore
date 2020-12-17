@@ -30,3 +30,5 @@ query/
 benches/
 dist/
 reasonable.egg-info
+.cargo
+.python-version
