@@ -49,7 +49,7 @@ def get_triples(graph):
                 "URIRef" => Node::UriNode {
                     uri: Uri::new(_s.to_string()),
                 },
-                "Litreal" => Node::LiteralNode {
+                "Literal" => Node::LiteralNode {
                     literal: _s.to_string(),
                     data_type: None,
                     language: None,
@@ -63,7 +63,7 @@ def get_triples(graph):
                 "URIRef" => Node::UriNode {
                     uri: Uri::new(_p.to_string()),
                 },
-                "Litreal" => Node::LiteralNode {
+                "Literal" => Node::LiteralNode {
                     literal: _p.to_string(),
                     data_type: None,
                     language: None,
@@ -77,7 +77,7 @@ def get_triples(graph):
                 "URIRef" => Node::UriNode {
                     uri: Uri::new(_o.to_string()),
                 },
-                "Litreal" => Node::LiteralNode {
+                "Literal" => Node::LiteralNode {
                     literal: _o.to_string(),
                     data_type: None,
                     language: None,

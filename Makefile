@@ -30,8 +30,10 @@ install-python-versions:
 	pyenv install $(PY37_VERSION)
 	pyenv install $(PY37_VERSION)
 
-python-library:
+build-python-library:
 	poetry run maturin build -i $(PY36_BIN) -i $(PY37_BIN) -i $(PY38_BIN) -b pyo3 --cargo-extra-args="--features python-library"
+
+publish-python-library: build-python-library
 	poetry run maturin publish -i $(PY36_BIN) -i $(PY37_BIN) -i $(PY38_BIN) -b pyo3 --cargo-extra-args="--features python-library"
 
 bench: build
