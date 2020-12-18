@@ -429,11 +429,6 @@ impl Reasoner {
         //  T(?x, owl:sameAs, ?y)  =>  T(?y, owl:sameAs, ?x)
         let owl_sameas_relation = node_relation!(self, owl!("sameAs"));
 
-        // eq-trans
-        // T(?x, owl:sameAs, ?y)
-        // T(?y, owl:sameAs, ?z)  =>  T(?x, owl:sameAs, ?z)
-        let eq_trans_1 = self.iter1.variable::<(URI, URI)>("eq_trans_1");
-
         // eq-rep-s, eq-rep-o, eq-rep-p
         // T(?s, owl:sameAs, ?s')
         // TODO: make more efficient
@@ -766,9 +761,7 @@ impl Reasoner {
                 // eq-trans
                 // T(?x, owl:sameAs, ?y)
                 // T(?y, owl:sameAs, ?z)  =>  T(?x, owl:sameAs, ?z)
-                eq_trans_1.from_join(&self.owl_same_as, &self.spo, |&x, &y, &(p, o)| (o, x));
-                self.all_triples_input
-                    .from_join(&self.owl_same_as, &eq_trans_1, |&y, &z, &x| {
+                self.all_triples_input.from_join(&self.owl_same_as, &self.owl_same_as, |&y, &z, &x| {
                         (x, (owlsameas_node, z))
                     });
 

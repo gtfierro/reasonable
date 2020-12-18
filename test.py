@@ -13,4 +13,4 @@ g2 = rdflib.Graph()
 for t in triples:
     print(t)
     g2.add(t)
-    g2.serialize('output.ttl', format='ttl')
+g2.serialize('output.ttl', format='ttl')
