@@ -25,7 +25,6 @@ impl PyReasoner {
     /// Loads in triples from an RDFlib Graph or any other object that can be converted into a list
     /// of triples (length-3 tuples of URI-formatted strings)
     pub fn from_graph(&mut self, graph: PyObject) -> PyResult<()> {
-        // TODO: add type information when we parse
         let gil = Python::acquire_gil();
         let py = gil.python();
         let converters = PyModule::from_code(
