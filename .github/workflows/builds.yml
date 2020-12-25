@@ -79,7 +79,7 @@ jobs:
 
       - name: Install Python dependencies
         run: |
-          pip install matrun rdflib
+          pip install maturin rdflib
           pip freeze
 
       - name: Build Python Library
