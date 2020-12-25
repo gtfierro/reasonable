@@ -1,6 +1,6 @@
 # Reasonable
 
-[![Build Status](https://travis-ci.org/gtfierro/reasonable.svg?branch=master)](https://travis-ci.org/gtfierro/reasonable)
+![Nightly Build](https://github.com/gtfierro/reasonable/workflows/Nightly%20Build/badge.svg)
 
 An OWL 2 RL reasoner with reasonable performance
 
