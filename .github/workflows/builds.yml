@@ -1,0 +1,81 @@
+name: Build
+on:
+  push:
+    branches:
+        - master
+  pull_request:
+    branches:
+        - master
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        rust:
+          # - stable
+          - nightly
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: ${{ matrix.rust }}
+          override: true
+          components: rustfmt, clippy
+
+      - uses: actions-rs/cargo@v1
+        with:
+          command: build
+          args: --release --features "sqlite"
+
+      - uses: actions-rs/cargo@v1
+        with:
+          command: test
+
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+
+      - uses: meeDamian/github-release@2.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: Nightly Build ${{ steps.date.outputs.date }}
+          tag: nightly
+          body: >
+            This is an automatically generated release
+          files: >
+            target/release/reasonable
+            target/release/bricksql
+          gzip: false
+          allow_override: true
+  python:
+    strategy:
+      matrix:
+        rust:
+          # - stable
+          - nightly
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python-version: [3.6.12, 3.7.9, 3.8.5, 3.9.0]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: ${{ matrix.rust }}
+          override: true
+          components: rustfmt, clippy
+
+      - uses: actions-rs/cargo@v1
+        with:
+          command: test
+
+      - name: Install Python dependencies
+        run: |
+          pip install matrun rdflib
+          pip freeze
+
+      - name: Build Python Library
+        run: |
+          maturin build -i python -b pyo3 -- cargo-extra-args="--features python-library"
+
