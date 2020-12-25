@@ -1,6 +1,8 @@
 # Reasonable
 
 ![Nightly Build](https://github.com/gtfierro/reasonable/workflows/Nightly%20Build/badge.svg)
+![Build](https://github.com/gtfierro/reasonable/workflows/Build/badge.svg)
+[![PyPI version](https://badge.fury.io/py/reasonable.svg)](https://badge.fury.io/py/reasonable)
 
 An OWL 2 RL reasoner with reasonable performance
 
