@@ -84,5 +84,5 @@ jobs:
 
       - name: Build Python Library
         run: |
-          maturin build -i python -b pyo3 -- cargo-extra-args="--features python-library"
+          maturin build -i python -b pyo3 --cargo-extra-args="--features python-library"
 
