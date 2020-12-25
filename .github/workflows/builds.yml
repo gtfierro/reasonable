@@ -86,3 +86,6 @@ jobs:
         run: |
           maturin build -i python -b pyo3 --cargo-extra-args="--features python-library"
 
+      - name: Publish Python Library
+        run: |
+          maturin publish -i python -b pyo3 --cargo-extra-args="--features python-library"
