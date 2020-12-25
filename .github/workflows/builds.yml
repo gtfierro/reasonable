@@ -87,5 +87,8 @@ jobs:
           maturin build -i python -b pyo3 --cargo-extra-args="--features python-library"
 
       - name: Publish Python Library
+        env:
+            PYPI_USER: ${{ secrets.PYPI_USER }}
+            MATURIN_PASSWORD: ${{ secrets.PYPI_PASS }}
         run: |
-          maturin publish -i python -b pyo3 --cargo-extra-args="--features python-library"
+          maturin publish -i python -b pyo3 --cargo-extra-args="--features python-library" -u $PYPI_USER
