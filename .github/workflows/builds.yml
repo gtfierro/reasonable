@@ -87,6 +87,7 @@ jobs:
           maturin build -i python -b pyo3 --cargo-extra-args="--features python-library"
 
       - name: Publish Python Library
+        continue-on-error: true
         env:
             PYPI_USER: ${{ secrets.PYPI_USER }}
             MATURIN_PASSWORD: ${{ secrets.PYPI_PASS }}
