@@ -57,7 +57,10 @@ impl GraphManager {
                         Node::BlankNode { id } => {
                             NamedOrBlankNodeRef::BlankNode(BlankNodeRef::new_unchecked(id))
                         }
-                        _ => panic!("no subject literals"),
+                        Node::LiteralNode { literal, data_type: _, language: _} => {
+                            println!("No subject literals! {}", literal);
+                            continue;
+                        }
                     };
                     let p = match &t.1 {
                         Node::UriNode { uri } => NamedNodeRef::new_unchecked(uri.to_string()),
