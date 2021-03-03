@@ -1278,6 +1278,13 @@ impl Reasoner {
                 let p = self.index.get(*_p).unwrap().clone();
                 let o = self.index.get(*_o).unwrap().clone();
                 (s, p, o)
+            }).filter(|(s, _p, _o)| match s {
+                Node::LiteralNode {
+                    literal: _,
+                    data_type: _,
+                    language: _,
+                } => false,
+                _ => true,
             })
             .collect();
         self.rebuild(output);
