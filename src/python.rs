@@ -20,11 +20,23 @@ impl From<&PyAny> for MyNode {
         //if let Ok(typestr) = s.get_type().name() {
         let typestr = s.get_type().name().unwrap();
         let data_type: Option<Uri> = match s.getattr("datatype") {
-            Ok(dt) => Some(Uri::new(dt.to_string())),
+            Ok(dt) => {
+                if dt.is_none() {
+                    None
+                } else {
+                    Some(Uri::new(dt.to_string()))
+                }
+            },
             Err(_) => None,
         };
         let lang: Option<String> = match s.getattr("language") {
-            Ok(l) => Some(l.to_string()),
+            Ok(l) => {
+                if l.is_none() {
+                    None
+                } else {
+                    Some(l.to_string())
+                }
+            },
             Err(_) => None,
         };
         let n: Node = match typestr {
@@ -46,34 +58,6 @@ impl From<&PyAny> for MyNode {
 }
 
 fn node_to_python<'a>(py: Python, rdflib: &'a PyModule, node: &'a Node) -> PyResult<&'a PyAny> {
-
-    //let dtype: Py<PyAny> = match node {
-    //    Node::LiteralNode{literal: _, data_type: Some(dt), language: _} =>  PyString::new(py, dt.to_string()).into(),
-    //    _ => py.None().into(),
-    //};
-    //let lang: Py<PyAny> = match node {
-    //    Node::LiteralNode{literal: _, data_type: _, language: Some(l)} => PyString::new(py, &l.to_string()).into(),
-    //    _ => py.None().into(),
-    //};
-
-    //if let Node::LiteralNode{literal: _, data_type: _, language: Some(l)} = node {
-    //    let s: &PyString = lang.as_ref(py).downcast()?;
-    //    println!("lang str {}", s.str()?);
-    //}
-    //let s: &PyString = dtype.as_ref(py).downcast()?;
-    //println!("dtype str {}", s.str()?);
-
-    //let res: &PyAny = match node {
-    //    Node::UriNode { ref uri } => rdflib.call1("URIRef", (uri.to_string(),))?,
-    //    Node::LiteralNode {
-    //        ref literal,
-    //        data_type: _,
-    //        language: _,
-    //    } => rdflib.call1("Literal", (literal.to_string(), lang, dtype))?,
-    //    Node::BlankNode { ref id } => rdflib.call1("BNode", (id.to_string(),))?,
-    //};
-    //Ok(res)
-
     let dtype: Option<&String> = match node {
         Node::LiteralNode{literal: _, data_type: Some(dt), language: _} =>  Some(dt.to_string()),
         _ => None,
@@ -90,9 +74,6 @@ fn node_to_python<'a>(py: Python, rdflib: &'a PyModule, node: &'a Node) -> PyRes
             data_type: _,
             language: _,
         } => {
-            if literal.contains("he temperature of water supplied by a hot water system") {
-                println!("dtype {:?} lang {:?}", dtype, lang);
-            }
             match (dtype, lang) {
                 (Some(dtype), Some(lang)) => rdflib.call1("Literal", (literal.to_string(), lang, dtype))?,
                 (None, Some(lang)) => rdflib.call1("Literal", (literal.to_string(), lang, py.None()))?,
