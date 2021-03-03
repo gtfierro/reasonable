@@ -24,7 +24,7 @@ test:
 
 # for macos, do
 # cp target/release/libreasonable.dylib reasonable/reasonable.so
-# this test is missing brick_inference_test.n3 so it doens't work 
+# this test is missing brick_inference_test.n3 so it doens't work
 test-python:
 	cargo build --lib --release --features "python-library"
 	cp ./target/release/libreasonable.so reasonable/reasonable.so
@@ -36,6 +36,10 @@ install-python-versions:
 	pyenv install -s $(PY37_VERSION)
 	pyenv install -s $(PY38_VERSION)
 	pyenv install -s $(PY39_VERSION)
+
+python-build-remove:
+	# cargo build --lib --release -v --features python-library -Zunstable-options -- --pretty=expanded
+	cargo rustc --lib --release  --features python-library --profile=check -- -Zunstable-options --pretty=expanded
 
 build-python-library:
 	poetry run maturin build -i $(PY36_BIN) -i $(PY37_BIN) -i $(PY38_BIN) -i $(PY39_BIN) -b pyo3 --cargo-extra-args="--features python-library"

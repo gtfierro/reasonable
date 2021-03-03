@@ -1,6 +1,6 @@
 [package]
 name = "reasonable"
-version = "0.1.25"
+version = "0.1.26"
 authors = ["Gabe Fierro <gtfierro@cs.berkeley.edu>"]
 repository = "https://github.com/gtfierro/reasonable"
 homepage = "https://brickschema.org/"
@@ -60,7 +60,7 @@ optional = true
 features = ["hooks", "functions"]
 
 [dependencies.pyo3]
-version = "0.9.0-alpha.1"
+version = "0.13.2"
 optional = true
 features = ["extension-module"]
 

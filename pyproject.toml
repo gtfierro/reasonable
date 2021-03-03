@@ -9,5 +9,5 @@ license = "bsd-3-clause"
 python = "^3.6"
 
 [tool.poetry.dev-dependencies]
-maturin = "^0.7.7"
+maturin = "^0.9.4"
 rdflib = "^5.0.0"

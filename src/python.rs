@@ -5,7 +5,7 @@ use pyo3::types::{PyList, PyTuple};
 use rdf::node::Node;
 use rdf::uri::Uri;
 
-#[pyclass]
+#[pyclass(name="Reasoner", unsendable)]
 /// `PyReasoner` implements a reasoner for the OWL 2 RL profile (see
 /// https://www.w3.org/TR/owl2-profiles/#OWL_2_RL for details).
 struct PyReasoner {
@@ -44,47 +44,66 @@ def get_triples(graph):
             let _p: &PyAny = t.get_item(1);
             let _o: &PyAny = t.get_item(2);
 
-            let s: Node = match _s.get_type().name().as_ref() {
-                "URIRef" => Node::UriNode {
-                    uri: Uri::new(_s.to_string()),
-                },
-                "Literal" => Node::LiteralNode {
-                    literal: _s.to_string(),
-                    data_type: None,
-                    language: None,
-                },
-                "BNode" => Node::BlankNode { id: _s.to_string() },
-                _ => Node::UriNode {
-                    uri: Uri::new(_s.to_string()),
-                },
+            let s: Node = {
+                if let Ok(typestr) = _s.get_type().name() {
+                    match typestr {
+                        "URIRef" => Node::UriNode {
+                            uri: Uri::new(_s.to_string()),
+                        },
+                        "Literal" => Node::LiteralNode {
+                            literal: _s.to_string(),
+                            data_type: Some(Uri::new(_s.getattr("datatype")?.to_string())),
+                            language: None,
+                        },
+                        "BNode" => Node::BlankNode { id: _s.to_string() },
+                        _ => Node::UriNode {
+                            uri: Uri::new(_s.to_string()),
+                        },
+                    }
+                } else {
+                    continue
+                }
             };
-            let p: Node = match _p.get_type().name().as_ref() {
-                "URIRef" => Node::UriNode {
-                    uri: Uri::new(_p.to_string()),
-                },
-                "Literal" => Node::LiteralNode {
-                    literal: _p.to_string(),
-                    data_type: None,
-                    language: None,
-                },
-                "BNode" => Node::BlankNode { id: _p.to_string() },
-                _ => Node::UriNode {
-                    uri: Uri::new(_p.to_string()),
-                },
+
+            let p: Node = {
+                if let Ok(typestr) = _p.get_type().name() {
+                    match typestr {
+                        "URIRef" => Node::UriNode {
+                            uri: Uri::new(_p.to_string()),
+                        },
+                        "Literal" => Node::LiteralNode {
+                            literal: _p.to_string(),
+                            data_type: Some(Uri::new(_p.getattr("datatype")?.to_string())),
+                            language: None,
+                        },
+                        "BNode" => Node::BlankNode { id: _p.to_string() },
+                        _ => Node::UriNode {
+                            uri: Uri::new(_p.to_string()),
+                        },
+                    }
+                } else {
+                    continue
+                }
             };
-            let o: Node = match _o.get_type().name().as_ref() {
-                "URIRef" => Node::UriNode {
-                    uri: Uri::new(_o.to_string()),
-                },
-                "Literal" => Node::LiteralNode {
-                    literal: _o.to_string(),
-                    data_type: None,
-                    language: None,
-                },
-                "BNode" => Node::BlankNode { id: _o.to_string() },
-                _ => Node::UriNode {
-                    uri: Uri::new(_o.to_string()),
-                },
+            let o: Node = {
+                if let Ok(typestr) = _o.get_type().name() {
+                    match typestr {
+                        "URIRef" => Node::UriNode {
+                            uri: Uri::new(_o.to_string()),
+                        },
+                        "Literal" => Node::LiteralNode {
+                            literal: _o.to_string(),
+                            data_type: Some(Uri::new(_o.getattr("datatype")?.to_string())),
+                            language: None,
+                        },
+                        "BNode" => Node::BlankNode { id: _o.to_string() },
+                        _ => Node::UriNode {
+                            uri: Uri::new(_o.to_string()),
+                        },
+                    }
+                } else {
+                    continue
+                }
             };
             triples.push((s, p, o));
         }
@@ -96,17 +115,19 @@ def get_triples(graph):
         Ok(())
     }
 
-    /// Loads in triples from a list
-    pub fn load_triples(&mut self, triples: Vec<(&'static str, &'static str, &'static str)>) {
-        self.reasoner.load_triples_str(triples);
-    }
+    // /// Loads in triples from a list
+    // pub fn load_triples(&mut self, triples: Vec<(&'static str, &'static str, &'static str)>) -> PyResult<()> {
+    //     self.reasoner.load_triples_str(triples);
+    //     Ok(())
+    // }
 
     /// Loads in triples from a file (turtle or n3 serialized)
     pub fn load_file(&mut self, file: String) -> PyResult<()> {
         // TODO: raise exception
         match self.reasoner.load_file(&file) {
             Ok(_) => Ok(()),
-            Err(msg) => Err(exceptions::IOError::py_err(msg)),
+            //Err(msg) => Err(exceptions::IOError::py_err(msg)),
+            Err(msg) => Err(exceptions::PyIOError::new_err(msg)),
         }
     }
 
@@ -125,27 +146,42 @@ def get_triples(graph):
                 Node::UriNode { ref uri } => rdflib.call1("URIRef", (uri.to_string(),))?,
                 Node::LiteralNode {
                     ref literal,
-                    data_type: _,
+                    data_type: None,
                     language: _,
-                } => rdflib.call1("Literal", (literal.to_string(),))?,
+                } => rdflib.call1("Literal", (literal.to_string(), ))?,
+                Node::LiteralNode {
+                    ref literal,
+                    data_type: Some(ref dtype),
+                    language: _,
+                } => rdflib.call1("Literal", (literal.to_string(), py.None(), dtype.to_string()))?,
                 Node::BlankNode { ref id } => rdflib.call1("BNode", (id.to_string(),))?,
             };
             let p = match &t.1 {
                 Node::UriNode { ref uri } => rdflib.call1("URIRef", (uri.to_string(),))?,
                 Node::LiteralNode {
                     ref literal,
-                    data_type: _,
+                    data_type: None,
                     language: _,
-                } => rdflib.call1("Literal", (literal.to_string(),))?,
+                } => rdflib.call1("Literal", (literal.to_string(), ))?,
+                Node::LiteralNode {
+                    ref literal,
+                    data_type: Some(ref dtype),
+                    language: _,
+                } => rdflib.call1("Literal", (literal.to_string(), py.None(), dtype.to_string()))?,
                 Node::BlankNode { ref id } => rdflib.call1("BNode", (id.to_string(),))?,
             };
             let o = match &t.2 {
                 Node::UriNode { ref uri } => rdflib.call1("URIRef", (uri.to_string(),))?,
                 Node::LiteralNode {
                     ref literal,
-                    data_type: _,
+                    data_type: None,
                     language: _,
-                } => rdflib.call1("Literal", (literal.to_string(),))?,
+                } => rdflib.call1("Literal", (literal.to_string(), ))?,
+                Node::LiteralNode {
+                    ref literal,
+                    data_type: Some(ref dtype),
+                    language: _,
+                } => rdflib.call1("Literal", (literal.to_string(), py.None(), dtype.to_string()))?,
                 Node::BlankNode { ref id } => rdflib.call1("BNode", (id.to_string(),))?,
             };
             res.push((s.into(), p.into(), o.into()));
