@@ -5,7 +5,8 @@ use pyo3::types::{PyList, PyTuple};
 use rdf::node::Node;
 use rdf::uri::Uri;
 
-#[pyclass(name = "Reasoner", unsendable)]
+// #[pyclass(name = "Reasoner", unsendable)]
+#[pyclass(unsendable)]
 /// `PyReasoner` implements a reasoner for the OWL 2 RL profile (see
 /// https://www.w3.org/TR/owl2-profiles/#OWL_2_RL for details).
 struct PyReasoner {
