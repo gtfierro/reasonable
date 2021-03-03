@@ -29,7 +29,7 @@ impl URIIndex {
                 ref literal,
                 data_type: _,
                 language: _,
-            } =>  literal.to_string(),
+            } => literal.to_string(),
             Node::BlankNode { ref id } => format!("_:{}", id.to_string()),
         };
         let h = hash(&s);

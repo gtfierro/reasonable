@@ -1,6 +1,7 @@
 use crate::error::{ReasonableError, Result};
 use crate::reasoner::Reasoner;
 use log::{debug, info};
+use oxigraph::store::sled::SledConflictableTransactionError;
 use oxigraph::{
     io::{GraphFormat, GraphParser},
     model::*,
@@ -10,10 +11,9 @@ use oxigraph::{
     store::sled::SledPreparedQuery,
     SledStore,
 };
-use oxigraph::store::sled::SledConflictableTransactionError;
-use std::convert::Infallible;
 use rdf::{node::Node, uri::Uri};
 use std::collections::HashMap;
+use std::convert::Infallible;
 use std::fmt;
 use std::fs;
 use std::io::Cursor;
@@ -241,36 +241,42 @@ impl Manager {
         self.reasoner.reason();
 
         // add reasoned triples to an in-memory store
-        self.triple_store.transaction(|txn| {
-            for t in self.reasoner.view_output().iter() {
-                let s = match &t.0 {
-                    Node::UriNode { uri } => {
-                        NamedOrBlankNodeRef::NamedNode(NamedNodeRef::new_unchecked(uri.to_string()))
-                    }
-                    Node::BlankNode { id } => {
-                        NamedOrBlankNodeRef::BlankNode(BlankNodeRef::new_unchecked(id))
-                    }
-                    _ => panic!("no subject literals"),
-                };
-                let p = match &t.1 {
-                    Node::UriNode { uri } => NamedNodeRef::new_unchecked(uri.to_string()),
-                    _ => panic!("no must be named node"),
-                };
-                let o = match &t.2 {
-                    Node::UriNode { uri } => TermRef::NamedNode(NamedNodeRef::new_unchecked(uri.to_string())),
-                    Node::BlankNode { id } => TermRef::BlankNode(BlankNodeRef::new_unchecked(id)),
-                    Node::LiteralNode {
-                        literal,
-                        data_type: _,
-                        language: _,
-                    } => TermRef::Literal(LiteralRef::new_simple_literal(literal)),
-                };
+        self.triple_store
+            .transaction(|txn| {
+                for t in self.reasoner.view_output().iter() {
+                    let s = match &t.0 {
+                        Node::UriNode { uri } => NamedOrBlankNodeRef::NamedNode(
+                            NamedNodeRef::new_unchecked(uri.to_string()),
+                        ),
+                        Node::BlankNode { id } => {
+                            NamedOrBlankNodeRef::BlankNode(BlankNodeRef::new_unchecked(id))
+                        }
+                        _ => panic!("no subject literals"),
+                    };
+                    let p = match &t.1 {
+                        Node::UriNode { uri } => NamedNodeRef::new_unchecked(uri.to_string()),
+                        _ => panic!("no must be named node"),
+                    };
+                    let o = match &t.2 {
+                        Node::UriNode { uri } => {
+                            TermRef::NamedNode(NamedNodeRef::new_unchecked(uri.to_string()))
+                        }
+                        Node::BlankNode { id } => {
+                            TermRef::BlankNode(BlankNodeRef::new_unchecked(id))
+                        }
+                        Node::LiteralNode {
+                            literal,
+                            data_type: _,
+                            language: _,
+                        } => TermRef::Literal(LiteralRef::new_simple_literal(literal)),
+                    };
                     txn.insert(QuadRef::new(s, p, o, GraphNameRef::DefaultGraph))?;
-                //self.triple_store
-                //    .insert(QuadRef::new(s, p, o, GraphNameRef::DefaultGraph)).unwrap();
-            }
-            Ok(()) as std::result::Result<(),SledConflictableTransactionError<Infallible>>
-        }).unwrap();
+                    //self.triple_store
+                    //    .insert(QuadRef::new(s, p, o, GraphNameRef::DefaultGraph)).unwrap();
+                }
+                Ok(()) as std::result::Result<(), SledConflictableTransactionError<Infallible>>
+            })
+            .unwrap();
         info!("now have {} triples", self.triple_store.len());
         info!(
             "refresh completed in {:.02}sec",

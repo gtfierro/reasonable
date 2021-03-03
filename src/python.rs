@@ -5,7 +5,7 @@ use pyo3::types::{PyList, PyTuple};
 use rdf::node::Node;
 use rdf::uri::Uri;
 
-#[pyclass(name="Reasoner", unsendable)]
+#[pyclass(name = "Reasoner", unsendable)]
 /// `PyReasoner` implements a reasoner for the OWL 2 RL profile (see
 /// https://www.w3.org/TR/owl2-profiles/#OWL_2_RL for details).
 struct PyReasoner {
@@ -61,7 +61,7 @@ def get_triples(graph):
                         },
                     }
                 } else {
-                    continue
+                    continue;
                 }
             };
 
@@ -82,7 +82,7 @@ def get_triples(graph):
                         },
                     }
                 } else {
-                    continue
+                    continue;
                 }
             };
             let o: Node = {
@@ -102,7 +102,7 @@ def get_triples(graph):
                         },
                     }
                 } else {
-                    continue
+                    continue;
                 }
             };
             triples.push((s, p, o));
@@ -148,12 +148,15 @@ def get_triples(graph):
                     ref literal,
                     data_type: None,
                     language: _,
-                } => rdflib.call1("Literal", (literal.to_string(), ))?,
+                } => rdflib.call1("Literal", (literal.to_string(),))?,
                 Node::LiteralNode {
                     ref literal,
                     data_type: Some(ref dtype),
                     language: _,
-                } => rdflib.call1("Literal", (literal.to_string(), py.None(), dtype.to_string()))?,
+                } => rdflib.call1(
+                    "Literal",
+                    (literal.to_string(), py.None(), dtype.to_string()),
+                )?,
                 Node::BlankNode { ref id } => rdflib.call1("BNode", (id.to_string(),))?,
             };
             let p = match &t.1 {
@@ -162,12 +165,15 @@ def get_triples(graph):
                     ref literal,
                     data_type: None,
                     language: _,
-                } => rdflib.call1("Literal", (literal.to_string(), ))?,
+                } => rdflib.call1("Literal", (literal.to_string(),))?,
                 Node::LiteralNode {
                     ref literal,
                     data_type: Some(ref dtype),
                     language: _,
-                } => rdflib.call1("Literal", (literal.to_string(), py.None(), dtype.to_string()))?,
+                } => rdflib.call1(
+                    "Literal",
+                    (literal.to_string(), py.None(), dtype.to_string()),
+                )?,
                 Node::BlankNode { ref id } => rdflib.call1("BNode", (id.to_string(),))?,
             };
             let o = match &t.2 {
@@ -176,12 +182,15 @@ def get_triples(graph):
                     ref literal,
                     data_type: None,
                     language: _,
-                } => rdflib.call1("Literal", (literal.to_string(), ))?,
+                } => rdflib.call1("Literal", (literal.to_string(),))?,
                 Node::LiteralNode {
                     ref literal,
                     data_type: Some(ref dtype),
                     language: _,
-                } => rdflib.call1("Literal", (literal.to_string(), py.None(), dtype.to_string()))?,
+                } => rdflib.call1(
+                    "Literal",
+                    (literal.to_string(), py.None(), dtype.to_string()),
+                )?,
                 Node::BlankNode { ref id } => rdflib.call1("BNode", (id.to_string(),))?,
             };
             res.push((s.into(), p.into(), o.into()));
