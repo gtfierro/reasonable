@@ -1,7 +1,7 @@
 use crate::reasoner;
 use pyo3::exceptions;
 use pyo3::prelude::*;
-use pyo3::types::{PyList, PyTuple};
+use pyo3::types::{PyList, PyTuple, PyString};
 use rdf::node::Node;
 use rdf::uri::Uri;
 use std::convert::From;
@@ -45,15 +45,15 @@ impl From<&PyAny> for MyNode {
     }
 }
 
-fn node_to_python<'a>(rdflib: &'a PyModule, node: &'a Node) -> PyResult<&'a PyAny> {
+fn node_to_python<'a>(py: Python, rdflib: &'a PyModule, node: &'a Node) -> PyResult<&'a PyAny> {
 
-    let dtype: Option<&String> = match node {
-        Node::LiteralNode{literal: _, data_type: Some(dt), language: _} => Some(dt.to_string()),
-        _ => None,
+    let dtype: Py<PyAny> = match node {
+        Node::LiteralNode{literal: _, data_type: Some(dt), language: _} => PyString::new(py, dt.to_string()).into(),
+        _ => py.None().into(),
     };
-    let lang: Option<String> = match node {
-        Node::LiteralNode{literal: _, data_type: _, language: Some(l)} => Some(l.to_string()),
-        _ => None,
+    let lang: Py<PyAny> = match node {
+        Node::LiteralNode{literal: _, data_type: _, language: Some(l)} => PyString::new(py, &l.to_string()).into(),
+        _ => py.None().into(),
     };
 
     let res: &PyAny = match node {
@@ -166,9 +166,9 @@ def get_triples(graph):
         self.reasoner.reason();
         let mut res = Vec::new();
         for t in self.reasoner.get_triples() {
-            let s = node_to_python(rdflib, &t.0)?;
-            let p = node_to_python(rdflib, &t.1)?;
-            let o = node_to_python(rdflib, &t.2)?;
+            let s = node_to_python(py, rdflib, &t.0)?;
+            let p = node_to_python(py, rdflib, &t.1)?;
+            let o = node_to_python(py, rdflib, &t.2)?;
             res.push((s.into(), p.into(), o.into()));
         }
         Ok(res)
