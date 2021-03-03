@@ -41,6 +41,10 @@ python-build-remove:
 	# cargo build --lib --release -v --features python-library -Zunstable-options -- --pretty=expanded
 	cargo rustc --lib --release  --features python-library --profile=check -- -Zunstable-options --pretty=expanded
 
+dev-python-library:
+	poetry run maturin develop -b pyo3 --cargo-extra-args="--features python-library --release"
+	poetry run python lang.py
+
 build-python-library:
 	poetry run maturin build -i $(PY36_BIN) -i $(PY37_BIN) -i $(PY38_BIN) -i $(PY39_BIN) -b pyo3 --cargo-extra-args="--features python-library"
 
