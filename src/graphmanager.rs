@@ -45,7 +45,6 @@ impl GraphManager {
 
             let graphurn = format!("urn:{}", graphname);
             let graph = GraphNameRef::NamedNode(NamedNodeRef::new(&graphurn).unwrap());
-            println!("Inserting triples into {}", graph);
 
             // add reasoned triples to an in-memory store
             self.triple_store
