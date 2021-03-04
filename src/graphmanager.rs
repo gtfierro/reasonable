@@ -38,6 +38,7 @@ impl GraphManager {
     }
 
     fn refresh_graph(&mut self, graphname: &str) {
+        println!("Refreshing {}", graphname);
         let reasoner = self.reasoners.get_mut(graphname).unwrap();
         reasoner.reason();
         let graphurn = format!("urn:{}", graphname);
