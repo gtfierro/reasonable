@@ -43,7 +43,7 @@ jobs:
           body: >
             This is an automatically generated release
           files: >
-            target/release/reasonable
-            target/release/bricksql
+            target/release/reasonable-${{ matrix.os }}
+            target/release/bricksql-${{ matrix.os }}
           gzip: false
           allow_override: true
