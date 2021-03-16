@@ -1,6 +1,5 @@
 name: Nightly Build
 on:
-  push:
   schedule:
     - cron: '0 2 * * *' # run at 2 AM UTC
 
