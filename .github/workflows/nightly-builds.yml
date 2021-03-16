@@ -1,5 +1,6 @@
 name: Nightly Build
 on:
+  push:
   schedule:
     - cron: '0 2 * * *' # run at 2 AM UTC
 
@@ -35,15 +36,12 @@ jobs:
         id: date
         run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
 
-      - uses: meeDamian/github-release@2.0
+      - uses: marvinpinto/action-automatic-releases@latest
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          name: Nightly Build ${{ steps.date.outputs.date }}
-          tag: nightly
-          body: >
-            This is an automatically generated release
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          prerelease: true
+          automatic_release_tag: nightly
+          title: Nightly Build ${{ steps.date.outputs.date }}
           files: >
             target/release/reasonable-${{ matrix.os }}
             target/release/bricksql-${{ matrix.os }}
-          gzip: false
-          allow_override: true
