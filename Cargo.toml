@@ -19,15 +19,8 @@ name = "reasonable"
 path = "src/main.rs"
 bench = false
 
-[[bin]]
-name = "bricksql"
-path = "src/sqlite.rs"
-required-features = ["sqlite"]
-bench = false
-
 [features]
 python-library = ["pyo3"]
-sqlite = ["rusqlite", "rocket", "rocket_contrib"]
 
 [dependencies]
 rdf = "0.1.4"
@@ -44,21 +37,6 @@ serde = "1.0"
 serde_json = "1.0"
 serde_derive = "1.0"
 tinytemplate = "1.2.1"
-
-[dependencies.rocket]
-version = "0.4.5"
-optional = true
-
-[dependencies.rocket_contrib]
-version = "0.4.5"
-default-features = false
-optional = true
-features = ["json"]
-
-[dependencies.rusqlite]
-version = "0.24"
-optional = true
-features = ["hooks", "functions"]
 
 [dependencies.pyo3]
 version = "0.13.2"

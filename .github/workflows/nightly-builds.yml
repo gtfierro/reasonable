@@ -25,7 +25,7 @@ jobs:
       - uses: actions-rs/cargo@v1
         with:
           command: build
-          args: --release --features "sqlite"
+          args: --release
 
       - uses: actions-rs/cargo@v1
         with:
@@ -43,4 +43,3 @@ jobs:
           title: Nightly Build ${{ steps.date.outputs.date }}
           files: >
             target/release/reasonable-${{ matrix.os }}
-            target/release/bricksql-${{ matrix.os }}

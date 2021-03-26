@@ -27,7 +27,7 @@ jobs:
       - uses: actions-rs/cargo@v1
         with:
           command: build
-          args: --release --features "sqlite"
+          args: --release
 
       - uses: actions-rs/cargo@v1
         with:
@@ -46,7 +46,6 @@ jobs:
             This is an automatically generated release
           files: >
             target/release/reasonable
-            target/release/bricksql
           gzip: false
           allow_override: true
   python:
