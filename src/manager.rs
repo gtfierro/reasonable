@@ -1,20 +1,14 @@
-use crate::error::{ReasonableError, Result};
+use crate::error::Result;
 use crate::reasoner::Reasoner;
 use log::{debug, info};
 use oxigraph::store::sled::SledConflictableTransactionError;
 use oxigraph::{
     io::{GraphFormat, GraphParser},
     model::*,
-    sparql::{QueryOptions, QueryResults},
-    //store::memory::MemoryPreparedQuery,
-    //MemoryStore
-    store::sled::SledPreparedQuery,
     SledStore,
 };
 use rdf::{node::Node, uri::Uri};
-use std::collections::HashMap;
 use std::convert::Infallible;
-use std::fmt;
 use std::fs;
 use std::io::Cursor;
 use std::string::String;
@@ -49,133 +43,9 @@ const qfmt: &str = "PREFIX brick: <https://brickschema.org/schema/1.1/Brick#>
     PREFIX qudt: <http://qudt.org/schema/qudt/>
     ";
 
-pub struct ViewRef<'a> {
-    // columns: &'a Vec<String>,
-    md: &'a ViewMetadata,
-}
-
-impl<'a> ViewRef<'a> {
-    pub fn columns(&self) -> &'a [String] {
-        &self.md.columns
-    }
-    pub fn name(&self) -> &str {
-        &self.md.table_name
-    }
-
-    pub fn contents(&self) -> Result<Vec<Vec<Term>>> {
-        let res = self.md.query.exec()?;
-        let mut rows: Vec<Vec<Term>> = Vec::new();
-        if let QueryResults::Solutions(solutions) = res {
-            for soln in solutions {
-                let vals = soln?;
-                let mut row: Vec<Term> = Vec::new();
-                for col in self.md.columns.iter() {
-                    row.push(vals.get(col.as_str()).unwrap().clone());
-                }
-                rows.push(row);
-            }
-        }
-        Ok(rows)
-    }
-    pub fn contents_string(&self) -> Result<Vec<Vec<String>>> {
-        let res = self.md.query.exec()?;
-        let mut rows: Vec<Vec<String>> = Vec::new();
-        if let QueryResults::Solutions(solutions) = res {
-            for soln in solutions {
-                let vals = soln?;
-                let mut row: Vec<String> = Vec::new();
-                for col in self.md.columns.iter() {
-                    row.push(vals.get(col.as_str()).unwrap().to_string());
-                }
-                rows.push(row);
-            }
-        }
-        Ok(rows)
-    }
-}
-
-pub struct ViewMetadata {
-    pub query_string: String,
-    pub table_name: String,
-    query: SledPreparedQuery,
-    columns: Vec<String>,
-}
-
-impl ViewMetadata {
-    pub fn contents_string(&self) -> Result<Vec<Vec<String>>> {
-        let res = self.query.exec()?;
-        let mut rows: Vec<Vec<String>> = Vec::new();
-        if let QueryResults::Solutions(solutions) = res {
-            for soln in solutions {
-                let vals = soln?;
-                let mut row: Vec<String> = Vec::new();
-                for col in self.columns.iter() {
-                    let s = match vals.get(col.as_str()).unwrap() {
-                        Term::NamedNode(named) => named.clone().into_string(),
-                        Term::BlankNode(bnode) => bnode.clone().into_string(),
-                        Term::Literal(lit) => lit.value().to_string(),
-                    };
-                    row.push(s);
-                }
-                rows.push(row);
-            }
-        }
-        Ok(rows)
-    }
-    pub fn name(&self) -> &str {
-        &self.table_name
-    }
-    pub fn columns(&self) -> &[String] {
-        &self.columns
-    }
-
-    pub fn get_insert_sql(&self) -> String {
-        let cols: String = self
-            .columns()
-            .to_vec()
-            .iter()
-            .map(|c| c.to_string())
-            .collect::<Vec<String>>()
-            .join(", ");
-        let inps: String = (0..self.columns().len())
-            .map(|_| "?".to_string())
-            .collect::<Vec<String>>()
-            .join(", ");
-        format!(
-            "INSERT INTO view_{}({}) VALUES ({});",
-            self.table_name, cols, inps
-        )
-    }
-
-    pub fn get_create_tab(&self) -> String {
-        let cols: String = self
-            .columns()
-            .to_vec()
-            .iter()
-            .map(|c| format!("{} TEXT", c))
-            .collect::<Vec<String>>()
-            .join(", ");
-        format!(
-            "CREATE TABLE IF NOT EXISTS view_{}({});",
-            self.table_name, cols
-        )
-    }
-
-    pub fn get_delete_tab(&self) -> String {
-        format!("DELETE FROM view_{};", self.table_name)
-    }
-}
-
-impl fmt::Display for ViewMetadata {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "<name: {}, cols {:?}>", self.table_name, self.columns)
-    }
-}
-
 pub struct Manager {
     reasoner: Reasoner,
     triple_store: SledStore,
-    views: HashMap<String, ViewMetadata>,
 }
 
 impl Manager {
@@ -183,7 +53,6 @@ impl Manager {
         Manager {
             reasoner: Reasoner::new(),
             triple_store: SledStore::open("graph.db").unwrap(),
-            views: HashMap::new(),
         }
     }
 
@@ -290,82 +159,8 @@ impl Manager {
         self.reasoner.load_triples(triples);
         self.refresh();
     }
-
-    /// Adds a view with the given name, defined by the provided SPARQL query
-    pub fn add_view(&mut self, name: String, query: &str) -> Result<ViewRef> {
-        // execute query to get the schema?
-        let sparql = format!("{}{}", qfmt, query);
-
-        let q = self
-            .triple_store
-            .prepare_query(&sparql, QueryOptions::default())?;
-
-        debug!("query: {}", sparql);
-        let res = q.exec()?;
-        if let QueryResults::Solutions(solutions) = res {
-            let name_key = name.clone();
-            let view_key = name.clone();
-            let md = ViewMetadata {
-                query: q,
-                query_string: query.to_string(),
-                table_name: name,
-                columns: solutions
-                    .variables()
-                    .to_vec()
-                    .into_iter()
-                    .map(|t| t.into_string())
-                    .collect(),
-            };
-            self.views.insert(name_key, md);
-
-            return Ok(ViewRef {
-                md: self.views.get(&view_key).unwrap(),
-            });
-        };
-        Err(ReasonableError::ManagerError("no solutions".to_string()))
-    }
-
-    pub fn add_view2(&self, name: String, query: &str) -> Result<ViewMetadata> {
-        let sparql = format!("{}{}", qfmt, query);
-
-        let q = self
-            .triple_store
-            .prepare_query(&sparql, QueryOptions::default())?;
-
-        debug!("query: {}", sparql);
-        let res = q.exec()?;
-        if let QueryResults::Solutions(solutions) = res {
-            return Ok(ViewMetadata {
-                query: q,
-                query_string: query.to_string(),
-                table_name: name,
-                columns: solutions
-                    .variables()
-                    .to_vec()
-                    .into_iter()
-                    .map(|t| t.into_string())
-                    .collect(),
-            });
-        }
-        Err(ReasonableError::ManagerError("no solutions".to_string()))
-    }
-
-    pub fn get_view(&self, view: &ViewRef) -> Result<Vec<Vec<Term>>> {
-        let res = view.md.query.exec()?;
-        let mut rows: Vec<Vec<Term>> = Vec::new();
-        if let QueryResults::Solutions(solutions) = res {
-            for soln in solutions {
-                let vals = soln?;
-                let mut row: Vec<Term> = Vec::new();
-                for col in view.md.columns.iter() {
-                    row.push(vals.get(col.as_str()).unwrap().clone());
-                }
-                rows.push(row);
-            }
-        }
-        Ok(rows)
-    }
 }
+
 
 pub fn parse_file(filename: &str) -> Result<Vec<(Node, Node, Node)>> {
     let gfmt: GraphFormat = if filename.ends_with(".ttl") {
