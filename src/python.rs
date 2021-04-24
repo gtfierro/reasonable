@@ -4,7 +4,6 @@ use pyo3::exceptions;
 use pyo3::prelude::*;
 use pyo3::types::{PyList, PyTuple};
 use oxigraph::model::{Term, NamedNode, BlankNode, Literal, Triple};
-use rdf::node::Node;
 use std::convert::From;
 
 // #[pyclass(name = "Reasoner", unsendable)]
@@ -57,7 +56,12 @@ impl From<&PyAny> for MyTerm {
 
 fn term_to_python<'a>(py: Python, rdflib: &'a PyModule, node: Term) -> PyResult<&'a PyAny> {
     let dtype: Option<String> = match &node {
-        Term::Literal(lit) =>  Some(lit.datatype().to_string()),
+        Term::Literal(lit) =>  {
+            let mut s = lit.datatype().to_string();
+            s.remove(0);
+            s.remove(s.len()-1);
+            Some(s)
+        },
         _ => None,
     };
     let lang: Option<&str> = match &node {
@@ -66,11 +70,16 @@ fn term_to_python<'a>(py: Python, rdflib: &'a PyModule, node: Term) -> PyResult<
     };
 
     let res: &PyAny = match &node {
-        Term::NamedNode(uri) => rdflib.call1("URIRef", (uri.to_string(),))?,
+        Term::NamedNode(uri) => {
+            let mut uri = uri.to_string();
+            uri.remove(0);
+            uri.remove(uri.len()-1);
+            rdflib.call1("URIRef", (uri,))?
+        },
         Term::Literal(literal) => {
             match (dtype, lang) {
-                (Some(dtype), Some(lang)) => rdflib.call1("Literal", (literal.to_string(), lang, dtype))?,
-                (None, Some(lang)) => rdflib.call1("Literal", (literal.to_string(), lang, py.None()))?,
+                // prioritize 'lang' -> it implies String
+                (_, Some(lang)) => rdflib.call1("Literal", (literal.to_string(), lang, py.None()))?,
                 (Some(dtype), None) => rdflib.call1("Literal", (literal.to_string(), py.None(), dtype))?,
                 (None, None) => rdflib.call1("Literal", (literal.to_string(), ))?,
             }
