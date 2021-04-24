@@ -1,9 +1,10 @@
 use crate::reasoner;
+use crate::common::make_triple;
 use pyo3::exceptions;
 use pyo3::prelude::*;
 use pyo3::types::{PyList, PyTuple};
+use oxigraph::model::{Term, NamedNode, BlankNode, Literal, Triple};
 use rdf::node::Node;
-use rdf::uri::Uri;
 use std::convert::From;
 
 // #[pyclass(name = "Reasoner", unsendable)]
@@ -14,17 +15,17 @@ struct PyReasoner {
     reasoner: reasoner::Reasoner,
 }
 
-struct MyNode(Node);
-impl From<&PyAny> for MyNode {
+struct MyTerm(Term);
+impl From<&PyAny> for MyTerm {
     fn from(s: &PyAny) -> Self {
         //if let Ok(typestr) = s.get_type().name() {
         let typestr = s.get_type().name().unwrap();
-        let data_type: Option<Uri> = match s.getattr("datatype") {
+        let data_type: Option<NamedNode> = match s.getattr("datatype") {
             Ok(dt) => {
                 if dt.is_none() {
                     None
                 } else {
-                    Some(Uri::new(dt.to_string()))
+                    Some(NamedNode::new(dt.to_string()).unwrap())
                 }
             },
             Err(_) => None,
@@ -39,41 +40,34 @@ impl From<&PyAny> for MyNode {
             },
             Err(_) => None,
         };
-        let n: Node = match typestr {
-            "URIRef" => Node::UriNode {
-                uri: Uri::new(s.to_string()),
+        let n: Term = match typestr {
+            "URIRef" => Term::NamedNode(NamedNode::new(s.to_string()).unwrap()),
+            "Literal" => match (data_type, lang) {
+                (Some(dt), None) => Term::Literal(Literal::new_typed_literal(s.to_string(), dt)),
+                (None, Some(l)) => Term::Literal(Literal::new_language_tagged_literal(s.to_string(), l).unwrap()),
+                (None, None) => Term::Literal(Literal::new_simple_literal(s.to_string())),
+                (_, _) => Term::Literal(Literal::new_simple_literal(s.to_string())),
             },
-            "Literal" => Node::LiteralNode {
-                literal: s.to_string(),
-                data_type: data_type,
-                language: lang,
-            },
-            "BNode" => Node::BlankNode { id: s.to_string() },
-            _ => Node::UriNode {
-                uri: Uri::new(s.to_string()),
-            },
+            "BNode" => Term::BlankNode(BlankNode::new(s.to_string()).unwrap()),
+            _ => Term::NamedNode(NamedNode::new(s.to_string()).unwrap()),
         };
-       MyNode(n)
+       MyTerm(n)
     }
 }
 
-fn node_to_python<'a>(py: Python, rdflib: &'a PyModule, node: &'a Node) -> PyResult<&'a PyAny> {
-    let dtype: Option<&String> = match node {
-        Node::LiteralNode{literal: _, data_type: Some(dt), language: _} =>  Some(dt.to_string()),
+fn term_to_python<'a>(py: Python, rdflib: &'a PyModule, node: Term) -> PyResult<&'a PyAny> {
+    let dtype: Option<String> = match &node {
+        Term::Literal(lit) =>  Some(lit.datatype().to_string()),
         _ => None,
     };
-    let lang: Option<&String> = match node {
-        Node::LiteralNode{literal: _, data_type: _, language: Some(l)} => Some(&l),
+    let lang: Option<&str> = match &node {
+        Term::Literal(lit) => lit.language(),
         _ => None,
     };
 
-    let res: &PyAny = match node {
-        Node::UriNode { ref uri } => rdflib.call1("URIRef", (uri.to_string(),))?,
-        Node::LiteralNode {
-            ref literal,
-            data_type: _,
-            language: _,
-        } => {
+    let res: &PyAny = match &node {
+        Term::NamedNode(uri) => rdflib.call1("URIRef", (uri.to_string(),))?,
+        Term::Literal(literal) => {
             match (dtype, lang) {
                 (Some(dtype), Some(lang)) => rdflib.call1("Literal", (literal.to_string(), lang, dtype))?,
                 (None, Some(lang)) => rdflib.call1("Literal", (literal.to_string(), lang, py.None()))?,
@@ -81,12 +75,12 @@ fn node_to_python<'a>(py: Python, rdflib: &'a PyModule, node: &'a Node) -> PyRes
                 (None, None) => rdflib.call1("Literal", (literal.to_string(), ))?,
             }
         }
-        Node::BlankNode { ref id } => rdflib.call1("BNode", (id.to_string(),))?,
+        Term::BlankNode(id) => rdflib.call1("BNode", (id.to_string(),))?,
     };
     Ok(res)
 }
 
-//impl TryFrom<&PyAny> for MyNode {
+//impl TryFrom<&PyAny> for MyTerm {
 //    type Error = PyErr;
 //    fn try_from(s: &PyAny) -> Result<Self, Self::Error> {
 //        if let Ok(typestr) = s.get_type().name() {
@@ -111,7 +105,7 @@ fn node_to_python<'a>(py: Python, rdflib: &'a PyModule, node: &'a Node) -> PyRes
 //                    uri: Uri::new(s.to_string()),
 //                },
 //            };
-//            Ok(MyNode(n))
+//            Ok(MyTerm(n))
 //        } else {
 //            Err(exceptions::PyValueError::new_err("No type available"))
 //        }
@@ -143,13 +137,13 @@ def get_triples(graph):
             "converters",
         )?;
         let l: &PyList = converters.call1("get_triples", (graph,))?.downcast()?;
-        let mut triples: Vec<(Node, Node, Node)> = Vec::new();
+        let mut triples: Vec<Triple> = Vec::new();
         for t in l.iter() {
             let t: &PyTuple = t.downcast()?;
-            let s = MyNode::from(t.get_item(0)).0;
-            let p = MyNode::from(t.get_item(1)).0;
-            let o = MyNode::from(t.get_item(2)).0;
-            triples.push((s, p, o));
+            let s = MyTerm::from(t.get_item(0)).0;
+            let p = MyTerm::from(t.get_item(1)).0;
+            let o = MyTerm::from(t.get_item(2)).0;
+            triples.push(make_triple(s, p, o)?);
         }
         //let l: Vec<(PyObject, PyObject, PyObject)> = converters.call1("get_triples", (graph,))?.extract()?;
         //for t in l {
@@ -184,9 +178,9 @@ def get_triples(graph):
         self.reasoner.reason();
         let mut res = Vec::new();
         for t in self.reasoner.get_triples() {
-            let s = node_to_python(py, rdflib, &t.0)?;
-            let p = node_to_python(py, rdflib, &t.1)?;
-            let o = node_to_python(py, rdflib, &t.2)?;
+            let s = term_to_python(py, rdflib, Term::from(t.subject.clone()))?;
+            let p = term_to_python(py, rdflib, Term::from(t.predicate.clone()))?;
+            let o = term_to_python(py, rdflib, Term::from(t.object.clone()))?;
             res.push((s.into(), p.into(), o.into()));
         }
         Ok(res)
