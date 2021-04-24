@@ -1,7 +1,7 @@
 extern crate datafrog;
 extern crate disjoint_sets;
 
-use crate::common::{Triple, URI};
+use crate::common::{KeyedTriple, URI};
 use crate::index::URIIndex;
 use datafrog::Iteration;
 use disjoint_sets::UnionFind;
@@ -15,7 +15,7 @@ pub struct DisjointSets {
 }
 
 impl DisjointSets {
-    pub fn new(input: &Vec<Triple>) -> Self {
+    pub fn new(input: &Vec<KeyedTriple>) -> Self {
         let mut lists: HashMap<URI, Vec<URI>> = HashMap::new();
         // keeps track of data associated with each list element
         let mut values: HashMap<URI, URI> = HashMap::new();
@@ -44,9 +44,9 @@ impl DisjointSets {
 
         // index lets us map u64s to the actual URIs
         let mut index = URIIndex::new();
-        let rdffirst_node = index.put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#first");
-        let rdfrest_node = index.put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#rest");
-        let rdfnil_node = index.put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#nil");
+        let rdffirst_node = index.put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#first").unwrap();
+        let rdfrest_node = index.put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#rest").unwrap();
+        let rdfnil_node = index.put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#nil").unwrap();
 
         // data structures for building up the "first" and "rest" lists
         let mut list_iter = Iteration::new();
@@ -54,7 +54,7 @@ impl DisjointSets {
         rdffirst.extend(vec![(rdffirst_node, ())]);
         let rdfrest = list_iter.variable::<(URI, ())>("rdfrest");
         rdfrest.extend(vec![(rdfrest_node, ())]);
-        let list_triples = list_iter.variable::<Triple>("list_triples");
+        let list_triples = list_iter.variable::<KeyedTriple>("list_triples");
         list_triples.extend(input.iter().map(|&(s, (p, o))| (p, (s, o))));
         let rdf_firsts = list_iter.variable::<()>("rdf_firsts");
         let rdf_rests = list_iter.variable::<()>("rdf_rests");

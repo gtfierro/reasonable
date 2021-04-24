@@ -7,13 +7,12 @@ use crate::disjoint_sets::DisjointSets;
 use crate::index::URIIndex;
 
 use log::{debug, error, info};
+use oxigraph::io::{GraphFormat, GraphParser};
+use oxigraph::model::{Term, NamedNode, Triple};
+use std::io::BufReader;
+
 use rdf::graph::Graph;
 use rdf::namespace::Namespace;
-use rdf::node::Node;
-use rdf::reader::n_triples_parser::NTriplesParser;
-use rdf::reader::rdf_parser::RdfParser;
-use rdf::reader::turtle_parser::TurtleParser;
-use rdf::triple;
 use rdf::uri::Uri;
 use rdf::writer::rdf_writer::RdfWriter;
 use rdf::writer::turtle_writer::TurtleWriter;
@@ -21,7 +20,7 @@ use std::cell::RefCell;
 use std::collections::{HashMap, HashSet};
 use std::fmt;
 use std::fs;
-use std::io::{Error, Write};
+use std::io::{Error, Write, ErrorKind};
 use std::rc::Rc;
 // use rdf::writer::n_triples_writer::NTriplesWriter;
 use crate::common::*;
@@ -68,29 +67,29 @@ impl fmt::Display for ReasoningError {
 pub struct Reasoner {
     iter1: Iteration,
     index: URIIndex,
-    input: Vec<Triple>,
+    input: Vec<KeyedTriple>,
     errors: Vec<ReasoningError>,
-    output: Vec<(Node, Node, Node)>,
+    output: Vec<Triple>,
 
-    spo: Variable<Triple>,
-    pso: Variable<Triple>,
-    osp: Variable<Triple>,
-    all_triples_input: Variable<Triple>,
+    spo: Variable<KeyedTriple>,
+    pso: Variable<KeyedTriple>,
+    osp: Variable<KeyedTriple>,
+    all_triples_input: Variable<KeyedTriple>,
     rdf_type_inv: Rc<RefCell<Variable<(URI, URI)>>>,
     owl_intersection_of: Variable<(URI, URI)>,
     prp_dom: Variable<(URI, URI)>,
     prp_rng: Variable<(URI, URI)>,
     prp_fp_1: Variable<(URI, ())>,
-    prp_fp_2: Variable<Triple>,
+    prp_fp_2: Variable<KeyedTriple>,
     prp_ifp_1: Variable<(URI, ())>,
-    prp_ifp_2: Variable<Triple>,
+    prp_ifp_2: Variable<KeyedTriple>,
     prp_spo1_1: Variable<(URI, URI)>,
     owl_inv1: Variable<(URI, URI)>,
     owl_inv2: Variable<(URI, URI)>,
     owl_same_as: Variable<(URI, URI)>,
 
     // list stuff
-    established_complementary_instances: Rc<RefCell<HashSet<Triple>>>,
+    established_complementary_instances: Rc<RefCell<HashSet<KeyedTriple>>>,
     intersections: Rc<RefCell<HashMap<URI, URI>>>,
     unions: Rc<RefCell<HashMap<URI, URI>>>,
     instances: Rc<RefCell<HashSet<(URI, URI)>>>,
@@ -124,9 +123,9 @@ impl Reasoner {
         let prp_dom = iter1.variable::<(URI, URI)>("prp_dom");
         let prp_rng = iter1.variable::<(URI, URI)>("prp_rng");
         let prp_fp_1 = iter1.variable::<(URI, ())>("prp_fp_1");
-        let prp_fp_2 = iter1.variable::<Triple>("prp_fp_2");
+        let prp_fp_2 = iter1.variable::<KeyedTriple>("prp_fp_2");
         let prp_ifp_1 = iter1.variable::<(URI, ())>("prp_ifp_1");
-        let prp_ifp_2 = iter1.variable::<Triple>("prp_ifp_2");
+        let prp_ifp_2 = iter1.variable::<KeyedTriple>("prp_ifp_2");
         let prp_spo1_1 = iter1.variable::<(URI, URI)>("prp_spo1_1");
         let owl_inv1 = iter1.variable::<(URI, URI)>("owl_inverseOf");
         let owl_inv2 = iter1.variable::<(URI, URI)>("owl_inverse_of2");
@@ -161,7 +160,7 @@ impl Reasoner {
         }
     }
 
-    fn rebuild(&mut self, output: Vec<Triple>) {
+    fn rebuild(&mut self, output: Vec<KeyedTriple>) {
         // TODO: pull in the existing triples
         //self.iter1 = Iteration::new();
         self.input = output; //self.spo.clone().complete().iter().map(|&(x, (y, z))| (x, (y, z))).collect();
@@ -178,8 +177,8 @@ impl Reasoner {
             .iter()
             .map(|trip| {
                 (
-                    self.index.put_str(trip.0),
-                    (self.index.put_str(trip.1), self.index.put_str(trip.2)),
+                    self.index.put_str(trip.0).unwrap(),
+                    (self.index.put_str(trip.1).unwrap(), self.index.put_str(trip.2).unwrap()),
                 )
             })
             .collect();
@@ -189,13 +188,13 @@ impl Reasoner {
     }
 
     /// Load in a vector of triples
-    pub fn load_triples(&mut self, mut triples: Vec<(Node, Node, Node)>) {
+    pub fn load_triples(&mut self, mut triples: Vec<Triple>) {
         self.input.sort();
         let mut trips: Vec<(URI, (URI, URI))> = triples
             .iter()
             .map(|trip| {
-                let (s, p, o) = trip.clone();
-                (self.index.put(s), (self.index.put(p), self.index.put(o)))
+                let (s, p, o) = (trip.subject.clone(), trip.predicate.clone(), trip.object.clone());
+                (self.index.put(s.into()), (self.index.put(p.into()), self.index.put(o.into())))
             })
             .collect();
         trips.sort();
@@ -235,25 +234,9 @@ impl Reasoner {
             "tag".to_string(),
             Uri::new("https://brickschema.org/schema/1.1/BrickTag#".to_string()),
         ));
-        for i in self.get_triples() {
-            let (s, p, o) = i;
-            // skip nodes with literal subject
-            if let Node::LiteralNode {
-                literal: _,
-                data_type: _,
-                language: _,
-            } = s
-            {
-                continue;
-            }
-            info!(
-                "OUTPUT: {:?} {:?} {:?}",
-                node_to_string(&s),
-                node_to_string(&p),
-                node_to_string(&o)
-            );
-            let t = triple::Triple::new(&s, &p, &o);
-            graph.add_triple(&t);
+        for t in self.get_triples() {
+            //graph.add_triple(t);
+            //TODO: fix this to oxigraph
         }
 
         let mut output = fs::File::create(filename)?;
@@ -268,38 +251,36 @@ impl Reasoner {
     /// Load the triples in the given file into the Reasoner. This currently accepts
     /// Turtle-formatted (`.ttl`) and NTriples-formatted (`.n3`) files. If you have issues loading
     /// in a Turtle file, try converting it to NTriples
-    pub fn load_file(&mut self, filename: &str) -> Result<(), String> {
-        let data = fs::read_to_string(filename).expect("Unable to read file");
-
-        let graph: Graph = {
+    pub fn load_file(&mut self, filename: &str) -> Result<(), Error> {
+        let parser = {
             if filename.ends_with(".ttl") {
-                TurtleParser::from_string(data)
-                    .decode()
-                    .expect("bad turtle")
+                GraphParser::from_format(GraphFormat::Turtle)
             } else if filename.ends_with(".n3") {
-                NTriplesParser::from_string(data)
-                    .decode()
-                    .expect("bad turtle")
+                GraphParser::from_format(GraphFormat::NTriples)
+            } else if filename.ends_with(".xml") {
+                GraphParser::from_format(GraphFormat::RdfXml)
             } else {
-                return Err("no parser for file".to_string());
+                return Err(Error::new(ErrorKind::Other, "no parser for file"));
             }
         };
+        println!("filename {}", filename);
+        let mut f = BufReader::new(fs::File::open(filename)?);
+        let graph = parser.read_triples(f)?.collect::<Result<Vec<_>,_>>()?;
 
-        info!("Loaded {} triples from file {}", graph.count(), filename);
-        let mut triples: Vec<(URI, (URI, URI))> = graph
-            .triples_iter()
+        let mut triples: Vec<(URI, (URI, URI))> = graph.iter()
             .map(|_triple| {
                 let triple = _triple;
                 let (s, (p, o)) = (
-                    self.index.put(triple.subject().clone()),
+                    self.index.put(triple.subject.clone().into()),
                     (
-                        self.index.put(triple.predicate().clone()),
-                        self.index.put(triple.object().clone()),
+                        self.index.put(triple.predicate.clone().into()),
+                        self.index.put(triple.object.clone().into()),
                     ),
                 );
                 (s, (p, o))
             })
             .collect();
+        info!("Loaded {} triples from file {}", triples.len(), filename);
 
         triples.sort();
         get_unique(&self.input, &mut triples);
@@ -603,7 +584,7 @@ impl Reasoner {
         self.all_triples_input.extend(self.input.iter().cloned());
         let mut changed = true;
         //let mut established_complementary_instances: HashSet<Triple> = HashSet::new();
-        let mut new_complementary_instances: HashSet<Triple> = HashSet::new();
+        let mut new_complementary_instances: HashSet<KeyedTriple> = HashSet::new();
         while changed {
             self.all_triples_input
                 .extend(new_complementary_instances.drain());
@@ -1339,7 +1320,7 @@ impl Reasoner {
                     .iter()
                     .filter_map(|(inst, class)| if class == c1 { Some(*inst) } else { None })
                     .collect();
-                let not_c1_instances: Vec<Triple> = self
+                let not_c1_instances: Vec<KeyedTriple> = self
                     .instances
                     .borrow()
                     .iter()
@@ -1361,7 +1342,7 @@ impl Reasoner {
             }
         }
 
-        let output: Vec<Triple> = self
+        let output: Vec<KeyedTriple> = self
             .spo
             .clone()
             .complete()
@@ -1379,31 +1360,27 @@ impl Reasoner {
                 let s = self.index.get(*_s).unwrap().clone();
                 let p = self.index.get(*_p).unwrap().clone();
                 let o = self.index.get(*_o).unwrap().clone();
-                (s, p, o)
+                make_triple(s, p, o)
             })
-            .filter(|(s, _p, _o)| match s {
-                Node::LiteralNode {
-                    literal: _,
-                    data_type: _,
-                    language: _,
-                } => false,
-                _ => true,
+            .filter_map(|t| match t {
+                Ok(t) => Some(t),
+                Err(e) => { error!("Got error {}", e); None },
             })
             .collect();
         self.rebuild(output);
     }
 
     fn to_u(&self, u: URI) -> String {
-        node_to_string(self.index.get(u).unwrap())
+        self.index.get(u).unwrap().to_string()
     }
 
     /// Returns the vec of triples currently contained in the Reasoner
-    pub fn get_triples(&self) -> Vec<(Node, Node, Node)> {
+    pub fn get_triples(&self) -> Vec<Triple> {
         self.output.clone()
     }
 
     /// Returns the vec of triples currently contained in the Reasoner
-    pub fn view_output(&self) -> &[(Node, Node, Node)] {
+    pub fn view_output(&self) -> &[Triple] {
         &self.output
     }
 
@@ -1412,26 +1389,13 @@ impl Reasoner {
         self.view_output()
             .iter()
             .map(|inst| {
-                let (s, p, o) = inst;
-                (node_to_string(&s), node_to_string(&p), node_to_string(&o))
+                (inst.subject.to_string(), inst.predicate.to_string(), inst.object.to_string())
             })
             .collect()
     }
 }
 
-pub fn node_to_string(n: &Node) -> String {
-    match n {
-        Node::UriNode { uri } => uri.to_string().clone(),
-        Node::LiteralNode {
-            literal,
-            data_type: _,
-            language: _,
-        } => format!("\"{}\"", literal.to_string()),
-        Node::BlankNode { id } => format!("_:{}", id.to_string()),
-    }
-}
-
 /// removes from rv the triples that are in src. src is sorted
-pub fn get_unique(src: &Vec<Triple>, rv: &mut Vec<Triple>) {
+pub fn get_unique(src: &Vec<KeyedTriple>, rv: &mut Vec<KeyedTriple>) {
     rv.retain(|t| !src.contains(&t))
 }
