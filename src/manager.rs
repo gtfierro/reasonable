@@ -158,6 +158,7 @@ impl Manager {
                 triples.push(triple.clone());
             }
         }
+        self.reasoner.load_triples(triples);
     }
 }
 

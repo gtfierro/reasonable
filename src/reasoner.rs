@@ -7,7 +7,7 @@ use crate::disjoint_sets::DisjointSets;
 use crate::index::URIIndex;
 
 use log::{debug, error, info};
-use oxigraph::io::{GraphFormat, GraphParser};
+use oxigraph::io::{GraphFormat, GraphParser, GraphSerializer};
 use oxigraph::model::{Term, NamedNode, Triple};
 use std::io::BufReader;
 
@@ -209,42 +209,37 @@ impl Reasoner {
     }
 
     /// Dump the contents of the reasoner to the given file.
-    /// NOTE: currently `dump_file` prevents the reasoner from being re-used. This is a bug and
-    /// will be amended
     pub fn dump_file(&mut self, filename: &str) -> Result<(), Error> {
         // let mut abbrevs: HashMap<String, Uri> = HashMap::new();
-        let mut graph = Graph::new(None);
-        graph.add_namespace(&Namespace::new(
-            "owl".to_string(),
-            Uri::new("http://www.w3.org/2002/07/owl#".to_string()),
-        ));
-        graph.add_namespace(&Namespace::new(
-            "rdf".to_string(),
-            Uri::new("http://www.w3.org/1999/02/22-rdf-syntax-ns#".to_string()),
-        ));
-        graph.add_namespace(&Namespace::new(
-            "rdfs".to_string(),
-            Uri::new("http://www.w3.org/2000/01/rdf-schema#".to_string()),
-        ));
-        graph.add_namespace(&Namespace::new(
-            "brick".to_string(),
-            Uri::new("https://brickschema.org/schema/1.1/Brick#".to_string()),
-        ));
-        graph.add_namespace(&Namespace::new(
-            "tag".to_string(),
-            Uri::new("https://brickschema.org/schema/1.1/BrickTag#".to_string()),
-        ));
-        for t in self.get_triples() {
-            //graph.add_triple(t);
-            //TODO: fix this to oxigraph
+        let mut output = fs::File::create(filename)?;
+        let mut writer = GraphSerializer::from_format(GraphFormat::Turtle).triple_writer(&output)?;
+        //let mut graph = Graph::new(None);
+        //graph.add_namespace(&Namespace::new(
+        //    "owl".to_string(),
+        //    Uri::new("http://www.w3.org/2002/07/owl#".to_string()),
+        //));
+        //graph.add_namespace(&Namespace::new(
+        //    "rdf".to_string(),
+        //    Uri::new("http://www.w3.org/1999/02/22-rdf-syntax-ns#".to_string()),
+        //));
+        //graph.add_namespace(&Namespace::new(
+        //    "rdfs".to_string(),
+        //    Uri::new("http://www.w3.org/2000/01/rdf-schema#".to_string()),
+        //));
+        //graph.add_namespace(&Namespace::new(
+        //    "brick".to_string(),
+        //    Uri::new("https://brickschema.org/schema/Brick#".to_string()),
+        //));
+        //graph.add_namespace(&Namespace::new(
+        //    "tag".to_string(),
+        //    Uri::new("https://brickschema.org/schema/BrickTag#".to_string()),
+        //));
+        for t in self.view_output() {
+            writer.write(t)?;
         }
 
-        let mut output = fs::File::create(filename)?;
-        let writer = TurtleWriter::new(graph.namespaces());
-        // let writer = NTriplesWriter::new();
-        let serialized = writer.write_to_string(&graph).unwrap();
-        output.write_all(serialized.as_bytes())?;
-        info!("Wrote {} triples to {}", graph.count(), filename);
+        writer.finish()?;
+        //info!("Wrote {} triples to {}", graph.count(), filename);
         Ok(())
     }
 
