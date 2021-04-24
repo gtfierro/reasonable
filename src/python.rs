@@ -71,6 +71,7 @@ fn term_to_python<'a>(py: Python, rdflib: &'a PyModule, node: Term) -> PyResult<
 
     let res: &PyAny = match &node {
         Term::NamedNode(uri) => {
+            println!("uri node uri node {}", uri.to_string());
             let mut uri = uri.to_string();
             uri.remove(0);
             uri.remove(uri.len()-1);
@@ -84,7 +85,10 @@ fn term_to_python<'a>(py: Python, rdflib: &'a PyModule, node: Term) -> PyResult<
                 (None, None) => rdflib.call1("Literal", (literal.to_string(), ))?,
             }
         }
-        Term::BlankNode(id) => rdflib.call1("BNode", (id.to_string(),))?,
+        Term::BlankNode(id) => {
+            println!("blank node blank node {}", id.to_string());
+            rdflib.call1("BNode", (id.to_string(),))?
+        }
     };
     Ok(res)
 }
@@ -187,6 +191,7 @@ def get_triples(graph):
         self.reasoner.reason();
         let mut res = Vec::new();
         for t in self.reasoner.get_triples() {
+            println!("got triple {:?}", t);
             let s = term_to_python(py, rdflib, Term::from(t.subject.clone()))?;
             let p = term_to_python(py, rdflib, Term::from(t.predicate.clone()))?;
             let o = term_to_python(py, rdflib, Term::from(t.object.clone()))?;
