@@ -10,19 +10,12 @@ use log::{debug, error, info};
 use oxigraph::io::{GraphFormat, GraphParser, GraphSerializer};
 use oxigraph::model::{Term, NamedNode, Triple};
 use std::io::BufReader;
-
-use rdf::graph::Graph;
-use rdf::namespace::Namespace;
-use rdf::uri::Uri;
-use rdf::writer::rdf_writer::RdfWriter;
-use rdf::writer::turtle_writer::TurtleWriter;
 use std::cell::RefCell;
 use std::collections::{HashMap, HashSet};
 use std::fmt;
 use std::fs;
-use std::io::{Error, Write, ErrorKind};
+use std::io::{Error, ErrorKind};
 use std::rc::Rc;
-// use rdf::writer::n_triples_writer::NTriplesWriter;
 use crate::common::*;
 use crate::{node_relation, owl};
 
