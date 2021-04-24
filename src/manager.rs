@@ -3,6 +3,7 @@ use crate::reasoner::Reasoner;
 use crate::common::make_triple;
 use log::{debug, info};
 use oxigraph::store::sled::SledConflictableTransactionError;
+use oxigraph::io::DatasetFormat;
 use oxigraph::{
     io::{GraphFormat, GraphParser},
     model::*,
@@ -25,7 +26,7 @@ const qfmt: &str = "PREFIX brick: <https://brickschema.org/schema/Brick#>
     ";
 
 pub struct TripleUpdate {
-    updates: HashMap<Triple, i64>
+    pub updates: HashMap<Triple, i64>
 }
 
 impl TripleUpdate {
@@ -62,12 +63,25 @@ impl Manager {
         }
     }
 
+    pub fn new_in_memory() -> Self {
+        Manager {
+            reasoner: Reasoner::new(),
+            triple_store: SledStore::new().unwrap(),
+        }
+    }
+
     pub fn size(&self) -> usize {
         self.triple_store.len()
     }
 
     pub fn store(&self) -> SledStore {
         self.triple_store.clone()
+    }
+
+    pub fn dump_string(&self) -> String {
+        let mut buffer = Vec::new();
+        self.triple_store.dump_dataset(&mut buffer, DatasetFormat::NQuads).unwrap();
+        String::from_utf8(buffer).unwrap()
     }
 
     pub fn load_triples(&mut self, triples: Vec<(String, String, String)>) -> Result<()> {
@@ -147,18 +161,36 @@ impl Manager {
     }
 
     pub fn process_updates(&mut self, updates: TripleUpdate) {
+        // are there deletions? if so, clear out the reasoned state:
+        let has_deletions = updates.updates.iter().position(|(_, count)| *count < 0).is_some();
+        if has_deletions {
+            self.reasoner.clear();
+        }
+
         // copy triples out
-        let mut triples = self.reasoner.get_triples();
-        self.reasoner = Reasoner::new();
+        let mut triples = self.reasoner.get_input();
+        println!("deletions? {} tripels {}", has_deletions, triples.len());
         // remove triples with negative counts
         for (triple, count) in updates.updates.iter() {
             if *count <= 0 {
-                triples.retain(|v| v != triple);
+                println!("removing triple ({})", triples.len());
+                triples.retain(|v| *v != *triple);
+                println!("after ({})", triples.len());
             } else {
                 triples.push(triple.clone());
             }
         }
+        for t in &triples {
+            println!("adding {:?}", t);
+        }
+
+        if has_deletions {
+            self.reasoner = Reasoner::new();
+            self.triple_store.clear().unwrap();
+        }
+
         self.reasoner.load_triples(triples);
+        self.refresh();
     }
 }
 

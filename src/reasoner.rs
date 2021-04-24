@@ -61,6 +61,7 @@ pub struct Reasoner {
     iter1: Iteration,
     index: URIIndex,
     input: Vec<KeyedTriple>,
+    base: Vec<KeyedTriple>,
     errors: Vec<ReasoningError>,
     output: Vec<Triple>,
 
@@ -123,10 +124,12 @@ impl Reasoner {
         let owl_inv1 = iter1.variable::<(URI, URI)>("owl_inverseOf");
         let owl_inv2 = iter1.variable::<(URI, URI)>("owl_inverse_of2");
         let owl_same_as = iter1.variable::<(URI, URI)>("owl_same_as");
+        let base = input.clone();
         Reasoner {
             iter1,
             index,
             input,
+            base: base,
             errors: Vec::new(),
             output: Vec::new(),
             spo,
@@ -153,6 +156,11 @@ impl Reasoner {
         }
     }
 
+    /// Clears the state and uses the base triples (non-inferred)
+    pub fn clear(&mut self) {
+        self.input = self.base.clone();
+    }
+
     fn rebuild(&mut self, output: Vec<KeyedTriple>) {
         // TODO: pull in the existing triples
         //self.iter1 = Iteration::new();
@@ -161,6 +169,11 @@ impl Reasoner {
             .iter1
             .variable::<(URI, (URI, URI))>("all_triples_input");
         self.spo = self.iter1.variable::<(URI, (URI, URI))>("spo");
+    }
+
+    fn add_base_triples(&mut self, input: Vec<KeyedTriple>) {
+        self.base.extend(input.clone());
+        self.input.extend(input);
     }
 
     /// Load in a vector of triples
@@ -177,7 +190,7 @@ impl Reasoner {
             .collect();
         trips.sort();
         get_unique(&self.input, &mut trips);
-        self.input.extend(trips);
+        self.add_base_triples(trips);
     }
 
     /// Load in a vector of triples
@@ -192,7 +205,7 @@ impl Reasoner {
             .collect();
         trips.sort();
         get_unique(&self.input, &mut trips);
-        self.input.extend(trips);
+        self.add_base_triples(trips);
     }
 
     fn add_error(&mut self, rule: String, message: String) {
@@ -274,7 +287,7 @@ impl Reasoner {
         get_unique(&self.input, &mut triples);
 
         //self.all_triples_input.insert(triples.into());
-        self.input.extend(triples);
+        self.add_base_triples(triples);
 
         Ok(())
     }
@@ -1370,6 +1383,22 @@ impl Reasoner {
     /// Returns the vec of triples currently contained in the Reasoner
     pub fn view_output(&self) -> &[Triple] {
         &self.output
+    }
+
+    pub fn get_input(&self) -> Vec<Triple> {
+        self.base.iter()
+            .map(|inst| {
+                let (_s, (_p, _o)) = inst;
+                let s = self.index.get(*_s).unwrap().clone();
+                let p = self.index.get(*_p).unwrap().clone();
+                let o = self.index.get(*_o).unwrap().clone();
+                make_triple(s, p, o)
+            })
+            .filter_map(|t| match t {
+                Ok(t) => Some(t),
+                Err(e) => { error!("Got error {}", e); None },
+            })
+            .collect()
     }
 
     /// Returns the vec of triples currently contained in the Reasoner
