@@ -44,7 +44,6 @@ impl From<&PyAny> for MyTerm {
             "Literal" => match (data_type, lang) {
                 (Some(dt), None) => Term::Literal(Literal::new_typed_literal(s.to_string(), dt)),
                 (None, Some(l)) => Term::Literal(Literal::new_language_tagged_literal(s.to_string(), l).unwrap()),
-                (None, None) => Term::Literal(Literal::new_simple_literal(s.to_string())),
                 (_, _) => Term::Literal(Literal::new_simple_literal(s.to_string())),
             },
             "BNode" => Term::BlankNode(BlankNode::new(s.to_string()).unwrap()),
@@ -71,7 +70,6 @@ fn term_to_python<'a>(py: Python, rdflib: &'a PyModule, node: Term) -> PyResult<
 
     let res: &PyAny = match &node {
         Term::NamedNode(uri) => {
-            println!("uri node uri node {}", uri.to_string());
             let mut uri = uri.to_string();
             uri.remove(0);
             uri.remove(uri.len()-1);
@@ -80,14 +78,13 @@ fn term_to_python<'a>(py: Python, rdflib: &'a PyModule, node: Term) -> PyResult<
         Term::Literal(literal) => {
             match (dtype, lang) {
                 // prioritize 'lang' -> it implies String
-                (_, Some(lang)) => rdflib.call1("Literal", (literal.to_string(), lang, py.None()))?,
-                (Some(dtype), None) => rdflib.call1("Literal", (literal.to_string(), py.None(), dtype))?,
-                (None, None) => rdflib.call1("Literal", (literal.to_string(), ))?,
+                (_, Some(lang)) => rdflib.call1("Literal", (literal.value(), lang, py.None()))?,
+                (Some(dtype), None) => rdflib.call1("Literal", (literal.value(), py.None(), dtype))?,
+                (None, None) => rdflib.call1("Literal", (literal.value(), ))?,
             }
         }
         Term::BlankNode(id) => {
-            println!("blank node blank node {}", id.to_string());
-            rdflib.call1("BNode", (id.to_string(),))?
+            rdflib.call1("BNode", (id.clone().into_string(),))?
         }
     };
     Ok(res)
@@ -191,7 +188,6 @@ def get_triples(graph):
         self.reasoner.reason();
         let mut res = Vec::new();
         for t in self.reasoner.get_triples() {
-            println!("got triple {:?}", t);
             let s = term_to_python(py, rdflib, Term::from(t.subject.clone()))?;
             let p = term_to_python(py, rdflib, Term::from(t.predicate.clone()))?;
             let o = term_to_python(py, rdflib, Term::from(t.object.clone()))?;
