@@ -1,47 +1,54 @@
 use crate::error::Result;
 use crate::reasoner::Reasoner;
+use crate::common::make_triple;
 use log::{debug, info};
 use oxigraph::store::sled::SledConflictableTransactionError;
+use oxigraph::io::DatasetFormat;
 use oxigraph::{
     io::{GraphFormat, GraphParser},
     model::*,
     SledStore,
 };
-use rdf::{node::Node, uri::Uri};
 use std::convert::Infallible;
 use std::fs;
+use std::collections::HashMap;
 use std::io::Cursor;
 use std::string::String;
 use std::time::Instant;
 
-macro_rules! uri {
-    ($t:expr) => {
-        Node::UriNode { uri: Uri::new($t) }
-    };
-}
-macro_rules! bnode {
-    ($t:expr) => {
-        Node::BlankNode { id: $t }
-    };
-}
-macro_rules! literal {
-    ($t:expr, $d:expr, $l:expr) => {
-        Node::LiteralNode {
-            literal: $t,
-            data_type: $d,
-            language: $l,
-        }
-    };
-}
-
 #[allow(non_upper_case_globals)]
-const qfmt: &str = "PREFIX brick: <https://brickschema.org/schema/1.1/Brick#>
-    PREFIX tag: <https://brickschema.org/schema/1.1/BrickTag#>
+const qfmt: &str = "PREFIX brick: <https://brickschema.org/schema/Brick#>
+    PREFIX tag: <https://brickschema.org/schema/BrickTag#>
     PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
     PREFIX owl: <http://www.w3.org/2002/07/owl#>
     PREFIX qudt: <http://qudt.org/schema/qudt/>
     ";
+
+pub struct TripleUpdate {
+    pub updates: HashMap<Triple, i64>
+}
+
+impl TripleUpdate {
+    pub fn new() -> Self {
+        TripleUpdate { updates: HashMap::new() }
+    }
+    pub fn add_triple(&mut self, triple: Triple) {
+
+        let counter = self.updates.entry(triple).or_insert(0);
+        *counter += 1;
+    }
+    pub fn remove_triple(&mut self, triple: Triple) {
+        let counter = self.updates.entry(triple).or_insert(0);
+        *counter -= 1;
+    }
+    pub fn merge(&mut self, other: Self) {
+        for (triple, count) in other.updates.into_iter() {
+            let counter = self.updates.entry(triple).or_insert(0);
+            *counter += count; // handles both the adds and removes
+        }
+    }
+}
 
 pub struct Manager {
     reasoner: Reasoner,
@@ -56,6 +63,13 @@ impl Manager {
         }
     }
 
+    pub fn new_in_memory() -> Self {
+        Manager {
+            reasoner: Reasoner::new(),
+            triple_store: SledStore::new().unwrap(),
+        }
+    }
+
     pub fn size(&self) -> usize {
         self.triple_store.len()
     }
@@ -64,33 +78,47 @@ impl Manager {
         self.triple_store.clone()
     }
 
+    pub fn dump_string(&self) -> String {
+        let mut buffer = Vec::new();
+        self.triple_store.dump_dataset(&mut buffer, DatasetFormat::NQuads).unwrap();
+        String::from_utf8(buffer).unwrap()
+    }
+
     pub fn load_triples(&mut self, triples: Vec<(String, String, String)>) -> Result<()> {
-        let load_triples: Vec<(Node, Node, Node)> = triples
+        let load_triples: Vec<Triple> = triples
             .into_iter()
             .filter_map(|(s_, p_, o_)| {
-                let s: Node = {
-                    if let Ok(named) = NamedNode::new(s_.clone()) {
-                        uri!(named.into_string())
-                    } else if let Ok(bnode) = BlankNode::new(s_) {
-                        bnode!(bnode.into_string())
+                let s: Term = {
+                    if let Ok(named) = NamedNode::new(&s_) {
+                        Term::NamedNode(named)
+                    } else if let Ok(bnode) = BlankNode::new(&s_) {
+                        Term::BlankNode(bnode)
                     } else {
                         return None;
                     }
                 };
 
-                let p: Node = uri!(p_);
+                let p: Term = if let Ok(named) = NamedNode::new(p_) {
+                    Term::NamedNode(named)
+                } else {
+                    return None;
+                };
 
-                let o: Node = {
-                    if let Ok(named) = NamedNode::new(o_.clone()) {
-                        uri!(named.into_string())
-                    } else if let Ok(bnode) = BlankNode::new(o_.clone()) {
-                        bnode!(bnode.into_string())
+                let o: Term = {
+                    if let Ok(named) = NamedNode::new(&o_) {
+                        Term::NamedNode(named)
+                    } else if let Ok(bnode) = BlankNode::new(&o_) {
+                        Term::BlankNode(bnode)
                     } else {
-                        literal!(o_, None, None)
+                        Term::Literal(Literal::new_simple_literal(&o_))
                     }
                 };
 
-                Some((s, p, o))
+                if let Ok(t) = make_triple(s,p,o) {
+                    Some(t)
+                } else {
+                    None
+                }
             })
             .collect();
         self.reasoner.load_triples(load_triples);
@@ -113,35 +141,7 @@ impl Manager {
         self.triple_store
             .transaction(|txn| {
                 for t in self.reasoner.view_output().iter() {
-                    let s = match &t.0 {
-                        Node::UriNode { uri } => NamedOrBlankNodeRef::NamedNode(
-                            NamedNodeRef::new_unchecked(uri.to_string()),
-                        ),
-                        Node::BlankNode { id } => {
-                            NamedOrBlankNodeRef::BlankNode(BlankNodeRef::new_unchecked(id))
-                        }
-                        _ => panic!("no subject literals"),
-                    };
-                    let p = match &t.1 {
-                        Node::UriNode { uri } => NamedNodeRef::new_unchecked(uri.to_string()),
-                        _ => panic!("no must be named node"),
-                    };
-                    let o = match &t.2 {
-                        Node::UriNode { uri } => {
-                            TermRef::NamedNode(NamedNodeRef::new_unchecked(uri.to_string()))
-                        }
-                        Node::BlankNode { id } => {
-                            TermRef::BlankNode(BlankNodeRef::new_unchecked(id))
-                        }
-                        Node::LiteralNode {
-                            literal,
-                            data_type: _,
-                            language: _,
-                        } => TermRef::Literal(LiteralRef::new_simple_literal(literal)),
-                    };
-                    txn.insert(QuadRef::new(s, p, o, GraphNameRef::DefaultGraph))?;
-                    //self.triple_store
-                    //    .insert(QuadRef::new(s, p, o, GraphNameRef::DefaultGraph)).unwrap();
+                    txn.insert(t.clone().in_graph(GraphNameRef::DefaultGraph).as_ref())?;
                 }
                 Ok(()) as std::result::Result<(), SledConflictableTransactionError<Infallible>>
             })
@@ -154,15 +154,48 @@ impl Manager {
     }
 
     /// Adds the provided triples to the reasoner and re-executes the reasoner
-    pub fn add_triples(&mut self, triples: Vec<(Node, Node, Node)>) {
+    pub fn add_triples(&mut self, triples: Vec<Triple>) {
         // add new triples to reasoner
+        self.reasoner.load_triples(triples);
+        self.refresh();
+    }
+
+    pub fn process_updates(&mut self, updates: TripleUpdate) {
+        // are there deletions? if so, clear out the reasoned state:
+        let has_deletions = updates.updates.iter().position(|(_, count)| *count < 0).is_some();
+        if has_deletions {
+            self.reasoner.clear();
+        }
+
+        // copy triples out
+        let mut triples = self.reasoner.get_input();
+        println!("deletions? {} tripels {}", has_deletions, triples.len());
+        // remove triples with negative counts
+        for (triple, count) in updates.updates.iter() {
+            if *count <= 0 {
+                println!("removing triple ({})", triples.len());
+                triples.retain(|v| *v != *triple);
+                println!("after ({})", triples.len());
+            } else {
+                triples.push(triple.clone());
+            }
+        }
+        for t in &triples {
+            println!("adding {:?}", t);
+        }
+
+        if has_deletions {
+            self.reasoner = Reasoner::new();
+            self.triple_store.clear().unwrap();
+        }
+
         self.reasoner.load_triples(triples);
         self.refresh();
     }
 }
 
 
-pub fn parse_file(filename: &str) -> Result<Vec<(Node, Node, Node)>> {
+pub fn parse_file(filename: &str) -> std::result::Result<Vec<Triple>, std::io::Error> {
     let gfmt: GraphFormat = if filename.ends_with(".ttl") {
         GraphFormat::Turtle
     } else if filename.ends_with(".n3") || filename.ends_with(".ntriples") {
@@ -173,32 +206,8 @@ pub fn parse_file(filename: &str) -> Result<Vec<(Node, Node, Node)>> {
     let data = fs::read_to_string(filename)?;
     debug!("format: {:?} for {}", gfmt, filename);
     let parser = GraphParser::from_format(gfmt);
-    let triples: Vec<std::result::Result<Triple, std::io::Error>> =
-        parser.read_triples(Cursor::new(data))?.collect(); //.collect::<Result<Triple>>();
-    Ok(triples
-        .into_iter()
-        .filter_map(|tres| match tres {
-            Err(_) => None,
-            Ok(t) => {
-                let s = match t.subject {
-                    NamedOrBlankNode::NamedNode(node) => uri!(node.into_string()),
-                    NamedOrBlankNode::BlankNode(id) => bnode!(id.into_string()),
-                };
-                let p = uri!(t.predicate.into_string());
-                let o = match t.object {
-                    Term::NamedNode(node) => uri!(node.into_string()),
-                    Term::BlankNode(id) => bnode!(id.into_string()),
-                    Term::Literal(lit) => literal!(
-                        lit.value().to_string(),
-                        Some(Uri::new(lit.datatype().to_string())),
-                        match lit.language() {
-                            Some(l) => Some(l.to_string()),
-                            None => None,
-                        }
-                    ),
-                };
-                Some((s, p, o))
-            }
-        })
-        .collect())
+    let triples: std::result::Result<Vec<Triple>, std::io::Error> =
+        parser.read_triples(Cursor::new(data))?
+        .collect(); //.collect::<Result<Triple>>();
+    triples
 }

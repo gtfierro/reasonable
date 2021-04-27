@@ -6,7 +6,6 @@ use oxigraph::{
     //MemoryStore
     SledStore,
 };
-use rdf::node::Node;
 use std::collections::HashMap;
 use std::convert::Infallible;
 use std::string::String;
@@ -25,7 +24,7 @@ impl GraphManager {
         }
     }
 
-    pub fn add_triples(&mut self, graph: Option<String>, triples: Vec<(Node, Node, Node)>) {
+    pub fn add_triples(&mut self, graph: Option<String>, triples: Vec<Triple>) {
         let graphname = match graph {
             Some(g) => g,
             None => "default".to_owned(),
@@ -48,40 +47,7 @@ impl GraphManager {
         self.triple_store
             .transaction(|txn| {
                 for t in reasoner.view_output().iter() {
-                    let s = match &t.0 {
-                        Node::UriNode { uri } => NamedOrBlankNodeRef::NamedNode(
-                            NamedNodeRef::new_unchecked(uri.to_string()),
-                        ),
-                        Node::BlankNode { id } => {
-                            NamedOrBlankNodeRef::BlankNode(BlankNodeRef::new_unchecked(id))
-                        }
-                        Node::LiteralNode {
-                            literal,
-                            data_type: _,
-                            language: _,
-                        } => {
-                            println!("No subject literals! {}", literal);
-                            continue;
-                        }
-                    };
-                    let p = match &t.1 {
-                        Node::UriNode { uri } => NamedNodeRef::new_unchecked(uri.to_string()),
-                        _ => panic!("no must be named node"),
-                    };
-                    let o = match &t.2 {
-                        Node::UriNode { uri } => {
-                            TermRef::NamedNode(NamedNodeRef::new_unchecked(uri.to_string()))
-                        }
-                        Node::BlankNode { id } => {
-                            TermRef::BlankNode(BlankNodeRef::new_unchecked(id))
-                        }
-                        Node::LiteralNode {
-                            literal,
-                            data_type: _,
-                            language: _,
-                        } => TermRef::Literal(LiteralRef::new_simple_literal(literal)),
-                    };
-                    txn.insert(QuadRef::new(s, p, o, graph))?;
+                    txn.insert(t.clone().in_graph(graph).as_ref())?;
                 }
                 Ok(()) as std::result::Result<(), SledConflictableTransactionError<Infallible>>
             })
@@ -101,40 +67,7 @@ impl GraphManager {
             self.triple_store
                 .transaction(|txn| {
                     for t in reasoner.view_output().iter() {
-                        let s = match &t.0 {
-                            Node::UriNode { uri } => NamedOrBlankNodeRef::NamedNode(
-                                NamedNodeRef::new_unchecked(uri.to_string()),
-                            ),
-                            Node::BlankNode { id } => {
-                                NamedOrBlankNodeRef::BlankNode(BlankNodeRef::new_unchecked(id))
-                            }
-                            Node::LiteralNode {
-                                literal,
-                                data_type: _,
-                                language: _,
-                            } => {
-                                println!("No subject literals! {}", literal);
-                                continue;
-                            }
-                        };
-                        let p = match &t.1 {
-                            Node::UriNode { uri } => NamedNodeRef::new_unchecked(uri.to_string()),
-                            _ => panic!("no must be named node"),
-                        };
-                        let o = match &t.2 {
-                            Node::UriNode { uri } => {
-                                TermRef::NamedNode(NamedNodeRef::new_unchecked(uri.to_string()))
-                            }
-                            Node::BlankNode { id } => {
-                                TermRef::BlankNode(BlankNodeRef::new_unchecked(id))
-                            }
-                            Node::LiteralNode {
-                                literal,
-                                data_type: _,
-                                language: _,
-                            } => TermRef::Literal(LiteralRef::new_simple_literal(literal)),
-                        };
-                        txn.insert(QuadRef::new(s, p, o, graph))?;
+                        txn.insert(t.clone().in_graph(graph).as_ref())?;
                     }
                     Ok(()) as std::result::Result<(), SledConflictableTransactionError<Infallible>>
                 })

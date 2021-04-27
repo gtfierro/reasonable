@@ -1,11 +1,10 @@
-use crate::common::{Triple, URI};
+use crate::common::URI;
 use fasthash::city;
-use rdf::node::Node;
-use rdf::uri::Uri;
+use oxigraph::model::{Term, NamedNode, IriParseError};
 use std::collections::HashMap;
 
 pub struct URIIndex {
-    map: HashMap<URI, Node>,
+    map: HashMap<URI, Term>,
 }
 
 impl URIIndex {
@@ -13,54 +12,30 @@ impl URIIndex {
         let mut idx = URIIndex {
             map: HashMap::new(),
         };
-        idx.map.insert(
-            0,
-            Node::UriNode {
-                uri: Uri::new("_".to_string()),
-            },
-        );
+        idx.map.insert(0, Term::NamedNode(NamedNode::new("urn:_").unwrap()));
         idx
     }
 
-    pub fn put(&mut self, key: Node) -> URI {
-        let s: String = match key {
-            Node::UriNode { ref uri } => uri.to_string().clone(),
-            Node::LiteralNode {
-                ref literal,
-                data_type: _,
-                language: _,
-            } => literal.to_string(),
-            Node::BlankNode { ref id } => format!("_:{}", id.to_string()),
-        };
-        let h = hash(&s);
+    pub fn put(&mut self, key: Term) -> URI {
+        let h = hash(&key);
         self.map.insert(h, key);
         h
     }
 
-    pub fn put_str(&mut self, _key: &'static str) -> URI {
-        let key = _key.to_string();
+    pub fn put_str(&mut self, _key: &'static str) -> Result<URI, IriParseError> {
+        let key = Term::NamedNode(NamedNode::new(_key)?);
         let h = hash(&key);
-        self.map.insert(h, Node::UriNode { uri: Uri::new(key) });
-        h
+        self.map.insert(h, key);
+        Ok(h)
     }
 
-    pub fn get(&self, key: URI) -> Option<&Node> {
+    pub fn get(&self, key: URI) -> Option<&Term> {
         self.map.get(&key)
-    }
-
-    pub fn load_triples(
-        &mut self,
-        triples: Vec<(&'static str, &'static str, &'static str)>,
-    ) -> Vec<Triple> {
-        triples
-            .iter()
-            .map(|(s, p, o)| (self.put_str(s), (self.put_str(p), self.put_str(o))))
-            .collect()
     }
 }
 
-pub fn hash(key: &String) -> URI {
-    city::hash32(key)
+pub fn hash(key: &Term) -> URI {
+    city::hash32(key.to_string())
 }
 
 #[allow(dead_code)]
