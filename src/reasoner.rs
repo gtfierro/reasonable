@@ -1365,7 +1365,7 @@ impl Reasoner {
             })
             .filter_map(|t| match t {
                 Ok(t) => Some(t),
-                Err(e) => { error!("Got error {}", e); None },
+                Err(e) => { error!("Got error {:?}", e); None },
             })
             .collect();
         self.rebuild(output);
@@ -1396,7 +1396,7 @@ impl Reasoner {
             })
             .filter_map(|t| match t {
                 Ok(t) => Some(t),
-                Err(e) => { error!("Got error {}", e); None },
+                Err(e) => { error!("Got error {:?}", e); None },
             })
             .collect()
     }

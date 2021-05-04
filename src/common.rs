@@ -1,5 +1,6 @@
 use oxigraph::model::{Term, Triple, NamedOrBlankNode};
 use std::io::{Error, ErrorKind};
+use crate::error::ReasonableError;
 
 pub type URI = u32;
 pub type KeyedTriple = (URI, (URI, URI));
@@ -66,15 +67,15 @@ macro_rules! node_relation {
 }
 
 
-pub fn make_triple(s: Term, p: Term, o: Term) -> Result<Triple, std::io::Error> {
+pub fn make_triple(s: Term, p: Term, o: Term) -> Result<Triple, ReasonableError> {
     let s = match s {
         Term::NamedNode(n) => NamedOrBlankNode::NamedNode(n),
         Term::BlankNode(b) => NamedOrBlankNode::BlankNode(b),
-        _ => return Err(Error::new(ErrorKind::Other, "Cannot have literal as subject"))
+        _ => return Err(ReasonableError::ManagerError("Cannot have literal as subject".to_string()))
     };
     let p = match p {
         Term::NamedNode(n) => n,
-        _ => return Err(Error::new(ErrorKind::Other, "Must have named node as predicate"))
+        _ => return Err(ReasonableError::ManagerError("Must have named node as predicate".to_string()))
     };
     Ok(Triple::new(s,p,o))
 }
