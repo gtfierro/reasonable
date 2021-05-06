@@ -1,5 +1,4 @@
 use oxigraph::model::{Term, Triple, NamedOrBlankNode};
-use std::io::{Error, ErrorKind};
 use crate::error::ReasonableError;
 
 pub type URI = u32;

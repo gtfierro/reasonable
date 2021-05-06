@@ -4,6 +4,11 @@ use oxigraph::model;
 use std::io;
 use std::sync::mpsc::RecvError;
 
+#[cfg(feature = "python-library")]
+use pyo3::prelude::*;
+#[cfg(feature = "python-library")]
+use pyo3::exceptions;
+
 #[cfg(feature = "sqlite")]
 #[derive(Debug)]
 pub enum ReasonableError {
@@ -73,3 +78,10 @@ impl From<RecvError> for ReasonableError {
 }
 
 pub type Result<T> = std::result::Result<T, ReasonableError>;
+
+#[cfg(feature = "python-library")]
+impl Into<PyErr> for ReasonableError {
+    fn into(self) -> PyErr {
+        exceptions::PyTypeError::new_err("Error message")
+    }
+}

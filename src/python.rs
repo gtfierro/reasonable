@@ -153,7 +153,10 @@ def get_triples(graph):
             let s = MyTerm::from(t.get_item(0)).0;
             let p = MyTerm::from(t.get_item(1)).0;
             let o = MyTerm::from(t.get_item(2)).0;
-            triples.push(make_triple(s, p, o)?);
+            match make_triple(s, p, o) {
+                Ok(triple) => triples.push(triple),
+                Err(e) => return Err(e.into())
+            };
         }
         //let l: Vec<(PyObject, PyObject, PyObject)> = converters.call1("get_triples", (graph,))?.extract()?;
         //for t in l {
