@@ -21,7 +21,7 @@ jobs:
     needs: publish_lib_crate
     steps:
       - uses: actions/checkout@v2
-      - run: docker run --rm -v $(pwd):/io konstin2/maturin:v0.11.1 publish -u __token__ -p ${{ secrets.PYPI_PASSWORD }}
+      - run: docker run --rm -v $(pwd):/io konstin2/maturin:v0.11.1 publish -u ${{ secrets.PYPI_USER }} -p ${{ secrets.PYPI_PASS }}
   publish_pypi_mac:
     runs-on: macos-latest
     needs: publish_lib_crate
@@ -32,7 +32,7 @@ jobs:
         with:
           python-version: 3.7
       - run: pip install 'maturin>=0.11,<0.12'
-      - run: maturin publish --universal2 --no-sdist -u __token__ -p ${{ secrets.PYPI_PASSWORD }}
+      - run: maturin publish --universal2 --no-sdist -u ${{ secrets.PYPI_USER }} -p ${{ secrets.PYPI_PASS }}
   publish_pypi_windows:
     runs-on: windows-latest
     needs: publish_lib_crate
@@ -42,4 +42,4 @@ jobs:
         with:
           python-version: 3.7
       - run: pip install 'maturin>=0.11,<0.12'
-      - run: maturin publish --no-sdist -u __token__ -p ${{ secrets.PYPI_PASSWORD }}
+      - run: maturin publish --no-sdist -u ${{ secrets.PYPI_USER }} -p ${{ secrets.PYPI_PASS }}
