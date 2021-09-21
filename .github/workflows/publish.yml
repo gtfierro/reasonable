@@ -38,6 +38,7 @@ jobs:
     needs: publish_lib_crate
     steps:
       - uses: actions/checkout@v2
+      - run: rustup toolchain install stable-gnu
       - uses: actions/setup-python@v2
         with:
           python-version: 3.7
