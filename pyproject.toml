@@ -1,10 +1,3 @@
-[tool.poetry]
-name = "reasonable"
-version = "0.1.47a2"
-description = "Python interface to 'reasonable', a Datalog implementation of the OWL 2 RL profile"
-authors = ["Gabe Fierro <gtfierro@cs.berkeley.edu>"]
-license = "bsd-3-clause"
-
 [tool.poetry.dependencies]
 python = "^3.7"
 brickschema = "^0.5"
