@@ -16,7 +16,7 @@ jobs:
         env:
           CRATES_IO_TOKEN: ${{ secrets.CRATES_IO_TOKEN }}
       - run: cargo publish
-  publish_pypi_linux:
+  	publish_pypi_linux:
 	  runs-on: ubuntu-latest
 	  needs: publish_lib_crate
 	  steps:
