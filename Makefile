@@ -1,11 +1,11 @@
 .PHONY: test build
 
-PY36_VERSION=3.6.10
-PY37_VERSION=3.7.6
-PY38_VERSION=3.8.6
-PY39_VERSION=3.9.0
+#PY36_VERSION=3.6.10
+PY37_VERSION=3.7.10
+PY38_VERSION=3.8.8
+PY39_VERSION=3.9.7
 PY3A_VERSION=3.10.0
-PY36_PATH=$(shell pyenv prefix $(PY36_VERSION))
+#PY36_PATH=$(shell pyenv prefix $(PY36_VERSION))
 PY37_PATH=$(shell pyenv prefix $(PY37_VERSION))
 PY38_PATH=$(shell pyenv prefix $(PY38_VERSION))
 PY39_PATH=$(shell pyenv prefix $(PY39_VERSION))
@@ -35,7 +35,7 @@ test-python:
 
 install-python-versions:
 	# requires pyenv
-	pyenv install -s $(PY36_VERSION)
+	#pyenv install -s $(PY36_VERSION)
 	pyenv install -s $(PY37_VERSION)
 	pyenv install -s $(PY38_VERSION)
 	pyenv install -s $(PY39_VERSION)

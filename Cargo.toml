@@ -1,6 +1,6 @@
 [package]
 name = "reasonable"
-version = "0.1.46"
+version = "0.1.47"
 authors = ["Gabe Fierro <gtfierro@cs.berkeley.edu>"]
 repository = "https://github.com/gtfierro/reasonable"
 homepage = "https://brickschema.org/"
@@ -39,7 +39,7 @@ serde_derive = "1.0"
 tinytemplate = "1.2.1"
 
 [dependencies.pyo3]
-version = "0.13.2"
+version = "0.14"
 optional = true
 features = ["extension-module"]
 
@@ -51,4 +51,4 @@ name = "my_benchmark"
 harness = false
 
 [profile.release]
-debug = false
+debug = true

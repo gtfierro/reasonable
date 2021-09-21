@@ -1,0 +1,64 @@
+name: publish-fast-ctc-decode
+
+on:
+  push:
+    tags:
+       - 'v*'
+
+jobs:
+  linux-wheels:
+    runs-on: ubuntu-latest
+    container: quay.io/pypa/manylinux1_x86_64
+    steps:
+     - uses: actions/checkout@v1
+     - name: Build wheels
+       run: |
+         curl https://sh.rustup.rs -sSf | sh -s -- -y
+         source $HOME/.cargo/env
+         #rustup default nightly-2019-12-11
+         bash .github/workflows/build-wheels.sh
+     - uses: actions/upload-artifact@v1
+       with:
+         name: linux-wheels
+         path: wheelhouse/
+
+  osx-wheels:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        python-version: [3.7, 3.8, 3.9]
+    steps:
+     - uses: actions/checkout@v1
+     - uses: actions-rs/toolchain@v1
+       with:
+         toolchain: nightly
+         default: true
+     - uses: actions/setup-python@v2
+       with:
+         python-version: ${{ matrix.python-version }}
+     - name: Build wheels
+       run: |
+         python3 -m pip install maturin
+         maturin build --release
+     - uses: actions/upload-artifact@v1
+       with:
+         name: osx-${{ matrix.python-version }}-wheel
+         path: target/wheels
+
+  windows-wheels:
+    runs-on: windows-latest
+    steps:
+     - uses: actions/checkout@v1
+     - uses: actions-rs/toolchain@v1
+       with:
+         toolchain: nightly
+         default: true
+     - uses: actions/setup-python@v2
+     - name: Build wheels
+       run: |
+         python -m pip install maturin
+         maturin build --release
+     - uses: actions/upload-artifact@v1
+       with:
+         name: windows-wheels
+         path: target/wheels
