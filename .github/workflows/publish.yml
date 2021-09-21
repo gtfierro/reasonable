@@ -31,7 +31,7 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: 3.7
-      - run: pip install 'maturin>=0.11,<0.12'
+      - run: pip install 'maturin>=0.11,<0.12' cffi
       - run: maturin publish --universal2 --no-sdist -u "${{ secrets.PYPI_USER }}" -p "${{ secrets.PYPI_PASS }}"
   publish_pypi_windows:
     runs-on: windows-latest
@@ -42,5 +42,5 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: 3.7
-      - run: pip install 'maturin>=0.11,<0.12'
+      - run: pip install 'maturin>=0.11,<0.12' cffi
       - run: maturin publish --no-sdist -u "${{ secrets.PYPI_USER }}" -p "${{ secrets.PYPI_PASS }}"
