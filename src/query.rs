@@ -1,6 +1,6 @@
 use crate::owl::node_to_string;
 use datafrog::Iteration;
-use fasthash::city;
+use farmhash;
 use rdf::graph;
 use rdf::node::Node;
 use rdf::triple::Triple;
@@ -345,11 +345,11 @@ impl<'a> Context<'a> {
             .iter()
             .map(|t| {
                 let o_ = t.object();
-                let o_hash = city::hash32(node_to_string(o_)) as u32;
+                let o_hash = farmhash::hash32(node_to_string(o_)) as u32;
                 lookup.insert(o_hash, o_);
 
                 let s_ = t.subject();
-                let s_hash = city::hash32(node_to_string(s_)) as u32;
+                let s_hash = farmhash::hash32(node_to_string(s_)) as u32;
                 lookup.insert(s_hash, s_);
                 (s_hash, o_hash)
             })

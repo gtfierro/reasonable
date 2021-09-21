@@ -1,5 +1,5 @@
 use crate::common::URI;
-use fasthash::city;
+use farmhash;
 use oxigraph::model::{Term, NamedNode, IriParseError};
 use std::collections::HashMap;
 
@@ -35,11 +35,11 @@ impl URIIndex {
 }
 
 pub fn hash(key: &Term) -> URI {
-    city::hash32(key.to_string())
+    farmhash::hash32(key.to_string().as_bytes())
 }
 
 #[allow(dead_code)]
 pub fn hash_str(key: &'static str) -> URI {
     let s = key.to_string();
-    city::hash32(&s)
+    farmhash::hash32(&s.as_bytes())
 }
