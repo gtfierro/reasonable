@@ -1,4 +1,4 @@
-name: publish-fast-ctc-decode
+name: publish-python-package
 
 on:
   push:
