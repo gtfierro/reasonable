@@ -41,7 +41,7 @@ tinytemplate = "1.2.1"
 [dependencies.pyo3]
 version = "0.14"
 optional = true
-features = ["extension-module", "abi-py37"]
+features = ["extension-module", "abi3-py37"]
 
 [build-dependencies]
 pyo3-build-config = "0.14.2"
