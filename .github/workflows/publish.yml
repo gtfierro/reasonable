@@ -16,30 +16,30 @@ jobs:
         env:
           CRATES_IO_TOKEN: ${{ secrets.CRATES_IO_TOKEN }}
       - run: cargo publish
-    publish_pypi_linux:
-      runs-on: ubuntu-latest
-      needs: publish_lib_crate
-      steps:
-        - uses: actions/checkout@v2
-        - run: docker run --rm -v $(pwd):/io konstin2/maturin:v0.11.1 publish -u __token__ -p ${{ secrets.PYPI_PASSWORD }}
-    publish_pypi_mac:
-      runs-on: macos-latest
-      needs: publish_lib_crate
-      steps:
-        - uses: actions/checkout@v2
-        - run: rustup update && rustup target add aarch64-apple-darwin
-        - uses: actions/setup-python@v2
-          with:
-            python-version: 3.7
-        - run: pip install 'maturin>=0.11,<0.12'
-        - run: maturin publish --universal2 --no-sdist -u __token__ -p ${{ secrets.PYPI_PASSWORD }}
-    publish_pypi_windows:
-      runs-on: windows-latest
-      needs: publish_lib_crate
-      steps:
-        - uses: actions/checkout@v2
-        - uses: actions/setup-python@v2
-          with:
-            python-version: 3.7
-        - run: pip install 'maturin>=0.11,<0.12'
-        - run: maturin publish --no-sdist -u __token__ -p ${{ secrets.PYPI_PASSWORD }}
+  publish_pypi_linux:
+    runs-on: ubuntu-latest
+    needs: publish_lib_crate
+    steps:
+      - uses: actions/checkout@v2
+      - run: docker run --rm -v $(pwd):/io konstin2/maturin:v0.11.1 publish -u __token__ -p ${{ secrets.PYPI_PASSWORD }}
+  publish_pypi_mac:
+    runs-on: macos-latest
+    needs: publish_lib_crate
+    steps:
+      - uses: actions/checkout@v2
+      - run: rustup update && rustup target add aarch64-apple-darwin
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+      - run: pip install 'maturin>=0.11,<0.12'
+      - run: maturin publish --universal2 --no-sdist -u __token__ -p ${{ secrets.PYPI_PASSWORD }}
+  publish_pypi_windows:
+    runs-on: windows-latest
+    needs: publish_lib_crate
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+      - run: pip install 'maturin>=0.11,<0.12'
+      - run: maturin publish --no-sdist -u __token__ -p ${{ secrets.PYPI_PASSWORD }}
