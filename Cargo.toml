@@ -1,6 +1,6 @@
 [package]
 name = "reasonable"
-version = "0.1.49-alpha9"
+version = "0.1.49-alpha10"
 authors = ["Gabe Fierro <gtfierro@cs.berkeley.edu>"]
 repository = "https://github.com/gtfierro/reasonable"
 homepage = "https://brickschema.org/"
@@ -41,10 +41,10 @@ tinytemplate = "1.2.1"
 [dependencies.pyo3]
 version = "0.14"
 optional = true
-features = ["extension-module", "abi3-py37"]
+features = ["extension-module", "abi3"]
 
 [build-dependencies]
-pyo3-build-config = { version = "0.14", features = ["abi3-py37"] }
+pyo3-build-config = { version = "0.14.5", features = ["abi3"] }
 
 [dev-dependencies]
 criterion = "0.3"
