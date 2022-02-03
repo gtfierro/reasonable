@@ -157,3 +157,7 @@ Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasonin
 ### Other
 
 - no datatype semantics for now
+
+## Development Notes
+
+To publish new versions of `reasonable`, tag a commit with the version (e.g. `v1.3.2`) and push the tag to GitHub. This will execute the `publish` action which builds an uploads to PyPi.
