@@ -15,9 +15,10 @@ struct PyReasoner {
 }
 
 struct MyTerm(Term);
-impl From<&PyAny> for MyTerm {
-    fn from(s: &PyAny) -> Self {
+impl From<Result<&PyAny, pyo3::PyErr>> for MyTerm {
+    fn from(s: Result<&PyAny, pyo3::PyErr>) -> Self {
         //if let Ok(typestr) = s.get_type().name() {
+        let s = s.unwrap();
         let typestr = s.get_type().name().unwrap();
         let data_type: Option<NamedNode> = match s.getattr("datatype") {
             Ok(dt) => {
@@ -73,18 +74,18 @@ fn term_to_python<'a>(py: Python, rdflib: &'a PyModule, node: Term) -> PyResult<
             let mut uri = uri.to_string();
             uri.remove(0);
             uri.remove(uri.len()-1);
-            rdflib.call1("URIRef", (uri,))?
+            rdflib.getattr("URIRef")?.call1((uri,))?
         },
         Term::Literal(literal) => {
             match (dtype, lang) {
                 // prioritize 'lang' -> it implies String
-                (_, Some(lang)) => rdflib.call1("Literal", (literal.value(), lang, py.None()))?,
-                (Some(dtype), None) => rdflib.call1("Literal", (literal.value(), py.None(), dtype))?,
-                (None, None) => rdflib.call1("Literal", (literal.value(), ))?,
+                (_, Some(lang)) => rdflib.getattr("Literal")?.call1((literal.value(), lang, py.None()))?,
+                (Some(dtype), None) => rdflib.getattr("Literal")?.call1((literal.value(), py.None(), dtype))?,
+                (None, None) => rdflib.getattr("Literal")?.call1((literal.value(), ))?,
             }
         }
         Term::BlankNode(id) => {
-            rdflib.call1("BNode", (id.clone().into_string(),))?
+            rdflib.getattr("BNode")?.call1((id.clone().into_string(),))?
         }
     };
     Ok(res)
@@ -146,7 +147,7 @@ def get_triples(graph):
             "converters.pg",
             "converters",
         )?;
-        let l: &PyList = converters.call1("get_triples", (graph,))?.downcast()?;
+        let l: &PyList = converters.getattr("get_triples")?.call1((graph,))?.downcast()?;
         let mut triples: Vec<Triple> = Vec::new();
         for t in l.iter() {
             let t: &PyTuple = t.downcast()?;

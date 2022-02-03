@@ -4,12 +4,12 @@
 PY37_VERSION=3.7.10
 PY38_VERSION=3.8.8
 PY39_VERSION=3.9.7
-PY3A_VERSION=3.10.0
+#PY3A_VERSION=3.10.0
 #PY36_PATH=$(shell pyenv prefix $(PY36_VERSION))
 PY37_PATH=$(shell pyenv prefix $(PY37_VERSION))
 PY38_PATH=$(shell pyenv prefix $(PY38_VERSION))
 PY39_PATH=$(shell pyenv prefix $(PY39_VERSION))
-PY3A_PATH=$(shell pyenv prefix $(PY3A_VERSION))
+#PY3A_PATH=$(shell pyenv prefix $(PY3A_VERSION))
 PY36_BIN=$(PY36_PATH)/bin/python
 PY37_BIN=$(PY37_PATH)/bin/python
 PY38_BIN=$(PY38_PATH)/bin/python
