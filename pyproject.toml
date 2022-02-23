@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "reasonable"
-version = "0.1.52"
+version = "0.1.53a1"
 description = "Python interface to 'reasonable', a Datalog implementation of the OWL 2 RL profile"
 authors = ["Gabe Fierro <gtfierro@mines.edu>"]
 license = "bsd-3-clause"
@@ -9,7 +9,6 @@ homepage = "https://github.com/gtfierro/reasonable"
 
 [tool.poetry.dependencies]
 python = "^3.7"
-brickschema = "^0.5"
 
 [tool.poetry.dev-dependencies]
 maturin = "^0.12"
@@ -18,7 +17,3 @@ rdflib = "^6.1"
 [build-system]
 requires = ["maturin>=0.12,<0.13"]
 build-backend = "maturin"
-
-# [tool.maturin]
-# bindings = "cffi"
-# compatibility = "none"
