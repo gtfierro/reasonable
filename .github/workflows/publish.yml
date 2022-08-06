@@ -21,7 +21,7 @@ jobs:
     needs: publish_lib_crate
     steps:
       - uses: actions/checkout@v2
-      - run: docker run --rm -v $(pwd):/io -e PYO3_PYTHON=python3.7 konstin2/maturin:v0.13.1 publish --features python-library -u "${{ secrets.PYPI_USER }}" -p "${{ secrets.PYPI_PASS }}"
+      - run: docker run --rm -v $(pwd):/io -e PYO3_PYTHON=python3.7 konstin2/maturin:latest publish --features python-library -u "${{ secrets.PYPI_USER }}" -p "${{ secrets.PYPI_PASS }}"
   publish_pypi_mac:
     runs-on: macos-latest
     needs: publish_lib_crate
