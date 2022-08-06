@@ -162,7 +162,7 @@ impl Manager {
 
     pub fn process_updates(&mut self, updates: TripleUpdate) {
         // are there deletions? if so, clear out the reasoned state:
-        let has_deletions = updates.updates.iter().position(|(_, count)| *count < 0).is_some();
+        let has_deletions = updates.updates.iter().any(|(_, count)| *count < 0);
         if has_deletions {
             self.reasoner.clear();
         }

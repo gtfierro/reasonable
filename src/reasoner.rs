@@ -108,9 +108,10 @@ impl Reasoner {
         let u_owl_nothing = index.put(owl!("Nothing"));
         let u_rdf_type = index.put(rdf!("type"));
         let u_owl_class = index.put(owl!("Class"));
-        let mut input = Vec::new();
-        input.push((u_owl_thing, (u_rdf_type, u_owl_class)));
-        input.push((u_owl_nothing, (u_rdf_type, u_owl_class)));
+        let mut input = vec![
+            (u_owl_thing, (u_rdf_type, u_owl_class)),
+            (u_owl_nothing, (u_rdf_type, u_owl_class))
+        ];
 
         let rdf_type_inv = Rc::new(RefCell::new(iter1.variable("rdf_type_inv")));
         let owl_intersection_of = iter1.variable::<(URI, URI)>("owl_intersection_of");
@@ -129,7 +130,7 @@ impl Reasoner {
             iter1,
             index,
             input,
-            base: base,
+            base,
             errors: Vec::new(),
             output: Vec::new(),
             spo,
@@ -200,7 +201,7 @@ impl Reasoner {
             .iter()
             .map(|trip| {
                 let (s, p, o) = (trip.subject.clone(), trip.predicate.clone(), trip.object.clone());
-                (self.index.put(s.into()), (self.index.put(p.into()), self.index.put(o.into())))
+                (self.index.put(s.into()), (self.index.put(p.into()), self.index.put(o)))
             })
             .collect();
         trips.sort();
@@ -275,7 +276,7 @@ impl Reasoner {
                     self.index.put(triple.subject.clone().into()),
                     (
                         self.index.put(triple.predicate.clone().into()),
-                        self.index.put(triple.object.clone().into()),
+                        self.index.put(triple.object.clone()),
                     ),
                 );
                 (s, (p, o))
@@ -1328,7 +1329,7 @@ impl Reasoner {
                     .iter()
                     .filter_map(|(inst, class)| {
                         let triple = (*inst, (rdftype_node, *c2));
-                        if c1_instances.contains(&inst) {
+                        if c1_instances.contains(inst) {
                             None
                         } else if est.insert(triple) {
                             Some(triple)
@@ -1414,6 +1415,6 @@ impl Reasoner {
 }
 
 /// removes from rv the triples that are in src. src is sorted
-pub fn get_unique(src: &Vec<KeyedTriple>, rv: &mut Vec<KeyedTriple>) {
-    rv.retain(|t| !src.contains(&t))
+pub fn get_unique(src: &[KeyedTriple], rv: &mut Vec<KeyedTriple>) {
+    rv.retain(|t| !src.contains(t))
 }
