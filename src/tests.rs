@@ -255,6 +255,29 @@ fn test_prp_fp() -> Result<(), String> {
 }
 
 #[test]
+fn test_prp_fp_2() -> Result<(), String> {
+    let mut r = Reasoner::new();
+    let trips = vec![
+        ("urn:PRED", RDF_TYPE, OWL_FUNCPROP),
+        ("urn:SUB", "urn:PRED", "urn:OBJECT_1"),
+        ("urn:SUB1", "urn:PRED", "urn:OBJECT_2"),
+    ];
+    r.load_triples_str(trips);
+    r.reason();
+    let res = r.get_triples_string();
+    for i in res.iter() {
+        let (s, p, o) = i;
+        println!("{} {} {}", s, p, o);
+    }
+    assert!(!res.contains(&(
+        "<urn:OBJECT_1>".to_string(),
+        wrap!(OWL_SAMEAS),
+        "<urn:OBJECT_2>".to_string()
+    )));
+    Ok(())
+}
+
+#[test]
 fn test_prp_ifp() -> Result<(), String> {
     let mut r = Reasoner::new();
     let trips = vec![

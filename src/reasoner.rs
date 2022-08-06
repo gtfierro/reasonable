@@ -843,9 +843,10 @@ impl Reasoner {
                     &self.pso,
                     |&p, &(x1, y1), &(x2, y2)| {
                         // if x1 and x2 are the same, then emit y1 and y2 are the same
-                        match x1 {
-                            x2 => (y1, (owlsameas_node, y2)),
-                            _ => (0, (0, 0)),
+                        if (x1 == x2) {
+                            (y1, (owlsameas_node, y2))
+                        } else {
+                            (0, (0, 0))
                         }
                     },
                 );
