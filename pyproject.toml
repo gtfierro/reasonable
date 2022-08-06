@@ -9,6 +9,7 @@ homepage = "https://github.com/gtfierro/reasonable"
 
 [tool.poetry.dependencies]
 python = "^3.7"
+cffi = "^1.15.1"
 
 [tool.poetry.dev-dependencies]
 maturin = "^0.13"
