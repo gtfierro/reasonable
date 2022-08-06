@@ -21,7 +21,7 @@ jobs:
     needs: publish_lib_crate
     steps:
       - uses: actions/checkout@v2
-      - run: docker run --rm -v $(pwd):/io -e PYO3_PYTHON=python3.7 konstin2/maturin:v0.13.1 publish --cargo-extra-args="--features python-library" -u "${{ secrets.PYPI_USER }}" -p "${{ secrets.PYPI_PASS }}"
+      - run: docker run --rm -v $(pwd):/io -e PYO3_PYTHON=python3.7 konstin2/maturin:v0.13.1 publish --features python-library -u "${{ secrets.PYPI_USER }}" -p "${{ secrets.PYPI_PASS }}"
   publish_pypi_mac:
     runs-on: macos-latest
     needs: publish_lib_crate
@@ -32,7 +32,7 @@ jobs:
         with:
           python-version: 3.7
       - run: pip install 'maturin>=0.13,<0.14' cffi
-      - run: maturin publish --cargo-extra-args="--features python-library" --universal2 --no-sdist -u "${{ secrets.PYPI_USER }}" -p "${{ secrets.PYPI_PASS }}"
+      - run: maturin publish --features python-library --universal2 --no-sdist -u "${{ secrets.PYPI_USER }}" -p "${{ secrets.PYPI_PASS }}"
   publish_pypi_windows:
     runs-on: windows-latest
     needs: publish_lib_crate
@@ -43,4 +43,4 @@ jobs:
         with:
           python-version: 3.7
       - run: pip install 'maturin>=0.13,<0.14' cffi
-      - run: maturin publish --cargo-extra-args="--features python-library" --no-sdist -u "${{ secrets.PYPI_USER }}" -p "${{ secrets.PYPI_PASS }}"
+      - run: maturin publish --features python-library --no-sdist -u "${{ secrets.PYPI_USER }}" -p "${{ secrets.PYPI_PASS }}"
