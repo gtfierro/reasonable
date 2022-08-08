@@ -1,15 +1,13 @@
-use crate::error::Result;
+use anyhow::Result;
 use crate::reasoner::Reasoner;
 use crate::common::make_triple;
 use log::{debug, info};
-use oxigraph::store::sled::SledConflictableTransactionError;
+use oxigraph::store::{Store, StorageError};
 use oxigraph::io::DatasetFormat;
 use oxigraph::{
     io::{GraphFormat, GraphParser},
     model::*,
-    SledStore,
 };
-use std::convert::Infallible;
 use std::fs;
 use std::collections::HashMap;
 use std::io::Cursor;
@@ -52,29 +50,29 @@ impl TripleUpdate {
 
 pub struct Manager {
     reasoner: Reasoner,
-    triple_store: SledStore,
+    triple_store: Store,
 }
 
 impl Manager {
     pub fn new() -> Self {
         Manager {
             reasoner: Reasoner::new(),
-            triple_store: SledStore::open("graph.db").unwrap(),
+            triple_store: Store::open("graph.db").unwrap(),
         }
     }
 
     pub fn new_in_memory() -> Self {
         Manager {
             reasoner: Reasoner::new(),
-            triple_store: SledStore::new().unwrap(),
+            triple_store: Store::new().unwrap(),
         }
     }
 
     pub fn size(&self) -> usize {
-        self.triple_store.len()
+        self.triple_store.len().unwrap()
     }
 
-    pub fn store(&self) -> SledStore {
+    pub fn store(&self) -> Store {
         self.triple_store.clone()
     }
 
@@ -139,14 +137,14 @@ impl Manager {
 
         // add reasoned triples to an in-memory store
         self.triple_store
-            .transaction(|txn| {
+            .transaction(|mut txn| {
                 for t in self.reasoner.view_output().iter() {
                     txn.insert(t.clone().in_graph(GraphNameRef::DefaultGraph).as_ref())?;
                 }
-                Ok(()) as std::result::Result<(), SledConflictableTransactionError<Infallible>>
+                Ok(()) as std::result::Result<(), StorageError>
             })
             .unwrap();
-        info!("now have {} triples", self.triple_store.len());
+        info!("now have {} triples", self.triple_store.len().unwrap());
         info!(
             "refresh completed in {:.02}sec",
             refresh_start.elapsed().as_secs_f64()
@@ -195,7 +193,7 @@ impl Manager {
 }
 
 
-pub fn parse_file(filename: &str) -> std::result::Result<Vec<Triple>, std::io::Error> {
+pub fn parse_file(filename: &str) -> Result<Vec<Triple>> {
     let gfmt: GraphFormat = if filename.ends_with(".ttl") {
         GraphFormat::Turtle
     } else if filename.ends_with(".n3") || filename.ends_with(".ntriples") {
@@ -206,8 +204,6 @@ pub fn parse_file(filename: &str) -> std::result::Result<Vec<Triple>, std::io::E
     let data = fs::read_to_string(filename)?;
     debug!("format: {:?} for {}", gfmt, filename);
     let parser = GraphParser::from_format(gfmt);
-    let triples: std::result::Result<Vec<Triple>, std::io::Error> =
-        parser.read_triples(Cursor::new(data))?
-        .collect(); //.collect::<Result<Triple>>();
+    let triples = parser.read_triples(Cursor::new(data))?.collect::<Result<Vec<_>,_>>().map_err(|e| e.into());
     triples
 }

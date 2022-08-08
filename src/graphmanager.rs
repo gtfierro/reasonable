@@ -1,18 +1,14 @@
 use crate::reasoner::Reasoner;
-use oxigraph::store::sled::SledConflictableTransactionError;
+use oxigraph::store::{Store, StorageError};
 use oxigraph::{
     model::*,
-    //store::memory::MemoryPreparedQuery,
-    //MemoryStore
-    SledStore,
 };
 use std::collections::HashMap;
-use std::convert::Infallible;
 use std::string::String;
 use std::time::Instant;
 
 pub struct GraphManager {
-    triple_store: SledStore,
+    triple_store: Store,
     reasoners: HashMap<String, Reasoner>,
 }
 
@@ -20,7 +16,7 @@ impl GraphManager {
     pub fn new() -> Self {
         GraphManager {
             reasoners: HashMap::new(),
-            triple_store: SledStore::open("graph.db").unwrap(),
+            triple_store: Store::open("graph.db").unwrap(),
         }
     }
 
@@ -45,11 +41,11 @@ impl GraphManager {
 
         // add reasoned triples to an in-memory store
         self.triple_store
-            .transaction(|txn| {
+            .transaction(|mut txn| {
                 for t in reasoner.view_output().iter() {
                     txn.insert(t.clone().in_graph(graph).as_ref())?;
                 }
-                Ok(()) as std::result::Result<(), SledConflictableTransactionError<Infallible>>
+                Ok(()) as std::result::Result<(), StorageError>
             })
             .unwrap();
     }
@@ -65,22 +61,22 @@ impl GraphManager {
 
             // add reasoned triples to an in-memory store
             self.triple_store
-                .transaction(|txn| {
+                .transaction(|mut txn| {
                     for t in reasoner.view_output().iter() {
                         txn.insert(t.clone().in_graph(graph).as_ref())?;
                     }
-                    Ok(()) as std::result::Result<(), SledConflictableTransactionError<Infallible>>
+                    Ok(()) as std::result::Result<(), StorageError>
                 })
                 .unwrap();
         }
-        println!("now have {} triples", self.triple_store.len());
+        println!("now have {} triples", self.triple_store.len().unwrap());
         println!(
             "refresh completed in {:.02}sec",
             refresh_start.elapsed().as_secs_f64()
         );
     }
 
-    pub fn store(&self) -> SledStore {
+    pub fn store(&self) -> Store {
         self.triple_store.clone()
     }
 }
