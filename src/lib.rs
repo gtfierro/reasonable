@@ -8,10 +8,12 @@
 pub mod common;
 mod disjoint_sets;
 pub mod error;
+#[cfg(feature = "ondisk")]
 #[allow(dead_code)]
 pub mod graphmanager;
 #[allow(dead_code)]
 mod index;
+#[cfg(feature = "ondisk")]
 #[allow(dead_code)]
 pub mod manager;
 #[allow(dead_code)]

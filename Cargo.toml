@@ -1,6 +1,6 @@
 [package]
 name = "reasonable"
-version = "0.1.61"
+version = "0.1.62"
 authors = ["Gabe Fierro <gtfierro@mines.edu>"]
 repository = "https://github.com/gtfierro/reasonable"
 homepage = "https://brickschema.org/"
@@ -24,7 +24,7 @@ python-library = ["pyo3"]
 
 [dependencies]
 rdf = "0.1.4"
-oxigraph = { version = "0.3.5" }
+oxigraph = "0.3.5"
 farmhash = "1.1.5"
 datafrog = "2.0.1"
 roaring = "0.5.2"
