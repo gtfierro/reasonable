@@ -87,6 +87,9 @@ fn term_to_python<'a>(py: Python, rdflib: &'a PyModule, node: Term) -> PyResult<
         Term::BlankNode(id) => {
             rdflib.getattr("BNode")?.call1((id.clone().into_string(),))?
         }
+        _ => {
+            panic!("Should not be here");
+        }
     };
     Ok(res)
 }
