@@ -47,8 +47,8 @@ jobs:
           python-version: 3.7
       - run: rustup update && rustup target add aarch64-apple-darwin
       - run: pip install maturin
-      - run: maturin publish --no-sdist --universal2 -m Cargo.toml -u ${{ secrets.PYPI_USER }} -p ${{ secrets.PYPI_PASS }}
-      - run: maturin publish --no-sdist -m Cargo.toml -u ${{ secrets.PYPI_USER }} -p ${{ secrets.PYPI_PASS }}
+      - run: maturin publish --no-sdist --universal2 -m Cargo.toml -u '${{ secrets.PYPI_USER }}' -p '${{ secrets.PYPI_PASS }}'
+      - run: maturin publish --no-sdist -m Cargo.toml -u '${{ secrets.PYPI_USER }}' -p '${{ secrets.PYPI_PASS }}'
       - uses: softprops/action-gh-release@v1
         with:
           files: target/wheels/*
@@ -65,7 +65,7 @@ jobs:
       - run: rustup update
       - run: pip install maturin
       - run: Remove-Item -LiteralPath "C:\msys64\" -Force -Recurse
-      - run: maturin publish --no-sdist -m Cargo.toml -u ${{ secrets.PYPI_USER }} -p ${{ secrets.PYPI_PASS }}
+      - run: maturin publish --no-sdist -m Cargo.toml -u '${{ secrets.PYPI_USER }}' -p '${{ secrets.PYPI_PASS }}'
       - uses: softprops/action-gh-release@v1
         with:
           files: target/wheels/*
