@@ -1,6 +1,6 @@
 [package]
 name = "reasonable"
-version = "0.1.62"
+version = "0.1.63"
 authors = ["Gabe Fierro <gtfierro@mines.edu>"]
 repository = "https://github.com/gtfierro/reasonable"
 homepage = "https://brickschema.org/"
