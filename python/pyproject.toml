@@ -11,6 +11,7 @@ homepage = "https://github.com/gtfierro/reasonable"
 python = "^3.7"
 cffi = "^1.15.1"
 libclang = "^14.0.6"
+maturin = {extras = ["patchelf"], version = "^0.13.6"}
 
 [tool.poetry.dev-dependencies]
 maturin = "^0.13"
