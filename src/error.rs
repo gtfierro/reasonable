@@ -2,12 +2,8 @@ use oxigraph::sparql;
 use oxigraph::model;
 
 use std::io;
+use std::fmt;
 use std::sync::mpsc::RecvError;
-
-#[cfg(feature = "python-library")]
-use pyo3::prelude::*;
-#[cfg(feature = "python-library")]
-use pyo3::exceptions;
 
 #[cfg(feature = "sqlite")]
 #[derive(Debug)]
@@ -32,6 +28,20 @@ pub enum ReasonableError {
     BNodeParse(model::BlankNodeIdParseError),
     Eval(sparql::EvaluationError),
     ChannelRecv(RecvError),
+}
+
+impl fmt::Display for ReasonableError {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match self {
+            ReasonableError::ManagerError(e) => write!(f, "{}", e),
+            ReasonableError::IO(e) => write!(f, "{}", e.to_string()),
+            ReasonableError::SPARQLParse(e) => write!(f, "{}", e.to_string()),
+            ReasonableError::IriParse(e) => write!(f, "{}", e.to_string()),
+            ReasonableError::BNodeParse(e) => write!(f, "{}", e.to_string()),
+            ReasonableError::Eval(e) => write!(f, "{}", e.to_string()),
+            ReasonableError::ChannelRecv(e) => write!(f, "{}", e.to_string()),
+        }
+    }
 }
 
 impl From<io::Error> for ReasonableError {

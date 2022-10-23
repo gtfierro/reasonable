@@ -11,16 +11,13 @@ edition = "2018"
 
 [lib]
 name = "reasonable"
-crate-type = ["cdylib", "lib"]
+crate-type = ["lib"]
 bench = false
 
 [[bin]]
 name = "reasonable"
 path = "src/main.rs"
 bench = false
-
-[features]
-python-library = ["pyo3"]
 
 [dependencies]
 rdf = "0.1.4"
@@ -38,14 +35,6 @@ serde_json = "1.0"
 serde_derive = "1.0"
 tinytemplate = "1.2.1"
 anyhow = "1.0.60"
-
-[dependencies.pyo3]
-version = "0.16.5"
-optional = true
-features = ["extension-module", "abi3-py37"]
-
-[build-dependencies]
-pyo3-build-config = { version = "0.16.5", features = ["abi3-py37"] }
 
 [dev-dependencies]
 criterion = "0.3"

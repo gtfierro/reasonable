@@ -19,8 +19,5 @@ pub mod manager;
 #[allow(dead_code)]
 pub mod reasoner;
 
-#[cfg(feature = "python-library")]
-mod python;
-
 #[cfg(test)]
 mod tests;
