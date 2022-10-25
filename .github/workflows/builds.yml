@@ -82,7 +82,7 @@ jobs:
 
       - name: Build Python Library
         run: |
-          maturin build -i python -b pyo3 --cargo-extra-args="--features python-library"
+          maturin build -i python -b pyo3
 
       - name: Publish Python Library
         continue-on-error: true
@@ -90,4 +90,4 @@ jobs:
             PYPI_USER: ${{ secrets.PYPI_USER }}
             MATURIN_PASSWORD: ${{ secrets.PYPI_PASS }}
         run: |
-          maturin publish -i python -b pyo3 --cargo-extra-args="--features python-library" -u $PYPI_USER
+          maturin publish -i python -b pyo3 -u $PYPI_USER
