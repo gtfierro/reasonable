@@ -22,92 +22,92 @@ jobs:
       - run: cargo publish
         working-directory: ./python
         continue-on-error: true
-  publish_pypi_linux:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        architecture: [ "x86_64", "aarch64" ]
-    continue-on-error: true
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          submodules: true
-      - uses: docker/setup-qemu-action@v2
-        with:
-          platforms: linux/${{ matrix.architecture }}
-        if: matrix.architecture != 'x86_64'
-      - run: sed 's/%arch%/${{ matrix.architecture }}/g' .github/workflows/manylinux_build.sh > .github/workflows/manylinux_build_script.sh
-      - run: docker run -v "$(pwd)":/workdir --platform linux/${{ matrix.architecture }} quay.io/pypa/manylinux2014_${{ matrix.architecture }} /bin/bash /workdir/.github/workflows/manylinux_build_script.sh
-      - uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          user: __token__
-          password: ${{ secrets.PYPI_PASSWORD }}
-          packages_dir: target/wheels
-      - uses: softprops/action-gh-release@v1
-        with:
-          files: target/wheels/*.whl
-  publish_pypi_mac:
-    runs-on: macos-latest
-    env:
-      DEVELOPER_DIR: '/Applications/Xcode.app/Contents/Developer'
-      SDKROOT: '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk'
-      MACOSX_DEPLOYMENT_TARGET: '10.14'
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          submodules: true
-      - uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
-      - run: rustup update && rustup target add aarch64-apple-darwin
-      - run: pip install -r python/requirements.dev.txt
-      - run: maturin build --release -m python/Cargo.toml
-      - run: pip install --no-index --find-links=target/wheels/ reasonable
-      - run: rm -r target/wheels
-      - run: maturin publish --no-sdist --universal2 -m python/Cargo.toml -u __token__ -p ${{ secrets.PYPI_PASSWORD }}
-      - run: maturin publish --no-sdist -m python/Cargo.toml -u __token__ -p ${{ secrets.PYPI_PASSWORD }}
-      - uses: softprops/action-gh-release@v1
-        with:
-          files: target/wheels/*.whl
-  publish_pypi_windows:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          submodules: true
-      - uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
-      - run: rustup update
-      - run: Remove-Item -LiteralPath "C:\msys64\" -Force -Recurse
-      - run: pip install -r python/requirements.dev.txt
-      - run: maturin build --release -m python/Cargo.toml
-      - run: pip install --no-index --find-links=target/wheels/ reasonable
-      - run: rm -r target/wheels
-      - run: maturin publish --no-sdist -m python/Cargo.toml -u __token__ -p ${{ secrets.PYPI_PASSWORD }}
-      - uses: softprops/action-gh-release@v1
-        with:
-          files: target/wheels/*.whl
-  publish_pypi_stdist:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          submodules: true
-      - uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
-      - run: rustup update
-      - run: pip install -r python/requirements.dev.txt
-      - run: maturin build -m python/Cargo.toml
-      - run: pip install --no-index --find-links=target/wheels/ reasonable
-      - run: rm -r target/wheels
-      - run: maturin sdist -m python/Cargo.toml
-      - uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          user: __token__
-          password: ${{ secrets.PYPI_PASSWORD }}
-          packages_dir: target/wheels
-      - uses: softprops/action-gh-release@v1
-        with:
-          files: target/wheels/*.tar.gz
+   publish_pypi_linux:
+     runs-on: ubuntu-latest
+     strategy:
+       matrix:
+         architecture: [ "x86_64", "aarch64" ]
+     continue-on-error: true
+     steps:
+       - uses: actions/checkout@v3
+         with:
+           submodules: true
+       - uses: docker/setup-qemu-action@v2
+         with:
+           platforms: linux/${{ matrix.architecture }}
+         if: matrix.architecture != 'x86_64'
+       - run: sed 's/%arch%/${{ matrix.architecture }}/g' .github/workflows/manylinux_build.sh > .github/workflows/manylinux_build_script.sh
+       - run: docker run -v "$(pwd)":/workdir --platform linux/${{ matrix.architecture }} quay.io/pypa/manylinux2014_${{ matrix.architecture }} /bin/bash /workdir/.github/workflows/manylinux_build_script.sh
+       - uses: pypa/gh-action-pypi-publish@release/v1
+         with:
+           user: __token__
+           password: ${{ secrets.PYPI_PASSWORD }}
+           packages_dir: target/wheels
+       - uses: softprops/action-gh-release@v1
+         with:
+           files: target/wheels/*.whl
+   publish_pypi_mac:
+     runs-on: macos-latest
+     env:
+       DEVELOPER_DIR: '/Applications/Xcode.app/Contents/Developer'
+       SDKROOT: '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk'
+       MACOSX_DEPLOYMENT_TARGET: '10.14'
+     steps:
+       - uses: actions/checkout@v3
+         with:
+           submodules: true
+       - uses: actions/setup-python@v4
+         with:
+           python-version: "3.10"
+       - run: rustup update && rustup target add aarch64-apple-darwin
+       - run: pip install -r python/requirements.dev.txt
+       - run: maturin build --release -m python/Cargo.toml
+       - run: pip install --no-index --find-links=target/wheels/ reasonable
+       - run: rm -r target/wheels
+       - run: maturin publish --no-sdist --universal2 -m python/Cargo.toml -u __token__ -p ${{ secrets.PYPI_PASSWORD }}
+       - run: maturin publish --no-sdist -m python/Cargo.toml -u __token__ -p ${{ secrets.PYPI_PASSWORD }}
+       - uses: softprops/action-gh-release@v1
+         with:
+           files: target/wheels/*.whl
+   publish_pypi_windows:
+     runs-on: windows-latest
+     steps:
+       - uses: actions/checkout@v3
+         with:
+           submodules: true
+       - uses: actions/setup-python@v4
+         with:
+           python-version: "3.10"
+       - run: rustup update
+       - run: Remove-Item -LiteralPath "C:\msys64\" -Force -Recurse
+       - run: pip install -r python/requirements.dev.txt
+       - run: maturin build --release -m python/Cargo.toml
+       - run: pip install --no-index --find-links=target/wheels/ reasonable
+       - run: rm -r target/wheels
+       - run: maturin publish --no-sdist -m python/Cargo.toml -u __token__ -p ${{ secrets.PYPI_PASSWORD }}
+       - uses: softprops/action-gh-release@v1
+         with:
+           files: target/wheels/*.whl
+   publish_pypi_stdist:
+     runs-on: ubuntu-latest
+     steps:
+       - uses: actions/checkout@v3
+         with:
+           submodules: true
+       - uses: actions/setup-python@v4
+         with:
+           python-version: "3.10"
+       - run: rustup update
+       - run: pip install -r python/requirements.dev.txt
+       - run: maturin build -m python/Cargo.toml
+       - run: pip install --no-index --find-links=target/wheels/ reasonable
+       - run: rm -r target/wheels
+       - run: maturin sdist -m python/Cargo.toml
+       - uses: pypa/gh-action-pypi-publish@release/v1
+         with:
+           user: __token__
+           password: ${{ secrets.PYPI_PASSWORD }}
+           packages_dir: target/wheels
+       - uses: softprops/action-gh-release@v1
+         with:
+           files: target/wheels/*.tar.gz
