@@ -43,7 +43,7 @@ jobs:
        - uses: pypa/gh-action-pypi-publish@release/v1
          with:
            user: __token__
-           password: ${{ secrets.PYPI_PASSWORD }}
+           password: ${{ secrets.PYPI_API_TOKEN }}
            packages_dir: target/wheels
        - uses: softprops/action-gh-release@v1
          with:
@@ -73,11 +73,11 @@ jobs:
          working-directory: ./python
        - run: poetry run maturin build --release -m Cargo.toml
          working-directory: ./python
-       - run: pip install --no-index --find-links=target/wheels/ reasonable
+       - run: pip install --no-index --find-links=target/wheels/ pyreasonable
        - run: rm -r target/wheels
-       - run: poetry run maturin publish --no-sdist --universal2 -m Cargo.toml -u __token__ -p ${{ secrets.PYPI_PASSWORD }}
+       - run: poetry run maturin publish --no-sdist --universal2 -m Cargo.toml -u __token__ -p ${{ secrets.PYPI_API_TOKEN }}
          working-directory: ./python
-       - run: poetry run maturin publish --no-sdist -m Cargo.toml -u __token__ -p ${{ secrets.PYPI_PASSWORD }}
+       - run: poetry run maturin publish --no-sdist -m Cargo.toml -u __token__ -p ${{ secrets.PYPI_API_TOKEN }}
          working-directory: ./python
        - uses: softprops/action-gh-release@v1
          with:
@@ -104,9 +104,9 @@ jobs:
          working-directory: ./python
        - run: poetry run maturin build --release -m Cargo.toml
          working-directory: ./python
-       - run: pip install --no-index --find-links=target/wheels/ reasonable
+       - run: pip install --no-index --find-links=target/wheels/ pyreasonable
        - run: rm -r target/wheels
-       - run: poetry run maturin publish --no-sdist -m Cargo.toml -u __token__ -p ${{ secrets.PYPI_PASSWORD }}
+       - run: poetry run maturin publish --no-sdist -m Cargo.toml -u __token__ -p ${{ secrets.PYPI_API_TOKEN }}
          working-directory: ./python
        - uses: softprops/action-gh-release@v1
          with:
@@ -132,14 +132,14 @@ jobs:
          working-directory: ./python
        - run: poetry run maturin build --release -m Cargo.toml
          working-directory: ./python
-       - run: pip install --no-index --find-links=target/wheels/ reasonable
+       - run: pip install --no-index --find-links=target/wheels/ pyreasonable
        - run: rm -r target/wheels
        - run: poetry run maturin sdist -m Cargo.toml
          working-directory: ./python
        - uses: pypa/gh-action-pypi-publish@release/v1
          with:
            user: __token__
-           password: ${{ secrets.PYPI_PASSWORD }}
+           password: ${{ secrets.PYPI_API_TOKEN }}
            packages_dir: target/wheels
        - uses: softprops/action-gh-release@v1
          with:
