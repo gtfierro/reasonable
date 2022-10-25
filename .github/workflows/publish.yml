@@ -23,7 +23,6 @@ jobs:
       - run: cargo publish
         working-directory: ./python
         continue-on-error: true
-
   publish_pypi_linux:
     runs-on: ubuntu-latest
     strategy:
@@ -48,7 +47,6 @@ jobs:
       - uses: softprops/action-gh-release@v1
         with:
           files: target/wheels/*.whl
-
   publish_pypi_mac:
     runs-on: macos-latest
     env:
@@ -72,7 +70,6 @@ jobs:
       - uses: softprops/action-gh-release@v1
         with:
           files: target/wheels/*.whl
-
   publish_pypi_windows:
     runs-on: windows-latest
     steps:
@@ -92,7 +89,6 @@ jobs:
       - uses: softprops/action-gh-release@v1
         with:
           files: target/wheels/*.whl
-
   publish_pypi_stdist:
     runs-on: ubuntu-latest
     steps:
