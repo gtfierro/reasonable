@@ -27,6 +27,8 @@ jobs:
      strategy:
        matrix:
          architecture: [ "x86_64", "aarch64" ]
+         poetry-version: ["1.1.15"]
+
      continue-on-error: true
      steps:
        - uses: actions/checkout@v3
@@ -48,6 +50,9 @@ jobs:
            files: target/wheels/*.whl
    publish_pypi_mac:
      runs-on: macos-latest
+     strategy:
+       matrix:
+         poetry-version: ["1.1.15"]
      env:
        DEVELOPER_DIR: '/Applications/Xcode.app/Contents/Developer'
        SDKROOT: '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk'
@@ -76,6 +81,9 @@ jobs:
            files: target/wheels/*.whl
    publish_pypi_windows:
      runs-on: windows-latest
+     strategy:
+       matrix:
+         poetry-version: ["1.1.15"]
      steps:
        - uses: actions/checkout@v3
          with:
@@ -100,6 +108,9 @@ jobs:
            files: target/wheels/*.whl
    publish_pypi_stdist:
      runs-on: ubuntu-latest
+     strategy:
+       matrix:
+         poetry-version: ["1.1.15"]
      steps:
        - uses: actions/checkout@v3
          with:
