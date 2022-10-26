@@ -1,6 +1,6 @@
 [package]
 name = "pyreasonable"
-version = "0.2.0-alpha2"
+version = "0.2.0-alpha3"
 authors = ["Gabe Fierro <gtfierro@mines.edu>"]
 repository = "https://github.com/gtfierro/reasonable"
 homepage = "https://brickschema.org/"
@@ -14,7 +14,7 @@ crate-type = ["cdylib"]
 name = "pyreasonable"
 
 [dependencies]
-reasonable = { version = "0.2.0-alpha2", path=".." }
+reasonable = { version = "0.2.0-alpha3", path=".." }
 pyo3 = { version = "0.17", features = ["extension-module", "abi3-py37"] }
 oxigraph = "0.3.7"
 anyhow = "1.0.66"
