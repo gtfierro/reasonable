@@ -71,9 +71,9 @@ jobs:
            poetry-version: ${{ matrix.poetry-version }}
        - run: poetry install
          working-directory: ./python
-       - run: poetry run maturin build --release -m Cargo.toml
+       - run: poetry run maturin build --release -m Cargo.toml -F python
          working-directory: ./python
-       - run: pip install --no-index --find-links=target/wheels/ pyreasonable
+       - run: pip install --no-index --find-links=target/wheels/ reasonable
        - run: rm -r target/wheels
        - run: poetry run maturin publish --no-sdist --universal2 -m Cargo.toml -u __token__ -p ${{ secrets.PYPI_API_TOKEN }}
          working-directory: ./python
@@ -102,9 +102,9 @@ jobs:
            poetry-version: ${{ matrix.poetry-version }}
        - run: poetry install
          working-directory: ./python
-       - run: poetry run maturin build --release -m Cargo.toml
+       - run: poetry run maturin build --release -m Cargo.toml -F python
          working-directory: ./python
-       - run: pip install --no-index --find-links=target/wheels/ pyreasonable
+       - run: pip install --no-index --find-links=target/wheels/ reasonable
        - run: rm -r target/wheels
        - run: poetry run maturin publish --no-sdist -m Cargo.toml -u __token__ -p ${{ secrets.PYPI_API_TOKEN }}
          working-directory: ./python
@@ -130,9 +130,9 @@ jobs:
            poetry-version: ${{ matrix.poetry-version }}
        - run: poetry install
          working-directory: ./python
-       - run: poetry run maturin build --release -m Cargo.toml
+       - run: poetry run maturin build --release -m Cargo.toml -F python
          working-directory: ./python
-       - run: pip install --no-index --find-links=target/wheels/ pyreasonable
+       - run: pip install --no-index --find-links=target/wheels/ reasonable
        - run: rm -r target/wheels
        - run: poetry run maturin sdist -m Cargo.toml
          working-directory: ./python
