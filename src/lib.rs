@@ -28,8 +28,8 @@ mod pyreason;
 use pyo3::prelude::*;
 #[cfg(feature = "python")]
 #[pymodule]
-fn pyreasonable(_py: Python<'_>, module: &PyModule) -> PyResult<()> {
-    module.add("__package__", "pyreasonable")?;
+fn reasonable(_py: Python<'_>, module: &PyModule) -> PyResult<()> {
+    module.add("__package__", "reasonable")?;
     module.add("__version__", env!("CARGO_PKG_VERSION"))?;
     module.add_class::<pyreason::PyReasoner>()?;
     Ok(())
