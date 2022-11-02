@@ -71,8 +71,8 @@ jobs:
        - run: poetry run maturin build --release -m Cargo.toml -F python
        - run: pip install --no-index --find-links=target/wheels/ reasonable
        - run: rm -r target/wheels
-       - run: poetry run maturin publish --no-sdist --universal2 -m Cargo.toml -u __token__ -p ${{ secrets.PYPI_API_TOKEN }}
-       - run: poetry run maturin publish --no-sdist -m Cargo.toml -u __token__ -p ${{ secrets.PYPI_API_TOKEN }}
+       - run: poetry run maturin publish --no-sdist --universal2 -m Cargo.toml -u __token__ -p ${{ secrets.PYPI_API_TOKEN }} -F python
+       - run: poetry run maturin publish --no-sdist -m Cargo.toml -u __token__ -p ${{ secrets.PYPI_API_TOKEN }} -F python
        - uses: softprops/action-gh-release@v1
          with:
            files: target/wheels/*.whl
@@ -98,7 +98,7 @@ jobs:
        - run: poetry run maturin build --release -m Cargo.toml -F python
        - run: pip install --no-index --find-links=target/wheels/ reasonable
        - run: rm -r target/wheels
-       - run: poetry run maturin publish --no-sdist -m Cargo.toml -u __token__ -p ${{ secrets.PYPI_API_TOKEN }}
+       - run: poetry run maturin publish --no-sdist -m Cargo.toml -u __token__ -p ${{ secrets.PYPI_API_TOKEN }} -F python
        - uses: softprops/action-gh-release@v1
          with:
            files: target/wheels/*.whl
@@ -123,7 +123,7 @@ jobs:
        - run: poetry run maturin build --release -m Cargo.toml -F python
        - run: pip install --no-index --find-links=target/wheels/ reasonable
        - run: rm -r target/wheels
-       - run: poetry run maturin sdist -m Cargo.toml
+       - run: poetry run maturin sdist -m Cargo.toml -F python
        - uses: pypa/gh-action-pypi-publish@release/v1
          with:
            user: __token__
