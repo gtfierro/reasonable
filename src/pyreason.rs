@@ -1,6 +1,6 @@
-use ::reasonable::reasoner;
-use ::reasonable::error::ReasonableError;
-use ::reasonable::common::make_triple;
+use crate::reasoner;
+use crate::error::ReasonableError;
+use crate::common::make_triple;
 use pyo3::types::{PyList, PyTuple};
 use pyo3::exceptions;
 use oxigraph::model::{Term, NamedNode, BlankNode, Literal, Triple};
@@ -145,3 +145,4 @@ impl PyReasoner {
         })
     }
 }
+
