@@ -86,6 +86,12 @@ jobs:
       with:
         python-version: 3.9
         architecture: x64
+    - name: install toolchains
+      run: |
+        cd /workdir
+        yum -y install centos-release-scl-rh
+        yum -y install llvm-toolset-7.0
+        source scl_source enable llvm-toolset-7.0
     - name: Build wheels
       uses: messense/maturin-action@v1
       with:
@@ -107,12 +113,18 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: [aarch64, armv7, s390x, ppc64le, ppc64]
+        target: [aarch64, armv7]
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
       with:
         python-version: 3.9
+    - name: install toolchains
+      run: |
+        cd /workdir
+        yum -y install centos-release-scl-rh
+        yum -y install llvm-toolset-7.0
+        source scl_source enable llvm-toolset-7.0
     - name: Build wheels
       uses: messense/maturin-action@v1
       with:
@@ -152,6 +164,12 @@ jobs:
       with:
         python-version: 3.9
         architecture: x64
+    - name: install toolchains
+      run: |
+        cd /workdir
+        yum -y install centos-release-scl-rh
+        yum -y install llvm-toolset-7.0
+        source scl_source enable llvm-toolset-7.0
     - name: Build wheels
       uses: messense/maturin-action@v1
       with:
@@ -189,6 +207,12 @@ jobs:
     - uses: actions/setup-python@v2
       with:
         python-version: 3.9
+    - name: install toolchains
+      run: |
+        cd /workdir
+        yum -y install centos-release-scl-rh
+        yum -y install llvm-toolset-7.0
+        source scl_source enable llvm-toolset-7.0
     - name: Build wheels
       uses: messense/maturin-action@v1
       with:
