@@ -88,7 +88,6 @@ jobs:
         architecture: x64
     - name: install toolchains
       run: |
-        cd /workdir
         yum -y install centos-release-scl-rh
         yum -y install llvm-toolset-7.0
         source scl_source enable llvm-toolset-7.0
@@ -121,7 +120,6 @@ jobs:
         python-version: 3.9
     - name: install toolchains
       run: |
-        cd /workdir
         yum -y install centos-release-scl-rh
         yum -y install llvm-toolset-7.0
         source scl_source enable llvm-toolset-7.0
@@ -166,7 +164,6 @@ jobs:
         architecture: x64
     - name: install toolchains
       run: |
-        cd /workdir
         yum -y install centos-release-scl-rh
         yum -y install llvm-toolset-7.0
         source scl_source enable llvm-toolset-7.0
@@ -209,7 +206,6 @@ jobs:
         python-version: 3.9
     - name: install toolchains
       run: |
-        cd /workdir
         yum -y install centos-release-scl-rh
         yum -y install llvm-toolset-7.0
         source scl_source enable llvm-toolset-7.0
