@@ -61,6 +61,10 @@ jobs:
       uses: KyleMayes/install-llvm-action@v1
       with:
         version: "10.0"
+    - name: Symlink libclang.so (Linux)
+      if: contains(matrix.os, 'ubuntu')
+      run: sudo ln -s libclang-10.so.1 /lib/x86_64-linux-gnu/libclang.so
+      working-directory: ${{ env.LLVM_PATH }}/lib
     - name: Build wheels
       uses: messense/maturin-action@v1
       with:
