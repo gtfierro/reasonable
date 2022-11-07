@@ -26,7 +26,8 @@ jobs:
           version: "10.0"
       - name: llvm path setup
         run: |
-          export LIBCLANG_PATH=${LLVM_PATH}
+          tree /llvm
+          export LIBCLANG_PATH=${LLVM_PATH}/lib
       - name: Build wheels - x86_64
         uses: messense/maturin-action@v1
         with:
@@ -70,7 +71,8 @@ jobs:
         working-directory: ${{ env.LLVM_PATH }}/lib
       - name: llvm path setup
         run: |
-          export LIBCLANG_PATH=${LLVM_PATH}
+          tree /llvm
+          export LIBCLANG_PATH=${LLVM_PATH}/lib
       - name: Build wheels
         uses: messense/maturin-action@v1
         with:
