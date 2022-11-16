@@ -7,3 +7,4 @@ export PATH="${PATH}:/root/.cargo/bin:/opt/python/cp37-cp37m/bin:/opt/python/cp3
 python3 -m pip install poetry
 poetry install
 poetry run maturin build --release -m Cargo.toml -F python
+poetry run python -c "import reasonable"

@@ -70,7 +70,7 @@ jobs:
        - run: poetry install
        - run: poetry run maturin build --release -m Cargo.toml -F python
        - run: pip install --no-index --find-links=target/wheels/ reasonable
-       - run: petry run python -c "import reasonable"
+       - run: poetry run python -c "import reasonable"
        - run: rm -r target/wheels
        - run: poetry run maturin publish --no-sdist --universal2 -m Cargo.toml -u __token__ -p ${{ secrets.PYPI_API_TOKEN }} -F python
        - run: poetry run maturin publish --no-sdist -m Cargo.toml -u __token__ -p ${{ secrets.PYPI_API_TOKEN }} -F python
@@ -98,6 +98,7 @@ jobs:
        - run: poetry install
        - run: poetry run maturin build --release -m Cargo.toml -F python
        - run: pip install --no-index --find-links=target/wheels/ reasonable
+       - run: poetry run python -c "import reasonable"
        - run: rm -r target/wheels
        - run: poetry run maturin publish --no-sdist -m Cargo.toml -u __token__ -p ${{ secrets.PYPI_API_TOKEN }} -F python
        - uses: softprops/action-gh-release@v1
@@ -123,6 +124,7 @@ jobs:
        - run: poetry install
        - run: poetry run maturin build --release -m Cargo.toml -F python
        - run: pip install --no-index --find-links=target/wheels/ reasonable
+       - run: poetry run python -c "import reasonable"
        - run: rm -r target/wheels
        - run: poetry run maturin sdist -m Cargo.toml
        - uses: pypa/gh-action-pypi-publish@release/v1
