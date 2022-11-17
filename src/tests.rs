@@ -1,4 +1,3 @@
-
 //use crate::manager::{Manager, TripleUpdate};
 use crate::reasoner::*;
 
