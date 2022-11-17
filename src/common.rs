@@ -1,4 +1,4 @@
-use oxrdf::{BlankNode, Literal, NamedNode, NamedOrBlankNode, Subject, Term, Triple, TripleRef, SubjectRef, TermRef, NamedNodeRef};
+use oxrdf::{BlankNode, Literal, NamedNode, NamedOrBlankNode, Subject, Term, Triple, TripleRef, SubjectRef, TermRef};
 mod rio {
     pub use rio_api::model::*;
 }

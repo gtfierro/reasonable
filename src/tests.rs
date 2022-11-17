@@ -1,5 +1,5 @@
 use crate::common::make_triple;
-use crate::manager::{Manager, TripleUpdate};
+//use crate::manager::{Manager, TripleUpdate};
 use crate::reasoner::*;
 use oxrdf::{NamedNode, Term};
 use std::io::Error;
@@ -861,71 +861,71 @@ fn test_error_asymmetric() -> Result<(), String> {
     Ok(())
 }
 
-#[test]
-fn test_triple_update1() -> Result<(), String> {
-    let mut u = TripleUpdate::new();
-    let t1 = triple!("x1", "y1", "z1");
-    let t1rem = triple!("x1", "y1", "z1");
-    let t2 = triple!("x2", "y2", "z2");
-    u.add_triple(t1);
-    u.add_triple(t2);
-    u.remove_triple(t1rem);
-    assert_eq!(*u.updates.get(&triple!("x1", "y1", "z1")).unwrap(), 0);
-    assert_eq!(*u.updates.get(&triple!("x2", "y2", "z2")).unwrap(), 1);
-    Ok(())
-}
-
-#[test]
-fn test_triple_update2() -> Result<(), String> {
-    let mut u = TripleUpdate::new();
-    let t1 = triple!("x1", "y1", "z1");
-    let t2 = triple!("x2", "y2", "z2");
-    u.add_triple(t1);
-    u.add_triple(t2);
-    assert_eq!(*u.updates.get(&triple!("x1", "y1", "z1")).unwrap(), 1);
-    assert_eq!(*u.updates.get(&triple!("x2", "y2", "z2")).unwrap(), 1);
-    Ok(())
-}
-
-#[test]
-fn test_triple_update3() -> Result<(), String> {
-    let mut u = TripleUpdate::new();
-    let t1a = triple!("x1", "y1", "z1");
-    let t1b = triple!("x1", "y1", "z1");
-    let t1c = triple!("x1", "y1", "z1");
-    let t2 = triple!("x2", "y2", "z2");
-    u.add_triple(t1a);
-    u.add_triple(t1b);
-    u.add_triple(t2);
-    assert_eq!(*u.updates.get(&triple!("x1", "y1", "z1")).unwrap(), 2);
-    assert_eq!(*u.updates.get(&triple!("x2", "y2", "z2")).unwrap(), 1);
-    u.remove_triple(t1c);
-    assert_eq!(*u.updates.get(&triple!("x1", "y1", "z1")).unwrap(), 1);
-    Ok(())
-}
-
-#[test]
-fn test_manager_update() -> Result<(), String> {
-    let mut mgr = Manager::new_in_memory();
-
-    let mut u = TripleUpdate::new();
-    u.add_triple(triple!("x1", "y1", "z1"));
-
-    assert_eq!(mgr.size(), 0);
-    mgr.process_updates(u);
-    assert_eq!(mgr.size(), 6);
-
-    let mut u = TripleUpdate::new();
-    u.remove_triple(triple!("x1", "y1", "z1"));
-    mgr.process_updates(u);
-    println!("{}", mgr.dump_string());
-    assert_eq!(mgr.size(), 4);
-
-    let mut u = TripleUpdate::new();
-    u.add_triple(triple!("x3", "y3", "z3"));
-    u.add_triple(triple!("x1", "y1", "z1"));
-    mgr.process_updates(u);
-    assert_eq!(mgr.size(), 8);
-
-    Ok(())
-}
+//#[test]
+//fn test_triple_update1() -> Result<(), String> {
+//    let mut u = TripleUpdate::new();
+//    let t1 = triple!("x1", "y1", "z1");
+//    let t1rem = triple!("x1", "y1", "z1");
+//    let t2 = triple!("x2", "y2", "z2");
+//    u.add_triple(t1);
+//    u.add_triple(t2);
+//    u.remove_triple(t1rem);
+//    assert_eq!(*u.updates.get(&triple!("x1", "y1", "z1")).unwrap(), 0);
+//    assert_eq!(*u.updates.get(&triple!("x2", "y2", "z2")).unwrap(), 1);
+//    Ok(())
+//}
+//
+//#[test]
+//fn test_triple_update2() -> Result<(), String> {
+//    let mut u = TripleUpdate::new();
+//    let t1 = triple!("x1", "y1", "z1");
+//    let t2 = triple!("x2", "y2", "z2");
+//    u.add_triple(t1);
+//    u.add_triple(t2);
+//    assert_eq!(*u.updates.get(&triple!("x1", "y1", "z1")).unwrap(), 1);
+//    assert_eq!(*u.updates.get(&triple!("x2", "y2", "z2")).unwrap(), 1);
+//    Ok(())
+//}
+//
+//#[test]
+//fn test_triple_update3() -> Result<(), String> {
+//    let mut u = TripleUpdate::new();
+//    let t1a = triple!("x1", "y1", "z1");
+//    let t1b = triple!("x1", "y1", "z1");
+//    let t1c = triple!("x1", "y1", "z1");
+//    let t2 = triple!("x2", "y2", "z2");
+//    u.add_triple(t1a);
+//    u.add_triple(t1b);
+//    u.add_triple(t2);
+//    assert_eq!(*u.updates.get(&triple!("x1", "y1", "z1")).unwrap(), 2);
+//    assert_eq!(*u.updates.get(&triple!("x2", "y2", "z2")).unwrap(), 1);
+//    u.remove_triple(t1c);
+//    assert_eq!(*u.updates.get(&triple!("x1", "y1", "z1")).unwrap(), 1);
+//    Ok(())
+//}
+//
+//#[test]
+//fn test_manager_update() -> Result<(), String> {
+//    let mut mgr = Manager::new_in_memory();
+//
+//    let mut u = TripleUpdate::new();
+//    u.add_triple(triple!("x1", "y1", "z1"));
+//
+//    assert_eq!(mgr.size(), 0);
+//    mgr.process_updates(u);
+//    assert_eq!(mgr.size(), 6);
+//
+//    let mut u = TripleUpdate::new();
+//    u.remove_triple(triple!("x1", "y1", "z1"));
+//    mgr.process_updates(u);
+//    println!("{}", mgr.dump_string());
+//    assert_eq!(mgr.size(), 4);
+//
+//    let mut u = TripleUpdate::new();
+//    u.add_triple(triple!("x3", "y3", "z3"));
+//    u.add_triple(triple!("x1", "y1", "z1"));
+//    mgr.process_updates(u);
+//    assert_eq!(mgr.size(), 8);
+//
+//    Ok(())
+//}
