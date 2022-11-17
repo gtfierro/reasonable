@@ -1,8 +1,7 @@
-use oxigraph::sparql;
-use oxigraph::model;
+use oxrdf;
 
-use std::io;
 use std::fmt;
+use std::io;
 use std::sync::mpsc::RecvError;
 
 #[cfg(feature = "sqlite")]
@@ -10,10 +9,8 @@ use std::sync::mpsc::RecvError;
 pub enum ReasonableError {
     ManagerError(String),
     IO(io::Error),
-    SPARQLParse(sparql::ParseError),
-    IriParse(model::IriParseError),
-    BNodeParse(model::BlankNodeIdParseError),
-    Eval(sparql::EvaluationError),
+    IriParse(oxrdf::IriParseError),
+    BNodeParse(oxrdf::BlankNodeIdParseError),
     SQLite(rusqlite::Error),
     ChannelRecv(RecvError),
 }
@@ -23,10 +20,8 @@ pub enum ReasonableError {
 pub enum ReasonableError {
     ManagerError(String),
     IO(io::Error),
-    SPARQLParse(sparql::ParseError),
-    IriParse(model::IriParseError),
-    BNodeParse(model::BlankNodeIdParseError),
-    Eval(sparql::EvaluationError),
+    IriParse(oxrdf::IriParseError),
+    BNodeParse(oxrdf::BlankNodeIdParseError),
     ChannelRecv(RecvError),
 }
 
@@ -35,10 +30,8 @@ impl fmt::Display for ReasonableError {
         match self {
             ReasonableError::ManagerError(e) => write!(f, "{}", e),
             ReasonableError::IO(e) => write!(f, "{}", e.to_string()),
-            ReasonableError::SPARQLParse(e) => write!(f, "{}", e.to_string()),
             ReasonableError::IriParse(e) => write!(f, "{}", e.to_string()),
             ReasonableError::BNodeParse(e) => write!(f, "{}", e.to_string()),
-            ReasonableError::Eval(e) => write!(f, "{}", e.to_string()),
             ReasonableError::ChannelRecv(e) => write!(f, "{}", e.to_string()),
         }
     }
@@ -50,26 +43,14 @@ impl From<io::Error> for ReasonableError {
     }
 }
 
-impl From<sparql::ParseError> for ReasonableError {
-    fn from(err: sparql::ParseError) -> ReasonableError {
-        ReasonableError::SPARQLParse(err)
-    }
-}
-
-impl From<sparql::EvaluationError> for ReasonableError {
-    fn from(err: sparql::EvaluationError) -> ReasonableError {
-        ReasonableError::Eval(err)
-    }
-}
-
-impl From<model::IriParseError> for ReasonableError {
-    fn from(err: model::IriParseError) -> ReasonableError {
+impl From<oxrdf::IriParseError> for ReasonableError {
+    fn from(err: oxrdf::IriParseError) -> ReasonableError {
         ReasonableError::IriParse(err)
     }
 }
 
-impl From<model::BlankNodeIdParseError> for ReasonableError {
-    fn from(err: model::BlankNodeIdParseError) -> ReasonableError {
+impl From<oxrdf::BlankNodeIdParseError> for ReasonableError {
+    fn from(err: oxrdf::BlankNodeIdParseError) -> ReasonableError {
         ReasonableError::BNodeParse(err)
     }
 }

@@ -1,6 +1,6 @@
 use crate::common::URI;
 
-use oxigraph::model::{Term, NamedNode, IriParseError};
+use oxrdf::{IriParseError, NamedNode, Term};
 use std::collections::HashMap;
 
 pub struct URIIndex {
@@ -12,7 +12,8 @@ impl URIIndex {
         let mut idx = URIIndex {
             map: HashMap::new(),
         };
-        idx.map.insert(0, Term::NamedNode(NamedNode::new("urn:_").unwrap()));
+        idx.map
+            .insert(0, Term::NamedNode(NamedNode::new("urn:_").unwrap()));
         idx
     }
 

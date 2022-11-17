@@ -44,9 +44,15 @@ impl DisjointSets {
 
         // index lets us map u64s to the actual URIs
         let mut index = URIIndex::new();
-        let rdffirst_node = index.put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#first").unwrap();
-        let rdfrest_node = index.put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#rest").unwrap();
-        let rdfnil_node = index.put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#nil").unwrap();
+        let rdffirst_node = index
+            .put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#first")
+            .unwrap();
+        let rdfrest_node = index
+            .put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#rest")
+            .unwrap();
+        let rdfnil_node = index
+            .put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#nil")
+            .unwrap();
 
         // data structures for building up the "first" and "rest" lists
         let mut list_iter = Iteration::new();

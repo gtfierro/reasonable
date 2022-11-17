@@ -1,4 +1,8 @@
-use oxigraph::model::{Term, Triple, NamedOrBlankNode};
+use oxrdf::{BlankNode, Literal, NamedNode, NamedOrBlankNode, Subject, Term, Triple};
+mod rio {
+    pub use rio_api::model::*;
+}
+
 use crate::error::ReasonableError;
 
 pub type URI = u32;
@@ -10,7 +14,6 @@ macro_rules! uri {
         Term::NamedNode(NamedNode::new(format!($ns, $t)).unwrap())
     };
 }
-
 
 /// Returns the full URI of the concept in the OWL namespace
 /// ```
@@ -65,16 +68,60 @@ macro_rules! node_relation {
     }};
 }
 
-
 pub fn make_triple(s: Term, p: Term, o: Term) -> Result<Triple, ReasonableError> {
     let s = match s {
         Term::NamedNode(n) => NamedOrBlankNode::NamedNode(n),
         Term::BlankNode(b) => NamedOrBlankNode::BlankNode(b),
-        _ => return Err(ReasonableError::ManagerError("Cannot have literal as subject".to_string()))
+        _ => {
+            return Err(ReasonableError::ManagerError(
+                "Cannot have literal as subject".to_string(),
+            ))
+        }
     };
     let p = match p {
         Term::NamedNode(n) => n,
-        _ => return Err(ReasonableError::ManagerError("Must have named node as predicate".to_string()))
+        _ => {
+            return Err(ReasonableError::ManagerError(
+                "Must have named node as predicate".to_string(),
+            ))
+        }
     };
-    Ok(Triple::new(s,p,o))
+    Ok(Triple::new(s, p, o))
+}
+
+pub fn rio_to_oxrdf(t: rio::Triple) -> Triple {
+    let s: Subject = match t.subject {
+        rio::Subject::NamedNode(rio::NamedNode { iri }) => {
+            Subject::NamedNode(NamedNode::new_unchecked(iri))
+        }
+        rio::Subject::BlankNode(rio::BlankNode { id }) => {
+            Subject::BlankNode(BlankNode::new_unchecked(id))
+        }
+        _ => panic!("no rdf*"),
+    };
+    let rio::NamedNode { iri } = t.predicate;
+    let p: NamedNode = NamedNode::new_unchecked(iri);
+    let o = match t.object {
+        rio::Term::NamedNode(rio::NamedNode { iri }) => {
+            Term::NamedNode(NamedNode::new_unchecked(iri))
+        }
+        rio::Term::BlankNode(rio::BlankNode { id }) => {
+            Term::BlankNode(BlankNode::new_unchecked(id))
+        }
+        rio::Term::Literal(lit) => match lit {
+            rio::Literal::Simple { value } => Term::Literal(Literal::new_simple_literal(value)),
+            rio::Literal::LanguageTaggedString { value, language } => Term::Literal(
+                Literal::new_language_tagged_literal_unchecked(value, language),
+            ),
+            rio::Literal::Typed { value, datatype } => {
+                let rio::NamedNode { iri } = datatype;
+                Term::Literal(Literal::new_typed_literal(
+                    value,
+                    NamedNode::new_unchecked(iri),
+                ))
+            }
+        },
+        _ => panic!("no rdf*"),
+    };
+    Triple::new(s, p, o)
 }
