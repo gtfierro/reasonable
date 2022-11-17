@@ -9,10 +9,11 @@ use crate::index::URIIndex;
 use crate::common::*;
 use crate::{node_relation, owl};
 use log::{debug, error, info};
-use oxigraph::io::{GraphFormat, GraphSerializer};
 use oxrdf::{Graph, NamedNode, Term, Triple};
 use rio_api::parser::TriplesParser;
 use rio_turtle::{NTriplesParser, TurtleError, TurtleParser};
+use rio_turtle::TurtleFormatter;
+use rio_api::formatter::TriplesFormatter;
 use std::cell::RefCell;
 use std::collections::{HashMap, HashSet};
 use std::fmt;
@@ -231,8 +232,13 @@ impl Reasoner {
     pub fn dump_file(&mut self, filename: &str) -> Result<(), Error> {
         // let mut abbrevs: HashMap<String, Uri> = HashMap::new();
         let mut output = fs::File::create(filename)?;
-        let mut writer =
-            GraphSerializer::from_format(GraphFormat::Turtle).triple_writer(&output)?;
+        let mut formatter = TurtleFormatter::new(output);
+        for t in self.view_output() {
+            formatter.format(&oxrdf_to_rio(t.into()))?;
+        }
+
+        //let mut writer =
+        //    GraphSerializer::from_format(GraphFormat::Turtle).triple_writer(&output)?;
         //let mut graph = Graph::new(None);
         //graph.add_namespace(&Namespace::new(
         //    "owl".to_string(),
@@ -254,12 +260,14 @@ impl Reasoner {
         //    "tag".to_string(),
         //    Uri::new("https://brickschema.org/schema/BrickTag#".to_string()),
         //));
-        for t in self.view_output() {
-            writer.write(t)?;
-        }
+        //for t in self.view_output() {
+        //    writer.write(t)?;
+        //}
 
-        writer.finish()?;
+        //writer.finish()?;
         //info!("Wrote {} triples to {}", graph.count(), filename);
+        //Ok(())
+        formatter.finish()?;
         Ok(())
     }
 

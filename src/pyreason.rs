@@ -1,7 +1,7 @@
 use crate::common::make_triple;
 use crate::error::ReasonableError;
 use crate::reasoner;
-use oxigraph::model::{BlankNode, Literal, NamedNode, Term, Triple};
+use oxrdf::{BlankNode, Literal, NamedNode, Term, Triple};
 use pyo3::exceptions;
 use pyo3::prelude::*;
 use pyo3::types::{PyList, PyTuple};

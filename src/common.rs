@@ -1,4 +1,4 @@
-use oxrdf::{BlankNode, Literal, NamedNode, NamedOrBlankNode, Subject, Term, Triple};
+use oxrdf::{BlankNode, Literal, NamedNode, NamedOrBlankNode, Subject, Term, Triple, TripleRef, SubjectRef, TermRef, NamedNodeRef};
 mod rio {
     pub use rio_api::model::*;
 }
@@ -124,4 +124,43 @@ pub fn rio_to_oxrdf(t: rio::Triple) -> Triple {
         _ => panic!("no rdf*"),
     };
     Triple::new(s, p, o)
+}
+
+pub fn oxrdf_to_rio<'a>(t: TripleRef<'a>) -> rio::Triple<'a> {
+    let s: rio::Subject = match t.subject {
+        SubjectRef::NamedNode(nn) => {
+            rio::Subject::NamedNode(rio::NamedNode{iri: nn.as_str()})
+        }
+        SubjectRef::BlankNode(bn) => {
+            rio::Subject::BlankNode(rio::BlankNode{id: bn.as_str()})
+        }
+    };
+    let p = rio::NamedNode{iri: t.predicate.as_str() };
+    let o: rio::Term = match t.object {
+        TermRef::NamedNode(nn) => {
+            rio::Term::NamedNode(rio::NamedNode{iri: nn.as_str()})
+        }
+        TermRef::BlankNode(bn) => {
+            rio::Term::BlankNode(rio::BlankNode{id: bn.as_str()})
+        }
+        TermRef::Literal(lit) => {
+            let value = lit.value();
+            let datatype = lit.datatype();
+            let language = lit.language();
+            if datatype.as_str() != "http://www.w3.org/2001/XMLSchema#string" {
+                rio::Term::Literal(rio::Literal::Typed{value, datatype: rio::NamedNode{ iri: datatype.as_str() }})
+            } else {
+                match language {
+                    None => rio::Term::Literal(rio::Literal::Simple{value}),
+                    Some(l) => rio::Term::Literal(rio::Literal::LanguageTaggedString{value, language: l}),
+                }
+            }
+
+        }
+    };
+    rio::Triple{
+        subject: s,
+        predicate: p,
+        object: o,
+    }
 }

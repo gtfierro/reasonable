@@ -21,7 +21,6 @@ bench = false
 
 [dependencies]
 rdf = "0.1.4"
-oxigraph = "0.3.5"
 rio_turtle = "0.7.1"
 rio_api = "0.7.1"
 oxrdf = "0.1.0"
