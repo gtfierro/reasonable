@@ -113,36 +113,36 @@ fn bench_reload(c: &mut Criterion) {
     });
 }
 
-#[allow(dead_code)]
-fn bench_incremental(c: &mut Criterion) {
-    let plot_config = PlotConfiguration::default();
-    let mut group = c.benchmark_group("incremental_reason");
-    group.plot_config(plot_config);
-
-    group.bench_function("brick_small1", move |b| {
-        b.iter_with_setup(
-            || setup_reasoner!["example_models/ontologies/Brick.n3"],
-            |mut r| {
-                for t in parse_file("example_models/small1.n3").unwrap() {
-                    r.load_triples(vec![t]);
-                    r.reason()
-                }
-            },
-        )
-    });
-
-    group.bench_function("brick_soda", move |b| {
-        b.iter_with_setup(
-            || setup_reasoner!["example_models/ontologies/Brick.n3"],
-            |mut r| {
-                for t in parse_file("example_models/soda_hall.n3").unwrap() {
-                    r.load_triples(vec![t]);
-                    r.reason()
-                }
-            },
-        )
-    });
-}
+//#[allow(dead_code)]
+//fn bench_incremental(c: &mut Criterion) {
+//    let plot_config = PlotConfiguration::default();
+//    let mut group = c.benchmark_group("incremental_reason");
+//    group.plot_config(plot_config);
+//
+//    group.bench_function("brick_small1", move |b| {
+//        b.iter_with_setup(
+//            || setup_reasoner!["example_models/ontologies/Brick.n3"],
+//            |mut r| {
+//                for t in parse_file("example_models/small1.n3").unwrap() {
+//                    r.load_triples(vec![t]);
+//                    r.reason()
+//                }
+//            },
+//        )
+//    });
+//
+//    group.bench_function("brick_soda", move |b| {
+//        b.iter_with_setup(
+//            || setup_reasoner!["example_models/ontologies/Brick.n3"],
+//            |mut r| {
+//                for t in parse_file("example_models/soda_hall.n3").unwrap() {
+//                    r.load_triples(vec![t]);
+//                    r.reason()
+//                }
+//            },
+//        )
+//    });
+//}
 
 fn setup() -> Criterion {
     Criterion::default().sample_size(10).with_plots()

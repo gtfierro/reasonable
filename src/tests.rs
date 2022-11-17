@@ -1,7 +1,7 @@
-use crate::common::make_triple;
+
 //use crate::manager::{Manager, TripleUpdate};
 use crate::reasoner::*;
-use oxrdf::{NamedNode, Term};
+
 use std::io::Error;
 
 const RDFS_SUBCLASSOF: &str = "http://www.w3.org/2000/01/rdf-schema#subClassOf";
