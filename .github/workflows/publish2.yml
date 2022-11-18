@@ -20,15 +20,8 @@ jobs:
           toolchain: nightly
           profile: minimal
           default: true
-      - name: Install LLVM and Clang
-        uses: KyleMayes/install-llvm-action@v1
-        with:
-          version: "10.0"
-      - name: llvm path setup
-        run: |
-          export LIBCLANG_PATH=${LLVM_PATH}/lib
       - name: Build wheels - x86_64
-        uses: messense/maturin-action@v1
+        uses: PyO3/maturin-action@v1
         with:
           target: x86_64
           args: --release --out dist --sdist -m Cargo.toml -F python
@@ -37,7 +30,7 @@ jobs:
           pip install reasonable --no-index --find-links dist --force-reinstall
           python -c "import reasonable"
       - name: Build wheels - universal2
-        uses: messense/maturin-action@v1
+        uses: PyO3/maturin-action@v1
         with:
           args: --release --universal2 --out dist -m Cargo.toml -F python
       - name: Install built wheel - universal2
@@ -45,7 +38,7 @@ jobs:
           pip install reasonable --no-index --find-links dist --force-reinstall
           python -c "import reasonable"
       - name: Upload wheels
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: wheels
           path: dist
@@ -60,19 +53,8 @@ jobs:
         with:
           python-version: 3.9
           architecture: x64
-      - name: Install LLVM and Clang
-        uses: KyleMayes/install-llvm-action@v1
-        with:
-          version: "10.0"
-      - name: Symlink libclang.so (Linux)
-        if: contains(matrix.os, 'ubuntu')
-        run: sudo ln -s libclang-10.so.1 /lib/x86_64-linux-gnu/libclang.so
-        working-directory: ${{ env.LLVM_PATH }}/lib
-      - name: llvm path setup
-        run: |
-          export LIBCLANG_PATH=${LLVM_PATH}/lib
       - name: Build wheels
-        uses: messense/maturin-action@v1
+        uses: PyO3/maturin-action@v1
         with:
           target: ${{ matrix.target }}
           manylinux: auto
@@ -83,7 +65,7 @@ jobs:
           pip install reasonable --no-index --find-links dist --force-reinstall
           python -c "import reasonable"
       - name: Upload wheels
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: wheels
           path: dist
@@ -107,7 +89,7 @@ jobs:
               #        profile: minimal
               #        default: true
               #    - name: Build wheels
-              #      uses: messense/maturin-action@v1
+              #      uses: PyO3/maturin-action@v1
               #      with:
               #        target: ${{ matrix.target }}
               #        args: --release --out dist -m Cargo.toml -F python
