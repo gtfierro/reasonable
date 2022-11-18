@@ -81,7 +81,16 @@ jobs:
       with:
         target: ${{ matrix.target }}
         manylinux: auto
-        args: -m Cargo.toml -u __token__ -p ${{ secrets.PYPI_API_TOKEN }}
+        args: -m Cargo.toml --release --out dist
+    - name: Install built wheel
+      run: |
+        pip install reasonable --no-index --find-links dist --force-reinstall
+        python -c "import reasonable"
+    - name: Upload wheels
+      uses: actions/upload-artifact@v3
+      with:
+        name: wheels
+        path: dist
 
   linux-cross:
     runs-on: ubuntu-latest
