@@ -81,6 +81,7 @@ jobs:
       with:
         target: ${{ matrix.target }}
         manylinux: auto
+        command: publish
         args: --release --out dist -m Cargo.toml
     - run: ls dist
       #- name: Install built wheel
