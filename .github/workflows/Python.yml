@@ -83,11 +83,11 @@ jobs:
         manylinux: auto
         args: --release --out dist -m Cargo.toml
     - run: ls dist
-    - name: Install built wheel
-      if: matrix.target == 'x86_64'
-      run: |
-        pip install dist/*
-        python -c "import reasonable"
+      #- name: Install built wheel
+      #  if: matrix.target == 'x86_64'
+      #  run: |
+      #    pip install dist/*
+      #    python -c "import reasonable"
     - name: Upload wheels
       uses: actions/upload-artifact@v3
       with:
