@@ -82,18 +82,7 @@ jobs:
         target: ${{ matrix.target }}
         manylinux: auto
         command: publish
-        args: --release --out dist -m Cargo.toml
-    - run: ls dist
-      #- name: Install built wheel
-      #  if: matrix.target == 'x86_64'
-      #  run: |
-      #    pip install dist/*
-      #    python -c "import reasonable"
-    - name: Upload wheels
-      uses: actions/upload-artifact@v3
-      with:
-        name: wheels
-        path: dist
+        args: -m Cargo.toml
 
           #  linux-cross:
           #    runs-on: ubuntu-latest
