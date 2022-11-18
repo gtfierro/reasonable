@@ -149,10 +149,6 @@ impl PyReasoner {
                     Err(e) => return Err(PyReasoningError(e).into()),
                 };
             }
-            //let l: Vec<(PyObject, PyObject, PyObject)> = converters.call1("get_triples", (graph,))?.extract()?;
-            //for t in l {
-            //    println!("{:?}", t.0.get_type());
-            //}
             self.reasoner.load_triples(triples);
             Ok(())
         })
