@@ -82,7 +82,7 @@ jobs:
         target: ${{ matrix.target }}
         manylinux: auto
         command: publish
-        args: -m Cargo.toml -u __token__ -p ${{ secrets.PYPI_API_TOKEN }}
+        args: -m Cargo.toml -u __token__ -p ${{ secrets.PYPI_API_TOKEN }} -b pyo3
 
           #  linux-cross:
           #    runs-on: ubuntu-latest

@@ -11,7 +11,7 @@ edition = "2018"
 
 [lib]
 name = "reasonable"
-crate-type = ["lib"]
+crate-type = ["lib", "cdylib"]
 bench = false
 
 [[bin]]
