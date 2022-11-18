@@ -86,7 +86,7 @@ jobs:
     - name: Install built wheel
       if: matrix.target == 'x86_64'
       run: |
-        pip install reasonable --no-index --find-links dist --force-reinstall
+        pip install dist/*
         python -c "import reasonable"
     - name: Upload wheels
       uses: actions/upload-artifact@v3
