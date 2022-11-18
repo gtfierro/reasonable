@@ -1,6 +1,6 @@
 [package]
 name = "reasonable"
-version = "0.2.1-alpha21"
+version = "0.2.1-alpha22"
 authors = ["Gabe Fierro <gtfierro@mines.edu>"]
 repository = "https://github.com/gtfierro/reasonable"
 homepage = "https://brickschema.org/"
@@ -37,20 +37,10 @@ serde_json = "1.0"
 serde_derive = "1.0"
 tinytemplate = "1.2.1"
 anyhow = "1.0.60"
-pyo3 = { version = "0.17", features = ["extension-module", "abi3-py37"] , optional=true}
-
-[dev-dependencies]
-criterion = "0.3"
-
-[[bench]]
-name = "my_benchmark"
-harness = false
+pyo3 = { version = "0.17", features = ["extension-module", "abi3-py37"]}
 
 [profile.release]
 debug = true
-
-[features]
-python = ["pyo3"]
 
 [package.metadata.maturin]
 name = "reasonable"

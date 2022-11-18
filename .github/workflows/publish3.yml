@@ -31,10 +31,10 @@ jobs:
     - run: curl https://sh.rustup.rs -sSf | sh -s -- --profile minimal -y
     - uses: actions/checkout@v2
     - run: poetry install
-    - run: poetry run maturin build --release --strip -F python --compatibility manylinux2014 --interpreter python${{ matrix.python.version }}
+    - run: poetry run maturin build --release --strip --compatibility manylinux2014 --interpreter python${{ matrix.python.version }}
     - run: poetry run pip install target/wheels/reasonable*.whl
     - run: poetry run python -c "import reasonable"
-    - run: poetry run maturin publish --no-sdist -m Cargo.toml -u __token__ -p ${{ secrets.PYPI_API_TOKEN }} -F python
+    - run: poetry run maturin publish --no-sdist -m Cargo.toml -u __token__ -p ${{ secrets.PYPI_API_TOKEN }}
 
   publish_pypi_mac:
     runs-on: macos-latest
