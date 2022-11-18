@@ -20,7 +20,7 @@ macro_rules! uri {
 
 /// Returns the full URI of the concept in the OWL namespace
 /// ```
-/// # #[macro_use] extern crate reasonable; extern crate oxigraph; use oxigraph::model::{Term, NamedNode}; fn main() {
+/// # #[macro_use] extern crate reasonable; extern crate oxrdf; use oxrdf::{Term, NamedNode}; fn main() {
 /// let uri = owl!("Thing");
 /// assert_eq!(uri, Term::NamedNode(NamedNode::new_unchecked("http://www.w3.org/2002/07/owl#Thing".to_string())));
 /// # }
@@ -34,7 +34,7 @@ macro_rules! owl {
 
 /// Returns the full URI of the concept in the RDF namespace
 /// ```
-/// # #[macro_use] extern crate reasonable; extern crate oxigraph; use oxigraph::model::{Term, NamedNode}; fn main() {
+/// # #[macro_use] extern crate reasonable; extern crate oxrdf; use oxrdf::{Term, NamedNode}; fn main() {
 /// let uri = rdf!("type");
 /// assert_eq!(uri, Term::NamedNode(NamedNode::new_unchecked("http://www.w3.org/1999/02/22-rdf-syntax-ns#type".to_string())));
 /// # }
@@ -48,7 +48,7 @@ macro_rules! rdf {
 
 /// Returns the full URI of the concept in the RDFS namespace
 /// ```
-/// # #[macro_use] extern crate reasonable; extern crate oxigraph; use oxigraph::model::{Term, NamedNode}; fn main() {
+/// # #[macro_use] extern crate reasonable; extern crate oxrdf; use oxrdf::{Term, NamedNode}; fn main() {
 /// let uri = rdfs!("subClassOf");
 /// assert_eq!(uri, Term::NamedNode(NamedNode::new_unchecked("http://www.w3.org/2000/01/rdf-schema#subClassOf".to_string())));
 /// # }
