@@ -75,12 +75,14 @@ jobs:
       with:
         python-version: 3.9
         architecture: x64
+    - run: pwd
     - name: Build wheels
       uses: PyO3/maturin-action@v1
       with:
         target: ${{ matrix.target }}
         manylinux: auto
         args: --release --out dist -m Cargo.toml
+    - run: ls dist
     - name: Install built wheel
       if: matrix.target == 'x86_64'
       run: |
