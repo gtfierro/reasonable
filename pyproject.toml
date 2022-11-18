@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "reasonable"
-version = "0.2.1-a18"
+version = "0.2.1-a19"
 description = "Python interface to 'reasonable', a Datalog implementation of the OWL 2 RL profile"
 authors = ["Gabe Fierro <gtfierro@mines.edu>"]
 license = "bsd-3-clause"
