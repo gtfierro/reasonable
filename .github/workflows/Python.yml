@@ -28,7 +28,7 @@ jobs:
         with:
           #args: --release --universal2 --out dist -m Cargo.toml -b pyo3
           command: publish
-          args: -m Cargo.toml -b pyo3 -u __token__ -p $ {{ secrets.PYPI_PASSWORD }} --universal2
+          args: -m Cargo.toml -b pyo3 -u __token__ -p ${{ secrets.PYPI_PASSWORD }} --universal2
 
   windows:
     runs-on: windows-latest
@@ -48,7 +48,7 @@ jobs:
           target: ${{ matrix.target }}
           #args: --release --out dist -m Cargo.toml -b pyo3
           command: publish
-          args: -m Cargo.toml -b pyo3 -u __token__ -p $ {{ secrets.PYPI_PASSWORD }}
+          args: -m Cargo.toml -b pyo3 -u __token__ -p ${{ secrets.PYPI_PASSWORD }}
 
   linux:
     runs-on: ubuntu-latest
@@ -67,9 +67,9 @@ jobs:
       with:
         target: ${{ matrix.target }}
         manylinux: auto
-          #args: -m Cargo.toml --release --out dist -b pyo3
         command: publish
-        args: -m Cargo.toml -b pyo3 -u __token__ -p $ {{ secrets.PYPI_PASSWORD }}
+        args: -m Cargo.toml -b pyo3  -u __token__ -p ${{ secrets.PYPI_PASSWORD }}
+        #args: -m Cargo.toml --release --out dist -b pyo3
           #
           #  linux-cross:
           #    runs-on: ubuntu-latest
