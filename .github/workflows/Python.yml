@@ -26,16 +26,9 @@ jobs:
       - name: Build wheels - universal2
         uses: PyO3/maturin-action@v1
         with:
-          args: --release --universal2 --out dist -m Cargo.toml -b pyo3
-      - name: Install built wheel - universal2
-        run: |
-          pip install reasonable --no-index --find-links dist --force-reinstall
-          python -c "import reasonable"
-      - name: Upload wheels
-        uses: actions/upload-artifact@v3
-        with:
-          name: wheels
-          path: dist
+          #args: --release --universal2 --out dist -m Cargo.toml -b pyo3
+          command: publish
+          args: -m Cargo.toml -b pyo3 -u __token__ -p $ {{ secrets.PYPI_PASSWORD }} --universal2
 
   windows:
     runs-on: windows-latest
@@ -53,16 +46,9 @@ jobs:
         uses: PyO3/maturin-action@v1
         with:
           target: ${{ matrix.target }}
-          args: --release --out dist -m Cargo.toml -b pyo3
-      - name: Install built wheel
-        run: |
-          pip install reasonable --no-index --find-links dist --force-reinstall
-          python -c "import reasonable"
-      - name: Upload wheels
-        uses: actions/upload-artifact@v3
-        with:
-          name: wheels
-          path: dist
+          #args: --release --out dist -m Cargo.toml -b pyo3
+          command: publish
+          args: -m Cargo.toml -b pyo3 -u __token__ -p $ {{ secrets.PYPI_PASSWORD }}
 
   linux:
     runs-on: ubuntu-latest
@@ -81,16 +67,9 @@ jobs:
       with:
         target: ${{ matrix.target }}
         manylinux: auto
-        args: -m Cargo.toml --release --out dist -b pyo3
-    - name: Install built wheel
-      run: |
-        pip install reasonable --no-index --find-links dist --force-reinstall
-        python -c "import reasonable"
-    - name: Upload wheels
-      uses: actions/upload-artifact@v3
-      with:
-        name: wheels
-        path: dist
+          #args: -m Cargo.toml --release --out dist -b pyo3
+        command: publish
+        args: -m Cargo.toml -b pyo3 -u __token__ -p $ {{ secrets.PYPI_PASSWORD }}
           #
           #  linux-cross:
           #    runs-on: ubuntu-latest
