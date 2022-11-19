@@ -19,14 +19,14 @@ jobs:
         with:
           target: x86_64
           args: --release --out dist --sdist -m Cargo.toml -b pyo3
-      - name: Install built wheel - x86_64
-        run: |
-          pip install reasonable --no-index --find-links dist --force-reinstall
-          python -c "import reasonable"
       - name: Build wheels - universal2
         uses: PyO3/maturin-action@v1
         with:
           args: --release --universal2 --out dist -m Cargo.toml -b pyo3
+      - name: Install built wheel - x86_64
+        run: |
+          pip install reasonable --no-index --find-links dist --force-reinstall
+          python -c "import reasonable"
 
   windows:
     runs-on: windows-latest
