@@ -19,11 +19,11 @@ jobs:
         with:
           target: x86_64
           args: --release --out dist --sdist -m Cargo.toml -b pyo3
-      - name: Install built wheel - x86_64
-        run: |
-          ls dist
-          pip install reasonable --no-index --find-links dist --force-reinstall
-          python -c "import reasonable"
+            #- name: Install built wheel - x86_64
+            #  run: |
+            #    ls dist
+            #    pip install reasonable --no-index --find-links dist --force-reinstall
+            #    python -c "import reasonable"
       - name: Build wheels - universal2
         uses: PyO3/maturin-action@v1
         with:
@@ -97,20 +97,20 @@ jobs:
         target: ${{ matrix.target }}
         manylinux: auto
         args: --release --out dist -m Cargo.toml -b pyo3
-    - uses: uraimo/run-on-arch-action@v2.3.0
-      if: matrix.target != 'ppc64'
-      name: Install built wheel
-      with:
-        arch: ${{ matrix.target }}
-        distro: ubuntu20.04
-        githubToken: ${{ github.token }}
-        install: |
-          apt-get update
-          apt-get install -y --no-install-recommends python3 python3-pip
-          pip3 install -U pip
-        run: |
-          pip3 install reasonable --no-index --find-links dist/ --force-reinstall
-          python3 -c "import reasonable"
+          #- uses: uraimo/run-on-arch-action@v2.3.0
+          #  if: matrix.target != 'ppc64'
+          #  name: Install built wheel
+          #  with:
+          #    arch: ${{ matrix.target }}
+          #    distro: ubuntu20.04
+          #    githubToken: ${{ github.token }}
+          #    install: |
+          #      apt-get update
+          #      apt-get install -y --no-install-recommends python3 python3-pip
+          #      pip3 install -U pip
+          #    run: |
+          #      pip3 install reasonable --no-index --find-links dist/ --force-reinstall
+          #      python3 -c "import reasonable"
     - name: Upload wheels
       uses: actions/upload-artifact@v3
       with:
@@ -136,17 +136,17 @@ jobs:
         target: ${{ matrix.target }}
         manylinux: musllinux_1_2
         args: --release --out dist -m Cargo.toml -b pyo3
-    - name: Install built wheel
-      if: matrix.target == 'x86_64-unknown-linux-musl'
-      uses: addnab/docker-run-action@v3
-      with:
-        image: alpine:latest
-        options: -v ${{ github.workspace }}:/io -w /io
-        run: |
-          apk add py3-pip
-          pip3 install -U pip
-          pip3 install reasonable --no-index --find-links /io/dist/ --force-reinstall
-          python3 -c "import reasonable"
+          #- name: Install built wheel
+          #  if: matrix.target == 'x86_64-unknown-linux-musl'
+          #  uses: addnab/docker-run-action@v3
+          #  with:
+          #    image: alpine:latest
+          #    options: -v ${{ github.workspace }}:/io -w /io
+          #    run: |
+          #      apk add py3-pip
+          #      pip3 install -U pip
+          #      pip3 install reasonable --no-index --find-links /io/dist/ --force-reinstall
+          #      python3 -c "import reasonable"
     - name: Upload wheels
       uses: actions/upload-artifact@v3
       with:
@@ -173,18 +173,18 @@ jobs:
         target: ${{ matrix.platform.target }}
         manylinux: musllinux_1_2
         args: --release --out dist -m Cargo.toml -b pyo3
-    - uses: uraimo/run-on-arch-action@v2.3.0
-      name: Install built wheel
-      with:
-        arch: ${{ matrix.platform.arch }}
-        distro: alpine_latest
-        githubToken: ${{ github.token }}
-        install: |
-          apk add py3-pip
-          pip3 install -U pip
-        run: |
-          pip3 install reasonable --no-index --find-links dist/ --force-reinstall
-          python3 -c "import reasonable"
+          #- uses: uraimo/run-on-arch-action@v2.3.0
+          #  name: Install built wheel
+          #  with:
+          #    arch: ${{ matrix.platform.arch }}
+          #    distro: alpine_latest
+          #    githubToken: ${{ github.token }}
+          #    install: |
+          #      apk add py3-pip
+          #      pip3 install -U pip
+          #    run: |
+          #      pip3 install reasonable --no-index --find-links dist/ --force-reinstall
+          #      python3 -c "import reasonable"
     - name: Upload wheels
       uses: actions/upload-artifact@v3
       with:
