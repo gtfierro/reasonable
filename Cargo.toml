@@ -1,6 +1,6 @@
 [package]
 name = "reasonable"
-version = "0.2.2-a1"
+version = "0.2.2-a2"
 authors = ["Gabe Fierro <gtfierro@mines.edu>"]
 repository = "https://github.com/gtfierro/reasonable"
 homepage = "https://brickschema.org/"
@@ -13,9 +13,6 @@ edition = "2018"
 name = "reasonable"
 crate-type = ["lib", "cdylib"]
 bench = false
-
-[features]
-default = ["pyo3/extension-module"]
 
 [[bin]]
 name = "reasonable"
