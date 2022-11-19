@@ -99,9 +99,7 @@ fn term_to_python<'a>(py: Python, rdflib: &'a PyModule, node: Term) -> PyResult<
         Term::BlankNode(id) => rdflib
             .getattr("BNode")?
             .call1((id.clone().into_string(),))?,
-        _ => {
-            panic!("Should not be here");
-        }
+
     };
     Ok(res)
 }
@@ -120,7 +118,33 @@ impl PyReasoner {
             reasoner: reasoner::Reasoner::new(),
         }
     }
-    ///
+
+    /// Loads in triples from a file (turtle or n3 serialized)
+    pub fn load_file(&mut self, file: String) -> PyResult<()> {
+        match self.reasoner.load_file(&file) {
+            Ok(_) => Ok(()),
+            Err(msg) => Err(exceptions::PyIOError::new_err(msg)),
+        }
+    }
+
+    /// Perform OWL 2 RL reasoning on the triples loaded into the PyReasoner object. This makes no
+    /// assumptions about which ontologies are pre-loaded, so you need to load in OWL, RDFS, etc
+    /// definitions in order to use them. Returns a list of triples
+    pub fn reason(&mut self) -> PyResult<Vec<(Py<PyAny>, Py<PyAny>, Py<PyAny>)>> {
+        Python::with_gil(|py| {
+            let rdflib = py.import("rdflib")?;
+            self.reasoner.reason();
+            let mut res = Vec::new();
+            for t in self.reasoner.get_triples() {
+                let s = term_to_python(py, rdflib, Term::from(t.subject.clone()))?;
+                let p = term_to_python(py, rdflib, Term::from(t.predicate.clone()))?;
+                let o = term_to_python(py, rdflib, Term::from(t.object.clone()))?;
+                res.push((s.into(), p.into(), o.into()));
+            }
+            Ok(res)
+        })
+    }
+
     /// Loads in triples from an RDFlib Graph or any other object that can be converted into a list
     /// of triples (length-3 tuples of URI-formatted strings)
     pub fn from_graph(&mut self, graph: PyObject) -> PyResult<()> {
