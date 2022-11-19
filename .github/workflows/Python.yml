@@ -19,6 +19,11 @@ jobs:
         with:
           target: x86_64
           args: --release --out dist --sdist -m Cargo.toml -b pyo3
+      - name: Install built wheel - x86_64
+        run: |
+          ls dist
+          pip install reasonable --no-index --find-links dist --force-reinstall
+          python -c "import reasonable"
       - name: Build wheels - universal2
         uses: PyO3/maturin-action@v1
         with:
@@ -28,10 +33,6 @@ jobs:
         with:
           name: wheels
           path: dist
-      - name: Install built wheel - x86_64
-        run: |
-          pip install reasonable --no-index --find-links dist --force-reinstall
-          python -c "import reasonable"
 
   windows:
     runs-on: windows-latest
@@ -79,43 +80,43 @@ jobs:
       with:
         name: wheels
         path: dist
-          #
-          #  linux-cross:
-          #    runs-on: ubuntu-latest
-          #    strategy:
-          #      matrix:
-          #        target: [aarch64, armv7]
-          #    steps:
-          #    - uses: actions/checkout@v3
-          #    - uses: actions/setup-python@v4
-          #      with:
-          #        python-version: 3.9
-          #    - name: Build wheels
-          #      uses: PyO3/maturin-action@v1
-          #      with:
-          #        target: ${{ matrix.target }}
-          #        manylinux: auto
-          #        args: --release --out dist -m Cargo.toml -b pyo3
-          #    - uses: uraimo/run-on-arch-action@v2.3.0
-          #      if: matrix.target != 'ppc64'
-          #      name: Install built wheel
-          #      with:
-          #        arch: ${{ matrix.target }}
-          #        distro: ubuntu20.04
-          #        githubToken: ${{ github.token }}
-          #        install: |
-          #          apt-get update
-          #          apt-get install -y --no-install-recommends python3 python3-pip
-          #          pip3 install -U pip
-          #        run: |
-          #          pip3 install reasonable --no-index --find-links dist/ --force-reinstall
-          #          python3 -c "import reasonable"
-          #    - name: Upload wheels
-          #      uses: actions/upload-artifact@v3
-          #      with:
-          #        name: wheels
-          #        path: dist
-          #
+
+  linux-cross:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target: [aarch64, armv7]
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+    - name: Build wheels
+      uses: PyO3/maturin-action@v1
+      with:
+        target: ${{ matrix.target }}
+        manylinux: auto
+        args: --release --out dist -m Cargo.toml -b pyo3
+    - uses: uraimo/run-on-arch-action@v2.3.0
+      if: matrix.target != 'ppc64'
+      name: Install built wheel
+      with:
+        arch: ${{ matrix.target }}
+        distro: ubuntu20.04
+        githubToken: ${{ github.token }}
+        install: |
+          apt-get update
+          apt-get install -y --no-install-recommends python3 python3-pip
+          pip3 install -U pip
+        run: |
+          pip3 install reasonable --no-index --find-links dist/ --force-reinstall
+          python3 -c "import reasonable"
+    - name: Upload wheels
+      uses: actions/upload-artifact@v3
+      with:
+        name: wheels
+        path: dist
+
   musllinux:
     runs-on: ubuntu-latest
     strategy:
@@ -194,7 +195,7 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
       #if: "startsWith(github.ref, 'refs/tags/')"
-    needs: [ macos, windows, linux ]
+    needs: [ macos, windows, linux, linux-cross]
       #, linux-cross, musllinux, musllinux-cross ]
     steps:
       - uses: actions/download-artifact@v3
