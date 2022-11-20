@@ -206,9 +206,7 @@ jobs:
         name: install wheel2deb
       - run: wheel2deb --map attrs=attr
         name: convert wheels to deb source packages
-        working-directory: wheels
       - run: wheel2deb build
-        working-directory: wheels
         name: build .deb
       - run: dpkg -i output/*.deb
         name: install built packages
