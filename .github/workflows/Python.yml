@@ -201,7 +201,7 @@ jobs:
           name: wheels
       - uses: actions/setup-python@v4
         with:
-          python-version: 3.10
+          python-version: '3.10'
       - run: python3 -m pip install wheel2deb
         name: install wheel2deb
       - run: wheel2deb --map attrs=attr
