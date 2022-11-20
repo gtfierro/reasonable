@@ -191,6 +191,30 @@ jobs:
         name: wheels
         path: dist
 
+  debian:
+    name: Debian package
+    runs-on: ubuntu-latest
+    needs: [ macos, windows, linux, linux-cross]
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: wheels
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.10
+      - run: python3 -m pip install wheel2deb
+        name: install wheel2deb
+      - run: wheel2deb --map attrs=attr
+        name: convert wheels to deb source packages
+        working-directory: wheels
+      - run: wheel2deb build
+        working-directory: wheels
+        name: build .deb
+      - run: dpkg -i output/*.deb
+        name: install built packages
+      - run: python3 -c "import reasonable"
+        name: test instalation
+
   release:
     name: Release
     runs-on: ubuntu-latest
