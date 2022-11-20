@@ -203,7 +203,7 @@ jobs:
         with:
           python-version: '3.10'
       - name: Install deps
-        run: sudo apt install apt-file dpkg-dev fakeroot build-essential devscripts debhelper
+        run: sudo apt install apt-file dpkg-dev fakeroot build-essential devscripts debhelper binutils-arm-linux-gnueabihf
       - name: apt-file update
         run: sudo apt-file update
       - run: python3 -m pip install wheel2deb
