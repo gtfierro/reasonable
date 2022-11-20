@@ -208,9 +208,9 @@ jobs:
         run: sudo apt-file update
       - run: python3 -m pip install wheel2deb
         name: install wheel2deb
-      - run: find . -name '*linux*' -exec basename {} \; | xargs wheel2deb --map attrs=attr -i
+      - run: find . -name '*linux*' -exec basename {} \; | xargs wheel2deb -v --map attrs=attr -i
         name: convert wheels to deb source packages
-      - run: wheel2deb build
+      - run: wheel2deb -v build
         name: build .deb
       - run: dpkg -i output/*.deb
         name: install built packages
