@@ -1,11 +1,11 @@
-use crate::reasoner;
-use crate::error::ReasonableError;
 use crate::common::make_triple;
-use pyo3::types::{PyList, PyTuple};
+use crate::error::ReasonableError;
+use crate::reasoner;
+use oxrdf::{BlankNode, Literal, NamedNode, Term, Triple};
 use pyo3::exceptions;
-use oxigraph::model::{Term, NamedNode, BlankNode, Literal, Triple};
-use std::convert::From;
 use pyo3::prelude::*;
+use pyo3::types::{PyList, PyTuple};
+use std::convert::From;
 
 struct PyReasoningError(ReasonableError);
 
@@ -29,7 +29,7 @@ impl From<Result<&PyAny, pyo3::PyErr>> for MyTerm {
                 } else {
                     Some(NamedNode::new(dt.to_string()).unwrap())
                 }
-            },
+            }
             Err(_) => None,
         };
         let lang: Option<String> = match s.getattr("language") {
@@ -39,31 +39,33 @@ impl From<Result<&PyAny, pyo3::PyErr>> for MyTerm {
                 } else {
                     Some(l.to_string())
                 }
-            },
+            }
             Err(_) => None,
         };
         let n: Term = match typestr {
             "URIRef" => Term::NamedNode(NamedNode::new(s.to_string()).unwrap()),
             "Literal" => match (data_type, lang) {
                 (Some(dt), None) => Term::Literal(Literal::new_typed_literal(s.to_string(), dt)),
-                (None, Some(l)) => Term::Literal(Literal::new_language_tagged_literal(s.to_string(), l).unwrap()),
+                (None, Some(l)) => {
+                    Term::Literal(Literal::new_language_tagged_literal(s.to_string(), l).unwrap())
+                }
                 (_, _) => Term::Literal(Literal::new_simple_literal(s.to_string())),
             },
             "BNode" => Term::BlankNode(BlankNode::new(s.to_string()).unwrap()),
             _ => Term::NamedNode(NamedNode::new(s.to_string()).unwrap()),
         };
-       MyTerm(n)
+        MyTerm(n)
     }
 }
 
 fn term_to_python<'a>(py: Python, rdflib: &'a PyModule, node: Term) -> PyResult<&'a PyAny> {
     let dtype: Option<String> = match &node {
-        Term::Literal(lit) =>  {
+        Term::Literal(lit) => {
             let mut s = lit.datatype().to_string();
             s.remove(0);
-            s.remove(s.len()-1);
+            s.remove(s.len() - 1);
             Some(s)
-        },
+        }
         _ => None,
     };
     let lang: Option<&str> = match &node {
@@ -75,23 +77,29 @@ fn term_to_python<'a>(py: Python, rdflib: &'a PyModule, node: Term) -> PyResult<
         Term::NamedNode(uri) => {
             let mut uri = uri.to_string();
             uri.remove(0);
-            uri.remove(uri.len()-1);
+            uri.remove(uri.len() - 1);
             rdflib.getattr("URIRef")?.call1((uri,))?
-        },
+        }
         Term::Literal(literal) => {
             match (dtype, lang) {
                 // prioritize 'lang' -> it implies String
-                (_, Some(lang)) => rdflib.getattr("Literal")?.call1((literal.value(), lang, py.None()))?,
-                (Some(dtype), None) => rdflib.getattr("Literal")?.call1((literal.value(), py.None(), dtype))?,
-                (None, None) => rdflib.getattr("Literal")?.call1((literal.value(), ))?,
+                (_, Some(lang)) => {
+                    rdflib
+                        .getattr("Literal")?
+                        .call1((literal.value(), lang, py.None()))?
+                }
+                (Some(dtype), None) => {
+                    rdflib
+                        .getattr("Literal")?
+                        .call1((literal.value(), py.None(), dtype))?
+                }
+                (None, None) => rdflib.getattr("Literal")?.call1((literal.value(),))?,
             }
         }
-        Term::BlankNode(id) => {
-            rdflib.getattr("BNode")?.call1((id.clone().into_string(),))?
-        }
-        _ => {
-            panic!("Should not be here");
-        }
+        Term::BlankNode(id) => rdflib
+            .getattr("BNode")?
+            .call1((id.clone().into_string(),))?,
+
     };
     Ok(res)
 }
@@ -110,7 +118,33 @@ impl PyReasoner {
             reasoner: reasoner::Reasoner::new(),
         }
     }
-    ///
+
+    /// Loads in triples from a file (turtle or n3 serialized)
+    pub fn load_file(&mut self, file: String) -> PyResult<()> {
+        match self.reasoner.load_file(&file) {
+            Ok(_) => Ok(()),
+            Err(msg) => Err(exceptions::PyIOError::new_err(msg)),
+        }
+    }
+
+    /// Perform OWL 2 RL reasoning on the triples loaded into the PyReasoner object. This makes no
+    /// assumptions about which ontologies are pre-loaded, so you need to load in OWL, RDFS, etc
+    /// definitions in order to use them. Returns a list of triples
+    pub fn reason(&mut self) -> PyResult<Vec<(Py<PyAny>, Py<PyAny>, Py<PyAny>)>> {
+        Python::with_gil(|py| {
+            let rdflib = py.import("rdflib")?;
+            self.reasoner.reason();
+            let mut res = Vec::new();
+            for t in self.reasoner.get_triples() {
+                let s = term_to_python(py, rdflib, Term::from(t.subject.clone()))?;
+                let p = term_to_python(py, rdflib, Term::from(t.predicate.clone()))?;
+                let o = term_to_python(py, rdflib, Term::from(t.object.clone()))?;
+                res.push((s.into(), p.into(), o.into()));
+            }
+            Ok(res)
+        })
+    }
+
     /// Loads in triples from an RDFlib Graph or any other object that can be converted into a list
     /// of triples (length-3 tuples of URI-formatted strings)
     pub fn from_graph(&mut self, graph: PyObject) -> PyResult<()> {
@@ -124,7 +158,10 @@ impl PyReasoner {
                 "converters.pg",
                 "converters",
             )?;
-            let l: &PyList = converters.getattr("get_triples")?.call1((graph,))?.downcast()?;
+            let l: &PyList = converters
+                .getattr("get_triples")?
+                .call1((graph,))?
+                .downcast()?;
             let mut triples: Vec<Triple> = Vec::new();
             for t in l.iter() {
                 let t: &PyTuple = t.downcast()?;
@@ -136,13 +173,8 @@ impl PyReasoner {
                     Err(e) => return Err(PyReasoningError(e).into()),
                 };
             }
-            //let l: Vec<(PyObject, PyObject, PyObject)> = converters.call1("get_triples", (graph,))?.extract()?;
-            //for t in l {
-            //    println!("{:?}", t.0.get_type());
-            //}
             self.reasoner.load_triples(triples);
             Ok(())
         })
     }
 }
-

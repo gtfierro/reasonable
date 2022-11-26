@@ -6,18 +6,21 @@ use datafrog::{Iteration, Variable};
 use crate::disjoint_sets::DisjointSets;
 use crate::index::URIIndex;
 
+use crate::common::*;
+use crate::{node_relation, owl};
 use log::{debug, error, info};
-use oxigraph::io::{GraphFormat, GraphParser, GraphSerializer};
-use oxigraph::model::{Term, NamedNode, Triple};
-use std::io::BufReader;
+use oxrdf::{Graph, NamedNode, Term, Triple};
+use rio_api::formatter::TriplesFormatter;
+use rio_api::parser::TriplesParser;
+use rio_turtle::TurtleFormatter;
+use rio_turtle::{NTriplesParser, TurtleError, TurtleParser};
 use std::cell::RefCell;
 use std::collections::{HashMap, HashSet};
 use std::fmt;
 use std::fs;
+use std::io::BufReader;
 use std::io::{Error, ErrorKind};
 use std::rc::Rc;
-use crate::common::*;
-use crate::{node_relation, owl};
 
 /// Structured errors that occur during reasoning
 pub struct ReasoningError {
@@ -110,7 +113,7 @@ impl Reasoner {
         let u_owl_class = index.put(owl!("Class"));
         let mut input = vec![
             (u_owl_thing, (u_rdf_type, u_owl_class)),
-            (u_owl_nothing, (u_rdf_type, u_owl_class))
+            (u_owl_nothing, (u_rdf_type, u_owl_class)),
         ];
 
         let rdf_type_inv = Rc::new(RefCell::new(iter1.variable("rdf_type_inv")));
@@ -185,7 +188,10 @@ impl Reasoner {
             .map(|trip| {
                 (
                     self.index.put_str(trip.0).unwrap(),
-                    (self.index.put_str(trip.1).unwrap(), self.index.put_str(trip.2).unwrap()),
+                    (
+                        self.index.put_str(trip.1).unwrap(),
+                        self.index.put_str(trip.2).unwrap(),
+                    ),
                 )
             })
             .collect();
@@ -200,8 +206,15 @@ impl Reasoner {
         let mut trips: Vec<(URI, (URI, URI))> = triples
             .iter()
             .map(|trip| {
-                let (s, p, o) = (trip.subject.clone(), trip.predicate.clone(), trip.object.clone());
-                (self.index.put(s.into()), (self.index.put(p.into()), self.index.put(o)))
+                let (s, p, o) = (
+                    trip.subject.clone(),
+                    trip.predicate.clone(),
+                    trip.object.clone(),
+                );
+                (
+                    self.index.put(s.into()),
+                    (self.index.put(p.into()), self.index.put(o)),
+                )
             })
             .collect();
         trips.sort();
@@ -219,7 +232,13 @@ impl Reasoner {
     pub fn dump_file(&mut self, filename: &str) -> Result<(), Error> {
         // let mut abbrevs: HashMap<String, Uri> = HashMap::new();
         let mut output = fs::File::create(filename)?;
-        let mut writer = GraphSerializer::from_format(GraphFormat::Turtle).triple_writer(&output)?;
+        let mut formatter = TurtleFormatter::new(output);
+        for t in self.view_output() {
+            formatter.format(&oxrdf_to_rio(t.into()))?;
+        }
+
+        //let mut writer =
+        //    GraphSerializer::from_format(GraphFormat::Turtle).triple_writer(&output)?;
         //let mut graph = Graph::new(None);
         //graph.add_namespace(&Namespace::new(
         //    "owl".to_string(),
@@ -241,12 +260,14 @@ impl Reasoner {
         //    "tag".to_string(),
         //    Uri::new("https://brickschema.org/schema/BrickTag#".to_string()),
         //));
-        for t in self.view_output() {
-            writer.write(t)?;
-        }
+        //for t in self.view_output() {
+        //    writer.write(t)?;
+        //}
 
-        writer.finish()?;
+        //writer.finish()?;
         //info!("Wrote {} triples to {}", graph.count(), filename);
+        //Ok(())
+        formatter.finish()?;
         Ok(())
     }
 
@@ -254,29 +275,37 @@ impl Reasoner {
     /// Turtle-formatted (`.ttl`) and NTriples-formatted (`.n3`) files. If you have issues loading
     /// in a Turtle file, try converting it to NTriples
     pub fn load_file(&mut self, filename: &str) -> Result<(), Error> {
-        let parser = {
-            if filename.ends_with(".ttl") {
-                GraphParser::from_format(GraphFormat::Turtle)
-            } else if filename.ends_with(".n3") {
-                GraphParser::from_format(GraphFormat::NTriples)
-            } else if filename.ends_with(".xml") {
-                GraphParser::from_format(GraphFormat::RdfXml)
-            } else {
-                return Err(Error::new(ErrorKind::Other, "no parser for file"));
-            }
-        };
-        println!("filename {}", filename);
         let mut f = BufReader::new(fs::File::open(filename)?);
-        let graph = parser.read_triples(f)?.collect::<Result<Vec<_>,_>>()?;
+        let mut graph = Graph::new();
+        if filename.ends_with(".ttl") {
+            TurtleParser::new(f, None).parse_all(&mut |t| {
+                graph.insert(&rio_to_oxrdf(t));
+                Ok(()) as Result<(), TurtleError>
+            })?;
+        } else if filename.ends_with(".n3") {
+            NTriplesParser::new(f).parse_all(&mut |t| {
+                graph.insert(&rio_to_oxrdf(t));
+                Ok(()) as Result<(), TurtleError>
+            })?;
+        } else {
+            return Err(Error::new(
+                ErrorKind::Other,
+                "no parser for file (only ttl and n3)",
+            ));
+        }
+        println!("filename {}", filename);
 
-        let mut triples: Vec<(URI, (URI, URI))> = graph.iter()
+        //let graph = parser.read_triples(f)?.collect::<Result<Vec<_>,_>>()?;
+
+        let mut triples: Vec<(URI, (URI, URI))> = graph
+            .iter()
             .map(|_triple| {
                 let triple = _triple;
                 let (s, (p, o)) = (
                     self.index.put(triple.subject.clone().into()),
                     (
                         self.index.put(triple.predicate.clone().into()),
-                        self.index.put(triple.object.clone()),
+                        self.index.put(triple.object.clone().into()),
                     ),
                 );
                 (s, (p, o))
@@ -1367,7 +1396,10 @@ impl Reasoner {
             })
             .filter_map(|t| match t {
                 Ok(t) => Some(t),
-                Err(e) => { error!("Got error {:?}", e); None },
+                Err(e) => {
+                    error!("Got error {:?}", e);
+                    None
+                }
             })
             .collect();
         self.rebuild(output);
@@ -1388,7 +1420,8 @@ impl Reasoner {
     }
 
     pub fn get_input(&self) -> Vec<Triple> {
-        self.base.iter()
+        self.base
+            .iter()
             .map(|inst| {
                 let (_s, (_p, _o)) = inst;
                 let s = self.index.get(*_s).unwrap().clone();
@@ -1398,7 +1431,10 @@ impl Reasoner {
             })
             .filter_map(|t| match t {
                 Ok(t) => Some(t),
-                Err(e) => { error!("Got error {:?}", e); None },
+                Err(e) => {
+                    error!("Got error {:?}", e);
+                    None
+                }
             })
             .collect()
     }
@@ -1408,7 +1444,11 @@ impl Reasoner {
         self.view_output()
             .iter()
             .map(|inst| {
-                (inst.subject.to_string(), inst.predicate.to_string(), inst.object.to_string())
+                (
+                    inst.subject.to_string(),
+                    inst.predicate.to_string(),
+                    inst.object.to_string(),
+                )
             })
             .collect()
     }

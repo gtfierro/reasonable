@@ -8,25 +8,16 @@
 pub mod common;
 mod disjoint_sets;
 pub mod error;
-#[cfg(feature = "ondisk")]
-#[allow(dead_code)]
-pub mod graphmanager;
 #[allow(dead_code)]
 mod index;
-#[cfg(feature = "ondisk")]
-#[allow(dead_code)]
-pub mod manager;
 #[allow(dead_code)]
 pub mod reasoner;
 
 #[cfg(test)]
 mod tests;
 
-#[cfg(feature = "python")]
 mod pyreason;
-#[cfg(feature = "python")]
 use pyo3::prelude::*;
-#[cfg(feature = "python")]
 #[pymodule]
 fn reasonable(_py: Python<'_>, module: &PyModule) -> PyResult<()> {
     module.add("__package__", "reasonable")?;

@@ -1,7 +1,6 @@
+//use crate::manager::{Manager, TripleUpdate};
 use crate::reasoner::*;
-use crate::common::make_triple;
-use crate::manager::{Manager, TripleUpdate};
-use oxigraph::model::{Term, NamedNode};
+
 use std::io::Error;
 
 const RDFS_SUBCLASSOF: &str = "http://www.w3.org/2000/01/rdf-schema#subClassOf";
@@ -86,51 +85,83 @@ fn test_eq_sym() -> Result<(), String> {
     r.load_triples_str(trips);
     r.reason();
     let res = r.get_triples_string();
-    assert!(res.contains(&("<urn:y>".to_string(), wrap!(OWL_SAMEAS), "<urn:x>".to_string())));
+    assert!(res.contains(&(
+        "<urn:y>".to_string(),
+        wrap!(OWL_SAMEAS),
+        "<urn:x>".to_string()
+    )));
     Ok(())
 }
 
 #[test]
 fn test_eq_trans() -> Result<(), String> {
     let mut r = Reasoner::new();
-    let trips = vec![("urn:x", OWL_SAMEAS, "urn:y"), ("urn:y", OWL_SAMEAS, "urn:z")];
+    let trips = vec![
+        ("urn:x", OWL_SAMEAS, "urn:y"),
+        ("urn:y", OWL_SAMEAS, "urn:z"),
+    ];
     r.load_triples_str(trips);
     r.reason();
     let res = r.get_triples_string();
-    assert!(res.contains(&("<urn:x>".to_string(), wrap!(OWL_SAMEAS), "<urn:z>".to_string())));
+    assert!(res.contains(&(
+        "<urn:x>".to_string(),
+        wrap!(OWL_SAMEAS),
+        "<urn:z>".to_string()
+    )));
     Ok(())
 }
 
 #[test]
 fn test_eq_rep_s() -> Result<(), String> {
     let mut r = Reasoner::new();
-    let trips = vec![("urn:s1", OWL_SAMEAS, "urn:s2"), ("urn:s1", "urn:p", "urn:o")];
+    let trips = vec![
+        ("urn:s1", OWL_SAMEAS, "urn:s2"),
+        ("urn:s1", "urn:p", "urn:o"),
+    ];
     r.load_triples_str(trips);
     r.reason();
     let res = r.get_triples_string();
-    assert!(res.contains(&("<urn:s2>".to_string(), "<urn:p>".to_string(), "<urn:o>".to_string())));
+    assert!(res.contains(&(
+        "<urn:s2>".to_string(),
+        "<urn:p>".to_string(),
+        "<urn:o>".to_string()
+    )));
     Ok(())
 }
 
 #[test]
 fn test_eq_rep_p() -> Result<(), String> {
     let mut r = Reasoner::new();
-    let trips = vec![("urn:p1", OWL_SAMEAS, "urn:p2"), ("urn:s", "urn:p1", "urn:o")];
+    let trips = vec![
+        ("urn:p1", OWL_SAMEAS, "urn:p2"),
+        ("urn:s", "urn:p1", "urn:o"),
+    ];
     r.load_triples_str(trips);
     r.reason();
     let res = r.get_triples_string();
-    assert!(res.contains(&("<urn:s>".to_string(), "<urn:p2>".to_string(), "<urn:o>".to_string())));
+    assert!(res.contains(&(
+        "<urn:s>".to_string(),
+        "<urn:p2>".to_string(),
+        "<urn:o>".to_string()
+    )));
     Ok(())
 }
 
 #[test]
 fn test_eq_rep_o() -> Result<(), String> {
     let mut r = Reasoner::new();
-    let trips = vec![("urn:o1", OWL_SAMEAS, "urn:o2"), ("urn:s", "urn:p", "urn:o1")];
+    let trips = vec![
+        ("urn:o1", OWL_SAMEAS, "urn:o2"),
+        ("urn:s", "urn:p", "urn:o1"),
+    ];
     r.load_triples_str(trips);
     r.reason();
     let res = r.get_triples_string();
-    assert!(res.contains(&("<urn:s>".to_string(), "<urn:p>".to_string(), "<urn:o2>".to_string())));
+    assert!(res.contains(&(
+        "<urn:s>".to_string(),
+        "<urn:p>".to_string(),
+        "<urn:o2>".to_string()
+    )));
     Ok(())
 }
 
@@ -155,7 +186,11 @@ fn test_cax_sco() -> Result<(), String> {
         })
         .collect();
     // let res = r.get_triples_string();
-    assert!(res.contains(&("<urn:a>".to_string(), wrap!(RDF_TYPE), "<urn:Class1>".to_string())));
+    assert!(res.contains(&(
+        "<urn:a>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:Class1>".to_string()
+    )));
     Ok(())
 }
 
@@ -169,7 +204,11 @@ fn test_cax_eqc1() -> Result<(), String> {
     r.load_triples_str(trips);
     r.reason();
     let res = r.get_triples_string();
-    assert!(res.contains(&("<urn:a>".to_string(), wrap!(RDF_TYPE), "<urn:Class2>".to_string())));
+    assert!(res.contains(&(
+        "<urn:a>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:Class2>".to_string()
+    )));
     Ok(())
 }
 
@@ -183,7 +222,11 @@ fn test_cax_eqc2() -> Result<(), String> {
     r.load_triples_str(trips);
     r.reason();
     let res = r.get_triples_string();
-    assert!(res.contains(&("<urn:a>".to_string(), wrap!(RDF_TYPE), "<urn:Class1>".to_string())));
+    assert!(res.contains(&(
+        "<urn:a>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:Class1>".to_string()
+    )));
     Ok(())
 }
 
@@ -201,11 +244,31 @@ fn test_cax_eqc_chain_1() -> Result<(), String> {
     r.load_triples_str(trips);
     r.reason();
     let res = r.get_triples_string();
-    assert!(res.contains(&("<urn:a>".to_string(), wrap!(RDF_TYPE), "<urn:Class2>".to_string())));
-    assert!(res.contains(&("<urn:a>".to_string(), wrap!(RDF_TYPE), "<urn:Class3>".to_string())));
-    assert!(res.contains(&("<urn:a>".to_string(), wrap!(RDF_TYPE), "<urn:Class4>".to_string())));
-    assert!(res.contains(&("<urn:a>".to_string(), wrap!(RDF_TYPE), "<urn:Class5>".to_string())));
-    assert!(res.contains(&("<urn:a>".to_string(), wrap!(RDF_TYPE), "<urn:Class6>".to_string())));
+    assert!(res.contains(&(
+        "<urn:a>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:Class2>".to_string()
+    )));
+    assert!(res.contains(&(
+        "<urn:a>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:Class3>".to_string()
+    )));
+    assert!(res.contains(&(
+        "<urn:a>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:Class4>".to_string()
+    )));
+    assert!(res.contains(&(
+        "<urn:a>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:Class5>".to_string()
+    )));
+    assert!(res.contains(&(
+        "<urn:a>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:Class6>".to_string()
+    )));
     Ok(())
 }
 
@@ -223,11 +286,31 @@ fn test_cax_eqc_chain_2() -> Result<(), String> {
     r.load_triples_str(trips);
     r.reason();
     let res = r.get_triples_string();
-    assert!(res.contains(&("<urn:a>".to_string(), wrap!(RDF_TYPE), "<urn:Class1>".to_string())));
-    assert!(res.contains(&("<urn:a>".to_string(), wrap!(RDF_TYPE), "<urn:Class2>".to_string())));
-    assert!(res.contains(&("<urn:a>".to_string(), wrap!(RDF_TYPE), "<urn:Class3>".to_string())));
-    assert!(res.contains(&("<urn:a>".to_string(), wrap!(RDF_TYPE), "<urn:Class4>".to_string())));
-    assert!(res.contains(&("<urn:a>".to_string(), wrap!(RDF_TYPE), "<urn:Class5>".to_string())));
+    assert!(res.contains(&(
+        "<urn:a>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:Class1>".to_string()
+    )));
+    assert!(res.contains(&(
+        "<urn:a>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:Class2>".to_string()
+    )));
+    assert!(res.contains(&(
+        "<urn:a>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:Class3>".to_string()
+    )));
+    assert!(res.contains(&(
+        "<urn:a>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:Class4>".to_string()
+    )));
+    assert!(res.contains(&(
+        "<urn:a>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:Class5>".to_string()
+    )));
     Ok(())
 }
 
@@ -303,7 +386,10 @@ fn test_prp_ifp() -> Result<(), String> {
 #[test]
 fn test_spo1() -> Result<(), String> {
     let mut r = Reasoner::new();
-    let trips = vec![("urn:p1", RDFS_SUBPROP, "urn:p2"), ("urn:x", "urn:p1", "urn:y")];
+    let trips = vec![
+        ("urn:p1", RDFS_SUBPROP, "urn:p2"),
+        ("urn:x", "urn:p1", "urn:y"),
+    ];
     r.load_triples_str(trips);
     r.reason();
     let res = r.get_triples_string();
@@ -311,14 +397,21 @@ fn test_spo1() -> Result<(), String> {
         let (s, p, o) = i;
         println!("{} {} {}", s, p, o);
     }
-    assert!(res.contains(&("<urn:x>".to_string(), "<urn:p2>".to_string(), "<urn:y>".to_string())));
+    assert!(res.contains(&(
+        "<urn:x>".to_string(),
+        "<urn:p2>".to_string(),
+        "<urn:y>".to_string()
+    )));
     Ok(())
 }
 
 #[test]
 fn test_prp_inv1() -> Result<(), String> {
     let mut r = Reasoner::new();
-    let trips = vec![("urn:p1", OWL_INVERSEOF, "urn:p2"), ("urn:x", "urn:p1", "urn:y")];
+    let trips = vec![
+        ("urn:p1", OWL_INVERSEOF, "urn:p2"),
+        ("urn:x", "urn:p1", "urn:y"),
+    ];
     r.load_triples_str(trips);
     r.reason();
     let res = r.get_triples_string();
@@ -326,14 +419,21 @@ fn test_prp_inv1() -> Result<(), String> {
         let (s, p, o) = i;
         println!("{} {} {}", s, p, o);
     }
-    assert!(res.contains(&("<urn:y>".to_string(), "<urn:p2>".to_string(), "<urn:x>".to_string())));
+    assert!(res.contains(&(
+        "<urn:y>".to_string(),
+        "<urn:p2>".to_string(),
+        "<urn:x>".to_string()
+    )));
     Ok(())
 }
 
 #[test]
 fn test_prp_symp() -> Result<(), String> {
     let mut r = Reasoner::new();
-    let trips = vec![("urn:p", RDF_TYPE, OWL_SYMMETRICPROP), ("urn:x", "urn:p", "urn:y")];
+    let trips = vec![
+        ("urn:p", RDF_TYPE, OWL_SYMMETRICPROP),
+        ("urn:x", "urn:p", "urn:y"),
+    ];
     r.load_triples_str(trips);
     r.reason();
     let res = r.get_triples_string();
@@ -341,7 +441,11 @@ fn test_prp_symp() -> Result<(), String> {
         let (s, p, o) = i;
         println!("{} {} {}", s, p, o);
     }
-    assert!(res.contains(&("<urn:y>".to_string(), "<urn:p>".to_string(), "<urn:x>".to_string())));
+    assert!(res.contains(&(
+        "<urn:y>".to_string(),
+        "<urn:p>".to_string(),
+        "<urn:x>".to_string()
+    )));
     Ok(())
 }
 
@@ -360,14 +464,21 @@ fn test_prp_trp() -> Result<(), String> {
         let (s, p, o) = i;
         println!("{} {} {}", s, p, o);
     }
-    assert!(res.contains(&("<urn:x>".to_string(), "<urn:p>".to_string(), "<urn:z>".to_string())));
+    assert!(res.contains(&(
+        "<urn:x>".to_string(),
+        "<urn:p>".to_string(),
+        "<urn:z>".to_string()
+    )));
     Ok(())
 }
 
 #[test]
 fn test_prp_eqp1() -> Result<(), String> {
     let mut r = Reasoner::new();
-    let trips = vec![("urn:p1", OWL_EQUIVPROP, "urn:p2"), ("urn:x", "urn:p1", "urn:y")];
+    let trips = vec![
+        ("urn:p1", OWL_EQUIVPROP, "urn:p2"),
+        ("urn:x", "urn:p1", "urn:y"),
+    ];
     r.load_triples_str(trips);
     r.reason();
     let res = r.get_triples_string();
@@ -375,7 +486,11 @@ fn test_prp_eqp1() -> Result<(), String> {
         let (s, p, o) = i;
         println!("{} {} {}", s, p, o);
     }
-    assert!(res.contains(&("<urn:x>".to_string(), "<urn:p2>".to_string(), "<urn:y>".to_string())));
+    assert!(res.contains(&(
+        "<urn:x>".to_string(),
+        "<urn:p2>".to_string(),
+        "<urn:y>".to_string()
+    )));
     Ok(())
 }
 
@@ -388,16 +503,8 @@ fn test_cls_thing_nothing() -> Result<(), String> {
         let (s, p, o) = i;
         println!("{} {} {}", s, p, o);
     }
-    assert!(res.contains(&(
-        wrap!(OWL_THING),
-        wrap!(RDF_TYPE),
-        wrap!(OWL_CLASS)
-    )));
-    assert!(res.contains(&(
-        wrap!(OWL_NOTHING),
-        wrap!(RDF_TYPE),
-        wrap!(OWL_CLASS)
-    )));
+    assert!(res.contains(&(wrap!(OWL_THING), wrap!(RDF_TYPE), wrap!(OWL_CLASS))));
+    assert!(res.contains(&(wrap!(OWL_NOTHING), wrap!(RDF_TYPE), wrap!(OWL_CLASS))));
     Ok(())
 }
 
@@ -416,7 +523,11 @@ fn test_cls_hv1() -> Result<(), String> {
         let (s, p, o) = i;
         println!("{} {} {}", s, p, o);
     }
-    assert!(res.contains(&("<urn:u>".to_string(), "<urn:p>".to_string(), "<urn:y>".to_string())));
+    assert!(res.contains(&(
+        "<urn:u>".to_string(),
+        "<urn:p>".to_string(),
+        "<urn:y>".to_string()
+    )));
     Ok(())
 }
 
@@ -435,7 +546,11 @@ fn test_cls_hv2() -> Result<(), String> {
         let (s, p, o) = i;
         println!("{} {} {}", s, p, o);
     }
-    assert!(res.contains(&("<urn:u>".to_string(), wrap!(RDF_TYPE), "<urn:x>".to_string())));
+    assert!(res.contains(&(
+        "<urn:u>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:x>".to_string()
+    )));
     Ok(())
 }
 
@@ -455,7 +570,11 @@ fn test_cls_avf() -> Result<(), String> {
         let (s, p, o) = i;
         println!("{} {} {}", s, p, o);
     }
-    assert!(res.contains(&("<urn:v>".to_string(), wrap!(RDF_TYPE), "<urn:y>".to_string())));
+    assert!(res.contains(&(
+        "<urn:v>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:y>".to_string()
+    )));
     Ok(())
 }
 
@@ -475,7 +594,11 @@ fn test_cls_svf1() -> Result<(), String> {
         let (s, p, o) = i;
         println!("{} {} {}", s, p, o);
     }
-    assert!(res.contains(&("<urn:u>".to_string(), wrap!(RDF_TYPE), "<urn:x>".to_string())));
+    assert!(res.contains(&(
+        "<urn:u>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:x>".to_string()
+    )));
     Ok(())
 }
 
@@ -494,7 +617,11 @@ fn test_cls_svf2() -> Result<(), String> {
         let (s, p, o) = i;
         println!("{} {} {}", s, p, o);
     }
-    assert!(res.contains(&("<urn:u>".to_string(), wrap!(RDF_TYPE), "<urn:x>".to_string())));
+    assert!(res.contains(&(
+        "<urn:u>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:x>".to_string()
+    )));
     Ok(())
 }
 
@@ -520,7 +647,11 @@ fn test_cls_int1() -> Result<(), String> {
         let (s, p, o) = i;
         println!("{} {} {}", s, p, o);
     }
-    assert!(res.contains(&("<urn:y>".to_string(), wrap!(RDF_TYPE), "<urn:c>".to_string())));
+    assert!(res.contains(&(
+        "<urn:y>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:c>".to_string()
+    )));
     Ok(())
 }
 
@@ -544,9 +675,21 @@ fn test_cls_int2() -> Result<(), String> {
         let (s, p, o) = i;
         println!("{} {} {}", s, p, o);
     }
-    assert!(res.contains(&("<urn:y>".to_string(), wrap!(RDF_TYPE), "<urn:c1>".to_string())));
-    assert!(res.contains(&("<urn:y>".to_string(), wrap!(RDF_TYPE), "<urn:c2>".to_string())));
-    assert!(res.contains(&("<urn:y>".to_string(), wrap!(RDF_TYPE), "<urn:c3>".to_string())));
+    assert!(res.contains(&(
+        "<urn:y>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:c1>".to_string()
+    )));
+    assert!(res.contains(&(
+        "<urn:y>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:c2>".to_string()
+    )));
+    assert!(res.contains(&(
+        "<urn:y>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:c3>".to_string()
+    )));
     Ok(())
 }
 
@@ -578,12 +721,36 @@ fn test_cls_int2_withequivalent() -> Result<(), String> {
         let (s, p, o) = i;
         println!("{} {} {}", s, p, o);
     }
-    assert!(res.contains(&("<urn:y>".to_string(), wrap!(RDF_TYPE), "<urn:c1>".to_string())));
-    assert!(res.contains(&("<urn:y>".to_string(), wrap!(RDF_TYPE), "<urn:c2>".to_string())));
-    assert!(res.contains(&("<urn:y>".to_string(), wrap!(RDF_TYPE), "<urn:c3>".to_string())));
-    assert!(res.contains(&("<urn:y>".to_string(), wrap!(RDF_TYPE), "<urn:C1>".to_string())));
-    assert!(res.contains(&("<urn:y>".to_string(), wrap!(RDF_TYPE), "<urn:C2>".to_string())));
-    assert!(res.contains(&("<urn:y>".to_string(), wrap!(RDF_TYPE), "<urn:C3>".to_string())));
+    assert!(res.contains(&(
+        "<urn:y>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:c1>".to_string()
+    )));
+    assert!(res.contains(&(
+        "<urn:y>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:c2>".to_string()
+    )));
+    assert!(res.contains(&(
+        "<urn:y>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:c3>".to_string()
+    )));
+    assert!(res.contains(&(
+        "<urn:y>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:C1>".to_string()
+    )));
+    assert!(res.contains(&(
+        "<urn:y>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:C2>".to_string()
+    )));
+    assert!(res.contains(&(
+        "<urn:y>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:C3>".to_string()
+    )));
     Ok(())
 }
 
@@ -610,8 +777,16 @@ fn test_cls_int1_withhasvalue() -> Result<(), String> {
         let (s, p, o) = i;
         println!("{} {} {}", s, p, o);
     }
-    assert!(res.contains(&("<urn:inst>".to_string(), wrap!(RDF_TYPE), "<urn:c1>".to_string())));
-    assert!(res.contains(&("<urn:inst>".to_string(), wrap!(RDF_TYPE), "<urn:c2>".to_string())));
+    assert!(res.contains(&(
+        "<urn:inst>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:c1>".to_string()
+    )));
+    assert!(res.contains(&(
+        "<urn:inst>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:c2>".to_string()
+    )));
     assert!(res.contains(&(
         "<urn:inst>".to_string(),
         wrap!(RDF_TYPE),
@@ -642,15 +817,27 @@ fn test_complementof() -> Result<(), String> {
         let (s, p, o) = i;
         println!("{} {} {}", s, p, o);
     }
+    assert!(res.contains(&("<urn:inst1>".to_string(), wrap!(RDF_TYPE), wrap!(OWL_THING))));
     assert!(res.contains(&(
         "<urn:inst1>".to_string(),
         wrap!(RDF_TYPE),
-        wrap!(OWL_THING)
+        "<urn:x>".to_string()
     )));
-    assert!(res.contains(&("<urn:inst1>".to_string(), wrap!(RDF_TYPE), "<urn:x>".to_string())));
-    assert!(!res.contains(&("<urn:inst1>".to_string(), wrap!(RDF_TYPE), "<urn:c>".to_string())));
-    assert!(!res.contains(&("<urn:inst1>".to_string(), wrap!(RDF_TYPE), "<urn:c2>".to_string())));
-    assert!(res.contains(&("<urn:inst2>".to_string(), wrap!(RDF_TYPE), "<urn:c2>".to_string())));
+    assert!(!res.contains(&(
+        "<urn:inst1>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:c>".to_string()
+    )));
+    assert!(!res.contains(&(
+        "<urn:inst1>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:c2>".to_string()
+    )));
+    assert!(res.contains(&(
+        "<urn:inst2>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:c2>".to_string()
+    )));
     Ok(())
 }
 
@@ -673,71 +860,71 @@ fn test_error_asymmetric() -> Result<(), String> {
     Ok(())
 }
 
-#[test]
-fn test_triple_update1() -> Result<(), String> {
-    let mut u = TripleUpdate::new();
-    let t1 = triple!("x1", "y1", "z1");
-    let t1rem = triple!("x1", "y1", "z1");
-    let t2 = triple!("x2", "y2", "z2");
-    u.add_triple(t1);
-    u.add_triple(t2);
-    u.remove_triple(t1rem);
-    assert_eq!(*u.updates.get(&triple!("x1", "y1", "z1")).unwrap(), 0);
-    assert_eq!(*u.updates.get(&triple!("x2", "y2", "z2")).unwrap(), 1);
-    Ok(())
-}
-
-#[test]
-fn test_triple_update2() -> Result<(), String> {
-    let mut u = TripleUpdate::new();
-    let t1 = triple!("x1", "y1", "z1");
-    let t2 = triple!("x2", "y2", "z2");
-    u.add_triple(t1);
-    u.add_triple(t2);
-    assert_eq!(*u.updates.get(&triple!("x1", "y1", "z1")).unwrap(), 1);
-    assert_eq!(*u.updates.get(&triple!("x2", "y2", "z2")).unwrap(), 1);
-    Ok(())
-}
-
-#[test]
-fn test_triple_update3() -> Result<(), String> {
-    let mut u = TripleUpdate::new();
-    let t1a = triple!("x1", "y1", "z1");
-    let t1b = triple!("x1", "y1", "z1");
-    let t1c = triple!("x1", "y1", "z1");
-    let t2 = triple!("x2", "y2", "z2");
-    u.add_triple(t1a);
-    u.add_triple(t1b);
-    u.add_triple(t2);
-    assert_eq!(*u.updates.get(&triple!("x1", "y1", "z1")).unwrap(), 2);
-    assert_eq!(*u.updates.get(&triple!("x2", "y2", "z2")).unwrap(), 1);
-    u.remove_triple(t1c);
-    assert_eq!(*u.updates.get(&triple!("x1", "y1", "z1")).unwrap(), 1);
-    Ok(())
-}
-
-#[test]
-fn test_manager_update() -> Result<(), String> {
-    let mut mgr = Manager::new_in_memory();
-
-    let mut u = TripleUpdate::new();
-    u.add_triple(triple!("x1", "y1", "z1"));
-
-    assert_eq!(mgr.size(), 0);
-    mgr.process_updates(u);
-    assert_eq!(mgr.size(), 6);
-
-    let mut u = TripleUpdate::new();
-    u.remove_triple(triple!("x1", "y1", "z1"));
-    mgr.process_updates(u);
-    println!("{}", mgr.dump_string());
-    assert_eq!(mgr.size(), 4);
-
-    let mut u = TripleUpdate::new();
-    u.add_triple(triple!("x3", "y3", "z3"));
-    u.add_triple(triple!("x1", "y1", "z1"));
-    mgr.process_updates(u);
-    assert_eq!(mgr.size(), 8);
-
-    Ok(())
-}
+//#[test]
+//fn test_triple_update1() -> Result<(), String> {
+//    let mut u = TripleUpdate::new();
+//    let t1 = triple!("x1", "y1", "z1");
+//    let t1rem = triple!("x1", "y1", "z1");
+//    let t2 = triple!("x2", "y2", "z2");
+//    u.add_triple(t1);
+//    u.add_triple(t2);
+//    u.remove_triple(t1rem);
+//    assert_eq!(*u.updates.get(&triple!("x1", "y1", "z1")).unwrap(), 0);
+//    assert_eq!(*u.updates.get(&triple!("x2", "y2", "z2")).unwrap(), 1);
+//    Ok(())
+//}
+//
+//#[test]
+//fn test_triple_update2() -> Result<(), String> {
+//    let mut u = TripleUpdate::new();
+//    let t1 = triple!("x1", "y1", "z1");
+//    let t2 = triple!("x2", "y2", "z2");
+//    u.add_triple(t1);
+//    u.add_triple(t2);
+//    assert_eq!(*u.updates.get(&triple!("x1", "y1", "z1")).unwrap(), 1);
+//    assert_eq!(*u.updates.get(&triple!("x2", "y2", "z2")).unwrap(), 1);
+//    Ok(())
+//}
+//
+//#[test]
+//fn test_triple_update3() -> Result<(), String> {
+//    let mut u = TripleUpdate::new();
+//    let t1a = triple!("x1", "y1", "z1");
+//    let t1b = triple!("x1", "y1", "z1");
+//    let t1c = triple!("x1", "y1", "z1");
+//    let t2 = triple!("x2", "y2", "z2");
+//    u.add_triple(t1a);
+//    u.add_triple(t1b);
+//    u.add_triple(t2);
+//    assert_eq!(*u.updates.get(&triple!("x1", "y1", "z1")).unwrap(), 2);
+//    assert_eq!(*u.updates.get(&triple!("x2", "y2", "z2")).unwrap(), 1);
+//    u.remove_triple(t1c);
+//    assert_eq!(*u.updates.get(&triple!("x1", "y1", "z1")).unwrap(), 1);
+//    Ok(())
+//}
+//
+//#[test]
+//fn test_manager_update() -> Result<(), String> {
+//    let mut mgr = Manager::new_in_memory();
+//
+//    let mut u = TripleUpdate::new();
+//    u.add_triple(triple!("x1", "y1", "z1"));
+//
+//    assert_eq!(mgr.size(), 0);
+//    mgr.process_updates(u);
+//    assert_eq!(mgr.size(), 6);
+//
+//    let mut u = TripleUpdate::new();
+//    u.remove_triple(triple!("x1", "y1", "z1"));
+//    mgr.process_updates(u);
+//    println!("{}", mgr.dump_string());
+//    assert_eq!(mgr.size(), 4);
+//
+//    let mut u = TripleUpdate::new();
+//    u.add_triple(triple!("x3", "y3", "z3"));
+//    u.add_triple(triple!("x1", "y1", "z1"));
+//    mgr.process_updates(u);
+//    assert_eq!(mgr.size(), 8);
+//
+//    Ok(())
+//}

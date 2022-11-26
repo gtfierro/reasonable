@@ -1,0 +1,239 @@
+name: Python
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+          architecture: x64
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Build wheels - x86_64
+        uses: PyO3/maturin-action@v1
+        with:
+          target: x86_64
+          args: --release --out dist --sdist -m Cargo.toml -b pyo3
+            #- name: Install built wheel - x86_64
+            #  run: |
+            #    ls dist
+            #    pip install reasonable --no-index --find-links dist --force-reinstall
+            #    python -c "import reasonable"
+      - name: Build wheels - universal2
+        uses: PyO3/maturin-action@v1
+        with:
+          args: --release --universal2 --out dist -m Cargo.toml -b pyo3
+      - name: Upload wheels
+        uses: actions/upload-artifact@v3
+        with:
+          name: wheels
+          path: dist
+
+  windows:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        target: [x64, x86]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+          architecture: ${{ matrix.target }}
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Build wheels
+        uses: PyO3/maturin-action@v1
+        with:
+          target: ${{ matrix.target }}
+          args: --release --out dist -m Cargo.toml -b pyo3
+      - name: Upload wheels
+        uses: actions/upload-artifact@v3
+        with:
+          name: wheels
+          path: dist
+
+  linux:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target: [x86_64, i686]
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+        architecture: x64
+    - run: pwd
+    - name: Build wheels
+      uses: PyO3/maturin-action@v1
+      with:
+        target: ${{ matrix.target }}
+        manylinux: auto
+        args: -m Cargo.toml --release --out dist -b pyo3
+    - name: Upload wheels
+      uses: actions/upload-artifact@v3
+      with:
+        name: wheels
+        path: dist
+
+  linux-cross:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target: [aarch64, armv7]
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+    - name: Build wheels
+      uses: PyO3/maturin-action@v1
+      with:
+        target: ${{ matrix.target }}
+        manylinux: auto
+        args: --release --out dist -m Cargo.toml -b pyo3
+          #- uses: uraimo/run-on-arch-action@v2.3.0
+          #  if: matrix.target != 'ppc64'
+          #  name: Install built wheel
+          #  with:
+          #    arch: ${{ matrix.target }}
+          #    distro: ubuntu20.04
+          #    githubToken: ${{ github.token }}
+          #    install: |
+          #      apt-get update
+          #      apt-get install -y --no-install-recommends python3 python3-pip
+          #      pip3 install -U pip
+          #    run: |
+          #      pip3 install reasonable --no-index --find-links dist/ --force-reinstall
+          #      python3 -c "import reasonable"
+    - name: Upload wheels
+      uses: actions/upload-artifact@v3
+      with:
+        name: wheels
+        path: dist
+
+  musllinux:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target:
+          - x86_64-unknown-linux-musl
+          - i686-unknown-linux-musl
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+        architecture: x64
+    - name: Build wheels
+      uses: PyO3/maturin-action@v1
+      with:
+        target: ${{ matrix.target }}
+        manylinux: musllinux_1_2
+        args: --release --out dist -m Cargo.toml -b pyo3
+          #- name: Install built wheel
+          #  if: matrix.target == 'x86_64-unknown-linux-musl'
+          #  uses: addnab/docker-run-action@v3
+          #  with:
+          #    image: alpine:latest
+          #    options: -v ${{ github.workspace }}:/io -w /io
+          #    run: |
+          #      apk add py3-pip
+          #      pip3 install -U pip
+          #      pip3 install reasonable --no-index --find-links /io/dist/ --force-reinstall
+          #      python3 -c "import reasonable"
+    - name: Upload wheels
+      uses: actions/upload-artifact@v3
+      with:
+        name: wheels
+        path: dist
+
+  musllinux-cross:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform:
+          - target: aarch64-unknown-linux-musl
+            arch: aarch64
+          - target: armv7-unknown-linux-musleabihf
+            arch: armv7
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+    - name: Build wheels
+      uses: PyO3/maturin-action@v1
+      with:
+        target: ${{ matrix.platform.target }}
+        manylinux: musllinux_1_2
+        args: --release --out dist -m Cargo.toml -b pyo3
+          #- uses: uraimo/run-on-arch-action@v2.3.0
+          #  name: Install built wheel
+          #  with:
+          #    arch: ${{ matrix.platform.arch }}
+          #    distro: alpine_latest
+          #    githubToken: ${{ github.token }}
+          #    install: |
+          #      apk add py3-pip
+          #      pip3 install -U pip
+          #    run: |
+          #      pip3 install reasonable --no-index --find-links dist/ --force-reinstall
+          #      python3 -c "import reasonable"
+    - name: Upload wheels
+      uses: actions/upload-artifact@v3
+      with:
+        name: wheels
+        path: dist
+
+  debian:
+    name: Debian package
+    runs-on: ubuntu-latest
+    needs: [ macos, windows, linux, linux-cross]
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: wheels
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install deps
+        run: sudo apt install apt-file dpkg-dev fakeroot build-essential devscripts debhelper binutils-arm-linux-gnueabihf
+      - name: apt-file update
+        run: sudo apt-file update
+      - run: python3 -m pip install wheel2deb
+        name: install wheel2deb
+      - run: find . -name '*linux*' -exec basename {} \; | xargs wheel2deb -v --map attrs=attr -i
+        name: convert wheels to deb source packages
+      - run: wheel2deb -v build
+        name: build .deb
+      - run: dpkg -i output/*.deb
+        name: install built packages
+      - run: python3 -c "import reasonable"
+        name: test instalation
+
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+      #if: "startsWith(github.ref, 'refs/tags/')"
+    needs: [ macos, windows, linux, linux-cross]
+      #, linux-cross, musllinux, musllinux-cross ]
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: wheels
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+      - name: Publish to PyPI
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN}}
+        run: |
+          pip install --upgrade twine
+          twine upload --skip-existing *
