@@ -151,10 +151,9 @@ impl PyReasoner {
         Python::with_gil(|py| {
             let converters = PyModule::from_code(
                 py,
-                "
-    def get_triples(graph):
-        return list(graph)
-    ",
+                "def get_triples(graph):
+    return list(graph)
+",
                 "converters.pg",
                 "converters",
             )?;
