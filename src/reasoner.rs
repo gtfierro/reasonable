@@ -923,7 +923,7 @@ impl Reasoner {
                 // T(?p1, owl:inverseOf, ?p2)
                 // T(?x, ?p2, ?y) => T(?y, ?p1, ?x)
                 self.all_triples_input
-                    .from_join(&self.owl_inv2, &self.pso, |&p2, &p1, &(x, y)| (x, (p2, y)));
+                    .from_join(&self.owl_inv2, &self.pso, |&p2, &p1, &(x, y)| (y, (p1, x)));
 
                 // cax-sco
                 cax_sco_1.from_join(&self.pso, &rdfs_subclass_relation, |&_, &(c1, c2), &()| {
