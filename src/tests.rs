@@ -428,6 +428,28 @@ fn test_prp_inv1() -> Result<(), String> {
 }
 
 #[test]
+fn test_prp_inv2() -> Result<(), String> {
+    let mut r = Reasoner::new();
+    let trips = vec![
+        ("urn:p1", OWL_INVERSEOF, "urn:p2"),
+        ("urn:y", "urn:p2", "urn:x"),
+    ];
+    r.load_triples_str(trips);
+    r.reason();
+    let res = r.get_triples_string();
+    for i in res.iter() {
+        let (s, p, o) = i;
+        println!("{} {} {}", s, p, o);
+    }
+    assert!(res.contains(&(
+        "<urn:x>".to_string(),
+        "<urn:p1>".to_string(),
+        "<urn:y>".to_string()
+    )));
+    Ok(())
+}
+
+#[test]
 fn test_prp_symp() -> Result<(), String> {
     let mut r = Reasoner::new();
     let trips = vec![
