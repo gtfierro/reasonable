@@ -21,5 +21,6 @@ fn main() {
         "Reasoning completed in {:.02}sec",
         reasoning_start.elapsed().as_secs_f64()
     );
+    info!("Writing to output.ttl");
     r.dump_file("output.ttl").unwrap();
 }
