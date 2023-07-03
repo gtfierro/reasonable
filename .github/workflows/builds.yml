@@ -38,18 +38,15 @@ jobs:
       - name: List releases
         run: ls target/release
 
-      - uses: meeDamian/github-release@2.0
+      - uses: marvinpinto/action-automatic-releases@latest
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          name: Nightly Build
-          tag: nightly
-          body: >
-            This is an automatically generated release
-          files: >
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          prerelease: true
+          automatic_release_tag: nightly
+          title: Nightly Build ${{ steps.date.outputs.date }}
+          files: |
             target/release/reasonable
             reasonable-static
-          gzip: false
-          allow_override: true
   python:
     runs-on: ${{ matrix.os }}
     strategy:
