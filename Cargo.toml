@@ -38,6 +38,7 @@ serde_derive = "1.0"
 tinytemplate = "1.2.1"
 anyhow = "1.0.60"
 pyo3 = { version = "0.17", features = ["extension-module", "abi3-py37"]}
+clap = { version = "4.3.10", features = ["derive"] }
 
 [profile.release]
 debug = true

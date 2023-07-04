@@ -293,7 +293,6 @@ impl Reasoner {
                 "no parser for file (only ttl and n3)",
             ));
         }
-        println!("filename {}", filename);
 
         //let graph = parser.read_triples(f)?.collect::<Result<Vec<_>,_>>()?;
 
