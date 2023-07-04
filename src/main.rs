@@ -1,11 +1,27 @@
 use reasonable::reasoner::Reasoner;
+use std::path::PathBuf;
+use clap::{Parser, Subcommand};
+
 
 use log::info;
 use std::env;
 use std::time::Instant;
 
+#[derive(Parser)]
+#[command(name="reasonable")]
+#[command(about="Performs OWL 2 RL Reasoning")]
+struct Cli {
+    input_files: Vec<PathBuf>,
+    output_file: Optional<PathBuf>,
+}
+
+
 fn main() {
     env_logger::init();
+
+    let cli = Cli::parse();
+    print!("{:?}", cli);
+
     let mut r = Reasoner::new();
     env::args()
         .skip(1)
