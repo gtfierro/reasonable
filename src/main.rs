@@ -38,6 +38,6 @@ fn main() {
         "Reasoning completed in {:.02}sec",
         reasoning_start.elapsed().as_secs_f64()
     );
-    info!("Writing to output.ttl");
+    info!("Writing to {}", cli.output_file.to_str().unwrap());
     r.dump_file(cli.output_file.to_str().unwrap()).unwrap();
 }

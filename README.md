@@ -14,6 +14,41 @@ Comparing performance of `reasonable` with [OWLRL](https://github.com/RDFLib/OWL
 
 ## How to Use
 
+### Command Line Interface
+
+You can download a static build of the command line tool [here](https://github.com/gtfierro/reasonable/releases/download/nightly/reasonable-static) (this is automatically built from the latest master).
+
+Usage as follows:
+
+```
+$ reasonable -h
+An OWL 2 RL reasoner with reasonable performance
+
+Usage: reasonable [OPTIONS] <INPUT_FILES>...
+
+Arguments:
+  <INPUT_FILES>...  
+
+Options:
+  -o, --output-file <OUTPUT_FILE>  [default: output.ttl]
+  -h, --help                       Print help
+  -V, --version                    Print version
+```
+
+Example:
+
+```
+$ reasonable example_models/ontologies/Brick.n3 example_models/small1.n3 -o myout.ttl
+[2023-07-04T15:31:52Z INFO  reasonable] Loading file example_models/ontologies/Brick.n3
+[2023-07-04T15:31:52Z INFO  reasonable::reasoner] Loaded 14803 triples from file example_models/ontologies/Brick.n3
+[2023-07-04T15:31:52Z INFO  reasonable] Loading file example_models/small1.n3
+[2023-07-04T15:31:52Z INFO  reasonable::reasoner] Loaded 14 triples from file example_models/small1.n3
+[2023-07-04T15:31:52Z INFO  reasonable] Starting reasoning
+[2023-07-04T15:32:11Z INFO  reasonable] Reasoning completed in 18.66sec
+[2023-07-04T15:32:11Z INFO  reasonable] Writing to myout.ttl
+```
+
+
 ### Python
 
 To facilitate usage, we use the [pyo3](https://pyo3.rs/) project to generate Python 3.x bindings to this project.
