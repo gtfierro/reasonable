@@ -1,23 +1,21 @@
-use reasonable::reasoner::Reasoner;
-use std::path::{Path, PathBuf};
 use clap::Parser;
+use reasonable::reasoner::Reasoner;
+use std::path::{PathBuf};
 
-
-use log::info;
-use std::env;
 use env_logger::Env;
+use log::info;
+
 use std::time::Instant;
 
 #[derive(Parser, Debug)]
-#[command(name="reasonable")]
-#[command(about="Performs OWL 2 RL Reasoning")]
+#[command(name = "reasonable")]
+#[command(about = "Performs OWL 2 RL Reasoning")]
 struct Cli {
-    #[arg(required=true)]
+    #[arg(required = true)]
     input_files: Vec<PathBuf>,
     #[arg(short, long, default_value_os_t = PathBuf::from("output.ttl"))]
     output_file: PathBuf,
 }
-
 
 fn main() {
     env_logger::Builder::from_env(Env::default().default_filter_or("info")).init();
@@ -26,7 +24,9 @@ fn main() {
 
     let mut r = Reasoner::new();
 
-    cli.input_files.into_iter().map(|filename| {
+    cli.input_files
+        .into_iter()
+        .map(|filename| {
             info!("Loading file {}", filename.display());
             let file_name = filename.as_path().to_str().unwrap();
             r.load_file(file_name).unwrap()
