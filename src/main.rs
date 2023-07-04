@@ -8,8 +8,7 @@ use log::info;
 use std::time::Instant;
 
 #[derive(Parser, Debug)]
-#[command(name = "reasonable")]
-#[command(about = "Performs OWL 2 RL Reasoning")]
+#[command(name="reasonable", author, version, about)]
 struct Cli {
     #[arg(required = true)]
     input_files: Vec<PathBuf>,
@@ -31,7 +30,7 @@ fn main() {
             let file_name = filename.as_path().to_str().unwrap();
             r.load_file(file_name).unwrap()
         })
-        .collect::<Vec<_>>();
+        .for_each(drop);
     let reasoning_start = Instant::now();
     info!("Starting reasoning");
     r.reason();
