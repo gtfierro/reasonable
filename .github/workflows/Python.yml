@@ -196,7 +196,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [ macos, windows, linux, linux-cross]
     steps:
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4.1.7
         with:
           name: wheels
       - uses: actions/setup-python@v4
@@ -224,7 +224,7 @@ jobs:
     needs: [ macos, windows, linux, linux-cross]
       #, linux-cross, musllinux, musllinux-cross ]
     steps:
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4.1.7
         with:
           name: wheels
       - uses: actions/setup-python@v4
