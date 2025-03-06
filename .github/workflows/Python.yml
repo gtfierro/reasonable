@@ -29,7 +29,7 @@ jobs:
         with:
           args: --release --universal2 --out dist -m Cargo.toml -b pyo3
       - name: Upload wheels
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: wheels
           path: dist
@@ -52,7 +52,7 @@ jobs:
           target: ${{ matrix.target }}
           args: --release --out dist -m Cargo.toml -b pyo3
       - name: Upload wheels
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: wheels
           path: dist
@@ -76,7 +76,7 @@ jobs:
         manylinux: auto
         args: -m Cargo.toml --release --out dist -b pyo3
     - name: Upload wheels
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: wheels
         path: dist
@@ -112,7 +112,7 @@ jobs:
           #      pip3 install reasonable --no-index --find-links dist/ --force-reinstall
           #      python3 -c "import reasonable"
     - name: Upload wheels
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: wheels
         path: dist
@@ -148,7 +148,7 @@ jobs:
           #      pip3 install reasonable --no-index --find-links /io/dist/ --force-reinstall
           #      python3 -c "import reasonable"
     - name: Upload wheels
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: wheels
         path: dist
@@ -186,7 +186,7 @@ jobs:
           #      pip3 install reasonable --no-index --find-links dist/ --force-reinstall
           #      python3 -c "import reasonable"
     - name: Upload wheels
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: wheels
         path: dist
