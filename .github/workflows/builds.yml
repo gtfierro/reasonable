@@ -55,7 +55,7 @@ jobs:
           # - stable
           - nightly
         os: [ubuntu-latest, macos-latest]
-        python-version: ["3.9","3.10","3.11"]
+        python-version: ["3.11", "3.12", "3.13"]
     steps:
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
