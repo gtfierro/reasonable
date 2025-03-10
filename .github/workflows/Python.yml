@@ -12,12 +12,12 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: 3.13
-          architecture: x64
+          architecture: aarch64
       - uses: dtolnay/rust-toolchain@stable
-      - name: Build wheels - x86_64
+      - name: Build wheels - aarch64
         uses: PyO3/maturin-action@v1
         with:
-          target: x86_64
+          target: aarch64
           args: --release --out dist --sdist -m Cargo.toml -b pyo3
             #- name: Install built wheel - x86_64
             #  run: |
@@ -61,7 +61,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: [x86_64, i686]
+        target: [x86_64]
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-python@v4
