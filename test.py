@@ -2,7 +2,7 @@ import reasonable
 import rdflib
 
 g = rdflib.Graph()
-g.parse('Brick.ttl', format='ttl')
+g.parse('example_models/ontologies/Brick.n3', format='ttl')
 g.parse('example_models/small1.n3', format='ntriples')
 
 r = reasonable.PyReasoner()
