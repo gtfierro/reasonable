@@ -38,15 +38,6 @@ jobs:
       - name: List releases
         run: ls target/release
 
-      - uses: marvinpinto/action-automatic-releases@latest
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          prerelease: true
-          automatic_release_tag: nightly
-          title: Nightly Build ${{ steps.date.outputs.date }}
-          files: |
-            target/release/reasonable
-            reasonable-static
   python:
     runs-on: ${{ matrix.os }}
     strategy:
@@ -55,7 +46,7 @@ jobs:
           # - stable
           - nightly
         os: [ubuntu-latest, macos-latest]
-        python-version: ["3.9","3.10","3.11"]
+        python-version: ["3.11", "3.12", "3.13"]
     steps:
       - uses: actions/checkout@v4
       - uses: actions-rs/toolchain@v1
