@@ -8,16 +8,18 @@ readme = "README.md"
 homepage = "https://github.com/gtfierro/reasonable"
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.9,<4"
 cffi = "^1.15.1"
 libclang = "^14.0.6"
-#maturin = {extras = ["patchelf"], version = "^0.13.6"}
-maturin = "^0.13.6"
+maturin = "^1.8"
 
-[tool.poetry.dev-dependencies]
-maturin = "^0.13"
-rdflib = "^6.1"
+[tool.poetry.group.dev.dependencies]
+maturin = "^1.8"
+rdflib = "^7.0"
+
+[tool.maturin]
+features = ["pyo3/extension-module"]
 
 [build-system]
-requires = ["maturin>=0.13,<0.14"]
+requires = ["maturin>=1.5,<2.0"]
 build-backend = "maturin"
