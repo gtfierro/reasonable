@@ -1,5 +1,5 @@
 use clap::Parser;
-use reasonable::reasoner::Reasoner;
+use crate::reasoner::Reasoner;
 use std::path::{PathBuf};
 
 use env_logger::Env;

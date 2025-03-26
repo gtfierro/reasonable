@@ -12,7 +12,7 @@ build = "build.rs"
 
 [lib]
 name = "reasonable"
-crate-type = ["lib", "cdylib"]
+crate-type = ["cdylib"]
 bench = false
 
 [[bin]]
@@ -38,7 +38,8 @@ serde_json = "1.0"
 serde_derive = "1.0"
 tinytemplate = "1.2.1"
 anyhow = "1.0.60"
-pyo3 = { version = "0.23", features = ["extension-module"]}
+pyo3 = { version = "0.24", features = ["extension-module"]}
+pyo3-ffi = { version = "0.24", features = ["extension-module"] }
 clap = { version = "4.3.10", features = ["derive"] }
 
 [build-dependencies]
