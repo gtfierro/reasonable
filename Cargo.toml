@@ -1,4 +1,11 @@
-[package]
+[workspace]
+members = [
+    "lib",
+    "cli"
+]
+resolver = "2"
+
+[workspace.package]
 name = "reasonable"
 version = "0.2.6"
 authors = ["Gabe Fierro <gtfierro@mines.edu>"]
@@ -10,17 +17,7 @@ description = "An OWL 2 RL reasoner with reasonable performance"
 edition = "2018"
 build = "build.rs"
 
-[lib]
-name = "reasonable"
-crate-type = ["cdylib"]
-bench = false
-
-[[bin]]
-name = "reasonable"
-path = "src/bin/reasonable.rs"
-bench = false
-
-[dependencies]
+[workspace.dependencies]
 rdf = "0.1.4"
 rio_turtle = "0.7.1"
 rio_api = "0.7.1"
@@ -41,27 +38,4 @@ anyhow = "1.0.60"
 pyo3 = { version = "0.24", features = ["extension-module"]}
 pyo3-ffi = { version = "0.24", features = ["extension-module"] }
 clap = { version = "4.3.10", features = ["derive"] }
-
-[build-dependencies]
-pyo3-build-config = "0.23"
-
-[features]
-abi3 = ["pyo3/abi3-py39"]
-
-[profile.release]
-debug = true
-
-[package.metadata.maturin]
-name = "reasonable"
-
-[target.x86_64-apple-darwin]
-rustflags = [
-  "-C", "link-arg=-undefined",
-  "-C", "link-arg=dynamic_lookup",
-]
-
-[target.aarch64-apple-darwin]
-rustflags = [
-  "-C", "link-arg=-undefined",
-  "-C", "link-arg=dynamic_lookup",
-]
+reasonable = { path = "lib" }

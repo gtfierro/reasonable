@@ -1,7 +1,19 @@
 [package]
-name = "cli"
-version = "0.1.0"
-edition = "2024"
+name = "reasonable-cli"
+version.workspace = true
+edition.workspace = true
+license-file.workspace = true
+authors.workspace = true
+description = "Command line interface for Reasonable OWL 2 RL reasoner"
+repository.workspace = true
+homepage.workspace = true
 
 [dependencies]
-reasonable = { path = "../" }
+reasonable.workspace = true
+clap.workspace = true
+env_logger.workspace = true
+log.workspace = true
+
+[[bin]]
+name = "reasonable"
+path = "src/main.rs"

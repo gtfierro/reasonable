@@ -1,0 +1,60 @@
+[package]
+name = "reasonable"
+version.workspace = true
+edition.workspace = true
+license-file.workspace = true
+authors.workspace = true
+description.workspace = true
+repository.workspace = true
+homepage.workspace = true
+
+[lib]
+name = "reasonable"
+crate-type = ["cdylib", "lib"]
+bench = false
+
+[dependencies]
+rdf.workspace = true
+rio_turtle.workspace = true
+rio_api.workspace = true
+oxrdf.workspace = true
+farmhash.workspace = true
+datafrog.workspace = true
+roaring.workspace = true
+itertools.workspace = true
+disjoint-sets.workspace = true
+log.workspace = true
+env_logger.workspace = true
+regex.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+serde_derive.workspace = true
+tinytemplate.workspace = true
+anyhow.workspace = true
+pyo3.workspace = true
+pyo3-ffi.workspace = true
+clap.workspace = true
+
+[build-dependencies]
+pyo3-build-config = "0.23"
+
+[features]
+abi3 = ["pyo3/abi3-py39"]
+
+[profile.release]
+debug = true
+
+[package.metadata.maturin]
+name = "reasonable"
+
+[target.x86_64-apple-darwin]
+rustflags = [
+  "-C", "link-arg=-undefined",
+  "-C", "link-arg=dynamic_lookup",
+]
+
+[target.aarch64-apple-darwin]
+rustflags = [
+  "-C", "link-arg=-undefined",
+  "-C", "link-arg=dynamic_lookup",
+]
