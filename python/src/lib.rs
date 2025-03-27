@@ -5,6 +5,7 @@
 //! website.
 mod pyreason;
 use pyo3::prelude::*;
+
 #[pymodule]
 fn reasonable(_py: Python<'_>, module: &Bound<'_, PyModule>) -> PyResult<()> {
     module.add("__package__", "reasonable")?;

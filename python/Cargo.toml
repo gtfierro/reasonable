@@ -21,7 +21,7 @@ pyo3 = { version = "0.24", features = ["extension-module"]}
 pyo3-ffi = { version = "0.24", features = ["extension-module"] }
 
 [build-dependencies]
-pyo3-build-config = "0.23"
+pyo3-build-config = "0.24"
 
 [features]
 abi3 = ["pyo3/abi3-py39"]
