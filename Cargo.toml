@@ -17,7 +17,7 @@ bench = false
 
 [[bin]]
 name = "reasonable"
-path = "src/main.rs"
+path = "src/bin/reasonable.rs"
 bench = false
 
 [dependencies]
