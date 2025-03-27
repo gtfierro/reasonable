@@ -1,7 +1,8 @@
 [workspace]
 members = [
     "lib",
-    "cli"
+    "cli",
+    "python"
 ]
 resolver = "2"
 
@@ -15,7 +16,6 @@ license-file = "LICENSE"
 readme = "README.md"
 description = "An OWL 2 RL reasoner with reasonable performance"
 edition = "2018"
-build = "build.rs"
 
 [workspace.dependencies]
 rdf = "0.1.4"
@@ -35,7 +35,5 @@ serde_json = "1.0"
 serde_derive = "1.0"
 tinytemplate = "1.2.1"
 anyhow = "1.0.60"
-pyo3 = { version = "0.24", features = ["extension-module"]}
-pyo3-ffi = { version = "0.24", features = ["extension-module"] }
 clap = { version = "4.3.10", features = ["derive"] }
 reasonable = { path = "lib" }

@@ -1,8 +1,8 @@
-use crate::common::make_triple;
+use reasonable::common::make_triple;
 use std::borrow::Borrow;
 use pyo3_ffi::c_str;
-use crate::error::ReasonableError;
-use crate::reasoner;
+use reasonable::error::ReasonableError;
+use reasonable::reasoner;
 use oxrdf::{BlankNode, Literal, NamedNode, Term, Triple};
 use pyo3::exceptions;
 use pyo3::prelude::*;
