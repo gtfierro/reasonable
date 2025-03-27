@@ -1,12 +1,12 @@
-use reasonable::common::make_triple;
-use std::borrow::Borrow;
-use pyo3_ffi::c_str;
-use reasonable::error::ReasonableError;
-use reasonable::reasoner;
 use oxrdf::{BlankNode, Literal, NamedNode, Term, Triple};
 use pyo3::exceptions;
 use pyo3::prelude::*;
 use pyo3::types::{PyList, PyTuple};
+use pyo3_ffi::c_str;
+use reasonable::common::make_triple;
+use reasonable::error::ReasonableError;
+use reasonable::reasoner;
+use std::borrow::Borrow;
 use std::convert::From;
 
 struct PyReasoningError(ReasonableError);
@@ -157,9 +157,11 @@ impl PyReasoner {
         Python::with_gil(|py| {
             let converters = PyModule::from_code(
                 py,
-                c_str!("def get_triples(graph):
+                c_str!(
+                    "def get_triples(graph):
     return list(graph)
-"),
+"
+                ),
                 c_str!("converters.pg"),
                 c_str!("converters"),
             )?;
