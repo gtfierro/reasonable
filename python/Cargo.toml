@@ -25,16 +25,3 @@ pyo3-build-config = "0.24"
 
 [features]
 abi3 = ["pyo3/abi3-py39"]
-
-
-[target.x86_64-apple-darwin]
-rustflags = [
-  "-C", "link-arg=-undefined",
-  "-C", "link-arg=dynamic_lookup",
-]
-
-[target.aarch64-apple-darwin]
-rustflags = [
-  "-C", "link-arg=-undefined",
-  "-C", "link-arg=dynamic_lookup",
-]

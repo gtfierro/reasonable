@@ -27,10 +27,6 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
       - name: build normal
         run: cargo build --release
-      - name: build static
-        run: RUSTFLAGS='-C target-feature=+crt-static' cargo build --release --target x86_64-unknown-linux-gnu --target-dir static/
-      - name: move static output
-        run: mv static/x86_64-unknown-linux-gnu/release/reasonable reasonable-static
 
       - name: test
         run: cargo test
