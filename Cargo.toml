@@ -7,7 +7,6 @@ members = [
 resolver = "2"
 
 [workspace.package]
-name = "reasonable"
 version = "0.2.6"
 authors = ["Gabe Fierro <gtfierro@mines.edu>"]
 repository = "https://github.com/gtfierro/reasonable"
@@ -15,7 +14,7 @@ homepage = "https://brickschema.org/"
 license-file = "LICENSE"
 readme = "README.md"
 description = "An OWL 2 RL reasoner with reasonable performance"
-edition = "2018"
+edition = "2021"
 
 [workspace.dependencies]
 rdf = "0.1.4"
