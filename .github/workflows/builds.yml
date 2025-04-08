@@ -27,10 +27,6 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
       - name: build normal
         run: cargo build --release
-      - name: build static
-        run: RUSTFLAGS='-C target-feature=+crt-static' cargo build --release --target x86_64-unknown-linux-gnu --target-dir static/
-      - name: move static output
-        run: mv static/x86_64-unknown-linux-gnu/release/reasonable reasonable-static
 
       - name: test
         run: cargo test
@@ -38,15 +34,6 @@ jobs:
       - name: List releases
         run: ls target/release
 
-      - uses: marvinpinto/action-automatic-releases@latest
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          prerelease: true
-          automatic_release_tag: nightly
-          title: Nightly Build ${{ steps.date.outputs.date }}
-          files: |
-            target/release/reasonable
-            reasonable-static
   python:
     runs-on: ${{ matrix.os }}
     strategy:
@@ -55,7 +42,7 @@ jobs:
           # - stable
           - nightly
         os: [ubuntu-latest, macos-latest]
-        python-version: ["3.9","3.10","3.11"]
+        python-version: ["3.11", "3.12", "3.13"]
     steps:
       - uses: actions/checkout@v4
       - uses: actions-rs/toolchain@v1
@@ -81,7 +68,7 @@ jobs:
 
       - name: Build Python Library
         run: |
-          maturin build -i python -b pyo3
+          maturin build -m python/Cargo.toml
 
       - name: Publish Python Library
         continue-on-error: true
@@ -89,4 +76,4 @@ jobs:
             PYPI_USER: ${{ secrets.PYPI_USER }}
             MATURIN_PASSWORD: ${{ secrets.PYPI_PASS }}
         run: |
-          maturin publish -i python -b pyo3 -u $PYPI_USER
+          maturin publish -m python/Cargo.toml -u $PYPI_USER

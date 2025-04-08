@@ -15,13 +15,3 @@ pub mod reasoner;
 
 #[cfg(test)]
 mod tests;
-
-mod pyreason;
-use pyo3::prelude::*;
-#[pymodule]
-fn reasonable(_py: Python<'_>, module: &PyModule) -> PyResult<()> {
-    module.add("__package__", "reasonable")?;
-    module.add("__version__", env!("CARGO_PKG_VERSION"))?;
-    module.add_class::<pyreason::PyReasoner>()?;
-    Ok(())
-}

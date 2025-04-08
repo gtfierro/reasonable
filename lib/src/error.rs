@@ -4,18 +4,6 @@ use std::fmt;
 use std::io;
 use std::sync::mpsc::RecvError;
 
-#[cfg(feature = "sqlite")]
-#[derive(Debug)]
-pub enum ReasonableError {
-    ManagerError(String),
-    IO(io::Error),
-    IriParse(oxrdf::IriParseError),
-    BNodeParse(oxrdf::BlankNodeIdParseError),
-    SQLite(rusqlite::Error),
-    ChannelRecv(RecvError),
-}
-
-#[cfg(not(feature = "sqlite"))]
 #[derive(Debug)]
 pub enum ReasonableError {
     ManagerError(String),
@@ -55,13 +43,6 @@ impl From<oxrdf::BlankNodeIdParseError> for ReasonableError {
     }
 }
 
-#[cfg(feature = "sqlite")]
-impl From<rusqlite::Error> for ReasonableError {
-    fn from(err: rusqlite::Error) -> ReasonableError {
-        ReasonableError::SQLite(err)
-    }
-}
-
 impl From<RecvError> for ReasonableError {
     fn from(err: RecvError) -> ReasonableError {
         ReasonableError::ChannelRecv(err)
@@ -69,10 +50,3 @@ impl From<RecvError> for ReasonableError {
 }
 
 pub type Result<T> = std::result::Result<T, ReasonableError>;
-
-#[cfg(feature = "python-library")]
-impl Into<PyErr> for ReasonableError {
-    fn into(self) -> PyErr {
-        exceptions::PyTypeError::new_err("Error message")
-    }
-}

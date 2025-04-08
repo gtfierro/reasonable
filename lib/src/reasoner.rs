@@ -50,15 +50,15 @@ impl fmt::Display for ReasoningError {
 /// use reasonable::reasoner::Reasoner;
 /// let mut r = Reasoner::new();
 /// // load in an ontology file
-/// r.load_file("example_models/ontologies/Brick.n3").unwrap();
+/// r.load_file("../example_models/ontologies/Brick.n3").unwrap();
 /// // load in another ontology file
-/// r.load_file("example_models/ontologies/rdfs.ttl").unwrap();
+/// r.load_file("../example_models/ontologies/rdfs.ttl").unwrap();
 /// // load in more triples
-/// r.load_file("example_models/small1.n3").unwrap();
+/// r.load_file("../example_models/small1.n3").unwrap();
 /// // perform reasoning
 /// r.reason();
 /// // dump to file
-/// r.dump_file("output.ttl").unwrap();
+/// r.dump_file("../output.ttl").unwrap();
 /// ```
 pub struct Reasoner {
     iter1: Iteration,

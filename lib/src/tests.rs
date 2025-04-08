@@ -55,13 +55,13 @@ fn test_make_reasoner() -> Result<(), Error> {
 #[test]
 fn test_load_file_ttl() -> Result<(), Error> {
     let mut r = Reasoner::new();
-    r.load_file("example_models/ontologies/rdfs.ttl")
+    r.load_file("../example_models/ontologies/rdfs.ttl")
 }
 
 #[test]
 fn test_load_file_n3() -> Result<(), Error> {
     let mut r = Reasoner::new();
-    r.load_file("example_models/ontologies/Brick.n3")
+    r.load_file("../example_models/ontologies/Brick.n3")
 }
 
 #[test]

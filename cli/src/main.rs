@@ -1,6 +1,6 @@
 use clap::Parser;
 use reasonable::reasoner::Reasoner;
-use std::path::{PathBuf};
+use std::path::PathBuf;
 
 use env_logger::Env;
 use log::info;
@@ -8,7 +8,7 @@ use log::info;
 use std::time::Instant;
 
 #[derive(Parser, Debug)]
-#[command(name="reasonable", author, version, about)]
+#[command(name = "reasonable", author, version, about)]
 struct Cli {
     #[arg(required = true)]
     input_files: Vec<PathBuf>,
