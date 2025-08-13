@@ -15,6 +15,7 @@ license-file = "LICENSE"
 readme = "README.md"
 description = "An OWL 2 RL reasoner with reasonable performance"
 edition = "2021"
+build = "build.rs"
 
 [workspace.dependencies]
 rdf = "0.1.4"
@@ -34,5 +35,18 @@ serde_json = "1.0"
 serde_derive = "1.0"
 tinytemplate = "1.2.1"
 anyhow = "1.0.60"
-clap = { version = "4.3.10", features = ["derive"] }
 reasonable = { path = "lib" }
+pyo3 = { version = "0.23", features = ["extension-module"]}
+clap = { version = "4.3.10", features = ["derive"] }
+
+[build-dependencies]
+pyo3-build-config = "0.23"
+
+[features]
+abi3 = ["pyo3/abi3-py39"]
+
+[profile.release]
+debug = true
+
+[package.metadata.maturin]
+name = "reasonable"
