@@ -4,43 +4,37 @@ use oxrdf::{IriParseError, NamedNode, Term};
 use std::collections::HashMap;
 
 pub struct URIIndex {
-    map: HashMap<URI, Term>,
+    fwd: HashMap<Term, URI>,
+    rev: Vec<Term>,
 }
 
 impl URIIndex {
     pub fn new() -> Self {
-        let mut idx = URIIndex {
-            map: HashMap::new(),
-        };
-        idx.map
-            .insert(0, Term::NamedNode(NamedNode::new("urn:_").unwrap()));
-        idx
+        // Reserve 0 as a sentinel to preserve existing behavior
+        let mut rev = Vec::with_capacity(1024);
+        let sentinel = Term::NamedNode(NamedNode::new("urn:_").unwrap());
+        rev.push(sentinel.clone());
+        let mut fwd = HashMap::new();
+        fwd.insert(sentinel, 0);
+        URIIndex { fwd, rev }
     }
 
     pub fn put(&mut self, key: Term) -> URI {
-        let h = hash(&key);
-        self.map.insert(h, key);
-        h
+        if let Some(&id) = self.fwd.get(&key) {
+            return id;
+        }
+        let id = self.rev.len() as URI;
+        self.rev.push(key.clone());
+        self.fwd.insert(key, id);
+        id
     }
 
-    pub fn put_str(&mut self, _key: &'static str) -> Result<URI, IriParseError> {
-        let key = Term::NamedNode(NamedNode::new(_key)?);
-        let h = hash(&key);
-        self.map.insert(h, key);
-        Ok(h)
+    pub fn put_str(&mut self, key: &'static str) -> Result<URI, IriParseError> {
+        let term = Term::NamedNode(NamedNode::new(key)?);
+        Ok(self.put(term))
     }
 
     pub fn get(&self, key: URI) -> Option<&Term> {
-        self.map.get(&key)
+        self.rev.get(key as usize)
     }
-}
-
-pub fn hash(key: &Term) -> URI {
-    farmhash::hash32(key.to_string().as_bytes())
-}
-
-#[allow(dead_code)]
-pub fn hash_str(key: &'static str) -> URI {
-    let s = key.to_string();
-    farmhash::hash32(s.as_bytes())
 }
