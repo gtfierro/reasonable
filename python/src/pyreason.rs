@@ -129,7 +129,7 @@ impl PyReasoner {
     pub fn load_file(&mut self, file: String) -> PyResult<()> {
         match self.reasoner.load_file(&file) {
             Ok(_) => Ok(()),
-            Err(msg) => Err(exceptions::PyIOError::new_err(msg)),
+            Err(err) => Err(exceptions::PyIOError::new_err(err.to_string())),
         }
     }
 
