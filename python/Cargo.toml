@@ -17,11 +17,14 @@ crate-type = ["cdylib"]
 [dependencies]
 oxrdf.workspace = true
 reasonable.workspace = true
-pyo3 = { version = "0.24", features = ["extension-module"]}
-pyo3-ffi = { version = "0.24", features = ["extension-module"] }
+pyo3 = { version = "0.25", features = ["extension-module"]}
+pyo3-ffi = { version = "0.25", features = ["extension-module"] }
 
 [build-dependencies]
-pyo3-build-config = "0.24"
+pyo3-build-config = "0.25"
 
 [features]
 abi3 = ["pyo3/abi3-py39"]
+
+[package.metadata.maturin]
+name = "reasonable"

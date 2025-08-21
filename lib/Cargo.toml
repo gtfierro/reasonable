@@ -8,11 +8,6 @@ description.workspace = true
 repository.workspace = true
 homepage.workspace = true
 
-[lib]
-name = "reasonable"
-crate-type = ["cdylib", "lib"]
-bench = false
-
 [dependencies]
 rdf.workspace = true
 rio_turtle.workspace = true
