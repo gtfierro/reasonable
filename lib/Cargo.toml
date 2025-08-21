@@ -27,6 +27,7 @@ serde_derive.workspace = true
 tinytemplate.workspace = true
 anyhow.workspace = true
 clap.workspace = true
+thiserror = "1.0"
 
 [profile.release]
 debug = true
