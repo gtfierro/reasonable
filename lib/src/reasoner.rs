@@ -609,7 +609,7 @@ impl Reasoner {
         let cax_dw_1 = self.iter1.variable::<(URI, (URI, URI))>("cax_dw_1");
         let cax_dw_2 = self.iter1.variable::<(URI, URI)>("cax_dw_2");
 
-        let ds = DisjointSets::new(&self.input);
+        let ds = DisjointSets::new(&self.input, rdffirst_node, rdfrest_node, rdfnil_node);
 
         self.all_triples_input.extend(self.input.iter().cloned());
         let mut changed = true;
