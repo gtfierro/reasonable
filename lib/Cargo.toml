@@ -9,25 +9,37 @@ repository.workspace = true
 homepage.workspace = true
 
 [dependencies]
-rdf.workspace = true
+# core stack (oxrdf/rio + friends)
 rio_turtle.workspace = true
 rio_api.workspace = true
 oxrdf.workspace = true
-farmhash.workspace = true
 datafrog.workspace = true
 roaring.workspace = true
 itertools.workspace = true
 disjoint-sets.workspace = true
 log.workspace = true
 env_logger.workspace = true
-regex.workspace = true
-serde.workspace = true
-serde_json.workspace = true
-serde_derive.workspace = true
 tinytemplate.workspace = true
 anyhow.workspace = true
 clap.workspace = true
 thiserror = "1.0"
+
+# optional deps for legacy query module (rdf stack)
+regex = { workspace = true, optional = true }
+serde = { workspace = true, optional = true, features = ["derive"] }
+serde_sexpr = { workspace = true, optional = true }
+rdf = { workspace = true, optional = true }
+farmhash = { workspace = true, optional = true }
+
+# keep serde_json if used elsewhere; not required by legacy query
+serde_json.workspace = true
+serde_derive.workspace = true
+
+[features]
+# Default build excludes the legacy query module and its rdf stack
+default = []
+# Opt-in to compile the legacy query module (pulls in rdf + friends)
+legacy-query = ["dep:regex", "dep:serde", "dep:serde_sexpr", "dep:rdf", "dep:farmhash"]
 
 [profile.release]
 debug = true

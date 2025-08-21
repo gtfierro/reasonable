@@ -13,5 +13,8 @@ mod index;
 #[allow(dead_code)]
 pub mod reasoner;
 
+#[cfg(feature = "legacy-query")]
+pub mod query;
+
 #[cfg(test)]
 mod tests;

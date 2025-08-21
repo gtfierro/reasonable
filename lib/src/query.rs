@@ -1,4 +1,5 @@
-use crate::owl::node_to_string;
+#![cfg(feature = "legacy-query")]
+
 use datafrog::Iteration;
 use farmhash;
 use rdf::graph;
@@ -6,12 +7,15 @@ use rdf::node::Node;
 use rdf::triple::Triple;
 use rdf::uri::Uri;
 use regex::Regex;
-//use std::ops::Fn;
-//use std::rc::Rc;
 use serde::{Deserialize, Serialize};
 use serde_sexpr::{from_str, to_string, Error};
 use std::collections::HashMap;
 use std::fmt;
+
+// minimal replacement for older `crate::owl::node_to_string`
+fn node_to_string(n: &Node) -> String {
+    n.to_string()
+}
 
 macro_rules! uri {
     ($ns:expr, $t:expr) => {
