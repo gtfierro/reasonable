@@ -1,6 +1,3 @@
-extern crate datafrog;
-extern crate disjoint_sets;
-
 use crate::common::{KeyedTriple, URI};
 use datafrog::Iteration;
 use disjoint_sets::UnionFind;
@@ -14,7 +11,7 @@ pub struct DisjointSets {
 }
 
 impl DisjointSets {
-    pub fn new(input: &Vec<KeyedTriple>, rdffirst_node: URI, rdfrest_node: URI, rdfnil_node: URI) -> Self {
+    pub fn new(input: &[KeyedTriple], rdffirst_node: URI, rdfrest_node: URI, rdfnil_node: URI) -> Self {
         let mut lists: HashMap<URI, Vec<URI>> = HashMap::new();
         // keeps track of data associated with each list element
         let mut values: HashMap<URI, URI> = HashMap::new();
@@ -22,23 +19,15 @@ impl DisjointSets {
         let mut uri2idx: HashMap<URI, usize> = HashMap::new();
         let mut idx2uri: Vec<URI> = Vec::with_capacity(input.len());
         let mut counter: usize = 0;
-        input
-            .iter()
-            .map(|val| {
-                let (a, (b, c)) = *val;
-                vec![a, b, c]
-                    .iter()
-                    .map(|e| {
-                        let index = uri2idx.entry(*e).or_insert(counter);
-                        if *index == counter {
-                            idx2uri.push(*e);
-                            counter += 1;
-                            // println!("uri2idx {} => {}", *e, index);
-                        }
-                    })
-                    .count();
-            })
-            .count();
+        for &(a, (b, c)) in input.iter() {
+            for e in [a, b, c] {
+                let index = uri2idx.entry(e).or_insert(counter);
+                if *index == counter {
+                    idx2uri.push(e);
+                    counter += 1;
+                }
+            }
+        }
         let mut ds = UnionFind::new(counter);
 
 
@@ -67,19 +56,16 @@ impl DisjointSets {
                 // the head and tail are of each list segment
             });
         }
-        values
-            .into_iter()
-            .map(|(key, value)| {
-                if let Some(idx) = uri2idx.get(&key) {
-                    // consult disjoint sets to get which set we are in
-                    let set = ds.find(*idx);
-                    // get the uri for the list
-                    let listname = idx2uri[set];
-                    let list = lists.entry(listname).or_insert(Vec::new());
-                    list.push(value);
-                }
-            })
-            .count();
+        for (key, value) in values.into_iter() {
+            if let Some(idx) = uri2idx.get(&key) {
+                // consult disjoint sets to get which set we are in
+                let set = ds.find(*idx);
+                // get the uri for the list
+                let listname = idx2uri[set];
+                let list = lists.entry(listname).or_insert_with(Vec::new);
+                list.push(value);
+            }
+        }
         DisjointSets {
             lists,
             uri2idx,
@@ -88,11 +74,11 @@ impl DisjointSets {
         }
     }
 
-    pub fn get_list_values(&self, head: URI) -> Option<Vec<URI>> {
+    pub fn get_list_values(&self, head: URI) -> Option<&[URI]> {
         if let Some(idx) = self.uri2idx.get(&head) {
             let realhead = self.idx2uri[self.ds.find(*idx)];
             if let Some(v) = self.lists.get(&realhead) {
-                return Some(v.to_vec());
+                return Some(v.as_slice());
             }
         }
         None
