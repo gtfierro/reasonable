@@ -25,11 +25,11 @@ clap.workspace = true
 thiserror = "1.0"
 
 # optional deps for legacy query module (rdf stack)
-regex = { workspace = true, optional = true }
-serde = { workspace = true, optional = true, features = ["derive"] }
-serde_sexpr = { workspace = true, optional = true }
-rdf = { workspace = true, optional = true }
-farmhash = { workspace = true, optional = true }
+regex = { version = "1", optional = true }
+serde = { version = "1", optional = true, features = ["derive"] }
+serde_sexpr = { version = "0.2", optional = true }
+rdf = { version = "0.4", optional = true }
+farmhash = { version = "0.3", optional = true }
 
 # keep serde_json if used elsewhere; not required by legacy query
 serde_json.workspace = true
