@@ -46,7 +46,7 @@ struct Query {
 }
 
 impl Query {
-    fn to_atom(&self, s: &str) => Atom {
+    fn to_atom(&self, s: &str) -> Atom {
         if s.starts_with('?') {
             Atom::Var(s.to_string())
         } else {
@@ -80,12 +80,12 @@ enum JoinHeader {
 }
 
 pub struct Graph {
-    graph: Graph as OxiGraph,
+    graph: oxigraph::model::Graph,
 }
 
 impl From<Vec<(NamedNode, NamedNode, NamedNode)>> for Graph {
     fn from(triples: Vec<(NamedNode, NamedNode, NamedNode)>) -> Self {
-        let mut graph = OxiGraph::default();
+        let mut graph = oxigraph::model::Graph::default();
         for (s, p, o) in triples {
             graph.insert(TripleRef::new(SubjectRef::NamedNode(s.as_ref()), p.as_ref(), TermRef::NamedNode(o.as_ref())));
         }
