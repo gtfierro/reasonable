@@ -2,28 +2,12 @@
 
 use datafrog::Iteration;
 use farmhash;
-use rdf::graph;
-use rdf::node::Node;
-use rdf::triple::Triple;
-use rdf::uri::Uri;
+use oxigraph::model::*;
 use regex::Regex;
 use serde::{Deserialize, Serialize};
-use serde_sexpr::{from_str, to_string, Error};
+use serde_sexpr::from_str;
 use std::collections::HashMap;
 use std::fmt;
-
-// minimal replacement for older `crate::owl::node_to_string`
-fn node_to_string(n: &Node) -> String {
-    n.to_string()
-}
-
-macro_rules! uri {
-    ($ns:expr, $t:expr) => {
-        Node::UriNode {
-            uri: Uri::new(format!("{}{}", $ns, $t)),
-        }
-    };
-}
 
 macro_rules! skip_none {
     ($res:expr) => {
@@ -36,9 +20,6 @@ macro_rules! skip_none {
     };
 }
 
-//use ketos::{Error, Interpreter, Value};
-//
-// idea: s-expr parse into a struct that has the prefix list, select, where clauses?
 #[derive(Serialize, Deserialize, Debug)]
 struct Prefix {
     ns: String,
@@ -54,7 +35,7 @@ impl fmt::Display for Prefix {
 #[derive(Debug)]
 enum Atom {
     Var(String),
-    Node(Node),
+    Iri(NamedNode),
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -65,18 +46,18 @@ struct Query {
 }
 
 impl Query {
-    fn to_atom(&self, s: &str) -> Atom {
-        if s.starts_with("?") {
+    fn to_atom(&self, s: &str) => Atom {
+        if s.starts_with('?') {
             Atom::Var(s.to_string())
         } else {
             for pfx in &self.prefixes {
                 let npfx = format!("{}:", pfx[0]);
                 if s.starts_with(&npfx) {
-                    let v: &str = s.split(":").skip(1).next().unwrap();
-                    return Atom::Node(uri!(pfx[1], v));
+                    let v: &str = s.split(':').nth(1).unwrap();
+                    return Atom::Iri(NamedNode::new(format!("{}{}", pfx[1], v)).unwrap());
                 }
             }
-            return Atom::Node(uri!("", s));
+            Atom::Iri(NamedNode::new(s).unwrap())
         }
     }
     fn parse(&self) -> Vec<[Atom; 3]> {
@@ -99,21 +80,16 @@ enum JoinHeader {
 }
 
 pub struct Graph {
-    graph: graph::Graph,
+    graph: Graph as OxiGraph,
 }
 
-impl From<Vec<(Node, Node, Node)>> for Graph {
-    fn from(triples: Vec<(Node, Node, Node)>) -> Self {
-        let mut graph = graph::Graph::new(None);
-        let triples: Vec<Triple> = triples
-            .iter()
-            .map(|t| Triple::new(&t.0, &t.1, &t.2))
-            .collect();
-
-        // TODO: use the Iteration to compute transitive closure for properties
-
-        graph.add_triples(&triples);
-        Graph { graph: graph }
+impl From<Vec<(NamedNode, NamedNode, NamedNode)>> for Graph {
+    fn from(triples: Vec<(NamedNode, NamedNode, NamedNode)>) -> Self {
+        let mut graph = OxiGraph::default();
+        for (s, p, o) in triples {
+            graph.insert(TripleRef::new(SubjectRef::NamedNode(s.as_ref()), p.as_ref(), TermRef::NamedNode(o.as_ref())));
+        }
+        Graph { graph }
     }
 }
 
@@ -121,53 +97,52 @@ impl Graph {
     pub fn query(&self, q: String) -> Option<Relation> {
         let re = Regex::new(r"([\t\n\r]+)|(  +)").unwrap();
         let q = re.replace_all(&q, "");
-        println!("parse {}", q);
         let query = from_str::<Query>(&q).unwrap();
         let mut ctx = Context::new(self);
         let clauses = query.parse();
         for clause in clauses {
-            println!("{:?}", clause);
             match clause {
-                [Atom::Var(s), Atom::Node(p), Atom::Node(o)] => {
+                [Atom::Var(s), Atom::Iri(p), Atom::Iri(o)] => {
                     ctx.with_predicate_object(s, &p, &o)
                 }
-                [Atom::Node(s), Atom::Var(p), Atom::Node(o)] => ctx.with_subject_object(&s, p, &o),
-                [Atom::Node(s), Atom::Node(p), Atom::Var(o)] => {
+                [Atom::Iri(s), Atom::Var(p), Atom::Iri(o)] => ctx.with_subject_object(&s, p, &o),
+                [Atom::Iri(s), Atom::Iri(p), Atom::Var(o)] => {
                     ctx.with_subject_predicate(&s, &p, o)
                 }
-                [Atom::Node(s), Atom::Var(p), Atom::Var(o)] => ctx.with_subject(&s, p, o),
-                [Atom::Var(s), Atom::Node(p), Atom::Var(o)] => ctx.with_predicate(s, &p, o),
-                [Atom::Var(s), Atom::Var(p), Atom::Node(o)] => ctx.with_object(s, p, &o),
+                [Atom::Iri(s), Atom::Var(p), Atom::Var(o)] => ctx.with_subject(&s, p, o),
+                [Atom::Var(s), Atom::Iri(p), Atom::Var(o)] => ctx.with_predicate(s, &p, o),
+                [Atom::Var(s), Atom::Var(p), Atom::Iri(o)] => ctx.with_object(s, p, &o),
                 [Atom::Var(_), Atom::Var(_), Atom::Var(_)] => panic!("not covered"),
-                [Atom::Node(_), Atom::Node(_), Atom::Node(_)] => panic!("not covered"),
+                [Atom::Iri(_), Atom::Iri(_), Atom::Iri(_)] => panic!("not covered"),
             };
         }
-        match ctx.resolve() {
-            Some(result) => Some(result.project(&query.select)),
-            None => None,
-        }
+        ctx.resolve().map(|result| result.project(&query.select))
     }
 }
 
-pub struct Relation<'a> {
+pub struct Relation {
     header: Vec<String>,
-    rows: Vec<Vec<&'a Node>>,
+    rows: Vec<Vec<Term>>,
 }
 
-impl<'a> Relation<'a> {
-    fn from(triples: Vec<&'a Triple>, header: Vec<String>) -> Self {
-        let rows: Vec<Vec<&'a Node>> = triples
-            .iter()
-            .map(|t| vec![t.subject(), t.predicate(), t.object()])
-            .collect();
-        Relation {
-            header: header,
-            rows: rows,
+impl Relation {
+    fn from_triples(triples: Vec<Triple>, header: Vec<String>) -> Self {
+        let mut rows = Vec::with_capacity(triples.len());
+        for t in triples {
+            let s_term = match t.subject {
+                Subject::NamedNode(nn) => Term::NamedNode(nn),
+                Subject::BlankNode(bn) => Term::BlankNode(bn),
+                // No RDF-star support here
+            };
+            let p_term = Term::NamedNode(t.predicate);
+            let o_term = t.object;
+            rows.push(vec![s_term, p_term, o_term]);
         }
+        Relation { header, rows }
     }
 
-    fn join(first: Relation<'a>, other: Relation<'a>) -> Self {
-        let mut new: Vec<Vec<&Node>> = Vec::new();
+    fn join(first: Relation, other: Relation) -> Self {
+        let mut new: Vec<Vec<Term>> = Vec::new();
         let mut indices: Vec<(usize, usize)> = Vec::new();
         let mut new_indices: Vec<JoinHeader> = Vec::new();
         let mut new_header: Vec<String> = Vec::new();
@@ -200,11 +175,11 @@ impl<'a> Relation<'a> {
                 if !indices.iter().all(|(i1, i2)| t1[*i1] == t2[*i2]) {
                     continue;
                 }
-                let mut row: Vec<&Node> = Vec::new();
+                let mut row: Vec<Term> = Vec::new();
                 for jh in &new_indices {
                     match jh {
-                        JoinHeader::Left(idx) => row.push(t1.get(*idx).unwrap()),
-                        JoinHeader::Right(idx) => row.push(t2.get(*idx).unwrap()),
+                        JoinHeader::Left(idx) => row.push(t1.get(*idx).unwrap().clone()),
+                        JoinHeader::Right(idx) => row.push(t2.get(*idx).unwrap().clone()),
                     }
                 }
                 new.push(row);
@@ -227,12 +202,9 @@ impl<'a> Relation<'a> {
         let mut swaps: Vec<(usize, usize)> = Vec::new();
         for (idx, var) in vars.iter().enumerate() {
             let sidx = *skip_none!(var2idx.get(var));
-
-            // if var is already in place, continue
             if idx == sidx {
                 continue;
             }
-            // else, swap var into that location
             swaps.push((idx, sidx));
             let displaced_var = skip_none!(self.header.get(idx)).to_string();
             var2idx.insert(var.to_string(), idx);
@@ -241,7 +213,6 @@ impl<'a> Relation<'a> {
             self.header[sidx] = displaced_var;
         }
 
-        println!("projection {:?} {:?}", self.header, swaps);
         for row in self.rows.iter_mut() {
             for (i1, i2) in swaps.iter() {
                 row.swap(*i1, *i2);
@@ -256,13 +227,13 @@ impl<'a> Relation<'a> {
     }
 }
 
-impl<'a> fmt::Display for Relation<'a> {
+impl fmt::Display for Relation {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(f, "{:?}\n", self.header)?;
         for t in self.rows.iter() {
             write!(f, "[")?;
-            for node in t.iter() {
-                write!(f, "{} ", node_to_string(node))?;
+            for term in t.iter() {
+                write!(f, "{} ", term)?;
             }
             write!(f, "]\n")?;
         }
@@ -272,126 +243,146 @@ impl<'a> fmt::Display for Relation<'a> {
 
 pub struct Context<'a> {
     graph: &'a Graph,
-    relations: Vec<Relation<'a>>,
+    relations: Vec<Relation>,
 }
 
 impl<'a> Context<'a> {
     pub fn new(graph: &'a Graph) -> Self {
         Context {
-            graph: graph,
+            graph,
             relations: Vec::new(),
         }
     }
 
-    pub fn with_subject(&mut self, s: &Node, p: String, o: String) {
-        let triples = Relation::from(
-            self.graph.graph.get_triples_with_subject(s),
-            vec!["_".to_string(), p, o],
-        );
-        self.relations.push(triples);
+    pub fn with_subject(&mut self, s: &NamedNode, p: String, o: String) {
+        let triples: Vec<Triple> = self
+            .graph
+            .graph
+            .triples_for_subject(s.as_ref())
+            .map(|t| t.into())
+            .collect();
+        let rel = Relation::from_triples(triples, vec!["_".to_string(), p, o]);
+        self.relations.push(rel);
     }
 
-    pub fn with_object(&mut self, s: String, p: String, o: &Node) {
-        let triples = Relation::from(
-            self.graph.graph.get_triples_with_object(o),
-            vec![s, p, "_".to_string()],
-        );
-        self.relations.push(triples);
+    pub fn with_object(&mut self, s: String, p: String, o: &NamedNode) {
+        let triples: Vec<Triple> = self
+            .graph
+            .graph
+            .triples_for_object(TermRef::NamedNode(o.as_ref()))
+            .map(|t| t.into())
+            .collect();
+        let rel = Relation::from_triples(triples, vec![s, p, "_".to_string()]);
+        self.relations.push(rel);
     }
 
-    pub fn with_predicate(&mut self, s: String, p: &Node, o: String) {
-        let triples = Relation::from(
-            self.graph.graph.get_triples_with_predicate(p),
-            vec![s, "_".to_string(), o],
-        );
-        self.relations.push(triples);
+    pub fn with_predicate(&mut self, s: String, p: &NamedNode, o: String) {
+        let triples: Vec<Triple> = self
+            .graph
+            .graph
+            .triples_for_predicate(p.as_ref())
+            .map(|t| t.into())
+            .collect();
+        let rel = Relation::from_triples(triples, vec![s, "_".to_string(), o]);
+        self.relations.push(rel);
     }
 
-    pub fn with_predicate_plus(&mut self, s: String, p: &Node, o: String) {
+    pub fn with_predicate_plus(&mut self, s: String, p: &NamedNode, o: String) {
         self.transitive_closure(s, p, o);
     }
 
-    pub fn with_subject_object(&mut self, s: &Node, p: String, o: &Node) {
-        let triples = Relation::from(
-            self.graph.graph.get_triples_with_subject_and_object(s, o),
-            vec!["_".to_string(), p, "_".to_string()],
-        );
-        self.relations.push(triples);
+    pub fn with_subject_object(&mut self, s: &NamedNode, p: String, o: &NamedNode) {
+        let triples: Vec<Triple> = self
+            .graph
+            .graph
+            .triples_for_subject(s.as_ref())
+            .filter(|t| t.object == TermRef::NamedNode(o.as_ref()))
+            .map(|t| t.into())
+            .collect();
+        let rel = Relation::from_triples(triples, vec!["_".to_string(), p, "_".to_string()]);
+        self.relations.push(rel);
     }
 
-    pub fn with_subject_predicate(&mut self, s: &Node, p: &Node, o: String) {
-        let triples = Relation::from(
-            self.graph
-                .graph
-                .get_triples_with_subject_and_predicate(s, p),
-            vec!["_".to_string(), "_".to_string(), o],
-        );
-        self.relations.push(triples);
+    pub fn with_subject_predicate(&mut self, s: &NamedNode, p: &NamedNode, o: String) {
+        let triples: Vec<Triple> = self
+            .graph
+            .graph
+            .triples_for_subject(s.as_ref())
+            .filter(|t| t.predicate == p.as_ref())
+            .map(|t| t.into())
+            .collect();
+        let rel = Relation::from_triples(triples, vec!["_".to_string(), "_".to_string(), o]);
+        self.relations.push(rel);
     }
 
-    pub fn with_predicate_object(&mut self, s: String, p: &Node, o: &Node) {
-        let triples = Relation::from(
-            self.graph.graph.get_triples_with_predicate_and_object(p, o),
-            vec![s, "_".to_string(), "_".to_string()],
-        );
-        self.relations.push(triples);
+    pub fn with_predicate_object(&mut self, s: String, p: &NamedNode, o: &NamedNode) {
+        let triples: Vec<Triple> = self
+            .graph
+            .graph
+            .triples_for_predicate(p.as_ref())
+            .filter(|t| t.object == TermRef::NamedNode(o.as_ref()))
+            .map(|t| t.into())
+            .collect();
+        let rel = Relation::from_triples(triples, vec![s, "_".to_string(), "_".to_string()]);
+        self.relations.push(rel);
     }
 
-    // TODO: not pub
-    pub fn transitive_closure(&mut self, s: String, p: &Node, o: String) {
+    pub fn transitive_closure(&mut self, s: String, p: &NamedNode, o: String) {
         let mut iter = Iteration::new();
 
-        let mut lookup: HashMap<u32, &Node> = HashMap::new();
-        let triples: Vec<(u32, u32)> = self
+        let mut lookup: HashMap<u64, Term> = HashMap::new();
+        let edges: Vec<(u64, u64)> = self
             .graph
             .graph
-            .get_triples_with_predicate(p)
-            .iter()
+            .triples_for_predicate(p.as_ref())
             .map(|t| {
-                let o_ = t.object();
-                let o_hash = farmhash::hash32(node_to_string(o_)) as u32;
-                lookup.insert(o_hash, o_);
-
-                let s_ = t.subject();
-                let s_hash = farmhash::hash32(node_to_string(s_)) as u32;
-                lookup.insert(s_hash, s_);
+                let s_term = match t.subject {
+                    SubjectRef::NamedNode(nn) => Term::NamedNode(nn.into_owned()),
+                    SubjectRef::BlankNode(bn) => Term::BlankNode(bn.into_owned()),
+                };
+                let o_term = match t.object {
+                    TermRef::NamedNode(nn) => Term::NamedNode(nn.into_owned()),
+                    TermRef::BlankNode(bn) => Term::BlankNode(bn.into_owned()),
+                    TermRef::Literal(l) => Term::Literal(l.into_owned()),
+                };
+                let s_hash = farmhash::hash64(&s_term.to_string());
+                let o_hash = farmhash::hash64(&o_term.to_string());
+                lookup.insert(s_hash, s_term);
+                lookup.insert(o_hash, o_term);
                 (s_hash, o_hash)
             })
             .collect();
 
-        // transitive closure evalutes:
-        // reachable(X, Z) :- reachable(X, Y), edge(Y, Z) .
-        let reachable = iter.variable::<(u32, u32)>("reachable");
-        let edge = iter.variable::<(u32, u32)>("edge");
+        let reachable = iter.variable::<(u64, u64)>("reachable");
+        let edge = iter.variable::<(u64, u64)>("edge");
 
-        //// key is (O, S)
-        edge.extend(triples.clone());
-        reachable.extend(triples);
+        edge.extend(edges.clone());
+        reachable.extend(edges);
         while iter.changed() {
             reachable.from_join(&reachable, &edge, |_b, a, c| (c.clone(), a.clone()));
         }
 
-        let rows: Vec<Vec<&Node>> = reachable
+        let rows: Vec<Vec<Term>> = reachable
             .complete()
             .iter()
-            .map(|(a, b)| vec![*lookup.get(a).unwrap(), *lookup.get(b).unwrap()])
+            .map(|(a, b)| vec![lookup.get(a).unwrap().clone(), Term::NamedNode(p.clone()), lookup.get(b).unwrap().clone()])
             .collect();
 
         let rel = Relation {
             header: vec![s, "_".to_string(), o],
-            rows: rows,
+            rows,
         };
         self.relations.push(rel);
     }
 
-    pub fn joinall(mut self) -> Relation<'a> {
+    pub fn joinall(mut self) -> Relation {
         let acc = self.relations.remove(0);
         self.relations
             .into_iter()
             .fold(acc, |a, b| Relation::join(a, b))
     }
 
-    pub fn resolve(mut self) -> Option<Relation<'a>> {
+    pub fn resolve(mut self) -> Option<Relation> {
         match self.relations.len() {
             0 => None,
             1 => Some(self.relations.remove(0)),

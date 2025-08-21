@@ -28,7 +28,6 @@ thiserror = "1.0"
 regex = { version = "1", optional = true }
 serde = { version = "1", optional = true, features = ["derive"] }
 serde_sexpr = { version = "0.2", optional = true }
-rdf = { version = "0.4", optional = true }
 farmhash = { version = "1", optional = true }
 
 # keep serde_json if used elsewhere; not required by legacy query
@@ -39,7 +38,7 @@ serde_derive.workspace = true
 # Default build excludes the legacy query module and its rdf stack
 default = []
 # Opt-in to compile the legacy query module (pulls in rdf + friends)
-legacy-query = ["dep:regex", "dep:serde", "dep:serde_sexpr", "dep:rdf", "dep:farmhash"]
+legacy-query = ["dep:regex", "dep:serde", "dep:serde_sexpr", "dep:farmhash"]
 
 [profile.release]
 debug = true
