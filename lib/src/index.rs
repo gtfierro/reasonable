@@ -12,7 +12,7 @@ impl URIIndex {
     pub fn new() -> Self {
         // Reserve 0 as a sentinel to preserve existing behavior
         let mut rev = Vec::with_capacity(1024);
-        let sentinel = Term::NamedNode(NamedNode::new("urn:_").unwrap());
+        let sentinel = Term::NamedNode(NamedNode::new_unchecked("urn:_".to_string()));
         rev.push(sentinel.clone());
         let mut fwd = HashMap::new();
         fwd.insert(sentinel, 0);

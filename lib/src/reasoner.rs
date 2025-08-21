@@ -19,7 +19,7 @@ use std::collections::{HashMap, HashSet};
 use std::fmt;
 use std::fs;
 use std::io::BufReader;
-use std::io::{Error, ErrorKind};
+use std::io::ErrorKind;
 use std::rc::Rc;
 
 /// Structured errors that occur during reasoning
@@ -185,14 +185,11 @@ impl Reasoner {
     pub fn load_triples_str(&mut self, triples: Vec<(&'static str, &'static str, &'static str)>) {
         let mut trips: Vec<(URI, (URI, URI))> = triples
             .iter()
-            .map(|trip| {
-                (
-                    self.index.put_str(trip.0).unwrap(),
-                    (
-                        self.index.put_str(trip.1).unwrap(),
-                        self.index.put_str(trip.2).unwrap(),
-                    ),
-                )
+            .filter_map(|trip| {
+                let s = self.index.put_str(trip.0).ok()?;
+                let p = self.index.put_str(trip.1).ok()?;
+                let o = self.index.put_str(trip.2).ok()?;
+                Some((s, (p, o)))
             })
             .collect();
         trips.sort();
@@ -229,7 +226,7 @@ impl Reasoner {
     }
 
     /// Dump the contents of the reasoner to the given file.
-    pub fn dump_file(&mut self, filename: &str) -> Result<(), Error> {
+    pub fn dump_file(&mut self, filename: &str) -> crate::error::Result<()> {
         // let mut abbrevs: HashMap<String, Uri> = HashMap::new();
         let mut output = fs::File::create(filename)?;
         let mut formatter = TurtleFormatter::new(output);
@@ -274,7 +271,7 @@ impl Reasoner {
     /// Load the triples in the given file into the Reasoner. This currently accepts
     /// Turtle-formatted (`.ttl`) and NTriples-formatted (`.n3`) files. If you have issues loading
     /// in a Turtle file, try converting it to NTriples
-    pub fn load_file(&mut self, filename: &str) -> Result<(), Error> {
+    pub fn load_file(&mut self, filename: &str) -> crate::error::Result<()> {
         let mut f = BufReader::new(fs::File::open(filename)?);
         let mut graph = Graph::new();
         if filename.ends_with(".ttl") {
@@ -288,10 +285,11 @@ impl Reasoner {
                 Ok(()) as Result<(), TurtleError>
             })?;
         } else {
-            return Err(Error::new(
+            return Err(std::io::Error::new(
                 ErrorKind::Other,
                 "no parser for file (only ttl and n3)",
-            ));
+            )
+            .into());
         }
 
         //let graph = parser.read_triples(f)?.collect::<Result<Vec<_>,_>>()?;
@@ -1386,18 +1384,23 @@ impl Reasoner {
             .collect();
         self.output = output
             .iter()
-            .map(|inst| {
+            .filter_map(|inst| {
                 let (_s, (_p, _o)) = inst;
-                let s = self.index.get(*_s).unwrap().clone();
-                let p = self.index.get(*_p).unwrap().clone();
-                let o = self.index.get(*_o).unwrap().clone();
-                make_triple(s, p, o)
-            })
-            .filter_map(|t| match t {
-                Ok(t) => Some(t),
-                Err(e) => {
-                    error!("Got error {:?}", e);
-                    None
+                let (Some(s), Some(p), Some(o)) =
+                    (self.index.get(*_s), self.index.get(*_p), self.index.get(*_o))
+                else {
+                    error!(
+                        "Index lookup failed for triple IDs: ({}, {}, {})",
+                        _s, _p, _o
+                    );
+                    return None;
+                };
+                match make_triple(s.clone(), p.clone(), o.clone()) {
+                    Ok(t) => Some(t),
+                    Err(e) => {
+                        error!("Got error {:?}", e);
+                        None
+                    }
                 }
             })
             .collect();
@@ -1405,7 +1408,10 @@ impl Reasoner {
     }
 
     fn to_u(&self, u: URI) -> String {
-        self.index.get(u).unwrap().to_string()
+        match self.index.get(u) {
+            Some(t) => t.to_string(),
+            None => "<unknown>".to_string(),
+        }
     }
 
     /// Returns the vec of triples currently contained in the Reasoner
@@ -1421,18 +1427,23 @@ impl Reasoner {
     pub fn get_input(&self) -> Vec<Triple> {
         self.base
             .iter()
-            .map(|inst| {
+            .filter_map(|inst| {
                 let (_s, (_p, _o)) = inst;
-                let s = self.index.get(*_s).unwrap().clone();
-                let p = self.index.get(*_p).unwrap().clone();
-                let o = self.index.get(*_o).unwrap().clone();
-                make_triple(s, p, o)
-            })
-            .filter_map(|t| match t {
-                Ok(t) => Some(t),
-                Err(e) => {
-                    error!("Got error {:?}", e);
-                    None
+                let (Some(s), Some(p), Some(o)) =
+                    (self.index.get(*_s), self.index.get(*_p), self.index.get(*_o))
+                else {
+                    error!(
+                        "Index lookup failed for base triple IDs: ({}, {}, {})",
+                        _s, _p, _o
+                    );
+                    return None;
+                };
+                match make_triple(s.clone(), p.clone(), o.clone()) {
+                    Ok(t) => Some(t),
+                    Err(e) => {
+                        error!("Got error {:?}", e);
+                        None
+                    }
                 }
             })
             .collect()

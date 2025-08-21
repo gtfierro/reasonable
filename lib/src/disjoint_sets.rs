@@ -61,24 +61,23 @@ impl DisjointSets {
                 if tail == rdfnil_node {
                     return;
                 }
-                let hn = uri2idx.get(&head).unwrap();
-                let tn = uri2idx.get(&tail).unwrap();
-                ds.union(*hn, *tn);
+                if let (Some(&hn), Some(&tn)) = (uri2idx.get(&head), uri2idx.get(&tail)) {
+                    ds.union(hn, tn);
+                }
                 // the head and tail are of each list segment
             });
         }
         values
             .into_iter()
             .map(|(key, value)| {
-                // go from key name to its uri2idx
-                let idx = uri2idx.get(&key).unwrap();
-                // consult disjoint sets to get which set we are in
-                let set = ds.find(*idx);
-                // get the uri for the list
-                let listname = idx2uri[set];
-                // println!("key {} belongs to {} ({})", key, set, listname);
-                let list = lists.entry(listname).or_insert(Vec::new());
-                list.push(value);
+                if let Some(idx) = uri2idx.get(&key) {
+                    // consult disjoint sets to get which set we are in
+                    let set = ds.find(*idx);
+                    // get the uri for the list
+                    let listname = idx2uri[set];
+                    let list = lists.entry(listname).or_insert(Vec::new());
+                    list.push(value);
+                }
             })
             .count();
         DisjointSets {
