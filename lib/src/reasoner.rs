@@ -183,38 +183,35 @@ impl Reasoner {
     /// Load in a vector of triples
     #[allow(dead_code)]
     pub fn load_triples_str(&mut self, triples: Vec<(&'static str, &'static str, &'static str)>) {
-        let mut trips: Vec<(URI, (URI, URI))> = triples
-            .iter()
-            .filter_map(|trip| {
-                let s = self.index.put_str(trip.0).ok()?;
-                let p = self.index.put_str(trip.1).ok()?;
-                let o = self.index.put_str(trip.2).ok()?;
-                Some((s, (p, o)))
-            })
-            .collect();
-        trips.sort();
+        let mut trips: Vec<(URI, (URI, URI))> = Vec::with_capacity(triples.len());
+        for trip in triples.iter() {
+            if let (Ok(s), Ok(p), Ok(o)) = (
+                self.index.put_str(trip.0),
+                self.index.put_str(trip.1),
+                self.index.put_str(trip.2),
+            ) {
+                trips.push((s, (p, o)));
+            }
+        }
+        trips.sort_unstable();
+        // Ensure src is sorted for linear merge
+        self.input.sort_unstable();
         get_unique(&self.input, &mut trips);
         self.add_base_triples(trips);
     }
 
     /// Load in a vector of triples
     pub fn load_triples(&mut self, mut triples: Vec<Triple>) {
-        self.input.sort();
-        let mut trips: Vec<(URI, (URI, URI))> = triples
-            .iter()
-            .map(|trip| {
-                let (s, p, o) = (
-                    trip.subject.clone(),
-                    trip.predicate.clone(),
-                    trip.object.clone(),
-                );
-                (
-                    self.index.put(s.into()),
-                    (self.index.put(p.into()), self.index.put(o)),
-                )
-            })
-            .collect();
-        trips.sort();
+        // Ensure src is sorted for linear merge
+        self.input.sort_unstable();
+        let mut trips: Vec<(URI, (URI, URI))> = Vec::with_capacity(triples.len());
+        for trip in triples.iter() {
+            let s = self.index.put(trip.subject.clone().into());
+            let p = self.index.put(trip.predicate.clone().into());
+            let o = self.index.put(trip.object.clone().into());
+            trips.push((s, (p, o)));
+        }
+        trips.sort_unstable();
         get_unique(&self.input, &mut trips);
         self.add_base_triples(trips);
     }
@@ -294,26 +291,21 @@ impl Reasoner {
 
         //let graph = parser.read_triples(f)?.collect::<Result<Vec<_>,_>>()?;
 
-        let mut triples: Vec<(URI, (URI, URI))> = graph
-            .iter()
-            .map(|_triple| {
-                let triple = _triple;
-                let (s, (p, o)) = (
-                    self.index.put(triple.subject.clone().into()),
-                    (
-                        self.index.put(triple.predicate.clone().into()),
-                        self.index.put(triple.object.clone().into()),
-                    ),
-                );
-                (s, (p, o))
-            })
-            .collect();
+        // Build new triples with capacity hints
+        let mut triples: Vec<(URI, (URI, URI))> = Vec::with_capacity(graph.len());
+        for triple in graph.iter() {
+            let s = self.index.put(triple.subject.clone().into());
+            let p = self.index.put(triple.predicate.clone().into());
+            let o = self.index.put(triple.object.clone().into());
+            triples.push((s, (p, o)));
+        }
         info!("Loaded {} triples from file {}", triples.len(), filename);
 
-        triples.sort();
+        triples.sort_unstable();
+        // Ensure src is sorted for linear merge
+        self.input.sort_unstable();
         get_unique(&self.input, &mut triples);
 
-        //self.all_triples_input.insert(triples.into());
         self.add_base_triples(triples);
 
         Ok(())
@@ -1382,28 +1374,25 @@ impl Reasoner {
             })
             .cloned()
             .collect();
-        self.output = output
-            .iter()
-            .filter_map(|inst| {
-                let (_s, (_p, _o)) = inst;
-                let (Some(s), Some(p), Some(o)) =
-                    (self.index.get(*_s), self.index.get(*_p), self.index.get(*_o))
-                else {
-                    error!(
-                        "Index lookup failed for triple IDs: ({}, {}, {})",
-                        _s, _p, _o
-                    );
-                    return None;
-                };
-                match make_triple(s.clone(), p.clone(), o.clone()) {
-                    Ok(t) => Some(t),
-                    Err(e) => {
-                        error!("Got error {:?}", e);
-                        None
-                    }
-                }
-            })
-            .collect();
+        // Build output with capacity hints
+        let mut out_triples: Vec<Triple> = Vec::with_capacity(output.len());
+        for inst in output.iter() {
+            let (_s, (_p, _o)) = inst;
+            let (Some(s), Some(p), Some(o)) =
+                (self.index.get(*_s), self.index.get(*_p), self.index.get(*_o))
+            else {
+                error!(
+                    "Index lookup failed for triple IDs: ({}, {}, {})",
+                    _s, _p, _o
+                );
+                continue;
+            };
+            match make_triple(s.clone(), p.clone(), o.clone()) {
+                Ok(t) => out_triples.push(t),
+                Err(e) => error!("Got error {:?}", e),
+            }
+        }
+        self.output = out_triples;
         self.rebuild(output);
     }
 
@@ -1464,7 +1453,30 @@ impl Reasoner {
     }
 }
 
-/// removes from rv the triples that are in src. src is sorted
+/**
+Removes from rv the triples that are in src using a linear merge.
+Both src and rv must be sorted ascending.
+On return, rv contains only elements not present in src.
+*/
 pub fn get_unique(src: &[KeyedTriple], rv: &mut Vec<KeyedTriple>) {
-    rv.retain(|t| !src.contains(t))
+    let n = src.len();
+    let m = rv.len();
+    if n == 0 || m == 0 {
+        return;
+    }
+    let mut i = 0usize; // index into src
+    let mut j = 0usize; // index into rv
+    let mut out = Vec::with_capacity(m);
+    while j < m {
+        let b = rv[j];
+        // Advance src until src[i] >= b
+        while i < n && src[i] < b {
+            i += 1;
+        }
+        if i == n || src[i] != b {
+            out.push(b);
+        }
+        j += 1;
+    }
+    *rv = out;
 }
