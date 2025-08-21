@@ -27,7 +27,7 @@ thiserror = "1.0"
 # optional deps for legacy query module (rdf stack)
 regex = { version = "1", optional = true }
 serde = { version = "1", optional = true, features = ["derive"] }
-serde_sexpr = { version = "0.2", optional = true }
+serde_sexpr = { version = "0.1", optional = true }
 farmhash = { version = "1", optional = true }
 
 # keep serde_json if used elsewhere; not required by legacy query
