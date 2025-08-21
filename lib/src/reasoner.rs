@@ -1114,7 +1114,7 @@ impl Reasoner {
                     &self.owl_intersection_of,
                     |&intersection_class, &inst, &listname| {
                         if let Some(values) = ds.get_list_values(listname) {
-                            for list_class in values {
+                            for &list_class in values {
                                 new_cls_int2_instances.push((inst, (rdftype_node, list_class)));
                             }
                         }
