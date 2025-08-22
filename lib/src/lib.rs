@@ -3,6 +3,18 @@
 //! OWL2
 //! Profile](https://www.w3.org/TR/owl2-profiles/#Reasoning_in_OWL_2_RL_and_RDF_Graphs_using_Rules)
 //! website.
+//!
+//! Quick start (builder):
+//! ```
+//! use reasonable::reasoner::ReasonerBuilder;
+//! let r = ReasonerBuilder::new()
+//!     .with_file("../example_models/ontologies/rdfs.ttl")
+//!     .with_triples_str(vec![
+//!         ("urn:a", "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "urn:SomeClass")
+//!     ])
+//!     .build()
+//!     .expect("failed to build Reasoner");
+//! ```
 #[macro_use]
 #[allow(dead_code, unused_macros)]
 pub mod common;
@@ -13,15 +25,8 @@ mod index;
 #[allow(dead_code)]
 pub mod reasoner;
 
+#[cfg(feature = "legacy-query")]
+pub mod query;
+
 #[cfg(test)]
 mod tests;
-
-mod pyreason;
-use pyo3::prelude::*;
-#[pymodule]
-fn reasonable(_py: Python<'_>, module: &PyModule) -> PyResult<()> {
-    module.add("__package__", "reasonable")?;
-    module.add("__version__", env!("CARGO_PKG_VERSION"))?;
-    module.add_class::<pyreason::PyReasoner>()?;
-    Ok(())
-}

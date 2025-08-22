@@ -1,8 +1,4 @@
-extern crate datafrog;
-extern crate disjoint_sets;
-
 use crate::common::{KeyedTriple, URI};
-use crate::index::URIIndex;
 use datafrog::Iteration;
 use disjoint_sets::UnionFind;
 use std::collections::HashMap;
@@ -15,7 +11,7 @@ pub struct DisjointSets {
 }
 
 impl DisjointSets {
-    pub fn new(input: &Vec<KeyedTriple>) -> Self {
+    pub fn new(input: &[KeyedTriple], rdffirst_node: URI, rdfrest_node: URI, rdfnil_node: URI) -> Self {
         let mut lists: HashMap<URI, Vec<URI>> = HashMap::new();
         // keeps track of data associated with each list element
         let mut values: HashMap<URI, URI> = HashMap::new();
@@ -23,36 +19,17 @@ impl DisjointSets {
         let mut uri2idx: HashMap<URI, usize> = HashMap::new();
         let mut idx2uri: Vec<URI> = Vec::with_capacity(input.len());
         let mut counter: usize = 0;
-        input
-            .iter()
-            .map(|val| {
-                let (a, (b, c)) = *val;
-                vec![a, b, c]
-                    .iter()
-                    .map(|e| {
-                        let index = uri2idx.entry(*e).or_insert(counter);
-                        if *index == counter {
-                            idx2uri.push(*e);
-                            counter += 1;
-                            // println!("uri2idx {} => {}", *e, index);
-                        }
-                    })
-                    .count();
-            })
-            .count();
+        for &(a, (b, c)) in input.iter() {
+            for e in [a, b, c] {
+                let index = uri2idx.entry(e).or_insert(counter);
+                if *index == counter {
+                    idx2uri.push(e);
+                    counter += 1;
+                }
+            }
+        }
         let mut ds = UnionFind::new(counter);
 
-        // index lets us map u64s to the actual URIs
-        let mut index = URIIndex::new();
-        let rdffirst_node = index
-            .put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#first")
-            .unwrap();
-        let rdfrest_node = index
-            .put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#rest")
-            .unwrap();
-        let rdfnil_node = index
-            .put_str("http://www.w3.org/1999/02/22-rdf-syntax-ns#nil")
-            .unwrap();
 
         // data structures for building up the "first" and "rest" lists
         let mut list_iter = Iteration::new();
@@ -73,26 +50,22 @@ impl DisjointSets {
                 if tail == rdfnil_node {
                     return;
                 }
-                let hn = uri2idx.get(&head).unwrap();
-                let tn = uri2idx.get(&tail).unwrap();
-                ds.union(*hn, *tn);
+                if let (Some(&hn), Some(&tn)) = (uri2idx.get(&head), uri2idx.get(&tail)) {
+                    ds.union(hn, tn);
+                }
                 // the head and tail are of each list segment
             });
         }
-        values
-            .into_iter()
-            .map(|(key, value)| {
-                // go from key name to its uri2idx
-                let idx = uri2idx.get(&key).unwrap();
+        for (key, value) in values.into_iter() {
+            if let Some(idx) = uri2idx.get(&key) {
                 // consult disjoint sets to get which set we are in
                 let set = ds.find(*idx);
                 // get the uri for the list
                 let listname = idx2uri[set];
-                // println!("key {} belongs to {} ({})", key, set, listname);
-                let list = lists.entry(listname).or_insert(Vec::new());
+                let list = lists.entry(listname).or_insert_with(Vec::new);
                 list.push(value);
-            })
-            .count();
+            }
+        }
         DisjointSets {
             lists,
             uri2idx,
@@ -101,11 +74,11 @@ impl DisjointSets {
         }
     }
 
-    pub fn get_list_values(&self, head: URI) -> Option<Vec<URI>> {
+    pub fn get_list_values(&self, head: URI) -> Option<&[URI]> {
         if let Some(idx) = self.uri2idx.get(&head) {
             let realhead = self.idx2uri[self.ds.find(*idx)];
             if let Some(v) = self.lists.get(&realhead) {
-                return Some(v.to_vec());
+                return Some(v.as_slice());
             }
         }
         None

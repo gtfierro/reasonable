@@ -14,7 +14,7 @@ pub type KeyedTriple = (URI, (URI, URI));
 #[macro_export]
 macro_rules! uri {
     ($ns:expr, $t:expr) => {
-        Term::NamedNode(NamedNode::new(format!($ns, $t)).unwrap())
+        Term::NamedNode(NamedNode::new_unchecked(format!($ns, $t)))
     };
 }
 

@@ -1,10 +1,12 @@
-use crate::common::make_triple;
-use crate::error::ReasonableError;
-use crate::reasoner;
 use oxrdf::{BlankNode, Literal, NamedNode, Term, Triple};
 use pyo3::exceptions;
 use pyo3::prelude::*;
 use pyo3::types::{PyList, PyTuple};
+use pyo3_ffi::c_str;
+use reasonable::common::make_triple;
+use reasonable::error::ReasonableError;
+use reasonable::reasoner;
+use std::borrow::Borrow;
 use std::convert::From;
 
 struct PyReasoningError(ReasonableError);
@@ -16,12 +18,13 @@ impl std::convert::From<PyReasoningError> for PyErr {
     }
 }
 
+#[allow(dead_code)]
 struct MyTerm(Term);
-impl From<Result<&PyAny, pyo3::PyErr>> for MyTerm {
-    fn from(s: Result<&PyAny, pyo3::PyErr>) -> Self {
-        //if let Ok(typestr) = s.get_type().name() {
+impl From<Result<Bound<'_, PyAny>, pyo3::PyErr>> for MyTerm {
+    fn from(s: Result<Bound<'_, PyAny>, pyo3::PyErr>) -> Self {
         let s = s.unwrap();
         let typestr = s.get_type().name().unwrap();
+        let typestr = typestr.to_string();
         let data_type: Option<NamedNode> = match s.getattr("datatype") {
             Ok(dt) => {
                 if dt.is_none() {
@@ -42,7 +45,7 @@ impl From<Result<&PyAny, pyo3::PyErr>> for MyTerm {
             }
             Err(_) => None,
         };
-        let n: Term = match typestr {
+        let n: Term = match typestr.borrow() {
             "URIRef" => Term::NamedNode(NamedNode::new(s.to_string()).unwrap()),
             "Literal" => match (data_type, lang) {
                 (Some(dt), None) => Term::Literal(Literal::new_typed_literal(s.to_string(), dt)),
@@ -58,7 +61,11 @@ impl From<Result<&PyAny, pyo3::PyErr>> for MyTerm {
     }
 }
 
-fn term_to_python<'a>(py: Python, rdflib: &'a PyModule, node: Term) -> PyResult<&'a PyAny> {
+fn term_to_python<'a>(
+    py: Python,
+    rdflib: &Bound<'a, PyModule>,
+    node: Term,
+) -> PyResult<Bound<'a, PyAny>> {
     let dtype: Option<String> = match &node {
         Term::Literal(lit) => {
             let mut s = lit.datatype().to_string();
@@ -73,7 +80,7 @@ fn term_to_python<'a>(py: Python, rdflib: &'a PyModule, node: Term) -> PyResult<
         _ => None,
     };
 
-    let res: &PyAny = match &node {
+    let res: Bound<'_, PyAny> = match &node {
         Term::NamedNode(uri) => {
             let mut uri = uri.to_string();
             uri.remove(0);
@@ -122,7 +129,7 @@ impl PyReasoner {
     pub fn load_file(&mut self, file: String) -> PyResult<()> {
         match self.reasoner.load_file(&file) {
             Ok(_) => Ok(()),
-            Err(msg) => Err(exceptions::PyIOError::new_err(msg)),
+            Err(err) => Err(exceptions::PyIOError::new_err(err.to_string())),
         }
     }
 
@@ -135,9 +142,9 @@ impl PyReasoner {
             self.reasoner.reason();
             let mut res = Vec::new();
             for t in self.reasoner.get_triples() {
-                let s = term_to_python(py, rdflib, Term::from(t.subject.clone()))?;
-                let p = term_to_python(py, rdflib, Term::from(t.predicate.clone()))?;
-                let o = term_to_python(py, rdflib, Term::from(t.object.clone()))?;
+                let s = term_to_python(py, &rdflib, Term::from(t.subject.clone()))?;
+                let p = term_to_python(py, &rdflib, Term::from(t.predicate.clone()))?;
+                let o = term_to_python(py, &rdflib, Term::from(t.object.clone()))?;
                 res.push((s.into(), p.into(), o.into()));
             }
             Ok(res)
@@ -150,19 +157,19 @@ impl PyReasoner {
         Python::with_gil(|py| {
             let converters = PyModule::from_code(
                 py,
-                "def get_triples(graph):
+                c_str!(
+                    "def get_triples(graph):
     return list(graph)
-",
-                "converters.pg",
-                "converters",
+"
+                ),
+                c_str!("converters.pg"),
+                c_str!("converters"),
             )?;
-            let l: &PyList = converters
-                .getattr("get_triples")?
-                .call1((graph,))?
-                .downcast()?;
+            let binding = converters.getattr("get_triples")?.call1((graph,))?;
+            let l: &Bound<'_, PyList> = binding.downcast()?;
             let mut triples: Vec<Triple> = Vec::new();
             for t in l.iter() {
-                let t: &PyTuple = t.downcast()?;
+                let t: &Bound<'_, PyTuple> = t.downcast()?;
                 let s = MyTerm::from(t.get_item(0)).0;
                 let p = MyTerm::from(t.get_item(1)).0;
                 let o = MyTerm::from(t.get_item(2)).0;

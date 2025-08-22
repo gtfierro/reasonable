@@ -19,7 +19,7 @@ use std::collections::{HashMap, HashSet};
 use std::fmt;
 use std::fs;
 use std::io::BufReader;
-use std::io::{Error, ErrorKind};
+use std::io::ErrorKind;
 use std::rc::Rc;
 
 /// Structured errors that occur during reasoning
@@ -43,23 +43,94 @@ impl fmt::Display for ReasoningError {
     }
 }
 
-/// `Reasoner` is the interface to the reasoning engine. Instances of `Reasoner` maintain the state
-/// required to do reasoning.
-///
-/// ```
-/// use reasonable::reasoner::Reasoner;
-/// let mut r = Reasoner::new();
-/// // load in an ontology file
-/// r.load_file("example_models/ontologies/Brick.n3").unwrap();
-/// // load in another ontology file
-/// r.load_file("example_models/ontologies/rdfs.ttl").unwrap();
-/// // load in more triples
-/// r.load_file("example_models/small1.n3").unwrap();
-/// // perform reasoning
-/// r.reason();
-/// // dump to file
-/// r.dump_file("output.ttl").unwrap();
-/// ```
+/// A convenience builder for constructing a `Reasoner` preloaded with files and/or triples.
+#[derive(Default)]
+pub struct ReasonerBuilder {
+    files: Vec<String>,
+    triples: Vec<Triple>,
+    triples_str: Vec<(&'static str, &'static str, &'static str)>,
+}
+
+impl ReasonerBuilder {
+    /// Creates a new `ReasonerBuilder`.
+    pub fn new() -> Self {
+        Self::default()
+    }
+
+    /// Adds a file to be loaded during `build()`.
+    pub fn with_file(mut self, path: impl Into<String>) -> Self {
+        self.files.push(path.into());
+        self
+    }
+
+    /// Adds triples to be loaded during `build()`.
+    pub fn with_triples(mut self, triples: Vec<Triple>) -> Self {
+        self.triples.extend(triples);
+        self
+    }
+
+    /// Adds string-based triples to be loaded during `build()`.
+    pub fn with_triples_str(mut self, triples: Vec<(&'static str, &'static str, &'static str)>) -> Self {
+        self.triples_str.extend(triples);
+        self
+    }
+
+    /// Builds a `Reasoner` and preloads configured files and triples.
+    pub fn build(self) -> crate::error::Result<Reasoner> {
+        let mut r = Reasoner::new();
+        for f in self.files {
+            r.load_file(&f)?;
+        }
+        if !self.triples_str.is_empty() {
+            r.load_triples_str(self.triples_str);
+        }
+        if !self.triples.is_empty() {
+            r.load_triples(self.triples);
+        }
+        Ok(r)
+    }
+}
+
+/**
+`Reasoner` is the interface to the reasoning engine. Instances of `Reasoner` maintain the state
+required to do reasoning.
+
+Basic usage:
+
+```
+use reasonable::reasoner::Reasoner;
+
+let mut r = Reasoner::new();
+// load files
+r.load_file("../example_models/ontologies/Brick.n3")?;
+r.load_file("../example_models/ontologies/rdfs.ttl")?;
+// run reasoning
+r.reason();
+// inspect results
+for t in r.view_output() {
+    // do something with each triple
+}
+# Ok::<(), reasonable::error::ReasonableError>(())
+```
+
+Or use the builder for convenience:
+
+```
+use reasonable::reasoner::ReasonerBuilder;
+
+let r = ReasonerBuilder::new()
+    .with_file("../example_models/ontologies/Brick.n3")
+    .with_file("../example_models/ontologies/rdfs.ttl")
+    .with_triples_str(vec![
+        ("urn:a", "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "urn:SomeClass")
+    ])
+    .build()?;
+// Reason over preloaded data
+let mut r = r;
+r.reason();
+# Ok::<(), reasonable::error::ReasonableError>(())
+```
+*/
 pub struct Reasoner {
     iter1: Iteration,
     index: URIIndex,
@@ -180,44 +251,59 @@ impl Reasoner {
         self.input.extend(input);
     }
 
-    /// Load in a vector of triples
+    /// Loads a vector of triples given as string URIs.
+    ///
+    /// Example:
+    /// ```
+    /// # use reasonable::reasoner::Reasoner;
+    /// let mut r = Reasoner::new();
+    /// r.load_triples_str(vec![
+    ///   ("urn:a", "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "urn:SomeClass")
+    /// ]);
+    /// ```
     #[allow(dead_code)]
     pub fn load_triples_str(&mut self, triples: Vec<(&'static str, &'static str, &'static str)>) {
-        let mut trips: Vec<(URI, (URI, URI))> = triples
-            .iter()
-            .map(|trip| {
-                (
-                    self.index.put_str(trip.0).unwrap(),
-                    (
-                        self.index.put_str(trip.1).unwrap(),
-                        self.index.put_str(trip.2).unwrap(),
-                    ),
-                )
-            })
-            .collect();
-        trips.sort();
+        let mut trips: Vec<(URI, (URI, URI))> = Vec::with_capacity(triples.len());
+        for trip in triples.iter() {
+            if let (Ok(s), Ok(p), Ok(o)) = (
+                self.index.put_str(trip.0),
+                self.index.put_str(trip.1),
+                self.index.put_str(trip.2),
+            ) {
+                trips.push((s, (p, o)));
+            }
+        }
+        trips.sort_unstable();
+        // Ensure src is sorted for linear merge
+        self.input.sort_unstable();
         get_unique(&self.input, &mut trips);
         self.add_base_triples(trips);
     }
 
-    /// Load in a vector of triples
+    /// Loads a vector of triples.
+    ///
+    /// Example:
+    /// ```
+    /// # use reasonable::reasoner::Reasoner;
+    /// # use oxrdf::{NamedNode, Triple, Subject, Term};
+    /// # fn build_triple() -> Triple {
+    /// #   let nn = NamedNode::new_unchecked("urn:a".to_string());
+    /// #   Triple::new(Subject::NamedNode(nn.clone()), nn.clone(), Term::NamedNode(nn))
+    /// # }
+    /// let mut r = Reasoner::new();
+    /// r.load_triples(vec![build_triple()]);
+    /// ```
     pub fn load_triples(&mut self, mut triples: Vec<Triple>) {
-        self.input.sort();
-        let mut trips: Vec<(URI, (URI, URI))> = triples
-            .iter()
-            .map(|trip| {
-                let (s, p, o) = (
-                    trip.subject.clone(),
-                    trip.predicate.clone(),
-                    trip.object.clone(),
-                );
-                (
-                    self.index.put(s.into()),
-                    (self.index.put(p.into()), self.index.put(o)),
-                )
-            })
-            .collect();
-        trips.sort();
+        // Ensure src is sorted for linear merge
+        self.input.sort_unstable();
+        let mut trips: Vec<(URI, (URI, URI))> = Vec::with_capacity(triples.len());
+        for trip in triples.iter() {
+            let s = self.index.put(trip.subject.clone().into());
+            let p = self.index.put(trip.predicate.clone().into());
+            let o = self.index.put(trip.object.clone().into());
+            trips.push((s, (p, o)));
+        }
+        trips.sort_unstable();
         get_unique(&self.input, &mut trips);
         self.add_base_triples(trips);
     }
@@ -228,8 +314,10 @@ impl Reasoner {
         self.errors.push(error);
     }
 
-    /// Dump the contents of the reasoner to the given file.
-    pub fn dump_file(&mut self, filename: &str) -> Result<(), Error> {
+    /// Dumps the current inferred triples to a Turtle file.
+    ///
+    /// The file will contain the current output of the reasoner (post `reason()`).
+    pub fn dump_file(&mut self, filename: &str) -> crate::error::Result<()> {
         // let mut abbrevs: HashMap<String, Uri> = HashMap::new();
         let mut output = fs::File::create(filename)?;
         let mut formatter = TurtleFormatter::new(output);
@@ -271,10 +359,14 @@ impl Reasoner {
         Ok(())
     }
 
-    /// Load the triples in the given file into the Reasoner. This currently accepts
-    /// Turtle-formatted (`.ttl`) and NTriples-formatted (`.n3`) files. If you have issues loading
-    /// in a Turtle file, try converting it to NTriples
-    pub fn load_file(&mut self, filename: &str) -> Result<(), Error> {
+    /// Loads triples from a file into the Reasoner.
+    ///
+    /// Supports:
+    /// - Turtle files: ".ttl"
+    /// - N-Triples files: ".n3"
+    ///
+    /// Returns an error for unsupported extensions.
+    pub fn load_file(&mut self, filename: &str) -> crate::error::Result<()> {
         let mut f = BufReader::new(fs::File::open(filename)?);
         let mut graph = Graph::new();
         if filename.ends_with(".ttl") {
@@ -288,40 +380,39 @@ impl Reasoner {
                 Ok(()) as Result<(), TurtleError>
             })?;
         } else {
-            return Err(Error::new(
+            return Err(std::io::Error::new(
                 ErrorKind::Other,
                 "no parser for file (only ttl and n3)",
-            ));
+            )
+            .into());
         }
 
         //let graph = parser.read_triples(f)?.collect::<Result<Vec<_>,_>>()?;
 
-        let mut triples: Vec<(URI, (URI, URI))> = graph
-            .iter()
-            .map(|_triple| {
-                let triple = _triple;
-                let (s, (p, o)) = (
-                    self.index.put(triple.subject.clone().into()),
-                    (
-                        self.index.put(triple.predicate.clone().into()),
-                        self.index.put(triple.object.clone().into()),
-                    ),
-                );
-                (s, (p, o))
-            })
-            .collect();
+        // Build new triples with capacity hints
+        let mut triples: Vec<(URI, (URI, URI))> = Vec::with_capacity(graph.len());
+        for triple in graph.iter() {
+            let s = self.index.put(triple.subject.clone().into());
+            let p = self.index.put(triple.predicate.clone().into());
+            let o = self.index.put(triple.object.clone().into());
+            triples.push((s, (p, o)));
+        }
         info!("Loaded {} triples from file {}", triples.len(), filename);
 
-        triples.sort();
+        triples.sort_unstable();
+        // Ensure src is sorted for linear merge
+        self.input.sort_unstable();
         get_unique(&self.input, &mut triples);
 
-        //self.all_triples_input.insert(triples.into());
         self.add_base_triples(triples);
 
         Ok(())
     }
 
-    /// Perform OWL 2 RL-compatible reasoning on the triples currently loaded into the `Reasoner`
+    /// Performs OWL 2 RL-compatible reasoning on the triples currently loaded into the `Reasoner`.
+    ///
+    /// The inferred closure is preserved in the internal state and subsequent calls seed from the
+    /// previously materialized closure unless `clear()` is called.
     pub fn reason(&mut self) {
         // TODO: put these URIs inside the index initialization and give easy ways of referring to
         // them
@@ -609,7 +700,7 @@ impl Reasoner {
         let cax_dw_1 = self.iter1.variable::<(URI, (URI, URI))>("cax_dw_1");
         let cax_dw_2 = self.iter1.variable::<(URI, URI)>("cax_dw_2");
 
-        let ds = DisjointSets::new(&self.input);
+        let ds = DisjointSets::new(&self.input, rdffirst_node, rdfrest_node, rdfnil_node);
 
         self.all_triples_input.extend(self.input.iter().cloned());
         let mut changed = true;
@@ -1116,7 +1207,7 @@ impl Reasoner {
                     &self.owl_intersection_of,
                     |&intersection_class, &inst, &listname| {
                         if let Some(values) = ds.get_list_values(listname) {
-                            for list_class in values {
+                            for &list_class in values {
                                 new_cls_int2_instances.push((inst, (rdftype_node, list_class)));
                             }
                         }
@@ -1384,28 +1475,33 @@ impl Reasoner {
             })
             .cloned()
             .collect();
-        self.output = output
-            .iter()
-            .map(|inst| {
-                let (_s, (_p, _o)) = inst;
-                let s = self.index.get(*_s).unwrap().clone();
-                let p = self.index.get(*_p).unwrap().clone();
-                let o = self.index.get(*_o).unwrap().clone();
-                make_triple(s, p, o)
-            })
-            .filter_map(|t| match t {
-                Ok(t) => Some(t),
-                Err(e) => {
-                    error!("Got error {:?}", e);
-                    None
-                }
-            })
-            .collect();
+        // Build output with capacity hints
+        let mut out_triples: Vec<Triple> = Vec::with_capacity(output.len());
+        for inst in output.iter() {
+            let (_s, (_p, _o)) = inst;
+            let (Some(s), Some(p), Some(o)) =
+                (self.index.get(*_s), self.index.get(*_p), self.index.get(*_o))
+            else {
+                error!(
+                    "Index lookup failed for triple IDs: ({}, {}, {})",
+                    _s, _p, _o
+                );
+                continue;
+            };
+            match make_triple(s.clone(), p.clone(), o.clone()) {
+                Ok(t) => out_triples.push(t),
+                Err(e) => error!("Got error {:?}", e),
+            }
+        }
+        self.output = out_triples;
         self.rebuild(output);
     }
 
     fn to_u(&self, u: URI) -> String {
-        self.index.get(u).unwrap().to_string()
+        match self.index.get(u) {
+            Some(t) => t.to_string(),
+            None => "<unknown>".to_string(),
+        }
     }
 
     /// Returns the vec of triples currently contained in the Reasoner
@@ -1413,7 +1509,7 @@ impl Reasoner {
         self.output.clone()
     }
 
-    /// Returns the vec of triples currently contained in the Reasoner
+    /// Returns a read-only view of the inferred triples from the last `reason()` run.
     pub fn view_output(&self) -> &[Triple] {
         &self.output
     }
@@ -1421,18 +1517,23 @@ impl Reasoner {
     pub fn get_input(&self) -> Vec<Triple> {
         self.base
             .iter()
-            .map(|inst| {
+            .filter_map(|inst| {
                 let (_s, (_p, _o)) = inst;
-                let s = self.index.get(*_s).unwrap().clone();
-                let p = self.index.get(*_p).unwrap().clone();
-                let o = self.index.get(*_o).unwrap().clone();
-                make_triple(s, p, o)
-            })
-            .filter_map(|t| match t {
-                Ok(t) => Some(t),
-                Err(e) => {
-                    error!("Got error {:?}", e);
-                    None
+                let (Some(s), Some(p), Some(o)) =
+                    (self.index.get(*_s), self.index.get(*_p), self.index.get(*_o))
+                else {
+                    error!(
+                        "Index lookup failed for base triple IDs: ({}, {}, {})",
+                        _s, _p, _o
+                    );
+                    return None;
+                };
+                match make_triple(s.clone(), p.clone(), o.clone()) {
+                    Ok(t) => Some(t),
+                    Err(e) => {
+                        error!("Got error {:?}", e);
+                        None
+                    }
                 }
             })
             .collect()
@@ -1453,7 +1554,30 @@ impl Reasoner {
     }
 }
 
-/// removes from rv the triples that are in src. src is sorted
+/**
+Removes from rv the triples that are in src using a linear merge.
+Both src and rv must be sorted ascending.
+On return, rv contains only elements not present in src.
+*/
 pub fn get_unique(src: &[KeyedTriple], rv: &mut Vec<KeyedTriple>) {
-    rv.retain(|t| !src.contains(t))
+    let n = src.len();
+    let m = rv.len();
+    if n == 0 || m == 0 {
+        return;
+    }
+    let mut i = 0usize; // index into src
+    let mut j = 0usize; // index into rv
+    let mut out = Vec::with_capacity(m);
+    while j < m {
+        let b = rv[j];
+        // Advance src until src[i] >= b
+        while i < n && src[i] < b {
+            i += 1;
+        }
+        if i == n || src[i] != b {
+            out.push(b);
+        }
+        j += 1;
+    }
+    *rv = out;
 }
