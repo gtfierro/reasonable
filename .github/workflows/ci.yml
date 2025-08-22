@@ -42,7 +42,7 @@ jobs:
         run: uv run maturin build --release --features abi3
         working-directory: ./python
       - name: Test python package
-        run: uv run python -m unittest test.py
+        run: uv run pytest
         working-directory: ./python
 
 
