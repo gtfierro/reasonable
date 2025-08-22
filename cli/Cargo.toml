@@ -2,7 +2,7 @@
 name = "reasonable-cli"
 version.workspace = true
 edition.workspace = true
-license-file.workspace = true
+license.workspace = true
 authors.workspace = true
 description = "Command line interface for Reasonable OWL 2 RL reasoner"
 repository.workspace = true

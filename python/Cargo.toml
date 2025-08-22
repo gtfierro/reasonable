@@ -2,7 +2,7 @@
 name = "pyreasonable"
 version.workspace = true
 edition.workspace = true
-license-file.workspace = true
+license.workspace = true
 authors.workspace = true
 description.workspace = true
 repository.workspace = true
@@ -11,7 +11,7 @@ build = "build.rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [lib]
-name = "python"
+name = "reasonable"
 crate-type = ["cdylib"]
 
 [dependencies]
@@ -26,5 +26,5 @@ pyo3-build-config = "0.25"
 [features]
 abi3 = ["pyo3/abi3-py39"]
 
-[package.metadata.maturin]
-name = "reasonable"
+#[package.metadata.maturin]
+#name = "reasonable"
