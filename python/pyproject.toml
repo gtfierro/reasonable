@@ -9,7 +9,7 @@ dev = [
 ]
 
 [project]
-name = "python"
+name = "pyreasonable"
 requires-python = ">=3.8"
 classifiers = [
     "Programming Language :: Rust",
