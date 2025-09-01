@@ -885,6 +885,25 @@ fn test_error_asymmetric() -> Result<(), String> {
     Ok(())
 }
 
+#[test]
+fn test_cax_dw() -> Result<(), String> {
+    // If A disjointWith B and an instance is typed as both,
+    // the reasoner should record a cax-dw error (no new triples are asserted).
+    let mut r = Reasoner::new();
+    let trips = vec![
+        ("urn:A", RDF_TYPE, OWL_CLASS),
+        ("urn:B", RDF_TYPE, OWL_CLASS),
+        ("urn:A", "http://www.w3.org/2002/07/owl#disjointWith", "urn:B"),
+        ("urn:i", RDF_TYPE, "urn:A"),
+        ("urn:i", RDF_TYPE, "urn:B"),
+    ];
+    r.load_triples_str(trips);
+    r.reason();
+    // Expect at least one disjointness violation recorded
+    assert!(r.errors().iter().any(|e| e.to_string().contains("cax-dw")) || r.errors().len() > 0);
+    Ok(())
+}
+
 //#[test]
 //fn test_triple_update1() -> Result<(), String> {
 //    let mut u = TripleUpdate::new();

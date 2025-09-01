@@ -314,6 +314,11 @@ impl Reasoner {
         self.errors.push(error);
     }
 
+    /// Returns a read-only view of errors detected during reasoning (e.g., disjointness violations).
+    pub fn errors(&self) -> &[ReasoningError] {
+        &self.errors
+    }
+
     /// Dumps the current inferred triples to a Turtle file.
     ///
     /// The file will contain the current output of the reasoner (post `reason()`).
@@ -1045,22 +1050,27 @@ impl Reasoner {
                     &owl_disjoint_with,
                     |&c1, &inst, &c2| (c2, (c1, inst)),
                 );
+                // Collect disjointness violations without borrowing &mut self inside the closure
+                let mut cax_dw_violations: Vec<(URI, URI, URI)> = Vec::new();
                 cax_dw_2.from_join(
                     &self.rdf_type_inv.borrow(),
                     &cax_dw_1,
                     |&c2, &inst2, &(c1, inst1)| {
-                        //if inst1 == inst2 && inst1 > 0 && inst2 > 0 {
-                        //    let msg = format!(
-                        //        "inst {} is both {} and {} (disjoint classes)",
-                        //        self.to_u(inst1),
-                        //        self.to_u(c1),
-                        //        self.to_u(c2)
-                        //    );
-                        //    self.add_error("cax-dw".to_string(), msg);
-                        //}
+                        if inst1 == inst2 && inst1 > 0 {
+                            cax_dw_violations.push((inst1, c1, c2));
+                        }
                         (c2, inst1)
                     },
                 );
+                for (inst, c1, c2) in cax_dw_violations.drain(..) {
+                    let msg = format!(
+                        "inst {} is both {} and {} (disjoint classes)",
+                        self.to_u(inst),
+                        self.to_u(c1),
+                        self.to_u(c2)
+                    );
+                    self.add_error("cax-dw".to_string(), msg);
+                }
 
                 // prp-pdw
                 // T(?p1, owl:propertyDisjointWith, ?p2)
