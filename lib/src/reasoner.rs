@@ -1432,36 +1432,12 @@ impl Reasoner {
 
             // Now that the inference stage has finished, we will compute the sets of instances for
             // complementary classes
+            // OWL 2 RL does not materialize class complements; only inconsistency checks apply.
+            // The previous implementation attempted to assert membership in the complement
+            // for any individual not known to be in the class, which is unsound under
+            // open-world semantics and led to spurious types. We therefore skip generating
+            // such triples here and leave only the (optional) inconsistency checks above.
             changed = false;
-            let mut est = self.established_complementary_instances.borrow_mut();
-            for (c1, c2) in self.complements.borrow().iter() {
-                // get all instances of NOT c1
-                let c1_instances: HashSet<URI> = self
-                    .instances
-                    .borrow()
-                    .iter()
-                    .filter_map(|(inst, class)| if class == c1 { Some(*inst) } else { None })
-                    .collect();
-                let not_c1_instances: Vec<KeyedTriple> = self
-                    .instances
-                    .borrow()
-                    .iter()
-                    .filter_map(|(inst, class)| {
-                        let triple = (*inst, (rdftype_node, *c2));
-                        if c1_instances.contains(inst) {
-                            None
-                        } else if est.insert(triple) {
-                            Some(triple)
-                        } else {
-                            None
-                        }
-                    })
-                    .collect();
-                if !not_c1_instances.is_empty() {
-                    new_complementary_instances.extend(not_c1_instances);
-                    changed = true;
-                }
-            }
         }
 
         let output: Vec<KeyedTriple> = self

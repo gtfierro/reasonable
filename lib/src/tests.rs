@@ -855,7 +855,10 @@ fn test_complementof() -> Result<(), String> {
         wrap!(RDF_TYPE),
         "<urn:c2>".to_string()
     )));
-    assert!(res.contains(&(
+    // Under OWL 2 RL (open world), we do not materialize membership in
+    // the complement class merely because a different value is present.
+    // Therefore, inst2 should NOT be inferred as type c2.
+    assert!(!res.contains(&(
         "<urn:inst2>".to_string(),
         wrap!(RDF_TYPE),
         "<urn:c2>".to_string()
