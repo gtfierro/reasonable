@@ -1,0 +1,86 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix bfo: <http://purl.obolibrary.org/obo/BFO_> .
+@prefix ex: <http://example.org/> .
+@prefix iao: <http://purl.obolibrary.org/obo/IAO_> .
+
+# Properties
+bfo:0000176 rdf:type owl:ObjectProperty ;
+    owl:inverseOf bfo:0000178 ;
+    rdfs:domain bfo:0000002 ;
+    rdfs:range bfo:0000002 ;
+    rdfs:label "continuant part of" .
+
+bfo:0000178 rdf:type owl:ObjectProperty ;
+    rdfs:domain bfo:0000002 ;
+    rdfs:range bfo:0000002 ;
+    rdfs:label "has continuant part" .
+
+bfo:0000210 rdf:type owl:ObjectProperty ;
+    rdfs:domain [ owl:intersectionOf ( bfo:0000004 [ rdf:type owl:Class ; owl:complementOf bfo:0000006 ] ) ; rdf:type owl:Class ] ;
+    rdfs:range bfo:0000006 ;
+    rdfs:label "occupies spatial region" .
+
+# Classes
+bfo:0000001 rdf:type owl:Class ;
+    rdfs:label "entity" .
+
+bfo:0000002 rdf:type owl:Class ;
+    rdfs:subClassOf bfo:0000001 ;
+    rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty bfo:0000176 ; owl:allValuesFrom bfo:0000002 ] ;
+    rdfs:label "continuant" .
+
+bfo:0000004 rdf:type owl:Class ;
+    rdfs:subClassOf bfo:0000002 ;
+    rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty bfo:0000176 ; owl:allValuesFrom bfo:0000004 ] ;
+    rdfs:label "independent continuant" .
+
+bfo:0000040 rdf:type owl:Class ;
+    rdfs:subClassOf bfo:0000004 ;
+    rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty bfo:0000176 ; owl:allValuesFrom bfo:0000040 ] ;
+    rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty bfo:0000178 ; owl:allValuesFrom [ rdf:type owl:Class ; owl:unionOf ( bfo:0000029 bfo:0000040 bfo:0000140 ) ] ] ;
+    owl:disjointWith bfo:0000141 ;
+    rdfs:label "material entity" .
+
+bfo:0000141 rdf:type owl:Class ;
+    rdfs:subClassOf bfo:0000004 ;
+    rdfs:label "immaterial entity" .
+
+bfo:0000029 rdf:type owl:Class ;
+    rdfs:subClassOf bfo:0000141 ;
+    rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty bfo:0000176 ; owl:allValuesFrom [ rdf:type owl:Class ; owl:unionOf ( bfo:0000029 bfo:0000040 ) ] ] ;
+    rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty bfo:0000178 ; owl:allValuesFrom [ rdf:type owl:Class ; owl:unionOf ( bfo:0000029 bfo:0000140 ) ] ] ;
+    rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty bfo:0000210 ; owl:allValuesFrom bfo:0000028 ] ;
+    rdfs:label "site" .
+
+bfo:0000140 rdf:type owl:Class ;
+    rdfs:subClassOf bfo:0000141 ;
+    rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty bfo:0000178 ; owl:allValuesFrom bfo:0000140 ] ;
+    rdfs:label "continuant fiat boundary" .
+
+bfo:0000006 rdf:type owl:Class ;
+    rdfs:subClassOf bfo:0000141 ;
+    rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty bfo:0000176 ; owl:allValuesFrom bfo:0000006 ] ;
+    rdfs:label "spatial region" .
+
+bfo:0000028 rdf:type owl:Class ;
+    rdfs:subClassOf bfo:0000006 ;
+    rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty bfo:0000178 ; owl:allValuesFrom bfo:0000006 ] ;
+    rdfs:label "three-dimensional spatial region" .
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( bfo:0000006 bfo:0000029 bfo:0000140 )
+] .
+
+# Custom Class and Instance
+ex:Person rdf:type owl:Class ;
+    rdfs:label "Person" ;
+    rdfs:subClassOf bfo:0000040 .
+
+ex:Alice rdf:type ex:Person ;
+    rdfs:label "Alice" .

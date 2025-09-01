@@ -22,10 +22,32 @@ use std::io::BufReader;
 use std::io::ErrorKind;
 use std::rc::Rc;
 
-/// Structured errors that occur during reasoning
+/// Severity of a diagnostic produced during reasoning
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub enum DiagnosticSeverity {
+    Error,
+    Warning,
+    Info,
+}
+
+impl fmt::Display for DiagnosticSeverity {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            DiagnosticSeverity::Error => write!(f, "error"),
+            DiagnosticSeverity::Warning => write!(f, "warning"),
+            DiagnosticSeverity::Info => write!(f, "info"),
+        }
+    }
+}
+
+/// Structured diagnostics that occur during reasoning
 pub struct ReasoningError {
-    /// The OWL-RL rule that produced the violation
+    /// Stable diagnostic code (e.g., OWLRL.CAX_DW)
+    code: String,
+    /// The OWL-RL rule that produced the violation (e.g., cax-dw)
     rule: String,
+    /// Severity of the diagnostic
+    severity: DiagnosticSeverity,
     /// A human-readable error message
     message: String,
     // TODO: add a trace of the productions that caused the error
@@ -33,13 +55,62 @@ pub struct ReasoningError {
 
 impl ReasoningError {
     pub fn new(rule: String, message: String) -> Self {
-        ReasoningError { rule, message }
+        let code = match rule.as_str() {
+            "cax-dw" => "OWLRL.CAX_DW",
+            "prp-pdw" => "OWLRL.PRP_PDW",
+            "cls-nothing2" => "OWLRL.CLS_NOTHING",
+            _ => "OWLRL.UNKNOWN",
+        }
+        .to_string();
+        ReasoningError {
+            code,
+            rule,
+            severity: DiagnosticSeverity::Error,
+            message,
+        }
+    }
+
+    pub fn code(&self) -> &str {
+        &self.code
+    }
+    pub fn rule(&self) -> &str {
+        &self.rule
+    }
+    pub fn severity(&self) -> &DiagnosticSeverity {
+        &self.severity
+    }
+    pub fn message(&self) -> &str {
+        &self.message
     }
 }
 
 impl fmt::Display for ReasoningError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "ReasoningError<rule: {}>: {}", self.rule, self.message)
+        write!(
+            f,
+            "{}[{}]: {}",
+            self.severity, self.rule, self.message
+        )
+    }
+}
+
+#[derive(Clone)]
+pub struct ReasonerOptions {
+    /// Whether to collect diagnostics during reasoning
+    pub collect_diagnostics: bool,
+    /// Maximum number of diagnostics to retain (None = unlimited)
+    pub max_diagnostics: Option<usize>,
+    /// Deduplicate diagnostics by (code, message)
+    pub dedupe: bool,
+}
+
+impl Default for ReasonerOptions {
+    fn default() -> Self {
+        Self {
+            collect_diagnostics: true,
+            max_diagnostics: None,
+            dedupe: true,
+        }
     }
 }
 
@@ -137,6 +208,8 @@ pub struct Reasoner {
     input: Vec<KeyedTriple>,
     base: Vec<KeyedTriple>,
     errors: Vec<ReasoningError>,
+    options: ReasonerOptions,
+    seen_diags: HashSet<(String, String)>,
     output: Vec<Triple>,
 
     spo: Variable<KeyedTriple>,
@@ -206,6 +279,8 @@ impl Reasoner {
             input,
             base,
             errors: Vec::new(),
+            options: ReasonerOptions::default(),
+            seen_diags: HashSet::new(),
             output: Vec::new(),
             spo,
             pso,
@@ -309,14 +384,38 @@ impl Reasoner {
     }
 
     fn add_error(&mut self, rule: String, message: String) {
+        if !self.options.collect_diagnostics {
+            return;
+        }
         let error = ReasoningError::new(rule, message);
-        error!("Got error {}", error);
+        if self.options.dedupe {
+            let key = (error.code.clone(), error.message.clone());
+            if !self.seen_diags.insert(key) {
+                return;
+            }
+        }
+        if let Some(max) = self.options.max_diagnostics {
+            if self.errors.len() >= max {
+                return;
+            }
+        }
+        // Do not log each diagnostic via log to avoid noise; tests and CLI will consume via API
         self.errors.push(error);
     }
 
     /// Returns a read-only view of errors detected during reasoning (e.g., disjointness violations).
     pub fn errors(&self) -> &[ReasoningError] {
         &self.errors
+    }
+
+    /// Returns diagnostics (alias of errors for backward compatibility)
+    pub fn diagnostics(&self) -> &[ReasoningError] {
+        &self.errors
+    }
+
+    /// Updates the reasoning options
+    pub fn set_options(&mut self, opts: ReasonerOptions) {
+        self.options = opts;
     }
 
     /// Dumps the current inferred triples to a Turtle file.
