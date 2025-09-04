@@ -1,10 +1,9 @@
 name: Build Debian Packages
 
 on:
-  push:
-    branches: [ main, master ]
-    tags: [ 'v*', 'release-*' ]
-  pull_request:
+  release:
+    types:
+      - published
 
 jobs:
   deb:
@@ -67,3 +66,35 @@ jobs:
           path: ${{ steps.paths.outputs.dir }}/*.deb
           if-no-files-found: error
 
+  release:
+    name: Publish release assets
+    if: github.event_name == 'release'
+    needs: deb
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download all build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: dist
+
+      - name: Gather .deb files
+        shell: bash
+        run: |
+          set -euo pipefail
+          find dist -type f -name '*.deb' -print -exec cp -v {} dist/ \;
+          ls -la dist
+
+      - name: Create checksums
+        run: |
+          cd dist
+          sha256sum *.deb > SHA256SUMS
+          cat SHA256SUMS
+
+      - name: Upload to GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            dist/*.deb
+            dist/SHA256SUMS

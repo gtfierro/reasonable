@@ -275,7 +275,7 @@ jobs:
         with:
           packages-dir: dist
           skip-existing: true
-          password: ${{ secrets.PYPI_TOKEN }}
+          password: ${{ secrets.PYPI_API_TOKEN }}
 
   publish_crates:
     if: github.event_name == 'release'
@@ -289,15 +289,15 @@ jobs:
       - uses: katyo/publish-crates@v2
         with:
           path: './lib'
-          registry-token: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+          registry-token: ${{ secrets.CRATES_IO_TOKEN }}
         env:
-          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+          CRATES_IO_TOKEN: ${{ secrets.CRATES_IO_TOKEN }}
       - uses: katyo/publish-crates@v2
         with:
           path: './cli'
-          registry-token: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+          registry-token: ${{ secrets.CRATES_IO_TOKEN }}
         env:
-          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+          CRATES_IO_TOKEN: ${{ secrets.CRATES_IO_TOKEN }}
   full_archive:
     if: github.event_name == 'release'
     runs-on: ubuntu-latest
