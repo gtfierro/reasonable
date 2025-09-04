@@ -54,3 +54,8 @@ build-python-library:
 
 bench: build
 	./scripts/bench_examples.sh
+
+.PHONY: deb
+deb:
+	# Requires: cargo install cargo-deb
+	./scripts/build_deb.sh

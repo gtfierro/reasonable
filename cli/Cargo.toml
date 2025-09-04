@@ -17,3 +17,18 @@ log.workspace = true
 [[bin]]
 name = "reasonable"
 path = "src/main.rs"
+
+[package.metadata.deb]
+# Debian package name (defaults to crate name). We want just `reasonable`.
+name = "reasonable"
+maintainer = "Gabe Fierro <gtfierro@mines.edu>"
+depends = "$auto"
+section = "utils"
+priority = "optional"
+assets = []
+extended-description = """
+Reasonable is an OWL 2 RL reasoner implemented in Rust, offering
+fast reasoning over RDF data with a simple CLI. It outputs inferred
+triples in stdout or to a specified file, supporting various input
+formats like Turtle, RDF/XML, and N-Triples.
+"""
