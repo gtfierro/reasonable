@@ -407,7 +407,10 @@ def test_complementof():
     assert (URIRef("urn:inst1"), URIRef(RDF_TYPE), URIRef("urn:x")) in out
     assert (URIRef("urn:inst1"), URIRef(RDF_TYPE), URIRef("urn:c")) not in out
     assert (URIRef("urn:inst1"), URIRef(RDF_TYPE), URIRef("urn:c2")) not in out
-    assert (URIRef("urn:inst2"), URIRef(RDF_TYPE), URIRef("urn:c2")) in out
+    # Under OWL 2 RL (open world), do not materialize membership in
+    # the complement class solely because a different value is present.
+    # Align with Rust tests: inst2 should NOT be inferred as type c2.
+    assert (URIRef("urn:inst2"), URIRef(RDF_TYPE), URIRef("urn:c2")) not in out
 
 
 def test_error_asymmetric():

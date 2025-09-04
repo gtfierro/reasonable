@@ -33,6 +33,7 @@ const OWL_NOTHING: &str = "http://www.w3.org/2002/07/owl#Nothing";
 const OWL_COMPLEMENT: &str = "http://www.w3.org/2002/07/owl#complementOf";
 const OWL_RESTRICTION: &str = "http://www.w3.org/2002/07/owl#Restriction";
 const OWL_ASYMMETRICPROP: &str = "http://www.w3.org/2002/07/owl#AsymmetricProperty";
+const OWL_IRREFLEXIVEPROP: &str = "http://www.w3.org/2002/07/owl#IrreflexiveProperty";
 
 macro_rules! wrap {
     ($t:expr) => {
@@ -882,6 +883,24 @@ fn test_error_asymmetric() -> Result<(), String> {
         println!("{} {} {}", s, p, o);
     }
     // assert!(res.errors.len() > 0);
+    Ok(())
+}
+
+#[test]
+fn test_prp_irp_violation() -> Result<(), String> {
+    let mut r = Reasoner::new();
+    let trips = vec![
+        ("urn:p", RDF_TYPE, OWL_IRREFLEXIVEPROP),
+        ("urn:x", "urn:p", "urn:x"),
+    ];
+    r.load_triples_str(trips);
+    r.reason();
+    // Expect an irreflexive property diagnostic
+    let has_irp = r
+        .errors()
+        .iter()
+        .any(|e| e.code() == "OWLRL.PRP_IRP" || e.rule() == "prp-irp");
+    assert!(has_irp, "expected PRP_IRP diagnostic");
     Ok(())
 }
 

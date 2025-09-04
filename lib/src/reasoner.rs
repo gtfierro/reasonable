@@ -59,6 +59,9 @@ impl ReasoningError {
             "cax-dw" => "OWLRL.CAX_DW",
             "prp-pdw" => "OWLRL.PRP_PDW",
             "cls-nothing2" => "OWLRL.CLS_NOTHING",
+            "prp-asyp" => "OWLRL.PRP_ASYP",
+            "prp-irp" => "OWLRL.PRP_IRP",
+            "cls-com" => "OWLRL.CLS_COM",
             _ => "OWLRL.UNKNOWN",
         }
         .to_string();
@@ -1019,15 +1022,12 @@ impl Reasoner {
                 // prp-irp
                 // T(?p, rdf:type, owl:IrreflexiveProperty)
                 // T(?x, ?p, ?x) => false
+                // Collect irreflexive property violations: T(p rdf:type IrreflexiveProperty), T(x p x)
+                let mut prp_irp_violations: Vec<(URI, URI)> = Vec::new();
                 prp_irp_1.from_join(&owl_irreflexive, &self.pso, |&p, &(), &(s, o)| {
-                    //if s == o && s > 0 && o > 0 {
-                    //    let msg = format!(
-                    //        "property {} of {} is irreflexive",
-                    //        self.to_u(p),
-                    //        self.to_u(s)
-                    //    );
-                    //    self.add_error("prp-irp".to_string(), msg);
-                    //}
+                    if s == o && s > 0 {
+                        prp_irp_violations.push((p, s));
+                    }
                     (p, s)
                 });
 
@@ -1041,15 +1041,10 @@ impl Reasoner {
                 prp_asyp_2.from_join(&owl_asymmetric, &self.pso, |&p, &(), &(x, y)| {
                     ((y, x, p), ())
                 });
+                let mut prp_asyp_violations: Vec<(URI, URI, URI)> = Vec::new();
                 prp_asyp_3.from_join(&prp_asyp_1, &prp_asyp_2, |&(x, y, p), &(), &()| {
                     if x > 0 && y > 0 && p > 0 {
-                        let msg = format!(
-                            "property {} of {} and {} is asymmetric",
-                            self.to_u(p),
-                            self.to_u(x),
-                            self.to_u(y)
-                        );
-                        self.add_error("prp-asyp".to_string(), msg);
+                        prp_asyp_violations.push((p, x, y));
                     }
                     ((x, y, p), ())
                 });
@@ -1186,20 +1181,41 @@ impl Reasoner {
                     |&p2, &p1, &(x, y)| ((x, y, p2), p1),
                 );
                 // join on (x,y) to find pairs in violation
+                let mut prp_pdw_violations: Vec<(URI, URI, URI, URI)> = Vec::new();
                 prp_pdw_3.from_join(&prp_pdw_1, &prp_pdw_2, |&(x, y, p2), &p1, &_p1| {
                     if x > 0 && y > 0 && p2 > 0 && p1 > 0 {
-                        let msg = format!(
-                            "property {} is disjoint with {} for pair ({} {} {})",
-                            self.to_u(p1),
-                            self.to_u(p2),
-                            self.to_u(x),
-                            self.to_u(p1),
-                            self.to_u(y)
-                        );
-                        self.add_error("prp-pdw".to_string(), msg);
+                        prp_pdw_violations.push((x, y, p1, p2));
                     }
                     ((x, y, p2), p1)
                 });
+                for (p, s) in prp_irp_violations.drain(..) {
+                    let msg = format!(
+                        "property {} of {} is irreflexive",
+                        self.to_u(p),
+                        self.to_u(s)
+                    );
+                    self.add_error("prp-irp".to_string(), msg);
+                }
+                for (p, x, y) in prp_asyp_violations.drain(..) {
+                    let msg = format!(
+                        "property {} of {} and {} is asymmetric",
+                        self.to_u(p),
+                        self.to_u(x),
+                        self.to_u(y)
+                    );
+                    self.add_error("prp-asyp".to_string(), msg);
+                }
+                for (x, y, p1, p2) in prp_pdw_violations.drain(..) {
+                    let msg = format!(
+                        "property {} is disjoint with {} for pair ({} {} {})",
+                        self.to_u(p1),
+                        self.to_u(p2),
+                        self.to_u(x),
+                        self.to_u(p1),
+                        self.to_u(y)
+                    );
+                    self.add_error("prp-pdw".to_string(), msg);
+                }
 
                 // prp-symp
                 // T(?p, rdf:type, owl:SymmetricProperty)
@@ -1245,20 +1261,24 @@ impl Reasoner {
 
                 // cls-nothing2
                 //  T(?x, rdf:type, owl:Nothing) => false
+                let mut cls_nothing2_violations: Vec<URI> = Vec::new();
                 cls_nothing2.from_join(
                     &self.rdf_type_inv.borrow(),
                     &owl_nothing,
                     |&_nothing, &x, &()| {
-                        //if x > 0 {
-                        //    let msg = format!(
-                        //        "Instance {} is owl:Nothing (suggests unsatisfiability)",
-                        //        self.to_u(x)
-                        //    );
-                        //    self.add_error("cls-nothing2".to_string(), msg);
-                        //}
+                        if x > 0 {
+                            cls_nothing2_violations.push(x);
+                        }
                         (x, ())
                     },
                 );
+                for x in cls_nothing2_violations.drain(..) {
+                    let msg = format!(
+                        "instance {} is owl:Nothing (unsatisfiable)",
+                        self.to_u(x)
+                    );
+                    self.add_error("cls-nothing2".to_string(), msg);
+                }
 
                 // cls-int1
                 // There's a fair amount of complexity here that we have to manage. The rule we are

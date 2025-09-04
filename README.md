@@ -48,6 +48,27 @@ $ reasonable example_models/ontologies/Brick.n3 example_models/small1.n3 -o myou
 [2023-07-04T15:32:11Z INFO  reasonable] Writing to myout.ttl
 ```
 
+### Diagnostics & CLI Flags
+
+The reasoner records OWL 2 RL rule violations as diagnostics (not errors in the log). Use the CLI to view or enforce them:
+
+- Reporting format: `--error-format text|json|ndjson` (default: text)
+- Fail the run on rules: `--fail-on cax-dw,prp-pdw` (repeat or comma-separated; codes like `OWLRL.CAX_DW` also supported)
+- Limit output: `--max-diagnostics N`; summary only: `--summary-only`
+
+Common diagnostic codes:
+- `OWLRL.CAX_DW`: Individual typed as two disjoint classes
+- `OWLRL.PRP_PDW`: Pair violates propertyDisjointWith
+- `OWLRL.PRP_ASYP`: Asymmetric property used both directions
+- `OWLRL.PRP_IRP`: Irreflexive property used with same subject/object
+- `OWLRL.CLS_NOTHING`: Individual typed as owl:Nothing
+
+Example strict run:
+
+```
+$ reasonable model.ttl --error-format json --fail-on cax-dw,prp-pdw -o out.ttl
+```
+
 
 ### Python
 

@@ -113,3 +113,35 @@ fn json_error_format_outputs_json() {
     assert!(stdout.trim_start().starts_with('['));
     assert!(stdout.contains("OWLRL.CAX_DW") || stdout.contains("cax-dw"));
 }
+
+#[test]
+fn fail_on_prp_irp_sets_exit_code_and_outputs() {
+    let bin = bin_path();
+    let mut input = env::temp_dir();
+    input.push("reasonable_cli_prpirp.ttl");
+    let mut f = File::create(&input).expect("create temp ttl");
+    writeln!(
+        f,
+        "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix owl: <http://www.w3.org/2002/07/owl#> .\n@prefix ex: <urn:> .\nex:p a owl:IrreflexiveProperty .\nex:x ex:p ex:x .\n"
+    )
+    .unwrap();
+
+    let mut out_path = env::temp_dir();
+    out_path.push("reasonable_cli_prpirp_out.ttl");
+    let output = Command::new(&bin)
+        .args([
+            input.to_str().unwrap(),
+            "--error-format",
+            "ndjson",
+            "--fail-on",
+            "prp-irp",
+            "-o",
+            out_path.to_str().unwrap(),
+        ])
+        .output()
+        .expect("run CLI");
+    // Should fail with exit code 2
+    assert_eq!(output.status.code(), Some(2));
+    let stdout = String::from_utf8_lossy(&output.stdout);
+    assert!(stdout.contains("OWLRL.PRP_IRP") || stdout.contains("prp-irp"));
+}
