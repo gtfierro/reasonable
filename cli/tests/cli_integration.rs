@@ -9,9 +9,13 @@ fn bin_path() -> PathBuf {
     if let Ok(p) = env::var("CARGO_BIN_EXE_reasonable") {
         return PathBuf::from(p);
     }
-    // Fallback: assume workspace target dir
-    let target_dir = env::var("CARGO_TARGET_DIR").unwrap_or_else(|_| "../target".to_string());
-    let mut p = PathBuf::from(target_dir);
+    // Fallback: derive workspace `target` from manifest dir (robust in workspaces)
+    let target_dir = env::var("CARGO_TARGET_DIR").ok().map(PathBuf::from).unwrap_or_else(|| {
+        // `CARGO_MANIFEST_DIR` points to the `cli/` crate; workspace root is one level up
+        let manifest_dir = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+        manifest_dir.parent().unwrap_or(&manifest_dir).join("target")
+    });
+    let mut p = target_dir;
     p.push("debug");
     p.push("reasonable");
     if !p.exists() {
