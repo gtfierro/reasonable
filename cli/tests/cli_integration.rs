@@ -5,22 +5,21 @@ use std::path::PathBuf;
 use std::process::Command;
 
 fn bin_path() -> PathBuf {
-    // Prefer Cargo-provided env var for the built binary
+    // Prefer Cargo-provided env var for the built binary. This is the most reliable.
     if let Ok(p) = env::var("CARGO_BIN_EXE_reasonable") {
         return PathBuf::from(p);
     }
-    // Fallback: derive workspace `target` from manifest dir (robust in workspaces)
-    let target_dir = env::var("CARGO_TARGET_DIR").ok().map(PathBuf::from).unwrap_or_else(|| {
-        // `CARGO_MANIFEST_DIR` points to the `cli/` crate; workspace root is one level up
-        let manifest_dir = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
-        manifest_dir.parent().unwrap_or(&manifest_dir).join("target")
-    });
-    let mut p = target_dir;
-    p.push("debug");
-    p.push("reasonable");
+
+    // Inspired by similar projects: derive target dir from the crate location and
+    // probe debug then release (with Windows .exe suffix when applicable).
+    let base = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("..").join("target");
+    let exe = if cfg!(windows) { "reasonable.exe" } else { "reasonable" };
+
+    let mut p = base.join("debug").join(exe);
     if !p.exists() {
-        panic!("could not locate CLI binary at {}", p.display());
+        p = base.join("release").join(exe);
     }
+    assert!(p.exists(), "reasonable binary not found at {:?}", p);
     p
 }
 
