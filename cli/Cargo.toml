@@ -25,7 +25,6 @@ maintainer = "Gabe Fierro <gtfierro@mines.edu>"
 depends = "$auto"
 section = "utils"
 priority = "optional"
-assets = []
 extended-description = """
 Reasonable is an OWL 2 RL reasoner implemented in Rust, offering
 fast reasoning over RDF data with a simple CLI. It outputs inferred
