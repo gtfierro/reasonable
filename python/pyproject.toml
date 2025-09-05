@@ -21,6 +21,7 @@ dependencies = [
     "rdflib>=6.3.2",
 ]
 license = "bsd-3-clause"
+description = "Python bindings for Reasonable, a reasonably fast OWL 2 RL reasoner"
 
 [tool.maturin]
 features = ["pyo3/extension-module"]
