@@ -9,7 +9,7 @@ dev = [
 ]
 
 [project]
-name = "pyreasonable"
+name = "reasonable"
 requires-python = ">=3.8"
 classifiers = [
     "Programming Language :: Rust",
@@ -22,9 +22,14 @@ dependencies = [
 ]
 license = "bsd-3-clause"
 description = "Python bindings for Reasonable, a reasonably fast OWL 2 RL reasoner"
+readme = "../README.md"
 
 [tool.maturin]
 features = ["pyo3/extension-module"]
+# Place the compiled extension inside the Python package `reasonable/`
+module-name = "reasonable.reasonable"
+# Our Python sources (the `reasonable/` package) live at the repo root
+python-source = ".."
 
 [tool.uv]
 # Rebuild package when any rust files change
