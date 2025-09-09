@@ -26,10 +26,6 @@ readme = "../README.md"
 
 [tool.maturin]
 features = ["pyo3/extension-module"]
-# Place the compiled extension inside the Python package `reasonable/`
-module-name = "reasonable.reasonable"
-# Our Python sources (the `reasonable/` package) live at the repo root
-python-source = ".."
 
 [tool.uv]
 # Rebuild package when any rust files change
