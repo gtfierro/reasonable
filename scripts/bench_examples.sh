@@ -2,7 +2,7 @@
 
 mv bench.txt bench.txt-old
 export RUST_LOG=info
-ontologies=$(ls example_models/ontologies)
+ontologies=$(ls example_models/ontologies/*)
 echo $ontologies
 
 # start with ontologies
