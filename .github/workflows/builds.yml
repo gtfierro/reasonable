@@ -125,12 +125,12 @@ jobs:
           cache-dependency-path: '**/requirements.dev.txt'
       - run: pip install -r python/requirements.dev.txt
       - run: maturin build -m python/Cargo.toml
-      - run: pip install --no-index --find-links=target/wheels/ pyreasonable
+      - run: pip install --no-index --find-links=target/wheels/ reasonable
       - run: rm -r target/wheels
       - run: maturin sdist -m python/Cargo.toml
       - uses: actions/upload-artifact@v4
         with:
-          name: pyreasonable_dist
+          name: reasonable_dist
           path: target/wheels/*.tar.gz
 
   wheel_linux:
@@ -155,7 +155,7 @@ jobs:
         if: github.event_name == 'release' || matrix.architecture == 'x86_64'
       - uses: actions/upload-artifact@v4
         with:
-          name: pyreasonable_${{ matrix.architecture }}_linux_gnu
+          name: reasonable_${{ matrix.architecture }}_linux_gnu
           path: target/wheels/*.whl
 
   wheel_linux_musl:
@@ -181,7 +181,7 @@ jobs:
       - run: find .
       - uses: actions/upload-artifact@v4
         with:
-          name: pyreasonable_${{ matrix.architecture }}_linux_musl
+          name: reasonable_${{ matrix.architecture }}_linux_musl
           path: target/wheels/*.whl
 
   wheel_mac:
@@ -210,7 +210,7 @@ jobs:
       - run: pip install -r python/requirements.dev.txt
       - run: maturin build --release --features abi3
         working-directory: ./python
-      - run: pip install --no-index --find-links=target/wheels/ pyreasonable
+      - run: pip install --no-index --find-links=target/wheels/ reasonable
       - run: rm -r target/wheels
       - run: maturin build --release --target universal2-apple-darwin --features abi3
         working-directory: ./python
@@ -222,7 +222,7 @@ jobs:
         if: github.event_name == 'release'
       - uses: actions/upload-artifact@v4
         with:
-          name: pyreasonable_macos
+          name: reasonable_macos
           path: target/wheels/*.whl
 
   wheel_windows:
@@ -243,12 +243,12 @@ jobs:
       - run: pip install -r python/requirements.dev.txt
       - run: maturin build --release --features abi3
         working-directory: ./python
-      - run: pip install --no-index --find-links=target/wheels/ pyreasonable
+      - run: pip install --no-index --find-links=target/wheels/ reasonable
       - run: rm -r target/wheels
       - run: maturin build --release -m python/Cargo.toml --features abi3
       - uses: actions/upload-artifact@v4
         with:
-          name: pyreasonable_windows
+          name: reasonable_windows
           path: target/wheels/*.whl
 
   publish_pypi:
@@ -256,7 +256,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: publish
-      url: https://pypi.org/p/pyreasonable
+      url: https://pypi.org/p/reasonable
     permissions:
       id-token: write
     needs:
@@ -268,7 +268,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          pattern: pyreasonable_*
+          pattern: reasonable_*
           path: dist
           merge-multiple: true
       - uses: pypa/gh-action-pypi-publish@release/v1
