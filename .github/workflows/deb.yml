@@ -4,6 +4,7 @@ on:
   release:
     types:
       - published
+  workflow_dispatch:
 
 jobs:
   deb:
@@ -66,10 +67,29 @@ jobs:
           path: ${{ steps.paths.outputs.dir }}/*.deb
           if-no-files-found: error
 
+  python_deb:
+    name: python deb (bookworm)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build python deb in Docker
+        run: bash scripts/build_python_deb_docker.sh
+
+      - name: Upload python deb artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: python3-reasonable-deb
+          path: dist/deb-system/*.deb
+          if-no-files-found: error
+
   release:
     name: Publish release assets
     if: github.event_name == 'release'
-    needs: deb
+    needs:
+      - deb
+      - python_deb
     runs-on: ubuntu-latest
     permissions:
       contents: write
