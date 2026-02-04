@@ -4,6 +4,7 @@ on:
   release:
     types:
       - published
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -36,11 +37,11 @@ jobs:
           PKG_CONFIG_PATH: /usr/lib/aarch64-linux-gnu/pkgconfig
       - uses: actions/upload-artifact@v4
         with:
-          name: reasonable_x86_64_linux_gnu
+          name: reasonable_bin_x86_64_linux_gnu
           path: target/release/reasonable
       - uses: actions/upload-artifact@v4
         with:
-          name: reasonable_aarch64_linux_gnu
+          name: reasonable_bin_aarch64_linux_gnu
           path: target/aarch64-unknown-linux-gnu/release/reasonable
       - run: mv target/release/reasonable reasonable_${{ github.event.release.tag_name }}_x86_64_linux_gnu
         if: github.event_name == 'release'
@@ -69,11 +70,11 @@ jobs:
         working-directory: ./cli
       - uses: actions/upload-artifact@v4
         with:
-          name: reasonable_x86_64_apple
+          name: reasonable_bin_x86_64_apple
           path: target/release/reasonable
       - uses: actions/upload-artifact@v4
         with:
-          name: reasonable_aarch64_apple
+          name: reasonable_bin_aarch64_apple
           path: target/aarch64-apple-darwin/release/reasonable
       - run: mv target/release/reasonable reasonable_${{ github.event.release.tag_name }}_x86_64_apple
         if: github.event_name == 'release'
@@ -100,7 +101,7 @@ jobs:
         working-directory: ./cli
       - uses: actions/upload-artifact@v4
         with:
-          name: reasonable_x86_64_windows_msvc
+          name: reasonable_bin_x86_64_windows_msvc
           path: target/release/reasonable.exe
       - run: mv target/release/reasonable.exe reasonable_${{ github.event.release.tag_name }}_x86_64_windows_msvc.exe
         if: github.event_name == 'release'
@@ -130,7 +131,7 @@ jobs:
       - run: maturin sdist -m python/Cargo.toml
       - uses: actions/upload-artifact@v4
         with:
-          name: reasonable_dist
+          name: reasonable_sdist
           path: target/wheels/*.tar.gz
 
   wheel_linux:
@@ -146,16 +147,16 @@ jobs:
       - uses: docker/setup-qemu-action@v2
         with:
           platforms: linux/${{ matrix.architecture }}
-        if: github.event_name == 'release' && matrix.architecture != 'x86_64'
+        if: (github.event_name == 'release' || github.event_name == 'workflow_dispatch') && matrix.architecture != 'x86_64'
       - uses: ./.github/actions/setup-rust
         with:
           version: stable
       - run: sed 's/%arch%/${{ matrix.architecture }}/g' .github/workflows/manylinux_build.sh | sed 's/%for_each_version%/${{ github.event_name == 'release' || '' }}/g' > .github/workflows/manylinux_build_script.sh
       - run: docker run -v "$(pwd)":/workdir --platform linux/${{ matrix.architecture }} quay.io/pypa/manylinux2014_${{ matrix.architecture }} /bin/bash /workdir/.github/workflows/manylinux_build_script.sh
-        if: github.event_name == 'release' || matrix.architecture == 'x86_64'
+        if: github.event_name == 'release' || github.event_name == 'workflow_dispatch' || matrix.architecture == 'x86_64'
       - uses: actions/upload-artifact@v4
         with:
-          name: reasonable_wheel_${{ matrix.architecture }}_linux_gnu
+          name: reasonable_wheels_${{ matrix.architecture }}_linux_gnu
           path: target/wheels/*.whl
 
   wheel_linux_musl:
@@ -171,17 +172,17 @@ jobs:
       - uses: docker/setup-qemu-action@v2
         with:
           platforms: linux/${{ matrix.architecture }}
-        if: github.event_name == 'release' && matrix.architecture != 'x86_64'
+        if: (github.event_name == 'release' || github.event_name == 'workflow_dispatch') && matrix.architecture != 'x86_64'
       - uses: ./.github/actions/setup-rust
         with:
           version: stable
       - run: sed 's/%arch%/${{ matrix.architecture }}/g' .github/workflows/musllinux_build.sh | sed 's/%for_each_version%/${{ github.event_name == 'release' || '' }}/g' > .github/workflows/musllinux_build_script.sh
       - run: docker run -v "$(pwd)":/workdir --platform linux/${{ matrix.architecture }} quay.io/pypa/musllinux_1_2_${{ matrix.architecture }} /bin/bash /workdir/.github/workflows/musllinux_build_script.sh
-        if: github.event_name == 'release' || matrix.architecture == 'x86_64'
+        if: github.event_name == 'release' || github.event_name == 'workflow_dispatch' || matrix.architecture == 'x86_64'
       - run: find .
       - uses: actions/upload-artifact@v4
         with:
-          name: reasonable_wheel_${{ matrix.architecture }}_linux_musl
+          name: reasonable_wheels_${{ matrix.architecture }}_linux_musl
           path: target/wheels/*.whl
 
   wheel_mac:
@@ -216,13 +217,13 @@ jobs:
         working-directory: ./python
       - run: maturin build --release --target x86_64-apple-darwin --features abi3
         working-directory: ./python
-        if: github.event_name == 'release'
+        if: github.event_name == 'release' || github.event_name == 'workflow_dispatch'
       - run: maturin build --release --target aarch64-apple-darwin --features abi3
         working-directory: ./python
-        if: github.event_name == 'release'
+        if: github.event_name == 'release' || github.event_name == 'workflow_dispatch'
       - uses: actions/upload-artifact@v4
         with:
-          name: reasonable_wheel_macos
+          name: reasonable_wheels_macos
           path: target/wheels/*.whl
 
   wheel_windows:
@@ -248,8 +249,87 @@ jobs:
       - run: maturin build --release -m python/Cargo.toml --features abi3
       - uses: actions/upload-artifact@v4
         with:
-          name: reasonable_wheel_windows
+          name: reasonable_wheels_windows
           path: target/wheels/*.whl
+
+  python_deb_linux:
+    runs-on: ubuntu-latest
+    needs:
+      - wheel_linux
+      - wheel_linux_musl
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Download linux wheel artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: reasonable_wheels_*_linux_*
+          path: dist/wheels
+          merge-multiple: true
+
+      - name: Install Debian build deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y apt-file dpkg-dev fakeroot build-essential devscripts debhelper
+
+      - name: Install wheel2deb
+        run: |
+          python -m pip install --upgrade pip
+          pip install wheel2deb
+
+      - name: Update apt-file cache
+        run: sudo apt-file update
+
+      - name: Build python .deb packages from wheels
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+
+          mkdir -p dist/python_deb dist/wheel2deb
+
+          wheels=(dist/wheels/*.whl)
+          if [ ${#wheels[@]} -eq 0 ]; then
+            echo "No linux wheels found in dist/wheels" >&2
+            exit 1
+          fi
+
+          for wheel in "${wheels[@]}"; do
+            name="$(basename "$wheel" .whl)"
+            work="dist/wheel2deb/$name"
+            rm -rf "$work"
+            mkdir -p "$work"
+            cp "$wheel" "$work/"
+            (cd "$work" && wheel2deb)
+            if compgen -G "$work/output/*.deb" > /dev/null; then
+              for deb in "$work"/output/*.deb; do
+                base="$(basename "$deb")"
+                tagged="${base%.deb}__${name}.deb"
+                cp -v "$deb" "dist/python_deb/$tagged"
+              done
+            else
+              echo "No .deb produced for $wheel" >&2
+              exit 1
+            fi
+          done
+
+          ls -la dist/python_deb
+
+      - name: Upload python .deb artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: reasonable_python_deb_linux
+          path: dist/python_deb/*.deb
+          if-no-files-found: error
+
+      - name: Upload python .deb files to release
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v1
+        with:
+          files: dist/python_deb/*.deb
 
   publish_pypi:
     if: github.event_name == 'release'
@@ -268,7 +348,12 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          pattern: reasonable_*
+          pattern: reasonable_wheels_*
+          path: dist
+          merge-multiple: true
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: reasonable_sdist
           path: dist
           merge-multiple: true
       - uses: pypa/gh-action-pypi-publish@release/v1
