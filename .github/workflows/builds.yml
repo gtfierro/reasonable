@@ -4,6 +4,7 @@ on:
   release:
     types:
       - published
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -146,13 +147,13 @@ jobs:
       - uses: docker/setup-qemu-action@v2
         with:
           platforms: linux/${{ matrix.architecture }}
-        if: github.event_name == 'release' && matrix.architecture != 'x86_64'
+        if: (github.event_name == 'release' || github.event_name == 'workflow_dispatch') && matrix.architecture != 'x86_64'
       - uses: ./.github/actions/setup-rust
         with:
           version: stable
       - run: sed 's/%arch%/${{ matrix.architecture }}/g' .github/workflows/manylinux_build.sh | sed 's/%for_each_version%/${{ github.event_name == 'release' || '' }}/g' > .github/workflows/manylinux_build_script.sh
       - run: docker run -v "$(pwd)":/workdir --platform linux/${{ matrix.architecture }} quay.io/pypa/manylinux2014_${{ matrix.architecture }} /bin/bash /workdir/.github/workflows/manylinux_build_script.sh
-        if: github.event_name == 'release' || matrix.architecture == 'x86_64'
+        if: github.event_name == 'release' || github.event_name == 'workflow_dispatch' || matrix.architecture == 'x86_64'
       - uses: actions/upload-artifact@v4
         with:
           name: reasonable_wheels_${{ matrix.architecture }}_linux_gnu
@@ -171,13 +172,13 @@ jobs:
       - uses: docker/setup-qemu-action@v2
         with:
           platforms: linux/${{ matrix.architecture }}
-        if: github.event_name == 'release' && matrix.architecture != 'x86_64'
+        if: (github.event_name == 'release' || github.event_name == 'workflow_dispatch') && matrix.architecture != 'x86_64'
       - uses: ./.github/actions/setup-rust
         with:
           version: stable
       - run: sed 's/%arch%/${{ matrix.architecture }}/g' .github/workflows/musllinux_build.sh | sed 's/%for_each_version%/${{ github.event_name == 'release' || '' }}/g' > .github/workflows/musllinux_build_script.sh
       - run: docker run -v "$(pwd)":/workdir --platform linux/${{ matrix.architecture }} quay.io/pypa/musllinux_1_2_${{ matrix.architecture }} /bin/bash /workdir/.github/workflows/musllinux_build_script.sh
-        if: github.event_name == 'release' || matrix.architecture == 'x86_64'
+        if: github.event_name == 'release' || github.event_name == 'workflow_dispatch' || matrix.architecture == 'x86_64'
       - run: find .
       - uses: actions/upload-artifact@v4
         with:
@@ -216,10 +217,10 @@ jobs:
         working-directory: ./python
       - run: maturin build --release --target x86_64-apple-darwin --features abi3
         working-directory: ./python
-        if: github.event_name == 'release'
+        if: github.event_name == 'release' || github.event_name == 'workflow_dispatch'
       - run: maturin build --release --target aarch64-apple-darwin --features abi3
         working-directory: ./python
-        if: github.event_name == 'release'
+        if: github.event_name == 'release' || github.event_name == 'workflow_dispatch'
       - uses: actions/upload-artifact@v4
         with:
           name: reasonable_wheels_macos
