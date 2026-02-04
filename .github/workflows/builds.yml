@@ -36,11 +36,11 @@ jobs:
           PKG_CONFIG_PATH: /usr/lib/aarch64-linux-gnu/pkgconfig
       - uses: actions/upload-artifact@v4
         with:
-          name: reasonable_x86_64_linux_gnu
+          name: reasonable_bin_x86_64_linux_gnu
           path: target/release/reasonable
       - uses: actions/upload-artifact@v4
         with:
-          name: reasonable_aarch64_linux_gnu
+          name: reasonable_bin_aarch64_linux_gnu
           path: target/aarch64-unknown-linux-gnu/release/reasonable
       - run: mv target/release/reasonable reasonable_${{ github.event.release.tag_name }}_x86_64_linux_gnu
         if: github.event_name == 'release'
@@ -69,11 +69,11 @@ jobs:
         working-directory: ./cli
       - uses: actions/upload-artifact@v4
         with:
-          name: reasonable_x86_64_apple
+          name: reasonable_bin_x86_64_apple
           path: target/release/reasonable
       - uses: actions/upload-artifact@v4
         with:
-          name: reasonable_aarch64_apple
+          name: reasonable_bin_aarch64_apple
           path: target/aarch64-apple-darwin/release/reasonable
       - run: mv target/release/reasonable reasonable_${{ github.event.release.tag_name }}_x86_64_apple
         if: github.event_name == 'release'
@@ -100,7 +100,7 @@ jobs:
         working-directory: ./cli
       - uses: actions/upload-artifact@v4
         with:
-          name: reasonable_x86_64_windows_msvc
+          name: reasonable_bin_x86_64_windows_msvc
           path: target/release/reasonable.exe
       - run: mv target/release/reasonable.exe reasonable_${{ github.event.release.tag_name }}_x86_64_windows_msvc.exe
         if: github.event_name == 'release'
@@ -130,7 +130,7 @@ jobs:
       - run: maturin sdist -m python/Cargo.toml
       - uses: actions/upload-artifact@v4
         with:
-          name: reasonable_dist
+          name: reasonable_sdist
           path: target/wheels/*.tar.gz
 
   wheel_linux:
@@ -155,7 +155,7 @@ jobs:
         if: github.event_name == 'release' || matrix.architecture == 'x86_64'
       - uses: actions/upload-artifact@v4
         with:
-          name: reasonable_${{ matrix.architecture }}_linux_gnu
+          name: reasonable_wheels_${{ matrix.architecture }}_linux_gnu
           path: target/wheels/*.whl
 
   wheel_linux_musl:
@@ -181,7 +181,7 @@ jobs:
       - run: find .
       - uses: actions/upload-artifact@v4
         with:
-          name: reasonable_${{ matrix.architecture }}_linux_musl
+          name: reasonable_wheels_${{ matrix.architecture }}_linux_musl
           path: target/wheels/*.whl
 
   wheel_mac:
@@ -222,7 +222,7 @@ jobs:
         if: github.event_name == 'release'
       - uses: actions/upload-artifact@v4
         with:
-          name: reasonable_macos
+          name: reasonable_wheels_macos
           path: target/wheels/*.whl
 
   wheel_windows:
@@ -248,7 +248,7 @@ jobs:
       - run: maturin build --release -m python/Cargo.toml --features abi3
       - uses: actions/upload-artifact@v4
         with:
-          name: reasonable_windows
+          name: reasonable_wheels_windows
           path: target/wheels/*.whl
 
   python_deb_linux:
@@ -265,7 +265,7 @@ jobs:
       - name: Download linux wheel artifacts
         uses: actions/download-artifact@v4
         with:
-          pattern: reasonable_*_linux_*
+          pattern: reasonable_wheels_*_linux_*
           path: dist/wheels
           merge-multiple: true
 
@@ -347,7 +347,12 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          pattern: reasonable_*
+          pattern: reasonable_wheels_*
+          path: dist
+          merge-multiple: true
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: reasonable_sdist
           path: dist
           merge-multiple: true
       - uses: pypa/gh-action-pypi-publish@release/v1
