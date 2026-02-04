@@ -155,7 +155,7 @@ jobs:
         if: github.event_name == 'release' || matrix.architecture == 'x86_64'
       - uses: actions/upload-artifact@v4
         with:
-          name: reasonable_${{ matrix.architecture }}_linux_gnu
+          name: reasonable_wheel_${{ matrix.architecture }}_linux_gnu
           path: target/wheels/*.whl
 
   wheel_linux_musl:
@@ -181,7 +181,7 @@ jobs:
       - run: find .
       - uses: actions/upload-artifact@v4
         with:
-          name: reasonable_${{ matrix.architecture }}_linux_musl
+          name: reasonable_wheel_${{ matrix.architecture }}_linux_musl
           path: target/wheels/*.whl
 
   wheel_mac:
@@ -222,7 +222,7 @@ jobs:
         if: github.event_name == 'release'
       - uses: actions/upload-artifact@v4
         with:
-          name: reasonable_macos
+          name: reasonable_wheel_macos
           path: target/wheels/*.whl
 
   wheel_windows:
@@ -248,7 +248,7 @@ jobs:
       - run: maturin build --release -m python/Cargo.toml --features abi3
       - uses: actions/upload-artifact@v4
         with:
-          name: reasonable_windows
+          name: reasonable_wheel_windows
           path: target/wheels/*.whl
 
   publish_pypi:
