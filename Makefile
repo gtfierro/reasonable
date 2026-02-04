@@ -1,4 +1,4 @@
-.PHONY: test build
+.PHONY: test build deb deb-python
 
 #PY36_VERSION=3.6.10
 PY37_VERSION=3.7.10
@@ -59,3 +59,7 @@ bench: build
 deb:
 	# Requires: cargo install cargo-deb
 	./scripts/build_deb.sh
+
+.PHONY: deb-python
+deb-python:
+	./scripts/build_python_deb.sh

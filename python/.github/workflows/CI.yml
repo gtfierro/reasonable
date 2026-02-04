@@ -153,11 +153,47 @@ jobs:
           name: wheels-sdist
           path: dist
 
+  deb-linux:
+    name: Debian package (linux-${{ matrix.target }})
+    runs-on: ubuntu-22.04
+    needs: linux
+    strategy:
+      fail-fast: false
+      matrix:
+        target:
+          - x86_64
+          - x86
+          - aarch64
+          - armv7
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+      - name: Install wheel2deb deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y apt-file dpkg-dev fakeroot build-essential devscripts debhelper
+          sudo apt-file update
+          python -m pip install --upgrade pip wheel2deb
+      - name: Download wheel artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: wheels-linux-${{ matrix.target }}
+          path: dist/wheels
+      - name: Build .deb from wheel
+        working-directory: dist/wheels/wheels-linux-${{ matrix.target }}
+        run: wheel2deb
+      - name: Upload .deb
+        uses: actions/upload-artifact@v4
+        with:
+          name: deb-linux-${{ matrix.target }}
+          path: dist/wheels/wheels-linux-${{ matrix.target }}/output/*.deb
+
   release:
     name: Release
     runs-on: ubuntu-latest
     if: ${{ startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch' }}
-    needs: [linux, musllinux, windows, macos, sdist]
+    needs: [linux, musllinux, windows, macos, sdist, deb-linux]
     permissions:
       # Use to sign the release artifacts
       id-token: write
@@ -171,6 +207,30 @@ jobs:
         uses: actions/attest-build-provenance@v2
         with:
           subject-path: 'wheels-*/*'
+      - name: Generate .deb attestation
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: 'deb-*/*'
+      - name: Gather .deb files
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+          find deb-* -type f -name '*.deb' -print -exec cp -v {} dist/ \;
+          ls -la dist
+      - name: Create checksums
+        if: ${{ startsWith(github.ref, 'refs/tags/') }}
+        run: |
+          cd dist
+          sha256sum *.deb > SHA256SUMS
+          cat SHA256SUMS
+      - name: Upload .deb to GitHub Release
+        if: ${{ startsWith(github.ref, 'refs/tags/') }}
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            dist/*.deb
+            dist/SHA256SUMS
       - name: Publish to PyPI
         if: ${{ startsWith(github.ref, 'refs/tags/') }}
         uses: PyO3/maturin-action@v1
