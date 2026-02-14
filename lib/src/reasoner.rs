@@ -1366,34 +1366,23 @@ impl Reasoner {
                 // cls-uni  T(?c, owl:unionOf, ?x)
                 // LIST[?x, ?c1, ..., ?cn]
                 // T(?y, rdf:type, ?ci) (for any i in 1-n) =>  T(?y, rdf:type, ?c)
-                let mut new_cls_uni_instances = Vec::new();
-                for (_union_class, _listname) in self.unions.borrow().iter() {
-                    let listname = *_listname;
-                    let union_class = *_union_class;
-                    if let Some(values) = ds.get_list_values(listname) {
-                        // let value_uris: Vec<String> = values.iter().map(|v| node_to_string(self.index.get(*v).unwrap())).collect();
-                        // debug!("{} {} (len {}) {} {:?}", listname, self.index.get(union_class).unwrap(), values.len(), self.index.get(listname).unwrap(), value_uris);
-                        let mut class_counter: HashMap<URI, usize> = HashMap::new();
-                        for (_inst, _list_class) in self.instances.borrow().iter() {
-                            let inst = *_inst;
-                            let list_class = *_list_class;
-                            // debug!("inst {} values len {}, list class {}", self.index.get(inst).unwrap(), values.len(), list_class);
-                            if values.contains(&list_class) {
-                                debug!("{} is a {}", inst, list_class);
-                                let count = class_counter.entry(inst).or_insert(0);
-                                *count += 1;
-                            }
-                        }
-                        for (inst, num_implemented) in class_counter.iter() {
-                            if *num_implemented > 0 {
-                                // union instead of union
-                                // debug!("inferred that {} is a {}", inst, union_class);
-                                new_cls_uni_instances.push((*inst, (rdftype_node, union_class)));
-                            }
+                // Optimized: Join rdf_type_inv(Class, Inst) with UnionMap(Class, Union)
+                let mut union_memberships: Vec<(URI, URI)> = Vec::new();
+                for (union_class, listname) in self.unions.borrow().iter() {
+                    if let Some(values) = ds.get_list_values(*listname) {
+                        for &member_class in values {
+                            union_memberships.push((member_class, *union_class));
                         }
                     }
                 }
-                self.all_triples_input.extend(new_cls_uni_instances);
+                let union_mem_var = self.iter1.variable::<(URI, URI)>("union_memberships_tmp");
+                union_mem_var.extend(union_memberships);
+
+                self.all_triples_input.from_join(
+                    &self.rdf_type_inv.borrow(),
+                    &union_mem_var,
+                    |&_member_class, &inst, &union_class| (inst, (rdftype_node, union_class)),
+                );
 
                 // cls-com
                 // T(?c1, owl:complementOf, ?c2)
