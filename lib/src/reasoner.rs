@@ -1281,48 +1281,66 @@ impl Reasoner {
                 }
 
                 // cls-int1
-                // There's a fair amount of complexity here that we have to manage. The rule we are
-                // implementing is cls-int-1:
-                //
-                //      T(?c owl:intersectionOf ?x), LIST[?x, ?c1...?cn],
-                //      T(?y rdf:type ?c_i) for i in range(1,n) =>
-                //       T(?y rdf:type ?c)
-                //
-                // Useful structures:
-                // - `owl_intersection_of` is keyed by class and values are the list heads
-                // - `ds` gives the list values for the given head (ds.get_list_values(listname))
-                //
-                // Goal: we need to find instances (?y rdf:type ?class) of all classes given by the
-                // list identified by the head for each owl:intersectionOf node.
-                //
-                // We can get the list of classes easily by iterating over each key of the
-                // owl_intersection_of variable. However, we need an efficient way of seeing if there
-                // are instances of *each* of those classes (union). This could be a N-way join (where
-                // N is the number of classes in the list)
+                // Optimized implementation:
+                // 1. Build a temporary index `class -> [instances]` from `self.instances`.
+                // 2. For each intersection list:
+                //    a. Select the class in the list with the fewest instances to minimize candidates.
+                //    b. Verify if these candidate instances belong to all other classes in the list.
+                let mut class_instances: HashMap<URI, Vec<URI>> = HashMap::new();
+                for (inst, class) in self.instances.borrow().iter() {
+                    class_instances.entry(*class).or_default().push(*inst);
+                }
+
                 let mut new_cls_int1_instances = Vec::new();
-                for (_intersection_class, _listname) in self.intersections.borrow().iter() {
-                    let listname = *_listname;
-                    let intersection_class = *_intersection_class;
+                for (intersection_class, listname) in self.intersections.borrow().iter() {
+                    let listname = *listname;
+                    let intersection_class = *intersection_class;
                     if let Some(values) = ds.get_list_values(listname) {
-                        // let value_uris: Vec<String> = values.iter().map(|v| node_to_string(self.index.get(*v).unwrap())).collect();
-                        // debug!("{} {} (len {}) {} {:?}", listname, self.index.get(intersection_class).unwrap(), values.len(), self.index.get(listname).unwrap(), value_uris);
-                        let mut class_counter: HashMap<URI, usize> = HashMap::new();
-                        for (_inst, _list_class) in self.instances.borrow().iter() {
-                            let inst = *_inst;
-                            let list_class = *_list_class;
-                            // debug!("inst {} values len {}, list class {}", self.index.get(inst).unwrap(), values.len(), list_class);
-                            if values.contains(&list_class) {
-                                // debug!("{:?} is a {:?}", inst, list_class);
-                                let count = class_counter.entry(inst).or_insert(0);
-                                *count += 1;
+                        if values.is_empty() {
+                            continue;
+                        }
+
+                        // Optimization: Start with the class having the fewest instances
+                        let mut best_class = values[0];
+                        let mut min_len = usize::MAX;
+                        let mut empty_intersection = false;
+
+                        for &cls in values {
+                            match class_instances.get(&cls) {
+                                Some(insts) => {
+                                    if insts.len() < min_len {
+                                        min_len = insts.len();
+                                        best_class = cls;
+                                    }
+                                }
+                                None => {
+                                    // One of the classes has no instances, so intersection is empty
+                                    empty_intersection = true;
+                                    break;
+                                }
                             }
                         }
-                        for (inst, num_implemented) in class_counter.iter() {
-                            if *num_implemented == values.len() {
-                                // debug!("inferred that {:?} is a {:?}", inst, intersection_class);
-                                // println!("inferred {:?} is a {:?}", self.to_u(*inst), self.to_u(intersection_class));
-                                new_cls_int1_instances
-                                    .push((*inst, (rdftype_node, intersection_class)));
+
+                        if empty_intersection {
+                            continue;
+                        }
+
+                        if let Some(candidates) = class_instances.get(&best_class) {
+                            for &inst in candidates {
+                                let mut all_match = true;
+                                for &cls in values {
+                                    if cls == best_class {
+                                        continue;
+                                    }
+                                    if !self.instances.borrow().contains(&(inst, cls)) {
+                                        all_match = false;
+                                        break;
+                                    }
+                                }
+                                if all_match {
+                                    new_cls_int1_instances
+                                        .push((inst, (rdftype_node, intersection_class)));
+                                }
                             }
                         }
                     }
@@ -1340,7 +1358,7 @@ impl Reasoner {
                                 new_cls_int2_instances.push((inst, (rdftype_node, list_class)));
                             }
                         }
-                        (inst, new_cls_int2_instances.len() as URI)
+                        (inst, new_cls_int2_instances.len() as URI) // Keeping return type consistent, value ignored
                     },
                 );
                 self.all_triples_input.extend(new_cls_int2_instances);
