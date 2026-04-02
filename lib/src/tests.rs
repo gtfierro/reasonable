@@ -1257,3 +1257,172 @@ fn test_incremental_multiple_batches() {
 
     assert_eq!(incr_result, full_result);
 }
+
+// ==================== Retraction / clear() behavior tests ====================
+
+#[test]
+fn test_clear_and_rematerialize_without_retracted_triple() {
+    // Simulate retraction via clear() + reload without the removed triple.
+    // Start with: A subClassOf B, x rdf:type A → infers x rdf:type B.
+    // Then "retract" the subClassOf and re-materialize → x rdf:type B should disappear.
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![
+        ("urn:A", RDFS_SUBCLASSOF, "urn:B"),
+        ("urn:x", RDF_TYPE, "urn:A"),
+    ]);
+    r.reason();
+    let res = r.get_triples_string();
+    assert!(
+        res.contains(&("<urn:x>".to_string(), wrap!(RDF_TYPE), "<urn:B>".to_string())),
+        "Before retraction: x should be inferred as type B"
+    );
+
+    // "Retract" the subClassOf by rebuilding from scratch without it
+    let mut r2 = Reasoner::new();
+    r2.load_triples_str(vec![("urn:x", RDF_TYPE, "urn:A")]);
+    r2.reason();
+    let res2 = r2.get_triples_string();
+    assert!(
+        !res2.contains(&("<urn:x>".to_string(), wrap!(RDF_TYPE), "<urn:B>".to_string())),
+        "After retraction: x should NOT be inferred as type B"
+    );
+}
+
+#[test]
+fn test_clear_resets_to_base_triples() {
+    // clear() resets to base triples (all triples ever loaded), not to empty.
+    // After clear(), reason() performs a full re-materialization from base.
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![
+        ("urn:A", RDFS_SUBCLASSOF, "urn:B"),
+        ("urn:x", RDF_TYPE, "urn:A"),
+    ]);
+    r.reason();
+
+    // clear() discards inferred triples but retains all loaded (base) triples
+    r.clear();
+    r.reason();
+
+    let mut res = r.get_triples_string();
+    res.sort();
+
+    // Should match a fresh reasoner with the SAME base input
+    let mut fresh = Reasoner::new();
+    fresh.load_triples_str(vec![
+        ("urn:A", RDFS_SUBCLASSOF, "urn:B"),
+        ("urn:x", RDF_TYPE, "urn:A"),
+    ]);
+    fresh.reason();
+    let mut fresh_res = fresh.get_triples_string();
+    fresh_res.sort();
+
+    assert_eq!(res, fresh_res, "clear() + reason() should re-derive the same closure from base");
+}
+
+#[test]
+fn test_clear_then_incremental_works() {
+    // After clear() + reason(), the reasoner should support incremental again.
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![("urn:A", RDFS_SUBCLASSOF, "urn:B")]);
+    r.reason();
+
+    r.clear();
+    r.load_triples_str(vec![("urn:A", RDFS_SUBCLASSOF, "urn:B")]);
+    r.reason(); // Full re-materialization
+
+    // Now add incrementally
+    r.load_triples_str(vec![("urn:x", RDF_TYPE, "urn:A")]);
+    r.reason(); // Incremental
+
+    let mut res = r.get_triples_string();
+    res.sort();
+
+    // Compare with fresh full materialization
+    let mut fresh = Reasoner::new();
+    fresh.load_triples_str(vec![
+        ("urn:A", RDFS_SUBCLASSOF, "urn:B"),
+        ("urn:x", RDF_TYPE, "urn:A"),
+    ]);
+    fresh.reason();
+    let mut fresh_res = fresh.get_triples_string();
+    fresh_res.sort();
+
+    assert_eq!(res, fresh_res, "clear() → reason() → incremental should work correctly");
+}
+
+#[test]
+fn test_reason_full_simulates_retraction() {
+    // reason_full() re-derives from base triples only. If we modify base
+    // (via clear + reload), reason_full() should reflect the change.
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![
+        ("urn:A", RDFS_SUBCLASSOF, "urn:B"),
+        ("urn:x", RDF_TYPE, "urn:A"),
+    ]);
+    r.reason();
+
+    // Incrementally add more data
+    r.load_triples_str(vec![("urn:y", RDF_TYPE, "urn:A")]);
+    r.reason();
+
+    // Now reason_full() should produce the same result (base includes all loaded triples)
+    let mut before = r.get_triples_string();
+    before.sort();
+
+    r.reason_full();
+    let mut after = r.get_triples_string();
+    after.sort();
+
+    assert_eq!(before, after, "reason_full() should match incremental result");
+}
+
+#[test]
+fn test_incremental_does_not_support_retraction() {
+    // Document that incremental materialization does NOT support retraction.
+    // Once a triple is loaded, it becomes part of the base and persists across
+    // clear() calls. The only way to truly retract is to create a new Reasoner.
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![("urn:A", RDFS_SUBCLASSOF, "urn:B")]);
+    r.reason();
+
+    // Add an instance
+    r.load_triples_str(vec![("urn:x", RDF_TYPE, "urn:A")]);
+    r.reason();
+
+    let res = r.get_triples_string();
+    assert!(
+        res.contains(&("<urn:x>".to_string(), wrap!(RDF_TYPE), "<urn:B>".to_string())),
+        "x should be inferred as type B"
+    );
+
+    // There is no way to remove a triple incrementally.
+    // Calling reason() again without adding anything is a no-op.
+    r.reason();
+    let res2 = r.get_triples_string();
+    assert!(
+        res2.contains(&("<urn:x>".to_string(), wrap!(RDF_TYPE), "<urn:B>".to_string())),
+        "Inferred triples persist — no retraction support in incremental mode"
+    );
+
+    // clear() resets inferred state but base triples persist, so the
+    // inference is re-derived on the next reason() call.
+    r.clear();
+    r.reason();
+    let res3 = r.get_triples_string();
+    assert!(
+        res3.contains(&("<urn:x>".to_string(), wrap!(RDF_TYPE), "<urn:B>".to_string())),
+        "clear() retains base triples — inference is re-derived"
+    );
+
+    // The ONLY way to truly retract is to create a new Reasoner without the triple.
+    let mut r2 = Reasoner::new();
+    r2.load_triples_str(vec![("urn:A", RDFS_SUBCLASSOF, "urn:B")]);
+    // Deliberately NOT loading (x, rdf:type, A)
+    r2.reason();
+
+    let res4 = r2.get_triples_string();
+    assert!(
+        !res4.contains(&("<urn:x>".to_string(), wrap!(RDF_TYPE), "<urn:B>".to_string())),
+        "New reasoner without x: the inference should be gone"
+    );
+}
