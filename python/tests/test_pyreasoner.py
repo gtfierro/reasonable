@@ -420,3 +420,138 @@ def test_error_asymmetric():
         ("urn:x", "urn:p", "urn:y"),
         ("urn:y", "urn:p", "urn:x"),
     ])
+
+
+# ==================== Incremental / retraction tests ====================
+
+RDFS_SUBCLASSOF = "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+
+
+def _triple_set(triples):
+    """Convert list of (s, p, o) tuples to a set for comparison."""
+    return set((str(s), str(p), str(o)) for s, p, o in triples)
+
+
+def test_update_graph_additions_only():
+    """update_graph with a superset should be incremental (returns False)."""
+    import reasonable
+    from rdflib import Graph, URIRef
+
+    g = Graph()
+    g.add((URIRef("urn:A"), URIRef(RDFS_SUBCLASSOF), URIRef("urn:B")))
+
+    r = reasonable.PyReasoner()
+    r.from_graph(g)
+    r.reason()
+
+    # Add a triple
+    g.add((URIRef("urn:x"), URIRef(RDF_TYPE), URIRef("urn:A")))
+    needs_full = r.update_graph(g)
+    assert needs_full is False, "Additions only should not need full re-materialization"
+
+    out = r.reason()
+    out_set = _triple_set(out)
+    assert ("urn:x", RDF_TYPE, "urn:B") in out_set, "Should infer x rdf:type B"
+
+
+def test_update_graph_with_removals():
+    """update_graph with removals should trigger full re-materialization."""
+    import reasonable
+    from rdflib import Graph, URIRef
+
+    g = Graph()
+    g.add((URIRef("urn:A"), URIRef(RDFS_SUBCLASSOF), URIRef("urn:B")))
+    g.add((URIRef("urn:x"), URIRef(RDF_TYPE), URIRef("urn:A")))
+
+    r = reasonable.PyReasoner()
+    r.from_graph(g)
+    out = r.reason()
+    out_set = _triple_set(out)
+    assert ("urn:x", RDF_TYPE, "urn:B") in out_set
+
+    # Remove the instance triple
+    g.remove((URIRef("urn:x"), URIRef(RDF_TYPE), URIRef("urn:A")))
+    needs_full = r.update_graph(g)
+    assert needs_full is True, "Removal should trigger full re-materialization"
+
+    out = r.reason()
+    out_set = _triple_set(out)
+    assert ("urn:x", RDF_TYPE, "urn:B") not in out_set, \
+        "After retraction, x rdf:type B should be gone"
+
+
+def test_update_graph_mixed():
+    """update_graph with both additions and removals."""
+    import reasonable
+    from rdflib import Graph, URIRef
+
+    g = Graph()
+    g.add((URIRef("urn:A"), URIRef(RDFS_SUBCLASSOF), URIRef("urn:B")))
+    g.add((URIRef("urn:x"), URIRef(RDF_TYPE), URIRef("urn:A")))
+
+    r = reasonable.PyReasoner()
+    r.from_graph(g)
+    r.reason()
+
+    # Replace x with y
+    g.remove((URIRef("urn:x"), URIRef(RDF_TYPE), URIRef("urn:A")))
+    g.add((URIRef("urn:y"), URIRef(RDF_TYPE), URIRef("urn:A")))
+    needs_full = r.update_graph(g)
+    assert needs_full is True
+
+    out = r.reason()
+    out_set = _triple_set(out)
+    assert ("urn:x", RDF_TYPE, "urn:B") not in out_set, "x inference should be gone"
+    assert ("urn:y", RDF_TYPE, "urn:B") in out_set, "y inference should be present"
+
+
+def test_clear_exposed():
+    """clear() should be callable from Python."""
+    import reasonable
+
+    r = reasonable.PyReasoner()
+    r.load_file("../example_models/ontologies/rdfs.ttl")
+    r.reason()
+    r.clear()
+    out = r.reason()
+    # Should still produce results (clear resets to base, not empty)
+    assert len(out) > 0
+
+
+def test_reason_full_exposed():
+    """reason_full() should force full re-materialization."""
+    import reasonable
+    from rdflib import Graph, URIRef
+
+    g = Graph()
+    g.add((URIRef("urn:A"), URIRef(RDFS_SUBCLASSOF), URIRef("urn:B")))
+    g.add((URIRef("urn:x"), URIRef(RDF_TYPE), URIRef("urn:A")))
+
+    r = reasonable.PyReasoner()
+    r.from_graph(g)
+    out1 = r.reason()
+    out2 = r.reason_full()
+    assert _triple_set(out1) == _triple_set(out2), \
+        "reason_full() should match reason() when nothing changed"
+
+
+def test_get_base_triples():
+    """get_base_triples() should return the non-inferred triples."""
+    import reasonable
+    from rdflib import Graph, URIRef
+
+    g = Graph()
+    g.add((URIRef("urn:A"), URIRef(RDFS_SUBCLASSOF), URIRef("urn:B")))
+    g.add((URIRef("urn:x"), URIRef(RDF_TYPE), URIRef("urn:A")))
+
+    r = reasonable.PyReasoner()
+    r.from_graph(g)
+    r.reason()
+
+    base = r.get_base_triples()
+    base_set = _triple_set(base)
+    # User triples should be in base
+    assert ("urn:A", RDFS_SUBCLASSOF, "urn:B") in base_set
+    assert ("urn:x", RDF_TYPE, "urn:A") in base_set
+    # Inferred triples should NOT be in base
+    assert ("urn:x", RDF_TYPE, "urn:B") not in base_set

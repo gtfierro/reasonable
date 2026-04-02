@@ -110,6 +110,50 @@ fn term_to_python<'a>(
     Ok(res)
 }
 
+/// Converts the output of reason() or get_triples() to Python rdflib terms.
+fn triples_to_python(
+    py: Python,
+    triples: Vec<Triple>,
+) -> PyResult<Vec<(Py<PyAny>, Py<PyAny>, Py<PyAny>)>> {
+    let rdflib = py.import("rdflib")?;
+    let mut res = Vec::new();
+    for t in triples {
+        let s = term_to_python(py, &rdflib, Term::from(t.subject.clone()))?;
+        let p = term_to_python(py, &rdflib, Term::from(t.predicate.clone()))?;
+        let o = term_to_python(py, &rdflib, Term::from(t.object.clone()))?;
+        res.push((s.into(), p.into(), o.into()));
+    }
+    Ok(res)
+}
+
+/// Extracts triples from an rdflib Graph (or any iterable of 3-tuples) into oxrdf Triples.
+fn extract_triples_from_graph(py: Python, graph: &PyObject) -> PyResult<Vec<Triple>> {
+    let converters = PyModule::from_code(
+        py,
+        c_str!(
+            "def get_triples(graph):
+    return list(graph)
+"
+        ),
+        c_str!("converters.pg"),
+        c_str!("converters"),
+    )?;
+    let binding = converters.getattr("get_triples")?.call1((graph,))?;
+    let l: &Bound<'_, PyList> = binding.downcast()?;
+    let mut triples: Vec<Triple> = Vec::new();
+    for t in l.iter() {
+        let t: &Bound<'_, PyTuple> = t.downcast()?;
+        let s = MyTerm::from(t.get_item(0)).0;
+        let p = MyTerm::from(t.get_item(1)).0;
+        let o = MyTerm::from(t.get_item(2)).0;
+        match make_triple(s, p, o) {
+            Ok(triple) => triples.push(triple),
+            Err(e) => return Err(PyReasoningError(e).into()),
+        };
+    }
+    Ok(triples)
+}
+
 #[pyclass(unsendable)]
 pub struct PyReasoner {
     reasoner: reasoner::Reasoner,
@@ -138,48 +182,60 @@ impl PyReasoner {
     /// definitions in order to use them. Returns a list of triples
     pub fn reason(&mut self) -> PyResult<Vec<(Py<PyAny>, Py<PyAny>, Py<PyAny>)>> {
         Python::with_gil(|py| {
-            let rdflib = py.import("rdflib")?;
             self.reasoner.reason();
-            let mut res = Vec::new();
-            for t in self.reasoner.get_triples() {
-                let s = term_to_python(py, &rdflib, Term::from(t.subject.clone()))?;
-                let p = term_to_python(py, &rdflib, Term::from(t.predicate.clone()))?;
-                let o = term_to_python(py, &rdflib, Term::from(t.object.clone()))?;
-                res.push((s.into(), p.into(), o.into()));
-            }
-            Ok(res)
+            triples_to_python(py, self.reasoner.get_triples())
         })
     }
 
     /// Loads in triples from an RDFlib Graph or any other object that can be converted into a list
-    /// of triples (length-3 tuples of URI-formatted strings)
+    /// of triples (length-3 tuples of URI-formatted strings).
+    ///
+    /// Note: this *appends* to the existing base triples. To *replace* the base
+    /// (supporting retraction), use `update_graph()` instead.
     pub fn from_graph(&mut self, graph: PyObject) -> PyResult<()> {
         Python::with_gil(|py| {
-            let converters = PyModule::from_code(
-                py,
-                c_str!(
-                    "def get_triples(graph):
-    return list(graph)
-"
-                ),
-                c_str!("converters.pg"),
-                c_str!("converters"),
-            )?;
-            let binding = converters.getattr("get_triples")?.call1((graph,))?;
-            let l: &Bound<'_, PyList> = binding.downcast()?;
-            let mut triples: Vec<Triple> = Vec::new();
-            for t in l.iter() {
-                let t: &Bound<'_, PyTuple> = t.downcast()?;
-                let s = MyTerm::from(t.get_item(0)).0;
-                let p = MyTerm::from(t.get_item(1)).0;
-                let o = MyTerm::from(t.get_item(2)).0;
-                match make_triple(s, p, o) {
-                    Ok(triple) => triples.push(triple),
-                    Err(e) => return Err(PyReasoningError(e).into()),
-                };
-            }
+            let triples = extract_triples_from_graph(py, &graph)?;
             self.reasoner.load_triples(triples);
             Ok(())
+        })
+    }
+
+    /// Replaces the reasoner's base triples with the contents of the given graph.
+    ///
+    /// Computes a diff against the current base:
+    /// - If only additions are detected, the next `reason()` call uses incremental materialization.
+    /// - If any removals are detected, the next `reason()` call performs a full re-materialization.
+    ///
+    /// Returns `True` if removals were detected (full re-materialization needed),
+    /// `False` if only additions (or no change).
+    pub fn update_graph(&mut self, graph: PyObject) -> PyResult<bool> {
+        Python::with_gil(|py| {
+            let triples = extract_triples_from_graph(py, &graph)?;
+            let needs_full = self.reasoner.set_base_triples(triples);
+            Ok(needs_full)
+        })
+    }
+
+    /// Clears all inferred state, resetting to base triples.
+    /// The next `reason()` call will perform a full re-materialization.
+    pub fn clear(&mut self) {
+        self.reasoner.clear();
+    }
+
+    /// Forces a full re-materialization from base triples.
+    /// Equivalent to `clear()` followed by `reason()`.
+    /// Returns a list of all triples (base + inferred).
+    pub fn reason_full(&mut self) -> PyResult<Vec<(Py<PyAny>, Py<PyAny>, Py<PyAny>)>> {
+        Python::with_gil(|py| {
+            self.reasoner.reason_full();
+            triples_to_python(py, self.reasoner.get_triples())
+        })
+    }
+
+    /// Returns the current base (non-inferred) triples as rdflib terms.
+    pub fn get_base_triples(&self) -> PyResult<Vec<(Py<PyAny>, Py<PyAny>, Py<PyAny>)>> {
+        Python::with_gil(|py| {
+            triples_to_python(py, self.reasoner.get_input())
         })
     }
 }

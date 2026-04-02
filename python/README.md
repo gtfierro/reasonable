@@ -36,6 +36,33 @@ for s, p, o in triples:
 print(len(g_out))
 ```
 
+### Incremental Reasoning with Retraction
+
+Use `update_graph()` to replace the reasoner's base triples when your graph changes. The reasoner automatically computes a diff and selects incremental materialization (additions only) or full re-materialization (if removals detected):
+
+```python
+import rdflib
+import reasonable
+from rdflib import URIRef, RDF
+
+ontology = rdflib.Graph()
+ontology.parse("my_ontology.ttl")
+
+data = rdflib.Graph()
+data.add((URIRef("urn:sensor1"), RDF.type, URIRef("urn:TemperatureSensor")))
+
+r = reasonable.PyReasoner()
+r.from_graph(ontology + data)
+triples = r.reason()  # full materialization
+
+# Later, data changes...
+data.remove((URIRef("urn:sensor1"), RDF.type, URIRef("urn:TemperatureSensor")))
+data.add((URIRef("urn:sensor2"), RDF.type, URIRef("urn:HumiditySensor")))
+
+r.update_graph(ontology + data)  # replaces base, auto-detects diff
+triples = r.reason()             # full re-mat (removals detected)
+```
+
 ## Install
 - Runtime dependency: `rdflib`
 - If you have a prebuilt wheel: `pip install dist/reasonable-*.whl`
@@ -66,14 +93,22 @@ maturin develop -b pyo3 --release
 python -c "import reasonable; print(reasonable.__version__)"
 ```
 
-## API Reference (minimal)
+## API Reference
 - `reasonable.PyReasoner()`
   - `load_file(path: str) -> None`
-    - Load triples from a Turtle or N3 file. Raises `OSError` on missing/invalid paths.
+    - Load triples from a Turtle or N3 file. **Appends** to existing base triples. Raises `OSError` on missing/invalid paths.
   - `from_graph(graph_or_iterable) -> None`
-    - Accepts an rdflib `Graph` or any iterable of 3-tuples convertible to rdflib-like nodes.
+    - **Appends** triples from an rdflib `Graph` (or any iterable of 3-tuples) to the base. Use `update_graph()` instead if you need retraction support.
+  - `update_graph(graph_or_iterable) -> bool`
+    - **Replaces** the base triples with the contents of the given graph. Computes a diff against the current base: if only additions are found, the next `reason()` uses incremental materialization; if any removals are detected, it triggers a full re-materialization. Returns `True` if removals were detected, `False` otherwise.
   - `reason() -> list[tuple[Node, Node, Node]]`
-    - Runs OWL 2 RL materialization and returns all known triples as rdflib nodes.
+    - Runs OWL 2 RL materialization and returns all known triples (base + inferred) as rdflib nodes. After the first call, subsequent calls are incremental (only processing newly added triples) unless removals were detected via `update_graph()`.
+  - `reason_full() -> list[tuple[Node, Node, Node]]`
+    - Forces a full re-materialization from base triples, ignoring any incremental state. Equivalent to `clear()` followed by `reason()`.
+  - `clear() -> None`
+    - Resets all inferred state while keeping base triples. The next `reason()` call will perform a full re-materialization.
+  - `get_base_triples() -> list[tuple[Node, Node, Node]]`
+    - Returns the current base (non-inferred) triples as rdflib nodes. Useful for debugging.
 
 ## Building Wheels
 Build release wheels into `dist/`:

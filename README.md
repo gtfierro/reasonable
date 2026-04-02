@@ -101,6 +101,24 @@ triples = r.reason()
 print("from files:", len(triples))
 ```
 
+#### Incremental Reasoning
+
+After the first `reason()` call, the reasoner supports incremental materialization. Use `update_graph()` to replace the base triples when your graph changes — the reasoner automatically diffs and selects incremental (additions only) or full re-materialization (if removals detected):
+
+```python
+r = reasonable.PyReasoner()
+r.from_graph(ontology + data)
+r.reason()                        # full materialization
+
+# data changes over time...
+data.add(new_triple)
+data.remove(old_triple)
+r.update_graph(ontology + data)   # replaces base, auto-detects diff
+r.reason()                        # incremental or full as needed
+```
+
+See the [Python README](python/README.md) for the full API reference.
+
 ### Rust
 
 See [Rust docs](https://docs.rs/reasonable)
