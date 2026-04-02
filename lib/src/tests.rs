@@ -991,3 +991,269 @@ fn test_cax_dw() -> Result<(), String> {
 //
 //    Ok(())
 //}
+
+// ==================== Incremental materialization tests ====================
+
+/// Helper: runs both full and incremental materialization on the same data
+/// and asserts they produce identical results.
+fn assert_incremental_equivalent(
+    batch1: Vec<(&'static str, &'static str, &'static str)>,
+    batch2: Vec<(&'static str, &'static str, &'static str)>,
+) {
+    // Full materialization: load all triples at once
+    let mut full = Reasoner::new();
+    let mut all = batch1.clone();
+    all.extend(batch2.clone());
+    full.load_triples_str(all);
+    full.reason();
+    let mut full_result = full.get_triples_string();
+    full_result.sort();
+
+    // Incremental materialization: load batch1 → reason → load batch2 → reason
+    let mut incr = Reasoner::new();
+    incr.load_triples_str(batch1);
+    incr.reason();
+    incr.load_triples_str(batch2);
+    incr.reason();
+    let mut incr_result = incr.get_triples_string();
+    incr_result.sort();
+
+    assert_eq!(
+        full_result, incr_result,
+        "Incremental materialization produced different results than full materialization"
+    );
+}
+
+#[test]
+fn test_incremental_cax_sco() {
+    // Ontology: Person subClassOf Agent
+    // Batch 1: ontology
+    // Batch 2: alice rdf:type Person → should infer alice rdf:type Agent
+    assert_incremental_equivalent(
+        vec![("urn:Person", RDFS_SUBCLASSOF, "urn:Agent")],
+        vec![("urn:alice", RDF_TYPE, "urn:Person")],
+    );
+}
+
+#[test]
+fn test_incremental_eq_sym() {
+    assert_incremental_equivalent(
+        vec![("urn:x", OWL_SAMEAS, "urn:y")],
+        vec![("urn:y", OWL_SAMEAS, "urn:z")],
+    );
+}
+
+#[test]
+fn test_incremental_eq_trans() {
+    assert_incremental_equivalent(
+        vec![("urn:x", OWL_SAMEAS, "urn:y")],
+        vec![("urn:y", OWL_SAMEAS, "urn:z")],
+    );
+}
+
+#[test]
+fn test_incremental_eq_rep_s() {
+    // Adding sameAs should propagate to existing triples
+    assert_incremental_equivalent(
+        vec![("urn:alice", "urn:knows", "urn:bob")],
+        vec![("urn:alice", OWL_SAMEAS, "urn:alice2")],
+    );
+}
+
+#[test]
+fn test_incremental_prp_spo1() {
+    assert_incremental_equivalent(
+        vec![("urn:hasFather", RDFS_SUBPROP, "urn:hasParent")],
+        vec![("urn:bob", "urn:hasFather", "urn:john")],
+    );
+}
+
+#[test]
+fn test_incremental_prp_dom() {
+    assert_incremental_equivalent(
+        vec![("urn:knows", RDFS_DOMAIN, "urn:Person")],
+        vec![("urn:alice", "urn:knows", "urn:bob")],
+    );
+}
+
+#[test]
+fn test_incremental_prp_rng() {
+    assert_incremental_equivalent(
+        vec![("urn:knows", RDFS_RANGE, "urn:Person")],
+        vec![("urn:alice", "urn:knows", "urn:bob")],
+    );
+}
+
+#[test]
+fn test_incremental_prp_inv() {
+    assert_incremental_equivalent(
+        vec![("urn:hasChild", OWL_INVERSEOF, "urn:hasParent")],
+        vec![("urn:bob", "urn:hasChild", "urn:charlie")],
+    );
+}
+
+#[test]
+fn test_incremental_prp_symp() {
+    assert_incremental_equivalent(
+        vec![
+            ("urn:friendOf", RDF_TYPE, OWL_SYMMETRICPROP),
+        ],
+        vec![("urn:alice", "urn:friendOf", "urn:bob")],
+    );
+}
+
+#[test]
+fn test_incremental_prp_trp() {
+    assert_incremental_equivalent(
+        vec![
+            ("urn:ancestor", RDF_TYPE, OWL_TRANSPROP),
+            ("urn:a", "urn:ancestor", "urn:b"),
+        ],
+        vec![("urn:b", "urn:ancestor", "urn:c")],
+    );
+}
+
+#[test]
+fn test_incremental_prp_fp() {
+    assert_incremental_equivalent(
+        vec![
+            ("urn:hasMother", RDF_TYPE, OWL_FUNCPROP),
+            ("urn:bob", "urn:hasMother", "urn:mary"),
+        ],
+        vec![("urn:bob", "urn:hasMother", "urn:maria")],
+    );
+}
+
+#[test]
+fn test_incremental_prp_eqp() {
+    assert_incremental_equivalent(
+        vec![("urn:cost", OWL_EQUIVPROP, "urn:price")],
+        vec![("urn:item1", "urn:cost", "urn:10")],
+    );
+}
+
+#[test]
+fn test_incremental_cax_eqc() {
+    assert_incremental_equivalent(
+        vec![("urn:Human", OWL_EQUIVALENTCLASS, "urn:Person")],
+        vec![("urn:alice", RDF_TYPE, "urn:Human")],
+    );
+}
+
+#[test]
+fn test_incremental_subclass_chain() {
+    // Test cascading: A subClassOf B, B subClassOf C, then add instance of A
+    assert_incremental_equivalent(
+        vec![
+            ("urn:A", RDFS_SUBCLASSOF, "urn:B"),
+            ("urn:B", RDFS_SUBCLASSOF, "urn:C"),
+        ],
+        vec![("urn:x", RDF_TYPE, "urn:A")],
+    );
+}
+
+#[test]
+fn test_incremental_cls_union() {
+    // x is union of A and B. Add instance of A → should infer instance of x.
+    assert_incremental_equivalent(
+        vec![
+            ("urn:x", OWL_UNION, "urn:list1"),
+            ("urn:list1", RDF_FIRST, "urn:A"),
+            ("urn:list1", RDF_REST, "urn:list2"),
+            ("urn:list2", RDF_FIRST, "urn:B"),
+            ("urn:list2", RDF_REST, RDF_NIL),
+        ],
+        vec![("urn:alice", RDF_TYPE, "urn:A")],
+    );
+}
+
+#[test]
+fn test_incremental_cls_intersection() {
+    // x is intersection of A and B. Add an instance of both A and B.
+    assert_incremental_equivalent(
+        vec![
+            ("urn:x", OWL_INTERSECTION, "urn:list1"),
+            ("urn:list1", RDF_FIRST, "urn:A"),
+            ("urn:list1", RDF_REST, "urn:list2"),
+            ("urn:list2", RDF_FIRST, "urn:B"),
+            ("urn:list2", RDF_REST, RDF_NIL),
+            ("urn:alice", RDF_TYPE, "urn:A"),
+        ],
+        vec![("urn:alice", RDF_TYPE, "urn:B")],
+    );
+}
+
+#[test]
+fn test_incremental_cls_hasvalue() {
+    assert_incremental_equivalent(
+        vec![
+            ("urn:r", OWL_HASVALUE, "urn:v"),
+            ("urn:r", OWL_ONPROPERTY, "urn:p"),
+        ],
+        vec![("urn:alice", RDF_TYPE, "urn:r")],
+    );
+}
+
+#[test]
+fn test_incremental_reason_full_matches_incremental() {
+    // Verify that reason_full() produces the same result as incremental
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![("urn:Person", RDFS_SUBCLASSOF, "urn:Agent")]);
+    r.reason();
+    r.load_triples_str(vec![("urn:alice", RDF_TYPE, "urn:Person")]);
+    r.reason();
+    let mut incr_result = r.get_triples_string();
+    incr_result.sort();
+
+    r.reason_full();
+    let mut full_result = r.get_triples_string();
+    full_result.sort();
+
+    assert_eq!(incr_result, full_result);
+}
+
+#[test]
+fn test_incremental_noop_when_no_delta() {
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![("urn:a", RDF_TYPE, "urn:B")]);
+    r.reason();
+    let result1 = r.get_triples_string();
+    // Calling reason() again without adding triples should be a no-op
+    r.reason();
+    let result2 = r.get_triples_string();
+    assert_eq!(result1, result2);
+}
+
+#[test]
+fn test_incremental_multiple_batches() {
+    // Add triples in 3 separate incremental batches
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![
+        ("urn:A", RDFS_SUBCLASSOF, "urn:B"),
+        ("urn:B", RDFS_SUBCLASSOF, "urn:C"),
+    ]);
+    r.reason();
+
+    r.load_triples_str(vec![("urn:x", RDF_TYPE, "urn:A")]);
+    r.reason();
+
+    r.load_triples_str(vec![("urn:y", RDF_TYPE, "urn:B")]);
+    r.reason();
+
+    let mut incr_result = r.get_triples_string();
+    incr_result.sort();
+
+    // Compare with full materialization
+    let mut full = Reasoner::new();
+    full.load_triples_str(vec![
+        ("urn:A", RDFS_SUBCLASSOF, "urn:B"),
+        ("urn:B", RDFS_SUBCLASSOF, "urn:C"),
+        ("urn:x", RDF_TYPE, "urn:A"),
+        ("urn:y", RDF_TYPE, "urn:B"),
+    ]);
+    full.reason();
+    let mut full_result = full.get_triples_string();
+    full_result.sort();
+
+    assert_eq!(incr_result, full_result);
+}
