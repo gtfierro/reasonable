@@ -624,16 +624,6 @@ impl Reasoner {
         self.input = self.base.clone();
     }
 
-    fn rebuild(&mut self, output: Vec<KeyedTriple>) {
-        // TODO: pull in the existing triples
-        //self.iter1 = Iteration::new();
-        self.input = output; //self.spo.clone().complete().iter().map(|&(x, (y, z))| (x, (y, z))).collect();
-        self.all_triples_input = self
-            .iter1
-            .variable::<(URI, (URI, URI))>("all_triples_input");
-        self.spo = self.iter1.variable::<(URI, (URI, URI))>("spo");
-    }
-
     fn add_base_triples(&mut self, input: Vec<KeyedTriple>) {
         self.base.extend(input.clone());
         self.input.extend(input);
@@ -1604,23 +1594,20 @@ impl Reasoner {
             changed = false;
         }
 
-        let output: Vec<KeyedTriple> = self
-            .spo
-            .clone()
-            .complete()
-            .iter()
-            .filter(|inst| {
-                let (_s, (_p, _o)) = inst;
-                *_s > 0 && *_p > 0 && *_o > 0
-            })
-            .cloned()
-            .collect();
-        // Build output with capacity hints
+        // Non-destructive read of stable partitions (preserves Variable state for incremental use)
+        let stable = self.spo.stable.borrow();
+        let mut output: Vec<KeyedTriple> = Vec::new();
+        for batch in stable.iter() {
+            output.extend(
+                batch.iter()
+                    .filter(|(s, (p, o))| *s > 0 && *p > 0 && *o > 0)
+            );
+        }
+        // Build oxrdf output
         let mut out_triples: Vec<Triple> = Vec::with_capacity(output.len());
-        for inst in output.iter() {
-            let (_s, (_p, _o)) = inst;
+        for &(_s, (_p, _o)) in output.iter() {
             let (Some(s), Some(p), Some(o)) =
-                (self.index.get(*_s), self.index.get(*_p), self.index.get(*_o))
+                (self.index.get(_s), self.index.get(_p), self.index.get(_o))
             else {
                 error!(
                     "Index lookup failed for triple IDs: ({}, {}, {})",
@@ -1634,7 +1621,9 @@ impl Reasoner {
             }
         }
         self.output = out_triples;
-        self.rebuild(output);
+        // Store materialized triples for incremental use (sorted for dedup)
+        output.sort_unstable();
+        self.input = output;
     }
 
     fn to_u(&self, u: URI) -> String {
