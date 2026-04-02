@@ -627,9 +627,93 @@ impl Reasoner {
         }
     }
 
-    /// Clears the state and uses the base triples (non-inferred)
+    /// Clears all inferred state and resets to base triples (non-inferred).
+    ///
+    /// After calling `clear()`, the next `reason()` call will perform a full materialization.
     pub fn clear(&mut self) {
         self.input = self.base.clone();
+        self.is_materialized = false;
+        self.pending_delta.clear();
+        self.output.clear();
+        self.errors.clear();
+        self.seen_diags.clear();
+        // Clear auxiliary state
+        self.instances.borrow_mut().clear();
+        self.intersections.borrow_mut().clear();
+        self.unions.borrow_mut().clear();
+        self.complements.borrow_mut().clear();
+        self.established_complementary_instances.borrow_mut().clear();
+        // Recreate the Iteration and all Variables from scratch
+        let mut iter1 = Iteration::new();
+        self.spo = iter1.variable("spo");
+        self.pso = iter1.variable("pso");
+        self.osp = iter1.variable("osp");
+        self.all_triples_input = iter1.variable("all_triples_input");
+        self.rdf_type_inv = Rc::new(RefCell::new(iter1.variable("rdf_type_inv")));
+        self.rdf_type = iter1.variable("rdf_type");
+        self.owl_intersection_of = iter1.variable("owl_intersection_of");
+        self.owl_union_of = iter1.variable("owl_union_of");
+        self.prp_dom = iter1.variable("prp_dom");
+        self.prp_rng = iter1.variable("prp_rng");
+        self.prp_fp_1 = iter1.variable("prp_fp_1");
+        self.prp_fp_2 = iter1.variable("prp_fp_2");
+        self.prp_ifp_1 = iter1.variable("prp_ifp_1");
+        self.prp_ifp_2 = iter1.variable("prp_ifp_2");
+        self.prp_spo1_1 = iter1.variable("prp_spo1_1");
+        self.owl_inv1 = iter1.variable("owl_inv1");
+        self.owl_inv2 = iter1.variable("owl_inv2");
+        self.owl_same_as = iter1.variable("owl_same_as");
+        self.owl_irreflexive = iter1.variable("owl_irreflexive");
+        self.prp_irp_1 = iter1.variable("prp_irp_1");
+        self.owl_asymmetric = iter1.variable("owl_asymmetric");
+        self.prp_asyp_1 = iter1.variable("prp_asyp_1");
+        self.prp_asyp_2 = iter1.variable("prp_asyp_2");
+        self.prp_asyp_3 = iter1.variable("prp_asyp_3");
+        self.prp_inv1 = iter1.variable("prp_inv1");
+        self.owl_propertydisjointwith = iter1.variable("owl_propertydisjointwith");
+        self.owl_propertydisjointwith2 = iter1.variable("owl_propertydisjointwith2");
+        self.prp_pdw_1 = iter1.variable("prp_pdw_1");
+        self.prp_pdw_2 = iter1.variable("prp_pdw_2");
+        self.prp_pdw_3 = iter1.variable("prp_pdw_3");
+        self.transitive_properties = iter1.variable("transitive_properties");
+        self.prp_trp_1 = iter1.variable("prp_trp_1");
+        self.prp_trp_2 = iter1.variable("prp_trp_2");
+        self.symmetric_properties = iter1.variable("symmetric_properties");
+        self.equivalent_properties = iter1.variable("equivalent_properties");
+        self.equivalent_properties_2 = iter1.variable("equivalent_properties_2");
+        self.cls_nothing2 = iter1.variable("cls_nothing2");
+        self.cls_int_2_1 = iter1.variable("cls_int_2_1");
+        self.owl_has_value = iter1.variable("owl_has_value");
+        self.owl_on_property = iter1.variable("owl_on_property");
+        self.cls_hv1_1 = iter1.variable("cls_hv1_1");
+        self.cls_hv2_1 = iter1.variable("cls_hv2_1");
+        self.owl_all_values_from = iter1.variable("owl_all_values_from");
+        self.cls_avf_1 = iter1.variable("cls_avf_1");
+        self.cls_avf_2 = iter1.variable("cls_avf_2");
+        self.owl_some_values_from = iter1.variable("owl_some_values_from");
+        self.cls_svf1_1 = iter1.variable("cls_svf1_1");
+        self.cls_svf1_2 = iter1.variable("cls_svf1_2");
+        self.owl_complement_of = iter1.variable("owl_complement_of");
+        self.things = iter1.variable("things");
+        self.cls_com_1 = iter1.variable("cls_com_1");
+        self.cls_com_2 = iter1.variable("cls_com_2");
+        self.cax_sco_1 = iter1.variable("cax_sco_1");
+        self.cax_sco_2 = iter1.variable("cax_sco_2");
+        self.owl_equivalent_class = iter1.variable("owl_equivalent_class");
+        self.owl_disjoint_with = iter1.variable("owl_disjoint_with");
+        self.cax_dw_1 = iter1.variable("cax_dw_1");
+        self.cax_dw_2 = iter1.variable("cax_dw_2");
+        self.union_mem_var = iter1.variable("union_memberships");
+        self.iter1 = iter1;
+    }
+
+    /// Forces a complete re-materialization from base triples.
+    ///
+    /// Equivalent to `clear()` followed by `reason()`. Useful for verifying
+    /// that incremental results match a full re-derivation.
+    pub fn reason_full(&mut self) {
+        self.clear();
+        self.reason();
     }
 
     fn add_base_triples(&mut self, input: Vec<KeyedTriple>) {
@@ -827,11 +911,14 @@ impl Reasoner {
         info!("Loaded {} triples from file {}", triples.len(), filename);
 
         triples.sort_unstable();
-        // Ensure src is sorted for linear merge
-        self.input.sort_unstable();
-        get_unique(&self.input, &mut triples);
-
-        self.add_base_triples(triples);
+        if self.is_materialized {
+            get_unique(&self.input, &mut triples);
+            self.pending_delta.extend(triples);
+        } else {
+            self.input.sort_unstable();
+            get_unique(&self.input, &mut triples);
+            self.add_base_triples(triples);
+        }
 
         Ok(())
     }
