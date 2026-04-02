@@ -335,6 +335,12 @@ pub struct Reasoner {
     cax_dw_2: Variable<(URI, URI)>,
     union_mem_var: Variable<(URI, URI)>,
 
+    // --- Incremental materialization state ---
+    /// Whether a full materialization has been completed
+    is_materialized: bool,
+    /// Triples added since last reason() call (only used when is_materialized=true)
+    pending_delta: Vec<KeyedTriple>,
+
     // --- Auxiliary state ---
     established_complementary_instances: Rc<RefCell<HashSet<KeyedTriple>>>,
     intersections: Rc<RefCell<HashMap<URI, URI>>>,
@@ -611,6 +617,8 @@ impl Reasoner {
             cax_dw_2,
             union_mem_var,
             // Auxiliary state
+            is_materialized: false,
+            pending_delta: Vec::new(),
             established_complementary_instances: Rc::new(RefCell::new(HashSet::new())),
             intersections: Rc::new(RefCell::new(HashMap::new())),
             unions: Rc::new(RefCell::new(HashMap::new())),
@@ -652,10 +660,16 @@ impl Reasoner {
             }
         }
         trips.sort_unstable();
-        // Ensure src is sorted for linear merge
-        self.input.sort_unstable();
-        get_unique(&self.input, &mut trips);
-        self.add_base_triples(trips);
+        if self.is_materialized {
+            // Dedup against materialized closure and add to pending delta
+            get_unique(&self.input, &mut trips);
+            self.pending_delta.extend(trips);
+        } else {
+            // Ensure src is sorted for linear merge
+            self.input.sort_unstable();
+            get_unique(&self.input, &mut trips);
+            self.add_base_triples(trips);
+        }
     }
 
     /// Loads a vector of triples.
@@ -671,9 +685,7 @@ impl Reasoner {
     /// let mut r = Reasoner::new();
     /// r.load_triples(vec![build_triple()]);
     /// ```
-    pub fn load_triples(&mut self, mut triples: Vec<Triple>) {
-        // Ensure src is sorted for linear merge
-        self.input.sort_unstable();
+    pub fn load_triples(&mut self, triples: Vec<Triple>) {
         let mut trips: Vec<(URI, (URI, URI))> = Vec::with_capacity(triples.len());
         for trip in triples.iter() {
             let s = self.index.put(trip.subject.clone().into());
@@ -682,8 +694,16 @@ impl Reasoner {
             trips.push((s, (p, o)));
         }
         trips.sort_unstable();
-        get_unique(&self.input, &mut trips);
-        self.add_base_triples(trips);
+        if self.is_materialized {
+            // Dedup against materialized closure and add to pending delta
+            get_unique(&self.input, &mut trips);
+            self.pending_delta.extend(trips);
+        } else {
+            // Ensure src is sorted for linear merge
+            self.input.sort_unstable();
+            get_unique(&self.input, &mut trips);
+            self.add_base_triples(trips);
+        }
     }
 
     fn add_error(&mut self, rule: String, message: String) {
@@ -826,9 +846,31 @@ impl Reasoner {
         let owlthing_node = self.owlthing_node;
         let owlsameas_node = self.owlsameas_node;
 
-        let ds = DisjointSets::new(&self.input, self.rdffirst_node, self.rdfrest_node, self.rdfnil_node);
+        if self.is_materialized {
+            // Incremental mode: only seed delta triples
+            if self.pending_delta.is_empty() {
+                return; // Nothing new to reason about
+            }
+            let delta: Vec<KeyedTriple> = self.pending_delta.drain(..).collect();
+            // Also add delta to base so they persist across future clear() calls
+            self.base.extend(delta.iter().cloned());
+            self.all_triples_input.extend(delta.iter().cloned());
+            // Rebuild DisjointSets from full materialized + delta for list structure
+            let mut all_triples_for_ds = self.input.clone();
+            all_triples_for_ds.extend(delta);
+            let ds = DisjointSets::new(&all_triples_for_ds, self.rdffirst_node, self.rdfrest_node, self.rdfnil_node);
+            self.run_fixpoint_loop(rdftype_node, owlthing_node, owlsameas_node, &ds);
+        } else {
+            // Full materialization mode
+            let ds = DisjointSets::new(&self.input, self.rdffirst_node, self.rdfrest_node, self.rdfnil_node);
+            self.all_triples_input.extend(self.input.iter().cloned());
+            self.run_fixpoint_loop(rdftype_node, owlthing_node, owlsameas_node, &ds);
+            self.is_materialized = true;
+        }
+    }
 
-        self.all_triples_input.extend(self.input.iter().cloned());
+    /// The core fixpoint reasoning loop, shared by full and incremental materialization.
+    fn run_fixpoint_loop(&mut self, rdftype_node: URI, owlthing_node: URI, owlsameas_node: URI, ds: &DisjointSets) {
         let mut changed = true;
         //let mut established_complementary_instances: HashSet<Triple> = HashSet::new();
         let mut new_complementary_instances: HashSet<KeyedTriple> = HashSet::new();
