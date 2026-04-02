@@ -951,6 +951,16 @@ impl Reasoner {
                     &owl_equivalent_relation,
                     |&_, &(c1, c2), &()| (c2, c1),
                 );
+
+                // scm-eqc1 + scm-eqc2
+                // T(?c1, owl:equivalentClass, ?c2) => T(?c1, rdfs:subClassOf, ?c2)
+                // T(?c1, owl:equivalentClass, ?c2) => T(?c2, rdfs:subClassOf, ?c1)
+                // owl_equivalent_class already contains both directions, so one from_map suffices
+                self.all_triples_input.from_map(
+                    &owl_equivalent_class,
+                    |&(c1, c2)| (c1, (rdfssubclass_node, c2)),
+                );
+
                 symmetric_properties.from_join(
                     &self.rdf_type_inv.borrow(),
                     &owl_symprop_relation,
