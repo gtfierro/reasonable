@@ -1,14 +1,22 @@
 use criterion::{criterion_group, criterion_main, Criterion, PlotConfiguration};
-use reasonable::manager::parse_file;
 use reasonable::reasoner::Reasoner;
 
 // setup_reasoner!("ontologies/Brick.n3", "small1.n3");
+/// Resolve a relative path to the workspace root (handles running from lib/ or workspace root).
+fn resolve_path(path: &str) -> String {
+    if std::path::Path::new(path).exists() {
+        path.to_string()
+    } else {
+        format!("../{}", path)
+    }
+}
+
 macro_rules! setup_reasoner {
     ( $( $file:expr ),* ) => {
         {
             let mut r = Reasoner::new();
             $(
-                r.load_file(&format!("{}", $file).to_string()).unwrap();
+                r.load_file(&resolve_path($file)).unwrap();
             )*
             r
         }
@@ -90,7 +98,7 @@ fn bench_reload(c: &mut Criterion) {
             },
             |mut r| {
                 r.reason();
-                r.load_file("example_models/small1.n3").unwrap();
+                r.load_file(&resolve_path("example_models/small1.n3")).unwrap();
                 r.reason();
             },
         )
@@ -106,7 +114,7 @@ fn bench_reload(c: &mut Criterion) {
             },
             |mut r| {
                 r.reason();
-                r.load_file("example_models/soda_hall.n3").unwrap();
+                r.load_file(&resolve_path("example_models/soda_hall.n3")).unwrap();
                 r.reason();
             },
         )
@@ -164,7 +172,7 @@ fn bench_incremental(c: &mut Criterion) {
                 r
             },
             |mut r| {
-                r.load_file("example_models/small1.n3").unwrap();
+                r.load_file(&resolve_path("example_models/small1.n3")).unwrap();
                 r.reason(); // Incremental
             },
         )
