@@ -216,6 +216,13 @@ Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasonin
 | **yes**| `cax-dw` | throws exception      |
 | no     | `cax-adc` |  throws exception     |
 
+### Schema Vocabulary Semantics
+
+|Completed| Rule name | Notes |
+|---------|----------|-------|
+| **yes**| `scm-eqc1` | `owl:equivalentClass` → `rdfs:subClassOf` (one direction) |
+| **yes**| `scm-eqc2` | `owl:equivalentClass` → `rdfs:subClassOf` (other direction) |
+
 ### Other
 
 - no datatype semantics for now
