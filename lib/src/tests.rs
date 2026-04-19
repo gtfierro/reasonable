@@ -923,6 +923,172 @@ fn test_cax_dw() -> Result<(), String> {
     Ok(())
 }
 
+#[test]
+fn test_rdfs11() -> Result<(), String> {
+    // Basic transitivity: A subClassOf B, B subClassOf C => A subClassOf C
+    let mut r = Reasoner::new();
+    let trips = vec![
+        ("urn:A", RDFS_SUBCLASSOF, "urn:B"),
+        ("urn:B", RDFS_SUBCLASSOF, "urn:C"),
+    ];
+    r.load_triples_str(trips);
+    r.reason();
+    let res = r.get_triples_string();
+    assert!(res.contains(&(
+        "<urn:A>".to_string(),
+        wrap!(RDFS_SUBCLASSOF),
+        "<urn:C>".to_string()
+    )));
+    Ok(())
+}
+
+#[test]
+fn test_rdfs11_long_chain() -> Result<(), String> {
+    // 4-level chain: A subClassOf B subClassOf C subClassOf D
+    let mut r = Reasoner::new();
+    let trips = vec![
+        ("urn:A", RDFS_SUBCLASSOF, "urn:B"),
+        ("urn:B", RDFS_SUBCLASSOF, "urn:C"),
+        ("urn:C", RDFS_SUBCLASSOF, "urn:D"),
+    ];
+    r.load_triples_str(trips);
+    r.reason();
+    let res = r.get_triples_string();
+    // A subClassOf C (one hop)
+    assert!(res.contains(&(
+        "<urn:A>".to_string(),
+        wrap!(RDFS_SUBCLASSOF),
+        "<urn:C>".to_string()
+    )));
+    // A subClassOf D (two hops)
+    assert!(res.contains(&(
+        "<urn:A>".to_string(),
+        wrap!(RDFS_SUBCLASSOF),
+        "<urn:D>".to_string()
+    )));
+    // B subClassOf D (one hop)
+    assert!(res.contains(&(
+        "<urn:B>".to_string(),
+        wrap!(RDFS_SUBCLASSOF),
+        "<urn:D>".to_string()
+    )));
+    Ok(())
+}
+
+#[test]
+fn test_rdfs11_with_instances() -> Result<(), String> {
+    // Transitivity + instance propagation together
+    let mut r = Reasoner::new();
+    let trips = vec![
+        ("urn:A", RDFS_SUBCLASSOF, "urn:B"),
+        ("urn:B", RDFS_SUBCLASSOF, "urn:C"),
+        ("urn:x", RDF_TYPE, "urn:A"),
+    ];
+    r.load_triples_str(trips);
+    r.reason();
+    let res = r.get_triples_string();
+    // TBox: A subClassOf C (rdfs11)
+    assert!(res.contains(&(
+        "<urn:A>".to_string(),
+        wrap!(RDFS_SUBCLASSOF),
+        "<urn:C>".to_string()
+    )));
+    // ABox: x rdf:type C (cax-sco)
+    assert!(res.contains(&(
+        "<urn:x>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:C>".to_string()
+    )));
+    Ok(())
+}
+
+#[test]
+fn test_scm_eqc_basic() -> Result<(), String> {
+    // equivalentClass implies subClassOf in both directions
+    let mut r = Reasoner::new();
+    let trips = vec![("urn:A", OWL_EQUIVALENTCLASS, "urn:B")];
+    r.load_triples_str(trips);
+    r.reason();
+    let res = r.get_triples_string();
+    assert!(res.contains(&(
+        "<urn:A>".to_string(),
+        wrap!(RDFS_SUBCLASSOF),
+        "<urn:B>".to_string()
+    )));
+    assert!(res.contains(&(
+        "<urn:B>".to_string(),
+        wrap!(RDFS_SUBCLASSOF),
+        "<urn:A>".to_string()
+    )));
+    Ok(())
+}
+
+#[test]
+fn test_equivalentclass_transitivity() -> Result<(), String> {
+    // A eqClass B, B eqClass C
+    // => A subClassOf C and C subClassOf A (transitive via rdfs11)
+    let mut r = Reasoner::new();
+    let trips = vec![
+        ("urn:A", OWL_EQUIVALENTCLASS, "urn:B"),
+        ("urn:B", OWL_EQUIVALENTCLASS, "urn:C"),
+    ];
+    r.load_triples_str(trips);
+    r.reason();
+    let res = r.get_triples_string();
+    // A subClassOf C (via scm-eqc + rdfs11)
+    assert!(res.contains(&(
+        "<urn:A>".to_string(),
+        wrap!(RDFS_SUBCLASSOF),
+        "<urn:C>".to_string()
+    )));
+    // C subClassOf A (via scm-eqc + rdfs11)
+    assert!(res.contains(&(
+        "<urn:C>".to_string(),
+        wrap!(RDFS_SUBCLASSOF),
+        "<urn:A>".to_string()
+    )));
+    Ok(())
+}
+
+#[test]
+fn test_subclassof_through_equivalentclass() -> Result<(), String> {
+    // A eqClass B, C subClassOf B => C subClassOf A
+    let mut r = Reasoner::new();
+    let trips = vec![
+        ("urn:A", OWL_EQUIVALENTCLASS, "urn:B"),
+        ("urn:C", RDFS_SUBCLASSOF, "urn:B"),
+    ];
+    r.load_triples_str(trips);
+    r.reason();
+    let res = r.get_triples_string();
+    assert!(res.contains(&(
+        "<urn:C>".to_string(),
+        wrap!(RDFS_SUBCLASSOF),
+        "<urn:A>".to_string()
+    )));
+    Ok(())
+}
+
+#[test]
+fn test_scm_eqc_with_instances() -> Result<(), String> {
+    // A eqClass B, C subClassOf B, x rdf:type C => x rdf:type A
+    let mut r = Reasoner::new();
+    let trips = vec![
+        ("urn:A", OWL_EQUIVALENTCLASS, "urn:B"),
+        ("urn:C", RDFS_SUBCLASSOF, "urn:B"),
+        ("urn:x", RDF_TYPE, "urn:C"),
+    ];
+    r.load_triples_str(trips);
+    r.reason();
+    let res = r.get_triples_string();
+    assert!(res.contains(&(
+        "<urn:x>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:A>".to_string()
+    )));
+    Ok(())
+}
+
 //#[test]
 //fn test_triple_update1() -> Result<(), String> {
 //    let mut u = TripleUpdate::new();

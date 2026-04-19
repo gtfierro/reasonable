@@ -1278,6 +1278,16 @@ impl Reasoner {
                     },
                 );
 
+                // rdfs11
+                // T(?c1, rdfs:subClassOf, ?c2), T(?c2, rdfs:subClassOf, ?c3)
+                //   => T(?c1, rdfs:subClassOf, ?c3)
+                rdfs11_1.from_map(&cax_sco_1, |&(c1, c2)| (c2, c1));
+                self.all_triples_input.from_join(
+                    &rdfs11_1,  // (c2, c1)
+                    &cax_sco_1, // (c2, c3)
+                    |&_c2, &c1, &c3| (c1, (rdfssubclass_node, c3)),
+                );
+
                 // cax-eqc1, cax-eqc2
                 // find instances of classes that are equivalent
                 self.all_triples_input.from_join(

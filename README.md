@@ -133,7 +133,13 @@ fn main() {
 
 Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasoning_in_OWL_2_RL_and_RDF_Graphs_using_Rules).
 
-**TODO**: implement RDF/RDFS entailment semantics as described [here](https://www.w3.org/TR/rdf11-mt/)
+**TODO**: implement remaining RDF/RDFS entailment semantics as described [here](https://www.w3.org/TR/rdf11-mt/)
+
+### RDFS Semantics
+
+|Completed| Rule name | Notes |
+|---------|----------|-------|
+| **yes**| `rdfs11` | `rdfs:subClassOf` transitivity |
 
 **Note**: haven't implemented rules that produce exceptions; waiting to determine the best way of handling these errors.
 
@@ -209,6 +215,13 @@ Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasonin
 | **yes**| `cax-eqc2` |       |
 | **yes**| `cax-dw` | throws exception      |
 | no     | `cax-adc` |  throws exception     |
+
+### Schema Vocabulary Semantics
+
+|Completed| Rule name | Notes |
+|---------|----------|-------|
+| **yes**| `scm-eqc1` | `owl:equivalentClass` → `rdfs:subClassOf` (one direction) |
+| **yes**| `scm-eqc2` | `owl:equivalentClass` → `rdfs:subClassOf` (other direction) |
 
 ### Other
 
