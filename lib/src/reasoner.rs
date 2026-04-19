@@ -329,6 +329,7 @@ pub struct Reasoner {
     cls_com_2: Variable<(URI, URI)>,
     cax_sco_1: Variable<(URI, URI)>,
     cax_sco_2: Variable<(URI, URI)>,
+    rdfs11_1: Variable<(URI, URI)>,
     owl_equivalent_class: Variable<(URI, URI)>,
     owl_disjoint_with: Variable<(URI, URI)>,
     cax_dw_1: Variable<(URI, (URI, URI))>,
@@ -477,6 +478,7 @@ impl Reasoner {
         let cls_com_2 = iter1.variable::<(URI, URI)>("cls_com_2");
         let cax_sco_1 = iter1.variable::<(URI, URI)>("cax_sco_1");
         let cax_sco_2 = iter1.variable::<(URI, URI)>("cax_sco_2");
+        let rdfs11_1 = iter1.variable::<(URI, URI)>("rdfs11_1");
         let owl_equivalent_class = iter1.variable::<(URI, URI)>("owl_equivalent_class");
         let owl_disjoint_with = iter1.variable::<(URI, URI)>("owl_disjoint_with");
         let cax_dw_1 = iter1.variable::<(URI, (URI, URI))>("cax_dw_1");
@@ -611,6 +613,7 @@ impl Reasoner {
             cls_com_2,
             cax_sco_1,
             cax_sco_2,
+            rdfs11_1,
             owl_equivalent_class,
             owl_disjoint_with,
             cax_dw_1,
@@ -699,6 +702,7 @@ impl Reasoner {
         self.cls_com_2 = iter1.variable("cls_com_2");
         self.cax_sco_1 = iter1.variable("cax_sco_1");
         self.cax_sco_2 = iter1.variable("cax_sco_2");
+        self.rdfs11_1 = iter1.variable("rdfs11_1");
         self.owl_equivalent_class = iter1.variable("owl_equivalent_class");
         self.owl_disjoint_with = iter1.variable("owl_disjoint_with");
         self.cax_dw_1 = iter1.variable("cax_dw_1");
@@ -1281,11 +1285,20 @@ impl Reasoner {
                 // rdfs11
                 // T(?c1, rdfs:subClassOf, ?c2), T(?c2, rdfs:subClassOf, ?c3)
                 //   => T(?c1, rdfs:subClassOf, ?c3)
-                rdfs11_1.from_map(&cax_sco_1, |&(c1, c2)| (c2, c1));
+                self.rdfs11_1.from_map(&self.cax_sco_1, |&(c1, c2)| (c2, c1));
                 self.all_triples_input.from_join(
-                    &rdfs11_1,  // (c2, c1)
-                    &cax_sco_1, // (c2, c3)
-                    |&_c2, &c1, &c3| (c1, (rdfssubclass_node, c3)),
+                    &self.rdfs11_1,  // (c2, c1)
+                    &self.cax_sco_1, // (c2, c3)
+                    |&_c2, &c1, &c3| (c1, (self.rdfssubclass_node, c3)),
+                );
+
+                // scm-eqc1 + scm-eqc2
+                // T(?c1, owl:equivalentClass, ?c2) => T(?c1, rdfs:subClassOf, ?c2)
+                // T(?c1, owl:equivalentClass, ?c2) => T(?c2, rdfs:subClassOf, ?c1)
+                // owl_equivalent_class holds both directions, so one from_map suffices
+                self.all_triples_input.from_map(
+                    &self.owl_equivalent_class,
+                    |&(c1, c2)| (c1, (self.rdfssubclass_node, c2)),
                 );
 
                 // cax-eqc1, cax-eqc2
