@@ -789,6 +789,10 @@ impl Reasoner {
         //  T(?c1, ?x, rdf:type)
         let cax_sco_2 = self.iter1.variable::<(URI, URI)>("cax_sco_2");
 
+        // rdfs11 — rdfs:subClassOf transitivity
+        // T(?c1, rdfs:subClassOf, ?c2), T(?c2, rdfs:subClassOf, ?c3) => T(?c1, rdfs:subClassOf, ?c3)
+        let rdfs11_1 = self.iter1.variable::<(URI, URI)>("rdfs11_1");
+
         // cax-eqc1
         // T(?c1, owl:equivalentClass, ?c2), T(?x, rdf:type, ?c1)  =>
         //  T(?x, rdf:type, ?c2)
@@ -1128,6 +1132,16 @@ impl Reasoner {
                         //println!("instance: {:?} {:?} {:?}", self.to_u(inst), self.to_u(parent), self.to_u(class));
                         (inst, (rdftype_node, parent))
                     },
+                );
+
+                // rdfs11
+                // T(?c1, rdfs:subClassOf, ?c2), T(?c2, rdfs:subClassOf, ?c3)
+                //   => T(?c1, rdfs:subClassOf, ?c3)
+                rdfs11_1.from_map(&cax_sco_1, |&(c1, c2)| (c2, c1));
+                self.all_triples_input.from_join(
+                    &rdfs11_1,  // (c2, c1)
+                    &cax_sco_1, // (c2, c3)
+                    |&_c2, &c1, &c3| (c1, (rdfssubclass_node, c3)),
                 );
 
                 // cax-eqc1, cax-eqc2
