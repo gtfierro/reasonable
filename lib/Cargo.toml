@@ -40,6 +40,14 @@ default = []
 # Opt-in to compile the legacy query module (pulls in rdf + friends)
 legacy-query = ["dep:regex", "dep:serde", "dep:serde_sexpr", "dep:farmhash"]
 
+[dev-dependencies]
+criterion = { version = "0.5", features = ["html_reports"] }
+
+[[bench]]
+name = "my_benchmark"
+harness = false
+path = "../benches/my_benchmark.rs"
+
 [profile.release]
 debug = true
 
