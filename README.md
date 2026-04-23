@@ -129,6 +129,31 @@ fn main() {
 ```
 
 
+## Building from Source
+
+Most common workflows are wrapped as `make` targets. You'll need a Rust toolchain (install via [rustup](https://rustup.rs/)) for everything, and additionally [uv](https://docs.astral.sh/uv/) plus Python 3.9+ for the Python bindings.
+
+### Rust library and CLI
+
+```bash
+make build        # release build; produces ./target/release/reasonable
+make test         # run the Rust test suite
+make bench        # end-to-end benchmark vs. OWLRL on example_models/
+```
+
+For the criterion micro-benchmarks in `benches/my_benchmark.rs`, run `cargo bench` directly.
+
+### Python bindings
+
+The Python bindings live in `python/` and are built with [maturin](https://www.maturin.rs/) via `uv`.
+
+```bash
+make dev-python-library   # build the extension and install it into python/.venv
+make test-python          # build + run the pytest suite in python/tests/
+make bench-python         # run benches/python/bench.py (vs. OWLRL, Allegro, owlready2)
+make build-python-library # build a distributable wheel into python/dist/
+```
+
 ## OWL 2 Rules
 
 Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasoning_in_OWL_2_RL_and_RDF_Graphs_using_Rules).
