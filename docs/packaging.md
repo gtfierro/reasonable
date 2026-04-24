@@ -49,6 +49,12 @@ Python bindings (.deb)
 ----------------------
 We use `wheel2deb` to convert the Python wheel into a Debian package.
 
+Because `wheel2deb` resolves Python requirements against distro package metadata,
+runtime dependency lower bounds in `python/pyproject.toml` must stay compatible
+with the oldest supported Debian/Ubuntu `python3-*` package versions. In
+particular, `rdflib` is pinned to `>=6.1.1` so the conversion works on current
+Ubuntu runners where `python3-rdflib` is 6.1.1.
+
 Prerequisites
 -------------
 - Python 3 + pip

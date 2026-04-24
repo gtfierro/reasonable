@@ -18,9 +18,12 @@ classifiers = [
 ]
 dynamic = ["version"]
 dependencies = [
-    "rdflib>=6.3.2",
+    # Keep the floor aligned with the oldest Debian/Ubuntu package version
+    # used by the wheel2deb workflow.
+    "rdflib>=6.1.1",
 ]
-license = "bsd-3-clause"
+license = "BSD-3-Clause"
+license-files = ["LICENSE"]
 description = "Python bindings for Reasonable, a reasonably fast OWL 2 RL reasoner"
 readme = "README.md"
 
