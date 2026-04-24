@@ -794,6 +794,91 @@ impl Reasoner {
         }
     }
 
+    /// Replaces the base triples entirely with the given set.
+    ///
+    /// Computes a diff against the current base:
+    /// - If only additions are detected, they are routed to the pending delta
+    ///   for incremental reasoning on the next `reason()` call.
+    /// - If any removals are detected, the reasoner state is reset via `clear()`
+    ///   so the next `reason()` call performs a full re-materialization.
+    ///
+    /// Returns `true` if removals were detected (full re-materialization needed),
+    /// `false` if only additions (or no change).
+    pub fn set_base_triples(&mut self, triples: Vec<Triple>) -> bool {
+        // Convert to keyed triples
+        let mut new_base: Vec<KeyedTriple> = Vec::with_capacity(triples.len() + 2);
+        for trip in triples.iter() {
+            let s = self.index.put(trip.subject.clone().into());
+            let p = self.index.put(trip.predicate.clone().into());
+            let o = self.index.put(trip.object.clone().into());
+            new_base.push((s, (p, o)));
+        }
+        // Always include seed triples (cls-thing, cls-nothing1)
+        let u_owl_class = self.index.put(owl!("Class"));
+        new_base.push((self.owlthing_node, (self.rdftype_node, u_owl_class)));
+        new_base.push((self.owlnothing_node, (self.rdftype_node, u_owl_class)));
+        new_base.sort_unstable();
+        new_base.dedup();
+
+        // Sort old base for diff
+        self.base.sort_unstable();
+
+        // Compute diff via linear merge of two sorted vecs
+        let mut added: Vec<KeyedTriple> = Vec::new();
+        let mut has_removals = false;
+        let (mut i, mut j) = (0, 0);
+        while i < self.base.len() && j < new_base.len() {
+            use std::cmp::Ordering;
+            match self.base[i].cmp(&new_base[j]) {
+                Ordering::Less => {
+                    // In old but not in new → removal
+                    has_removals = true;
+                    i += 1;
+                }
+                Ordering::Equal => {
+                    i += 1;
+                    j += 1;
+                }
+                Ordering::Greater => {
+                    // In new but not in old → addition
+                    added.push(new_base[j]);
+                    j += 1;
+                }
+            }
+        }
+        // Remaining old entries are removals
+        if i < self.base.len() {
+            has_removals = true;
+        }
+        // Remaining new entries are additions
+        while j < new_base.len() {
+            added.push(new_base[j]);
+            j += 1;
+        }
+
+        if !has_removals && added.is_empty() {
+            return false; // No change
+        }
+
+        if has_removals {
+            // Removals detected: replace base and reset everything
+            self.base = new_base;
+            self.clear(); // Resets input=base, recreates all Variables
+            true
+        } else {
+            // Additions only: route through incremental path
+            self.base = new_base;
+            if self.is_materialized {
+                // Dedup additions against materialized closure
+                get_unique(&self.input, &mut added);
+                self.pending_delta.extend(added);
+            } else {
+                self.input = self.base.clone();
+            }
+            false
+        }
+    }
+
     fn add_error(&mut self, rule: String, message: String) {
         if !self.options.collect_diagnostics {
             return;

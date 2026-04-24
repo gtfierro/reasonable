@@ -1592,3 +1592,145 @@ fn test_incremental_does_not_support_retraction() {
         "New reasoner without x: the inference should be gone"
     );
 }
+
+// ==================== set_base_triples() tests ====================
+
+/// Helper to build oxrdf triples from string URIs for use with set_base_triples()
+fn make_test_triples(trips: Vec<(&str, &str, &str)>) -> Vec<oxrdf::Triple> {
+    use crate::common::make_triple;
+    trips
+        .into_iter()
+        .map(|(s, p, o)| {
+            make_triple(
+                oxrdf::Term::NamedNode(oxrdf::NamedNode::new(s).unwrap()),
+                oxrdf::Term::NamedNode(oxrdf::NamedNode::new(p).unwrap()),
+                oxrdf::Term::NamedNode(oxrdf::NamedNode::new(o).unwrap()),
+            )
+            .unwrap()
+        })
+        .collect()
+}
+
+#[test]
+fn test_set_base_triples_additions_only() {
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![("urn:A", RDFS_SUBCLASSOF, "urn:B")]);
+    r.reason();
+
+    // set_base_triples with a superset (adds x rdf:type A)
+    let needs_full = r.set_base_triples(make_test_triples(vec![
+        ("urn:A", RDFS_SUBCLASSOF, "urn:B"),
+        ("urn:x", RDF_TYPE, "urn:A"),
+    ]));
+    assert!(!needs_full, "Additions only should not require full re-materialization");
+
+    r.reason();
+    let res = r.get_triples_string();
+    assert!(
+        res.contains(&("<urn:x>".to_string(), wrap!(RDF_TYPE), "<urn:B>".to_string())),
+        "Incremental: x should be inferred as type B"
+    );
+}
+
+#[test]
+fn test_set_base_triples_with_removals() {
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![
+        ("urn:A", RDFS_SUBCLASSOF, "urn:B"),
+        ("urn:x", RDF_TYPE, "urn:A"),
+    ]);
+    r.reason();
+
+    let res = r.get_triples_string();
+    assert!(res.contains(&("<urn:x>".to_string(), wrap!(RDF_TYPE), "<urn:B>".to_string())));
+
+    // Remove (x, rdf:type, A) by setting base to just the subClassOf triple
+    let needs_full = r.set_base_triples(make_test_triples(vec![
+        ("urn:A", RDFS_SUBCLASSOF, "urn:B"),
+    ]));
+    assert!(needs_full, "Removals should require full re-materialization");
+
+    r.reason();
+    let res = r.get_triples_string();
+    assert!(
+        !res.contains(&("<urn:x>".to_string(), wrap!(RDF_TYPE), "<urn:B>".to_string())),
+        "After removing x from base, inference should be gone"
+    );
+}
+
+#[test]
+fn test_set_base_triples_mixed() {
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![
+        ("urn:A", RDFS_SUBCLASSOF, "urn:B"),
+        ("urn:x", RDF_TYPE, "urn:A"),
+    ]);
+    r.reason();
+
+    // Replace: remove x, add y
+    let needs_full = r.set_base_triples(make_test_triples(vec![
+        ("urn:A", RDFS_SUBCLASSOF, "urn:B"),
+        ("urn:y", RDF_TYPE, "urn:A"),
+    ]));
+    assert!(needs_full, "Mixed add+remove should require full re-materialization");
+
+    r.reason();
+    let res = r.get_triples_string();
+    assert!(
+        !res.contains(&("<urn:x>".to_string(), wrap!(RDF_TYPE), "<urn:B>".to_string())),
+        "x inference should be gone"
+    );
+    assert!(
+        res.contains(&("<urn:y>".to_string(), wrap!(RDF_TYPE), "<urn:B>".to_string())),
+        "y inference should be present"
+    );
+}
+
+#[test]
+fn test_set_base_triples_no_change() {
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![
+        ("urn:A", RDFS_SUBCLASSOF, "urn:B"),
+        ("urn:x", RDF_TYPE, "urn:A"),
+    ]);
+    r.reason();
+    let res1 = r.get_triples_string();
+
+    // Set identical base
+    let needs_full = r.set_base_triples(make_test_triples(vec![
+        ("urn:A", RDFS_SUBCLASSOF, "urn:B"),
+        ("urn:x", RDF_TYPE, "urn:A"),
+    ]));
+    assert!(!needs_full, "No change should be a no-op");
+
+    r.reason(); // Should be no-op since no delta
+    let res2 = r.get_triples_string();
+    assert_eq!(res1, res2, "No change in base should produce identical output");
+}
+
+#[test]
+fn test_set_base_triples_equivalence() {
+    // Additions-only via set_base_triples should match fresh full materialization
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![("urn:A", RDFS_SUBCLASSOF, "urn:B")]);
+    r.reason();
+
+    r.set_base_triples(make_test_triples(vec![
+        ("urn:A", RDFS_SUBCLASSOF, "urn:B"),
+        ("urn:x", RDF_TYPE, "urn:A"),
+    ]));
+    r.reason();
+    let mut incr = r.get_triples_string();
+    incr.sort();
+
+    let mut full = Reasoner::new();
+    full.load_triples_str(vec![
+        ("urn:A", RDFS_SUBCLASSOF, "urn:B"),
+        ("urn:x", RDF_TYPE, "urn:A"),
+    ]);
+    full.reason();
+    let mut full_res = full.get_triples_string();
+    full_res.sort();
+
+    assert_eq!(incr, full_res, "Incremental set_base_triples should match full materialization");
+}
