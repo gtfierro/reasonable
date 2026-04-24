@@ -63,11 +63,6 @@ Build (local)
 3. Convert to .deb: `cd dist/wheel2deb && wheel2deb`
 4. Packages are written to `dist/wheel2deb/output/`, e.g. `python3-reasonable_0.3.0_amd64.deb`
 
-Docker build
-------------
-- `bash scripts/build_python_deb_docker.sh`
-- Packages are written to `dist/deb-system/`
-
 Install locally (Python)
 ------------------------
-- `sudo apt-get install ./dist/output/*.deb`
+- `sudo apt-get install ./dist/wheel2deb/output/*.deb`
