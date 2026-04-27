@@ -37,6 +37,14 @@ nav#topnav a:hover {
     color: #111;
 }
 
+/* Header subtitle de-emphasis */
+.header-subtitle {
+    font-size: 0.55em;
+    font-weight: 400;
+    opacity: 0.7;
+    letter-spacing: 0;
+}
+
 hr.nav-rule {
     border: none;
     border-top: 1px solid #aaa;
