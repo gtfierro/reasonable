@@ -1,0 +1,37 @@
+/* Reasonable docs — minimal overrides only */
+
+body {
+    font-size: 15px;
+}
+
+.rstjinja code, tt {
+    font-size: 0.9em;
+}
+
+/* Keep rule-status tables readable */
+table.rules-table {
+    font-size: 0.88em;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table.rules-table th,
+table.rules-table td {
+    padding: 0.35rem 0.6rem;
+    border: 1px solid #e1e4e5;
+    vertical-align: top;
+}
+
+table.rules-table th {
+    background: #f3f6f6;
+    font-weight: 600;
+}
+
+.done-yes {
+    color: #2e8b57;
+    font-weight: 600;
+}
+
+.done-no {
+    color: #888;
+}

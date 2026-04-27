@@ -1,0 +1,13 @@
+[project]
+name = "reasonable-docs"
+version = "0.0.0"
+description = "Documentation build for Reasonable"
+requires-python = ">=3.11"
+dependencies = [
+    "sphinx>=7.0,<8",
+    "alabaster>=0.7",
+]
+
+[tool.uv]
+# Keep doc tooling separate from the main project.
+# Run: cd docs && uv sync && uv run sphinx-build -M html . _build
