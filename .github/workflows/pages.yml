@@ -1,0 +1,63 @@
+# Deploy Sphinx docs to GitHub Pages.
+name: Deploy docs to Pages
+
+on:
+  push:
+    branches: ["master"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          version: "latest"
+
+      - name: Sync docs environment
+        working-directory: docs
+        run: uv sync --project .
+
+      - name: Build Sphinx HTML
+        working-directory: docs
+        run: uv run --project . sphinx-build -M html . _build
+
+      - name: Build llms.txt
+        working-directory: docs
+        run: |
+          uv run --project . sphinx-build -M text . _build
+          find _build/text -name '*.txt' -print | sort | xargs -r cat > _build/llms.txt
+          cp _build/llms.txt _build/html/llms.txt
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/_build/html
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
