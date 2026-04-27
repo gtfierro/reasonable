@@ -1,10 +1,12 @@
 /* Reasonable docs — minimal overrides only */
 
-/* Top navigation bar */
+/* Top navigation bar — matches .related container, indented to body text */
 nav#topnav {
-    max-width: 940px;
-    margin: 0 auto;
-    padding: 0.4rem 0;
+    width: 100%;
+    max-width: 60rem;
+    margin: auto;
+    padding: 0.4rem 0 0.4rem 230px;  /* 230px = sidebarwidth from conf.py */
+    box-sizing: border-box;
 }
 
 nav#topnav ul {
