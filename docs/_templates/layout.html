@@ -1,0 +1,18 @@
+{%- extends "better/layout.html" %}
+
+{%- block header %}
+  {%- if theme_showheader|tobool %}
+    <header id="pageheader"><h1><a href="{{ pathto(master_doc) }}">
+        {{ docstitle }}
+    </a></h1></header>
+  {%- endif %}
+  <nav id="topnav">
+    <ul>
+      <li><a href="{{ pathto('getting-started') }}">Getting Started</a></li>
+      <li><a href="{{ pathto('python-api/index') }}">Python API</a></li>
+      <li><a href="{{ pathto('cli/index') }}">CLI Reference</a></li>
+      <li><a href="{{ pathto('owl-rules/index') }}">OWL 2 RL Rules</a></li>
+      <li><a href="https://docs.rs/reasonable" target="_blank">Rust API</a></li>
+    </ul>
+  </nav>
+{%- endblock %}

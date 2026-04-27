@@ -1,5 +1,40 @@
 /* Reasonable docs — minimal overrides only */
 
+/* Top navigation bar */
+nav#topnav {
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 0.4rem 0;
+}
+
+nav#topnav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 0.2rem;
+    flex-wrap: wrap;
+}
+
+nav#topnav li {
+    margin: 0;
+    padding: 0;
+}
+
+nav#topnav a {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.88rem;
+    text-decoration: none;
+    border-radius: 3px;
+    color: #444;
+}
+
+nav#topnav a:hover {
+    background: #f0f0f0;
+    color: #111;
+}
+
 body {
     font-size: 15px;
 }
