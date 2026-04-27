@@ -6,6 +6,7 @@ requires-python = ">=3.11"
 dependencies = [
     "sphinx>=7.0,<8",
     "alabaster>=0.7",
+    "sphinx-better-theme>=0.1.5",
 ]
 
 [tool.uv]

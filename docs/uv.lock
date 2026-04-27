@@ -265,12 +265,14 @@ source = { virtual = "." }
 dependencies = [
     { name = "alabaster" },
     { name = "sphinx" },
+    { name = "sphinx-better-theme" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "alabaster", specifier = ">=0.7" },
     { name = "sphinx", specifier = ">=7.0,<8" },
+    { name = "sphinx-better-theme", specifier = ">=0.1.5" },
 ]
 
 [[package]]
@@ -323,6 +325,12 @@ sdist = { url = "https://files.pythonhosted.org/packages/5b/be/50e50cb4f2eff47df
 wheels = [
     { url = "https://files.pythonhosted.org/packages/0d/ef/153f6803c5d5f8917dbb7f7fcf6d34a871ede3296fa89c2c703f5f8a6c8e/sphinx-7.4.7-py3-none-any.whl", hash = "sha256:c2419e2135d11f1951cd994d6eb18a1835bd8fdd8429f9ca375dc1f3281bd239", size = 3401624, upload-time = "2024-07-20T14:46:52.142Z" },
 ]
+
+[[package]]
+name = "sphinx-better-theme"
+version = "0.1.5"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/70/a3/5b54286499282ec1e18e48674bebe38803c07ba6615445848993fe90ecb4/sphinx-better-theme-0.1.5.tar.gz", hash = "sha256:420570d80d8cab25b35cef2b79619104675777dff5a23deebe9ba2191d48c1ce", size = 7276, upload-time = "2013-10-05T03:02:18.329Z" }
 
 [[package]]
 name = "sphinxcontrib-applehelp"

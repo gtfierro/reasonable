@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import better
+
 try:  # Python 3.11+
     import tomllib
 except ModuleNotFoundError:  # pragma: no cover
@@ -44,27 +46,21 @@ exclude_patterns: list[str] = [
     "*.md",
 ]
 
-html_theme = "alabaster"
+html_theme_path = [better.better_theme_path]
+html_theme = "better"
 html_static_path = ["_static"]
 html_title = "Reasonable"
 html_css_files = ["custom.css"]
 
 html_theme_options = {
-    "description": "An OWL 2 RL reasoner with reasonable performance",
-    "github_user": "gtfierro",
-    "github_repo": "reasonable",
-    "github_banner": True,
-    "fixed_sidebar": True,
-    "sidebar_width": "220px",
-    "body_max_width": "860px",
-}
-
-html_sidebars = {
-    "**": [
-        "about.html",
-        "navigation.html",
-        "searchbox.html",
-    ]
+    "inlinecss": "",
+    "cssfiles": [],
+    "showheader": True,
+    "showrelbartop": True,
+    "showrelbarbottom": True,
+    "linktotheme": True,
+    "sidebarwidth": "230px",
+    "body_max_width": "none",
 }
 
 intersphinx_mapping = {
