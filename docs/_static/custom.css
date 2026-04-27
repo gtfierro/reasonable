@@ -39,9 +39,9 @@ nav#topnav a:hover {
 
 /* Header subtitle de-emphasis */
 .header-subtitle {
-    font-size: 0.55em;
+    font-size: 0.65em;
     font-weight: 400;
-    opacity: 0.7;
+    opacity: 0.85;
     letter-spacing: 0;
 }
 
