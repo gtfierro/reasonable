@@ -63,6 +63,12 @@ html_theme_options = {
     "body_max_width": "none",
 }
 
+rst_prolog = """
+.. role:: supported
+.. role:: unsupported
+.. role:: partial
+"""
+
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3", {}),
     "rdflib": ("https://rdflib.readthedocs.io/en/stable", {}),

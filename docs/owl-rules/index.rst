@@ -6,20 +6,28 @@ Reasonable implements a subset of the
 defined by the W3C.  The tables below show the current implementation
 status.
 
-Rules marked *throws exception* produce a diagnostic (see
-:doc:`../cli/index`) rather than aborting reasoning.
+.. list-table::
+   :widths: auto
+
+   * - :supported:`supported`
+     - Rule is fully implemented and produces inferred triples.
+   * - :partial:`partial`
+     - Rule is implemented but produces a diagnostic instead of new triples
+       (violation detection only).
+   * - :unsupported:`not supported`
+     - Rule is not yet implemented.
 
 RDFS Semantics
 --------------
 
 .. list-table::
    :header-rows: 1
-   :widths: 15 20 65
+   :widths: 18 22 60
 
-   * - Done
+   * - Status
      - Rule
      - Notes
-   * - yes
+   * - :supported:`supported`
      - ``rdfs11``
      - ``rdfs:subClassOf`` transitivity
 
@@ -28,175 +36,175 @@ Equality Semantics
 
 .. list-table::
    :header-rows: 1
-   :widths: 15 20 65
+   :widths: 18 22 60
 
-   * - Done
+   * - Status
      - Rule
      - Notes
-   * - no
+   * - :unsupported:`not supported`
      - ``eq-ref``
-     - Not implemented — very inefficient; causes runaway flux
-   * - yes
+     - Very inefficient — causes runaway flux; not implemented
+   * - :supported:`supported`
      - ``eq-sym``
      -
-   * - yes
+   * - :supported:`supported`
      - ``eq-trans``
      -
-   * - yes
+   * - :supported:`supported`
      - ``eq-rep-s``
      -
-   * - yes
+   * - :supported:`supported`
      - ``eq-rep-p``
      -
-   * - yes
+   * - :supported:`supported`
      - ``eq-rep-o``
      -
-   * - no
+   * - :unsupported:`not supported`
      - ``eq-diff1``
-     - Throws exception
-   * - no
+     -
+   * - :unsupported:`not supported`
      - ``eq-diff2``
-     - Throws exception
-   * - no
+     -
+   * - :unsupported:`not supported`
      - ``eq-diff3``
-     - Throws exception
+     -
 
 Property Axiom Semantics
 ------------------------
 
 .. list-table::
    :header-rows: 1
-   :widths: 15 20 65
+   :widths: 18 22 60
 
-   * - Done
+   * - Status
      - Rule
      - Notes
-   * - no
+   * - :unsupported:`not supported`
      - ``prp-ap``
      -
-   * - yes
+   * - :supported:`supported`
      - ``prp-dom``
      -
-   * - yes
+   * - :supported:`supported`
      - ``prp-rng``
      -
-   * - yes
+   * - :supported:`supported`
      - ``prp-fp``
      -
-   * - yes
+   * - :supported:`supported`
      - ``prp-ifp``
      -
-   * - yes
+   * - :partial:`partial`
      - ``prp-irp``
-     - Throws exception
-   * - yes
+     - Violation detection only — emits a diagnostic
+   * - :supported:`supported`
      - ``prp-symp``
      -
-   * - yes
+   * - :partial:`partial`
      - ``prp-asyp``
-     - Throws exception
-   * - yes
+     - Violation detection only — emits a diagnostic
+   * - :supported:`supported`
      - ``prp-trp``
      -
-   * - yes
+   * - :supported:`supported`
      - ``prp-spo1``
      -
-   * - no
+   * - :unsupported:`not supported`
      - ``prp-spo2``
      -
-   * - yes
+   * - :supported:`supported`
      - ``prp-eqp1``
      -
-   * - yes
+   * - :supported:`supported`
      - ``prp-eqp2``
      -
-   * - yes
+   * - :partial:`partial`
      - ``prp-pdw``
-     - Throws exception
-   * - no
+     - Violation detection only — emits a diagnostic
+   * - :unsupported:`not supported`
      - ``prp-adp``
-     - Throws exception
-   * - yes
+     -
+   * - :supported:`supported`
      - ``prp-inv1``
      -
-   * - yes
+   * - :supported:`supported`
      - ``prp-inv2``
      -
-   * - no
+   * - :unsupported:`not supported`
      - ``prp-key``
      -
-   * - no
+   * - :unsupported:`not supported`
      - ``prp-npa1``
-     - Throws exception
-   * - no
+     -
+   * - :unsupported:`not supported`
      - ``prp-npa2``
-     - Throws exception
+     -
 
 Class Semantics
 ---------------
 
 .. list-table::
    :header-rows: 1
-   :widths: 15 20 65
+   :widths: 18 22 60
 
-   * - Done
+   * - Status
      - Rule
      - Notes
-   * - yes
+   * - :supported:`supported`
      - ``cls-thing``
      -
-   * - yes
+   * - :supported:`supported`
      - ``cls-nothing1``
      -
-   * - yes
+   * - :partial:`partial`
      - ``cls-nothing2``
-     - Throws exception
-   * - yes
+     - Violation detection only — emits a diagnostic
+   * - :supported:`supported`
      - ``cls-int1``
      -
-   * - yes
+   * - :supported:`supported`
      - ``cls-int2``
      -
-   * - yes
+   * - :supported:`supported`
      - ``cls-uni``
      -
-   * - yes
+   * - :partial:`partial`
      - ``cls-com``
-     - Throws exception
-   * - yes
+     - Violation detection only — emits a diagnostic
+   * - :supported:`supported`
      - ``cls-svf1``
      -
-   * - yes
+   * - :supported:`supported`
      - ``cls-svf2``
      -
-   * - yes
+   * - :supported:`supported`
      - ``cls-avf``
      -
-   * - yes
+   * - :supported:`supported`
      - ``cls-hv1``
      -
-   * - yes
+   * - :supported:`supported`
      - ``cls-hv2``
      -
-   * - no
+   * - :unsupported:`not supported`
      - ``cls-maxc1``
-     - Throws exception
-   * - no
+     -
+   * - :unsupported:`not supported`
      - ``cls-maxc2``
      -
-   * - no
+   * - :unsupported:`not supported`
      - ``cls-maxqc1``
-     - Throws exception
-   * - no
+     -
+   * - :unsupported:`not supported`
      - ``cls-maxqc2``
-     - Throws exception
-   * - no
+     -
+   * - :unsupported:`not supported`
      - ``cls-maxqc3``
      -
-   * - no
+   * - :unsupported:`not supported`
      - ``cls-maxqc4``
      -
-   * - no
+   * - :unsupported:`not supported`
      - ``cls-oo``
      -
 
@@ -205,41 +213,41 @@ Class Axiom Semantics
 
 .. list-table::
    :header-rows: 1
-   :widths: 15 20 65
+   :widths: 18 22 60
 
-   * - Done
+   * - Status
      - Rule
      - Notes
-   * - yes
+   * - :supported:`supported`
      - ``cax-sco``
      -
-   * - yes
+   * - :supported:`supported`
      - ``cax-eqc1``
      -
-   * - yes
+   * - :supported:`supported`
      - ``cax-eqc2``
      -
-   * - yes
+   * - :partial:`partial`
      - ``cax-dw``
-     - Throws exception
-   * - no
+     - Violation detection only — emits a diagnostic
+   * - :unsupported:`not supported`
      - ``cax-adc``
-     - Throws exception
+     -
 
 Schema Vocabulary Semantics
 ----------------------------
 
 .. list-table::
    :header-rows: 1
-   :widths: 15 20 65
+   :widths: 18 22 60
 
-   * - Done
+   * - Status
      - Rule
      - Notes
-   * - yes
+   * - :supported:`supported`
      - ``scm-eqc1``
      - ``owl:equivalentClass`` → ``rdfs:subClassOf`` (one direction)
-   * - yes
+   * - :supported:`supported`
      - ``scm-eqc2``
      - ``owl:equivalentClass`` → ``rdfs:subClassOf`` (other direction)
 

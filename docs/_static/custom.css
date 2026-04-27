@@ -27,11 +27,18 @@ table.rules-table th {
     font-weight: 600;
 }
 
-.done-yes {
-    color: #2e8b57;
+/* OWL rule support status badges */
+.supported {
+    color: #1a7f3c;
     font-weight: 600;
 }
 
-.done-no {
-    color: #888;
+.unsupported {
+    color: #c0392b;
+    font-weight: 600;
+}
+
+.partial {
+    color: #b45309;
+    font-weight: 600;
 }
