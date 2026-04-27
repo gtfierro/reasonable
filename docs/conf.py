@@ -55,9 +55,9 @@ html_css_files = ["custom.css"]
 html_theme_options = {
     "inlinecss": "",
     "cssfiles": [],
-    "showheader": True,
-    "showrelbartop": True,
-    "showrelbarbottom": True,
+    "showheader": False,
+    "showrelbartop": False,
+    "showrelbarbottom": False,
     "linktotheme": True,
     "sidebarwidth": "230px",
     "body_max_width": "none",

@@ -37,6 +37,12 @@ nav#topnav a:hover {
     color: #111;
 }
 
+hr.nav-rule {
+    border: none;
+    border-top: 1px solid #aaa;
+    margin: 0;
+}
+
 body {
     font-size: 15px;
 }
