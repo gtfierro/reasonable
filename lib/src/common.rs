@@ -1,5 +1,5 @@
 use oxrdf::{
-    BlankNode, Literal, NamedNode, NamedOrBlankNode, Subject, SubjectRef, Term, TermRef, Triple,
+    BlankNode, Literal, NamedNode, NamedOrBlankNode, NamedOrBlankNodeRef, Term, TermRef, Triple,
     TripleRef,
 };
 mod rio {
@@ -93,12 +93,12 @@ pub fn make_triple(s: Term, p: Term, o: Term) -> Result<Triple, ReasonableError>
 }
 
 pub fn rio_to_oxrdf(t: rio::Triple) -> Triple {
-    let s: Subject = match t.subject {
+    let s: NamedOrBlankNode = match t.subject {
         rio::Subject::NamedNode(rio::NamedNode { iri }) => {
-            Subject::NamedNode(NamedNode::new_unchecked(iri))
+            NamedOrBlankNode::NamedNode(NamedNode::new_unchecked(iri))
         }
         rio::Subject::BlankNode(rio::BlankNode { id }) => {
-            Subject::BlankNode(BlankNode::new_unchecked(id))
+            NamedOrBlankNode::BlankNode(BlankNode::new_unchecked(id))
         }
         _ => panic!("no rdf*"),
     };
@@ -131,8 +131,8 @@ pub fn rio_to_oxrdf(t: rio::Triple) -> Triple {
 
 pub fn oxrdf_to_rio<'a>(t: TripleRef<'a>) -> rio::Triple<'a> {
     let s: rio::Subject = match t.subject {
-        SubjectRef::NamedNode(nn) => rio::Subject::NamedNode(rio::NamedNode { iri: nn.as_str() }),
-        SubjectRef::BlankNode(bn) => rio::Subject::BlankNode(rio::BlankNode { id: bn.as_str() }),
+        NamedOrBlankNodeRef::NamedNode(nn) => rio::Subject::NamedNode(rio::NamedNode { iri: nn.as_str() }),
+        NamedOrBlankNodeRef::BlankNode(bn) => rio::Subject::BlankNode(rio::BlankNode { id: bn.as_str() }),
     };
     let p = rio::NamedNode {
         iri: t.predicate.as_str(),
