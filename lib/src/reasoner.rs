@@ -61,6 +61,8 @@ impl ReasoningError {
             "prp-asyp" => "OWLRL.PRP_ASYP",
             "prp-irp" => "OWLRL.PRP_IRP",
             "cls-com" => "OWLRL.CLS_COM",
+            "rdfs-datatype" => "RDFS.DATATYPE",
+            "rdfs-datatype-range" => "RDFS.DATATYPE_RANGE",
             _ => "OWLRL.UNKNOWN",
         }
         .to_string();
