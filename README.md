@@ -62,6 +62,8 @@ Common diagnostic codes:
 - `OWLRL.PRP_ASYP`: Asymmetric property used both directions
 - `OWLRL.PRP_IRP`: Irreflexive property used with same subject/object
 - `OWLRL.CLS_NOTHING`: Individual typed as owl:Nothing
+- `RDFS.DATATYPE`: Typed literal whose lexical form is ill-formed for its declared datatype
+- `RDFS.DATATYPE_RANGE`: Object literal's datatype is not in the value space of the predicate's `rdfs:range`
 
 Example strict run:
 
@@ -183,8 +185,11 @@ Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasonin
 |Completed| Rule name | Notes |
 |---------|----------|-------|
 | **yes**| `rdfs11` | `rdfs:subClassOf` transitivity |
+| **yes**| `rdfs12` | container membership: each `rdf:_n` (n>0) axiomatised as `rdf:type rdf:Property`, `rdf:type rdfs:ContainerMembershipProperty`, `rdfs:subPropertyOf rdfs:member` (the last yields `x rdfs:member y` via `prp-spo1`) |
+| **yes**| `rdfs-datatype` | ill-formed typed literal diagnostic; recognises `xsd:string`, `xsd:integer`, `xsd:int`, `rdf:langString`, `rdf:XMLLiteral` |
+| **yes**| `rdfs-datatype-range` | object literal's datatype must lie in the value space of the predicate's `rdfs:range` datatype; otherwise a diagnostic is emitted |
 
-**Note**: haven't implemented rules that produce exceptions; waiting to determine the best way of handling these errors.
+**Note**: remaining unimplemented RDFS rules are mostly those that throw exceptions; waiting to determine the best way of handling these errors.
 
 ### Equality Semantics
 
@@ -268,7 +273,7 @@ Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasonin
 
 ### Other
 
-- no datatype semantics for now
+- partial datatype semantics — see the `rdfs-datatype` and `rdfs-datatype-range` rows in the RDFS Semantics table above
 
 ## Development Notes
 
