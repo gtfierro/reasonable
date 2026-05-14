@@ -1481,6 +1481,42 @@ fn test_rdfs_datatype_no_error_without_range_or_ill_formed() -> Result<(), Strin
     Ok(())
 }
 
+#[test]
+fn test_rdfs_datatype_diagnostic_code() -> Result<(), String> {
+    // Locks in the stable diagnostic code for the rdfs-datatype rule.
+    let mut r = Reasoner::new();
+    r.load_triples(vec![typed_literal_triple(
+        "urn:s", "urn:p", "abc", XSD_INTEGER,
+    )]);
+    r.reason();
+    let has_code = r
+        .errors()
+        .iter()
+        .any(|e| e.code() == "RDFS.DATATYPE" && e.rule() == "rdfs-datatype");
+    assert!(has_code, "expected diagnostic with code RDFS.DATATYPE and rule rdfs-datatype");
+    Ok(())
+}
+
+#[test]
+fn test_rdfs_datatype_range_diagnostic_code() -> Result<(), String> {
+    // Locks in the stable diagnostic code for the rdfs-datatype-range rule.
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![("urn:p", RDFS_RANGE, XSD_INTEGER)]);
+    r.load_triples(vec![typed_literal_triple(
+        "urn:s", "urn:p", "abc", XSD_STRING,
+    )]);
+    r.reason();
+    let has_code = r
+        .errors()
+        .iter()
+        .any(|e| e.code() == "RDFS.DATATYPE_RANGE" && e.rule() == "rdfs-datatype-range");
+    assert!(
+        has_code,
+        "expected diagnostic with code RDFS.DATATYPE_RANGE and rule rdfs-datatype-range"
+    );
+    Ok(())
+}
+
 //#[test]
 //fn test_triple_update1() -> Result<(), String> {
 //    let mut u = TripleUpdate::new();
