@@ -19,17 +19,8 @@ log.workspace = true
 thiserror = "1.0"
 quick-xml = "0.36"
 
-# optional deps for legacy query module (rdf stack)
-regex = { version = "1", optional = true }
-serde = { version = "1", optional = true, features = ["derive"] }
-serde_sexpr = { version = "0.1", optional = true }
-farmhash = { version = "1", optional = true }
-
 [features]
-# Default build excludes the legacy query module and its rdf stack
 default = []
-# Opt-in to compile the legacy query module (pulls in rdf + friends)
-legacy-query = ["dep:regex", "dep:serde", "dep:serde_sexpr", "dep:farmhash"]
 # RDF 1.2 (RDF-star) coexistence: enables a feature-gated match arm
 # over `TermRef::Triple(_)` so `reasonable` compiles in workspaces that
 # pull in `oxrdf` with its `rdf-12` feature enabled (e.g., alongside
