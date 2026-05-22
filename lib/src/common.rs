@@ -161,6 +161,23 @@ pub fn oxrdf_to_rio<'a>(t: TripleRef<'a>) -> rio::Triple<'a> {
                 }
             }
         }
+        // RDF 1.2 quoted-triple term, only present when oxrdf's `rdf-12`
+        // feature is enabled. `reasonable` does not implement RDF-star
+        // reasoning, and rio-api does not have an equivalent term shape
+        // today. This arm exists strictly so `reasonable` compiles in
+        // downstream workspaces where another crate hard-enables
+        // oxrdf's `rdf-12` feature (e.g., `shacl` 0.3.x via `rudof_rdf`
+        // 0.3.1). It is additive: when `rdf-12` is off, the variant
+        // does not exist and this arm is invisible.
+        //
+        // Behaviour mirrors the existing `panic!("no rdf*")` arms in
+        // `rio_to_oxrdf` above. If a future use case needs graceful
+        // handling, propose a separate API change returning
+        // `Option`/`Result` here.
+        #[cfg(feature = "rdf-12")]
+        TermRef::Triple(_) => panic!(
+            "reasonable: RDF 1.2 quoted triples are not supported; received `<<...>>` term"
+        ),
     };
     rio::Triple {
         subject: s,

@@ -29,6 +29,13 @@ farmhash = { version = "1", optional = true }
 default = []
 # Opt-in to compile the legacy query module (pulls in rdf + friends)
 legacy-query = ["dep:regex", "dep:serde", "dep:serde_sexpr", "dep:farmhash"]
+# RDF 1.2 (RDF-star) coexistence: enables a feature-gated match arm
+# over `TermRef::Triple(_)` so `reasonable` compiles in workspaces that
+# pull in `oxrdf` with its `rdf-12` feature enabled (e.g., alongside
+# `shacl` 0.3.x via `rudof_rdf`). `reasonable` itself does not
+# implement RDF-star reasoning; the arm panics if a quoted-triple term
+# is encountered. Strictly additive when off.
+rdf-12 = ["oxrdf/rdf-12"]
 
 [dev-dependencies]
 criterion = { version = "0.5", features = ["html_reports"] }
