@@ -30,6 +30,22 @@ RDFS Semantics
    * - :supported:`supported`
      - ``rdfs11``
      - ``rdfs:subClassOf`` transitivity
+   * - :supported:`supported`
+     - ``rdfs12``
+     - Container membership: each ``rdf:_n`` (n > 0) is axiomatised as
+       ``rdf:type rdf:Property``, ``rdf:type rdfs:ContainerMembershipProperty``,
+       and ``rdfs:subPropertyOf rdfs:member``. The last yields
+       ``x rdfs:member y`` via ``prp-spo1``.
+   * - :partial:`partial`
+     - ``rdfs-datatype``
+     - Ill-formed typed literal diagnostic (``RDFS.DATATYPE``). Recognised
+       datatypes: ``xsd:string``, ``xsd:integer``, ``xsd:int``,
+       ``rdf:langString``, ``rdf:XMLLiteral``. Unrecognised datatypes pass
+       through silently.
+   * - :partial:`partial`
+     - ``rdfs-datatype-range``
+     - Diagnostic (``RDFS.DATATYPE_RANGE``) when an object literal's datatype
+       is not in the value space declared by the predicate's ``rdfs:range``.
 
 Equality Semantics
 ------------------

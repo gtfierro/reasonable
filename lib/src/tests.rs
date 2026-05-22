@@ -13,6 +13,14 @@ const RDF_TYPE: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
 const RDF_FIRST: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#first";
 const RDF_REST: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#rest";
 const RDF_NIL: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil";
+const RDF_PROPERTY: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property";
+const RDF_XML_LITERAL: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral";
+const RDFS_MEMBER: &str = "http://www.w3.org/2000/01/rdf-schema#member";
+const RDFS_CONTAINER_MEMBERSHIP_PROPERTY: &str =
+    "http://www.w3.org/2000/01/rdf-schema#ContainerMembershipProperty";
+const XSD_STRING: &str = "http://www.w3.org/2001/XMLSchema#string";
+const XSD_INTEGER: &str = "http://www.w3.org/2001/XMLSchema#integer";
+const XSD_INT: &str = "http://www.w3.org/2001/XMLSchema#int";
 const OWL_SAMEAS: &str = "http://www.w3.org/2002/07/owl#sameAs";
 const OWL_EQUIVALENTCLASS: &str = "http://www.w3.org/2002/07/owl#equivalentClass";
 const OWL_HASVALUE: &str = "http://www.w3.org/2002/07/owl#hasValue";
@@ -1089,6 +1097,492 @@ fn test_scm_eqc_with_instances() -> Result<(), String> {
     Ok(())
 }
 
+// ==================== RDFS container/datatype entailment tests ====================
+//
+// Tests for the container-membership-property axiomatisation and the
+// datatype well-formedness / range-clash diagnostics introduced in
+// commit 8f866a5 ("reasonable: add rdfs container/datatype entailment fixes
+// for W3C tests").
+//
+// W3C RDF Semantics test cross-reference:
+//   https://github.com/w3c/rdf-tests/tree/main/rdf/rdf11/rdf-mt
+//   - rdfms-seq-representation-test002 / -test003 / -test004
+//   - rdfs-container-membership-superProperty-test001
+//   - xmlsch-02-whitespace-facet-1 / -2 / -4
+//   - rdfms-xmllang-test007a / b / c
+//   - pfps-10-non-well-formed-literal-1
+
+/// Build an oxrdf Triple with a typed literal object.
+fn typed_literal_triple(s: &str, p: &str, value: &str, datatype: &str) -> oxrdf::Triple {
+    use crate::common::make_triple;
+    make_triple(
+        oxrdf::Term::NamedNode(oxrdf::NamedNode::new(s).unwrap()),
+        oxrdf::Term::NamedNode(oxrdf::NamedNode::new(p).unwrap()),
+        oxrdf::Term::Literal(oxrdf::Literal::new_typed_literal(
+            value,
+            oxrdf::NamedNode::new(datatype).unwrap(),
+        )),
+    )
+    .unwrap()
+}
+
+/// Build an oxrdf Triple with a language-tagged literal object.
+fn lang_literal_triple(s: &str, p: &str, value: &str, language: &str) -> oxrdf::Triple {
+    use crate::common::make_triple;
+    make_triple(
+        oxrdf::Term::NamedNode(oxrdf::NamedNode::new(s).unwrap()),
+        oxrdf::Term::NamedNode(oxrdf::NamedNode::new(p).unwrap()),
+        oxrdf::Term::Literal(oxrdf::Literal::new_language_tagged_literal_unchecked(
+            value, language,
+        )),
+    )
+    .unwrap()
+}
+
+#[test]
+fn test_rdfs_container_membership_axioms() -> Result<(), String> {
+    // W3C rdf-mt: rdfms-seq-representation-test002 and test004.
+    // Any triple using rdf:_N (N>0) as predicate must axiomatically entail:
+    //   rdf:_N rdf:type rdfs:ContainerMembershipProperty
+    //   rdf:_N rdfs:subPropertyOf rdfs:member
+    //   rdf:_N rdf:type rdf:Property
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![(
+        "http://example.org/foo",
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#_1",
+        "http://example.org/bar",
+    )]);
+    r.reason();
+    let res = r.get_triples_string();
+    let rdf_n1 = "<http://www.w3.org/1999/02/22-rdf-syntax-ns#_1>".to_string();
+    // test002 conclusion: rdf:_1 rdf:type rdfs:ContainerMembershipProperty
+    assert!(
+        res.contains(&(
+            rdf_n1.clone(),
+            wrap!(RDF_TYPE),
+            wrap!(RDFS_CONTAINER_MEMBERSHIP_PROPERTY)
+        )),
+        "expected rdf:_1 rdf:type rdfs:ContainerMembershipProperty (W3C rdfms-seq-representation-test002)"
+    );
+    // test004 conclusion: rdf:_1 rdfs:subPropertyOf rdfs:member
+    assert!(
+        res.contains(&(rdf_n1.clone(), wrap!(RDFS_SUBPROP), wrap!(RDFS_MEMBER))),
+        "expected rdf:_1 rdfs:subPropertyOf rdfs:member (W3C rdfms-seq-representation-test004)"
+    );
+    // RDF axiomatic: rdf:_1 rdf:type rdf:Property
+    assert!(
+        res.contains(&(rdf_n1, wrap!(RDF_TYPE), wrap!(RDF_PROPERTY))),
+        "expected rdf:_1 rdf:type rdf:Property (RDF axiomatic triple)"
+    );
+    Ok(())
+}
+
+#[test]
+fn test_rdfs_container_membership_entails_member() -> Result<(), String> {
+    // W3C rdf-mt: rdfms-seq-representation-test003.
+    // <a> rdf:_1 <b>  =>  <a> rdfs:member <b>
+    // (via rdf:_1 rdfs:subPropertyOf rdfs:member and prp-spo1)
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![(
+        "http://example.org/a",
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#_1",
+        "http://example.org/b",
+    )]);
+    r.reason();
+    let res = r.get_triples_string();
+    assert!(
+        res.contains(&(
+            "<http://example.org/a>".to_string(),
+            wrap!(RDFS_MEMBER),
+            "<http://example.org/b>".to_string()
+        )),
+        "expected <a> rdfs:member <b> (W3C rdfms-seq-representation-test003)"
+    );
+    Ok(())
+}
+
+#[test]
+fn test_rdfs_container_membership_multiple_indices() -> Result<(), String> {
+    // Axioms must fire for every distinct rdf:_N (N>0) predicate observed.
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![
+        ("urn:s", "http://www.w3.org/1999/02/22-rdf-syntax-ns#_1", "urn:o1"),
+        ("urn:s", "http://www.w3.org/1999/02/22-rdf-syntax-ns#_2", "urn:o2"),
+        ("urn:s", "http://www.w3.org/1999/02/22-rdf-syntax-ns#_42", "urn:o42"),
+    ]);
+    r.reason();
+    let res = r.get_triples_string();
+    for n in &[1u32, 2, 42] {
+        let rdf_n = format!("<http://www.w3.org/1999/02/22-rdf-syntax-ns#_{}>", n);
+        assert!(
+            res.contains(&(
+                rdf_n.clone(),
+                wrap!(RDFS_SUBPROP),
+                wrap!(RDFS_MEMBER)
+            )),
+            "missing rdf:_{} rdfs:subPropertyOf rdfs:member axiom",
+            n
+        );
+        let o = format!("<urn:o{}>", n);
+        assert!(
+            res.contains(&("<urn:s>".to_string(), wrap!(RDFS_MEMBER), o)),
+            "missing urn:s rdfs:member urn:o{} entailment",
+            n
+        );
+    }
+    Ok(())
+}
+
+#[test]
+fn test_rdfs_container_membership_ignores_non_numeric_and_zero() -> Result<(), String> {
+    // rdf:_abc, rdf:_0, and bare rdf:_ are NOT container membership properties.
+    // (The detector requires a strictly-positive integer suffix.)
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![
+        ("urn:s", "http://www.w3.org/1999/02/22-rdf-syntax-ns#_abc", "urn:o"),
+        ("urn:s", "http://www.w3.org/1999/02/22-rdf-syntax-ns#_0", "urn:o2"),
+        ("urn:s", "http://www.w3.org/1999/02/22-rdf-syntax-ns#_", "urn:o3"),
+    ]);
+    r.reason();
+    let res = r.get_triples_string();
+    for suffix in &["_abc", "_0", "_"] {
+        let p = format!("<http://www.w3.org/1999/02/22-rdf-syntax-ns#{}>", suffix);
+        assert!(
+            !res.contains(&(
+                p.clone(),
+                wrap!(RDF_TYPE),
+                wrap!(RDFS_CONTAINER_MEMBERSHIP_PROPERTY)
+            )),
+            "rdf:{} should not be a ContainerMembershipProperty",
+            suffix
+        );
+        assert!(
+            !res.contains(&(p, wrap!(RDFS_SUBPROP), wrap!(RDFS_MEMBER))),
+            "rdf:{} should not be subPropertyOf rdfs:member",
+            suffix
+        );
+    }
+    Ok(())
+}
+
+#[test]
+fn test_rdfs_container_membership_super_property_negative() -> Result<(), String> {
+    // W3C rdf-mt: rdfs-container-membership-superProperty-test001 (NegativeEntailmentTest).
+    // <s> rdfs:member <o> does NOT entail <s> rdf:_N <o> for any N.
+    // i.e. the rule fires only in the direction rdf:_N -> rdfs:member.
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![(
+        "http://example/stuff#something",
+        RDFS_MEMBER,
+        "http://example/stuff#somethingElse",
+    )]);
+    r.reason();
+    let res = r.get_triples_string();
+    // No rdf:_N triple should appear with these endpoints.
+    for n in 1..5 {
+        let rdf_n = format!("<http://www.w3.org/1999/02/22-rdf-syntax-ns#_{}>", n);
+        assert!(
+            !res.contains(&(
+                "<http://example/stuff#something>".to_string(),
+                rdf_n.clone(),
+                "<http://example/stuff#somethingElse>".to_string()
+            )),
+            "rdfs:member should not entail rdf:_{} (W3C rdfs-container-membership-superProperty-test001)",
+            n
+        );
+    }
+    Ok(())
+}
+
+#[test]
+fn test_rdfs_datatype_ill_formed_xsd_int_with_whitespace() -> Result<(), String> {
+    // W3C rdf-mt: xmlsch-02-whitespace-facet-2 / -4.
+    // " 3 "^^xsd:int has leading/trailing whitespace and is ill-formed.
+    // The reasoner should record an rdfs-datatype diagnostic.
+    let mut r = Reasoner::new();
+    r.load_triples(vec![typed_literal_triple(
+        "http://www.example.org/a",
+        "http://example.org/prop",
+        " 3 ",
+        XSD_INT,
+    )]);
+    r.reason();
+    assert!(
+        r.errors().iter().any(|e| e.rule() == "rdfs-datatype"),
+        "expected rdfs-datatype diagnostic for ill-formed xsd:int literal \" 3 \" (W3C xmlsch-02-whitespace-facet-2/-4)"
+    );
+    Ok(())
+}
+
+#[test]
+fn test_rdfs_datatype_well_formed_xsd_int_no_error() -> Result<(), String> {
+    // W3C rdf-mt: xmlsch-02-whitespace-facet-1 premise (test001.ttl).
+    // "3"^^xsd:int is well-formed; no rdfs-datatype diagnostic should fire.
+    let mut r = Reasoner::new();
+    r.load_triples(vec![typed_literal_triple(
+        "http://www.example.org/a",
+        "http://example.org/prop",
+        "3",
+        XSD_INT,
+    )]);
+    r.reason();
+    assert!(
+        !r.errors().iter().any(|e| e.rule() == "rdfs-datatype"),
+        "no rdfs-datatype diagnostic should be raised for well-formed \"3\"^^xsd:int"
+    );
+    Ok(())
+}
+
+#[test]
+fn test_rdfs_datatype_ill_formed_xsd_integer() -> Result<(), String> {
+    // "abc"^^xsd:integer has a non-numeric lexical form; ill-formed.
+    let mut r = Reasoner::new();
+    r.load_triples(vec![typed_literal_triple(
+        "urn:s", "urn:p", "abc", XSD_INTEGER,
+    )]);
+    r.reason();
+    assert!(
+        r.errors().iter().any(|e| e.rule() == "rdfs-datatype"),
+        "expected rdfs-datatype diagnostic for non-numeric xsd:integer literal"
+    );
+    Ok(())
+}
+
+#[test]
+fn test_rdfs_datatype_well_formed_signed_xsd_integer() -> Result<(), String> {
+    // Signed integers ("+7", "-42") are well-formed lexical forms for xsd:integer.
+    let mut r = Reasoner::new();
+    r.load_triples(vec![
+        typed_literal_triple("urn:s", "urn:p", "-42", XSD_INTEGER),
+        typed_literal_triple("urn:s", "urn:p", "+7", XSD_INTEGER),
+    ]);
+    r.reason();
+    assert!(
+        !r.errors().iter().any(|e| e.rule() == "rdfs-datatype"),
+        "signed xsd:integer literals (-42, +7) should be well-formed"
+    );
+    Ok(())
+}
+
+#[test]
+fn test_rdfs_datatype_xsd_int_overflow() -> Result<(), String> {
+    // xsd:int is 32-bit; a value outside i32 range is ill-formed.
+    let mut r = Reasoner::new();
+    r.load_triples(vec![typed_literal_triple(
+        "urn:s",
+        "urn:p",
+        "99999999999999999999",
+        XSD_INT,
+    )]);
+    r.reason();
+    assert!(
+        r.errors().iter().any(|e| e.rule() == "rdfs-datatype"),
+        "expected rdfs-datatype diagnostic for xsd:int literal outside i32 range"
+    );
+    Ok(())
+}
+
+#[test]
+fn test_rdfs_datatype_ill_formed_xml_literal() -> Result<(), String> {
+    // An rdf:XMLLiteral whose lexical form does not close its single open tag
+    // is ill-formed.
+    let mut r = Reasoner::new();
+    r.load_triples(vec![typed_literal_triple(
+        "urn:s",
+        "urn:p",
+        "<unclosed",
+        RDF_XML_LITERAL,
+    )]);
+    r.reason();
+    assert!(
+        r.errors().iter().any(|e| e.rule() == "rdfs-datatype"),
+        "expected rdfs-datatype diagnostic for ill-formed rdf:XMLLiteral"
+    );
+    Ok(())
+}
+
+#[test]
+fn test_rdfs_datatype_ill_formed_xml_literal_mismatched_tags() -> Result<(), String> {
+    // Structural well-formedness: <a><b></a></b> has interleaved tags and is
+    // not well-formed XML. The bracket-counting heuristic missed this; the
+    // quick-xml parser catches it.
+    let mut r = Reasoner::new();
+    r.load_triples(vec![typed_literal_triple(
+        "urn:s",
+        "urn:p",
+        "<a><b></a></b>",
+        RDF_XML_LITERAL,
+    )]);
+    r.reason();
+    assert!(
+        r.errors().iter().any(|e| e.rule() == "rdfs-datatype"),
+        "expected rdfs-datatype diagnostic for mismatched-tag rdf:XMLLiteral"
+    );
+    Ok(())
+}
+
+#[test]
+fn test_rdfs_datatype_well_formed_xml_literal_no_error() -> Result<(), String> {
+    // A correctly nested XMLLiteral must not raise a diagnostic.
+    let mut r = Reasoner::new();
+    r.load_triples(vec![typed_literal_triple(
+        "urn:s",
+        "urn:p",
+        "<a><b/></a>",
+        RDF_XML_LITERAL,
+    )]);
+    r.reason();
+    assert!(
+        !r.errors().iter().any(|e| e.rule() == "rdfs-datatype"),
+        "well-formed rdf:XMLLiteral should not raise a diagnostic"
+    );
+    Ok(())
+}
+
+#[test]
+fn test_rdfs_datatype_range_clash_string_for_integer() -> Result<(), String> {
+    // Predicate range is xsd:integer; object is "abc"^^xsd:string. Range clash.
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![("urn:p", RDFS_RANGE, XSD_INTEGER)]);
+    r.load_triples(vec![typed_literal_triple(
+        "urn:s", "urn:p", "abc", XSD_STRING,
+    )]);
+    r.reason();
+    assert!(
+        r.errors()
+            .iter()
+            .any(|e| e.rule() == "rdfs-datatype-range"),
+        "expected rdfs-datatype-range diagnostic when object's datatype is not in range"
+    );
+    Ok(())
+}
+
+#[test]
+fn test_rdfs_datatype_range_clash_added_incrementally() -> Result<(), String> {
+    // Retroactive range clash: a literal triple loaded first looks fine; then
+    // a later batch declares rdfs:range on its predicate, retroactively
+    // invalidating the literal. The post-fixpoint validator must catch this
+    // even though the literal triple itself is not in the second batch's delta.
+    let mut r = Reasoner::new();
+    r.load_triples(vec![typed_literal_triple(
+        "urn:s", "urn:p", "abc", XSD_STRING,
+    )]);
+    r.reason();
+    assert!(
+        !r.errors()
+            .iter()
+            .any(|e| e.rule() == "rdfs-datatype-range"),
+        "no diagnostic expected before the range is declared"
+    );
+    r.load_triples_str(vec![("urn:p", RDFS_RANGE, XSD_INTEGER)]);
+    r.reason();
+    assert!(
+        r.errors()
+            .iter()
+            .any(|e| e.rule() == "rdfs-datatype-range"),
+        "expected rdfs-datatype-range diagnostic after rdfs:range was added incrementally"
+    );
+    Ok(())
+}
+
+#[test]
+fn test_rdfs_datatype_range_compatible_integer() -> Result<(), String> {
+    // Predicate range is xsd:integer; both xsd:integer and xsd:int objects
+    // are inside the value space of xsd:integer (xsd:int ⊂ xsd:integer).
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![("urn:p", RDFS_RANGE, XSD_INTEGER)]);
+    r.load_triples(vec![
+        typed_literal_triple("urn:s", "urn:p", "42", XSD_INTEGER),
+        typed_literal_triple("urn:s2", "urn:p", "7", XSD_INT),
+    ]);
+    r.reason();
+    assert!(
+        !r.errors()
+            .iter()
+            .any(|e| e.rule() == "rdfs-datatype-range"),
+        "xsd:integer and xsd:int literals should both satisfy range xsd:integer"
+    );
+    Ok(())
+}
+
+#[test]
+fn test_rdfs_datatype_range_clash_langstring_for_string() -> Result<(), String> {
+    // W3C rdf-mt: rdfms-xmllang-test007a (plain string vs language-tagged).
+    // Predicate range is xsd:string; object is "chat"@fr (rdf:langString) →
+    // range clash, because a language-tagged literal is not in xsd:string's
+    // value space.
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![("http://example.org/property", RDFS_RANGE, XSD_STRING)]);
+    r.load_triples(vec![lang_literal_triple(
+        "http://example.org/node",
+        "http://example.org/property",
+        "chat",
+        "fr",
+    )]);
+    r.reason();
+    assert!(
+        r.errors()
+            .iter()
+            .any(|e| e.rule() == "rdfs-datatype-range"),
+        "expected rdfs-datatype-range diagnostic when xsd:string range receives rdf:langString"
+    );
+    Ok(())
+}
+
+#[test]
+fn test_rdfs_datatype_no_error_without_range_or_ill_formed() -> Result<(), String> {
+    // Sanity: a well-formed literal whose predicate has no rdfs:range
+    // and whose datatype is recognised produces no diagnostics.
+    let mut r = Reasoner::new();
+    r.load_triples(vec![typed_literal_triple(
+        "urn:s", "urn:p", "42", XSD_INTEGER,
+    )]);
+    r.reason();
+    assert!(
+        !r.errors()
+            .iter()
+            .any(|e| e.rule() == "rdfs-datatype" || e.rule() == "rdfs-datatype-range"),
+        "a well-formed literal with no range constraint should not raise datatype diagnostics"
+    );
+    Ok(())
+}
+
+#[test]
+fn test_rdfs_datatype_diagnostic_code() -> Result<(), String> {
+    // Locks in the stable diagnostic code for the rdfs-datatype rule.
+    let mut r = Reasoner::new();
+    r.load_triples(vec![typed_literal_triple(
+        "urn:s", "urn:p", "abc", XSD_INTEGER,
+    )]);
+    r.reason();
+    let has_code = r
+        .errors()
+        .iter()
+        .any(|e| e.code() == "RDFS.DATATYPE" && e.rule() == "rdfs-datatype");
+    assert!(has_code, "expected diagnostic with code RDFS.DATATYPE and rule rdfs-datatype");
+    Ok(())
+}
+
+#[test]
+fn test_rdfs_datatype_range_diagnostic_code() -> Result<(), String> {
+    // Locks in the stable diagnostic code for the rdfs-datatype-range rule.
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![("urn:p", RDFS_RANGE, XSD_INTEGER)]);
+    r.load_triples(vec![typed_literal_triple(
+        "urn:s", "urn:p", "abc", XSD_STRING,
+    )]);
+    r.reason();
+    let has_code = r
+        .errors()
+        .iter()
+        .any(|e| e.code() == "RDFS.DATATYPE_RANGE" && e.rule() == "rdfs-datatype-range");
+    assert!(
+        has_code,
+        "expected diagnostic with code RDFS.DATATYPE_RANGE and rule rdfs-datatype-range"
+    );
+    Ok(())
+}
+
 //#[test]
 //fn test_triple_update1() -> Result<(), String> {
 //    let mut u = TripleUpdate::new();
@@ -1315,6 +1809,24 @@ fn test_incremental_subclass_chain() {
             ("urn:B", RDFS_SUBCLASSOF, "urn:C"),
         ],
         vec![("urn:x", RDF_TYPE, "urn:A")],
+    );
+}
+
+#[test]
+fn test_incremental_rdfs_container_membership() {
+    // rdf:_N predicates introduced in an incremental batch must still trigger
+    // the container-membership axiom injection so that:
+    //   rdf:_N rdf:type rdfs:ContainerMembershipProperty
+    //   rdf:_N rdfs:subPropertyOf rdfs:member
+    //   <s> rdfs:member <o>   (via prp-spo1)
+    // all appear in the closure — i.e. incremental must match full materialization.
+    assert_incremental_equivalent(
+        vec![("urn:bootstrap", RDF_TYPE, "urn:Thing")],
+        vec![(
+            "urn:a",
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#_1",
+            "urn:b",
+        )],
     );
 }
 

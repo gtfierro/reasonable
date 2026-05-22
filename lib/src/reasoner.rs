@@ -61,6 +61,8 @@ impl ReasoningError {
             "prp-asyp" => "OWLRL.PRP_ASYP",
             "prp-irp" => "OWLRL.PRP_IRP",
             "cls-com" => "OWLRL.CLS_COM",
+            "rdfs-datatype" => "RDFS.DATATYPE",
+            "rdfs-datatype-range" => "RDFS.DATATYPE_RANGE",
             _ => "OWLRL.UNKNOWN",
         }
         .to_string();
@@ -899,6 +901,187 @@ impl Reasoner {
         self.errors.push(error);
     }
 
+    fn inject_rdfs_container_membership_axioms(&mut self) {
+        let rdf_type = self.index.put(rdf!("type"));
+        let rdf_property = self.index.put(rdf!("Property"));
+        let rdfs_container_membership_property =
+            self.index.put(rdfs!("ContainerMembershipProperty"));
+        let rdfs_sub_property_of = self.index.put(rdfs!("subPropertyOf"));
+        let rdfs_member = self.index.put(rdfs!("member"));
+
+        // In incremental mode, new `rdf:_N` predicates only appear in
+        // `pending_delta` (load_triples routes them there while
+        // is_materialized=true). In full mode, scan `self.input`.
+        let scan_source: &[KeyedTriple] = if self.is_materialized {
+            &self.pending_delta
+        } else {
+            &self.input
+        };
+
+        let mut seen_predicates = HashSet::new();
+        let mut axioms = Vec::new();
+        for (_, (predicate, _)) in scan_source {
+            if *predicate == 0 || !seen_predicates.insert(*predicate) {
+                continue;
+            }
+            let Some(Term::NamedNode(predicate_node)) = self.index.get(*predicate) else {
+                continue;
+            };
+            if !is_rdf_container_membership_property_iri(predicate_node.as_str()) {
+                continue;
+            }
+            axioms.push((*predicate, (rdf_type, rdf_property)));
+            axioms.push((*predicate, (rdf_type, rdfs_container_membership_property)));
+            axioms.push((*predicate, (rdfs_sub_property_of, rdfs_member)));
+        }
+        if axioms.is_empty() {
+            return;
+        }
+        axioms.sort_unstable();
+        self.input.sort_unstable();
+        get_unique(&self.input, &mut axioms);
+        if self.is_materialized {
+            // Seed axioms into pending_delta so they drive the incremental
+            // fixpoint, and into base so they survive a future clear().
+            self.pending_delta.sort_unstable();
+            get_unique(&self.pending_delta, &mut axioms);
+            self.base.extend(axioms.iter().cloned());
+            self.pending_delta.extend(axioms);
+        } else {
+            self.add_base_triples(axioms);
+        }
+    }
+
+    // Post-fixpoint validator. Scans the closure for ill-formed typed literals
+    // and `rdfs:range` clashes. To avoid re-scanning the full closure on every
+    // incremental `reason()` call, this function operates in two passes:
+    //
+    //   1. Scan `delta` (new triples since the previous closure) against the
+    //      full `ranges` map, catching freshly added literals.
+    //   2. If `delta` introduced new `rdfs:range` declarations, re-scan the
+    //      prior closure (`full_output \ delta`) against only those new ranges,
+    //      catching retroactive clashes where a previously-clean literal is
+    //      now constrained by a newly-declared range.
+    //
+    // Both inputs must be sorted; the linear merge in pass 2 relies on it.
+    fn detect_rdfs_datatype_inconsistencies(
+        &mut self,
+        full_output: &[KeyedTriple],
+        delta: &[KeyedTriple],
+    ) {
+        let rdfs_range = self.index.put(rdfs!("range"));
+
+        // Full range map: predicate -> all declared range targets.
+        let mut ranges: HashMap<URI, Vec<URI>> = HashMap::new();
+        for (subject, (predicate, object)) in full_output {
+            if *predicate == rdfs_range {
+                ranges.entry(*subject).or_default().push(*object);
+            }
+        }
+
+        // Subset: ranges newly declared in this delta. Used by pass 2 to
+        // re-check prior triples without re-scanning the whole closure.
+        let mut new_ranges: HashMap<URI, Vec<URI>> = HashMap::new();
+        for (subject, (predicate, object)) in delta {
+            if *predicate == rdfs_range {
+                new_ranges.entry(*subject).or_default().push(*object);
+            }
+        }
+
+        let mut violations: Vec<(String, String)> = Vec::new();
+
+        // Pass 1: scan delta triples against ALL ranges.
+        for (subject, (predicate, object)) in delta {
+            self.check_triple_for_datatype_issues(
+                *subject,
+                *predicate,
+                *object,
+                &ranges,
+                true, // check ill-formed
+                &mut violations,
+            );
+        }
+
+        // Pass 2: only runs when delta added at least one rdfs:range.
+        // Walk full_output, skipping triples that are in delta (already covered),
+        // and check the remainder against only the NEW ranges.
+        if !new_ranges.is_empty() {
+            let mut j = 0usize;
+            for triple in full_output {
+                while j < delta.len() && &delta[j] < triple {
+                    j += 1;
+                }
+                let in_delta = j < delta.len() && &delta[j] == triple;
+                if in_delta {
+                    continue;
+                }
+                let (subject, (predicate, object)) = *triple;
+                if !new_ranges.contains_key(&predicate) {
+                    continue;
+                }
+                self.check_triple_for_datatype_issues(
+                    subject,
+                    predicate,
+                    object,
+                    &new_ranges,
+                    false, // ill-formed already checked when triple first entered the closure
+                    &mut violations,
+                );
+            }
+        }
+
+        for (rule, message) in violations {
+            self.add_error(rule, message);
+        }
+    }
+
+    fn check_triple_for_datatype_issues(
+        &self,
+        subject: URI,
+        predicate: URI,
+        object: URI,
+        ranges: &HashMap<URI, Vec<URI>>,
+        check_ill_formed: bool,
+        violations: &mut Vec<(String, String)>,
+    ) {
+        if check_ill_formed {
+            if let Some(Term::Literal(literal)) = self.index.get(object) {
+                let datatype_iri = literal.datatype().as_str();
+                if let Some(false) = literal_well_formed_for_datatype(literal, datatype_iri) {
+                    let message = format!(
+                        "ill-formed literal {} used in triple {} {} {}",
+                        literal,
+                        self.to_u(subject),
+                        self.to_u(predicate),
+                        self.to_u(object)
+                    );
+                    violations.push(("rdfs-datatype".to_string(), message));
+                }
+            }
+        }
+
+        let Some(range_targets) = ranges.get(&predicate) else {
+            return;
+        };
+        let Some(object_term) = self.index.get(object) else {
+            return;
+        };
+        for range_target in range_targets {
+            let Some(Term::NamedNode(range_node)) = self.index.get(*range_target) else {
+                continue;
+            };
+            if let Some(false) = term_in_datatype_space(object_term, range_node.as_str()) {
+                let message = format!(
+                    "range clash: object {} is not in datatype {} for predicate {}",
+                    self.to_u(object),
+                    range_node,
+                    self.to_u(predicate)
+                );
+                violations.push(("rdfs-datatype-range".to_string(), message));
+            }
+        }
+    }
+
     /// Returns a read-only view of errors detected during reasoning (e.g., disjointness violations).
     pub fn errors(&self) -> &[ReasoningError] {
         &self.errors
@@ -1021,6 +1204,16 @@ impl Reasoner {
         let rdftype_node = self.rdftype_node;
         let owlthing_node = self.owlthing_node;
         let owlsameas_node = self.owlsameas_node;
+
+        // RDFS container membership properties (rdf:_n) carry axiomatic
+        // consequences:
+        //   rdf:_n rdf:type rdf:Property ;
+        //          rdf:type rdfs:ContainerMembershipProperty ;
+        //          rdfs:subPropertyOf rdfs:member .
+        // Inject those axioms before fixpoint so they participate in the
+        // closure. Idempotent: the injector dedups against `self.input`,
+        // so running it on every `reason()` call is safe.
+        self.inject_rdfs_container_membership_axioms();
 
         if self.is_materialized {
             // Incremental mode: only seed delta triples
@@ -1832,14 +2025,31 @@ impl Reasoner {
         }
 
         // Non-destructive read of stable partitions (preserves Variable state for incremental use)
-        let stable = self.spo.stable.borrow();
         let mut output: Vec<KeyedTriple> = Vec::new();
-        for batch in stable.iter() {
-            output.extend(
-                batch.iter()
-                    .filter(|(s, (p, o))| *s > 0 && *p > 0 && *o > 0)
-            );
+        {
+            let stable = self.spo.stable.borrow();
+            for batch in stable.iter() {
+                output.extend(
+                    batch.iter()
+                        .filter(|(s, (p, o))| *s > 0 && *p > 0 && *o > 0)
+                );
+            }
         }
+        // Sort once: needed for the delta linear merge below and for
+        // storing into self.input after this block.
+        output.sort_unstable();
+        // In incremental mode, only the newly-derived triples (output \ prior
+        // closure) need a full scan; the prior closure is already represented
+        // in self.input at this point and has been scanned by an earlier call.
+        // In full mode, everything is "new".
+        let delta: Vec<KeyedTriple> = if self.is_materialized {
+            let mut d = output.clone();
+            get_unique(&self.input, &mut d);
+            d
+        } else {
+            output.clone()
+        };
+        self.detect_rdfs_datatype_inconsistencies(&output, &delta);
         // Build oxrdf output
         let mut out_triples: Vec<Triple> = Vec::with_capacity(output.len());
         for &(_s, (_p, _o)) in output.iter() {
@@ -1918,6 +2128,107 @@ impl Reasoner {
             })
             .collect()
     }
+}
+
+fn is_rdf_container_membership_property_iri(iri: &str) -> bool {
+    const RDF_CONTAINER_PREFIX: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#_";
+    let Some(suffix) = iri.strip_prefix(RDF_CONTAINER_PREFIX) else {
+        return false;
+    };
+    !suffix.is_empty()
+        && suffix.chars().all(|c| c.is_ascii_digit())
+        && suffix.parse::<u64>().ok().is_some_and(|n| n > 0)
+}
+
+fn integer_lexical_is_valid(value: &str) -> bool {
+    if value.is_empty() {
+        return false;
+    }
+    let mut chars = value.chars();
+    let Some(first) = chars.next() else {
+        return false;
+    };
+    let digits_only = if first == '+' || first == '-' {
+        chars.collect::<String>()
+    } else {
+        value.to_string()
+    };
+    !digits_only.is_empty() && digits_only.chars().all(|c| c.is_ascii_digit())
+}
+
+fn int_lexical_is_valid(value: &str) -> bool {
+    integer_lexical_is_valid(value) && value.parse::<i32>().is_ok()
+}
+
+// rdf:XMLLiteral's lexical space is exclusive canonical XML (RDF 1.1 §3.4).
+// We approximate well-formedness by parsing the value with quick-xml and
+// requiring that every start tag is matched by an end tag (check_end_names)
+// and that the stream reaches EOF without a parse error. Plain text with no
+// markup is also accepted, matching common toolchains.
+fn xml_literal_lexical_is_well_formed(value: &str) -> bool {
+    use quick_xml::events::Event;
+    use quick_xml::reader::Reader;
+
+    let mut reader = Reader::from_str(value);
+    reader.config_mut().check_end_names = true;
+    let mut buf = Vec::new();
+    loop {
+        match reader.read_event_into(&mut buf) {
+            Ok(Event::Eof) => return true,
+            Err(_) => return false,
+            _ => {}
+        }
+        buf.clear();
+    }
+}
+
+fn literal_well_formed_for_datatype(literal: &oxrdf::Literal, datatype_iri: &str) -> Option<bool> {
+    const XSD_STRING: &str = "http://www.w3.org/2001/XMLSchema#string";
+    const XSD_INTEGER: &str = "http://www.w3.org/2001/XMLSchema#integer";
+    const XSD_INT: &str = "http://www.w3.org/2001/XMLSchema#int";
+    const RDF_LANG_STRING: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString";
+    const RDF_XML_LITERAL: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral";
+
+    let lexical = literal.value();
+    Some(match datatype_iri {
+        XSD_STRING => true,
+        XSD_INTEGER => integer_lexical_is_valid(lexical),
+        XSD_INT => int_lexical_is_valid(lexical),
+        RDF_LANG_STRING => literal.language().is_some(),
+        RDF_XML_LITERAL => xml_literal_lexical_is_well_formed(lexical),
+        _ => return None,
+    })
+}
+
+fn term_in_datatype_space(term: &Term, datatype_iri: &str) -> Option<bool> {
+    const XSD_STRING: &str = "http://www.w3.org/2001/XMLSchema#string";
+    const XSD_INTEGER: &str = "http://www.w3.org/2001/XMLSchema#integer";
+    const XSD_INT: &str = "http://www.w3.org/2001/XMLSchema#int";
+    const RDF_LANG_STRING: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString";
+    const RDF_XML_LITERAL: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral";
+
+    let Term::Literal(literal) = term else {
+        return Some(false);
+    };
+    let literal_datatype = literal.datatype().as_str();
+    Some(match datatype_iri {
+        XSD_STRING => literal.language().is_none() && literal_datatype == XSD_STRING,
+        XSD_INTEGER => match literal_datatype {
+            XSD_INTEGER => literal_well_formed_for_datatype(literal, XSD_INTEGER).unwrap_or(false),
+            XSD_INT => literal_well_formed_for_datatype(literal, XSD_INT).unwrap_or(false),
+            _ => false,
+        },
+        XSD_INT => {
+            literal_datatype == XSD_INT
+                && literal_well_formed_for_datatype(literal, XSD_INT).unwrap_or(false)
+        }
+        RDF_LANG_STRING => literal.language().is_some(),
+        RDF_XML_LITERAL => {
+            literal_datatype == RDF_XML_LITERAL
+                && literal_well_formed_for_datatype(literal, RDF_XML_LITERAL).unwrap_or(false)
+        }
+        _ => return None,
+    })
 }
 
 /**
