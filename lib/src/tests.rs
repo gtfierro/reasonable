@@ -6,8 +6,6 @@ use std::io::Error;
 const RDFS_SUBCLASSOF: &str = "http://www.w3.org/2000/01/rdf-schema#subClassOf";
 const RDFS_DOMAIN: &str = "http://www.w3.org/2000/01/rdf-schema#domain";
 const RDFS_RANGE: &str = "http://www.w3.org/2000/01/rdf-schema#range";
-const RDFS_LITERAL: &str = "http://www.w3.org/2000/01/rdf-schema#Literal";
-const RDFS_RESOURCE: &str = "http://www.w3.org/2000/01/rdf-schema#Resource";
 const RDFS_SUBPROP: &str = "http://www.w3.org/2000/01/rdf-schema#subPropertyOf";
 const RDF_TYPE: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
 const RDF_FIRST: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#first";
@@ -39,19 +37,12 @@ const OWL_CLASS: &str = "http://www.w3.org/2002/07/owl#Class";
 const OWL_THING: &str = "http://www.w3.org/2002/07/owl#Thing";
 const OWL_NOTHING: &str = "http://www.w3.org/2002/07/owl#Nothing";
 const OWL_COMPLEMENT: &str = "http://www.w3.org/2002/07/owl#complementOf";
-const OWL_RESTRICTION: &str = "http://www.w3.org/2002/07/owl#Restriction";
 const OWL_ASYMMETRICPROP: &str = "http://www.w3.org/2002/07/owl#AsymmetricProperty";
 const OWL_IRREFLEXIVEPROP: &str = "http://www.w3.org/2002/07/owl#IrreflexiveProperty";
 
 macro_rules! wrap {
     ($t:expr) => {
         format!("<{}>", $t)
-    };
-}
-
-macro_rules! triple {
-    ($s:expr, $p:expr, $o:expr) => {
-        make_triple(uri!("urn:{}", $s), uri!("urn:{}", $p), uri!("urn:{}", $o)).unwrap()
     };
 }
 
