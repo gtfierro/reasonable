@@ -23,6 +23,7 @@ tinytemplate.workspace = true
 anyhow.workspace = true
 clap.workspace = true
 thiserror = "1.0"
+quick-xml = "0.36"
 
 # optional deps for legacy query module (rdf stack)
 regex = { version = "1", optional = true }

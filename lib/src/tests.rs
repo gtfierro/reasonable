@@ -1402,6 +1402,44 @@ fn test_rdfs_datatype_ill_formed_xml_literal() -> Result<(), String> {
 }
 
 #[test]
+fn test_rdfs_datatype_ill_formed_xml_literal_mismatched_tags() -> Result<(), String> {
+    // Structural well-formedness: <a><b></a></b> has interleaved tags and is
+    // not well-formed XML. The bracket-counting heuristic missed this; the
+    // quick-xml parser catches it.
+    let mut r = Reasoner::new();
+    r.load_triples(vec![typed_literal_triple(
+        "urn:s",
+        "urn:p",
+        "<a><b></a></b>",
+        RDF_XML_LITERAL,
+    )]);
+    r.reason();
+    assert!(
+        r.errors().iter().any(|e| e.rule() == "rdfs-datatype"),
+        "expected rdfs-datatype diagnostic for mismatched-tag rdf:XMLLiteral"
+    );
+    Ok(())
+}
+
+#[test]
+fn test_rdfs_datatype_well_formed_xml_literal_no_error() -> Result<(), String> {
+    // A correctly nested XMLLiteral must not raise a diagnostic.
+    let mut r = Reasoner::new();
+    r.load_triples(vec![typed_literal_triple(
+        "urn:s",
+        "urn:p",
+        "<a><b/></a>",
+        RDF_XML_LITERAL,
+    )]);
+    r.reason();
+    assert!(
+        !r.errors().iter().any(|e| e.rule() == "rdfs-datatype"),
+        "well-formed rdf:XMLLiteral should not raise a diagnostic"
+    );
+    Ok(())
+}
+
+#[test]
 fn test_rdfs_datatype_range_clash_string_for_integer() -> Result<(), String> {
     // Predicate range is xsd:integer; object is "abc"^^xsd:string. Range clash.
     let mut r = Reasoner::new();
@@ -1415,6 +1453,34 @@ fn test_rdfs_datatype_range_clash_string_for_integer() -> Result<(), String> {
             .iter()
             .any(|e| e.rule() == "rdfs-datatype-range"),
         "expected rdfs-datatype-range diagnostic when object's datatype is not in range"
+    );
+    Ok(())
+}
+
+#[test]
+fn test_rdfs_datatype_range_clash_added_incrementally() -> Result<(), String> {
+    // Retroactive range clash: a literal triple loaded first looks fine; then
+    // a later batch declares rdfs:range on its predicate, retroactively
+    // invalidating the literal. The post-fixpoint validator must catch this
+    // even though the literal triple itself is not in the second batch's delta.
+    let mut r = Reasoner::new();
+    r.load_triples(vec![typed_literal_triple(
+        "urn:s", "urn:p", "abc", XSD_STRING,
+    )]);
+    r.reason();
+    assert!(
+        !r.errors()
+            .iter()
+            .any(|e| e.rule() == "rdfs-datatype-range"),
+        "no diagnostic expected before the range is declared"
+    );
+    r.load_triples_str(vec![("urn:p", RDFS_RANGE, XSD_INTEGER)]);
+    r.reason();
+    assert!(
+        r.errors()
+            .iter()
+            .any(|e| e.rule() == "rdfs-datatype-range"),
+        "expected rdfs-datatype-range diagnostic after rdfs:range was added incrementally"
     );
     Ok(())
 }
@@ -1743,6 +1809,24 @@ fn test_incremental_subclass_chain() {
             ("urn:B", RDFS_SUBCLASSOF, "urn:C"),
         ],
         vec![("urn:x", RDF_TYPE, "urn:A")],
+    );
+}
+
+#[test]
+fn test_incremental_rdfs_container_membership() {
+    // rdf:_N predicates introduced in an incremental batch must still trigger
+    // the container-membership axiom injection so that:
+    //   rdf:_N rdf:type rdfs:ContainerMembershipProperty
+    //   rdf:_N rdfs:subPropertyOf rdfs:member
+    //   <s> rdfs:member <o>   (via prp-spo1)
+    // all appear in the closure — i.e. incremental must match full materialization.
+    assert_incremental_equivalent(
+        vec![("urn:bootstrap", RDF_TYPE, "urn:Thing")],
+        vec![(
+            "urn:a",
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#_1",
+            "urn:b",
+        )],
     );
 }
 
