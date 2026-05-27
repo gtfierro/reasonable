@@ -1,7 +1,7 @@
 use oxrdf::{BlankNode, Literal, NamedNode, Term, Triple};
 use pyo3::exceptions;
 use pyo3::prelude::*;
-use pyo3::types::{PyList, PyTuple};
+use pyo3::types::{PyDict, PyList, PyTuple};
 use pyo3_ffi::c_str;
 use reasonable::common::make_triple;
 use reasonable::error::ReasonableError;
@@ -154,6 +154,134 @@ fn extract_triples_from_graph(py: Python, graph: &PyObject) -> PyResult<Vec<Trip
     Ok(triples)
 }
 
+fn ox_term_from_py(s: &Bound<'_, PyAny>) -> PyResult<Term> {
+    let typestr = s.get_type().name()?.to_string();
+    match typestr.as_str() {
+        "NamedNode" => {
+            let v: String = s.getattr("value")?.extract()?;
+            let n = NamedNode::new(v)
+                .map_err(|e| exceptions::PyValueError::new_err(e.to_string()))?;
+            Ok(Term::NamedNode(n))
+        }
+        "BlankNode" => {
+            let v: String = s.getattr("value")?.extract()?;
+            let b = BlankNode::new(v)
+                .map_err(|e| exceptions::PyValueError::new_err(e.to_string()))?;
+            Ok(Term::BlankNode(b))
+        }
+        "Literal" => {
+            let v: String = s.getattr("value")?.extract()?;
+            let lang: Option<String> = s.getattr("language")?.extract()?;
+            if let Some(lang) = lang {
+                let l = Literal::new_language_tagged_literal(v, lang)
+                    .map_err(|e| exceptions::PyValueError::new_err(e.to_string()))?;
+                Ok(Term::Literal(l))
+            } else {
+                let dt = s.getattr("datatype")?;
+                let dt_value: String = dt.getattr("value")?.extract()?;
+                let dt_nn = NamedNode::new(dt_value)
+                    .map_err(|e| exceptions::PyValueError::new_err(e.to_string()))?;
+                Ok(Term::Literal(Literal::new_typed_literal(v, dt_nn)))
+            }
+        }
+        other => Err(exceptions::PyTypeError::new_err(format!(
+            "expected pyoxigraph NamedNode/BlankNode/Literal, got {other}"
+        ))),
+    }
+}
+
+/// Extracts oxrdf Triples from an iterable of pyoxigraph Quad or Triple objects.
+fn extract_triples_from_quads(py: Python, iterable: &PyObject) -> PyResult<Vec<Triple>> {
+    let bound = iterable.bind(py);
+    let iter = bound.try_iter()?;
+    let mut triples: Vec<Triple> = Vec::new();
+    for item in iter {
+        let item = item?;
+        let typestr = item.get_type().name()?.to_string();
+        let (s_obj, p_obj, o_obj) = match typestr.as_str() {
+            "Quad" => {
+                let t = item.getattr("triple")?;
+                (
+                    t.getattr("subject")?,
+                    t.getattr("predicate")?,
+                    t.getattr("object")?,
+                )
+            }
+            "Triple" => (
+                item.getattr("subject")?,
+                item.getattr("predicate")?,
+                item.getattr("object")?,
+            ),
+            other => {
+                return Err(exceptions::PyTypeError::new_err(format!(
+                    "expected pyoxigraph Quad or Triple, got {other}"
+                )));
+            }
+        };
+        let s = ox_term_from_py(&s_obj)?;
+        let p = ox_term_from_py(&p_obj)?;
+        let o = ox_term_from_py(&o_obj)?;
+        match make_triple(s, p, o) {
+            Ok(triple) => triples.push(triple),
+            Err(e) => return Err(PyReasoningError(e).into()),
+        }
+    }
+    Ok(triples)
+}
+
+fn term_to_pyoxigraph<'a>(
+    pyox: &Bound<'a, PyModule>,
+    node: Term,
+) -> PyResult<Bound<'a, PyAny>> {
+    match node {
+        Term::NamedNode(n) => pyox
+            .getattr("NamedNode")?
+            .call1((n.as_str().to_string(),)),
+        Term::BlankNode(b) => pyox
+            .getattr("BlankNode")?
+            .call1((b.as_str().to_string(),)),
+        Term::Literal(lit) => {
+            let value = lit.value().to_string();
+            let py = pyox.py();
+            if let Some(lang) = lit.language() {
+                let kwargs = PyDict::new(py);
+                kwargs.set_item("language", lang)?;
+                pyox.getattr("Literal")?.call((value,), Some(&kwargs))
+            } else {
+                let dt = lit.datatype().as_str().to_string();
+                let nn = pyox.getattr("NamedNode")?.call1((dt,))?;
+                let kwargs = PyDict::new(py);
+                kwargs.set_item("datatype", nn)?;
+                pyox.getattr("Literal")?.call((value,), Some(&kwargs))
+            }
+        }
+    }
+}
+
+/// Converts oxrdf Triples into pyoxigraph Quads tagged with the given graph name
+/// (or DefaultGraph if None).
+fn triples_to_pyox_quads(
+    py: Python,
+    triples: Vec<Triple>,
+    graph_name: Option<PyObject>,
+) -> PyResult<Vec<PyObject>> {
+    let pyox = py.import("pyoxigraph")?;
+    let graph: Bound<'_, PyAny> = match graph_name {
+        Some(g) => g.into_bound(py),
+        None => pyox.getattr("DefaultGraph")?.call0()?,
+    };
+    let quad_cls = pyox.getattr("Quad")?;
+    let mut res = Vec::new();
+    for t in triples {
+        let s = term_to_pyoxigraph(&pyox, Term::from(t.subject.clone()))?;
+        let p = term_to_pyoxigraph(&pyox, Term::from(t.predicate.clone()))?;
+        let o = term_to_pyoxigraph(&pyox, Term::from(t.object.clone()))?;
+        let quad = quad_cls.call1((s, p, o, &graph))?;
+        res.push(quad.into());
+    }
+    Ok(res)
+}
+
 #[pyclass(unsendable)]
 pub struct PyReasoner {
     reasoner: reasoner::Reasoner,
@@ -236,6 +364,40 @@ impl PyReasoner {
     pub fn get_base_triples(&self) -> PyResult<Vec<(Py<PyAny>, Py<PyAny>, Py<PyAny>)>> {
         Python::with_gil(|py| {
             triples_to_python(py, self.reasoner.get_input())
+        })
+    }
+
+    /// Appends triples drawn from an iterable of `pyoxigraph.Quad` or
+    /// `pyoxigraph.Triple` objects. Quads' graph names are ignored — all triples
+    /// are merged into the reasoner's single graph. Use `update_quads` to
+    /// replace the base instead of appending.
+    pub fn add_quads(&mut self, quads: PyObject) -> PyResult<()> {
+        Python::with_gil(|py| {
+            let triples = extract_triples_from_quads(py, &quads)?;
+            self.reasoner.load_triples(triples);
+            Ok(())
+        })
+    }
+
+    /// Replaces the reasoner's base triples with those drawn from an iterable of
+    /// `pyoxigraph.Quad` or `pyoxigraph.Triple` objects. Quads' graph names are
+    /// ignored. Returns `True` if removals were detected (full re-materialization
+    /// needed on the next `reason*` call), `False` otherwise.
+    pub fn update_quads(&mut self, quads: PyObject) -> PyResult<bool> {
+        Python::with_gil(|py| {
+            let triples = extract_triples_from_quads(py, &quads)?;
+            Ok(self.reasoner.set_base_triples(triples))
+        })
+    }
+
+    /// Runs reasoning and returns the materialized triples as a list of
+    /// `pyoxigraph.Quad`, tagged with `graph_name` (defaults to
+    /// `pyoxigraph.DefaultGraph()`).
+    #[pyo3(signature = (graph_name=None))]
+    pub fn reason_quads(&mut self, graph_name: Option<PyObject>) -> PyResult<Vec<PyObject>> {
+        Python::with_gil(|py| {
+            self.reasoner.reason();
+            triples_to_pyox_quads(py, self.reasoner.get_triples(), graph_name)
         })
     }
 }

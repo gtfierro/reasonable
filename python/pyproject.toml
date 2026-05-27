@@ -5,6 +5,7 @@ build-backend = "maturin"
 [dependency-groups]
 dev = [
     "maturin>=1.9.0",
+    "pyoxigraph>=0.5.8",
     "pytest>=8.3.5",
 ]
 
