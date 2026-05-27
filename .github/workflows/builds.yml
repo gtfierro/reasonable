@@ -291,9 +291,9 @@ jobs:
 
           mkdir -p dist/python_deb dist/wheel2deb
 
-          wheels=(dist/wheels/*.whl)
+          wheels=(dist/wheels/*-cp*.whl)
           if [ ${#wheels[@]} -eq 0 ]; then
-            echo "No linux wheels found in dist/wheels" >&2
+            echo "No CPython linux wheels found in dist/wheels" >&2
             exit 1
           fi
 
