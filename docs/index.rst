@@ -1,6 +1,26 @@
 Reasonable
 ==========
 
+.. image:: https://img.shields.io/pypi/v/reasonable.svg
+   :target: https://pypi.org/project/reasonable/
+   :alt: PyPI version
+
+.. image:: https://img.shields.io/crates/v/reasonable.svg
+   :target: https://crates.io/crates/reasonable
+   :alt: Crates.io version for reasonable
+
+.. image:: https://img.shields.io/crates/v/reasonable-cli.svg
+   :target: https://crates.io/crates/reasonable-cli
+   :alt: Crates.io version for reasonable-cli
+
+.. image:: https://img.shields.io/docsrs/reasonable.svg
+   :target: https://docs.rs/reasonable
+   :alt: docs.rs
+
+.. image:: https://img.shields.io/badge/license-BSD--3--Clause-blue.svg
+   :target: https://github.com/gtfierro/reasonable/blob/master/LICENSE
+   :alt: BSD-3-Clause license
+
 An OWL 2 RL reasoner with reasonable performance.
 
 Reasonable materialises the deductive closure of an RDF graph under the

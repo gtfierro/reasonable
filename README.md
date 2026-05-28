@@ -3,6 +3,10 @@
 ![Nightly Build](https://github.com/gtfierro/reasonable/workflows/Nightly%20Build/badge.svg)
 ![Build](https://github.com/gtfierro/reasonable/workflows/Build/badge.svg)
 [![PyPI version](https://badge.fury.io/py/reasonable.svg)](https://badge.fury.io/py/reasonable)
+[![Crates.io](https://img.shields.io/crates/v/reasonable.svg)](https://crates.io/crates/reasonable)
+[![Crates.io CLI](https://img.shields.io/crates/v/reasonable-cli.svg)](https://crates.io/crates/reasonable-cli)
+[![docs.rs](https://img.shields.io/docsrs/reasonable.svg)](https://docs.rs/reasonable)
+[![License](https://img.shields.io/badge/license-BSD--3--Clause-blue.svg)](LICENSE)
 
 An OWL 2 RL reasoner with reasonable performance
 
