@@ -38,11 +38,25 @@ jobs:
         run: cargo build --workspace --release
       - name: Run rust tests
         run: cargo test --workspace --release
+      # Opt-in rule prp-spo2 (owl:propertyChainAxiom). Reuses the warm release
+      # target, so this recompiles only `reasonable` -- a few seconds.
+      - name: Run rust tests (prp-spo2 feature)
+        run: cargo test -p reasonable --release --features prp-spo2
       - name: Build python package
         run: uv run maturin build --release --features abi3
         working-directory: ./python
+      # pytest's extension is built by uv through the PEP517 backend, which
+      # takes its features from [tool.maturin] in pyproject.toml -- not from
+      # the `maturin build` invocation above. MATURIN_PEP517_ARGS is therefore
+      # the only way to add the opt-in rule to the module under test.
+      # --reinstall-package forces the rebuild, since uv's cache keys are
+      # file-based and would otherwise reuse a wheel built without it.
+      # Test-only: release wheels come from builds.yml and are unaffected.
       - name: Test python package
-        run: uv run pytest
+        run: uv run --reinstall-package reasonable pytest
+        env:
+          REASONABLE_FEATURE_PRP_SPO2: "1"
+          MATURIN_PEP517_ARGS: "--features prp-spo2"
         working-directory: ./python
 
 
