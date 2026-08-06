@@ -25,6 +25,11 @@ pyo3-build-config = "0.25"
 
 [features]
 abi3 = ["pyo3/abi3-py39"]
+# Forward the engine's opt-in prp-spo2 rule (owl:propertyChainAxiom, n-hop)
+# through to the Python extension, so the binding can be built with it:
+#   maturin build --release --features abi3,prp-spo2
+# Off by default; the shipped wheel is unaffected.
+prp-spo2 = ["reasonable/prp-spo2"]
 
 #[package.metadata.maturin]
 #name = "reasonable"
