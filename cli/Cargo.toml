@@ -14,6 +14,14 @@ clap.workspace = true
 env_logger.workspace = true
 log.workspace = true
 
+[features]
+default = []
+# Forward the engine's opt-in prp-spo2 rule (owl:propertyChainAxiom, n-hop)
+# so the binary can be built with it, matching the Python extension:
+#   cargo install reasonable-cli --features prp-spo2
+# Off by default; the default binary is unaffected.
+prp-spo2 = ["reasonable/prp-spo2"]
+
 [[bin]]
 name = "reasonable"
 path = "src/main.rs"
