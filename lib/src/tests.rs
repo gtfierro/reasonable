@@ -405,6 +405,464 @@ fn test_spo1() -> Result<(), String> {
     Ok(())
 }
 
+#[cfg(feature = "prp-spo2")]
+mod prp_spo2 {
+    use super::*;
+
+    const OWL_PROPERTYCHAINAXIOM: &str = "http://www.w3.org/2002/07/owl#propertyChainAxiom";
+
+    // Entity IRIs from W3C OWL 2 test case New-Feature-ObjectPropertyChain-001,
+    // kept verbatim so the fixture is recognisable against the published test.
+    const EX_HAS_MOTHER: &str = "http://example.org/hasMother";
+    const EX_HAS_SISTER: &str = "http://example.org/hasSister";
+    const EX_HAS_AUNT: &str = "http://example.org/hasAunt";
+    const EX_STEWIE: &str = "http://example.org/Stewie";
+    const EX_LOIS: &str = "http://example.org/Lois";
+    const EX_CAROL: &str = "http://example.org/Carol";
+
+    // ---------------------------------------------------------------------------
+    // prp-spo2 -- owl:propertyChainAxiom, n-hop.
+    //
+    // Gated behind the `prp-spo2` feature (off by default), so the default build
+    // and CI are unaffected while the rule is in development:
+    //
+    //     cargo test -p reasonable --features prp-spo2
+    //
+    // Cases prefixed w3c_ are published W3C OWL 2 test cases carrying
+    // test:profile RL and test:semantics RDF-BASED, from profile-RL.rdf in
+    // https://www.w3.org/2009/11/owl-test/ -- an external oracle rather than
+    // fixtures of our own invention. Graphs are re-expressed in this file's triple
+    // idiom; the entailments are unchanged.
+    //
+    // Deliberately NOT represented here, because an OWL 2 RL/RDF rules engine
+    // cannot and need not satisfy them -- both conclude an *axiom* rather than an
+    // assertion, and the RL rule set is knowingly incomplete for direct semantics:
+    //   chain2trans1                             p <- [p,p] => p a owl:TransitiveProperty
+    //   New-Feature-ObjectPropertyChain-BJP-002  Transitive(p) => SubPropertyOf(chain)
+    // ---------------------------------------------------------------------------
+
+    /// W3C New-Feature-ObjectPropertyChain-001 (Approved, profile RL).
+    /// hasMother o hasSister => hasAunt. The canonical acceptance gate.
+    #[test]
+    fn test_prp_spo2_w3c_object_property_chain_001() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            (EX_HAS_AUNT, OWL_PROPERTYCHAINAXIOM, "urn:l1"),
+            ("urn:l1", RDF_FIRST, EX_HAS_MOTHER),
+            ("urn:l1", RDF_REST, "urn:l2"),
+            ("urn:l2", RDF_FIRST, EX_HAS_SISTER),
+            ("urn:l2", RDF_REST, RDF_NIL),
+            (EX_STEWIE, EX_HAS_MOTHER, EX_LOIS),
+            (EX_LOIS, EX_HAS_SISTER, EX_CAROL),
+        ];
+        r.load_triples_str(trips);
+        r.reason();
+        let res = r.get_triples_string();
+        assert!(res.contains(&(wrap!(EX_STEWIE), wrap!(EX_HAS_AUNT), wrap!(EX_CAROL))));
+        Ok(())
+    }
+
+    /// W3C New-Feature-ObjectPropertyChain-BJP-003 (Approved, profile RL).
+    /// p <- [p, q] with a p b, b q c => a p c. The chain head occurs inside its own
+    /// chain, so each derived triple re-enters the fixpoint: this fails for any
+    /// implementation that snapshots the triple set before evaluating the chain.
+    #[test]
+    fn test_prp_spo2_w3c_bjp_003_chain_and_hierarchy() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("urn:p", OWL_PROPERTYCHAINAXIOM, "urn:l1"),
+            ("urn:l1", RDF_FIRST, "urn:p"),
+            ("urn:l1", RDF_REST, "urn:l2"),
+            ("urn:l2", RDF_FIRST, "urn:q"),
+            ("urn:l2", RDF_REST, RDF_NIL),
+            ("urn:a", "urn:p", "urn:b"),
+            ("urn:b", "urn:q", "urn:c"),
+        ];
+        r.load_triples_str(trips);
+        r.reason();
+        let res = r.get_triples_string();
+        assert!(res.contains(&(
+            "<urn:a>".to_string(),
+            "<urn:p>".to_string(),
+            "<urn:c>".to_string()
+        )));
+        Ok(())
+    }
+
+    /// W3C New-Feature-ObjectPropertyChain-BJP-004 (Approved, profile RL) -- a
+    /// *non*-entailment. p <- [p, q] with only q-facts must not make p transitive.
+    /// Passes today; guards against over-derivation once the rule exists.
+    #[test]
+    fn test_prp_spo2_w3c_bjp_004_no_transitivity_entailment() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("urn:p", OWL_PROPERTYCHAINAXIOM, "urn:l1"),
+            ("urn:l1", RDF_FIRST, "urn:p"),
+            ("urn:l1", RDF_REST, "urn:l2"),
+            ("urn:l2", RDF_FIRST, "urn:q"),
+            ("urn:l2", RDF_REST, RDF_NIL),
+            ("urn:a", "urn:q", "urn:b"),
+            ("urn:b", "urn:q", "urn:c"),
+        ];
+        r.load_triples_str(trips);
+        r.reason();
+        let res = r.get_triples_string();
+        assert!(
+            !res.contains(&("<urn:p>".to_string(), wrap!(RDF_TYPE), wrap!(OWL_TRANSPROP))),
+            "must not entail owl:TransitiveProperty from a property chain axiom"
+        );
+        assert!(
+            !res.contains(&(
+                "<urn:a>".to_string(),
+                "<urn:p>".to_string(),
+                "<urn:c>".to_string()
+            )),
+            "chain requires a leading p-hop; only q-facts are present"
+        );
+        Ok(())
+    }
+
+    /// Order is the entire meaning of a chain: q <- [p1, p2] must fire on
+    /// p1-then-p2 and must stay silent on p2-then-p1. This is the regression test
+    /// for any implementation routed through the order-destroying list reader in
+    /// disjoint_sets.rs, whose HashMap iteration yields members in arbitrary order.
+    #[test]
+    fn test_prp_spo2_order_is_significant() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("urn:q", OWL_PROPERTYCHAINAXIOM, "urn:l1"),
+            ("urn:l1", RDF_FIRST, "urn:p1"),
+            ("urn:l1", RDF_REST, "urn:l2"),
+            ("urn:l2", RDF_FIRST, "urn:p2"),
+            ("urn:l2", RDF_REST, RDF_NIL),
+            // correct order
+            ("urn:a", "urn:p1", "urn:b"),
+            ("urn:b", "urn:p2", "urn:c"),
+            // reversed order -- must NOT compose
+            ("urn:d", "urn:p2", "urn:e"),
+            ("urn:e", "urn:p1", "urn:f"),
+        ];
+        r.load_triples_str(trips);
+        r.reason();
+        let res = r.get_triples_string();
+        assert!(
+            res.contains(&(
+                "<urn:a>".to_string(),
+                "<urn:q>".to_string(),
+                "<urn:c>".to_string()
+            )),
+            "p1 then p2 must compose"
+        );
+        assert!(
+            !res.contains(&(
+                "<urn:d>".to_string(),
+                "<urn:q>".to_string(),
+                "<urn:f>".to_string()
+            )),
+            "p2 then p1 must NOT compose -- chain order is significant"
+        );
+        Ok(())
+    }
+
+    /// Three hops: proves generality rather than a hard-coded 2-hop join.
+    #[test]
+    fn test_prp_spo2_three_hop() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("urn:q", OWL_PROPERTYCHAINAXIOM, "urn:l1"),
+            ("urn:l1", RDF_FIRST, "urn:p1"),
+            ("urn:l1", RDF_REST, "urn:l2"),
+            ("urn:l2", RDF_FIRST, "urn:p2"),
+            ("urn:l2", RDF_REST, "urn:l3"),
+            ("urn:l3", RDF_FIRST, "urn:p3"),
+            ("urn:l3", RDF_REST, RDF_NIL),
+            ("urn:a", "urn:p1", "urn:b"),
+            ("urn:b", "urn:p2", "urn:c"),
+            ("urn:c", "urn:p3", "urn:d"),
+        ];
+        r.load_triples_str(trips);
+        r.reason();
+        let res = r.get_triples_string();
+        assert!(res.contains(&(
+            "<urn:a>".to_string(),
+            "<urn:q>".to_string(),
+            "<urn:d>".to_string()
+        )));
+        Ok(())
+    }
+
+    /// A single-element chain is exactly rdfs:subPropertyOf.
+    #[test]
+    fn test_prp_spo2_length_one_is_subproperty() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("urn:q", OWL_PROPERTYCHAINAXIOM, "urn:l1"),
+            ("urn:l1", RDF_FIRST, "urn:p1"),
+            ("urn:l1", RDF_REST, RDF_NIL),
+            ("urn:a", "urn:p1", "urn:b"),
+        ];
+        r.load_triples_str(trips);
+        r.reason();
+        let res = r.get_triples_string();
+        assert!(res.contains(&(
+            "<urn:a>".to_string(),
+            "<urn:q>".to_string(),
+            "<urn:b>".to_string()
+        )));
+        Ok(())
+    }
+
+    /// A hop supplied by an *inferred* triple: the second link exists only via
+    /// owl:inverseOf. Chains must compose with the rest of the rule set, which is
+    /// why the rule has to live inside the fixpoint rather than run as a pre-pass.
+    #[test]
+    fn test_prp_spo2_hop_supplied_by_inference() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("urn:q", OWL_PROPERTYCHAINAXIOM, "urn:l1"),
+            ("urn:l1", RDF_FIRST, "urn:p1"),
+            ("urn:l1", RDF_REST, "urn:l2"),
+            ("urn:l2", RDF_FIRST, "urn:p2"),
+            ("urn:l2", RDF_REST, RDF_NIL),
+            ("urn:a", "urn:p1", "urn:b"),
+            // b p2 c holds only through the inverse of p2
+            ("urn:p2", OWL_INVERSEOF, "urn:p2inv"),
+            ("urn:c", "urn:p2inv", "urn:b"),
+        ];
+        r.load_triples_str(trips);
+        r.reason();
+        let res = r.get_triples_string();
+        assert!(res.contains(&(
+            "<urn:a>".to_string(),
+            "<urn:q>".to_string(),
+            "<urn:c>".to_string()
+        )));
+        Ok(())
+    }
+
+    /// Two axioms sharing a list suffix must both fire (structure sharing).
+    #[test]
+    fn test_prp_spo2_shared_suffix() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            // q1 <- [p0, p1, p2] and q2 <- [p1, p2] share the tail
+            ("urn:q1", OWL_PROPERTYCHAINAXIOM, "urn:l0"),
+            ("urn:l0", RDF_FIRST, "urn:p0"),
+            ("urn:l0", RDF_REST, "urn:l1"),
+            ("urn:q2", OWL_PROPERTYCHAINAXIOM, "urn:l1"),
+            ("urn:l1", RDF_FIRST, "urn:p1"),
+            ("urn:l1", RDF_REST, "urn:l2"),
+            ("urn:l2", RDF_FIRST, "urn:p2"),
+            ("urn:l2", RDF_REST, RDF_NIL),
+            ("urn:w", "urn:p0", "urn:a"),
+            ("urn:a", "urn:p1", "urn:b"),
+            ("urn:b", "urn:p2", "urn:c"),
+        ];
+        r.load_triples_str(trips);
+        r.reason();
+        let res = r.get_triples_string();
+        assert!(
+            res.contains(&(
+                "<urn:a>".to_string(),
+                "<urn:q2>".to_string(),
+                "<urn:c>".to_string()
+            )),
+            "shared suffix chain q2 must fire"
+        );
+        assert!(
+            res.contains(&(
+                "<urn:w>".to_string(),
+                "<urn:q1>".to_string(),
+                "<urn:c>".to_string()
+            )),
+            "full chain q1 must fire"
+        );
+        Ok(())
+    }
+
+    /// p <- [p, p] is the chain encoding of transitivity. Derived triples feed back
+    /// into the chain, so this both checks closure and proves termination.
+    #[test]
+    fn test_prp_spo2_self_chain_yields_transitive_closure() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("urn:p", OWL_PROPERTYCHAINAXIOM, "urn:l1"),
+            ("urn:l1", RDF_FIRST, "urn:p"),
+            ("urn:l1", RDF_REST, "urn:l2"),
+            ("urn:l2", RDF_FIRST, "urn:p"),
+            ("urn:l2", RDF_REST, RDF_NIL),
+            ("urn:a", "urn:p", "urn:b"),
+            ("urn:b", "urn:p", "urn:c"),
+            ("urn:c", "urn:p", "urn:d"),
+        ];
+        r.load_triples_str(trips);
+        r.reason();
+        let res = r.get_triples_string();
+        assert!(res.contains(&(
+            "<urn:a>".to_string(),
+            "<urn:p>".to_string(),
+            "<urn:c>".to_string()
+        )));
+        // requires composing a derived triple with an asserted one
+        assert!(res.contains(&(
+            "<urn:a>".to_string(),
+            "<urn:p>".to_string(),
+            "<urn:d>".to_string()
+        )));
+        Ok(())
+    }
+
+    /// An RDF list that no chain axiom references must not produce compositions.
+    /// Guards the reachability gate that keeps intersectionOf/unionOf/oneOf lists
+    /// out of the chain relation. Passes today; must keep passing.
+    #[test]
+    fn test_prp_spo2_unreferenced_list_does_not_compose() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            // a list, but reached via intersectionOf -- not a property chain
+            ("urn:c", OWL_INTERSECTION, "urn:l1"),
+            ("urn:l1", RDF_FIRST, "urn:p1"),
+            ("urn:l1", RDF_REST, "urn:l2"),
+            ("urn:l2", RDF_FIRST, "urn:p2"),
+            ("urn:l2", RDF_REST, RDF_NIL),
+            ("urn:a", "urn:p1", "urn:b"),
+            ("urn:b", "urn:p2", "urn:c2"),
+        ];
+        r.load_triples_str(trips);
+        r.reason();
+        let res = r.get_triples_string();
+        for p in ["urn:p1", "urn:p2", "urn:c"] {
+            assert!(
+                !res.contains(&(
+                    "<urn:a>".to_string(),
+                    format!("<{}>", p),
+                    "<urn:c2>".to_string()
+                )),
+                "no composition may be derived from a list no chain axiom references"
+            );
+        }
+        Ok(())
+    }
+
+    /// A malformed cyclic rdf:rest must terminate rather than hang. Completing the
+    /// call *is* the assertion; the closure content is unspecified for broken input.
+    #[test]
+    fn test_prp_spo2_cyclic_rest_terminates() -> Result<(), String> {
+        let mut r = Reasoner::new();
+        let trips = vec![
+            ("urn:q", OWL_PROPERTYCHAINAXIOM, "urn:l1"),
+            ("urn:l1", RDF_FIRST, "urn:p1"),
+            ("urn:l1", RDF_REST, "urn:l2"),
+            ("urn:l2", RDF_FIRST, "urn:p2"),
+            ("urn:l2", RDF_REST, "urn:l1"), // cycle
+            ("urn:a", "urn:p1", "urn:b"),
+            ("urn:b", "urn:p2", "urn:c"),
+        ];
+        r.load_triples_str(trips);
+        r.reason();
+        let _ = r.get_triples_string();
+        Ok(())
+    }
+
+    // -- Arity sweep -------------------------------------------------------
+    //
+    // prp-spo2 is normatively a rule *schema* over the chain length: the OWL 2
+    // Profiles rule reads LIST[?x, ?p1, ..., ?pn] with n >= 1, i.e. one rule per
+    // n, not a single fixed-arity rule. No published W3C test exercises n > 2 --
+    // every property-chain entailment case in the corpus uses a two-element
+    // chain -- so conformance runs alone cannot demonstrate generality. These
+    // two tests instantiate the schema across many arities and assert both
+    // directions: a full-length path must compose, and a path one hop short must
+    // not. Together they are the evidence for "n-hop", which the W3C cases
+    // cannot supply.
+
+    /// Leak a generated IRI so it satisfies the `&'static str` loader signature.
+    /// Bounded and test-only: a few hundred short strings per run.
+    fn leak(s: String) -> &'static str {
+        Box::leak(s.into_boxed_str())
+    }
+
+    /// Chain `q <- [p1..pn]` plus a witness path `x0 -p1-> x1 ... -pn-> xn`.
+    /// `hops` controls how much of that path actually exists, so a caller can
+    /// build a deliberately short path.
+    fn chain_case(n: usize, hops: usize) -> Vec<(&'static str, &'static str, &'static str)> {
+        let mut t = vec![(
+            leak(format!("urn:q{}", n)),
+            OWL_PROPERTYCHAINAXIOM,
+            leak(format!("urn:l{}_1", n)),
+        )];
+        for i in 1..=n {
+            t.push((
+                leak(format!("urn:l{}_{}", n, i)),
+                RDF_FIRST,
+                leak(format!("urn:p{}_{}", n, i)),
+            ));
+            let rest = if i == n {
+                RDF_NIL
+            } else {
+                leak(format!("urn:l{}_{}", n, i + 1))
+            };
+            t.push((leak(format!("urn:l{}_{}", n, i)), RDF_REST, rest));
+        }
+        for i in 1..=hops {
+            t.push((
+                leak(format!("urn:x{}_{}", n, i - 1)),
+                leak(format!("urn:p{}_{}", n, i)),
+                leak(format!("urn:x{}_{}", n, i)),
+            ));
+        }
+        t
+    }
+
+    /// A path of exactly n hops must compose, for every n in 1..=8. This is the
+    /// generality claim: one code path, many arities, no per-length special case.
+    #[test]
+    fn test_prp_spo2_arity_sweep_composes() -> Result<(), String> {
+        for n in 1..=8 {
+            let mut r = Reasoner::new();
+            r.load_triples_str(chain_case(n, n));
+            r.reason();
+            let res = r.get_triples_string();
+            assert!(
+                res.contains(&(
+                    format!("<urn:x{}_0>", n),
+                    format!("<urn:q{}>", n),
+                    format!("<urn:x{}_{}>", n, n)
+                )),
+                "chain of length {} must compose end to end",
+                n
+            );
+        }
+        Ok(())
+    }
+
+    /// Tightness: a path one hop short of the chain must derive nothing. Guards
+    /// the failure mode where a chain is treated as "any prefix matches", which
+    /// the positive sweep alone would not catch.
+    #[test]
+    fn test_prp_spo2_arity_sweep_short_path_does_not_compose() -> Result<(), String> {
+        for n in 2..=6 {
+            let mut r = Reasoner::new();
+            r.load_triples_str(chain_case(n, n - 1));
+            r.reason();
+            let res = r.get_triples_string();
+            for endpoint in 0..n {
+                assert!(
+                    !res.contains(&(
+                        format!("<urn:x{}_0>", n),
+                        format!("<urn:q{}>", n),
+                        format!("<urn:x{}_{}>", n, endpoint)
+                    )),
+                    "chain of length {} must not fire on a {}-hop path",
+                    n,
+                    n - 1
+                );
+            }
+        }
+        Ok(())
+    }
+}
+
 #[test]
 fn test_prp_inv1() -> Result<(), String> {
     let mut r = Reasoner::new();

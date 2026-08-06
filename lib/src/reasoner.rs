@@ -206,6 +206,71 @@ r.reason();
 # Ok::<(), reasonable::error::ReasonableError>(())
 ```
 */
+/// Working relations for `prp-spo2` (`owl:propertyChainAxiom`), general n-hop.
+///
+/// The OWL 2 RL rule is a schema over chain length -- `LIST[?x, ?p1, ..., ?pn]`
+/// with n >= 1 -- so it cannot be written as a fixed-arity join. Instead the
+/// chain is encoded structurally and the existing semi-naive loop performs the
+/// recursion over the list:
+///
+/// ```text
+/// (base)  chain(L,u,v) :- first(L,p), rest(L,nil),  T(u,p,v)
+/// (step)  chain(L,u,v) :- first(L,p), rest(L,R),    T(u,p,w), chain(R,w,v)
+/// (emit)  T(u,p,v)     :- T(p, owl:propertyChainAxiom, L), chain(L,u,v)
+/// ```
+///
+/// The step rule needs no `R != nil` guard: `rdf:nil` carries no `rdf:first`, so
+/// `chain(nil, _, _)` is empty and the join contributes nothing.
+#[cfg(feature = "prp-spo2")]
+struct ChainVars {
+    // rdf:first / rdf:rest over the whole graph, before gating
+    first_raw: Variable<(URI, URI)>, // L -> p
+    rest_raw: Variable<(URI, URI)>,  // L -> R
+    // reachability gate: only cells an axiom actually references
+    cell: Variable<(URI, ())>, // L
+    first: Variable<(URI, URI)>,
+    rest: Variable<(URI, URI)>,
+    rest_by_r: Variable<(URI, URI)>, // R -> L
+    last_cell: Variable<(URI, ())>,  // cells whose rest is rdf:nil
+    // the rule proper
+    last_p: Variable<(URI, URI)>,            // p -> L   (final hop)
+    link: Variable<(URI, (URI, URI))>,       // p -> (L, R)
+    hop: Variable<((URI, URI), (URI, URI))>, // (R,w) -> (L,u)
+    by_lu: Variable<((URI, URI), URI)>,      // (L,u) -> v   the recursive relation
+    by_l: Variable<(URI, (URI, URI))>,       // L -> (u,v)   reindexed for emit
+    axiom: Variable<(URI, URI)>,             // L -> p
+    // static node relations
+    first_rel: Relation<(URI, ())>,
+    rest_rel: Relation<(URI, ())>,
+    nil_rel: Relation<(URI, ())>,
+    pca_rel: Relation<(URI, ())>,
+}
+
+#[cfg(feature = "prp-spo2")]
+impl ChainVars {
+    fn new(iter: &mut Iteration, first: URI, rest: URI, nil: URI, pca: URI) -> Self {
+        ChainVars {
+            first_raw: iter.variable("chain_first_raw"),
+            rest_raw: iter.variable("chain_rest_raw"),
+            cell: iter.variable("chain_cell"),
+            first: iter.variable("chain_first"),
+            rest: iter.variable("chain_rest"),
+            rest_by_r: iter.variable("chain_rest_by_r"),
+            last_cell: iter.variable("chain_last_cell"),
+            last_p: iter.variable("chain_last_p"),
+            link: iter.variable("chain_link"),
+            hop: iter.variable("chain_hop"),
+            by_lu: iter.variable("chain_by_lu"),
+            by_l: iter.variable("chain_by_l"),
+            axiom: iter.variable("chain_axiom"),
+            first_rel: Relation::from_vec(vec![(first, ())]),
+            rest_rel: Relation::from_vec(vec![(rest, ())]),
+            nil_rel: Relation::from_vec(vec![(nil, ())]),
+            pca_rel: Relation::from_vec(vec![(pca, ())]),
+        }
+    }
+}
+
 pub struct Reasoner {
     iter1: Iteration,
     index: URIIndex,
@@ -292,6 +357,10 @@ pub struct Reasoner {
     prp_ifp_1: Variable<(URI, ())>,
     prp_ifp_2: Variable<KeyedTriple>,
     prp_spo1_1: Variable<(URI, URI)>,
+    #[cfg(feature = "prp-spo2")]
+    owlpropchain_node: URI,
+    #[cfg(feature = "prp-spo2")]
+    chain: ChainVars,
     owl_inv1: Variable<(URI, URI)>,
     owl_inv2: Variable<(URI, URI)>,
     owl_same_as: Variable<(URI, URI)>,
@@ -441,6 +510,16 @@ impl Reasoner {
         let prp_ifp_1 = iter1.variable::<(URI, ())>("prp_ifp_1");
         let prp_ifp_2 = iter1.variable::<KeyedTriple>("prp_ifp_2");
         let prp_spo1_1 = iter1.variable::<(URI, URI)>("prp_spo1_1");
+        #[cfg(feature = "prp-spo2")]
+        let owlpropchain_node = index.put(owl!("propertyChainAxiom"));
+        #[cfg(feature = "prp-spo2")]
+        let chain = ChainVars::new(
+            &mut iter1,
+            rdffirst_node,
+            rdfrest_node,
+            rdfnil_node,
+            owlpropchain_node,
+        );
         let owl_inv1 = iter1.variable::<(URI, URI)>("owl_inverseOf");
         let owl_inv2 = iter1.variable::<(URI, URI)>("owl_inverse_of2");
         let owl_same_as = iter1.variable::<(URI, URI)>("owl_same_as");
@@ -576,6 +655,10 @@ impl Reasoner {
             prp_ifp_1,
             prp_ifp_2,
             prp_spo1_1,
+            #[cfg(feature = "prp-spo2")]
+            owlpropchain_node,
+            #[cfg(feature = "prp-spo2")]
+            chain,
             owl_inv1,
             owl_inv2,
             owl_same_as,
@@ -665,6 +748,16 @@ impl Reasoner {
         self.prp_ifp_1 = iter1.variable("prp_ifp_1");
         self.prp_ifp_2 = iter1.variable("prp_ifp_2");
         self.prp_spo1_1 = iter1.variable("prp_spo1_1");
+        #[cfg(feature = "prp-spo2")]
+        {
+            self.chain = ChainVars::new(
+                &mut iter1,
+                self.rdffirst_node,
+                self.rdfrest_node,
+                self.rdfnil_node,
+                self.owlpropchain_node,
+            );
+        }
         self.owl_inv1 = iter1.variable("owl_inv1");
         self.owl_inv2 = iter1.variable("owl_inv2");
         self.owl_same_as = iter1.variable("owl_same_as");
@@ -1531,6 +1624,107 @@ impl Reasoner {
                     &self.pso,
                     |&p1, &p2, &(x, y)| (x, (p2, y)),
                 );
+
+                // prp-spo2
+                // T(?p, owl:propertyChainAxiom, ?x)
+                // LIST[?x, ?p1, ..., ?pn]
+                // T(?u1, ?p1, ?u2) ... T(?un, ?pn, ?un+1) => T(?u1, ?p, ?un+1)
+                //
+                // n is unbounded, so the chain is walked structurally by the
+                // fixpoint rather than unrolled into a fixed-arity join. See
+                // ChainVars for the rule form.
+                #[cfg(feature = "prp-spo2")]
+                {
+                    // the axiom itself, keyed by its list head
+                    self.chain.axiom.from_join(
+                        &self.pso,
+                        &self.chain.pca_rel,
+                        |&_, &(p, l), &()| (l, p),
+                    );
+
+                    // rdf:first / rdf:rest over the graph
+                    self.chain.first_raw.from_join(
+                        &self.pso,
+                        &self.chain.first_rel,
+                        |&_, &(l, p), &()| (l, p),
+                    );
+                    self.chain.rest_raw.from_join(
+                        &self.pso,
+                        &self.chain.rest_rel,
+                        |&_, &(l, r), &()| (l, r),
+                    );
+
+                    // Reachability gate: only cells an axiom references, and
+                    // their tails. Without this every intersectionOf/unionOf/
+                    // oneOf list in the graph would enter the chain relation.
+                    self.chain
+                        .cell
+                        .from_map(&self.chain.axiom, |&(l, _p)| (l, ()));
+                    self.chain.cell.from_join(
+                        &self.chain.cell,
+                        &self.chain.rest_raw,
+                        |&_l, &(), &r| (r, ()),
+                    );
+                    self.chain.first.from_join(
+                        &self.chain.cell,
+                        &self.chain.first_raw,
+                        |&l, &(), &p| (l, p),
+                    );
+                    self.chain.rest.from_join(
+                        &self.chain.cell,
+                        &self.chain.rest_raw,
+                        |&l, &(), &r| (l, r),
+                    );
+
+                    // cells whose rest is rdf:nil terminate a chain
+                    self.chain
+                        .rest_by_r
+                        .from_map(&self.chain.rest, |&(l, r)| (r, l));
+                    self.chain.last_cell.from_join(
+                        &self.chain.rest_by_r,
+                        &self.chain.nil_rel,
+                        |&_nil, &l, &()| (l, ()),
+                    );
+                    self.chain.last_p.from_join(
+                        &self.chain.first,
+                        &self.chain.last_cell,
+                        |&l, &p, &()| (p, l),
+                    );
+                    self.chain
+                        .link
+                        .from_join(&self.chain.first, &self.chain.rest, |&l, &p, &r| {
+                            (p, (l, r))
+                        });
+
+                    // base: the final cell contributes one hop
+                    self.chain.by_lu.from_join(
+                        &self.chain.last_p,
+                        &self.pso,
+                        |&_p, &l, &(u, v)| ((l, u), v),
+                    );
+
+                    // step: consume one hop, recurse into the tail
+                    self.chain.hop.from_join(
+                        &self.chain.link,
+                        &self.pso,
+                        |&_p, &(l, r), &(u, w)| ((r, w), (l, u)),
+                    );
+                    self.chain.by_lu.from_join(
+                        &self.chain.hop,
+                        &self.chain.by_lu,
+                        |&(_r, _w), &(l, u), &v| ((l, u), v),
+                    );
+
+                    // reindex by list head, then emit
+                    self.chain
+                        .by_l
+                        .from_map(&self.chain.by_lu, |&((l, u), v)| (l, (u, v)));
+                    self.all_triples_input.from_join(
+                        &self.chain.axiom,
+                        &self.chain.by_l,
+                        |&_l, &p, &(u, v)| (u, (p, v)),
+                    );
+                }
 
                 // prp-inv1
                 // T(?p1, owl:inverseOf, ?p2)

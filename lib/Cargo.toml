@@ -28,6 +28,15 @@ default = []
 # implement RDF-star reasoning; the arm panics if a quoted-triple term
 # is encountered. Strictly additive when off.
 rdf-12 = ["oxrdf/rdf-12"]
+# OWL 2 RL rule `prp-spo2` (`owl:propertyChainAxiom`), general n-hop.
+# The rule is absent from the engine (see the rule table in README.md),
+# so materialization silently derives nothing for chain axioms. This
+# feature gates the rule and its conformance tests, which are drawn from
+# the W3C OWL 2 test cases carrying `test:profile RL`. Off by default and
+# strictly additive when off: no behaviour change for current users, and
+# the default build is byte-for-byte unaffected.
+#   cargo test -p reasonable --features prp-spo2
+prp-spo2 = []
 
 [dev-dependencies]
 criterion = { version = "0.5", features = ["html_reports"] }
