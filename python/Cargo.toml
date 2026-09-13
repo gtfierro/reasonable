@@ -24,11 +24,11 @@ pyo3-ffi = { version = "0.25", features = ["extension-module"] }
 pyo3-build-config = "0.25"
 
 [features]
+default = ["prp-spo2"]
 abi3 = ["pyo3/abi3-py39"]
-# Forward the engine's opt-in prp-spo2 rule (owl:propertyChainAxiom, n-hop)
-# through to the Python extension, so the binding can be built with it:
-#   maturin build --release --features abi3,prp-spo2
-# Off by default; the shipped wheel is unaffected.
+# Forward the engine's default-on prp-spo2 rule (owl:propertyChainAxiom,
+# n-hop) through to the Python extension. Pass --no-default-features to
+# deliberately build a wheel without property-chain reasoning.
 prp-spo2 = ["reasonable/prp-spo2"]
 
 #[package.metadata.maturin]

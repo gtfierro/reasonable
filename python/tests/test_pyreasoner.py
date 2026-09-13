@@ -1,5 +1,3 @@
-import os
-
 import pytest
 import rdflib
 
@@ -228,28 +226,11 @@ def test_spo1():
 # ---------------------------------------------------------------------------
 # prp-spo2 -- owl:propertyChainAxiom, n-hop.
 #
-# The rule is gated behind the engine's opt-in `prp-spo2` feature, forwarded to
-# this extension by the feature of the same name. The default wheel does not
-# carry it, so the positive tests below are skipped unless the wheel under test
-# was built with it:
-#
-#     maturin build --release --features abi3,prp-spo2
-#     REASONABLE_FEATURE_PRP_SPO2=1 pytest
-#
-# Skipping keeps this suite free in the default gate while making the binding
-# surface testable the moment the feature is switched on. The non-entailment
-# test is deliberately NOT skipped: it must hold in both configurations, so it
-# guards the shipped wheel against over-derivation either way.
+# Property-chain reasoning is enabled by default in the engine and Python
+# extension, so these tests are part of the normal binding test suite.
 # ---------------------------------------------------------------------------
 
 OWL_PROPERTYCHAINAXIOM = "http://www.w3.org/2002/07/owl#propertyChainAxiom"
-
-_HAS_PRP_SPO2 = os.environ.get("REASONABLE_FEATURE_PRP_SPO2") == "1"
-requires_prp_spo2 = pytest.mark.skipif(
-    not _HAS_PRP_SPO2,
-    reason="wheel not built with --features prp-spo2",
-)
-
 
 def _chain_triples(head, props, cells):
     """Emit `head owl:propertyChainAxiom (props...)` as rdf:first/rdf:rest cells."""
@@ -260,7 +241,6 @@ def _chain_triples(head, props, cells):
     return out
 
 
-@requires_prp_spo2
 def test_prp_spo2_w3c_object_property_chain_001():
     """W3C New-Feature-ObjectPropertyChain-001 (Approved, profile RL)."""
     out = _reason_over_str_triples(
@@ -281,7 +261,6 @@ def test_prp_spo2_w3c_object_property_chain_001():
     ) in out
 
 
-@requires_prp_spo2
 @pytest.mark.parametrize("n", [1, 2, 3, 4, 5, 6])
 def test_prp_spo2_arity_sweep(n):
     """The rule is a schema over chain length (n >= 1); exercise many arities."""
@@ -292,7 +271,6 @@ def test_prp_spo2_arity_sweep(n):
     assert (URIRef("urn:x0"), URIRef("urn:q"), URIRef(f"urn:x{n}")) in out
 
 
-@requires_prp_spo2
 def test_prp_spo2_order_is_significant():
     """q <- [p1, p2] must fire on p1-then-p2 and stay silent on p2-then-p1."""
     out = _reason_over_str_triples(

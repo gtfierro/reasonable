@@ -27,7 +27,9 @@ output.ttl
 
 # extra dev stuff
 query/
-benches/
+benches/*
+!benches/my_benchmark.rs
+!benches/property_chain.rs
 dist/
 reasonable.egg-info
 .cargo

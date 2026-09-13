@@ -423,10 +423,10 @@ mod prp_spo2 {
     // ---------------------------------------------------------------------------
     // prp-spo2 -- owl:propertyChainAxiom, n-hop.
     //
-    // Gated behind the `prp-spo2` feature (off by default), so the default build
-    // and CI are unaffected while the rule is in development:
+    // Enabled by default. The reduced compatibility build can omit the rule
+    // with:
     //
-    //     cargo test -p reasonable --features prp-spo2
+    //     cargo test -p reasonable --no-default-features
     //
     // Cases prefixed w3c_ are published W3C OWL 2 test cases carrying
     // test:profile RL and test:semantics RDF-BASED, from profile-RL.rdf in

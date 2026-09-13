@@ -127,9 +127,8 @@ Property Axiom Semantics
      -
    * - :supported:`supported`
      - ``prp-spo2``
-     - ``owl:propertyChainAxiom``, general n-hop chains. Opt-in: build with
-       the ``prp-spo2`` feature (``cargo build --features prp-spo2``). Off by
-       default, so the rule is absent unless requested.
+     - ``owl:propertyChainAxiom``, general n-hop chains. Enabled by default;
+       pass ``--no-default-features`` to deliberately disable it.
    * - :supported:`supported`
      - ``prp-eqp1``
      -

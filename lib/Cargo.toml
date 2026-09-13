@@ -20,7 +20,7 @@ thiserror = "1.0"
 quick-xml = "0.42"
 
 [features]
-default = []
+default = ["prp-spo2"]
 # RDF 1.2 (RDF-star) coexistence: enables a feature-gated match arm
 # over `TermRef::Triple(_)` so `reasonable` compiles in workspaces that
 # pull in `oxrdf` with its `rdf-12` feature enabled (e.g., alongside
@@ -29,13 +29,8 @@ default = []
 # is encountered. Strictly additive when off.
 rdf-12 = ["oxrdf/rdf-12"]
 # OWL 2 RL rule `prp-spo2` (`owl:propertyChainAxiom`), general n-hop.
-# The rule is absent from the engine (see the rule table in README.md),
-# so materialization silently derives nothing for chain axioms. This
-# feature gates the rule and its conformance tests, which are drawn from
-# the W3C OWL 2 test cases carrying `test:profile RL`. Off by default and
-# strictly additive when off: no behaviour change for current users, and
-# the default build is byte-for-byte unaffected.
-#   cargo test -p reasonable --features prp-spo2
+# Enabled by default. Pass `--no-default-features` to build a deliberately
+# reduced engine without property-chain reasoning.
 prp-spo2 = []
 
 [dev-dependencies]
@@ -45,6 +40,11 @@ criterion = { version = "0.5", features = ["html_reports"] }
 name = "my_benchmark"
 harness = false
 path = "../benches/my_benchmark.rs"
+
+[[bench]]
+name = "property_chain"
+harness = false
+path = "../benches/property_chain.rs"
 
 [profile.release]
 debug = true

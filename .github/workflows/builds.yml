@@ -25,10 +25,10 @@ jobs:
           sudo apt-get update && sudo apt-get install -y g++-aarch64-linux-gnu libssl-dev
           mkdir .cargo
           echo -e "[target.aarch64-unknown-linux-gnu]\nlinker = \"aarch64-linux-gnu-gcc\"" >> .cargo/config.toml
-      - run: cargo build --release --no-default-features
+      - run: cargo build --release
         working-directory: ./cli
       - run: find /usr
-      - run: cargo build --release --target aarch64-unknown-linux-gnu --no-default-features
+      - run: cargo build --release --target aarch64-unknown-linux-gnu
         working-directory: ./cli
         env:
           BINDGEN_EXTRA_CLANG_ARGS: --sysroot /usr/aarch64-linux-gnu
