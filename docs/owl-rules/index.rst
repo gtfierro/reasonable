@@ -125,9 +125,10 @@ Property Axiom Semantics
    * - :supported:`supported`
      - ``prp-spo1``
      -
-   * - :unsupported:`not supported`
+   * - :supported:`supported`
      - ``prp-spo2``
-     -
+     - ``owl:propertyChainAxiom``, general n-hop chains. Enabled by default;
+       pass ``--no-default-features`` to deliberately disable it.
    * - :supported:`supported`
      - ``prp-eqp1``
      -

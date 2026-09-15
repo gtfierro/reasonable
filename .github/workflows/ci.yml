@@ -38,11 +38,16 @@ jobs:
         run: cargo build --workspace --release
       - name: Run rust tests
         run: cargo test --workspace --release
+      # Keep the deliberate reduced build working as an opt-out compatibility
+      # check. The normal workspace build includes prp-spo2 by default.
+      - name: Run reasonable tests without property chains
+        run: cargo test -p reasonable --release --no-default-features
       - name: Build python package
         run: uv run maturin build --release --features abi3
         working-directory: ./python
+      # --reinstall-package forces the rebuild, since uv's cache keys are
+      # file-based and could otherwise reuse an older wheel.
       - name: Test python package
-        run: uv run pytest
+        run: uv run --reinstall-package reasonable pytest
         working-directory: ./python
-
 

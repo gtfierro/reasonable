@@ -223,7 +223,7 @@ Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasonin
 | **yes**   | `prp-asyp` | throws exception |
 | **yes**   | `prp-trp` |       |
 | **yes**   | `prp-spo1` |       |
-| no        | `prp-spo2` |       |
+| **yes**   | `prp-spo2` | `owl:propertyChainAxiom`, general n-hop. Enabled by default; disable with `--no-default-features` |
 | **yes**   | `prp-eqp1` |       |
 | **yes**   | `prp-eqp2` |       |
 | **yes**   | `prp-pdw` | throws exception |

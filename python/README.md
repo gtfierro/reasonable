@@ -68,6 +68,10 @@ triples = r.reason()             # full re-mat (removals detected)
 - If you have a prebuilt wheel: `pip install dist/reasonable-*.whl`
 - Build from source (see below) if no wheel is available for your platform.
 
+Property-chain reasoning for `owl:propertyChainAxiom` is enabled by default in
+the Python extension. It can be disabled only when deliberately building with
+`--no-default-features`.
+
 ## Developer Install (from source)
 Using uv (recommended for local dev):
 

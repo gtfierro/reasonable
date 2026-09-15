@@ -14,6 +14,12 @@ clap.workspace = true
 env_logger.workspace = true
 log.workspace = true
 
+[features]
+default = ["prp-spo2"]
+# Forward the engine's prp-spo2 rule (owl:propertyChainAxiom, n-hop).
+# It is enabled by default; pass --no-default-features to disable it.
+prp-spo2 = ["reasonable/prp-spo2"]
+
 [[bin]]
 name = "reasonable"
 path = "src/main.rs"

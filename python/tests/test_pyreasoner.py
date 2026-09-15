@@ -223,6 +223,83 @@ def test_spo1():
     assert (URIRef("urn:x"), URIRef("urn:p2"), URIRef("urn:y")) in out
 
 
+# ---------------------------------------------------------------------------
+# prp-spo2 -- owl:propertyChainAxiom, n-hop.
+#
+# Property-chain reasoning is enabled by default in the engine and Python
+# extension, so these tests are part of the normal binding test suite.
+# ---------------------------------------------------------------------------
+
+OWL_PROPERTYCHAINAXIOM = "http://www.w3.org/2002/07/owl#propertyChainAxiom"
+
+def _chain_triples(head, props, cells):
+    """Emit `head owl:propertyChainAxiom (props...)` as rdf:first/rdf:rest cells."""
+    out = [(head, OWL_PROPERTYCHAINAXIOM, cells[0])]
+    for i, p in enumerate(props):
+        out.append((cells[i], RDF_FIRST, p))
+        out.append((cells[i], RDF_REST, cells[i + 1] if i + 1 < len(props) else RDF_NIL))
+    return out
+
+
+def test_prp_spo2_w3c_object_property_chain_001():
+    """W3C New-Feature-ObjectPropertyChain-001 (Approved, profile RL)."""
+    out = _reason_over_str_triples(
+        _chain_triples(
+            "http://example.org/hasAunt",
+            ["http://example.org/hasMother", "http://example.org/hasSister"],
+            ["urn:l1", "urn:l2"],
+        )
+        + [
+            ("http://example.org/Stewie", "http://example.org/hasMother", "http://example.org/Lois"),
+            ("http://example.org/Lois", "http://example.org/hasSister", "http://example.org/Carol"),
+        ]
+    )
+    assert (
+        URIRef("http://example.org/Stewie"),
+        URIRef("http://example.org/hasAunt"),
+        URIRef("http://example.org/Carol"),
+    ) in out
+
+
+@pytest.mark.parametrize("n", [1, 2, 3, 4, 5, 6])
+def test_prp_spo2_arity_sweep(n):
+    """The rule is a schema over chain length (n >= 1); exercise many arities."""
+    props = [f"urn:p{i}" for i in range(1, n + 1)]
+    cells = [f"urn:l{i}" for i in range(1, n + 1)]
+    path = [(f"urn:x{i - 1}", f"urn:p{i}", f"urn:x{i}") for i in range(1, n + 1)]
+    out = _reason_over_str_triples(_chain_triples("urn:q", props, cells) + path)
+    assert (URIRef("urn:x0"), URIRef("urn:q"), URIRef(f"urn:x{n}")) in out
+
+
+def test_prp_spo2_order_is_significant():
+    """q <- [p1, p2] must fire on p1-then-p2 and stay silent on p2-then-p1."""
+    out = _reason_over_str_triples(
+        _chain_triples("urn:q", ["urn:p1", "urn:p2"], ["urn:l1", "urn:l2"])
+        + [
+            ("urn:a", "urn:p1", "urn:b"),
+            ("urn:b", "urn:p2", "urn:c"),
+            ("urn:d", "urn:p2", "urn:e"),
+            ("urn:e", "urn:p1", "urn:f"),
+        ]
+    )
+    assert (URIRef("urn:a"), URIRef("urn:q"), URIRef("urn:c")) in out
+    assert (URIRef("urn:d"), URIRef("urn:q"), URIRef("urn:f")) not in out
+
+
+def test_prp_spo2_w3c_bjp_004_no_transitivity_entailment():
+    """W3C BJP-004 non-entailment. Valid with or without the feature, so it is
+    not skipped: the shipped wheel must never derive this."""
+    out = _reason_over_str_triples(
+        _chain_triples("urn:p", ["urn:p", "urn:q"], ["urn:l1", "urn:l2"])
+        + [
+            ("urn:a", "urn:q", "urn:b"),
+            ("urn:b", "urn:q", "urn:c"),
+        ]
+    )
+    assert (URIRef("urn:p"), URIRef(RDF_TYPE), URIRef(OWL_TRANSPROP)) not in out
+    assert (URIRef("urn:a"), URIRef("urn:p"), URIRef("urn:c")) not in out
+
+
 def test_prp_inv1():
     out = _reason_over_str_triples([
         ("urn:p1", OWL_INVERSEOF, "urn:p2"),
