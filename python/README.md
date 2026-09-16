@@ -65,7 +65,11 @@ triples = r.reason()             # full re-mat (removals detected)
 
 ## Install
 - Runtime dependency: `rdflib`
+- From PyPI: `pip install reasonable`
 - If you have a prebuilt wheel: `pip install dist/reasonable-*.whl`
+- Debian/Ubuntu: `cargo deb -p pyreasonable` (or `make deb-python-cargo`) builds
+  a `python3-reasonable` package that installs the module into
+  `/usr/lib/python3/dist-packages/reasonable/`. See `docs/packaging.md`.
 - Build from source (see below) if no wheel is available for your platform.
 
 Property-chain reasoning for `owl:propertyChainAxiom` is enabled by default in
