@@ -5,10 +5,8 @@ Overview
 --------
 - We use `cargo-deb` to build a `.deb` for the CLI (`reasonable`).
 - Metadata is defined in `cli/Cargo.toml` under `[package.metadata.deb]`.
-- The Python bindings (`python3-reasonable`) can be built either with
-  `cargo-deb` (metadata in `python/Cargo.toml`) or with `wheel2deb`; both are
-  described below. The `cargo-deb` packages are the ones attached to GitHub
-  releases.
+- The Python bindings are packaged as `python3-reasonable`, also with
+  `cargo-deb`; metadata is defined in `python/Cargo.toml`.
 
 Prerequisites
 -------------
@@ -49,8 +47,8 @@ Uninstall
 ---------
 - `sudo apt remove reasonable`
 
-Python bindings (.deb) with cargo-deb
--------------------------------------
+Python bindings (.deb)
+----------------------
 `cargo deb -p pyreasonable` builds `python3-reasonable`, which installs the
 extension module as an importable Python package:
 
@@ -75,8 +73,8 @@ Details worth knowing (all configured in `python/Cargo.toml` under
 
 Build (local)
 -------------
-- Makefile target: `make deb-python-cargo`
-- Scripted: `./scripts/build_python_deb_cargo.sh`
+- Makefile target: `make deb-python`
+- Scripted: `./scripts/build_python_deb.sh`
 - Direct: `cargo deb -p pyreasonable`
 - Output: `target/debian/python3-reasonable_<version>_<arch>.deb`
 
@@ -103,35 +101,6 @@ Note that `--features abi3` has to be passed explicitly when building outside of
 `cargo-deb`; the feature list in `[package.metadata.deb]` only applies to builds
 that `cargo-deb` runs itself.
 
-Python bindings (.deb) with wheel2deb
--------------------------------------
-Alternatively, `wheel2deb` converts the Python wheel into a Debian package. This
-produces one package per wheel (per Python version and per manylinux/musllinux
-platform), unlike the single abi3 package per architecture that `cargo-deb`
-produces. The `python_deb_linux` job in `.github/workflows/builds.yml` still
-builds these on every release as a CI artifact, but they are no longer uploaded
-as release assets, so only one flavour of `python3-reasonable` is published.
-
-Because `wheel2deb` resolves Python requirements against distro package metadata,
-runtime dependency lower bounds in `python/pyproject.toml` must stay compatible
-with the oldest supported Debian/Ubuntu `python3-*` package versions. In
-particular, `rdflib` is pinned to `>=6.1.1` so the conversion works on current
-Ubuntu runners where `python3-rdflib` is 6.1.1.
-
-Prerequisites
--------------
-- Python 3 + pip
-- wheel2deb
-- Debian build deps: apt-file, dpkg-dev, fakeroot, build-essential, devscripts, debhelper
-- Run `apt-file update` once on the build host
-
-Build (local)
--------------
-1. Scripted: `./scripts/build_python_deb.sh`
-2. Build the wheel: `cd python && maturin build --release --locked --out ../dist/wheel2deb`
-3. Convert to .deb: `cd dist/wheel2deb && wheel2deb`
-4. Packages are written to `dist/wheel2deb/output/`, e.g. `python3-reasonable_0.3.0_amd64.deb`
-
-Install locally (Python)
-------------------------
-- `sudo apt-get install ./dist/wheel2deb/output/*.deb`
+CI builds these for the same four architectures as the CLI (see the
+`deb-python` job in `.github/workflows/deb.yml`) and attaches them to the
+GitHub release.

@@ -1,4 +1,4 @@
-.PHONY: build build-tiny test bench dev-python-library build-python-library test-python bench-python deb deb-python deb-python-cargo
+.PHONY: build build-tiny test bench dev-python-library build-python-library test-python bench-python deb deb-python
 
 build:
 	cargo build --release
@@ -29,8 +29,5 @@ deb:
 	./scripts/build_deb.sh
 
 deb-python:
-	./scripts/build_python_deb.sh
-
-deb-python-cargo:
 	# Requires: cargo install cargo-deb
-	./scripts/build_python_deb_cargo.sh
+	./scripts/build_python_deb.sh
