@@ -33,3 +33,28 @@ prp-spo2 = ["reasonable/prp-spo2"]
 
 #[package.metadata.maturin]
 #name = "reasonable"
+
+[package.metadata.deb]
+# Debian package name (defaults to crate name, `pyreasonable`). Debian
+# convention for a Python 3 module is `python3-<module>`.
+name = "python3-reasonable"
+maintainer = "Gabe Fierro <gtfierro@mines.edu>"
+section = "python"
+priority = "optional"
+# Built as a stable-ABI (abi3) extension so a single binary works with any
+# python3 the distribution ships, which is what installing into the unversioned
+# `/usr/lib/python3/dist-packages` requires.
+features = ["abi3"]
+depends = "$auto, python3 (>= 3.9~), python3-rdflib (>= 6.1.1)"
+extended-description = """
+Python bindings for Reasonable, an OWL 2 RL reasoner implemented in Rust.
+The `reasonable` module runs materialization over rdflib graphs or RDF
+files (Turtle, N3) and returns the inferred triples as rdflib terms.
+"""
+# The default cdylib asset (/usr/lib/libreasonable.so) is not importable by
+# Python, so lay the files out as a real `reasonable` package instead.
+assets = [
+    ["target/release/libreasonable.so", "usr/lib/python3/dist-packages/reasonable/reasonable.abi3.so", "644"],
+    ["../reasonable/__init__.py", "usr/lib/python3/dist-packages/reasonable/__init__.py", "644"],
+    ["README.md", "usr/share/doc/python3-reasonable/README.md", "644"],
+]

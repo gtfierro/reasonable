@@ -18,8 +18,8 @@ classifiers = [
 ]
 dynamic = ["version"]
 dependencies = [
-    # Keep the floor aligned with the oldest Debian/Ubuntu package version
-    # used by the wheel2deb workflow.
+    # Keep the floor aligned with the oldest Debian/Ubuntu python3-rdflib
+    # package version, which the python3-reasonable .deb depends on.
     "rdflib>=6.1.1",
 ]
 license = "BSD-3-Clause"

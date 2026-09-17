@@ -29,4 +29,5 @@ deb:
 	./scripts/build_deb.sh
 
 deb-python:
+	# Requires: cargo install cargo-deb
 	./scripts/build_python_deb.sh

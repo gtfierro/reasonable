@@ -66,10 +66,73 @@ jobs:
           path: ${{ steps.paths.outputs.dir }}/*.deb
           if-no-files-found: error
 
+  deb-python:
+    name: python deb (${{ matrix.target }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        target:
+          - x86_64-unknown-linux-gnu   # amd64
+          - aarch64-unknown-linux-gnu  # arm64
+          - armv7-unknown-linux-gnueabihf # armhf
+          - i686-unknown-linux-gnu     # i386
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Rust (stable) with targets
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+
+      - name: Install cross
+        uses: taiki-e/install-action@v2
+        with:
+          tool: cross
+
+      - name: Install cargo-deb
+        uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-deb
+
+      - name: Cross build Python extension module
+        run: |
+          # abi3 must be passed explicitly here; the feature list in
+          # [package.metadata.deb] only applies to builds cargo-deb runs itself.
+          # The stable ABI build needs no target Python interpreter.
+          cross build -p pyreasonable --release --features abi3 --target ${{ matrix.target }}
+
+      - name: Package .deb (no-build)
+        run: |
+          cargo deb -p pyreasonable --no-build --target ${{ matrix.target }}
+
+      - name: Collect artifact path
+        id: paths
+        shell: bash
+        run: |
+          set -euo pipefail
+          # cargo-deb writes to target/<target>/debian when --target is used
+          DIR="target/${{ matrix.target }}/debian"
+          if [ ! -d "$DIR" ]; then
+            # Fallback for older cargo-deb behavior
+            DIR="target/debian"
+          fi
+          echo "dir=$DIR" >> $GITHUB_OUTPUT
+          echo "ls $DIR" && ls -la "$DIR"
+
+      - name: Upload .deb artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: python3-reasonable-${{ matrix.target }}-deb
+          path: ${{ steps.paths.outputs.dir }}/python3-reasonable_*.deb
+          if-no-files-found: error
+
   release:
     name: Publish release assets
     if: github.event_name == 'release'
-    needs: deb
+    needs: [deb, deb-python]
     runs-on: ubuntu-latest
     permissions:
       contents: write
