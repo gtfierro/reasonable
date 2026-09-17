@@ -320,18 +320,15 @@ jobs:
 
           ls -la dist/python_deb
 
+      # Kept as a CI artifact only: release assets for the Python bindings come
+      # from the cargo-deb job in deb.yml, which builds one abi3 package per
+      # architecture that works with any python3 the distribution ships.
       - name: Upload python .deb artifacts
         uses: actions/upload-artifact@v4
         with:
           name: reasonable_python_deb_linux
           path: dist/python_deb/*.deb
           if-no-files-found: error
-
-      - name: Upload python .deb files to release
-        if: github.event_name == 'release'
-        uses: softprops/action-gh-release@v1
-        with:
-          files: dist/python_deb/*.deb
 
   publish_pypi:
     if: github.event_name == 'release'

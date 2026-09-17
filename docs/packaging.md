@@ -7,7 +7,8 @@ Overview
 - Metadata is defined in `cli/Cargo.toml` under `[package.metadata.deb]`.
 - The Python bindings (`python3-reasonable`) can be built either with
   `cargo-deb` (metadata in `python/Cargo.toml`) or with `wheel2deb`; both are
-  described below.
+  described below. The `cargo-deb` packages are the ones attached to GitHub
+  releases.
 
 Prerequisites
 -------------
@@ -104,7 +105,12 @@ that `cargo-deb` runs itself.
 
 Python bindings (.deb) with wheel2deb
 -------------------------------------
-Alternatively, `wheel2deb` converts the Python wheel into a Debian package.
+Alternatively, `wheel2deb` converts the Python wheel into a Debian package. This
+produces one package per wheel (per Python version and per manylinux/musllinux
+platform), unlike the single abi3 package per architecture that `cargo-deb`
+produces. The `python_deb_linux` job in `.github/workflows/builds.yml` still
+builds these on every release as a CI artifact, but they are no longer uploaded
+as release assets, so only one flavour of `python3-reasonable` is published.
 
 Because `wheel2deb` resolves Python requirements against distro package metadata,
 runtime dependency lower bounds in `python/pyproject.toml` must stay compatible
