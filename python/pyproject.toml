@@ -32,4 +32,4 @@ features = ["pyo3/extension-module"]
 
 [tool.uv]
 # Rebuild package when any rust files change
-cache-keys = [{file = "pyproject.toml"}, {file = "Cargo.toml"}, {file = "**/*.rs"}, {file = "../lib/Cargo.toml"}, {file = "../lib/**/*.rs"}]
+cache-keys = [{file = "pyproject.toml"}, {file = "Cargo.toml"}, {file = "**/*.rs"}, {file = "../Cargo.toml"}, {file = "../lib/Cargo.toml"}, {file = "../lib/**/*.rs"}]
