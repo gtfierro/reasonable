@@ -384,6 +384,25 @@ fn test_prp_ifp() -> Result<(), String> {
 }
 
 #[test]
+fn test_prp_ifp_different_objects() -> Result<(), String> {
+    let mut r = Reasoner::new();
+    let trips = vec![
+        ("urn:PRED", RDF_TYPE, OWL_INVFUNCPROP),
+        ("urn:SUB_1", "urn:PRED", "urn:OBJECT_1"),
+        ("urn:SUB_2", "urn:PRED", "urn:OBJECT_2"),
+    ];
+    r.load_triples_str(trips);
+    r.reason();
+    let res = r.get_triples_string();
+    assert!(!res.contains(&(
+        "<urn:SUB_1>".to_string(),
+        wrap!(OWL_SAMEAS),
+        "<urn:SUB_2>".to_string()
+    )));
+    Ok(())
+}
+
+#[test]
 fn test_spo1() -> Result<(), String> {
     let mut r = Reasoner::new();
     let trips = vec![
