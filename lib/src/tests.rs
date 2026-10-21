@@ -1418,6 +1418,46 @@ fn test_cax_dw() -> Result<(), String> {
 }
 
 #[test]
+fn test_cls_com_violation() -> Result<(), String> {
+    // If A complementOf B and an instance is typed as both, the reasoner
+    // should record exactly one cls-com error for that instance.
+    let mut r = Reasoner::new();
+    let trips = vec![
+        ("urn:A", OWL_COMPLEMENT, "urn:B"),
+        ("urn:i", RDF_TYPE, "urn:A"),
+        ("urn:i", RDF_TYPE, "urn:B"),
+    ];
+    r.load_triples_str(trips);
+    r.reason();
+    let cls_com: Vec<String> = r
+        .errors()
+        .iter()
+        .filter(|e| e.code() == "OWLRL.CLS_COM" && e.rule() == "cls-com")
+        .map(|e| e.to_string())
+        .collect();
+    assert_eq!(cls_com.len(), 1, "expected one CLS_COM diagnostic, got {:?}", cls_com);
+    Ok(())
+}
+
+#[test]
+fn test_cls_com_no_violation() -> Result<(), String> {
+    // Instances of only one of two complementary classes are consistent.
+    let mut r = Reasoner::new();
+    let trips = vec![
+        ("urn:A", OWL_COMPLEMENT, "urn:B"),
+        ("urn:i", RDF_TYPE, "urn:A"),
+        ("urn:j", RDF_TYPE, "urn:B"),
+    ];
+    r.load_triples_str(trips);
+    r.reason();
+    assert!(
+        !r.errors().iter().any(|e| e.rule() == "cls-com"),
+        "no cls-com diagnostic expected when no instance is in both classes"
+    );
+    Ok(())
+}
+
+#[test]
 fn test_rdfs11() -> Result<(), String> {
     // Basic transitivity: A subClassOf B, B subClassOf C => A subClassOf C
     let mut r = Reasoner::new();

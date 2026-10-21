@@ -1936,22 +1936,28 @@ impl Reasoner {
                     &self.owl_complement_of,
                     |&c1, &x, &c2| (c2, (x, c1)),
                 );
+                // owl_complement_of holds both directions of every axiom, so keep
+                // one direction (c1 <= c2) to report each violation once
+                let mut cls_com_violations: Vec<(URI, URI, URI)> = Vec::new();
                 self.cls_com_2.from_join(
                     &self.rdf_type_inv.borrow(),
                     &self.cls_com_1,
                     |&c2, &x_exists, &(x_bad, c1)| {
-                        //if x_exists == x_bad && x_exists > 0 && x_bad > 0 {
-                        //    let msg = format!(
-                        //        "Individual {} has type {} and {} which are complements",
-                        //        self.to_u(x_exists),
-                        //        self.to_u(c2),
-                        //        self.to_u(c1)
-                        //    );
-                        //    self.add_error("cls-com".to_string(), msg);
-                        //}
+                        if x_exists == x_bad && x_exists > 0 && c1 <= c2 {
+                            cls_com_violations.push((x_exists, c1, c2));
+                        }
                         (x_bad, c1)
                     },
                 );
+                for (inst, c1, c2) in cls_com_violations.drain(..) {
+                    let msg = format!(
+                        "inst {} is both {} and {} (complementary classes)",
+                        self.to_u(inst),
+                        self.to_u(c1),
+                        self.to_u(c2)
+                    );
+                    self.add_error("cls-com".to_string(), msg);
+                }
 
                 // Algorithm:
                 // - for all pairs of complementary classes (c1, c2) where c1 owl:complementOf c2, find
