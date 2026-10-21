@@ -8,12 +8,12 @@ use crate::list_rules::{ListRules, ListViolation};
 
 use crate::common::*;
 use log::{error, info};
-use oxrdf::{BlankNode, NamedNode, Term, TermRef, Triple};
+use oxrdf::{BlankNode, NamedNode, Term, TermRef, Triple, TripleRef};
 use rio_api::formatter::TriplesFormatter;
 use rio_api::parser::TriplesParser;
 use rio_turtle::TurtleFormatter;
 use rio_turtle::{NTriplesParser, TurtleError, TurtleParser};
-use std::cell::RefCell;
+use std::cell::{OnceCell, RefCell};
 use std::collections::{HashMap, HashSet};
 use std::fmt;
 use std::fs;
@@ -286,7 +286,7 @@ pub struct Reasoner {
     errors: Vec<ReasoningError>,
     options: ReasonerOptions,
     seen_diags: HashSet<(String, String)>,
-    output: Vec<Triple>,
+    output: OnceCell<Vec<Triple>>,
 
     // --- URI constant nodes ---
     rdftype_node: URI,
@@ -590,7 +590,7 @@ impl Reasoner {
             errors: Vec::new(),
             options: ReasonerOptions::default(),
             seen_diags: HashSet::new(),
-            output: Vec::new(),
+            output: OnceCell::new(),
             // URI constants
             rdftype_node,
             rdffirst_node,
@@ -726,7 +726,7 @@ impl Reasoner {
         self.input = self.base.clone();
         self.is_materialized = false;
         self.pending_delta.clear();
-        self.output.clear();
+        self.output = OnceCell::new();
         self.errors.clear();
         self.seen_diags.clear();
         // Clear auxiliary state
@@ -1203,8 +1203,8 @@ impl Reasoner {
         // let mut abbrevs: HashMap<String, Uri> = HashMap::new();
         let output = BufWriter::new(fs::File::create(filename)?);
         let mut formatter = TurtleFormatter::new(output);
-        for t in self.view_output() {
-            formatter.format(&oxrdf_to_rio(t.into()))?;
+        for t in self.closure() {
+            formatter.format(&oxrdf_to_rio(t))?;
         }
 
         //let mut writer =
@@ -2179,16 +2179,15 @@ impl Reasoner {
         // In incremental mode, only the newly-derived triples (output \ prior
         // closure) need a full scan; the prior closure is already represented
         // in self.input at this point and has been scanned by an earlier call.
-        // In full mode, everything is "new".
-        let delta: Vec<KeyedTriple> = if self.is_materialized {
-            let mut d = output.clone();
-            get_unique(&self.input, &mut d);
-            d
-        } else {
-            output.clone()
-        };
+        // In full mode, everything is "new", so the closure is its own delta.
+        let incremental_delta: Option<Vec<KeyedTriple>> = self.is_materialized.then(|| {
+            let mut delta = output.clone();
+            get_unique(&self.input, &mut delta);
+            delta
+        });
+        let delta: &[KeyedTriple] = incremental_delta.as_deref().unwrap_or(&output);
         if self.options.collect_diagnostics {
-            self.detect_equality_contradictions(&output, &delta);
+            self.detect_equality_contradictions(&output, delta);
             let violations = self.list_rules.violations(
                 &self.pso,
                 &self.rdf_type_inv.borrow(),
@@ -2246,10 +2245,21 @@ impl Reasoner {
                 self.add_error(rule.to_string(), message);
             }
         }
-        self.detect_rdfs_datatype_inconsistencies(&output, &delta);
-        // Build oxrdf output
-        let mut out_triples: Vec<Triple> = Vec::with_capacity(output.len());
-        for &(_s, (_p, _o)) in output.iter() {
+        self.detect_rdfs_datatype_inconsistencies(&output, delta);
+        // Store materialized triples for incremental use (sorted for dedup); they
+        // are also the output, which is only converted to oxrdf triples on request
+        self.input = output;
+        self.output = OnceCell::new();
+    }
+
+    /// Iterates over the inferred triples from the last `reason()` run, borrowing their terms
+    fn closure(&self) -> impl Iterator<Item = TripleRef<'_>> {
+        let closure: &[KeyedTriple] = if self.is_materialized {
+            &self.input
+        } else {
+            &[]
+        };
+        closure.iter().filter_map(|&(_s, (_p, _o))| {
             let (Some(s), Some(p), Some(o)) =
                 (self.index.get(_s), self.index.get(_p), self.index.get(_o))
             else {
@@ -2257,17 +2267,16 @@ impl Reasoner {
                     "Index lookup failed for triple IDs: ({}, {}, {})",
                     _s, _p, _o
                 );
-                continue;
+                return None;
             };
-            match make_triple(s.clone(), p.clone(), o.clone()) {
-                Ok(t) => out_triples.push(t),
-                Err(e) => error!("Got error {:?}", e),
+            match make_triple_ref(s, p, o) {
+                Ok(t) => Some(t),
+                Err(e) => {
+                    error!("Got error {:?}", e);
+                    None
+                }
             }
-        }
-        self.output = out_triples;
-        // Store materialized triples for incremental use (sorted for dedup)
-        output.sort_unstable();
-        self.input = output;
+        })
     }
 
     fn detect_equality_contradictions(&mut self, output: &[KeyedTriple], delta: &[KeyedTriple]) {
@@ -2309,12 +2318,12 @@ impl Reasoner {
 
     /// Returns the vec of triples currently contained in the Reasoner
     pub fn get_triples(&self) -> Vec<Triple> {
-        self.output.clone()
+        self.closure().map(TripleRef::into_owned).collect()
     }
 
     /// Returns a read-only view of the inferred triples from the last `reason()` run.
     pub fn view_output(&self) -> &[Triple] {
-        &self.output
+        self.output.get_or_init(|| self.get_triples())
     }
 
     pub fn get_input(&self) -> Vec<Triple> {
@@ -2344,8 +2353,7 @@ impl Reasoner {
 
     /// Returns the vec of triples currently contained in the Reasoner
     pub fn get_triples_string(&mut self) -> Vec<(String, String, String)> {
-        self.view_output()
-            .iter()
+        self.closure()
             .map(|inst| {
                 (
                     inst.subject.to_string(),

@@ -117,6 +117,32 @@ fn test_load_file_blank_nodes_scoped_per_file() -> crate::error::Result<()> {
 }
 
 #[test]
+fn test_view_output_follows_reasoning() -> Result<(), String> {
+    // view_output() shows the closure from the last reason(): nothing before
+    // the first one, new inferences after an incremental one, nothing after clear()
+    let type_b = |s: &str| {
+        oxrdf::Triple::new(
+            oxrdf::NamedNode::new_unchecked(s),
+            oxrdf::NamedNode::new_unchecked(RDF_TYPE),
+            oxrdf::NamedNode::new_unchecked("urn:B"),
+        )
+    };
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![("urn:A", RDFS_SUBCLASSOF, "urn:B"), ("urn:x", RDF_TYPE, "urn:A")]);
+    assert!(r.view_output().is_empty());
+    r.reason();
+    assert!(r.view_output().contains(&type_b("urn:x")));
+    assert!(!r.view_output().contains(&type_b("urn:y")));
+    r.load_triples_str(vec![("urn:y", RDF_TYPE, "urn:A")]);
+    r.reason();
+    assert!(r.view_output().contains(&type_b("urn:y")));
+    assert_eq!(r.view_output(), r.get_triples().as_slice());
+    r.clear();
+    assert!(r.view_output().is_empty());
+    Ok(())
+}
+
+#[test]
 fn test_load_file_dedups_triples() -> crate::error::Result<()> {
     // A triple stated twice in a file (once through a prefix) is loaded once
     let path = std::env::temp_dir().join(format!("reasonable-dup-{}.ttl", std::process::id()));

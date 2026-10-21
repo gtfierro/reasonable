@@ -92,6 +92,32 @@ pub fn make_triple(s: Term, p: Term, o: Term) -> Result<Triple, ReasonableError>
     Ok(Triple::new(s, p, o))
 }
 
+/// Borrowing version of `make_triple`
+pub fn make_triple_ref<'a>(
+    s: &'a Term,
+    p: &'a Term,
+    o: &'a Term,
+) -> Result<TripleRef<'a>, ReasonableError> {
+    let s = match s {
+        Term::NamedNode(n) => NamedOrBlankNodeRef::NamedNode(n.as_ref()),
+        Term::BlankNode(b) => NamedOrBlankNodeRef::BlankNode(b.as_ref()),
+        _ => {
+            return Err(ReasonableError::ManagerError(
+                "Cannot have literal as subject".to_string(),
+            ))
+        }
+    };
+    let p = match p {
+        Term::NamedNode(n) => n.as_ref(),
+        _ => {
+            return Err(ReasonableError::ManagerError(
+                "Must have named node as predicate".to_string(),
+            ))
+        }
+    };
+    Ok(TripleRef::new(s, p, o.as_ref()))
+}
+
 pub fn rio_to_oxrdf(t: rio::Triple) -> Triple {
     let s: NamedOrBlankNode = match t.subject {
         rio::Subject::NamedNode(rio::NamedNode { iri }) => {
