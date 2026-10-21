@@ -144,7 +144,8 @@ pub fn oxrdf_to_rio<'a>(t: TripleRef<'a>) -> rio::Triple<'a> {
             let value = lit.value();
             let datatype = lit.datatype();
             let language = lit.language();
-            if datatype.as_str() != "http://www.w3.org/2001/XMLSchema#string" {
+            // Language-tagged literals have datatype rdf:langString; keep their tag
+            if language.is_none() && datatype.as_str() != "http://www.w3.org/2001/XMLSchema#string" {
                 rio::Term::Literal(rio::Literal::Typed {
                     value,
                     datatype: rio::NamedNode {

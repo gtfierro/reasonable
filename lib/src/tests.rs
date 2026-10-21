@@ -66,6 +66,23 @@ fn test_load_file_n3() -> crate::error::Result<()> {
 }
 
 #[test]
+fn test_dump_file_keeps_language_tags() -> crate::error::Result<()> {
+    let mut r = Reasoner::new();
+    r.load_triples(vec![
+        lang_literal_triple("urn:x", "urn:label", "chat", "fr"),
+        lang_literal_triple("urn:x", "urn:label", "chat", "en"),
+    ]);
+    r.reason();
+    let path = std::env::temp_dir().join(format!("reasonable-dump-lang-{}.ttl", std::process::id()));
+    r.dump_file(path.to_str().unwrap())?;
+    let written = std::fs::read_to_string(&path)?;
+    std::fs::remove_file(&path)?;
+    assert!(written.contains("\"chat\"@fr"), "missing \"chat\"@fr in:\n{}", written);
+    assert!(written.contains("\"chat\"@en"), "missing \"chat\"@en in:\n{}", written);
+    Ok(())
+}
+
+#[test]
 #[ignore]
 fn test_eq_ref() -> Result<(), String> {
     let mut r = Reasoner::new();
