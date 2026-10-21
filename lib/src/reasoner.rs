@@ -8,6 +8,7 @@ use crate::list_rules::{ListRules, ListViolation};
 use crate::join::{join_each, join_filter_into};
 
 use crate::common::*;
+use hashbrown::{HashMap, HashSet};
 use log::{error, info};
 use oxrdf::{BlankNode, NamedNode, Term, TermRef, Triple, TripleRef};
 use rio_api::formatter::TriplesFormatter;
@@ -15,7 +16,6 @@ use rio_api::parser::TriplesParser;
 use rio_turtle::TurtleFormatter;
 use rio_turtle::{NTriplesParser, TurtleError, TurtleParser};
 use std::cell::{OnceCell, RefCell};
-use std::collections::{HashMap, HashSet};
 use std::fmt;
 use std::fs;
 use std::io::BufReader;

@@ -1,4 +1,4 @@
-use std::collections::{HashMap, HashSet};
+use hashbrown::{HashMap, HashSet};
 use std::hash::Hash;
 
 use datafrog::{Iteration, Relation, Variable};
@@ -76,7 +76,7 @@ impl RdfLists {
                 }
                 linear &= self.rest[&cell]
                     .iter()
-                    .filter(|tail| self.terminating.contains(tail))
+                    .filter(|&tail| self.terminating.contains(tail))
                     .count()
                     == 1;
             }

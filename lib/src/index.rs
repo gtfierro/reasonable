@@ -1,15 +1,16 @@
 use crate::common::URI;
 
 use hashbrown::hash_table::{Entry, HashTable};
+use hashbrown::DefaultHashBuilder;
 use oxrdf::{IriParseError, NamedNode, NamedNodeRef, Term, TermRef};
-use std::hash::{BuildHasher, RandomState};
+use std::hash::BuildHasher;
 
 /// Interns RDF terms as dense `URI` ids.
 ///
 /// Each term is stored once, in `terms`; the table holds only ids and is probed
 /// with borrowed terms, so looking up a term that is already known allocates nothing.
 pub struct URIIndex {
-    hasher: RandomState,
+    hasher: DefaultHashBuilder,
     ids: HashTable<URI>,
     terms: Vec<Term>,
 }
@@ -17,7 +18,7 @@ pub struct URIIndex {
 impl URIIndex {
     pub fn new() -> Self {
         let mut index = URIIndex {
-            hasher: RandomState::new(),
+            hasher: DefaultHashBuilder::default(),
             ids: HashTable::with_capacity(1024),
             terms: Vec::with_capacity(1024),
         };
