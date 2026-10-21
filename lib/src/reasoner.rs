@@ -2418,6 +2418,14 @@ fn term_in_datatype_space(term: &Term, datatype_iri: &str) -> Option<bool> {
     const RDF_LANG_STRING: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString";
     const RDF_XML_LITERAL: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral";
 
+    // Any other range may be a class (e.g. `ex:p rdfs:range ex:Part`), whose
+    // members are IRIs and blank nodes, so only judge ranges we recognise.
+    if !matches!(
+        datatype_iri,
+        XSD_STRING | XSD_INTEGER | XSD_INT | RDF_LANG_STRING | RDF_XML_LITERAL
+    ) {
+        return None;
+    }
     let Term::Literal(literal) = term else {
         return Some(false);
     };

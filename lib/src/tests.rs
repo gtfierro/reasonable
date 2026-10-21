@@ -2069,6 +2069,44 @@ fn test_rdfs_datatype_range_diagnostic_code() -> Result<(), String> {
     Ok(())
 }
 
+#[test]
+fn test_rdfs_datatype_range_class_range_no_error() -> Result<(), String> {
+    // Predicate range is a class, not a datatype; an IRI object is expected
+    // there and must not be reported as a range clash.
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![
+        ("urn:hasPart", RDFS_RANGE, "urn:Part"),
+        ("urn:car", "urn:hasPart", "urn:wheel"),
+    ]);
+    r.reason();
+    assert!(
+        !r.errors()
+            .iter()
+            .any(|e| e.rule() == "rdfs-datatype-range"),
+        "an IRI object should not clash with a class range"
+    );
+    Ok(())
+}
+
+#[test]
+fn test_rdfs_datatype_range_clash_iri_for_integer() -> Result<(), String> {
+    // Predicate range is xsd:integer; an IRI is never in a datatype's value
+    // space, so this is still a range clash.
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![
+        ("urn:p", RDFS_RANGE, XSD_INTEGER),
+        ("urn:s", "urn:p", "urn:o"),
+    ]);
+    r.reason();
+    assert!(
+        r.errors()
+            .iter()
+            .any(|e| e.rule() == "rdfs-datatype-range"),
+        "expected rdfs-datatype-range diagnostic when an IRI object meets an xsd:integer range"
+    );
+    Ok(())
+}
+
 //#[test]
 //fn test_triple_update1() -> Result<(), String> {
 //    let mut u = TripleUpdate::new();
