@@ -18,7 +18,9 @@ use std::collections::{HashMap, HashSet};
 use std::fmt;
 use std::fs;
 use std::io::BufReader;
+use std::io::BufWriter;
 use std::io::ErrorKind;
+use std::io::Write;
 use std::rc::Rc;
 
 /// Severity of a diagnostic produced during reasoning
@@ -1197,7 +1199,7 @@ impl Reasoner {
     /// The file will contain the current output of the reasoner (post `reason()`).
     pub fn dump_file(&mut self, filename: &str) -> crate::error::Result<()> {
         // let mut abbrevs: HashMap<String, Uri> = HashMap::new();
-        let mut output = fs::File::create(filename)?;
+        let output = BufWriter::new(fs::File::create(filename)?);
         let mut formatter = TurtleFormatter::new(output);
         for t in self.view_output() {
             formatter.format(&oxrdf_to_rio(t.into()))?;
@@ -1233,7 +1235,7 @@ impl Reasoner {
         //writer.finish()?;
         //info!("Wrote {} triples to {}", graph.count(), filename);
         //Ok(())
-        formatter.finish()?;
+        formatter.finish()?.flush()?;
         Ok(())
     }
 
