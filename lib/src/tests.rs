@@ -1169,6 +1169,26 @@ fn test_cls_hv2() -> Result<(), String> {
 }
 
 #[test]
+fn test_cls_hv2_other_property() -> Result<(), String> {
+    // The value has to be reached through the restriction's property
+    let mut r = Reasoner::new();
+    let trips = vec![
+        ("urn:x", OWL_HASVALUE, "urn:y"),
+        ("urn:x", OWL_ONPROPERTY, "urn:p"),
+        ("urn:u", "urn:q", "urn:y"),
+    ];
+    r.load_triples_str(trips);
+    r.reason();
+    let res = r.get_triples_string();
+    assert!(!res.contains(&(
+        "<urn:u>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:x>".to_string()
+    )));
+    Ok(())
+}
+
+#[test]
 fn test_cls_avf() -> Result<(), String> {
     let mut r = Reasoner::new();
     let trips = vec![
@@ -1551,6 +1571,79 @@ fn test_cls_com_no_violation() -> Result<(), String> {
         !r.errors().iter().any(|e| e.rule() == "cls-com"),
         "no cls-com diagnostic expected when no instance is in both classes"
     );
+    Ok(())
+}
+
+#[test]
+fn test_cax_dw_inferred_type() -> Result<(), String> {
+    // A violation found through an inferred type is reported once
+    let mut r = Reasoner::new();
+    let trips = vec![
+        ("urn:A", "http://www.w3.org/2002/07/owl#disjointWith", "urn:B"),
+        ("urn:A2", RDFS_SUBCLASSOF, "urn:A"),
+        ("urn:i", RDF_TYPE, "urn:A2"),
+        ("urn:i", RDF_TYPE, "urn:B"),
+        ("urn:j", RDF_TYPE, "urn:A2"),
+    ];
+    r.load_triples_str(trips);
+    r.reason();
+    let cax_dw: Vec<String> = r
+        .errors()
+        .iter()
+        .filter(|e| e.code() == "OWLRL.CAX_DW")
+        .map(|e| e.to_string())
+        .collect();
+    assert_eq!(cax_dw.len(), 1, "expected one CAX_DW diagnostic, got {:?}", cax_dw);
+    assert!(cax_dw[0].contains("<urn:i>"), "unexpected diagnostic {:?}", cax_dw);
+    Ok(())
+}
+
+#[test]
+fn test_prp_asyp_violation() -> Result<(), String> {
+    let mut r = Reasoner::new();
+    let trips = vec![
+        ("urn:p", RDF_TYPE, OWL_ASYMMETRICPROP),
+        ("urn:x", "urn:p", "urn:y"),
+        ("urn:y", "urn:p", "urn:x"),
+        ("urn:a", "urn:p", "urn:b"),
+    ];
+    r.load_triples_str(trips);
+    r.reason();
+    let asyp: Vec<String> = r
+        .errors()
+        .iter()
+        .filter(|e| e.code() == "OWLRL.PRP_ASYP")
+        .map(|e| e.to_string())
+        .collect();
+    assert!(!asyp.is_empty(), "expected a PRP_ASYP diagnostic");
+    assert!(
+        asyp.iter().all(|e| e.contains("<urn:x>") && e.contains("<urn:y>")),
+        "unexpected diagnostics {:?}",
+        asyp
+    );
+    Ok(())
+}
+
+#[test]
+fn test_prp_pdw_violation() -> Result<(), String> {
+    let mut r = Reasoner::new();
+    let trips = vec![
+        ("urn:p1", "http://www.w3.org/2002/07/owl#propertyDisjointWith", "urn:p2"),
+        ("urn:s", "urn:p1", "urn:o"),
+        ("urn:s", "urn:p2", "urn:o"),
+        ("urn:t", "urn:p1", "urn:o1"),
+        ("urn:t", "urn:p2", "urn:o2"),
+    ];
+    r.load_triples_str(trips);
+    r.reason();
+    let pdw: Vec<String> = r
+        .errors()
+        .iter()
+        .filter(|e| e.code() == "OWLRL.PRP_PDW")
+        .map(|e| e.to_string())
+        .collect();
+    assert_eq!(pdw.len(), 1, "expected one PRP_PDW diagnostic, got {:?}", pdw);
+    assert!(pdw[0].contains("<urn:s>"), "unexpected diagnostic {:?}", pdw);
     Ok(())
 }
 

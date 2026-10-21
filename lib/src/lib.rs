@@ -21,6 +21,7 @@ pub mod common;
 pub mod error;
 #[allow(dead_code)]
 mod index;
+mod join;
 mod list_rules;
 #[allow(dead_code)]
 pub mod reasoner;
