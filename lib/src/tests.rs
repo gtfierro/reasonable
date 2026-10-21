@@ -117,6 +117,26 @@ fn test_load_file_blank_nodes_scoped_per_file() -> crate::error::Result<()> {
 }
 
 #[test]
+fn test_load_file_dedups_triples() -> crate::error::Result<()> {
+    // A triple stated twice in a file (once through a prefix) is loaded once
+    let path = std::env::temp_dir().join(format!("reasonable-dup-{}.ttl", std::process::id()));
+    std::fs::write(
+        &path,
+        "@prefix ex: <urn:ex:> .\nex:a ex:p ex:b .\n<urn:ex:a> <urn:ex:p> <urn:ex:b> .\n",
+    )?;
+    let mut r = Reasoner::new();
+    r.load_file(path.to_str().unwrap())?;
+    std::fs::remove_file(&path)?;
+    let loaded = r
+        .get_input()
+        .iter()
+        .filter(|t| t.subject.to_string() == "<urn:ex:a>")
+        .count();
+    assert_eq!(loaded, 1);
+    Ok(())
+}
+
+#[test]
 #[ignore]
 fn test_eq_ref() -> Result<(), String> {
     let mut r = Reasoner::new();

@@ -1,6 +1,6 @@
 use oxrdf::{
-    BlankNode, Literal, NamedNode, NamedOrBlankNode, NamedOrBlankNodeRef, Term, TermRef, Triple,
-    TripleRef,
+    BlankNode, BlankNodeRef, Literal, LiteralRef, NamedNode, NamedNodeRef, NamedOrBlankNode,
+    NamedOrBlankNodeRef, Term, TermRef, Triple, TripleRef,
 };
 mod rio {
     pub use rio_api::model::*;
@@ -127,6 +127,32 @@ pub fn rio_to_oxrdf(t: rio::Triple) -> Triple {
         _ => panic!("no rdf*"),
     };
     Triple::new(s, p, o)
+}
+
+/// Borrows the terms of a rio triple as oxrdf terms, without copying their strings
+pub fn rio_to_oxrdf_ref<'a>(t: rio::Triple<'a>) -> (TermRef<'a>, NamedNodeRef<'a>, TermRef<'a>) {
+    let s: TermRef = match t.subject {
+        rio::Subject::NamedNode(rio::NamedNode { iri }) => NamedNodeRef::new_unchecked(iri).into(),
+        rio::Subject::BlankNode(rio::BlankNode { id }) => BlankNodeRef::new_unchecked(id).into(),
+        _ => panic!("no rdf*"),
+    };
+    let p = NamedNodeRef::new_unchecked(t.predicate.iri);
+    let o: TermRef = match t.object {
+        rio::Term::NamedNode(rio::NamedNode { iri }) => NamedNodeRef::new_unchecked(iri).into(),
+        rio::Term::BlankNode(rio::BlankNode { id }) => BlankNodeRef::new_unchecked(id).into(),
+        rio::Term::Literal(lit) => match lit {
+            rio::Literal::Simple { value } => LiteralRef::new_simple_literal(value).into(),
+            rio::Literal::LanguageTaggedString { value, language } => {
+                LiteralRef::new_language_tagged_literal_unchecked(value, language).into()
+            }
+            rio::Literal::Typed { value, datatype } => {
+                LiteralRef::new_typed_literal(value, NamedNodeRef::new_unchecked(datatype.iri))
+                    .into()
+            }
+        },
+        _ => panic!("no rdf*"),
+    };
+    (s, p, o)
 }
 
 pub fn oxrdf_to_rio<'a>(t: TripleRef<'a>) -> rio::Triple<'a> {

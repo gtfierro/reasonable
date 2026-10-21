@@ -8,7 +8,7 @@ use crate::list_rules::{ListRules, ListViolation};
 
 use crate::common::*;
 use log::{error, info};
-use oxrdf::{BlankNode, Graph, NamedNode, Term, Triple};
+use oxrdf::{BlankNode, NamedNode, Term, TermRef, Triple};
 use rio_api::formatter::TriplesFormatter;
 use rio_api::parser::TriplesParser;
 use rio_turtle::TurtleFormatter;
@@ -820,7 +820,7 @@ impl Reasoner {
     }
 
     fn add_base_triples(&mut self, input: Vec<KeyedTriple>) {
-        self.base.extend(input.clone());
+        self.base.extend_from_slice(&input);
         self.input.extend(input);
     }
 
@@ -874,10 +874,12 @@ impl Reasoner {
     /// ```
     pub fn load_triples(&mut self, triples: Vec<Triple>) {
         let mut trips: Vec<(URI, (URI, URI))> = Vec::with_capacity(triples.len());
-        for trip in triples.iter() {
-            let s = self.index.put(trip.subject.clone().into());
-            let p = self.index.put(trip.predicate.clone().into());
-            let o = self.index.put(trip.object.clone().into());
+        // consume the triples, so each term is moved into the index or dropped
+        // as soon as it is interned, rather than copied
+        for trip in triples {
+            let s = self.index.put(trip.subject.into());
+            let p = self.index.put(trip.predicate.into());
+            let o = self.index.put(trip.object.into());
             trips.push((s, (p, o)));
         }
         trips.sort_unstable();
@@ -906,10 +908,10 @@ impl Reasoner {
     pub fn set_base_triples(&mut self, triples: Vec<Triple>) -> bool {
         // Convert to keyed triples
         let mut new_base: Vec<KeyedTriple> = Vec::with_capacity(triples.len() + 2);
-        for trip in triples.iter() {
-            let s = self.index.put(trip.subject.clone().into());
-            let p = self.index.put(trip.predicate.clone().into());
-            let o = self.index.put(trip.object.clone().into());
+        for trip in triples {
+            let s = self.index.put(trip.subject.into());
+            let p = self.index.put(trip.predicate.into());
+            let o = self.index.put(trip.object.into());
             new_base.push((s, (p, o)));
         }
         // Always include seed triples (cls-thing, cls-nothing1)
@@ -1247,18 +1249,33 @@ impl Reasoner {
     ///
     /// Returns an error for unsupported extensions.
     pub fn load_file(&mut self, filename: &str) -> crate::error::Result<()> {
-        let mut f = BufReader::new(fs::File::open(filename)?);
-        let mut graph = Graph::new();
+        let f = BufReader::new(fs::File::open(filename)?);
+        let mut triples: Vec<KeyedTriple> = Vec::new();
+        // Blank node labels are local to a file, but the parsers reuse them across
+        // files (e.g. rio's "riog00000001"), so give each loaded file fresh blank nodes
+        let mut bnodes: HashMap<String, URI> = HashMap::new();
+        let index = &mut self.index;
+        // Intern straight from the parser's borrowed terms; only new terms are copied
+        let mut put = |term: TermRef| match term {
+            TermRef::BlankNode(b) => match bnodes.get(b.as_str()) {
+                Some(&id) => id,
+                None => {
+                    let id = index.put(BlankNode::default().into());
+                    bnodes.insert(b.as_str().to_string(), id);
+                    id
+                }
+            },
+            term => index.put_ref(term),
+        };
+        let mut add = |t: rio_api::model::Triple| {
+            let (s, p, o) = rio_to_oxrdf_ref(t);
+            triples.push((put(s), (put(p.into()), put(o))));
+            Ok(()) as Result<(), TurtleError>
+        };
         if filename.ends_with(".ttl") {
-            TurtleParser::new(f, None).parse_all(&mut |t| {
-                graph.insert(&rio_to_oxrdf(t));
-                Ok(()) as Result<(), TurtleError>
-            })?;
+            TurtleParser::new(f, None).parse_all(&mut add)?;
         } else if filename.ends_with(".n3") {
-            NTriplesParser::new(f).parse_all(&mut |t| {
-                graph.insert(&rio_to_oxrdf(t));
-                Ok(()) as Result<(), TurtleError>
-            })?;
+            NTriplesParser::new(f).parse_all(&mut add)?;
         } else {
             return Err(std::io::Error::new(
                 ErrorKind::Other,
@@ -1267,29 +1284,10 @@ impl Reasoner {
             .into());
         }
 
-        //let graph = parser.read_triples(f)?.collect::<Result<Vec<_>,_>>()?;
-
-        // Blank node labels are local to a file, but the parsers reuse them across
-        // files (e.g. rio's "riog00000001"), so give each loaded file fresh blank nodes
-        let mut bnodes: HashMap<BlankNode, BlankNode> = HashMap::new();
-        let mut scope = |term: Term| match term {
-            Term::BlankNode(b) => {
-                Term::BlankNode(bnodes.entry(b).or_insert_with(BlankNode::default).clone())
-            }
-            term => term,
-        };
-
-        // Build new triples with capacity hints
-        let mut triples: Vec<(URI, (URI, URI))> = Vec::with_capacity(graph.len());
-        for triple in graph.iter() {
-            let s = self.index.put(scope(triple.subject.clone().into()));
-            let p = self.index.put(triple.predicate.clone().into());
-            let o = self.index.put(scope(triple.object.clone().into()));
-            triples.push((s, (p, o)));
-        }
+        triples.sort_unstable();
+        triples.dedup();
         info!("Loaded {} triples from file {}", triples.len(), filename);
 
-        triples.sort_unstable();
         if self.is_materialized {
             get_unique(&self.input, &mut triples);
             self.pending_delta.extend(triples);
