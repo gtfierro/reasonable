@@ -8,7 +8,7 @@ use crate::list_rules::{ListRules, ListViolation};
 
 use crate::common::*;
 use log::{error, info};
-use oxrdf::{Graph, NamedNode, Term, Triple};
+use oxrdf::{BlankNode, Graph, NamedNode, Term, Triple};
 use rio_api::formatter::TriplesFormatter;
 use rio_api::parser::TriplesParser;
 use rio_turtle::TurtleFormatter;
@@ -1269,12 +1269,22 @@ impl Reasoner {
 
         //let graph = parser.read_triples(f)?.collect::<Result<Vec<_>,_>>()?;
 
+        // Blank node labels are local to a file, but the parsers reuse them across
+        // files (e.g. rio's "riog00000001"), so give each loaded file fresh blank nodes
+        let mut bnodes: HashMap<BlankNode, BlankNode> = HashMap::new();
+        let mut scope = |term: Term| match term {
+            Term::BlankNode(b) => {
+                Term::BlankNode(bnodes.entry(b).or_insert_with(BlankNode::default).clone())
+            }
+            term => term,
+        };
+
         // Build new triples with capacity hints
         let mut triples: Vec<(URI, (URI, URI))> = Vec::with_capacity(graph.len());
         for triple in graph.iter() {
-            let s = self.index.put(triple.subject.clone().into());
+            let s = self.index.put(scope(triple.subject.clone().into()));
             let p = self.index.put(triple.predicate.clone().into());
-            let o = self.index.put(triple.object.clone().into());
+            let o = self.index.put(scope(triple.object.clone().into()));
             triples.push((s, (p, o)));
         }
         info!("Loaded {} triples from file {}", triples.len(), filename);

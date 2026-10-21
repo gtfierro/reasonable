@@ -83,6 +83,40 @@ fn test_dump_file_keeps_language_tags() -> crate::error::Result<()> {
 }
 
 #[test]
+fn test_load_file_blank_nodes_scoped_per_file() -> crate::error::Result<()> {
+    // Blank nodes from different files are distinct, even though the parser
+    // labels "[ ... ]" the same way in every file and both files use "_:b".
+    let dir = std::env::temp_dir();
+    let a = dir.join(format!("reasonable-bnode-a-{}.ttl", std::process::id()));
+    let b = dir.join(format!("reasonable-bnode-b-{}.ttl", std::process::id()));
+    std::fs::write(&a, "<urn:a> <urn:p> [ <urn:q> <urn:one> ] .\n_:b <urn:r> <urn:one> .\n")?;
+    std::fs::write(&b, "<urn:b> <urn:p> [ <urn:q> <urn:two> ] .\n_:b <urn:r> <urn:two> .\n")?;
+    let mut r = Reasoner::new();
+    r.load_file(a.to_str().unwrap())?;
+    r.load_file(b.to_str().unwrap())?;
+    std::fs::remove_file(&a)?;
+    std::fs::remove_file(&b)?;
+    r.reason();
+    let res = r.get_triples_string();
+    let objects_of = |s: &str, p: &str| -> Vec<String> {
+        res.iter()
+            .filter(|(ts, tp, _)| ts == s && tp == p)
+            .map(|(_, _, o)| o.clone())
+            .collect()
+    };
+    let a_nodes = objects_of("<urn:a>", "<urn:p>");
+    assert_eq!(a_nodes.len(), 1);
+    assert_eq!(objects_of(&a_nodes[0], "<urn:q>"), vec!["<urn:one>".to_string()]);
+    let b_labels: std::collections::HashSet<&String> = res
+        .iter()
+        .filter(|(_, p, _)| p == "<urn:r>")
+        .map(|(s, _, _)| s)
+        .collect();
+    assert_eq!(b_labels.len(), 2, "expected two distinct _:b nodes, got {:?}", b_labels);
+    Ok(())
+}
+
+#[test]
 #[ignore]
 fn test_eq_ref() -> Result<(), String> {
     let mut r = Reasoner::new();
