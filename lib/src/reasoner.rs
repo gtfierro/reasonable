@@ -345,7 +345,6 @@ pub struct Reasoner {
     owl_disjointwith_relation: Relation<(URI, ())>,
 
     // --- Triple index variables ---
-    spo: Variable<KeyedTriple>,
     pso: Variable<KeyedTriple>,
     osp: Variable<KeyedTriple>,
     all_triples_input: Variable<KeyedTriple>,
@@ -402,7 +401,6 @@ pub struct Reasoner {
     things: Variable<(URI, ())>,
     cls_com_1: Variable<((URI, URI), URI)>,
     cax_sco_1: Variable<(URI, URI)>,
-    cax_sco_2: Variable<(URI, URI)>,
     rdfs11_1: Variable<(URI, URI)>,
     owl_equivalent_class: Variable<(URI, URI)>,
     owl_disjoint_with: Variable<(URI, URI)>,
@@ -497,7 +495,6 @@ impl Reasoner {
         let owl_disjointwith_relation = node_rel(owldisjointwith_node);
 
         // --- Triple index variables ---
-        let spo = iter1.variable::<KeyedTriple>("spo");
         let pso = iter1.variable::<KeyedTriple>("pso");
         let osp = iter1.variable::<KeyedTriple>("osp");
         let all_triples_input = iter1.variable::<KeyedTriple>("all_triples_input");
@@ -561,7 +558,6 @@ impl Reasoner {
         let things = iter1.variable::<(URI, ())>("things");
         let cls_com_1 = iter1.variable::<((URI, URI), URI)>("cls_com_1");
         let cax_sco_1 = iter1.variable::<(URI, URI)>("cax_sco_1");
-        let cax_sco_2 = iter1.variable::<(URI, URI)>("cax_sco_2");
         let rdfs11_1 = iter1.variable::<(URI, URI)>("rdfs11_1");
         let owl_equivalent_class = iter1.variable::<(URI, URI)>("owl_equivalent_class");
         let owl_disjoint_with = iter1.variable::<(URI, URI)>("owl_disjoint_with");
@@ -638,7 +634,6 @@ impl Reasoner {
             owl_equivalent_relation,
             owl_disjointwith_relation,
             // Index variables
-            spo,
             pso,
             osp,
             all_triples_input,
@@ -694,7 +689,6 @@ impl Reasoner {
             things,
             cls_com_1,
             cax_sco_1,
-            cax_sco_2,
             rdfs11_1,
             owl_equivalent_class,
             owl_disjoint_with,
@@ -723,7 +717,6 @@ impl Reasoner {
         self.established_complementary_instances.borrow_mut().clear();
         // Recreate the Iteration and all Variables from scratch
         let mut iter1 = Iteration::new();
-        self.spo = iter1.variable("spo");
         self.pso = iter1.variable("pso");
         self.osp = iter1.variable("osp");
         self.all_triples_input = iter1.variable("all_triples_input");
@@ -786,7 +779,6 @@ impl Reasoner {
         self.things = iter1.variable("things");
         self.cls_com_1 = iter1.variable("cls_com_1");
         self.cax_sco_1 = iter1.variable("cax_sco_1");
-        self.cax_sco_2 = iter1.variable("cax_sco_2");
         self.rdfs11_1 = iter1.variable("rdfs11_1");
         self.owl_equivalent_class = iter1.variable("owl_equivalent_class");
         self.owl_disjoint_with = iter1.variable("owl_disjoint_with");
@@ -1333,16 +1325,19 @@ impl Reasoner {
                 .extend(new_complementary_instances.drain());
 
             while self.iter1.changed() {
-                // all individuals are owl:Things
-                self.all_triples_input
-                    .from_map(&self.spo, |&(s, (_p, _o))| {
-                        (s, (rdftype_node, owlthing_node))
-                    });
+                // all individuals are owl:Things; recent is sorted by subject, so
+                // emit one triple per distinct subject
+                let new_things: Vec<KeyedTriple> = {
+                    let recent = self.all_triples_input.recent.borrow();
+                    let mut new_things: Vec<KeyedTriple> = recent
+                        .iter()
+                        .map(|&(s, _)| (s, (rdftype_node, owlthing_node)))
+                        .collect();
+                    new_things.dedup();
+                    new_things
+                };
+                self.all_triples_input.extend(new_things);
 
-                self.spo
-                    .from_map(&self.all_triples_input, |&(sub, (pred, obj))| {
-                        (sub, (pred, obj))
-                    });
                 self.pso
                     .from_map(&self.all_triples_input, |&(sub, (pred, obj))| {
                         (pred, (sub, obj))
@@ -1491,14 +1486,14 @@ impl Reasoner {
                 // eq-sym
                 //  T(?x, owl:sameAs, ?y)  =>  T(?y, owl:sameAs, ?x)
                 self.all_triples_input.from_join(
-                    &self.spo,
+                    &self.all_triples_input,
                     &self.owl_same_as,
                     |&x, &(p, o), &y| (y, (owlsameas_node, x)),
                 );
 
                 // eq-rep-s
                 self.all_triples_input.from_join(
-                    &self.spo,
+                    &self.all_triples_input,
                     &self.owl_same_as,
                     |&s1, &(p, o), &s2| (s2, (p, o)),
                 );
@@ -1727,11 +1722,9 @@ impl Reasoner {
                     (c1, c2)
                 });
                 // ?c1, ?x, rdf:type
-                self.cax_sco_2.from_map(&self.rdf_type, |&(inst, class)| (class, inst));
-
                 self.all_triples_input.from_join(
                     &self.cax_sco_1,
-                    &self.cax_sco_2,
+                    &*self.rdf_type_inv.borrow(),
                     |&class, &parent, &inst| {
                         //println!("instance: {:?} {:?} {:?}", self.to_u(inst), self.to_u(parent), self.to_u(class));
                         (inst, (rdftype_node, parent))
@@ -2048,7 +2041,7 @@ impl Reasoner {
                 );
                 join_filter_into(
                     &self.cls_avf_2,
-                    &self.spo,
+                    &self.all_triples_input,
                     &self.all_triples_input,
                     |&u, &(p1, y), &(p2, v)| (p1 == p2).then_some((v, (rdftype_node, y))),
                 );
@@ -2124,7 +2117,7 @@ impl Reasoner {
         // Non-destructive read of stable partitions (preserves Variable state for incremental use)
         let mut output: Vec<KeyedTriple> = Vec::new();
         {
-            let stable = self.spo.stable.borrow();
+            let stable = self.all_triples_input.stable.borrow();
             for batch in stable.iter() {
                 output.extend(
                     batch.iter()
