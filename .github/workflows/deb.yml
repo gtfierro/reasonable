@@ -4,6 +4,10 @@ on:
   release:
     types:
       - published
+  # Lets the packaging be exercised without cutting a release. The job that
+  # uploads to the release is gated on github.event_name == 'release', so a
+  # manual run only produces workflow artifacts.
+  workflow_dispatch:
 
 jobs:
   deb:
@@ -37,6 +41,46 @@ jobs:
         with:
           tool: cargo-deb
 
+      - name: Install target architecture libc (for dependency resolution)
+        shell: bash
+        run: |
+          set -euo pipefail
+          case "${{ matrix.target }}" in
+            x86_64-*)  DEB_ARCH=amd64 ;;
+            aarch64-*) DEB_ARCH=arm64 ;;
+            armv7-*)   DEB_ARCH=armhf ;;
+            i686-*)    DEB_ARCH=i386 ;;
+            *) echo "unhandled target ${{ matrix.target }}" >&2; exit 1 ;;
+          esac
+          echo "DEB_ARCH=$DEB_ARCH" >> "$GITHUB_ENV"
+          if [ "$DEB_ARCH" = amd64 ]; then
+            echo "host architecture, nothing to add"
+            exit 0
+          fi
+          # cargo-deb resolves $auto deps by running dpkg-shlibdeps against the
+          # built binary, which needs the target architecture's libc6 and its
+          # symbols file installed. Without them cargo-deb only warns, and
+          # emits a package that declares no dependencies at all.
+          . /etc/os-release
+          if [ "$DEB_ARCH" = arm64 ] || [ "$DEB_ARCH" = armhf ]; then
+            # The arm ports are not on archive.ubuntu.com, so restrict the
+            # stock sources to the host architectures and add a ports source.
+            sudo sed -i '/^Types: deb$/a Architectures: amd64 i386' /etc/apt/sources.list.d/ubuntu.sources
+            printf '%s\n' \
+              'Types: deb' \
+              'URIs: http://ports.ubuntu.com/ubuntu-ports' \
+              "Suites: $VERSION_CODENAME $VERSION_CODENAME-updates $VERSION_CODENAME-security" \
+              'Components: main universe' \
+              'Architectures: arm64 armhf' \
+              'Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg' \
+              | sudo tee /etc/apt/sources.list.d/ubuntu-ports.sources >/dev/null
+          fi
+          sudo dpkg --add-architecture "$DEB_ARCH"
+          sudo apt-get update
+          # libgcc-s1 too: dpkg-shlibdeps has to locate every NEEDED library to
+          # map it to a package, even though cargo-deb then drops libgcc.
+          sudo apt-get install -y "libc6:$DEB_ARCH" "libgcc-s1:$DEB_ARCH"
+
       - name: Cross build CLI binary
         run: |
           cross build -p reasonable-cli --release --target ${{ matrix.target }}
@@ -58,6 +102,25 @@ jobs:
           fi
           echo "dir=$DIR" >> $GITHUB_OUTPUT
           echo "ls $DIR" && ls -la "$DIR"
+
+      - name: Verify dependencies were resolved
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          debs=(${{ steps.paths.outputs.dir }}/*.deb)
+          if [ ${#debs[@]} -eq 0 ]; then
+            echo "::error::no .deb files produced"
+            exit 1
+          fi
+          for deb in "${debs[@]}"; do
+            deps=$(dpkg-deb -f "$deb" Depends)
+            echo "$(basename "$deb"): ${deps:-<none>}"
+            case "$deps" in
+              *libc6*) ;;
+              *) echo "::error::$(basename "$deb") declares no libc6 dependency; dpkg-shlibdeps could not resolve the $DEB_ARCH binary"; exit 1 ;;
+            esac
+          done
 
       - name: Upload .deb artifact
         uses: actions/upload-artifact@v4
@@ -97,6 +160,46 @@ jobs:
         with:
           tool: cargo-deb
 
+      - name: Install target architecture libc (for dependency resolution)
+        shell: bash
+        run: |
+          set -euo pipefail
+          case "${{ matrix.target }}" in
+            x86_64-*)  DEB_ARCH=amd64 ;;
+            aarch64-*) DEB_ARCH=arm64 ;;
+            armv7-*)   DEB_ARCH=armhf ;;
+            i686-*)    DEB_ARCH=i386 ;;
+            *) echo "unhandled target ${{ matrix.target }}" >&2; exit 1 ;;
+          esac
+          echo "DEB_ARCH=$DEB_ARCH" >> "$GITHUB_ENV"
+          if [ "$DEB_ARCH" = amd64 ]; then
+            echo "host architecture, nothing to add"
+            exit 0
+          fi
+          # cargo-deb resolves $auto deps by running dpkg-shlibdeps against the
+          # built binary, which needs the target architecture's libc6 and its
+          # symbols file installed. Without them cargo-deb only warns, and
+          # emits a package that declares no dependencies at all.
+          . /etc/os-release
+          if [ "$DEB_ARCH" = arm64 ] || [ "$DEB_ARCH" = armhf ]; then
+            # The arm ports are not on archive.ubuntu.com, so restrict the
+            # stock sources to the host architectures and add a ports source.
+            sudo sed -i '/^Types: deb$/a Architectures: amd64 i386' /etc/apt/sources.list.d/ubuntu.sources
+            printf '%s\n' \
+              'Types: deb' \
+              'URIs: http://ports.ubuntu.com/ubuntu-ports' \
+              "Suites: $VERSION_CODENAME $VERSION_CODENAME-updates $VERSION_CODENAME-security" \
+              'Components: main universe' \
+              'Architectures: arm64 armhf' \
+              'Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg' \
+              | sudo tee /etc/apt/sources.list.d/ubuntu-ports.sources >/dev/null
+          fi
+          sudo dpkg --add-architecture "$DEB_ARCH"
+          sudo apt-get update
+          # libgcc-s1 too: dpkg-shlibdeps has to locate every NEEDED library to
+          # map it to a package, even though cargo-deb then drops libgcc.
+          sudo apt-get install -y "libc6:$DEB_ARCH" "libgcc-s1:$DEB_ARCH"
+
       - name: Cross build Python extension module
         run: |
           # abi3 must be passed explicitly here; the feature list in
@@ -121,6 +224,25 @@ jobs:
           fi
           echo "dir=$DIR" >> $GITHUB_OUTPUT
           echo "ls $DIR" && ls -la "$DIR"
+
+      - name: Verify dependencies were resolved
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          debs=(${{ steps.paths.outputs.dir }}/*.deb)
+          if [ ${#debs[@]} -eq 0 ]; then
+            echo "::error::no .deb files produced"
+            exit 1
+          fi
+          for deb in "${debs[@]}"; do
+            deps=$(dpkg-deb -f "$deb" Depends)
+            echo "$(basename "$deb"): ${deps:-<none>}"
+            case "$deps" in
+              *libc6*) ;;
+              *) echo "::error::$(basename "$deb") declares no libc6 dependency; dpkg-shlibdeps could not resolve the $DEB_ARCH binary"; exit 1 ;;
+            esac
+          done
 
       - name: Upload .deb artifact
         uses: actions/upload-artifact@v4
