@@ -408,6 +408,21 @@ fn test_prp_ifp_distinct_objects() {
 }
 
 #[test]
+fn test_prp_ifp_distinct_objects_with_sentinel_alias() {
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![
+        ("urn:PRED", RDF_TYPE, OWL_INVFUNCPROP),
+        ("urn:SUB_1", "urn:PRED", "urn:OBJECT_1"),
+        ("urn:SUB_2", "urn:PRED", "urn:OBJECT_2"),
+        ("urn:_", OWL_SAMEAS, "urn:z"),
+    ]);
+    r.reason();
+
+    let z = wrap!("urn:z");
+    assert!(!r.get_triples_string().contains(&(z.clone(), z.clone(), z)));
+}
+
+#[test]
 fn test_spo1() -> Result<(), String> {
     let mut r = Reasoner::new();
     let trips = vec![

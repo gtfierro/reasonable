@@ -355,7 +355,7 @@ pub struct Reasoner {
     prp_fp_1: Variable<(URI, ())>,
     prp_fp_2: Variable<KeyedTriple>,
     prp_ifp_1: Variable<(URI, ())>,
-    prp_ifp_2: Variable<KeyedTriple>,
+    prp_ifp_2: Variable<((URI, URI), URI)>,
     prp_spo1_1: Variable<(URI, URI)>,
     #[cfg(feature = "prp-spo2")]
     owlpropchain_node: URI,
@@ -508,7 +508,7 @@ impl Reasoner {
         let prp_fp_1 = iter1.variable::<(URI, ())>("prp_fp_1");
         let prp_fp_2 = iter1.variable::<KeyedTriple>("prp_fp_2");
         let prp_ifp_1 = iter1.variable::<(URI, ())>("prp_ifp_1");
-        let prp_ifp_2 = iter1.variable::<KeyedTriple>("prp_ifp_2");
+        let prp_ifp_2 = iter1.variable::<((URI, URI), URI)>("prp_ifp_2");
         let prp_spo1_1 = iter1.variable::<(URI, URI)>("prp_spo1_1");
         #[cfg(feature = "prp-spo2")]
         let owlpropchain_node = index.put(owl!("propertyChainAxiom"));
@@ -1599,21 +1599,15 @@ impl Reasoner {
                     &self.owl_invfuncprop_relation,
                     |&_, &p, &()| (p, ()),
                 );
-                self.prp_ifp_2
-                    .from_join(&self.prp_ifp_1, &self.pso, |&p, &(), &(x, y1)| (p, (x, y1)));
+                self.prp_ifp_2.from_join(&self.prp_ifp_1, &self.pso, |&p, &(), &(x, y)| {
+                    ((p, y), x)
+                });
+                // Join on property and object so only subjects that share both infer
+                // owl:sameAs (the invariant fixed in 965782b for #64).
                 self.all_triples_input.from_join(
                     &self.prp_ifp_2,
-                    &self.pso,
-                    |&_, &(x1, y1), &(x2, y2)| {
-                        // Infer owl:sameAs between subjects that share an object through
-                        // the same inverse-functional property. Commit 965782b (#64)
-                        // ensures the objects are explicitly compared for equality.
-                        if y1 == y2 {
-                            (x1, (owlsameas_node, x2))
-                        } else {
-                            (0, (0, 0))
-                        }
-                    },
+                    &self.prp_ifp_2,
+                    |_, &x1, &x2| (x1, (owlsameas_node, x2)),
                 );
 
                 // prp-spo1
