@@ -1290,6 +1290,40 @@ fn test_cls_int1() -> Result<(), String> {
 }
 
 #[test]
+fn test_cls_int1_member_types_in_different_rounds() -> Result<(), String> {
+    // urn:y is a urn:c1 from the start but only becomes a urn:c2 after a chain
+    // of subclass inferences, rounds after the intersection was first checked
+    let mut r = Reasoner::new();
+    let trips = vec![
+        ("urn:c", OWL_INTERSECTION, "urn:x"),
+        ("urn:x", RDF_FIRST, "urn:c1"),
+        ("urn:x", RDF_REST, "urn:z2"),
+        ("urn:z2", RDF_FIRST, "urn:c2"),
+        ("urn:z2", RDF_REST, RDF_NIL),
+        ("urn:y", RDF_TYPE, "urn:c1"),
+        ("urn:y", RDF_TYPE, "urn:d0"),
+        ("urn:d0", RDFS_SUBCLASSOF, "urn:d1"),
+        ("urn:d1", RDFS_SUBCLASSOF, "urn:d2"),
+        ("urn:d2", RDFS_SUBCLASSOF, "urn:c2"),
+        ("urn:w", RDF_TYPE, "urn:c1"),
+    ];
+    r.load_triples_str(trips);
+    r.reason();
+    let res = r.get_triples_string();
+    assert!(res.contains(&(
+        "<urn:y>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:c>".to_string()
+    )));
+    assert!(!res.contains(&(
+        "<urn:w>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:c>".to_string()
+    )));
+    Ok(())
+}
+
+#[test]
 fn test_cls_int2() -> Result<(), String> {
     let mut r = Reasoner::new();
     let trips = vec![
