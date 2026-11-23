@@ -2115,9 +2115,10 @@ impl Reasoner {
         }
 
         // Non-destructive read of stable partitions (preserves Variable state for incremental use)
-        let mut output: Vec<KeyedTriple> = Vec::new();
+        let mut output: Vec<KeyedTriple>;
         {
             let stable = self.all_triples_input.stable.borrow();
+            output = Vec::with_capacity(stable.iter().map(|batch| batch.len()).sum());
             for batch in stable.iter() {
                 output.extend(
                     batch.iter()
@@ -2132,11 +2133,9 @@ impl Reasoner {
         // closure) need a full scan; the prior closure is already represented
         // in self.input at this point and has been scanned by an earlier call.
         // In full mode, everything is "new", so the closure is its own delta.
-        let incremental_delta: Option<Vec<KeyedTriple>> = self.is_materialized.then(|| {
-            let mut delta = output.clone();
-            get_unique(&self.input, &mut delta);
-            delta
-        });
+        let incremental_delta: Option<Vec<KeyedTriple>> = self
+            .is_materialized
+            .then(|| sorted_difference(&output, &self.input));
         let delta: &[KeyedTriple] = incremental_delta.as_deref().unwrap_or(&output);
         if self.options.collect_diagnostics {
             self.detect_equality_contradictions(&output, delta);
@@ -2424,6 +2423,20 @@ fn term_in_datatype_space(term: &Term, datatype_iri: &str) -> Option<bool> {
         }
         _ => return None,
     })
+}
+
+/// The triples in `a` that are not in `b`; both must be sorted ascending.
+fn sorted_difference(a: &[KeyedTriple], b: &[KeyedTriple]) -> Vec<KeyedTriple> {
+    let mut j = 0;
+    a.iter()
+        .filter(|&&x| {
+            while j < b.len() && b[j] < x {
+                j += 1;
+            }
+            j == b.len() || b[j] != x
+        })
+        .copied()
+        .collect()
 }
 
 /**
