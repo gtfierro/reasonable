@@ -34,12 +34,13 @@ See `issue #64 <https://github.com/gtfierro/reasonable/issues/64>`_.
 Update Debian packaging scripts
 -------------------------------
 
-The Python Debian package is now named ``python3-reasonable``. Update scripts
-that install or locate the old ``pyreasonable`` package. The Rust crate is
-still ``pyreasonable``, and Python code continues to use ``import reasonable``.
-The CLI Debian package remains ``reasonable``.
+Install the Python Debian package as ``python3-reasonable``, the same name
+used by the `0.4.4 release assets <https://github.com/gtfierro/reasonable/releases/expanded_assets/v0.4.4>`_.
+The Rust crate is ``pyreasonable``, and Python code uses ``import reasonable``.
 
-If you build the Python Debian package, use ``make deb-python`` or
-``cargo deb -p pyreasonable`` from the source checkout. The build now uses
-``cargo-deb`` directly. Update scripts that invoke ``wheel2deb`` or
-``make deb-python-cargo``.
+The build now uses ``cargo-deb``. Use ``make deb-python`` or
+``cargo deb -p pyreasonable`` from the source checkout in place of direct
+``wheel2deb`` invocations. Update artifact paths from
+``dist/wheel2deb/output/`` to ``target/debian/`` for local builds. Scripts
+that fetch release assets should look for the new ABI3 package filenames,
+which use the form ``python3-reasonable_<version>_<arch>.deb``.
