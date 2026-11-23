@@ -20,6 +20,9 @@ Published versions and their release notes are listed on the
   restrictions (``scm-svf1``). This lets disjointness checks see types
   inferred through matching anonymous restrictions.
   See `issue #31 <https://github.com/gtfierro/reasonable/issues/31>`_.
+* Python can read selected Pyoxigraph store quads directly and return the
+  materialised closure as quads for a destination graph. See
+  `issue #54 <https://github.com/gtfierro/reasonable/issues/54>`_.
 
 See the :doc:`../owl-rules/index` for rule coverage and
 :doc:`migrating-to-0.5` for upgrade steps.

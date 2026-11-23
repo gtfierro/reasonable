@@ -3,6 +3,7 @@
 //! OWL2
 //! Profile](https://www.w3.org/TR/owl2-profiles/#Reasoning_in_OWL_2_RL_and_RDF_Graphs_using_Rules)
 //! website.
+mod pyoxigraph;
 mod pyreason;
 use pyo3::prelude::*;
 

@@ -1,3 +1,4 @@
+use crate::pyoxigraph::Pyoxigraph;
 use oxrdf::{BlankNode, Literal, NamedNode, Term, Triple};
 use pyo3::exceptions;
 use pyo3::prelude::*;
@@ -215,6 +216,35 @@ impl PyReasoner {
             self.reasoner.load_triples(triples);
             Ok(())
         })
+    }
+
+    /// Append an iterable of pyoxigraph Quads from one graph, or Triple objects.
+    /// The reasoner stores triples in a single graph.
+    pub fn add_quads(&mut self, quads: &Bound<'_, PyAny>) -> PyResult<()> {
+        let triples = Pyoxigraph::import(quads.py())?.extract_triples(quads)?;
+        self.reasoner.load_triples(triples);
+        Ok(())
+    }
+
+    /// Replace the base with triples from pyoxigraph Quads or Triples.
+    /// Return true if removals require full re-materialization.
+    pub fn update_quads(&mut self, quads: &Bound<'_, PyAny>) -> PyResult<bool> {
+        let triples = Pyoxigraph::import(quads.py())?.extract_triples(quads)?;
+        Ok(self.reasoner.set_base_triples(triples))
+    }
+
+    /// Return the closure (base and inferred triples) as pyoxigraph Quads
+    /// in graph_name, which defaults to pyoxigraph.DefaultGraph().
+    #[pyo3(signature = (graph_name=None))]
+    pub fn reason_quads<'py>(
+        &mut self,
+        py: Python<'py>,
+        graph_name: Option<Bound<'py, PyAny>>,
+    ) -> PyResult<Vec<Bound<'py, PyAny>>> {
+        let model = Pyoxigraph::import(py)?;
+        let graph = model.output_graph(graph_name)?;
+        self.reasoner.reason();
+        model.make_quads(self.reasoner.view_output(), &graph)
     }
 
     /// Replaces the reasoner's base triples with the contents of the given graph.

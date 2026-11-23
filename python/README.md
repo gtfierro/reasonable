@@ -120,6 +120,32 @@ python -c "import reasonable; print(reasonable.__version__)"
   - `get_base_triples() -> list[tuple[Node, Node, Node]]`
     - Returns the current base (non-inferred) triples as rdflib nodes. Useful for debugging.
 
+## Pyoxigraph
+
+Install the optional extra with `pip install 'reasonable[pyoxigraph]'`.
+Use `add_quads()` to append or `update_quads()` to replace the base from an
+iterable of Pyoxigraph quads or triples. `update_quads()` returns `True` when
+removals require a full re-materialization. `reason_quads(graph_name=...)`
+returns the base and inferred triples as quads in the requested graph
+(the default graph if omitted).
+
+```python
+from pyoxigraph import DefaultGraph, NamedNode, Store
+from reasonable import PyReasoner
+
+store = Store("path/to/store")
+reasoner = PyReasoner()
+target = NamedNode("urn:reasoned")
+reasoner.update_quads(store.quads_for_pattern(None, None, None, DefaultGraph()))
+closure = reasoner.reason_quads(graph_name=target)
+store.clear_graph(target)
+store.bulk_extend(closure)
+```
+
+Pass quads from one source graph per call. To combine multiple graphs
+deliberately, pass their `quad.triple` values. RDF-star triple terms and
+directional language-tagged literals raise `TypeError`.
+
 ## Building Wheels
 Build release wheels into `dist/`:
 
@@ -152,7 +178,7 @@ Alternatively, with a local venv:
 
 ```bash
 cd python
-pip install -U maturin pytest rdflib
+pip install -U maturin pytest rdflib 'pyoxigraph>=0.5.8'
 maturin develop -b pyo3 --release
 pytest -q
 ```

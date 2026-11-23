@@ -126,6 +126,53 @@ Incremental update with retraction:
    ``from_graph()`` *appends* to existing base triples.  If you want
    to replace the base entirely, use ``update_graph()`` instead.
 
+Pyoxigraph stores
+-----------------
+
+Install the optional extra with ``pip install 'reasonable[pyoxigraph]'``.
+The quad methods share the base triples and incremental state of
+``PyReasoner``.
+
+``add_quads(quads_or_triples) -> None``
+   Append an iterable of Pyoxigraph ``Quad`` or ``Triple`` objects.
+
+``update_quads(quads_or_triples) -> bool``
+   Replace the base triples. Returns ``True`` if removals require full
+   re-materialisation. Additions use incremental reasoning.
+
+``reason_quads(graph_name=None) -> list[pyoxigraph.Quad]``
+   Return the base and inferred triples as quads in the requested graph.
+   The graph name may be a ``NamedNode``, ``BlankNode``, or
+   ``DefaultGraph``. The default is ``DefaultGraph()``. Call
+   ``diagnostics()`` after reasoning to inspect rule violations.
+
+Each input call accepts quads from one graph and loads their triples into
+the reasoner's single graph. Mixed graph names raise ``ValueError``.
+To reason over a deliberate union of source graphs, pass an iterable of
+``quad.triple`` values. RDF-star triple terms and RDF 1.2 directional
+language-tagged literals raise ``TypeError``. Filter those terms before
+loading a graph that contains them.
+
+Refresh a materialised graph from the store's default graph:
+
+.. code-block:: python
+
+   from pyoxigraph import DefaultGraph, NamedNode, Store
+   from reasonable import PyReasoner
+
+   store = Store("path/to/store")
+   reasoner = PyReasoner()
+   target = NamedNode("urn:reasoned")
+
+   def refresh():
+       source = store.quads_for_pattern(None, None, None, DefaultGraph())
+       reasoner.update_quads(source)
+       closure = reasoner.reason_quads(graph_name=target)
+       store.clear_graph(target)
+       store.bulk_extend(closure)
+
+   refresh()
+
 Building from source
 --------------------
 
