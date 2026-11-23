@@ -81,4 +81,5 @@ Contents
    python-api/index
    cli/index
    owl-rules/index
+   changelog/index
    Rust API (docs.rs) <https://docs.rs/reasonable>
