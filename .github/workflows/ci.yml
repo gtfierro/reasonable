@@ -42,6 +42,15 @@ jobs:
       # check. The normal workspace build includes prp-spo2 by default.
       - name: Run reasonable tests without property chains
         run: cargo test -p reasonable --release --no-default-features
+      - name: Check CLI and Python builds can disable property chains
+        run: |
+          for package in reasonable-cli pyreasonable; do
+            features=$(cargo tree -p "$package" --no-default-features -e features -i reasonable)
+            if [[ "$features" == *'reasonable feature "prp-spo2"'* ]]; then
+              echo "::error::$package still enables property chains with --no-default-features"
+              exit 1
+            fi
+          done
       - name: Build python package
         run: uv run maturin build --release --features abi3
         working-directory: ./python
