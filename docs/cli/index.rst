@@ -86,10 +86,20 @@ Common diagnostic codes
 
    * - Code
      - Meaning
+   * - ``OWLRL.EQ_DIFF1``
+     - The same pair is both ``owl:sameAs`` and ``owl:differentFrom``
+   * - ``OWLRL.EQ_DIFF2``
+     - Equal individuals in an ``owl:AllDifferent`` list declared with ``owl:members``
+   * - ``OWLRL.EQ_DIFF3``
+     - Equal individuals in an ``owl:AllDifferent`` list declared with ``owl:distinctMembers``
    * - ``OWLRL.CAX_DW``
      - Individual typed as two disjoint classes
+   * - ``OWLRL.CAX_ADC``
+     - Individual typed as two classes in the same ``owl:AllDisjointClasses`` group
    * - ``OWLRL.PRP_PDW``
      - Pair of individuals violates ``owl:propertyDisjointWith``
+   * - ``OWLRL.PRP_ADP``
+     - Two properties in the same ``owl:AllDisjointProperties`` group relate the same subject and object
    * - ``OWLRL.PRP_ASYP``
      - Asymmetric property asserted in both directions
    * - ``OWLRL.PRP_IRP``

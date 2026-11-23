@@ -18,10 +18,10 @@
 #[macro_use]
 #[allow(dead_code, unused_macros)]
 pub mod common;
-mod disjoint_sets;
 pub mod error;
 #[allow(dead_code)]
 mod index;
+mod list_rules;
 #[allow(dead_code)]
 pub mod reasoner;
 

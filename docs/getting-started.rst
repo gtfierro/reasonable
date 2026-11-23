@@ -20,6 +20,8 @@ Install
    cargo build -p reasonable-cli --release
    # binary lands at: ./target/release/reasonable
 
+If you are upgrading from 0.4.4, see :doc:`changelog/migrating-to-0.5`.
+
 Basic usage
 -----------
 

@@ -408,6 +408,21 @@ fn test_prp_ifp_distinct_objects() {
 }
 
 #[test]
+fn test_prp_ifp_distinct_objects_with_sentinel_alias() {
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![
+        ("urn:PRED", RDF_TYPE, OWL_INVFUNCPROP),
+        ("urn:SUB_1", "urn:PRED", "urn:OBJECT_1"),
+        ("urn:SUB_2", "urn:PRED", "urn:OBJECT_2"),
+        ("urn:_", OWL_SAMEAS, "urn:z"),
+    ]);
+    r.reason();
+
+    let z = wrap!("urn:z");
+    assert!(!r.get_triples_string().contains(&(z.clone(), z.clone(), z)));
+}
+
+#[test]
 fn test_spo1() -> Result<(), String> {
     let mut r = Reasoner::new();
     let trips = vec![
@@ -546,10 +561,8 @@ mod prp_spo2 {
         Ok(())
     }
 
-    /// Order is the entire meaning of a chain: q <- [p1, p2] must fire on
-    /// p1-then-p2 and must stay silent on p2-then-p1. This is the regression test
-    /// for any implementation routed through the order-destroying list reader in
-    /// disjoint_sets.rs, whose HashMap iteration yields members in arbitrary order.
+    /// The chain q <- [p1, p2] matches p1-then-p2. A reversed path
+    /// must leave q absent.
     #[test]
     fn test_prp_spo2_order_is_significant() -> Result<(), String> {
         let mut r = Reasoner::new();
@@ -2158,6 +2171,183 @@ fn assert_incremental_equivalent(
 }
 
 #[test]
+fn test_schema_subproperty_rules() {
+    let schema = vec![
+        ("urn:p", OWL_EQUIVPROP, "urn:q"),
+        ("urn:q", RDFS_SUBPROP, "urn:r"),
+    ];
+    let additions = vec![("urn:r", RDFS_SUBPROP, "urn:s")];
+    assert_incremental_equivalent(schema.clone(), additions.clone());
+
+    let mut reasoner = Reasoner::new();
+    reasoner.load_triples_str([schema, additions].concat());
+    reasoner.reason();
+    let closure = reasoner.get_triples_string();
+    for (sub, sup) in [
+        ("urn:p", "urn:q"),
+        ("urn:q", "urn:p"),
+        ("urn:p", "urn:r"),
+        ("urn:p", "urn:s"),
+    ] {
+        assert!(closure.contains(&(wrap!(sub), wrap!(RDFS_SUBPROP), wrap!(sup))));
+    }
+}
+
+#[test]
+fn test_eq_diff1_uses_inferred_equality() {
+    const DIFFERENT_FROM: &str = "http://www.w3.org/2002/07/owl#differentFrom";
+    let mut reasoner = Reasoner::new();
+    reasoner.load_triples_str(vec![
+        ("urn:a", DIFFERENT_FROM, "urn:b"),
+        ("urn:p", RDF_TYPE, OWL_INVFUNCPROP),
+        ("urn:a", "urn:p", "urn:shared"),
+        ("urn:b", "urn:p", "urn:other"),
+    ]);
+    reasoner.reason();
+    assert!(reasoner.diagnostics().is_empty());
+
+    reasoner.load_triples_str(vec![("urn:b", "urn:p", "urn:shared")]);
+    reasoner.reason();
+    assert!(reasoner
+        .diagnostics()
+        .iter()
+        .any(|diag| { diag.rule() == "eq-diff1" && diag.code() == "OWLRL.EQ_DIFF1" }));
+}
+
+#[test]
+fn test_cls_oo_follows_its_head_and_waits_for_a_complete_list() {
+    const ONE_OF: &str = "http://www.w3.org/2002/07/owl#oneOf";
+    let initial = vec![
+        ("urn:C", ONE_OF, "urn:head"),
+        ("urn:C", RDFS_SUBCLASSOF, "urn:Parent"),
+        ("urn:head", RDF_FIRST, "urn:a"),
+        ("urn:head", RDF_REST, "urn:tail"),
+        ("urn:otherHead", RDF_FIRST, "urn:outside"),
+        ("urn:otherHead", RDF_REST, "urn:tail"),
+        ("urn:tail", RDF_FIRST, "urn:b"),
+    ];
+    let completion = vec![("urn:tail", RDF_REST, RDF_NIL)];
+    assert_incremental_equivalent(initial.clone(), completion.clone());
+
+    let mut reasoner = Reasoner::new();
+    reasoner.load_triples_str(initial);
+    reasoner.reason();
+    let membership = |member, class| (wrap!(member), wrap!(RDF_TYPE), wrap!(class));
+    assert!(!reasoner
+        .get_triples_string()
+        .contains(&membership("urn:a", "urn:C")));
+
+    reasoner.load_triples_str(completion);
+    reasoner.reason();
+    let closure = reasoner.get_triples_string();
+    assert!(closure.contains(&membership("urn:a", "urn:C")));
+    assert!(closure.contains(&membership("urn:b", "urn:C")));
+    assert!(closure.contains(&membership("urn:b", "urn:Parent")));
+    assert!(!closure.contains(&membership("urn:outside", "urn:C")));
+}
+
+#[test]
+fn test_list_disjointness_diagnostics() {
+    const MEMBERS: &str = "http://www.w3.org/2002/07/owl#members";
+    const DISTINCT_MEMBERS: &str = "http://www.w3.org/2002/07/owl#distinctMembers";
+    const ALL_DIFFERENT: &str = "http://www.w3.org/2002/07/owl#AllDifferent";
+    const ALL_DISJOINT_CLASSES: &str = "http://www.w3.org/2002/07/owl#AllDisjointClasses";
+    const ALL_DISJOINT_PROPERTIES: &str = "http://www.w3.org/2002/07/owl#AllDisjointProperties";
+    let mut reasoner = Reasoner::new();
+    reasoner.load_triples_str(vec![
+        ("urn:classAxiom", RDF_TYPE, ALL_DISJOINT_CLASSES),
+        ("urn:classAxiom", MEMBERS, "urn:classHead"),
+        ("urn:classHead", RDF_FIRST, "urn:A"),
+        ("urn:classHead", RDF_REST, "urn:classTail"),
+        ("urn:classTail", RDF_FIRST, "urn:B"),
+        ("urn:classTail", RDF_REST, RDF_NIL),
+        ("urn:otherHead", RDF_FIRST, "urn:Unrelated"),
+        ("urn:otherHead", RDF_REST, "urn:classTail"),
+        ("urn:x", RDF_TYPE, "urn:A"),
+        ("urn:x", RDF_TYPE, "urn:Unrelated"),
+        ("urn:propertyAxiom", RDF_TYPE, ALL_DISJOINT_PROPERTIES),
+        ("urn:propertyAxiom", MEMBERS, "urn:propertyHead"),
+        ("urn:propertyHead", RDF_FIRST, "urn:p"),
+        ("urn:propertyHead", RDF_REST, "urn:propertyTail"),
+        ("urn:propertyTail", RDF_FIRST, "urn:q"),
+        ("urn:propertyTail", RDF_REST, RDF_NIL),
+        ("urn:x", "urn:p", "urn:a"),
+        ("urn:x", "urn:q", "urn:b"),
+        ("urn:individualAxiom", RDF_TYPE, ALL_DIFFERENT),
+        ("urn:individualAxiom", MEMBERS, "urn:individualHead"),
+        (
+            "urn:individualAxiom",
+            DISTINCT_MEMBERS,
+            "urn:individualHead",
+        ),
+        ("urn:individualHead", RDF_FIRST, "urn:a"),
+        ("urn:individualHead", RDF_REST, "urn:individualTail"),
+        ("urn:individualTail", RDF_FIRST, "urn:b"),
+        ("urn:individualTail", RDF_REST, RDF_NIL),
+    ]);
+    reasoner.reason();
+    assert!(reasoner.diagnostics().is_empty());
+
+    reasoner.load_triples_str(vec![
+        ("urn:A", RDFS_SUBCLASSOF, "urn:B"),
+        ("urn:a", OWL_SAMEAS, "urn:b"),
+    ]);
+    reasoner.reason();
+    let expected_codes = [
+        "OWLRL.CAX_ADC",
+        "OWLRL.EQ_DIFF2",
+        "OWLRL.EQ_DIFF3",
+        "OWLRL.PRP_ADP",
+    ];
+    let codes = |reasoner: &Reasoner| {
+        let mut codes: Vec<_> = reasoner
+            .diagnostics()
+            .iter()
+            .map(|diag| diag.code().to_string())
+            .collect();
+        codes.sort_unstable();
+        codes.dedup();
+        codes
+    };
+    assert_eq!(codes(&reasoner), expected_codes);
+    assert!(reasoner
+        .diagnostics()
+        .iter()
+        .all(|diag| !diag.message().contains("urn:Unrelated")));
+
+    reasoner.reason_full();
+    assert_eq!(codes(&reasoner), expected_codes);
+}
+
+#[test]
+fn test_all_different_distinguishes_alternative_tails_from_repeated_members() {
+    const MEMBERS: &str = "http://www.w3.org/2002/07/owl#members";
+    const ALL_DIFFERENT: &str = "http://www.w3.org/2002/07/owl#AllDifferent";
+    let mut reasoner = Reasoner::new();
+    reasoner.load_triples_str(vec![
+        ("urn:group", RDF_TYPE, ALL_DIFFERENT),
+        ("urn:group", MEMBERS, "urn:head"),
+        ("urn:head", RDF_FIRST, "urn:a"),
+        ("urn:head", RDF_REST, "urn:tail1"),
+        ("urn:head", RDF_REST, "urn:tail2"),
+        ("urn:tail1", RDF_FIRST, "urn:b"),
+        ("urn:tail1", RDF_REST, RDF_NIL),
+        ("urn:tail2", RDF_FIRST, "urn:c"),
+        ("urn:tail2", RDF_REST, RDF_NIL),
+        ("urn:b", OWL_SAMEAS, "urn:c"),
+    ]);
+    reasoner.reason();
+    assert!(reasoner.diagnostics().is_empty());
+
+    reasoner.load_triples_str(vec![("urn:tail1", RDF_FIRST, "urn:a")]);
+    reasoner.reason();
+    assert!(reasoner
+        .diagnostics()
+        .iter()
+        .any(|diag| diag.rule() == "eq-diff2"));
+}
+
+#[test]
 fn test_incremental_cax_sco() {
     // Ontology: Person subClassOf Agent
     // Batch 1: ontology
@@ -2301,6 +2491,141 @@ fn test_incremental_rdfs_container_membership() {
             "urn:b",
         )],
     );
+}
+
+#[test]
+fn test_class_lists_keep_their_own_heads_when_tails_are_shared() {
+    let initial = vec![
+        ("urn:U", OWL_UNION, "urn:left"),
+        ("urn:V", OWL_UNION, "urn:right"),
+        ("urn:I", OWL_INTERSECTION, "urn:left"),
+        ("urn:J", OWL_INTERSECTION, "urn:right"),
+        ("urn:left", RDF_FIRST, "urn:A"),
+        ("urn:left", RDF_REST, "urn:tail"),
+        ("urn:right", RDF_FIRST, "urn:B"),
+        ("urn:right", RDF_REST, "urn:tail"),
+        ("urn:tail", RDF_FIRST, "urn:Shared"),
+        ("urn:x", RDF_TYPE, "urn:B"),
+        ("urn:y", RDF_TYPE, "urn:A"),
+        ("urn:y", RDF_TYPE, "urn:Shared"),
+        ("urn:z", RDF_TYPE, "urn:I"),
+    ];
+    let completion = vec![("urn:tail", RDF_REST, RDF_NIL)];
+    assert_incremental_equivalent(initial.clone(), completion.clone());
+
+    let mut reasoner = Reasoner::new();
+    reasoner.load_triples_str(initial);
+    reasoner.reason();
+    let membership = |member, class| (wrap!(member), wrap!(RDF_TYPE), wrap!(class));
+    let closure = reasoner.get_triples_string();
+    assert!(!closure.contains(&membership("urn:x", "urn:V")));
+    assert!(!closure.contains(&membership("urn:y", "urn:I")));
+    assert!(!closure.contains(&membership("urn:z", "urn:A")));
+
+    reasoner.load_triples_str(completion);
+    reasoner.reason();
+    let closure = reasoner.get_triples_string();
+    assert!(closure.contains(&membership("urn:x", "urn:V")));
+    assert!(!closure.contains(&membership("urn:x", "urn:U")));
+    assert!(closure.contains(&membership("urn:y", "urn:I")));
+    assert!(!closure.contains(&membership("urn:y", "urn:J")));
+    assert!(closure.contains(&membership("urn:z", "urn:A")));
+    assert!(closure.contains(&membership("urn:z", "urn:Shared")));
+    assert!(!closure.contains(&membership("urn:z", "urn:B")));
+}
+
+#[test]
+fn test_cls_int1_requires_one_complete_path_through_alternative_list_edges() {
+    let mut reasoner = Reasoner::new();
+    reasoner.load_triples_str(vec![
+        ("urn:I", OWL_INTERSECTION, "urn:head"),
+        ("urn:head", RDF_FIRST, "urn:A"),
+        ("urn:head", RDF_REST, "urn:short"),
+        ("urn:head", RDF_REST, "urn:long"),
+        ("urn:short", RDF_FIRST, "urn:B"),
+        ("urn:short", RDF_REST, RDF_NIL),
+        ("urn:long", RDF_FIRST, "urn:C"),
+        ("urn:long", RDF_REST, "urn:end"),
+        ("urn:end", RDF_FIRST, "urn:D"),
+        ("urn:end", RDF_REST, RDF_NIL),
+        ("urn:x", RDF_TYPE, "urn:A"),
+        ("urn:x", RDF_TYPE, "urn:B"),
+        ("urn:y", RDF_TYPE, "urn:A"),
+        ("urn:y", RDF_TYPE, "urn:C"),
+        ("urn:y", RDF_TYPE, "urn:D"),
+        ("urn:z", RDF_TYPE, "urn:A"),
+        ("urn:z", RDF_TYPE, "urn:C"),
+    ]);
+    reasoner.reason();
+    let closure = reasoner.get_triples_string();
+    let intersection_type = |member| (wrap!(member), wrap!(RDF_TYPE), wrap!("urn:I"));
+    assert!(closure.contains(&intersection_type("urn:x")));
+    assert!(closure.contains(&intersection_type("urn:y")));
+    assert!(!closure.contains(&intersection_type("urn:z")));
+}
+
+#[test]
+fn test_scm_svf1_infers_subclass_links_for_matching_properties() {
+    let initial = vec![
+        ("urn:restrictionA", OWL_ONPROPERTY, "urn:p"),
+        ("urn:restrictionA", OWL_SOMEVALUESFROM, "urn:A"),
+        ("urn:restrictionB", OWL_ONPROPERTY, "urn:p"),
+        ("urn:restrictionB", OWL_SOMEVALUESFROM, "urn:B"),
+        ("urn:otherProperty", OWL_ONPROPERTY, "urn:q"),
+        ("urn:otherProperty", OWL_SOMEVALUESFROM, "urn:B"),
+        ("urn:x", RDF_TYPE, "urn:restrictionA"),
+    ];
+    let additions = vec![("urn:A", RDFS_SUBCLASSOF, "urn:B")];
+    assert_incremental_equivalent(initial.clone(), additions.clone());
+
+    let mut reasoner = Reasoner::new();
+    reasoner.load_triples_str([initial, additions].concat());
+    reasoner.reason();
+    let closure = reasoner.get_triples_string();
+    assert!(closure.contains(&(wrap!("urn:x"), wrap!(RDF_TYPE), wrap!("urn:restrictionB"))));
+    assert!(!closure.contains(&(wrap!("urn:x"), wrap!(RDF_TYPE), wrap!("urn:otherProperty"))));
+    assert!(!closure.contains(&(
+        wrap!("urn:restrictionB"),
+        wrap!(RDFS_SUBCLASSOF),
+        wrap!("urn:restrictionA"),
+    )));
+}
+
+#[test]
+fn test_disjointness_of_classes_defined_by_matching_restrictions() {
+    const DISJOINT_WITH: &str = "http://www.w3.org/2002/07/owl#disjointWith";
+    let mut reasoner = Reasoner::new();
+    reasoner.load_triples_str(vec![
+        ("urn:BlueMarble", OWL_INTERSECTION, "urn:blue"),
+        ("urn:blue", RDF_FIRST, "urn:Marble"),
+        ("urn:blue", RDF_REST, "urn:blueTail"),
+        ("urn:blueTail", RDF_FIRST, "urn:requiresBlue"),
+        ("urn:blueTail", RDF_REST, RDF_NIL),
+        ("urn:RedMarble", OWL_INTERSECTION, "urn:red"),
+        ("urn:red", RDF_FIRST, "urn:Marble"),
+        ("urn:red", RDF_REST, "urn:redTail"),
+        ("urn:redTail", RDF_FIRST, "urn:requiresRed"),
+        ("urn:redTail", RDF_REST, RDF_NIL),
+        ("urn:requiresBlue", OWL_ONPROPERTY, "urn:color"),
+        ("urn:requiresBlue", OWL_SOMEVALUESFROM, "urn:Blue"),
+        ("urn:requiresRed", OWL_ONPROPERTY, "urn:color"),
+        ("urn:requiresRed", OWL_SOMEVALUESFROM, "urn:Red"),
+        ("urn:blueRestriction", OWL_ONPROPERTY, "urn:color"),
+        ("urn:blueRestriction", OWL_SOMEVALUESFROM, "urn:Blue"),
+        ("urn:redRestriction", OWL_ONPROPERTY, "urn:color"),
+        ("urn:redRestriction", OWL_SOMEVALUESFROM, "urn:Red"),
+        ("urn:BlueMarble", DISJOINT_WITH, "urn:RedMarble"),
+        ("urn:marble", RDF_TYPE, "urn:Marble"),
+        ("urn:marble", RDF_TYPE, "urn:blueRestriction"),
+    ]);
+    reasoner.reason();
+    assert!(reasoner.diagnostics().is_empty());
+    reasoner.load_triples_str(vec![("urn:marble", RDF_TYPE, "urn:redRestriction")]);
+    reasoner.reason();
+    assert!(reasoner
+        .diagnostics()
+        .iter()
+        .any(|diag| { diag.code() == "OWLRL.CAX_DW" && diag.message().contains("urn:marble") }));
 }
 
 #[test]

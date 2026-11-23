@@ -75,15 +75,18 @@ Equality Semantics
    * - :supported:`supported`
      - ``eq-rep-o``
      -
-   * - :unsupported:`not supported`
+   * - :partial:`partial`
      - ``eq-diff1``
-     -
-   * - :unsupported:`not supported`
+     - Reports terms that are both ``owl:sameAs`` and ``owl:differentFrom``
+       (``OWLRL.EQ_DIFF1``).
+   * - :partial:`partial`
      - ``eq-diff2``
-     -
-   * - :unsupported:`not supported`
+     - Reports equal individuals in an ``owl:AllDifferent`` group declared
+       with ``owl:members`` (``OWLRL.EQ_DIFF2``).
+   * - :partial:`partial`
      - ``eq-diff3``
-     -
+     - Reports equal individuals in an ``owl:AllDifferent`` group declared
+       with ``owl:distinctMembers`` (``OWLRL.EQ_DIFF3``).
 
 Property Axiom Semantics
 ------------------------
@@ -138,9 +141,10 @@ Property Axiom Semantics
    * - :partial:`partial`
      - ``prp-pdw``
      - Violation detection only — emits a diagnostic
-   * - :unsupported:`not supported`
+   * - :partial:`partial`
      - ``prp-adp``
-     -
+     - Reports two ``owl:AllDisjointProperties`` members asserted or inferred
+       for the same subject and object (``OWLRL.PRP_ADP``).
    * - :supported:`supported`
      - ``prp-inv1``
      -
@@ -178,13 +182,15 @@ Class Semantics
      - Violation detection only — emits a diagnostic
    * - :supported:`supported`
      - ``cls-int1``
-     -
+     - Infers intersection membership when the individual matches every
+       class along a complete RDF list from the declared head.
    * - :supported:`supported`
      - ``cls-int2``
-     -
+     - Infers each member class for an individual in the intersection.
    * - :supported:`supported`
      - ``cls-uni``
-     -
+     - Infers union membership from any class on a complete RDF list from
+       the declared head.
    * - :partial:`partial`
      - ``cls-com``
      - Violation detection only — emits a diagnostic
@@ -221,9 +227,9 @@ Class Semantics
    * - :unsupported:`not supported`
      - ``cls-maxqc4``
      -
-   * - :unsupported:`not supported`
+   * - :supported:`supported`
      - ``cls-oo``
-     -
+     - Infers class membership for each individual in the ``owl:oneOf`` list.
 
 Class Axiom Semantics
 ---------------------
@@ -247,9 +253,10 @@ Class Axiom Semantics
    * - :partial:`partial`
      - ``cax-dw``
      - Violation detection only — emits a diagnostic
-   * - :unsupported:`not supported`
+   * - :partial:`partial`
      - ``cax-adc``
-     -
+     - Reports instances of two classes in the same
+       ``owl:AllDisjointClasses`` group (``OWLRL.CAX_ADC``).
 
 Schema Vocabulary Semantics
 ----------------------------
@@ -262,11 +269,25 @@ Schema Vocabulary Semantics
      - Rule
      - Notes
    * - :supported:`supported`
-     - ``scm-eqc1``
-     - ``owl:equivalentClass`` → ``rdfs:subClassOf`` (one direction)
+     - ``scm-sco``
+     - Transitive ``rdfs:subClassOf`` links, implemented by ``rdfs11``.
    * - :supported:`supported`
+     - ``scm-eqc1``
+     - Infers ``rdfs:subClassOf`` in both directions from ``owl:equivalentClass``.
+   * - :unsupported:`not supported`
      - ``scm-eqc2``
-     - ``owl:equivalentClass`` → ``rdfs:subClassOf`` (other direction)
+     - Infers ``owl:equivalentClass`` from mutual ``rdfs:subClassOf`` links.
+   * - :supported:`supported`
+     - ``scm-spo``
+     - Transitive ``rdfs:subPropertyOf`` links.
+   * - :supported:`supported`
+     - ``scm-eqp1``
+     - Infers ``rdfs:subPropertyOf`` in both directions from ``owl:equivalentProperty``.
+   * - :supported:`supported`
+     - ``scm-svf1``
+     - Infers subclass links between ``owl:someValuesFrom`` restrictions
+       on the same property when one filler is a subclass of the other.
+       Restrictions with an identical filler match directly.
 
 Not yet implemented
 -------------------

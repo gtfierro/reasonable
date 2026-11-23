@@ -50,6 +50,16 @@ PyReasoner
    calls are incremental unless removals were detected via
    ``update_graph()``.
 
+``diagnostics() -> list[dict[str, str]]``
+   Return the collected reasoning diagnostics. Each dictionary contains
+   ``code``, ``rule``, ``severity`` and ``message``. Call this after
+   ``reason()`` or ``reason_full()`` to inspect violations such as
+   ``OWLRL.CAX_ADC`` for an individual belonging to two classes in the same
+   ``owl:AllDisjointClasses`` group. Use the ``code`` field for filtering.
+   See :doc:`../owl-rules/index` for rule coverage and diagnostic codes.
+   An empty list means that none of the implemented checks reported a
+   violation.
+
 ``reason_full() -> list[tuple[Node, Node, Node]]``
    Force a full re-materialisation from base triples, ignoring any
    incremental state.  Equivalent to ``clear()`` followed by
