@@ -1,7 +1,7 @@
 use oxrdf::{BlankNode, Literal, NamedNode, Term, Triple};
 use pyo3::exceptions;
 use pyo3::prelude::*;
-use pyo3::types::{PyList, PyTuple};
+use pyo3::types::{PyDict, PyList, PyTuple};
 use pyo3_ffi::c_str;
 use reasonable::common::make_triple;
 use reasonable::error::ReasonableError;
@@ -185,6 +185,23 @@ impl PyReasoner {
             self.reasoner.reason();
             triples_to_python(py, self.reasoner.get_triples())
         })
+    }
+
+    /// Return the collected reasoning diagnostics as dictionaries with code, rule, severity,
+    /// and message fields.
+    pub fn diagnostics<'py>(&self, py: Python<'py>) -> PyResult<Vec<Bound<'py, PyDict>>> {
+        self.reasoner
+            .diagnostics()
+            .iter()
+            .map(|diagnostic| {
+                let entry = PyDict::new(py);
+                entry.set_item("code", diagnostic.code())?;
+                entry.set_item("rule", diagnostic.rule())?;
+                entry.set_item("severity", diagnostic.severity().to_string())?;
+                entry.set_item("message", diagnostic.message())?;
+                Ok(entry)
+            })
+            .collect()
     }
 
     /// Loads in triples from an RDFlib Graph or any other object that can be converted into a list

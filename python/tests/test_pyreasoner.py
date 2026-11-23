@@ -21,6 +21,39 @@ def test_empty_reason_runs():
         assert len(t) == 3
 
 
+def test_diagnostics_after_reasoning_and_retraction():
+    import reasonable
+    from rdflib.namespace import OWL, RDF
+
+    instance = rdflib.URIRef("urn:marble")
+    red = rdflib.URIRef("urn:red")
+    blue = rdflib.URIRef("urn:blue")
+
+    graph = rdflib.Graph()
+    graph.add((red, OWL.disjointWith, blue))
+    graph.add((instance, RDF.type, red))
+    graph.add((instance, RDF.type, blue))
+
+    reasoner = reasonable.PyReasoner()
+    reasoner.from_graph(graph)
+    assert reasoner.diagnostics() == []
+    assert (instance, RDF.type, red) in reasoner.reason()
+
+    diagnostics = reasoner.diagnostics()
+    assert diagnostics
+    for diagnostic in diagnostics:
+        assert set(diagnostic) == {"code", "rule", "severity", "message"}
+        assert diagnostic["code"] == "OWLRL.CAX_DW"
+        assert diagnostic["rule"] == "cax-dw"
+        assert diagnostic["severity"] == "error"
+        assert "urn:marble" in diagnostic["message"]
+
+    graph.remove((instance, RDF.type, blue))
+    assert reasoner.update_graph(graph)
+    reasoner.reason()
+    assert reasoner.diagnostics() == []
+
+
 def test_from_graph_smoke_and_term_types():
     import reasonable
     from rdflib.namespace import XSD
