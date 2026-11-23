@@ -1605,6 +1605,9 @@ impl Reasoner {
                     &self.prp_ifp_2,
                     &self.pso,
                     |&_, &(x1, y1), &(x2, y2)| {
+                        // Infer owl:sameAs between subjects that share an object through
+                        // the same inverse-functional property. Commit 965782b (#64)
+                        // ensures the objects are explicitly compared for equality.
                         if y1 == y2 {
                             (x1, (owlsameas_node, x2))
                         } else {
