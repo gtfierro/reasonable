@@ -283,6 +283,7 @@ Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasonin
 | no     | `scm-eqc2` | mutual `rdfs:subClassOf` links imply `owl:equivalentClass` |
 | **yes**| `scm-spo` | `rdfs:subPropertyOf` transitivity |
 | **yes**| `scm-eqp1` | `owl:equivalentProperty` implies `rdfs:subPropertyOf` in both directions |
+| **yes**| `scm-svf1` | `owl:someValuesFrom` restrictions on the same property inherit subclass links from their fillers, including identical fillers |
 
 ### Other
 

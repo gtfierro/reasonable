@@ -1,7 +1,7 @@
 use std::collections::{HashMap, HashSet};
 use std::hash::Hash;
 
-use datafrog::{Relation, Variable};
+use datafrog::{Iteration, Relation, Variable};
 use oxrdf::{NamedNode, Term};
 
 use crate::common::{KeyedTriple, URI};
@@ -167,12 +167,81 @@ impl ListMembers<'_> {
     }
 }
 
+struct IntersectionVars {
+    /// List head -> intersection class.
+    heads: Variable<(URI, URI)>,
+    /// Intersection class -> member class (cls-int2).
+    members: Variable<(URI, URI)>,
+    /// Member class -> final cell.
+    last: Variable<(URI, URI)>,
+    /// Member class -> (cell, tail).
+    links: Variable<(URI, (URI, URI))>,
+    /// (Tail, instance) -> cell, where the instance matches the cell's member.
+    candidates: Variable<((URI, URI), URI)>,
+    /// (Cell, instance) for each complete list suffix the instance matches.
+    matches: Variable<((URI, URI), ())>,
+    /// Cell -> instance for emitting cls-int1.
+    matches_by_head: Variable<(URI, URI)>,
+}
+
+impl IntersectionVars {
+    fn new(iter: &mut Iteration) -> Self {
+        Self {
+            heads: iter.variable("intersection_heads"),
+            members: iter.variable("intersection_members"),
+            last: iter.variable("intersection_last"),
+            links: iter.variable("intersection_links"),
+            candidates: iter.variable("intersection_candidates"),
+            matches: iter.variable("intersection_matches"),
+            matches_by_head: iter.variable("intersection_matches_by_head"),
+        }
+    }
+
+    fn infer(
+        &self,
+        by_class: &Variable<(URI, URI)>,
+        rdf_type: URI,
+        triples: &Variable<KeyedTriple>,
+    ) {
+        // cls-int1: the member of the final cell must match, then walk
+        // backward one cell at a time. Each match follows one complete path,
+        // even when a list cell has alternative first or rest triples.
+        self.matches
+            .from_join(&self.last, by_class, |&_, &cell, &instance| {
+                ((cell, instance), ())
+            });
+        self.candidates
+            .from_join(&self.links, by_class, |&_, &(cell, tail), &instance| {
+                ((tail, instance), cell)
+            });
+        self.matches.from_join(
+            &self.candidates,
+            &self.matches,
+            |&(_, instance), &cell, &()| ((cell, instance), ()),
+        );
+        self.matches_by_head
+            .from_map(&self.matches, |&((cell, instance), ())| (cell, instance));
+        triples.from_join(
+            &self.heads,
+            &self.matches_by_head,
+            |&_, &class, &instance| (instance, (rdf_type, class)),
+        );
+
+        // cls-int2: instance types propagate to every member of a complete list.
+        triples.from_join(&self.members, by_class, |&_, &member, &instance| {
+            (instance, (rdf_type, member))
+        });
+    }
+}
+
 pub(crate) struct ListRules {
     rdf_type: URI,
     rdf_first: URI,
     rdf_rest: URI,
     rdf_nil: URI,
     one_of: URI,
+    intersection_of: URI,
+    union_of: URI,
     members: URI,
     distinct_members: URI,
     all_different: URI,
@@ -180,6 +249,10 @@ pub(crate) struct ListRules {
     all_disjoint_properties: URI,
     lists: RdfLists,
     enumerations: HashSet<(URI, URI)>,
+    intersection_heads: HashSet<(URI, URI)>,
+    union_heads: HashSet<(URI, URI)>,
+    intersection: IntersectionVars,
+    union_members: Variable<(URI, URI)>,
     groups: HashSet<(URI, URI)>,
     member_heads: HashMap<URI, HashSet<URI>>,
     distinct_member_heads: HashMap<URI, HashSet<URI>>,
@@ -189,6 +262,7 @@ pub(crate) struct ListRules {
 impl ListRules {
     pub(crate) fn new(
         index: &mut URIIndex,
+        iter: &mut Iteration,
         rdf_type: URI,
         rdf_first: URI,
         rdf_rest: URI,
@@ -200,6 +274,8 @@ impl ListRules {
             rdf_rest,
             rdf_nil,
             one_of: index.put(owl!("oneOf")),
+            intersection_of: index.put(owl!("intersectionOf")),
+            union_of: index.put(owl!("unionOf")),
             members: index.put(owl!("members")),
             distinct_members: index.put(owl!("distinctMembers")),
             all_different: index.put(owl!("AllDifferent")),
@@ -210,6 +286,10 @@ impl ListRules {
                 ..RdfLists::default()
             },
             enumerations: HashSet::new(),
+            intersection_heads: HashSet::new(),
+            union_heads: HashSet::new(),
+            intersection: IntersectionVars::new(iter),
+            union_members: iter.variable("union_members"),
             groups: HashSet::new(),
             member_heads: HashMap::new(),
             distinct_member_heads: HashMap::new(),
@@ -217,12 +297,16 @@ impl ListRules {
         }
     }
 
-    pub(crate) fn clear(&mut self) {
+    pub(crate) fn clear(&mut self, iter: &mut Iteration) {
         self.lists = RdfLists {
             terminating: HashSet::from([self.rdf_nil]),
             ..RdfLists::default()
         };
         self.enumerations.clear();
+        self.intersection_heads.clear();
+        self.union_heads.clear();
+        self.intersection = IntersectionVars::new(iter);
+        self.union_members = iter.variable("union_members");
         self.groups.clear();
         self.member_heads.clear();
         self.distinct_member_heads.clear();
@@ -232,8 +316,9 @@ impl ListRules {
     pub(crate) fn update(
         &mut self,
         by_predicate: &[KeyedTriple],
-        by_class: &[(URI, URI)],
-    ) -> Vec<KeyedTriple> {
+        by_class: &Variable<(URI, URI)>,
+        triples: &Variable<KeyedTriple>,
+    ) {
         let mut changed_cells = Vec::new();
         for &(_, (cell, value)) in with_key(by_predicate, self.rdf_first) {
             if cell != self.rdf_nil {
@@ -252,19 +337,28 @@ impl ListRules {
                 changed_cells.push(cell);
             }
         }
-        let previous_count = self.enumerations.len();
-        self.enumerations.extend(
-            with_key(by_predicate, self.one_of)
-                .iter()
-                .map(|&(_, enumeration)| enumeration),
-        );
+        let mut class_lists_changed = !changed_cells.is_empty();
+        for (predicate, axioms) in [
+            (self.one_of, &mut self.enumerations),
+            (self.intersection_of, &mut self.intersection_heads),
+            (self.union_of, &mut self.union_heads),
+        ] {
+            let previous_count = axioms.len();
+            axioms.extend(
+                with_key(by_predicate, predicate)
+                    .iter()
+                    .map(|&(_, axiom)| axiom),
+            );
+            class_lists_changed |= axioms.len() != previous_count;
+        }
+        let recent_types = by_class.recent.borrow();
         for kind in [
             self.all_different,
             self.all_disjoint_classes,
             self.all_disjoint_properties,
         ] {
             self.groups.extend(
-                with_key(by_class, kind)
+                with_key(&recent_types, kind)
                     .iter()
                     .map(|&(_, axiom)| (axiom, kind)),
             );
@@ -279,18 +373,74 @@ impl ListRules {
                 .insert(head);
         }
 
-        let mut inferred = Vec::new();
-        if self.enumerations.len() != previous_count || !changed_cells.is_empty() {
+        if class_lists_changed {
             self.lists.extend_terminating(changed_cells);
-            for &(class, head) in &self.enumerations {
-                for cell in self.lists.reachable([head]) {
-                    for &member in self.lists.first.get(&cell).into_iter().flatten() {
-                        inferred.push((member, (self.rdf_type, class)));
-                    }
+            self.update_class_lists(triples);
+        }
+
+        self.intersection.infer(by_class, self.rdf_type, triples);
+        // cls-uni: membership in any member class entails membership in the union.
+        triples.from_join(&self.union_members, by_class, |&_, &class, &instance| {
+            (instance, (self.rdf_type, class))
+        });
+    }
+
+    fn update_class_lists(&self, triples: &Variable<KeyedTriple>) {
+        let values = |head| {
+            self.lists
+                .reachable([head])
+                .into_iter()
+                .flat_map(|cell| self.lists.first.get(&cell).into_iter().flatten().copied())
+        };
+
+        // cls-oo
+        triples.extend(self.enumerations.iter().flat_map(|&(class, head)| {
+            values(head).map(move |member| (member, (self.rdf_type, class)))
+        }));
+        self.union_members.extend(
+            self.union_heads
+                .iter()
+                .flat_map(|&(class, head)| values(head).map(move |member| (member, class))),
+        );
+        self.intersection.heads.extend(
+            self.intersection_heads
+                .iter()
+                .map(|&(class, head)| (head, class)),
+        );
+
+        let mut intersection_members = Vec::new();
+        let mut cells = HashSet::new();
+        for &(class, head) in &self.intersection_heads {
+            for cell in self.lists.reachable([head]) {
+                cells.insert(cell);
+                intersection_members.extend(
+                    self.lists
+                        .first
+                        .get(&cell)
+                        .into_iter()
+                        .flatten()
+                        .map(|&member| (class, member)),
+                );
+            }
+        }
+        self.intersection.members.extend(intersection_members);
+
+        let mut last = Vec::new();
+        let mut links = Vec::new();
+        for cell in cells {
+            let Some(members) = self.lists.first.get(&cell) else {
+                continue; // rdf:nil
+            };
+            for &tail in &self.lists.rest[&cell] {
+                if tail == self.rdf_nil {
+                    last.extend(members.iter().map(|&member| (member, cell)));
+                } else if self.lists.terminating.contains(&tail) {
+                    links.extend(members.iter().map(|&member| (member, (cell, tail))));
                 }
             }
         }
-        inferred
+        self.intersection.last.extend(last);
+        self.intersection.links.extend(links);
     }
 
     pub(crate) fn violations(

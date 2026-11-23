@@ -14,6 +14,12 @@ Published versions and their release notes are listed on the
   ``owl:AllDifferent`` (``eq-diff2``, ``eq-diff3``), and violations of
   ``owl:AllDisjointClasses`` and ``owl:AllDisjointProperties``
   (``cax-adc`` and ``prp-adp``).
+* Evaluates class unions and intersections from their declared RDF list
+  heads, including when separate lists share a tail.
+* Propagates class membership between compatible ``owl:someValuesFrom``
+  restrictions (``scm-svf1``). This lets disjointness checks see types
+  inferred through matching anonymous restrictions.
+  See `issue #31 <https://github.com/gtfierro/reasonable/issues/31>`_.
 
 See the :doc:`../owl-rules/index` for rule coverage and
 :doc:`migrating-to-0.5` for upgrade steps.

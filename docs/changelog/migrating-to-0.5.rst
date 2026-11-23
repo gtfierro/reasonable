@@ -22,6 +22,12 @@ and new ``rdf:type`` triples from ``owl:oneOf``. Refresh any stored
 materialisations from the original asserted triples. These rules apply
 even in builds with property chains disabled. See :doc:`../owl-rules/index`.
 
+Unions and intersections now use the RDF list starting at each axiom's
+declared head. Graphs with shared list tails may gain or lose inferred
+class memberships. The reasoner also derives subclass links between
+compatible ``owl:someValuesFrom`` restrictions, which can lead to new
+class memberships and disjointness diagnostics.
+
 Rust applications that need to disable property chains can set
 ``default-features = false`` on their ``reasonable`` dependency. To build
 the CLI without property chains from a source checkout, run

@@ -561,10 +561,8 @@ mod prp_spo2 {
         Ok(())
     }
 
-    /// Order is the entire meaning of a chain: q <- [p1, p2] must fire on
-    /// p1-then-p2 and must stay silent on p2-then-p1. This is the regression test
-    /// for any implementation routed through the order-destroying list reader in
-    /// disjoint_sets.rs, whose HashMap iteration yields members in arbitrary order.
+    /// The chain q <- [p1, p2] matches p1-then-p2. A reversed path
+    /// must leave q absent.
     #[test]
     fn test_prp_spo2_order_is_significant() -> Result<(), String> {
         let mut r = Reasoner::new();
@@ -2493,6 +2491,141 @@ fn test_incremental_rdfs_container_membership() {
             "urn:b",
         )],
     );
+}
+
+#[test]
+fn test_class_lists_keep_their_own_heads_when_tails_are_shared() {
+    let initial = vec![
+        ("urn:U", OWL_UNION, "urn:left"),
+        ("urn:V", OWL_UNION, "urn:right"),
+        ("urn:I", OWL_INTERSECTION, "urn:left"),
+        ("urn:J", OWL_INTERSECTION, "urn:right"),
+        ("urn:left", RDF_FIRST, "urn:A"),
+        ("urn:left", RDF_REST, "urn:tail"),
+        ("urn:right", RDF_FIRST, "urn:B"),
+        ("urn:right", RDF_REST, "urn:tail"),
+        ("urn:tail", RDF_FIRST, "urn:Shared"),
+        ("urn:x", RDF_TYPE, "urn:B"),
+        ("urn:y", RDF_TYPE, "urn:A"),
+        ("urn:y", RDF_TYPE, "urn:Shared"),
+        ("urn:z", RDF_TYPE, "urn:I"),
+    ];
+    let completion = vec![("urn:tail", RDF_REST, RDF_NIL)];
+    assert_incremental_equivalent(initial.clone(), completion.clone());
+
+    let mut reasoner = Reasoner::new();
+    reasoner.load_triples_str(initial);
+    reasoner.reason();
+    let membership = |member, class| (wrap!(member), wrap!(RDF_TYPE), wrap!(class));
+    let closure = reasoner.get_triples_string();
+    assert!(!closure.contains(&membership("urn:x", "urn:V")));
+    assert!(!closure.contains(&membership("urn:y", "urn:I")));
+    assert!(!closure.contains(&membership("urn:z", "urn:A")));
+
+    reasoner.load_triples_str(completion);
+    reasoner.reason();
+    let closure = reasoner.get_triples_string();
+    assert!(closure.contains(&membership("urn:x", "urn:V")));
+    assert!(!closure.contains(&membership("urn:x", "urn:U")));
+    assert!(closure.contains(&membership("urn:y", "urn:I")));
+    assert!(!closure.contains(&membership("urn:y", "urn:J")));
+    assert!(closure.contains(&membership("urn:z", "urn:A")));
+    assert!(closure.contains(&membership("urn:z", "urn:Shared")));
+    assert!(!closure.contains(&membership("urn:z", "urn:B")));
+}
+
+#[test]
+fn test_cls_int1_requires_one_complete_path_through_alternative_list_edges() {
+    let mut reasoner = Reasoner::new();
+    reasoner.load_triples_str(vec![
+        ("urn:I", OWL_INTERSECTION, "urn:head"),
+        ("urn:head", RDF_FIRST, "urn:A"),
+        ("urn:head", RDF_REST, "urn:short"),
+        ("urn:head", RDF_REST, "urn:long"),
+        ("urn:short", RDF_FIRST, "urn:B"),
+        ("urn:short", RDF_REST, RDF_NIL),
+        ("urn:long", RDF_FIRST, "urn:C"),
+        ("urn:long", RDF_REST, "urn:end"),
+        ("urn:end", RDF_FIRST, "urn:D"),
+        ("urn:end", RDF_REST, RDF_NIL),
+        ("urn:x", RDF_TYPE, "urn:A"),
+        ("urn:x", RDF_TYPE, "urn:B"),
+        ("urn:y", RDF_TYPE, "urn:A"),
+        ("urn:y", RDF_TYPE, "urn:C"),
+        ("urn:y", RDF_TYPE, "urn:D"),
+        ("urn:z", RDF_TYPE, "urn:A"),
+        ("urn:z", RDF_TYPE, "urn:C"),
+    ]);
+    reasoner.reason();
+    let closure = reasoner.get_triples_string();
+    let intersection_type = |member| (wrap!(member), wrap!(RDF_TYPE), wrap!("urn:I"));
+    assert!(closure.contains(&intersection_type("urn:x")));
+    assert!(closure.contains(&intersection_type("urn:y")));
+    assert!(!closure.contains(&intersection_type("urn:z")));
+}
+
+#[test]
+fn test_scm_svf1_infers_subclass_links_for_matching_properties() {
+    let initial = vec![
+        ("urn:restrictionA", OWL_ONPROPERTY, "urn:p"),
+        ("urn:restrictionA", OWL_SOMEVALUESFROM, "urn:A"),
+        ("urn:restrictionB", OWL_ONPROPERTY, "urn:p"),
+        ("urn:restrictionB", OWL_SOMEVALUESFROM, "urn:B"),
+        ("urn:otherProperty", OWL_ONPROPERTY, "urn:q"),
+        ("urn:otherProperty", OWL_SOMEVALUESFROM, "urn:B"),
+        ("urn:x", RDF_TYPE, "urn:restrictionA"),
+    ];
+    let additions = vec![("urn:A", RDFS_SUBCLASSOF, "urn:B")];
+    assert_incremental_equivalent(initial.clone(), additions.clone());
+
+    let mut reasoner = Reasoner::new();
+    reasoner.load_triples_str([initial, additions].concat());
+    reasoner.reason();
+    let closure = reasoner.get_triples_string();
+    assert!(closure.contains(&(wrap!("urn:x"), wrap!(RDF_TYPE), wrap!("urn:restrictionB"))));
+    assert!(!closure.contains(&(wrap!("urn:x"), wrap!(RDF_TYPE), wrap!("urn:otherProperty"))));
+    assert!(!closure.contains(&(
+        wrap!("urn:restrictionB"),
+        wrap!(RDFS_SUBCLASSOF),
+        wrap!("urn:restrictionA"),
+    )));
+}
+
+#[test]
+fn test_disjointness_of_classes_defined_by_matching_restrictions() {
+    const DISJOINT_WITH: &str = "http://www.w3.org/2002/07/owl#disjointWith";
+    let mut reasoner = Reasoner::new();
+    reasoner.load_triples_str(vec![
+        ("urn:BlueMarble", OWL_INTERSECTION, "urn:blue"),
+        ("urn:blue", RDF_FIRST, "urn:Marble"),
+        ("urn:blue", RDF_REST, "urn:blueTail"),
+        ("urn:blueTail", RDF_FIRST, "urn:requiresBlue"),
+        ("urn:blueTail", RDF_REST, RDF_NIL),
+        ("urn:RedMarble", OWL_INTERSECTION, "urn:red"),
+        ("urn:red", RDF_FIRST, "urn:Marble"),
+        ("urn:red", RDF_REST, "urn:redTail"),
+        ("urn:redTail", RDF_FIRST, "urn:requiresRed"),
+        ("urn:redTail", RDF_REST, RDF_NIL),
+        ("urn:requiresBlue", OWL_ONPROPERTY, "urn:color"),
+        ("urn:requiresBlue", OWL_SOMEVALUESFROM, "urn:Blue"),
+        ("urn:requiresRed", OWL_ONPROPERTY, "urn:color"),
+        ("urn:requiresRed", OWL_SOMEVALUESFROM, "urn:Red"),
+        ("urn:blueRestriction", OWL_ONPROPERTY, "urn:color"),
+        ("urn:blueRestriction", OWL_SOMEVALUESFROM, "urn:Blue"),
+        ("urn:redRestriction", OWL_ONPROPERTY, "urn:color"),
+        ("urn:redRestriction", OWL_SOMEVALUESFROM, "urn:Red"),
+        ("urn:BlueMarble", DISJOINT_WITH, "urn:RedMarble"),
+        ("urn:marble", RDF_TYPE, "urn:Marble"),
+        ("urn:marble", RDF_TYPE, "urn:blueRestriction"),
+    ]);
+    reasoner.reason();
+    assert!(reasoner.diagnostics().is_empty());
+    reasoner.load_triples_str(vec![("urn:marble", RDF_TYPE, "urn:redRestriction")]);
+    reasoner.reason();
+    assert!(reasoner
+        .diagnostics()
+        .iter()
+        .any(|diag| { diag.code() == "OWLRL.CAX_DW" && diag.message().contains("urn:marble") }));
 }
 
 #[test]

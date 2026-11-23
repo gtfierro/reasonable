@@ -182,13 +182,15 @@ Class Semantics
      - Violation detection only — emits a diagnostic
    * - :supported:`supported`
      - ``cls-int1``
-     -
+     - Infers intersection membership when the individual matches every
+       class along a complete RDF list from the declared head.
    * - :supported:`supported`
      - ``cls-int2``
-     -
+     - Infers each member class for an individual in the intersection.
    * - :supported:`supported`
      - ``cls-uni``
-     -
+     - Infers union membership from any class on a complete RDF list from
+       the declared head.
    * - :partial:`partial`
      - ``cls-com``
      - Violation detection only — emits a diagnostic
@@ -281,6 +283,11 @@ Schema Vocabulary Semantics
    * - :supported:`supported`
      - ``scm-eqp1``
      - Infers ``rdfs:subPropertyOf`` in both directions from ``owl:equivalentProperty``.
+   * - :supported:`supported`
+     - ``scm-svf1``
+     - Infers subclass links between ``owl:someValuesFrom`` restrictions
+       on the same property when one filler is a subclass of the other.
+       Restrictions with an identical filler match directly.
 
 Not yet implemented
 -------------------
