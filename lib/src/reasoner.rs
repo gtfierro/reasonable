@@ -5,6 +5,7 @@ use datafrog::{Iteration, Relation, Variable};
 
 use crate::disjoint_sets::DisjointSets;
 use crate::index::URIIndex;
+use crate::list_rules::{ListRules, ListViolation};
 
 use crate::common::*;
 use log::{error, info};
@@ -55,6 +56,11 @@ pub struct ReasoningError {
 impl ReasoningError {
     pub fn new(rule: String, message: String) -> Self {
         let code = match rule.as_str() {
+            "eq-diff1" => "OWLRL.EQ_DIFF1",
+            "eq-diff2" => "OWLRL.EQ_DIFF2",
+            "eq-diff3" => "OWLRL.EQ_DIFF3",
+            "cax-adc" => "OWLRL.CAX_ADC",
+            "prp-adp" => "OWLRL.PRP_ADP",
             "cax-dw" => "OWLRL.CAX_DW",
             "prp-pdw" => "OWLRL.PRP_PDW",
             "cls-nothing2" => "OWLRL.CLS_NOTHING",
@@ -293,6 +299,7 @@ pub struct Reasoner {
     owlthing_node: URI,
     owlnothing_node: URI,
     owlsameas_node: URI,
+    owldifferentfrom_node: URI,
     owlinverseof_node: URI,
     owlsymmetricprop_node: URI,
     owlirreflexiveprop_node: URI,
@@ -346,6 +353,7 @@ pub struct Reasoner {
     all_triples_input: Variable<KeyedTriple>,
 
     // --- Rule-specific variables (persistent across reason() calls) ---
+    list_rules: ListRules,
     rdf_type_inv: Rc<RefCell<Variable<(URI, URI)>>>,
     rdf_type: Variable<(URI, URI)>,
     owl_intersection_of: Variable<(URI, URI)>,
@@ -357,6 +365,7 @@ pub struct Reasoner {
     prp_ifp_1: Variable<(URI, ())>,
     prp_ifp_2: Variable<((URI, URI), URI)>,
     prp_spo1_1: Variable<(URI, URI)>,
+    subproperties_by_superproperty: Variable<(URI, URI)>,
     #[cfg(feature = "prp-spo2")]
     owlpropchain_node: URI,
     #[cfg(feature = "prp-spo2")]
@@ -440,6 +449,14 @@ impl Reasoner {
         let owlthing_node = index.put(owl!("Thing"));
         let owlnothing_node = index.put(owl!("Nothing"));
         let owlsameas_node = index.put(owl!("sameAs"));
+        let owldifferentfrom_node = index.put(owl!("differentFrom"));
+        let list_rules = ListRules::new(
+            &mut index,
+            rdftype_node,
+            rdffirst_node,
+            rdfrest_node,
+            rdfnil_node,
+        );
         let owlinverseof_node = index.put(owl!("inverseOf"));
         let owlsymmetricprop_node = index.put(owl!("SymmetricProperty"));
         let owlirreflexiveprop_node = index.put(owl!("IrreflexiveProperty"));
@@ -510,6 +527,7 @@ impl Reasoner {
         let prp_ifp_1 = iter1.variable::<(URI, ())>("prp_ifp_1");
         let prp_ifp_2 = iter1.variable::<((URI, URI), URI)>("prp_ifp_2");
         let prp_spo1_1 = iter1.variable::<(URI, URI)>("prp_spo1_1");
+        let subproperties_by_superproperty = iter1.variable("subproperties_by_superproperty");
         #[cfg(feature = "prp-spo2")]
         let owlpropchain_node = index.put(owl!("propertyChainAxiom"));
         #[cfg(feature = "prp-spo2")]
@@ -594,6 +612,7 @@ impl Reasoner {
             owlthing_node,
             owlnothing_node,
             owlsameas_node,
+            owldifferentfrom_node,
             owlinverseof_node,
             owlsymmetricprop_node,
             owlirreflexiveprop_node,
@@ -643,6 +662,7 @@ impl Reasoner {
             pso,
             osp,
             all_triples_input,
+            list_rules,
             // Rule variables
             rdf_type_inv,
             rdf_type,
@@ -655,6 +675,7 @@ impl Reasoner {
             prp_ifp_1,
             prp_ifp_2,
             prp_spo1_1,
+            subproperties_by_superproperty,
             #[cfg(feature = "prp-spo2")]
             owlpropchain_node,
             #[cfg(feature = "prp-spo2")]
@@ -748,6 +769,8 @@ impl Reasoner {
         self.prp_ifp_1 = iter1.variable("prp_ifp_1");
         self.prp_ifp_2 = iter1.variable("prp_ifp_2");
         self.prp_spo1_1 = iter1.variable("prp_spo1_1");
+        self.subproperties_by_superproperty = iter1.variable("subproperties_by_superproperty");
+        self.list_rules.clear();
         #[cfg(feature = "prp-spo2")]
         {
             self.chain = ChainVars::new(
@@ -1368,6 +1391,12 @@ impl Reasoner {
                     .borrow_mut()
                     .from_map(&self.rdf_type, |&(inst, class)| (class, inst));
 
+                // cls-oo uses complete RDF lists, including list triples inferred in this fixpoint.
+                self.all_triples_input.extend(self.list_rules.update(
+                    &self.pso.recent.borrow(),
+                    &self.rdf_type_inv.borrow().recent.borrow(),
+                ));
+
                 // prp-dom
                 self.prp_dom.from_join(
                     &self.pso,
@@ -1622,6 +1651,15 @@ impl Reasoner {
                     |&p1, &p2, &(x, y)| (x, (p2, y)),
                 );
 
+                // scm-spo: close the subproperty hierarchy itself.
+                self.subproperties_by_superproperty
+                    .from_map(&self.prp_spo1_1, |&(sub, sup)| (sup, sub));
+                self.all_triples_input.from_join(
+                    &self.subproperties_by_superproperty,
+                    &self.prp_spo1_1,
+                    |&_, &sub, &sup| (sub, (self.rdfssubprop_node, sup)),
+                );
+
                 // prp-spo2
                 // T(?p, owl:propertyChainAxiom, ?x)
                 // LIST[?x, ?p1, ..., ?pn]
@@ -1761,7 +1799,7 @@ impl Reasoner {
                     |&_c2, &c1, &c3| (c1, (self.rdfssubclass_node, c3)),
                 );
 
-                // scm-eqc1 + scm-eqc2
+                // scm-eqc1
                 // T(?c1, owl:equivalentClass, ?c2) => T(?c1, rdfs:subClassOf, ?c2)
                 // T(?c1, owl:equivalentClass, ?c2) => T(?c2, rdfs:subClassOf, ?c1)
                 // owl_equivalent_class holds both directions, so one from_map suffices
@@ -1879,6 +1917,16 @@ impl Reasoner {
                 });
                 self.all_triples_input
                     .from_join(&self.prp_trp_1, &self.prp_trp_2, |&(y, p), &x, &z| (x, (p, z)));
+
+                // scm-eqp1: equivalent properties entail both subproperty links.
+                self.all_triples_input
+                    .from_map(&self.equivalent_properties, |&(p1, p2)| {
+                        (p1, (self.rdfssubprop_node, p2))
+                    });
+                self.all_triples_input
+                    .from_map(&self.equivalent_properties_2, |&(p2, p1)| {
+                        (p2, (self.rdfssubprop_node, p1))
+                    });
 
                 // prp-eqp1
                 // T(?p1, owl:equivalentProperty, ?p2)
@@ -2240,6 +2288,65 @@ impl Reasoner {
         } else {
             output.clone()
         };
+        if self.options.collect_diagnostics {
+            self.detect_equality_contradictions(&output, &delta);
+            let violations = self.list_rules.violations(
+                &self.pso,
+                &self.rdf_type_inv.borrow(),
+                &self.owl_same_as,
+            );
+            for violation in violations {
+                let (rule, message) = match violation {
+                    ListViolation::AllDifferent {
+                        rule,
+                        axiom,
+                        left,
+                        right,
+                    } => (
+                        rule,
+                        format!(
+                            "{} and {} are equal in owl:AllDifferent {}",
+                            self.to_u(left),
+                            self.to_u(right),
+                            self.to_u(axiom),
+                        ),
+                    ),
+                    ListViolation::DisjointClasses {
+                        axiom,
+                        instance,
+                        left,
+                        right,
+                    } => (
+                        "cax-adc",
+                        format!(
+                            "{} is an instance of both {} and {} in owl:AllDisjointClasses {}",
+                            self.to_u(instance),
+                            self.to_u(left),
+                            self.to_u(right),
+                            self.to_u(axiom),
+                        ),
+                    ),
+                    ListViolation::DisjointProperties {
+                        axiom,
+                        subject,
+                        object,
+                        left,
+                        right,
+                    } => (
+                        "prp-adp",
+                        format!(
+                            "{} has both {} and {} with value {} in owl:AllDisjointProperties {}",
+                            self.to_u(subject),
+                            self.to_u(left),
+                            self.to_u(right),
+                            self.to_u(object),
+                            self.to_u(axiom),
+                        ),
+                    ),
+                };
+                self.add_error(rule.to_string(), message);
+            }
+        }
         self.detect_rdfs_datatype_inconsistencies(&output, &delta);
         // Build oxrdf output
         let mut out_triples: Vec<Triple> = Vec::with_capacity(output.len());
@@ -2262,6 +2369,36 @@ impl Reasoner {
         // Store materialized triples for incremental use (sorted for dedup)
         output.sort_unstable();
         self.input = output;
+    }
+
+    fn detect_equality_contradictions(&mut self, output: &[KeyedTriple], delta: &[KeyedTriple]) {
+        // A contradiction can appear when either of its premises is added.
+        let mut contradictions = Vec::new();
+        for &(left, (predicate, right)) in delta {
+            let other_predicate = if predicate == self.owlsameas_node {
+                self.owldifferentfrom_node
+            } else if predicate == self.owldifferentfrom_node {
+                self.owlsameas_node
+            } else {
+                continue;
+            };
+            if output
+                .binary_search(&(left, (other_predicate, right)))
+                .is_ok()
+            {
+                contradictions.push((left.min(right), left.max(right)));
+            }
+        }
+        contradictions.sort_unstable();
+        contradictions.dedup();
+        for (left, right) in contradictions {
+            let message = format!(
+                "{} and {} are both owl:sameAs and owl:differentFrom",
+                self.to_u(left),
+                self.to_u(right),
+            );
+            self.add_error("eq-diff1".to_string(), message);
+        }
     }
 
     fn to_u(&self, u: URI) -> String {

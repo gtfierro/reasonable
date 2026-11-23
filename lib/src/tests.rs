@@ -2173,6 +2173,183 @@ fn assert_incremental_equivalent(
 }
 
 #[test]
+fn test_schema_subproperty_rules() {
+    let schema = vec![
+        ("urn:p", OWL_EQUIVPROP, "urn:q"),
+        ("urn:q", RDFS_SUBPROP, "urn:r"),
+    ];
+    let additions = vec![("urn:r", RDFS_SUBPROP, "urn:s")];
+    assert_incremental_equivalent(schema.clone(), additions.clone());
+
+    let mut reasoner = Reasoner::new();
+    reasoner.load_triples_str([schema, additions].concat());
+    reasoner.reason();
+    let closure = reasoner.get_triples_string();
+    for (sub, sup) in [
+        ("urn:p", "urn:q"),
+        ("urn:q", "urn:p"),
+        ("urn:p", "urn:r"),
+        ("urn:p", "urn:s"),
+    ] {
+        assert!(closure.contains(&(wrap!(sub), wrap!(RDFS_SUBPROP), wrap!(sup))));
+    }
+}
+
+#[test]
+fn test_eq_diff1_uses_inferred_equality() {
+    const DIFFERENT_FROM: &str = "http://www.w3.org/2002/07/owl#differentFrom";
+    let mut reasoner = Reasoner::new();
+    reasoner.load_triples_str(vec![
+        ("urn:a", DIFFERENT_FROM, "urn:b"),
+        ("urn:p", RDF_TYPE, OWL_INVFUNCPROP),
+        ("urn:a", "urn:p", "urn:shared"),
+        ("urn:b", "urn:p", "urn:other"),
+    ]);
+    reasoner.reason();
+    assert!(reasoner.diagnostics().is_empty());
+
+    reasoner.load_triples_str(vec![("urn:b", "urn:p", "urn:shared")]);
+    reasoner.reason();
+    assert!(reasoner
+        .diagnostics()
+        .iter()
+        .any(|diag| { diag.rule() == "eq-diff1" && diag.code() == "OWLRL.EQ_DIFF1" }));
+}
+
+#[test]
+fn test_cls_oo_follows_its_head_and_waits_for_a_complete_list() {
+    const ONE_OF: &str = "http://www.w3.org/2002/07/owl#oneOf";
+    let initial = vec![
+        ("urn:C", ONE_OF, "urn:head"),
+        ("urn:C", RDFS_SUBCLASSOF, "urn:Parent"),
+        ("urn:head", RDF_FIRST, "urn:a"),
+        ("urn:head", RDF_REST, "urn:tail"),
+        ("urn:otherHead", RDF_FIRST, "urn:outside"),
+        ("urn:otherHead", RDF_REST, "urn:tail"),
+        ("urn:tail", RDF_FIRST, "urn:b"),
+    ];
+    let completion = vec![("urn:tail", RDF_REST, RDF_NIL)];
+    assert_incremental_equivalent(initial.clone(), completion.clone());
+
+    let mut reasoner = Reasoner::new();
+    reasoner.load_triples_str(initial);
+    reasoner.reason();
+    let membership = |member, class| (wrap!(member), wrap!(RDF_TYPE), wrap!(class));
+    assert!(!reasoner
+        .get_triples_string()
+        .contains(&membership("urn:a", "urn:C")));
+
+    reasoner.load_triples_str(completion);
+    reasoner.reason();
+    let closure = reasoner.get_triples_string();
+    assert!(closure.contains(&membership("urn:a", "urn:C")));
+    assert!(closure.contains(&membership("urn:b", "urn:C")));
+    assert!(closure.contains(&membership("urn:b", "urn:Parent")));
+    assert!(!closure.contains(&membership("urn:outside", "urn:C")));
+}
+
+#[test]
+fn test_list_disjointness_diagnostics() {
+    const MEMBERS: &str = "http://www.w3.org/2002/07/owl#members";
+    const DISTINCT_MEMBERS: &str = "http://www.w3.org/2002/07/owl#distinctMembers";
+    const ALL_DIFFERENT: &str = "http://www.w3.org/2002/07/owl#AllDifferent";
+    const ALL_DISJOINT_CLASSES: &str = "http://www.w3.org/2002/07/owl#AllDisjointClasses";
+    const ALL_DISJOINT_PROPERTIES: &str = "http://www.w3.org/2002/07/owl#AllDisjointProperties";
+    let mut reasoner = Reasoner::new();
+    reasoner.load_triples_str(vec![
+        ("urn:classAxiom", RDF_TYPE, ALL_DISJOINT_CLASSES),
+        ("urn:classAxiom", MEMBERS, "urn:classHead"),
+        ("urn:classHead", RDF_FIRST, "urn:A"),
+        ("urn:classHead", RDF_REST, "urn:classTail"),
+        ("urn:classTail", RDF_FIRST, "urn:B"),
+        ("urn:classTail", RDF_REST, RDF_NIL),
+        ("urn:otherHead", RDF_FIRST, "urn:Unrelated"),
+        ("urn:otherHead", RDF_REST, "urn:classTail"),
+        ("urn:x", RDF_TYPE, "urn:A"),
+        ("urn:x", RDF_TYPE, "urn:Unrelated"),
+        ("urn:propertyAxiom", RDF_TYPE, ALL_DISJOINT_PROPERTIES),
+        ("urn:propertyAxiom", MEMBERS, "urn:propertyHead"),
+        ("urn:propertyHead", RDF_FIRST, "urn:p"),
+        ("urn:propertyHead", RDF_REST, "urn:propertyTail"),
+        ("urn:propertyTail", RDF_FIRST, "urn:q"),
+        ("urn:propertyTail", RDF_REST, RDF_NIL),
+        ("urn:x", "urn:p", "urn:a"),
+        ("urn:x", "urn:q", "urn:b"),
+        ("urn:individualAxiom", RDF_TYPE, ALL_DIFFERENT),
+        ("urn:individualAxiom", MEMBERS, "urn:individualHead"),
+        (
+            "urn:individualAxiom",
+            DISTINCT_MEMBERS,
+            "urn:individualHead",
+        ),
+        ("urn:individualHead", RDF_FIRST, "urn:a"),
+        ("urn:individualHead", RDF_REST, "urn:individualTail"),
+        ("urn:individualTail", RDF_FIRST, "urn:b"),
+        ("urn:individualTail", RDF_REST, RDF_NIL),
+    ]);
+    reasoner.reason();
+    assert!(reasoner.diagnostics().is_empty());
+
+    reasoner.load_triples_str(vec![
+        ("urn:A", RDFS_SUBCLASSOF, "urn:B"),
+        ("urn:a", OWL_SAMEAS, "urn:b"),
+    ]);
+    reasoner.reason();
+    let expected_codes = [
+        "OWLRL.CAX_ADC",
+        "OWLRL.EQ_DIFF2",
+        "OWLRL.EQ_DIFF3",
+        "OWLRL.PRP_ADP",
+    ];
+    let codes = |reasoner: &Reasoner| {
+        let mut codes: Vec<_> = reasoner
+            .diagnostics()
+            .iter()
+            .map(|diag| diag.code().to_string())
+            .collect();
+        codes.sort_unstable();
+        codes.dedup();
+        codes
+    };
+    assert_eq!(codes(&reasoner), expected_codes);
+    assert!(reasoner
+        .diagnostics()
+        .iter()
+        .all(|diag| !diag.message().contains("urn:Unrelated")));
+
+    reasoner.reason_full();
+    assert_eq!(codes(&reasoner), expected_codes);
+}
+
+#[test]
+fn test_all_different_distinguishes_alternative_tails_from_repeated_members() {
+    const MEMBERS: &str = "http://www.w3.org/2002/07/owl#members";
+    const ALL_DIFFERENT: &str = "http://www.w3.org/2002/07/owl#AllDifferent";
+    let mut reasoner = Reasoner::new();
+    reasoner.load_triples_str(vec![
+        ("urn:group", RDF_TYPE, ALL_DIFFERENT),
+        ("urn:group", MEMBERS, "urn:head"),
+        ("urn:head", RDF_FIRST, "urn:a"),
+        ("urn:head", RDF_REST, "urn:tail1"),
+        ("urn:head", RDF_REST, "urn:tail2"),
+        ("urn:tail1", RDF_FIRST, "urn:b"),
+        ("urn:tail1", RDF_REST, RDF_NIL),
+        ("urn:tail2", RDF_FIRST, "urn:c"),
+        ("urn:tail2", RDF_REST, RDF_NIL),
+        ("urn:b", OWL_SAMEAS, "urn:c"),
+    ]);
+    reasoner.reason();
+    assert!(reasoner.diagnostics().is_empty());
+
+    reasoner.load_triples_str(vec![("urn:tail1", RDF_FIRST, "urn:a")]);
+    reasoner.reason();
+    assert!(reasoner
+        .diagnostics()
+        .iter()
+        .any(|diag| diag.rule() == "eq-diff2"));
+}
+
+#[test]
 fn test_incremental_cax_sco() {
     // Ontology: Person subClassOf Agent
     // Batch 1: ontology

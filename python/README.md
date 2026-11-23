@@ -111,6 +111,8 @@ python -c "import reasonable; print(reasonable.__version__)"
     - **Replaces** the base triples with the contents of the given graph. Computes a diff against the current base: if only additions are found, the next `reason()` uses incremental materialization; if any removals are detected, it triggers a full re-materialization. Returns `True` if removals were detected, `False` otherwise.
   - `reason() -> list[tuple[Node, Node, Node]]`
     - Runs OWL 2 RL materialization and returns all known triples (base + inferred) as rdflib nodes. After the first call, subsequent calls are incremental (only processing newly added triples) unless removals were detected via `update_graph()`.
+  - `diagnostics() -> list[dict[str, str]]`
+    - Returns reasoning diagnostics after `reason()` or `reason_full()`. Each entry contains `code`, `rule`, `severity`, and `message`. Filter by `code`, for example `OWLRL.EQ_DIFF1` for conflicting equality and inequality or `OWLRL.CAX_ADC` for an `owl:AllDisjointClasses` violation.
   - `reason_full() -> list[tuple[Node, Node, Node]]`
     - Forces a full re-materialization from base triples, ignoring any incremental state. Equivalent to `clear()` followed by `reason()`.
   - `clear() -> None`

@@ -10,6 +10,8 @@
 
 An OWL 2 RL reasoner with reasonable performance
 
+[Changelog](docs/changelog/index.rst) · [Migrating to 0.5](docs/changelog/migrating-to-0.5.rst)
+
 ## Performance
 
 Comparing performance of `reasonable` with [OWLRL](https://github.com/RDFLib/OWL-RL) and [Allegro](https://franz.com/agraph/support/documentation/current/materializer.html). Evaluation consisted of loading Brick models of different sizes into the respective reasoning engine and timing how long it took to produce the materialization. `reasonable` is about 7x faster than Allegro and 38x faster than OWLRL on this workload.
@@ -61,8 +63,12 @@ The reasoner records OWL 2 RL rule violations as diagnostics (not errors in the 
 - Limit output: `--max-diagnostics N`; summary only: `--summary-only`
 
 Common diagnostic codes:
+- `OWLRL.EQ_DIFF1` reports conflicting equality and inequality
+- `OWLRL.EQ_DIFF2` and `OWLRL.EQ_DIFF3` report equal individuals in an `owl:AllDifferent` group
 - `OWLRL.CAX_DW`: Individual typed as two disjoint classes
+- `OWLRL.CAX_ADC` reports an individual typed as two classes in an `owl:AllDisjointClasses` group
 - `OWLRL.PRP_PDW`: Pair violates propertyDisjointWith
+- `OWLRL.PRP_ADP` reports the same subject and object linked by two properties in an `owl:AllDisjointProperties` group
 - `OWLRL.PRP_ASYP`: Asymmetric property used both directions
 - `OWLRL.PRP_IRP`: Irreflexive property used with same subject/object
 - `OWLRL.CLS_NOTHING`: Individual typed as owl:Nothing
@@ -205,9 +211,9 @@ Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasonin
 | **yes**| `eq-rep-s` |       |
 | **yes**| `eq-rep-p` |       |
 | **yes**| `eq-rep-o` |       |
-| no     | `eq-diff1` | throws exception |
-| no     | `eq-diff2` | throws exception |
-| no     | `eq-diff3` | throws exception |
+| **yes**| `eq-diff1` | equality and inequality contradiction diagnostic |
+| **yes**| `eq-diff2` | `owl:AllDifferent` diagnostic using `owl:members` |
+| **yes**| `eq-diff3` | `owl:AllDifferent` diagnostic using `owl:distinctMembers` |
 
 ### Property Axiom Semantics
 
@@ -227,7 +233,7 @@ Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasonin
 | **yes**   | `prp-eqp1` |       |
 | **yes**   | `prp-eqp2` |       |
 | **yes**   | `prp-pdw` | throws exception |
-| no        | `prp-adp` | throws exception |
+| **yes**| `prp-adp` | `owl:AllDisjointProperties` diagnostic |
 | **yes**   | `prp-inv1` |       |
 | **yes**   | `prp-inv2` |       |
 | no        | `prp-key` |       |
@@ -256,7 +262,7 @@ Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasonin
 | no     | `cls-maxqc2` | throws exception      |
 | no     | `cls-maxqc3` |       |
 | no     | `cls-maxqc4` |       |
-| no     | `cls-oo` |       |
+| **yes**| `cls-oo` | `owl:oneOf` class membership |
 
 ### Class Axiom Semantics
 
@@ -266,14 +272,17 @@ Using rule definitions from [here](https://www.w3.org/TR/owl2-profiles/#Reasonin
 | **yes**| `cax-eqc1` |       |
 | **yes**| `cax-eqc2` |       |
 | **yes**| `cax-dw` | throws exception      |
-| no     | `cax-adc` |  throws exception     |
+| **yes**| `cax-adc` | `owl:AllDisjointClasses` diagnostic |
 
 ### Schema Vocabulary Semantics
 
 |Completed| Rule name | Notes |
 |---------|----------|-------|
-| **yes**| `scm-eqc1` | `owl:equivalentClass` → `rdfs:subClassOf` (one direction) |
-| **yes**| `scm-eqc2` | `owl:equivalentClass` → `rdfs:subClassOf` (other direction) |
+| **yes**| `scm-sco` | `rdfs:subClassOf` transitivity via `rdfs11` |
+| **yes**| `scm-eqc1` | `owl:equivalentClass` implies `rdfs:subClassOf` in both directions |
+| no     | `scm-eqc2` | mutual `rdfs:subClassOf` links imply `owl:equivalentClass` |
+| **yes**| `scm-spo` | `rdfs:subPropertyOf` transitivity |
+| **yes**| `scm-eqp1` | `owl:equivalentProperty` implies `rdfs:subPropertyOf` in both directions |
 
 ### Other
 

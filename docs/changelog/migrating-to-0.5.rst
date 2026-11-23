@@ -14,7 +14,13 @@ library, CLI and Python bindings. When an ontology declares an
 ``owl:propertyChainAxiom``, the reasoner can infer additional triples from
 paths that match the chain. Regenerate expected output for tests that compare
 the entire materialised graph, and review downstream queries that depend on
-which relationships are inferred. See :doc:`../owl-rules/index`.
+which relationships are inferred.
+
+The closure can also include transitive ``rdfs:subPropertyOf`` links,
+subproperty links in both directions for ``owl:equivalentProperty``,
+and new ``rdf:type`` triples from ``owl:oneOf``. Refresh any stored
+materialisations from the original asserted triples. These rules apply
+even in builds with property chains disabled. See :doc:`../owl-rules/index`.
 
 Rust applications that need to disable property chains can set
 ``default-features = false`` on their ``reasonable`` dependency. To build
@@ -30,6 +36,29 @@ If you persisted graphs materialised with an affected version, rebuild them
 from the original asserted triples and replace the old inferred output.
 This also removes triples derived from the incorrect equivalences.
 See `issue #64 <https://github.com/gtfierro/reasonable/issues/64>`_.
+
+Review diagnostics in automation
+--------------------------------
+
+The reasoner now reports ``OWLRL.EQ_DIFF1`` for conflicting equality and
+inequality, ``OWLRL.EQ_DIFF2`` and ``OWLRL.EQ_DIFF3`` for equal members of
+an ``owl:AllDifferent`` group, and ``OWLRL.CAX_ADC`` and ``OWLRL.PRP_ADP``
+for list-based class and property disjointness violations. These checks
+also use facts inferred during reasoning.
+
+Update expected diagnostics and any code filters. To make the CLI exit
+with status 2 on these violations, include their rule names in
+``--fail-on``. The CLI writes the materialised graph before reporting
+diagnostics.
+
+.. code-block:: console
+
+   reasonable model.ttl --error-format json --fail-on eq-diff1,eq-diff2,eq-diff3,cax-adc,prp-adp -o out.ttl
+
+In Python, call ``diagnostics()`` after ``reason()`` or ``reason_full()``
+and use the ``code`` field to apply the same checks in your application.
+See the :doc:`../cli/index` and :doc:`../python-api/index` for reporting
+options.
 
 Update Debian packaging scripts
 -------------------------------
