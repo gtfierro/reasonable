@@ -30,6 +30,7 @@ const OWL_SYMMETRICPROP: &str = "http://www.w3.org/2002/07/owl#SymmetricProperty
 const OWL_EQUIVPROP: &str = "http://www.w3.org/2002/07/owl#equivalentProperty";
 const OWL_FUNCPROP: &str = "http://www.w3.org/2002/07/owl#FunctionalProperty";
 const OWL_INVFUNCPROP: &str = "http://www.w3.org/2002/07/owl#InverseFunctionalProperty";
+const OWL_OBJECTPROP: &str = "http://www.w3.org/2002/07/owl#ObjectProperty";
 const OWL_TRANSPROP: &str = "http://www.w3.org/2002/07/owl#TransitiveProperty";
 const OWL_INTERSECTION: &str = "http://www.w3.org/2002/07/owl#intersectionOf";
 const OWL_UNION: &str = "http://www.w3.org/2002/07/owl#unionOf";
@@ -381,6 +382,29 @@ fn test_prp_ifp() -> Result<(), String> {
         "<urn:SUB_2>".to_string()
     )));
     Ok(())
+}
+
+#[test]
+fn test_prp_ifp_distinct_objects() {
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![
+        ("urn:PRED", RDF_TYPE, OWL_INVFUNCPROP),
+        ("urn:PRED", RDF_TYPE, OWL_OBJECTPROP),
+        ("urn:SUB_1", "urn:PRED", "urn:OBJECT_1"),
+        ("urn:SUB_2", "urn:PRED", "urn:OBJECT_2"),
+    ]);
+    r.reason();
+
+    let same_as = wrap!(OWL_SAMEAS);
+    let non_reflexive_same_as: Vec<_> = r
+        .get_triples_string()
+        .into_iter()
+        .filter(|(s, p, o)| p == &same_as && s != o)
+        .collect();
+    assert!(
+        non_reflexive_same_as.is_empty(),
+        "unexpected owl:sameAs triples: {non_reflexive_same_as:?}"
+    );
 }
 
 #[test]
