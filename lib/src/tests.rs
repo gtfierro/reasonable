@@ -1324,6 +1324,38 @@ fn test_cls_int1_member_types_in_different_rounds() -> Result<(), String> {
 }
 
 #[test]
+fn test_cls_int1_three_members_needs_every_member() -> Result<(), String> {
+    // urn:c = urn:c1 and urn:c2 and urn:c3; only urn:y is in all three
+    let mut r = Reasoner::new();
+    let trips = vec![
+        ("urn:c", OWL_INTERSECTION, "urn:x1"),
+        ("urn:x1", RDF_FIRST, "urn:c1"),
+        ("urn:x1", RDF_REST, "urn:x2"),
+        ("urn:x2", RDF_FIRST, "urn:c2"),
+        ("urn:x2", RDF_REST, "urn:x3"),
+        ("urn:x3", RDF_FIRST, "urn:c3"),
+        ("urn:x3", RDF_REST, RDF_NIL),
+        ("urn:y", RDF_TYPE, "urn:c1"),
+        ("urn:y", RDF_TYPE, "urn:c2"),
+        ("urn:y", RDF_TYPE, "urn:c3"),
+        // missing the middle member
+        ("urn:w", RDF_TYPE, "urn:c1"),
+        ("urn:w", RDF_TYPE, "urn:c3"),
+        // missing the first member
+        ("urn:v", RDF_TYPE, "urn:c2"),
+        ("urn:v", RDF_TYPE, "urn:c3"),
+    ];
+    r.load_triples_str(trips);
+    r.reason();
+    let res = r.get_triples_string();
+    let is_c = |x: &str| res.contains(&(format!("<{x}>"), wrap!(RDF_TYPE), "<urn:c>".to_string()));
+    assert!(is_c("urn:y"));
+    assert!(!is_c("urn:w"));
+    assert!(!is_c("urn:v"));
+    Ok(())
+}
+
+#[test]
 fn test_cls_int2() -> Result<(), String> {
     let mut r = Reasoner::new();
     let trips = vec![

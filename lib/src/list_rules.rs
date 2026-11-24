@@ -174,9 +174,9 @@ struct IntersectionVars {
     members: Variable<(URI, URI)>,
     /// Member class -> final cell.
     last: Variable<(URI, URI)>,
-    /// Member class -> (cell, tail).
+    /// Tail -> (cell, member class).
     links: Variable<(URI, (URI, URI))>,
-    /// (Tail, instance) -> cell, where the instance matches the cell's member.
+    /// (Instance, member class) -> cell, where the instance matches the cell's tail.
     candidates: Variable<((URI, URI), URI)>,
     /// (Cell, instance) for each complete list suffix the instance matches.
     matches: Variable<((URI, URI), ())>,
@@ -200,27 +200,34 @@ impl IntersectionVars {
     fn infer(
         &self,
         by_class: &Variable<(URI, URI)>,
+        type_pairs: &Variable<((URI, URI), ())>,
         rdf_type: URI,
         triples: &Variable<KeyedTriple>,
     ) {
         // cls-int1: the member of the final cell must match, then walk
         // backward one cell at a time. Each match follows one complete path,
         // even when a list cell has alternative first or rest triples.
+        //
+        // Only instances that already match a suffix of the list are carried
+        // back to the cell before it and checked against that cell's member,
+        // so the work follows the instances that can still match rather than
+        // every instance of every member class.
         self.matches
             .from_join(&self.last, by_class, |&_, &cell, &instance| {
                 ((cell, instance), ())
             });
-        self.candidates
-            .from_join(&self.links, by_class, |&_, &(cell, tail), &instance| {
-                ((tail, instance), cell)
-            });
-        self.matches.from_join(
-            &self.candidates,
-            &self.matches,
-            |&(_, instance), &cell, &()| ((cell, instance), ()),
-        );
         self.matches_by_head
             .from_map(&self.matches, |&((cell, instance), ())| (cell, instance));
+        self.candidates.from_join(
+            &self.links,
+            &self.matches_by_head,
+            |&_, &(cell, member), &instance| ((instance, member), cell),
+        );
+        self.matches.from_join(
+            &self.candidates,
+            type_pairs,
+            |&(instance, _), &cell, &()| ((cell, instance), ()),
+        );
         triples.from_join(
             &self.heads,
             &self.matches_by_head,
@@ -313,10 +320,12 @@ impl ListRules {
         self.reported.clear();
     }
 
+    /// `type_pairs` holds each type assertion as ((instance, class), ()).
     pub(crate) fn update(
         &mut self,
         by_predicate: &[KeyedTriple],
         by_class: &Variable<(URI, URI)>,
+        type_pairs: &Variable<((URI, URI), ())>,
         triples: &Variable<KeyedTriple>,
     ) {
         let mut changed_cells = Vec::new();
@@ -378,7 +387,8 @@ impl ListRules {
             self.update_class_lists(triples);
         }
 
-        self.intersection.infer(by_class, self.rdf_type, triples);
+        self.intersection
+            .infer(by_class, type_pairs, self.rdf_type, triples);
         // cls-uni: membership in any member class entails membership in the union.
         triples.from_join(&self.union_members, by_class, |&_, &class, &instance| {
             (instance, (self.rdf_type, class))
@@ -435,7 +445,7 @@ impl ListRules {
                 if tail == self.rdf_nil {
                     last.extend(members.iter().map(|&member| (member, cell)));
                 } else if self.lists.terminating.contains(&tail) {
-                    links.extend(members.iter().map(|&member| (member, (cell, tail))));
+                    links.extend(members.iter().map(|&member| (tail, (cell, member))));
                 }
             }
         }

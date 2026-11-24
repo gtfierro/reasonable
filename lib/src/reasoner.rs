@@ -1356,6 +1356,7 @@ impl Reasoner {
                 self.list_rules.update(
                     &self.pso.recent.borrow(),
                     &self.rdf_type_inv.borrow(),
+                    &self.type_pairs,
                     &self.all_triples_input,
                 );
 
