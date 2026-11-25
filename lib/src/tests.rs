@@ -66,6 +66,103 @@ fn test_load_file_n3() -> crate::error::Result<()> {
 }
 
 #[test]
+fn test_dump_file_keeps_language_tags() -> crate::error::Result<()> {
+    let mut r = Reasoner::new();
+    r.load_triples(vec![
+        lang_literal_triple("urn:x", "urn:label", "chat", "fr"),
+        lang_literal_triple("urn:x", "urn:label", "chat", "en"),
+    ]);
+    r.reason();
+    let path = std::env::temp_dir().join(format!("reasonable-dump-lang-{}.ttl", std::process::id()));
+    r.dump_file(path.to_str().unwrap())?;
+    let written = std::fs::read_to_string(&path)?;
+    std::fs::remove_file(&path)?;
+    assert!(written.contains("\"chat\"@fr"), "missing \"chat\"@fr in:\n{}", written);
+    assert!(written.contains("\"chat\"@en"), "missing \"chat\"@en in:\n{}", written);
+    Ok(())
+}
+
+#[test]
+fn test_load_file_blank_nodes_scoped_per_file() -> crate::error::Result<()> {
+    // Blank nodes from different files are distinct, even though the parser
+    // labels "[ ... ]" the same way in every file and both files use "_:b".
+    let dir = std::env::temp_dir();
+    let a = dir.join(format!("reasonable-bnode-a-{}.ttl", std::process::id()));
+    let b = dir.join(format!("reasonable-bnode-b-{}.ttl", std::process::id()));
+    std::fs::write(&a, "<urn:a> <urn:p> [ <urn:q> <urn:one> ] .\n_:b <urn:r> <urn:one> .\n")?;
+    std::fs::write(&b, "<urn:b> <urn:p> [ <urn:q> <urn:two> ] .\n_:b <urn:r> <urn:two> .\n")?;
+    let mut r = Reasoner::new();
+    r.load_file(a.to_str().unwrap())?;
+    r.load_file(b.to_str().unwrap())?;
+    std::fs::remove_file(&a)?;
+    std::fs::remove_file(&b)?;
+    r.reason();
+    let res = r.get_triples_string();
+    let objects_of = |s: &str, p: &str| -> Vec<String> {
+        res.iter()
+            .filter(|(ts, tp, _)| ts == s && tp == p)
+            .map(|(_, _, o)| o.clone())
+            .collect()
+    };
+    let a_nodes = objects_of("<urn:a>", "<urn:p>");
+    assert_eq!(a_nodes.len(), 1);
+    assert_eq!(objects_of(&a_nodes[0], "<urn:q>"), vec!["<urn:one>".to_string()]);
+    let b_labels: std::collections::HashSet<&String> = res
+        .iter()
+        .filter(|(_, p, _)| p == "<urn:r>")
+        .map(|(s, _, _)| s)
+        .collect();
+    assert_eq!(b_labels.len(), 2, "expected two distinct _:b nodes, got {:?}", b_labels);
+    Ok(())
+}
+
+#[test]
+fn test_view_output_follows_reasoning() -> Result<(), String> {
+    // view_output() shows the closure from the last reason(): nothing before
+    // the first one, new inferences after an incremental one, nothing after clear()
+    let type_b = |s: &str| {
+        oxrdf::Triple::new(
+            oxrdf::NamedNode::new_unchecked(s),
+            oxrdf::NamedNode::new_unchecked(RDF_TYPE),
+            oxrdf::NamedNode::new_unchecked("urn:B"),
+        )
+    };
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![("urn:A", RDFS_SUBCLASSOF, "urn:B"), ("urn:x", RDF_TYPE, "urn:A")]);
+    assert!(r.view_output().is_empty());
+    r.reason();
+    assert!(r.view_output().contains(&type_b("urn:x")));
+    assert!(!r.view_output().contains(&type_b("urn:y")));
+    r.load_triples_str(vec![("urn:y", RDF_TYPE, "urn:A")]);
+    r.reason();
+    assert!(r.view_output().contains(&type_b("urn:y")));
+    assert_eq!(r.view_output(), r.get_triples().as_slice());
+    r.clear();
+    assert!(r.view_output().is_empty());
+    Ok(())
+}
+
+#[test]
+fn test_load_file_dedups_triples() -> crate::error::Result<()> {
+    // A triple stated twice in a file (once through a prefix) is loaded once
+    let path = std::env::temp_dir().join(format!("reasonable-dup-{}.ttl", std::process::id()));
+    std::fs::write(
+        &path,
+        "@prefix ex: <urn:ex:> .\nex:a ex:p ex:b .\n<urn:ex:a> <urn:ex:p> <urn:ex:b> .\n",
+    )?;
+    let mut r = Reasoner::new();
+    r.load_file(path.to_str().unwrap())?;
+    std::fs::remove_file(&path)?;
+    let loaded = r
+        .get_input()
+        .iter()
+        .filter(|t| t.subject.to_string() == "<urn:ex:a>")
+        .count();
+    assert_eq!(loaded, 1);
+    Ok(())
+}
+
+#[test]
 #[ignore]
 fn test_eq_ref() -> Result<(), String> {
     let mut r = Reasoner::new();
@@ -1072,6 +1169,26 @@ fn test_cls_hv2() -> Result<(), String> {
 }
 
 #[test]
+fn test_cls_hv2_other_property() -> Result<(), String> {
+    // The value has to be reached through the restriction's property
+    let mut r = Reasoner::new();
+    let trips = vec![
+        ("urn:x", OWL_HASVALUE, "urn:y"),
+        ("urn:x", OWL_ONPROPERTY, "urn:p"),
+        ("urn:u", "urn:q", "urn:y"),
+    ];
+    r.load_triples_str(trips);
+    r.reason();
+    let res = r.get_triples_string();
+    assert!(!res.contains(&(
+        "<urn:u>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:x>".to_string()
+    )));
+    Ok(())
+}
+
+#[test]
 fn test_cls_avf() -> Result<(), String> {
     let mut r = Reasoner::new();
     let trips = vec![
@@ -1169,6 +1286,72 @@ fn test_cls_int1() -> Result<(), String> {
         wrap!(RDF_TYPE),
         "<urn:c>".to_string()
     )));
+    Ok(())
+}
+
+#[test]
+fn test_cls_int1_member_types_in_different_rounds() -> Result<(), String> {
+    // urn:y is a urn:c1 from the start but only becomes a urn:c2 after a chain
+    // of subclass inferences, rounds after the intersection was first checked
+    let mut r = Reasoner::new();
+    let trips = vec![
+        ("urn:c", OWL_INTERSECTION, "urn:x"),
+        ("urn:x", RDF_FIRST, "urn:c1"),
+        ("urn:x", RDF_REST, "urn:z2"),
+        ("urn:z2", RDF_FIRST, "urn:c2"),
+        ("urn:z2", RDF_REST, RDF_NIL),
+        ("urn:y", RDF_TYPE, "urn:c1"),
+        ("urn:y", RDF_TYPE, "urn:d0"),
+        ("urn:d0", RDFS_SUBCLASSOF, "urn:d1"),
+        ("urn:d1", RDFS_SUBCLASSOF, "urn:d2"),
+        ("urn:d2", RDFS_SUBCLASSOF, "urn:c2"),
+        ("urn:w", RDF_TYPE, "urn:c1"),
+    ];
+    r.load_triples_str(trips);
+    r.reason();
+    let res = r.get_triples_string();
+    assert!(res.contains(&(
+        "<urn:y>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:c>".to_string()
+    )));
+    assert!(!res.contains(&(
+        "<urn:w>".to_string(),
+        wrap!(RDF_TYPE),
+        "<urn:c>".to_string()
+    )));
+    Ok(())
+}
+
+#[test]
+fn test_cls_int1_three_members_needs_every_member() -> Result<(), String> {
+    // urn:c = urn:c1 and urn:c2 and urn:c3; only urn:y is in all three
+    let mut r = Reasoner::new();
+    let trips = vec![
+        ("urn:c", OWL_INTERSECTION, "urn:x1"),
+        ("urn:x1", RDF_FIRST, "urn:c1"),
+        ("urn:x1", RDF_REST, "urn:x2"),
+        ("urn:x2", RDF_FIRST, "urn:c2"),
+        ("urn:x2", RDF_REST, "urn:x3"),
+        ("urn:x3", RDF_FIRST, "urn:c3"),
+        ("urn:x3", RDF_REST, RDF_NIL),
+        ("urn:y", RDF_TYPE, "urn:c1"),
+        ("urn:y", RDF_TYPE, "urn:c2"),
+        ("urn:y", RDF_TYPE, "urn:c3"),
+        // missing the middle member
+        ("urn:w", RDF_TYPE, "urn:c1"),
+        ("urn:w", RDF_TYPE, "urn:c3"),
+        // missing the first member
+        ("urn:v", RDF_TYPE, "urn:c2"),
+        ("urn:v", RDF_TYPE, "urn:c3"),
+    ];
+    r.load_triples_str(trips);
+    r.reason();
+    let res = r.get_triples_string();
+    let is_c = |x: &str| res.contains(&(format!("<{x}>"), wrap!(RDF_TYPE), "<urn:c>".to_string()));
+    assert!(is_c("urn:y"));
+    assert!(!is_c("urn:w"));
+    assert!(!is_c("urn:v"));
     Ok(())
 }
 
@@ -1414,6 +1597,119 @@ fn test_cax_dw() -> Result<(), String> {
     r.reason();
     // Expect at least one disjointness violation recorded
     assert!(r.errors().iter().any(|e| e.to_string().contains("cax-dw")) || r.errors().len() > 0);
+    Ok(())
+}
+
+#[test]
+fn test_cls_com_violation() -> Result<(), String> {
+    // If A complementOf B and an instance is typed as both, the reasoner
+    // should record exactly one cls-com error for that instance.
+    let mut r = Reasoner::new();
+    let trips = vec![
+        ("urn:A", OWL_COMPLEMENT, "urn:B"),
+        ("urn:i", RDF_TYPE, "urn:A"),
+        ("urn:i", RDF_TYPE, "urn:B"),
+    ];
+    r.load_triples_str(trips);
+    r.reason();
+    let cls_com: Vec<String> = r
+        .errors()
+        .iter()
+        .filter(|e| e.code() == "OWLRL.CLS_COM" && e.rule() == "cls-com")
+        .map(|e| e.to_string())
+        .collect();
+    assert_eq!(cls_com.len(), 1, "expected one CLS_COM diagnostic, got {:?}", cls_com);
+    Ok(())
+}
+
+#[test]
+fn test_cls_com_no_violation() -> Result<(), String> {
+    // Instances of only one of two complementary classes are consistent.
+    let mut r = Reasoner::new();
+    let trips = vec![
+        ("urn:A", OWL_COMPLEMENT, "urn:B"),
+        ("urn:i", RDF_TYPE, "urn:A"),
+        ("urn:j", RDF_TYPE, "urn:B"),
+    ];
+    r.load_triples_str(trips);
+    r.reason();
+    assert!(
+        !r.errors().iter().any(|e| e.rule() == "cls-com"),
+        "no cls-com diagnostic expected when no instance is in both classes"
+    );
+    Ok(())
+}
+
+#[test]
+fn test_cax_dw_inferred_type() -> Result<(), String> {
+    // A violation found through an inferred type is reported once
+    let mut r = Reasoner::new();
+    let trips = vec![
+        ("urn:A", "http://www.w3.org/2002/07/owl#disjointWith", "urn:B"),
+        ("urn:A2", RDFS_SUBCLASSOF, "urn:A"),
+        ("urn:i", RDF_TYPE, "urn:A2"),
+        ("urn:i", RDF_TYPE, "urn:B"),
+        ("urn:j", RDF_TYPE, "urn:A2"),
+    ];
+    r.load_triples_str(trips);
+    r.reason();
+    let cax_dw: Vec<String> = r
+        .errors()
+        .iter()
+        .filter(|e| e.code() == "OWLRL.CAX_DW")
+        .map(|e| e.to_string())
+        .collect();
+    assert_eq!(cax_dw.len(), 1, "expected one CAX_DW diagnostic, got {:?}", cax_dw);
+    assert!(cax_dw[0].contains("<urn:i>"), "unexpected diagnostic {:?}", cax_dw);
+    Ok(())
+}
+
+#[test]
+fn test_prp_asyp_violation() -> Result<(), String> {
+    let mut r = Reasoner::new();
+    let trips = vec![
+        ("urn:p", RDF_TYPE, OWL_ASYMMETRICPROP),
+        ("urn:x", "urn:p", "urn:y"),
+        ("urn:y", "urn:p", "urn:x"),
+        ("urn:a", "urn:p", "urn:b"),
+    ];
+    r.load_triples_str(trips);
+    r.reason();
+    let asyp: Vec<String> = r
+        .errors()
+        .iter()
+        .filter(|e| e.code() == "OWLRL.PRP_ASYP")
+        .map(|e| e.to_string())
+        .collect();
+    assert!(!asyp.is_empty(), "expected a PRP_ASYP diagnostic");
+    assert!(
+        asyp.iter().all(|e| e.contains("<urn:x>") && e.contains("<urn:y>")),
+        "unexpected diagnostics {:?}",
+        asyp
+    );
+    Ok(())
+}
+
+#[test]
+fn test_prp_pdw_violation() -> Result<(), String> {
+    let mut r = Reasoner::new();
+    let trips = vec![
+        ("urn:p1", "http://www.w3.org/2002/07/owl#propertyDisjointWith", "urn:p2"),
+        ("urn:s", "urn:p1", "urn:o"),
+        ("urn:s", "urn:p2", "urn:o"),
+        ("urn:t", "urn:p1", "urn:o1"),
+        ("urn:t", "urn:p2", "urn:o2"),
+    ];
+    r.load_triples_str(trips);
+    r.reason();
+    let pdw: Vec<String> = r
+        .errors()
+        .iter()
+        .filter(|e| e.code() == "OWLRL.PRP_PDW")
+        .map(|e| e.to_string())
+        .collect();
+    assert_eq!(pdw.len(), 1, "expected one PRP_PDW diagnostic, got {:?}", pdw);
+    assert!(pdw[0].contains("<urn:s>"), "unexpected diagnostic {:?}", pdw);
     Ok(())
 }
 
@@ -2065,6 +2361,44 @@ fn test_rdfs_datatype_range_diagnostic_code() -> Result<(), String> {
     assert!(
         has_code,
         "expected diagnostic with code RDFS.DATATYPE_RANGE and rule rdfs-datatype-range"
+    );
+    Ok(())
+}
+
+#[test]
+fn test_rdfs_datatype_range_class_range_no_error() -> Result<(), String> {
+    // Predicate range is a class, not a datatype; an IRI object is expected
+    // there and must not be reported as a range clash.
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![
+        ("urn:hasPart", RDFS_RANGE, "urn:Part"),
+        ("urn:car", "urn:hasPart", "urn:wheel"),
+    ]);
+    r.reason();
+    assert!(
+        !r.errors()
+            .iter()
+            .any(|e| e.rule() == "rdfs-datatype-range"),
+        "an IRI object should not clash with a class range"
+    );
+    Ok(())
+}
+
+#[test]
+fn test_rdfs_datatype_range_clash_iri_for_integer() -> Result<(), String> {
+    // Predicate range is xsd:integer; an IRI is never in a datatype's value
+    // space, so this is still a range clash.
+    let mut r = Reasoner::new();
+    r.load_triples_str(vec![
+        ("urn:p", RDFS_RANGE, XSD_INTEGER),
+        ("urn:s", "urn:p", "urn:o"),
+    ]);
+    r.reason();
+    assert!(
+        r.errors()
+            .iter()
+            .any(|e| e.rule() == "rdfs-datatype-range"),
+        "expected rdfs-datatype-range diagnostic when an IRI object meets an xsd:integer range"
     );
     Ok(())
 }

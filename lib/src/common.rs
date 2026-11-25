@@ -1,6 +1,6 @@
 use oxrdf::{
-    BlankNode, Literal, NamedNode, NamedOrBlankNode, NamedOrBlankNodeRef, Term, TermRef, Triple,
-    TripleRef,
+    BlankNode, BlankNodeRef, Literal, LiteralRef, NamedNode, NamedNodeRef, NamedOrBlankNode,
+    NamedOrBlankNodeRef, Term, TermRef, Triple, TripleRef,
 };
 mod rio {
     pub use rio_api::model::*;
@@ -92,6 +92,32 @@ pub fn make_triple(s: Term, p: Term, o: Term) -> Result<Triple, ReasonableError>
     Ok(Triple::new(s, p, o))
 }
 
+/// Borrowing version of `make_triple`
+pub fn make_triple_ref<'a>(
+    s: &'a Term,
+    p: &'a Term,
+    o: &'a Term,
+) -> Result<TripleRef<'a>, ReasonableError> {
+    let s = match s {
+        Term::NamedNode(n) => NamedOrBlankNodeRef::NamedNode(n.as_ref()),
+        Term::BlankNode(b) => NamedOrBlankNodeRef::BlankNode(b.as_ref()),
+        _ => {
+            return Err(ReasonableError::ManagerError(
+                "Cannot have literal as subject".to_string(),
+            ))
+        }
+    };
+    let p = match p {
+        Term::NamedNode(n) => n.as_ref(),
+        _ => {
+            return Err(ReasonableError::ManagerError(
+                "Must have named node as predicate".to_string(),
+            ))
+        }
+    };
+    Ok(TripleRef::new(s, p, o.as_ref()))
+}
+
 pub fn rio_to_oxrdf(t: rio::Triple) -> Triple {
     let s: NamedOrBlankNode = match t.subject {
         rio::Subject::NamedNode(rio::NamedNode { iri }) => {
@@ -129,6 +155,32 @@ pub fn rio_to_oxrdf(t: rio::Triple) -> Triple {
     Triple::new(s, p, o)
 }
 
+/// Borrows the terms of a rio triple as oxrdf terms, without copying their strings
+pub fn rio_to_oxrdf_ref<'a>(t: rio::Triple<'a>) -> (TermRef<'a>, NamedNodeRef<'a>, TermRef<'a>) {
+    let s: TermRef = match t.subject {
+        rio::Subject::NamedNode(rio::NamedNode { iri }) => NamedNodeRef::new_unchecked(iri).into(),
+        rio::Subject::BlankNode(rio::BlankNode { id }) => BlankNodeRef::new_unchecked(id).into(),
+        _ => panic!("no rdf*"),
+    };
+    let p = NamedNodeRef::new_unchecked(t.predicate.iri);
+    let o: TermRef = match t.object {
+        rio::Term::NamedNode(rio::NamedNode { iri }) => NamedNodeRef::new_unchecked(iri).into(),
+        rio::Term::BlankNode(rio::BlankNode { id }) => BlankNodeRef::new_unchecked(id).into(),
+        rio::Term::Literal(lit) => match lit {
+            rio::Literal::Simple { value } => LiteralRef::new_simple_literal(value).into(),
+            rio::Literal::LanguageTaggedString { value, language } => {
+                LiteralRef::new_language_tagged_literal_unchecked(value, language).into()
+            }
+            rio::Literal::Typed { value, datatype } => {
+                LiteralRef::new_typed_literal(value, NamedNodeRef::new_unchecked(datatype.iri))
+                    .into()
+            }
+        },
+        _ => panic!("no rdf*"),
+    };
+    (s, p, o)
+}
+
 pub fn oxrdf_to_rio<'a>(t: TripleRef<'a>) -> rio::Triple<'a> {
     let s: rio::Subject = match t.subject {
         NamedOrBlankNodeRef::NamedNode(nn) => rio::Subject::NamedNode(rio::NamedNode { iri: nn.as_str() }),
@@ -144,7 +196,8 @@ pub fn oxrdf_to_rio<'a>(t: TripleRef<'a>) -> rio::Triple<'a> {
             let value = lit.value();
             let datatype = lit.datatype();
             let language = lit.language();
-            if datatype.as_str() != "http://www.w3.org/2001/XMLSchema#string" {
+            // Language-tagged literals have datatype rdf:langString; keep their tag
+            if language.is_none() && datatype.as_str() != "http://www.w3.org/2001/XMLSchema#string" {
                 rio::Term::Literal(rio::Literal::Typed {
                     value,
                     datatype: rio::NamedNode {

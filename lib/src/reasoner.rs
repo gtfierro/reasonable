@@ -5,20 +5,23 @@ use datafrog::{Iteration, Relation, Variable};
 
 use crate::index::URIIndex;
 use crate::list_rules::{ListRules, ListViolation};
+use crate::join::{join_each, join_filter_into};
 
 use crate::common::*;
+use hashbrown::{HashMap, HashSet};
 use log::{error, info};
-use oxrdf::{Graph, NamedNode, Term, Triple};
+use oxrdf::{BlankNode, NamedNode, Term, TermRef, Triple, TripleRef};
 use rio_api::formatter::TriplesFormatter;
 use rio_api::parser::TriplesParser;
 use rio_turtle::TurtleFormatter;
 use rio_turtle::{NTriplesParser, TurtleError, TurtleParser};
-use std::cell::RefCell;
-use std::collections::{HashMap, HashSet};
+use std::cell::{OnceCell, RefCell};
 use std::fmt;
 use std::fs;
 use std::io::BufReader;
+use std::io::BufWriter;
 use std::io::ErrorKind;
+use std::io::Write;
 use std::rc::Rc;
 
 /// Severity of a diagnostic produced during reasoning
@@ -284,7 +287,7 @@ pub struct Reasoner {
     errors: Vec<ReasoningError>,
     options: ReasonerOptions,
     seen_diags: HashSet<(String, String)>,
-    output: Vec<Triple>,
+    output: OnceCell<Vec<Triple>>,
 
     // --- URI constant nodes ---
     rdftype_node: URI,
@@ -342,7 +345,6 @@ pub struct Reasoner {
     owl_disjointwith_relation: Relation<(URI, ())>,
 
     // --- Triple index variables ---
-    spo: Variable<KeyedTriple>,
     pso: Variable<KeyedTriple>,
     osp: Variable<KeyedTriple>,
     all_triples_input: Variable<KeyedTriple>,
@@ -354,7 +356,7 @@ pub struct Reasoner {
     prp_dom: Variable<(URI, URI)>,
     prp_rng: Variable<(URI, URI)>,
     prp_fp_1: Variable<(URI, ())>,
-    prp_fp_2: Variable<KeyedTriple>,
+    prp_fp_2: Variable<((URI, URI), URI)>,
     prp_ifp_1: Variable<(URI, ())>,
     prp_ifp_2: Variable<((URI, URI), URI)>,
     prp_spo1_1: Variable<(URI, URI)>,
@@ -367,17 +369,14 @@ pub struct Reasoner {
     owl_inv2: Variable<(URI, URI)>,
     owl_same_as: Variable<(URI, URI)>,
     owl_irreflexive: Variable<(URI, ())>,
-    prp_irp_1: Variable<(URI, URI)>,
     owl_asymmetric: Variable<(URI, ())>,
     prp_asyp_1: Variable<((URI, URI, URI), ())>,
     prp_asyp_2: Variable<((URI, URI, URI), ())>,
-    prp_asyp_3: Variable<((URI, URI, URI), ())>,
     prp_inv1: Variable<(URI, URI)>,
     owl_propertydisjointwith: Variable<(URI, URI)>,
     owl_propertydisjointwith2: Variable<(URI, URI)>,
     prp_pdw_1: Variable<((URI, URI, URI), URI)>,
     prp_pdw_2: Variable<((URI, URI, URI), URI)>,
-    prp_pdw_3: Variable<((URI, URI, URI), URI)>,
     transitive_properties: Variable<(URI, ())>,
     prp_trp_1: Variable<((URI, URI), URI)>,
     prp_trp_2: Variable<((URI, URI), URI)>,
@@ -400,15 +399,13 @@ pub struct Reasoner {
     some_values_with_superclass_fillers: Variable<((URI, URI), URI)>,
     owl_complement_of: Variable<(URI, URI)>,
     things: Variable<(URI, ())>,
-    cls_com_1: Variable<(URI, (URI, URI))>,
-    cls_com_2: Variable<(URI, URI)>,
+    cls_com_1: Variable<((URI, URI), URI)>,
     cax_sco_1: Variable<(URI, URI)>,
-    cax_sco_2: Variable<(URI, URI)>,
     rdfs11_1: Variable<(URI, URI)>,
     owl_equivalent_class: Variable<(URI, URI)>,
     owl_disjoint_with: Variable<(URI, URI)>,
-    cax_dw_1: Variable<(URI, (URI, URI))>,
-    cax_dw_2: Variable<(URI, URI)>,
+    cax_dw_1: Variable<((URI, URI), URI)>,
+    type_pairs: Variable<((URI, URI), ())>,
 
     // --- Incremental materialization state ---
     /// Whether a full materialization has been completed
@@ -498,7 +495,6 @@ impl Reasoner {
         let owl_disjointwith_relation = node_rel(owldisjointwith_node);
 
         // --- Triple index variables ---
-        let spo = iter1.variable::<KeyedTriple>("spo");
         let pso = iter1.variable::<KeyedTriple>("pso");
         let osp = iter1.variable::<KeyedTriple>("osp");
         let all_triples_input = iter1.variable::<KeyedTriple>("all_triples_input");
@@ -509,7 +505,7 @@ impl Reasoner {
         let prp_dom = iter1.variable::<(URI, URI)>("prp_dom");
         let prp_rng = iter1.variable::<(URI, URI)>("prp_rng");
         let prp_fp_1 = iter1.variable::<(URI, ())>("prp_fp_1");
-        let prp_fp_2 = iter1.variable::<KeyedTriple>("prp_fp_2");
+        let prp_fp_2 = iter1.variable::<((URI, URI), URI)>("prp_fp_2");
         let prp_ifp_1 = iter1.variable::<(URI, ())>("prp_ifp_1");
         let prp_ifp_2 = iter1.variable::<((URI, URI), URI)>("prp_ifp_2");
         let prp_spo1_1 = iter1.variable::<(URI, URI)>("prp_spo1_1");
@@ -528,17 +524,14 @@ impl Reasoner {
         let owl_inv2 = iter1.variable::<(URI, URI)>("owl_inverse_of2");
         let owl_same_as = iter1.variable::<(URI, URI)>("owl_same_as");
         let owl_irreflexive = iter1.variable::<(URI, ())>("owl_irreflexive");
-        let prp_irp_1 = iter1.variable::<(URI, URI)>("prp_irp_1");
         let owl_asymmetric = iter1.variable::<(URI, ())>("owl_asymmetric");
         let prp_asyp_1 = iter1.variable::<((URI, URI, URI), ())>("prp_asyp_1");
         let prp_asyp_2 = iter1.variable::<((URI, URI, URI), ())>("prp_asyp_2");
-        let prp_asyp_3 = iter1.variable::<((URI, URI, URI), ())>("prp_asyp_3");
         let prp_inv1 = iter1.variable::<(URI, URI)>("prp_inv1");
         let owl_propertydisjointwith = iter1.variable::<(URI, URI)>("owl_propertydisjointwith");
         let owl_propertydisjointwith2 = iter1.variable::<(URI, URI)>("owl_propertydisjointwith2");
         let prp_pdw_1 = iter1.variable::<((URI, URI, URI), URI)>("prp_pdw_1");
         let prp_pdw_2 = iter1.variable::<((URI, URI, URI), URI)>("prp_pdw_2");
-        let prp_pdw_3 = iter1.variable::<((URI, URI, URI), URI)>("prp_pdw_3");
         let transitive_properties = iter1.variable::<(URI, ())>("transitive_properties");
         let prp_trp_1 = iter1.variable::<((URI, URI), URI)>("prp_trp_1");
         let prp_trp_2 = iter1.variable::<((URI, URI), URI)>("prp_trp_2");
@@ -563,15 +556,13 @@ impl Reasoner {
             iter1.variable("some_values_with_superclass_fillers");
         let owl_complement_of = iter1.variable::<(URI, URI)>("owl_complement_of");
         let things = iter1.variable::<(URI, ())>("things");
-        let cls_com_1 = iter1.variable::<(URI, (URI, URI))>("cls_com_1");
-        let cls_com_2 = iter1.variable::<(URI, URI)>("cls_com_2");
+        let cls_com_1 = iter1.variable::<((URI, URI), URI)>("cls_com_1");
         let cax_sco_1 = iter1.variable::<(URI, URI)>("cax_sco_1");
-        let cax_sco_2 = iter1.variable::<(URI, URI)>("cax_sco_2");
         let rdfs11_1 = iter1.variable::<(URI, URI)>("rdfs11_1");
         let owl_equivalent_class = iter1.variable::<(URI, URI)>("owl_equivalent_class");
         let owl_disjoint_with = iter1.variable::<(URI, URI)>("owl_disjoint_with");
-        let cax_dw_1 = iter1.variable::<(URI, (URI, URI))>("cax_dw_1");
-        let cax_dw_2 = iter1.variable::<(URI, URI)>("cax_dw_2");
+        let cax_dw_1 = iter1.variable::<((URI, URI), URI)>("cax_dw_1");
+        let type_pairs = iter1.variable::<((URI, URI), ())>("type_pairs");
 
         // cls-thing, cls-nothing1 — seed triples
         let input = vec![
@@ -588,7 +579,7 @@ impl Reasoner {
             errors: Vec::new(),
             options: ReasonerOptions::default(),
             seen_diags: HashSet::new(),
-            output: Vec::new(),
+            output: OnceCell::new(),
             // URI constants
             rdftype_node,
             rdffirst_node,
@@ -643,7 +634,6 @@ impl Reasoner {
             owl_equivalent_relation,
             owl_disjointwith_relation,
             // Index variables
-            spo,
             pso,
             osp,
             all_triples_input,
@@ -667,17 +657,14 @@ impl Reasoner {
             owl_inv2,
             owl_same_as,
             owl_irreflexive,
-            prp_irp_1,
             owl_asymmetric,
             prp_asyp_1,
             prp_asyp_2,
-            prp_asyp_3,
             prp_inv1,
             owl_propertydisjointwith,
             owl_propertydisjointwith2,
             prp_pdw_1,
             prp_pdw_2,
-            prp_pdw_3,
             transitive_properties,
             prp_trp_1,
             prp_trp_2,
@@ -701,14 +688,12 @@ impl Reasoner {
             owl_complement_of,
             things,
             cls_com_1,
-            cls_com_2,
             cax_sco_1,
-            cax_sco_2,
             rdfs11_1,
             owl_equivalent_class,
             owl_disjoint_with,
             cax_dw_1,
-            cax_dw_2,
+            type_pairs,
             // Auxiliary state
             is_materialized: false,
             pending_delta: Vec::new(),
@@ -724,7 +709,7 @@ impl Reasoner {
         self.input = self.base.clone();
         self.is_materialized = false;
         self.pending_delta.clear();
-        self.output.clear();
+        self.output = OnceCell::new();
         self.errors.clear();
         self.seen_diags.clear();
         // Clear auxiliary state
@@ -732,7 +717,6 @@ impl Reasoner {
         self.established_complementary_instances.borrow_mut().clear();
         // Recreate the Iteration and all Variables from scratch
         let mut iter1 = Iteration::new();
-        self.spo = iter1.variable("spo");
         self.pso = iter1.variable("pso");
         self.osp = iter1.variable("osp");
         self.all_triples_input = iter1.variable("all_triples_input");
@@ -761,17 +745,14 @@ impl Reasoner {
         self.owl_inv2 = iter1.variable("owl_inv2");
         self.owl_same_as = iter1.variable("owl_same_as");
         self.owl_irreflexive = iter1.variable("owl_irreflexive");
-        self.prp_irp_1 = iter1.variable("prp_irp_1");
         self.owl_asymmetric = iter1.variable("owl_asymmetric");
         self.prp_asyp_1 = iter1.variable("prp_asyp_1");
         self.prp_asyp_2 = iter1.variable("prp_asyp_2");
-        self.prp_asyp_3 = iter1.variable("prp_asyp_3");
         self.prp_inv1 = iter1.variable("prp_inv1");
         self.owl_propertydisjointwith = iter1.variable("owl_propertydisjointwith");
         self.owl_propertydisjointwith2 = iter1.variable("owl_propertydisjointwith2");
         self.prp_pdw_1 = iter1.variable("prp_pdw_1");
         self.prp_pdw_2 = iter1.variable("prp_pdw_2");
-        self.prp_pdw_3 = iter1.variable("prp_pdw_3");
         self.transitive_properties = iter1.variable("transitive_properties");
         self.prp_trp_1 = iter1.variable("prp_trp_1");
         self.prp_trp_2 = iter1.variable("prp_trp_2");
@@ -797,14 +778,12 @@ impl Reasoner {
         self.owl_complement_of = iter1.variable("owl_complement_of");
         self.things = iter1.variable("things");
         self.cls_com_1 = iter1.variable("cls_com_1");
-        self.cls_com_2 = iter1.variable("cls_com_2");
         self.cax_sco_1 = iter1.variable("cax_sco_1");
-        self.cax_sco_2 = iter1.variable("cax_sco_2");
         self.rdfs11_1 = iter1.variable("rdfs11_1");
         self.owl_equivalent_class = iter1.variable("owl_equivalent_class");
         self.owl_disjoint_with = iter1.variable("owl_disjoint_with");
         self.cax_dw_1 = iter1.variable("cax_dw_1");
-        self.cax_dw_2 = iter1.variable("cax_dw_2");
+        self.type_pairs = iter1.variable("type_pairs");
         self.iter1 = iter1;
     }
 
@@ -818,7 +797,7 @@ impl Reasoner {
     }
 
     fn add_base_triples(&mut self, input: Vec<KeyedTriple>) {
-        self.base.extend(input.clone());
+        self.base.extend_from_slice(&input);
         self.input.extend(input);
     }
 
@@ -872,10 +851,12 @@ impl Reasoner {
     /// ```
     pub fn load_triples(&mut self, triples: Vec<Triple>) {
         let mut trips: Vec<(URI, (URI, URI))> = Vec::with_capacity(triples.len());
-        for trip in triples.iter() {
-            let s = self.index.put(trip.subject.clone().into());
-            let p = self.index.put(trip.predicate.clone().into());
-            let o = self.index.put(trip.object.clone().into());
+        // consume the triples, so each term is moved into the index or dropped
+        // as soon as it is interned, rather than copied
+        for trip in triples {
+            let s = self.index.put(trip.subject.into());
+            let p = self.index.put(trip.predicate.into());
+            let o = self.index.put(trip.object.into());
             trips.push((s, (p, o)));
         }
         trips.sort_unstable();
@@ -904,10 +885,10 @@ impl Reasoner {
     pub fn set_base_triples(&mut self, triples: Vec<Triple>) -> bool {
         // Convert to keyed triples
         let mut new_base: Vec<KeyedTriple> = Vec::with_capacity(triples.len() + 2);
-        for trip in triples.iter() {
-            let s = self.index.put(trip.subject.clone().into());
-            let p = self.index.put(trip.predicate.clone().into());
-            let o = self.index.put(trip.object.clone().into());
+        for trip in triples {
+            let s = self.index.put(trip.subject.into());
+            let p = self.index.put(trip.predicate.into());
+            let o = self.index.put(trip.object.into());
             new_base.push((s, (p, o)));
         }
         // Always include seed triples (cls-thing, cls-nothing1)
@@ -1197,10 +1178,10 @@ impl Reasoner {
     /// The file will contain the current output of the reasoner (post `reason()`).
     pub fn dump_file(&mut self, filename: &str) -> crate::error::Result<()> {
         // let mut abbrevs: HashMap<String, Uri> = HashMap::new();
-        let mut output = fs::File::create(filename)?;
+        let output = BufWriter::new(fs::File::create(filename)?);
         let mut formatter = TurtleFormatter::new(output);
-        for t in self.view_output() {
-            formatter.format(&oxrdf_to_rio(t.into()))?;
+        for t in self.closure() {
+            formatter.format(&oxrdf_to_rio(t))?;
         }
 
         //let mut writer =
@@ -1233,7 +1214,7 @@ impl Reasoner {
         //writer.finish()?;
         //info!("Wrote {} triples to {}", graph.count(), filename);
         //Ok(())
-        formatter.finish()?;
+        formatter.finish()?.flush()?;
         Ok(())
     }
 
@@ -1245,18 +1226,33 @@ impl Reasoner {
     ///
     /// Returns an error for unsupported extensions.
     pub fn load_file(&mut self, filename: &str) -> crate::error::Result<()> {
-        let mut f = BufReader::new(fs::File::open(filename)?);
-        let mut graph = Graph::new();
+        let f = BufReader::new(fs::File::open(filename)?);
+        let mut triples: Vec<KeyedTriple> = Vec::new();
+        // Blank node labels are local to a file, but the parsers reuse them across
+        // files (e.g. rio's "riog00000001"), so give each loaded file fresh blank nodes
+        let mut bnodes: HashMap<String, URI> = HashMap::new();
+        let index = &mut self.index;
+        // Intern straight from the parser's borrowed terms; only new terms are copied
+        let mut put = |term: TermRef| match term {
+            TermRef::BlankNode(b) => match bnodes.get(b.as_str()) {
+                Some(&id) => id,
+                None => {
+                    let id = index.put(BlankNode::default().into());
+                    bnodes.insert(b.as_str().to_string(), id);
+                    id
+                }
+            },
+            term => index.put_ref(term),
+        };
+        let mut add = |t: rio_api::model::Triple| {
+            let (s, p, o) = rio_to_oxrdf_ref(t);
+            triples.push((put(s), (put(p.into()), put(o))));
+            Ok(()) as Result<(), TurtleError>
+        };
         if filename.ends_with(".ttl") {
-            TurtleParser::new(f, None).parse_all(&mut |t| {
-                graph.insert(&rio_to_oxrdf(t));
-                Ok(()) as Result<(), TurtleError>
-            })?;
+            TurtleParser::new(f, None).parse_all(&mut add)?;
         } else if filename.ends_with(".n3") {
-            NTriplesParser::new(f).parse_all(&mut |t| {
-                graph.insert(&rio_to_oxrdf(t));
-                Ok(()) as Result<(), TurtleError>
-            })?;
+            NTriplesParser::new(f).parse_all(&mut add)?;
         } else {
             return Err(std::io::Error::new(
                 ErrorKind::Other,
@@ -1265,19 +1261,10 @@ impl Reasoner {
             .into());
         }
 
-        //let graph = parser.read_triples(f)?.collect::<Result<Vec<_>,_>>()?;
-
-        // Build new triples with capacity hints
-        let mut triples: Vec<(URI, (URI, URI))> = Vec::with_capacity(graph.len());
-        for triple in graph.iter() {
-            let s = self.index.put(triple.subject.clone().into());
-            let p = self.index.put(triple.predicate.clone().into());
-            let o = self.index.put(triple.object.clone().into());
-            triples.push((s, (p, o)));
-        }
+        triples.sort_unstable();
+        triples.dedup();
         info!("Loaded {} triples from file {}", triples.len(), filename);
 
-        triples.sort_unstable();
         if self.is_materialized {
             get_unique(&self.input, &mut triples);
             self.pending_delta.extend(triples);
@@ -1338,16 +1325,19 @@ impl Reasoner {
                 .extend(new_complementary_instances.drain());
 
             while self.iter1.changed() {
-                // all individuals are owl:Things
-                self.all_triples_input
-                    .from_map(&self.spo, |&(s, (_p, _o))| {
-                        (s, (rdftype_node, owlthing_node))
-                    });
+                // all individuals are owl:Things; recent is sorted by subject, so
+                // emit one triple per distinct subject
+                let new_things: Vec<KeyedTriple> = {
+                    let recent = self.all_triples_input.recent.borrow();
+                    let mut new_things: Vec<KeyedTriple> = recent
+                        .iter()
+                        .map(|&(s, _)| (s, (rdftype_node, owlthing_node)))
+                        .collect();
+                    new_things.dedup();
+                    new_things
+                };
+                self.all_triples_input.extend(new_things);
 
-                self.spo
-                    .from_map(&self.all_triples_input, |&(sub, (pred, obj))| {
-                        (sub, (pred, obj))
-                    });
                 self.pso
                     .from_map(&self.all_triples_input, |&(sub, (pred, obj))| {
                         (pred, (sub, obj))
@@ -1366,6 +1356,7 @@ impl Reasoner {
                 self.list_rules.update(
                     &self.pso.recent.borrow(),
                     &self.rdf_type_inv.borrow(),
+                    &self.type_pairs,
                     &self.all_triples_input,
                 );
 
@@ -1496,14 +1487,14 @@ impl Reasoner {
                 // eq-sym
                 //  T(?x, owl:sameAs, ?y)  =>  T(?y, owl:sameAs, ?x)
                 self.all_triples_input.from_join(
-                    &self.spo,
+                    &self.all_triples_input,
                     &self.owl_same_as,
                     |&x, &(p, o), &y| (y, (owlsameas_node, x)),
                 );
 
                 // eq-rep-s
                 self.all_triples_input.from_join(
-                    &self.spo,
+                    &self.all_triples_input,
                     &self.owl_same_as,
                     |&s1, &(p, o), &s2| (s2, (p, o)),
                 );
@@ -1534,11 +1525,10 @@ impl Reasoner {
                 // T(?x, ?p, ?x) => false
                 // Collect irreflexive property violations: T(p rdf:type IrreflexiveProperty), T(x p x)
                 let mut prp_irp_violations: Vec<(URI, URI)> = Vec::new();
-                self.prp_irp_1.from_join(&self.owl_irreflexive, &self.pso, |&p, &(), &(s, o)| {
+                join_each(&self.owl_irreflexive, &self.pso, |&p, &(), &(s, o)| {
                     if s == o && s > 0 {
                         prp_irp_violations.push((p, s));
                     }
-                    (p, s)
                 });
 
                 // prp-asyp
@@ -1552,12 +1542,15 @@ impl Reasoner {
                     ((y, x, p), ())
                 });
                 let mut prp_asyp_violations: Vec<(URI, URI, URI)> = Vec::new();
-                self.prp_asyp_3.from_join(&self.prp_asyp_1, &self.prp_asyp_2, |&(x, y, p), &(), &()| {
-                    if x > 0 && y > 0 && p > 0 {
-                        prp_asyp_violations.push((p, x, y));
-                    }
-                    ((x, y, p), ())
-                });
+                join_each(
+                    &self.prp_asyp_1,
+                    &self.prp_asyp_2,
+                    |&(x, y, p), &(), &()| {
+                        if x > 0 && y > 0 && p > 0 {
+                            prp_asyp_violations.push((p, x, y));
+                        }
+                    },
+                );
 
                 // prp-fp
                 self.prp_fp_1.from_join(
@@ -1566,18 +1559,12 @@ impl Reasoner {
                     |&_, &p, &()| (p, ()),
                 );
                 self.prp_fp_2
-                    .from_join(&self.prp_fp_1, &self.pso, |&p, &(), &(x, y1)| (p, (x, y1)));
+                    .from_join(&self.prp_fp_1, &self.pso, |&p, &(), &(x, y1)| ((p, x), y1));
+                // values of p for the same x are the same
                 self.all_triples_input.from_join(
                     &self.prp_fp_2,
-                    &self.pso,
-                    |&p, &(x1, y1), &(x2, y2)| {
-                        // if x1 and x2 are the same, then emit y1 and y2 are the same
-                        if (x1 == x2) {
-                            (y1, (owlsameas_node, y2))
-                        } else {
-                            (0, (0, 0))
-                        }
-                    },
+                    &self.prp_fp_2,
+                    |&_px, &y1, &y2| (y1, (owlsameas_node, y2)),
                 );
 
                 // prp-ifp
@@ -1736,11 +1723,9 @@ impl Reasoner {
                     (c1, c2)
                 });
                 // ?c1, ?x, rdf:type
-                self.cax_sco_2.from_map(&self.rdf_type, |&(inst, class)| (class, inst));
-
                 self.all_triples_input.from_join(
                     &self.cax_sco_1,
-                    &self.cax_sco_2,
+                    &*self.rdf_type_inv.borrow(),
                     |&class, &parent, &inst| {
                         //println!("instance: {:?} {:?} {:?}", self.to_u(inst), self.to_u(parent), self.to_u(class));
                         (inst, (rdftype_node, parent))
@@ -1775,23 +1760,20 @@ impl Reasoner {
                 );
 
                 // cax-dw
+                self.type_pairs
+                    .from_map(&self.rdf_type, |&(inst, class)| ((inst, class), ()));
                 self.cax_dw_1.from_join(
                     &self.rdf_type_inv.borrow(),
                     &self.owl_disjoint_with,
-                    |&c1, &inst, &c2| (c2, (c1, inst)),
+                    |&c1, &inst, &c2| ((inst, c2), c1),
                 );
                 // Collect disjointness violations without borrowing &mut self inside the closure
                 let mut cax_dw_violations: Vec<(URI, URI, URI)> = Vec::new();
-                self.cax_dw_2.from_join(
-                    &self.rdf_type_inv.borrow(),
-                    &self.cax_dw_1,
-                    |&c2, &inst2, &(c1, inst1)| {
-                        if inst1 == inst2 && inst1 > 0 {
-                            cax_dw_violations.push((inst1, c1, c2));
-                        }
-                        (c2, inst1)
-                    },
-                );
+                join_each(&self.cax_dw_1, &self.type_pairs, |&(inst, c2), &c1, &()| {
+                    if inst > 0 {
+                        cax_dw_violations.push((inst, c1, c2));
+                    }
+                });
                 for (inst, c1, c2) in cax_dw_violations.drain(..) {
                     let msg = format!(
                         "inst {} is both {} and {} (disjoint classes)",
@@ -1818,12 +1800,15 @@ impl Reasoner {
                 );
                 // join on (x,y) to find pairs in violation
                 let mut prp_pdw_violations: Vec<(URI, URI, URI, URI)> = Vec::new();
-                self.prp_pdw_3.from_join(&self.prp_pdw_1, &self.prp_pdw_2, |&(x, y, p2), &p1, &_p1| {
-                    if x > 0 && y > 0 && p2 > 0 && p1 > 0 {
-                        prp_pdw_violations.push((x, y, p1, p2));
-                    }
-                    ((x, y, p2), p1)
-                });
+                join_each(
+                    &self.prp_pdw_1,
+                    &self.prp_pdw_2,
+                    |&(x, y, p2), &p1, &_p1| {
+                        if x > 0 && y > 0 && p2 > 0 && p1 > 0 {
+                            prp_pdw_violations.push((x, y, p1, p2));
+                        }
+                    },
+                );
                 for (p, s) in prp_irp_violations.drain(..) {
                     let msg = format!(
                         "property {} of {} is irreflexive",
@@ -1908,14 +1893,13 @@ impl Reasoner {
                 // cls-nothing2
                 //  T(?x, rdf:type, owl:Nothing) => false
                 let mut cls_nothing2_violations: Vec<URI> = Vec::new();
-                self.cls_nothing2.from_join(
-                    &self.rdf_type_inv.borrow(),
+                join_each(
+                    &*self.rdf_type_inv.borrow(),
                     &self.owl_nothing_relation,
                     |&_nothing, &x, &()| {
                         if x > 0 {
                             cls_nothing2_violations.push(x);
                         }
-                        (x, ())
                     },
                 );
                 for x in cls_nothing2_violations.drain(..) {
@@ -1934,24 +1918,25 @@ impl Reasoner {
                 self.cls_com_1.from_join(
                     &self.rdf_type_inv.borrow(),
                     &self.owl_complement_of,
-                    |&c1, &x, &c2| (c2, (x, c1)),
+                    |&c1, &x, &c2| ((x, c2), c1),
                 );
-                self.cls_com_2.from_join(
-                    &self.rdf_type_inv.borrow(),
-                    &self.cls_com_1,
-                    |&c2, &x_exists, &(x_bad, c1)| {
-                        //if x_exists == x_bad && x_exists > 0 && x_bad > 0 {
-                        //    let msg = format!(
-                        //        "Individual {} has type {} and {} which are complements",
-                        //        self.to_u(x_exists),
-                        //        self.to_u(c2),
-                        //        self.to_u(c1)
-                        //    );
-                        //    self.add_error("cls-com".to_string(), msg);
-                        //}
-                        (x_bad, c1)
-                    },
-                );
+                // owl_complement_of holds both directions of every axiom, so keep
+                // one direction (c1 <= c2) to report each violation once
+                let mut cls_com_violations: Vec<(URI, URI, URI)> = Vec::new();
+                join_each(&self.cls_com_1, &self.type_pairs, |&(x, c2), &c1, &()| {
+                    if x > 0 && c1 <= c2 {
+                        cls_com_violations.push((x, c1, c2));
+                    }
+                });
+                for (inst, c1, c2) in cls_com_violations.drain(..) {
+                    let msg = format!(
+                        "inst {} is both {} and {} (complementary classes)",
+                        self.to_u(inst),
+                        self.to_u(c1),
+                        self.to_u(c2)
+                    );
+                    self.add_error("cls-com".to_string(), msg);
+                }
 
                 // Algorithm:
                 // - for all pairs of complementary classes (c1, c2) where c1 owl:complementOf c2, find
@@ -2030,19 +2015,15 @@ impl Reasoner {
                 // T(?x, owl:onProperty, ?p)
                 // T(?u, ?p, ?y) =>  T(?u, rdf:type, ?x)
                 self.cls_hv2_1.from_join(&self.owl_has_value, &self.owl_on_property, |&x, &y, &p| {
-                    // format for pso index; needs property key
-                    (p, (y, x))
+                    // keyed by value, to join with the osp index
+                    (y, (p, x))
                 });
-                self.all_triples_input.from_join(
+                join_filter_into(
                     &self.cls_hv2_1,
-                    &self.pso,
-                    |&prop, &(value, anonclass), &(sub, obj)| {
-                        // if value is correct, then emit the rdf_type
-                        if value == obj {
-                            (sub, (rdftype_node, anonclass))
-                        } else {
-                            (0, (0, 0))
-                        }
+                    &self.osp,
+                    &self.all_triples_input,
+                    |&_value, &(prop, anonclass), &(sub, pred)| {
+                        (pred == prop).then_some((sub, (rdftype_node, anonclass)))
                     },
                 );
 
@@ -2059,16 +2040,11 @@ impl Reasoner {
                     &self.cls_avf_1,
                     |&x, &u, &(y, p)| (u, (p, y)),
                 );
-                self.all_triples_input.from_join(
+                join_filter_into(
                     &self.cls_avf_2,
-                    &self.spo,
-                    |&u, &(p1, y), &(p2, v)| {
-                        if p1 == p2 {
-                            (v, (rdftype_node, y))
-                        } else {
-                            (0, (0, 0))
-                        }
-                    },
+                    &self.all_triples_input,
+                    &self.all_triples_input,
+                    |&u, &(p1, y), &(p2, v)| (p1 == p2).then_some((v, (rdftype_node, y))),
                 );
 
                 // cls-svf1:
@@ -2082,16 +2058,11 @@ impl Reasoner {
                 self.cls_svf1_2.from_join(&self.cls_svf1_1, &self.pso, |&p, &(x, y), &(u, v)| {
                     (v, (x, y, u))
                 });
-                self.all_triples_input.from_join(
+                join_filter_into(
                     &self.cls_svf1_2,
                     &self.rdf_type,
-                    |&v, &(x, y, u), &class| {
-                        if class == y {
-                            (u, (rdftype_node, x))
-                        } else {
-                            (0, (0, 0))
-                        }
-                    },
+                    &self.all_triples_input,
+                    |&v, &(x, y, u), &class| (class == y).then_some((u, (rdftype_node, x))),
                 );
 
                 // scm-svf1: on the same property, a narrower filler gives a
@@ -2126,14 +2097,12 @@ impl Reasoner {
                 //  T(?x, owl:someValuesFrom, owl:Thing)
                 //  T(?x, owl:onProperty, ?p)
                 //  T(?u, ?p, ?v) =>  T(?u, rdf:type, ?x)
-                self.all_triples_input
-                    .from_join(&self.cls_svf1_1, &self.pso, |&p, &(x, y), &(u, v)| {
-                        if y == owlthing_node {
-                            (u, (rdftype_node, x))
-                        } else {
-                            (0, (0, 0))
-                        }
-                    });
+                join_filter_into(
+                    &self.cls_svf1_1,
+                    &self.pso,
+                    &self.all_triples_input,
+                    |&p, &(x, y), &(u, v)| (y == owlthing_node).then_some((u, (rdftype_node, x))),
+                );
             }
 
             // Now that the inference stage has finished, we will compute the sets of instances for
@@ -2147,9 +2116,10 @@ impl Reasoner {
         }
 
         // Non-destructive read of stable partitions (preserves Variable state for incremental use)
-        let mut output: Vec<KeyedTriple> = Vec::new();
+        let mut output: Vec<KeyedTriple>;
         {
-            let stable = self.spo.stable.borrow();
+            let stable = self.all_triples_input.stable.borrow();
+            output = Vec::with_capacity(stable.iter().map(|batch| batch.len()).sum());
             for batch in stable.iter() {
                 output.extend(
                     batch.iter()
@@ -2163,16 +2133,13 @@ impl Reasoner {
         // In incremental mode, only the newly-derived triples (output \ prior
         // closure) need a full scan; the prior closure is already represented
         // in self.input at this point and has been scanned by an earlier call.
-        // In full mode, everything is "new".
-        let delta: Vec<KeyedTriple> = if self.is_materialized {
-            let mut d = output.clone();
-            get_unique(&self.input, &mut d);
-            d
-        } else {
-            output.clone()
-        };
+        // In full mode, everything is "new", so the closure is its own delta.
+        let incremental_delta: Option<Vec<KeyedTriple>> = self
+            .is_materialized
+            .then(|| sorted_difference(&output, &self.input));
+        let delta: &[KeyedTriple] = incremental_delta.as_deref().unwrap_or(&output);
         if self.options.collect_diagnostics {
-            self.detect_equality_contradictions(&output, &delta);
+            self.detect_equality_contradictions(&output, delta);
             let violations = self.list_rules.violations(
                 &self.pso,
                 &self.rdf_type_inv.borrow(),
@@ -2230,10 +2197,21 @@ impl Reasoner {
                 self.add_error(rule.to_string(), message);
             }
         }
-        self.detect_rdfs_datatype_inconsistencies(&output, &delta);
-        // Build oxrdf output
-        let mut out_triples: Vec<Triple> = Vec::with_capacity(output.len());
-        for &(_s, (_p, _o)) in output.iter() {
+        self.detect_rdfs_datatype_inconsistencies(&output, delta);
+        // Store materialized triples for incremental use (sorted for dedup); they
+        // are also the output, which is only converted to oxrdf triples on request
+        self.input = output;
+        self.output = OnceCell::new();
+    }
+
+    /// Iterates over the inferred triples from the last `reason()` run, borrowing their terms
+    fn closure(&self) -> impl Iterator<Item = TripleRef<'_>> {
+        let closure: &[KeyedTriple] = if self.is_materialized {
+            &self.input
+        } else {
+            &[]
+        };
+        closure.iter().filter_map(|&(_s, (_p, _o))| {
             let (Some(s), Some(p), Some(o)) =
                 (self.index.get(_s), self.index.get(_p), self.index.get(_o))
             else {
@@ -2241,17 +2219,16 @@ impl Reasoner {
                     "Index lookup failed for triple IDs: ({}, {}, {})",
                     _s, _p, _o
                 );
-                continue;
+                return None;
             };
-            match make_triple(s.clone(), p.clone(), o.clone()) {
-                Ok(t) => out_triples.push(t),
-                Err(e) => error!("Got error {:?}", e),
+            match make_triple_ref(s, p, o) {
+                Ok(t) => Some(t),
+                Err(e) => {
+                    error!("Got error {:?}", e);
+                    None
+                }
             }
-        }
-        self.output = out_triples;
-        // Store materialized triples for incremental use (sorted for dedup)
-        output.sort_unstable();
-        self.input = output;
+        })
     }
 
     fn detect_equality_contradictions(&mut self, output: &[KeyedTriple], delta: &[KeyedTriple]) {
@@ -2293,12 +2270,12 @@ impl Reasoner {
 
     /// Returns the vec of triples currently contained in the Reasoner
     pub fn get_triples(&self) -> Vec<Triple> {
-        self.output.clone()
+        self.closure().map(TripleRef::into_owned).collect()
     }
 
     /// Returns a read-only view of the inferred triples from the last `reason()` run.
     pub fn view_output(&self) -> &[Triple] {
-        &self.output
+        self.output.get_or_init(|| self.get_triples())
     }
 
     pub fn get_input(&self) -> Vec<Triple> {
@@ -2328,8 +2305,7 @@ impl Reasoner {
 
     /// Returns the vec of triples currently contained in the Reasoner
     pub fn get_triples_string(&mut self) -> Vec<(String, String, String)> {
-        self.view_output()
-            .iter()
+        self.closure()
             .map(|inst| {
                 (
                     inst.subject.to_string(),
@@ -2418,6 +2394,14 @@ fn term_in_datatype_space(term: &Term, datatype_iri: &str) -> Option<bool> {
     const RDF_LANG_STRING: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString";
     const RDF_XML_LITERAL: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral";
 
+    // Any other range may be a class (e.g. `ex:p rdfs:range ex:Part`), whose
+    // members are IRIs and blank nodes, so only judge ranges we recognise.
+    if !matches!(
+        datatype_iri,
+        XSD_STRING | XSD_INTEGER | XSD_INT | RDF_LANG_STRING | RDF_XML_LITERAL
+    ) {
+        return None;
+    }
     let Term::Literal(literal) = term else {
         return Some(false);
     };
@@ -2440,6 +2424,20 @@ fn term_in_datatype_space(term: &Term, datatype_iri: &str) -> Option<bool> {
         }
         _ => return None,
     })
+}
+
+/// The triples in `a` that are not in `b`; both must be sorted ascending.
+fn sorted_difference(a: &[KeyedTriple], b: &[KeyedTriple]) -> Vec<KeyedTriple> {
+    let mut j = 0;
+    a.iter()
+        .filter(|&&x| {
+            while j < b.len() && b[j] < x {
+                j += 1;
+            }
+            j == b.len() || b[j] != x
+        })
+        .copied()
+        .collect()
 }
 
 /**
